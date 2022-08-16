@@ -1,1 +1,1 @@
-# CGQC_Core
+# CGQC Core
