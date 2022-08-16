@@ -13,6 +13,7 @@ class cgqc_patch_outsider
 	texture = "\cgqc\patches\cgqc_patch_outsider.paa";
 	textureVehicle = "\cgqc\patches\cgqc_patch_outsider.paa";
 };
+/*
 class cgqc_patch_logo_relief
 {
 	displayName = "CGQC Logo relief";
@@ -29,6 +30,7 @@ class cgqc_patch_logo_relief_max
 	textureVehicle = "\cgqc\patches\cgqc_patch_logo_2.paa";
 	material = "\cgqc\patches\cgqc_patch_2.rvmat";
 };
+*/
 class cgqc_patch_logo_ukr
 {
 	displayName = "CGQC Logo Ukraine";
@@ -50,12 +52,22 @@ class cgqc_patch_logo_camo
 	texture = "\cgqc\patches\cgqc_patch_logo_camo.paa";
 	textureVehicle = "\cgqc\patches\cgqc_patch_logo_camo.paa";
 };
+
+// Sections
 class cgqc_patch_airforce
 {
 	displayName = "CGQC Airforce";
 	author = "audi/silent1";
 	texture = "\cgqc\patches\cgqc_patch_airforce.paa";
 	textureVehicle = "\cgqc\patches\cgqc_patch_airforce.paa";
+};
+
+class cgqc_patch_dickforce
+{
+	displayName = "CGQC Dickforce";
+	author = "audi/silent1";
+	texture = "\cgqc\patches\cgqc_patch_dickforce.paa";
+	textureVehicle = "\cgqc\patches\cgqc_patch_dickforce.paa";
 };
 
 // SCP QC  -------------------------------------------------------------------------------
