@@ -22,6 +22,7 @@ class cgqc_beret_vanilla : H_Beret_02
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_vanilla.paa"};
 	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
 };
+
 class cgqc_beret_blue : H_Beret_blk
 {
 	author = "silent1";
@@ -94,6 +95,7 @@ class cgqc_helmet_cloutier : H_PilotHelmetHeli_B
 	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_cloutier.paa"};
 	grad_slingHelmet_allow = true;
 };
+
 class cgqc_helmet_crew_cloutier : H_CrewHelmetHeli_B
 {
 	scope = 2;
@@ -172,6 +174,22 @@ class cgqc_helmet_crew_villeneuve : H_CrewHelmetHeli_B
 	author = "silent1";
 	displayName = "CGQC Heli Villeneuve Full";
 	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_villeneuve.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_villeneuve_dick : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Villeneuve DickForce";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_villeneuve_dick.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_villeneuve_dick : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Villeneuve Full DickForce";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_villeneuve_dick.paa"};
 	grad_slingHelmet_allow = true;
 };
 
