@@ -78,6 +78,22 @@ class CfgPatches
 					 "cgqc_gun_p99_wood"};
 	};
 };
+
+class CfgFunctions
+{
+	class cgqc_arsenal
+	{
+		class functions
+		{
+			file = "\cgqc\scripts";
+			class init
+			{
+				postInit = 1;
+			};
+		};
+	};
+};
+
 // Faction
 class cfgFactionClasses
 {
