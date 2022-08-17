@@ -79,21 +79,6 @@ class CfgPatches
 	};
 };
 
-class CfgFunctions
-{
-	class cgqc_arsenal
-	{
-		class functions
-		{
-			file = "\cgqc\scripts";
-			class init
-			{
-				postInit = 1;
-			};
-		};
-	};
-};
-
 // Faction
 class cfgFactionClasses
 {
