@@ -62,7 +62,7 @@ class CfgPatches
 					 "cgqc_cap_green",
 					 "cgqc_helmet_cloutier",
 					 "cgqc_helmet_crew_cloutier",
-					 "cgqc_helmet_heli_black"
+					 "cgqc_helmet_heli_black",
 					 "cgqc_helmet_crew_black",
 					 "cgqc_helmet_heli_green",
 					 "cgqc_helmet_crew_green",
@@ -76,21 +76,6 @@ class CfgPatches
 					 "cgqc_gun_spar17_canpat",
 					 "cgqc_gun_spar17_wood",
 					 "cgqc_gun_p99_wood"};
-	};
-};
-
-class CfgFunctions
-{
-	class cgqc_arsenal
-	{
-		class functions
-		{
-			file = "\cgqc\scripts";
-			class init
-			{
-				postInit = 1;
-			};
-		};
 	};
 };
 
