@@ -62,7 +62,7 @@ class CfgPatches
 					 "cgqc_cap_green",
 					 "cgqc_helmet_cloutier",
 					 "cgqc_helmet_crew_cloutier",
-					 "cgqc_helmet_heli_black"
+					 "cgqc_helmet_heli_black",
 					 "cgqc_helmet_crew_black",
 					 "cgqc_helmet_heli_green",
 					 "cgqc_helmet_crew_green",
