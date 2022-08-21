@@ -78,7 +78,6 @@ class CfgPatches
 					 "cgqc_gun_p99_wood"};
 	};
 };
-
 // Faction
 class cfgFactionClasses
 {
