@@ -55,7 +55,6 @@ class Weapon_cgqc_gun_spar17_tremblay : Weapon_Base_F
         };
     };
 };
-
 class Weapon_cgqc_gun_spar17_canpat : Weapon_Base_F
 {
     scope = 2;
@@ -82,7 +81,6 @@ class Weapon_cgqc_gun_spar17_canpat : Weapon_Base_F
         };
     };
 };
-
 class Weapon_cgqc_gun_spar17_wood : Weapon_Base_F
 {
     scope = 2;
@@ -131,7 +129,6 @@ class Headgear_cgqc_beret_green : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_beret_blue : Headgear_Base_F
 {
     scope = 2;
@@ -151,7 +148,6 @@ class Headgear_cgqc_beret_blue : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_cap_green : Headgear_Base_F
 {
     scope = 2;
@@ -192,7 +188,6 @@ class Headgear_cgqc_helmet_cloutier : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_crew_cloutier_samurai : Headgear_Base_F
 {
     scope = 2;
@@ -212,7 +207,6 @@ class Headgear_cgqc_helmet_crew_cloutier_samurai : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_heli_green : Headgear_Base_F
 {
     scope = 2;
@@ -232,7 +226,6 @@ class Headgear_cgqc_helmet_heli_green : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_crew_green : Headgear_Base_F
 {
     scope = 2;
@@ -252,7 +245,6 @@ class Headgear_cgqc_helmet_crew_green : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_heli_black : Headgear_Base_F
 {
     scope = 2;
@@ -272,7 +264,6 @@ class Headgear_cgqc_helmet_heli_black : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_crew_black : Headgear_Base_F
 {
     scope = 2;
@@ -292,7 +283,6 @@ class Headgear_cgqc_helmet_crew_black : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_heli_wood : Headgear_Base_F
 {
     scope = 2;
@@ -312,7 +302,6 @@ class Headgear_cgqc_helmet_heli_wood : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_crew_wood : Headgear_Base_F
 {
     scope = 2;
@@ -332,7 +321,6 @@ class Headgear_cgqc_helmet_crew_wood : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_villeneuve : Headgear_Base_F
 {
     scope = 2;
@@ -352,7 +340,6 @@ class Headgear_cgqc_helmet_villeneuve : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_crew_villeneuve : Headgear_Base_F
 {
     scope = 2;
@@ -372,7 +359,6 @@ class Headgear_cgqc_helmet_crew_villeneuve : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_audi : Headgear_Base_F
 {
     scope = 2;
@@ -392,7 +378,6 @@ class Headgear_cgqc_helmet_audi : Headgear_Base_F
         };
     };
 };
-
 class Headgear_cgqc_helmet_crew_audi : Headgear_Base_F
 {
     scope = 2;
