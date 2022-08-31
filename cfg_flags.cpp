@@ -1,3 +1,4 @@
+// Flags
 class FlagCarrier;
 class cgqc_flag_coop_black : FlagCarrier
 {
@@ -43,7 +44,6 @@ class cgqc_flag_coop_white : FlagCarrier
         init = "(_this select 0) setFlagTexture '\CGQC\flags\cgqc_flag_coop_white.paa'";
     };
 };
-
 class cgqc_flag_logo_black : FlagCarrier
 {
     author = "silent1";
@@ -88,7 +88,6 @@ class cgqc_flag_logo_white : FlagCarrier
         init = "(_this select 0) setFlagTexture '\CGQC\flags\cgqc_flag_logo_white.paa'";
     };
 };
-
 class cgqc_flag_airforce_black : FlagCarrier
 {
     author = "silent1";
@@ -133,7 +132,6 @@ class cgqc_flag_airforce_white : FlagCarrier
         init = "(_this select 0) setFlagTexture '\CGQC\flags\cgqc_flag_airforce_white.paa'";
     };
 };
-
 class cgqc_flag_black_black : FlagCarrier
 {
     author = "silent1";
@@ -179,6 +177,7 @@ class cgqc_flag_black_white : FlagCarrier
     };
 };
 
+// Banners
 class Banner_01_base_F;
 class cgqc_banner_coop_black : Banner_01_base_F
 {
@@ -218,7 +217,6 @@ class cgqc_banner_coop_white : Banner_01_base_F
     displayName = "CGQC Bannière COOP Blanc";
     hiddenSelectionsTextures[] = {"CGQC\flags\cgqc_flag_coop_white.paa"};
 };
-
 class cgqc_banner_logo_black : cgqc_banner_coop_black
 {
     _generalMacro = "cgqc_banner_logo_black";
@@ -226,7 +224,6 @@ class cgqc_banner_logo_black : cgqc_banner_coop_black
     editorPreview = "cgqc\pics\cgqc_banner_logo_black.jpg";
     hiddenSelectionsTextures[] = {"CGQC\flags\cgqc_flag_logo_black.paa"};
 };
-
 class cgqc_banner_logo_white : cgqc_banner_coop_black
 {
     _generalMacro = "cgqc_banner_logo_white";
