@@ -1,4 +1,4 @@
-hint "Autorank running";
+//hint "Autorank running";
 sleep 10;
 _name = name player;
 _prefix = _name select[0, 4];
@@ -74,8 +74,8 @@ do
 };
 
 // random welcome
-_welcome_list = ["Yo", "Hello", "Ooooh"];
-_message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau"];
+_welcome_list = ["Yo", "Hello", "Ooooh", "Coucou", "Bonsoir"];
+_message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", "Ça roule ma poule?"];
 _welcome = selectRandom _welcome_list;
 _message = selectRandom _message_list;
 
@@ -173,3 +173,20 @@ if ((_name find["Woods", 0]) > 0) then {
 [ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
 // sleep a bit before going out
 sleep 4;
+
+// Fix pour le friendly fire
+player addEventHandler [
+    "HandleRating",
+    {
+        params["_player", "_rating"];
+        _return = _rating;
+        if(rating _player < 0) then {
+            _return = abs rating _player;
+        } else {
+            if(_rating + rating _player < 0) then {
+                _return = 0;
+            };
+        };
+        _return
+    }
+];
