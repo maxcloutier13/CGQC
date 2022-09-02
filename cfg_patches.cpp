@@ -79,6 +79,24 @@ class cgqc_patch_scpqc
 	textureVehicle = "\cgqc\patches\cgqc_patch_scpqc.paa";
 };
 
+// Stalker  -------------------------------------------------------------------------------
+class cgqc_patch_monolith_1
+{
+	displayName = "CGQC Monolith";
+	author = "silent1";
+	texture = "\cgqc\patches\cgqc_patch_monolith_1.paa";
+	textureVehicle = "\cgqc\patches\cgqc_patch_monolith_1.paa";
+};
+
+class cgqc_patch_cgqc_patch_monolith_2
+{
+	displayName = "CGQC Monolity 2";
+	author = "silent1";
+	texture = "\cgqc\patches\cgqc_patch_monolith_2.paa";
+	textureVehicle = "\cgqc\patches\cgqc_patch_monolith_2.paa";
+};
+
+
 // CGQC Squad members ---------------------------------------------------------------------
 class cgqc_patch_tremblay
 {
