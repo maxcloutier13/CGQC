@@ -169,6 +169,13 @@ if ((_name find["Woods", 0]) > 0) then {
 	[ player, "cgqc_patch_woods" ] call BIS_fnc_setUnitInsignia;
 };
 
+if ((_name find["Melo", 0]) > 0) then {
+	hint "woods?";
+	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_woods.paa'/>" +
+	"<br/>" + format["<t size='2' >%1 Melo!</t><br/><t>%2</t>", _welcome, _message]);
+	[ player, "cgqc_patch_monolith_2" ] call BIS_fnc_setUnitInsignia;
+};
+
 // Show text and patch ------------------------------------------------------------------------------------
 [ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
 // sleep a bit before going out
