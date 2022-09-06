@@ -1,0 +1,1 @@
+max_vic ="cgqc_heli_dickforce" createvehicle (position player);
