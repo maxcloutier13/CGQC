@@ -107,11 +107,7 @@ if ((_name find["Cloutier", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:bottom' shadow='false' image='\cgqc\patches\cgqc_patch_cloutier.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Cloutier!</t><br/><t>%2</t>", _welcome, _message]);
 	[ player, "cgqc_patch_cloutier" ] call BIS_fnc_setUnitInsignia;
-	player addItemToVest "murshun_cigs_lighter";
-	player addItemToVest "murshun_cigs_cigpack";
-	player addItemToVest "immersion_cigs_cigar0_nv";
-	player addItemToBackpack "UK3CB_H_Woolhat_KHK";
-	player addItemToBackpack "rhsusf_m112_mag";
+	#include "cloutier.sqf"
 };
 
 if ((_name find["Comeau", 0]) > 0) then {
@@ -199,3 +195,13 @@ player addEventHandler [
         _return
     }
 ];
+
+// Fonctions CGQC ---------------------------------------------------------------------------------------------------------
+_action = [ "self_cgqc", "CGQC", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Set radios sides
+_action = [ "self_radio", "Set radios (Droite:Radio 1/Gauche:Radio 2)", "", {execVM "cgqc\factions\cgqc_radiosides.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Set radios sides
+_action = [ "self_radio1", "Set radios (Droite:Radio 2/Gauche:Radio 1)", "", {execVM "cgqc\factions\cgqc_radiosides_1.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
