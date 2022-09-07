@@ -196,14 +196,14 @@ player addEventHandler [
     }
 ];
 
-// Fonctions CGQC ---------------------------------------------------------------------------------------------------------
-_action = [ "self_cgqc", "CGQC", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Fonctions radio  ---------------------------------------------------------------------------------------------------------
+//_action = [ "self_cgqc", "CGQC", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
-_action = [ "self_radio1", "Set radios (Gauche:Radio 1/Droite:Radio 2)", "", {execVM "cgqc\factions\cgqc_radiosides.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "self_radio1", "Set radios (Gauche: 1/Droite: 2)", "", {execVM "cgqc\factions\cgqc_radiosides.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
-_action = [ "self_radio", "Set radios (Gauche:Radio 2/Droite: Radio 1)", "", {execVM "cgqc\factions\cgqc_radiosides_1.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
+_action = [ "self_radio", "Set radios (Gauche: 2/Droite: 1)", "", {execVM "cgqc\factions\cgqc_radiosides_1.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Set the radios left/right by default
 execVM "cgqc\factions\cgqc_radiosides.sqf";
