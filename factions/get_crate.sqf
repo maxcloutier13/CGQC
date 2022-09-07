@@ -1,0 +1,1 @@
+max_crate="cgqc_box_mk1_plus_plus_green" createvehicle (position player)

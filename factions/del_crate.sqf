@@ -1,0 +1,1 @@
+deleteVehicle max_crate;
