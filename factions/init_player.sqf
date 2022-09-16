@@ -1,5 +1,21 @@
-//hint "Autorank running";
 sleep 10;
+
+// Check if dynamic group is initialized
+dynamic_group_check = ["IsInitialized"] call BIS_fnc_dynamicGroups;
+if (!dynamic_group_check) then {
+	["Initialize"] call BIS_fnc_dynamicGroups;
+};
+// Add player to dynamic group 
+["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+
+//Respawn handler 
+player addMPEventHandler ["MPRespawn", {
+	params ["_unit", "_corpse"];
+	hintC "Check tes radios! Ça inverse parfois au respawn.";
+}];
+
+
+//Find rank
 _name = name player;
 _prefix = _name select[0, 4];
 _unknown = 0;
@@ -9,57 +25,57 @@ do
 	case "Sdt.":
 	{
 		player setRank "PRIVATE";
-		hint "Soldat";
+		//hint "Soldat";
 	};
 	case "Cpl.":
 	{
 		player setRank "CORPORAL";
-		hint "Caporal";
+		//hint "Caporal";
 	};
 	case "CplC":
 	{
 		player setRank "CORPORAL";
-		hint "Caporal-Chef";
+		//hint "Caporal-Chef";
 	};
 	case "Sgt.":
 	{
 		player setRank "SERGEANT";
-		hint "Sergeant";
+		//hint "Sergeant";
 	};
 	case "Adju":
 	{
 		player setRank "SERGEANT";
-		hint "Adjudent";
+		//hint "Adjudent";
 	};
 	case "SLt.":
 	{
 		player setRank "LIEUTENANT";
-		hint "Sous-Lieutenant";
+		//hint "Sous-Lieutenant";
 	};
 	case "Lt. ":
 	{
 		player setRank "LIEUTENANT";
-		hint "Lieutenant";
+		//hint "Lieutenant";
 	};
 	case "Capt":
 	{
 		player setRank "CAPTAIN";
-		hint "Capitaine";
+		//hint "Capitaine";
 	};
 	case "Maj.":
 	{
 		player setRank "MAJOR";
-		hint "Major";
+		//hint "Major";
 	};
 	case "LCol":
 	{
 		player setRank "COLONEL";
-		hint "Lieutenant-Colonel";
+		//hint "Lieutenant-Colonel";
 	};
 	case "Col.":
 	{
 		player setRank "COLONEL";
-		hint "Colonel";
+		//hint "Colonel";
 	};
 	default
 	{
@@ -83,10 +99,10 @@ _message = selectRandom _message_list;
 _text = (format["<t size='2' >Bonjour %1</t><br/><t>what's up?</t>", _name]);
 if (_unknown == 0) then {
 	// default patch pour les joueurs qui en ont pas de custom
-	[ player, "cgqc_patch_logo" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_logo";
 } else {
 	// Patch pour les outsiders
-	[ player, "cgqc_patch_outsider" ] call BIS_fnc_setUnitInsignia;
+	player_patch ="cgqc_patch_outsider";
 };
 
 // Assign patch based on name  ------------------------------------------------------------------------------------
@@ -94,83 +110,87 @@ sleep 2;
 if ((_name find["Audi", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_audi.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Audi!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_audi" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_audi";
 };
 
 if ((_name find["Braddock", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_braddock.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Mafia!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_braddock" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_braddock";
 };
 
 if ((_name find["Cloutier", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:bottom' shadow='false' image='\cgqc\patches\cgqc_patch_cloutier.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Cloutier!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_cloutier" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_cloutier";
 	#include "cloutier.sqf"
 };
 
 if ((_name find["Comeau", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_comeau.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Comeau!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_comeau" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_comeau";
 };
 
 if ((_name find["Fortin", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_fortin.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Dogo!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_fortin" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_fortin";
 };
 
 if ((_name find["Frechette", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_frechette.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Frechette!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_frechette" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_frechette";
 };
 
 if ((_name find["Genest", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_genest.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 ptit Beurre!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_genest" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_genest";
 };
 
 if ((_name find["Laforest", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_laforest.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Frog!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_laforest" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_laforest";
+	
 };
 
 if ((_name find["Pinard", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_pinard.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Pinard!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_pinard" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_pinard";
 };
 
 if ((_name find["Tremblay", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_tremblay.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Tremblay!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_tremblay" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_tremblay";
 };
 
 if ((_name find["Villeneuve", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_villeneuve.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Logic!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_villeneuve" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_villeneuve";
 };
 
 if ((_name find["Woods", 0]) > 0) then {
 	hint "woods?";
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_woods.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 XiPoWnZX!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_woods" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_woods";
 };
 
 if ((_name find["Melo", 0]) > 0) then {
 	hint "woods?";
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_woods.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Melo!</t><br/><t>%2</t>", _welcome, _message]);
-	[ player, "cgqc_patch_monolith_2" ] call BIS_fnc_setUnitInsignia;
+	player_patch = "cgqc_patch_monolith_2";
 };
+
+//Set the patch 
+[ player, player_patch ] call BIS_fnc_setUnitInsignia;
 
 // Show text and patch ------------------------------------------------------------------------------------
 [ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
@@ -188,7 +208,7 @@ player addEventHandler [
             _return = abs rating _player;
         } else {
             if(_rating + rating _player < 0) then {
-				hint "Tu pousses ta luck!";
+				hintc "Teamkiller!!!";
                 _return = 0;
             };
         };
@@ -196,14 +216,18 @@ player addEventHandler [
     }
 ];
 
-// Fonctions radio  ---------------------------------------------------------------------------------------------------------
-//_action = [ "self_cgqc", "CGQC", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-//_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Ace self interaction for players
+// --- Ace actions ---------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_cgqc", "CGQC", "CGQC_2022\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Set patch --------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_patch", "Set patch", "", {[player, player_patch] execVM "\cgqc\factions\self_get_patch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
 _action = [ "self_radio1", "Set radios (Gauche: 1/Droite: 2)", "", {execVM "cgqc\factions\cgqc_radiosides.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
 _action = [ "self_radio", "Set radios (Gauche: 2/Droite: 1)", "", {execVM "cgqc\factions\cgqc_radiosides_1.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Set the radios left/right by default
 execVM "cgqc\factions\cgqc_radiosides.sqf";
