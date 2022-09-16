@@ -1,11 +1,13 @@
 sleep 10;
+
 // Check if dynamic group is initialized
-_check = ["IsInitialized"] call BIS_fnc_dynamicGroups;
-if (!_check) then {
+dynamic_group_check = ["IsInitialized"] call BIS_fnc_dynamicGroups;
+if (!dynamic_group_check) then {
 	["Initialize"] call BIS_fnc_dynamicGroups;
 };
 // Add player to dynamic group 
-["InitializePlayer", [player]] call BIS_fnc_dynamicGroups; 
+["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+
 //Respawn handler 
 player addMPEventHandler ["MPRespawn", {
 	params ["_unit", "_corpse"];
