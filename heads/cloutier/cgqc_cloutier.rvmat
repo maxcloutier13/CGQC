@@ -15,7 +15,7 @@ PixelShaderID = "Skin";
 VertexShaderID = "Skin";
 class Stage1
 {
-	texture = "cgqc_stuff\heads\cloutier\cgqc_cloutier_nohq.paa";
+	texture = "cgqc\heads\cloutier\cgqc_cloutier_nohq.paa";
 	uvSource = "tex";
 	class uvTransform
 	{
@@ -39,7 +39,7 @@ class Stage2
 };
 class Stage3
 {
-	texture =  "cgqc_stuff\heads\cloutier\cgqc_cloutier_co.paa";
+	texture =  "cgqc\heads\cloutier\cgqc_cloutier_co.paa";
 	uvSource = "tex";
 	class uvTransform
 	{

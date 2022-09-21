@@ -184,9 +184,16 @@ if ((_name find["Woods", 0]) > 0) then {
 
 if ((_name find["Melo", 0]) > 0) then {
 	hint "woods?";
-	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_woods.paa'/>" +
+	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_monolith_2.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Melo!</t><br/><t>%2</t>", _welcome, _message]);
 	player_patch = "cgqc_patch_monolith_2";
+};
+
+if ((_name find["Turcotte", 0]) > 0) then {
+	hint "woods?";
+	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_turcotte.paa'/>" +
+	"<br/>" + format["<t size='2' >%1 Dewark!</t><br/><t>%2</t>", _welcome, _message]);
+	player_patch = "cgqc_patch_turcotte";
 };
 
 //Set the patch 

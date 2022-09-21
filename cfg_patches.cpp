@@ -193,3 +193,12 @@ class cgqc_patch_braddock
 	texture = "\cgqc\patches\cgqc_patch_braddock.paa";
 	textureVehicle = "\cgqc\patches\cgqc_patch_braddock.paa";
 };
+
+class cgqc_patch_turcotte
+{
+	displayName = "CGQC Turcotte";
+	author = "audi/silent1";
+	texture = "\cgqc\patches\cgqc_patch_turcotte.paa";
+	textureVehicle = "\cgqc\patches\cgqc_patch_turcotte.paa";
+};
+
