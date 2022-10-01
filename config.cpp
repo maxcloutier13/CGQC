@@ -93,7 +93,7 @@ class cfgWeapons
 {
 #include "cfg_helmets.cpp"
 #include "cfg_guns.cpp"
-#include "cfg_radios.cpp"
+#include "cfg_misc.cpp"
 };
 // Patches
 class cfgUnitInsignia
