@@ -8,6 +8,7 @@ class ACRE_PRC117F: ACRE_BaseRadio
 		mass = 60;
 	};
 };
+
 class ACRE_PRC152: ACRE_BaseRadio
 {
 	class ItemInfo: CBA_MiscItem_ItemInfo
@@ -15,6 +16,7 @@ class ACRE_PRC152: ACRE_BaseRadio
 		mass = 4;
 	};
 };
+
 class ACRE_PRC343: ACRE_BaseRadio
 {
 	class ItemInfo: CBA_MiscItem_ItemInfo
