@@ -11,7 +11,6 @@ class cgqc_gun_p99_wood : hgun_P07_F
 		"\CGQC\guns\cgqc_gun_p99_wood.paa"};
 	picture = "\A3\Weapons_F_Exp\Pistols\P07\Data\UI\icon_hgun_P07_khk_F_X_CA.paa";
 };
-
 // Custom 417  ------------------------------------------------------------------------------
 class arifle_SPAR_03_base_F;
 // Tremblay
@@ -27,7 +26,6 @@ class cgqc_gun_spar17_tremblay : arifle_SPAR_03_base_F
 		"\CGQC\guns\cgqc_gun_spar17_wood_buttstock.paa" // spar1_01 - Buttstock
 	};
 };
-
 // Canpat HK417
 class cgqc_gun_spar17_canpat : arifle_SPAR_03_base_F
 {
@@ -41,7 +39,6 @@ class cgqc_gun_spar17_canpat : arifle_SPAR_03_base_F
 		"\CGQC\guns\cgqc_gun_spar17_canpat_buttstock.paa" // spar1_01 - Buttstock
 	};
 };
-
 // Woodland HK417
 class cgqc_gun_spar17_wood : arifle_SPAR_03_base_F
 {
