@@ -90,7 +90,7 @@ do
 };
 
 // random welcome
-_welcome_list = ["Yo", "Hello", "Ooooh", "Coucou", "Bonsoir"];
+_welcome_list = ["Yo", "R’gard", "Allo", "Hello", "Ooooh", "Coucou", "Bonsoir", "Konnichiwa", "Guten Tag", "Asalaam alaikum"];
 _message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", "Ça roule ma poule?"];
 _welcome = selectRandom _welcome_list;
 _message = selectRandom _message_list;
