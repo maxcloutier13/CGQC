@@ -94,7 +94,6 @@ _welcome_list = ["Yo", "R’gard", "Allo", "Hello", "Ooooh", "Coucou", "Bonsoir"
 _message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", "Ça roule ma poule?"];
 _welcome = selectRandom _welcome_list;
 _message = selectRandom _message_list;
-
 // default text and patch ------------------------------------------------------------------------------------------
 _text = (format["<t size='2' >Bonjour %1</t><br/><t>what's up?</t>", _name]);
 if (_unknown == 0) then {
