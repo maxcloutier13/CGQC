@@ -29,7 +29,6 @@ class CGQC_Soldat_Base : B_Soldier_f
 	backpack = "cgqc_pack_mk1_magic";
 	editorPreview = "cgqc\pics\cgqc_soldat_base.jpg";
 };
-
 class CGQC_Officer_Base : B_Soldier_f
 {
 	author = "silent1";
