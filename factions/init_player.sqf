@@ -228,7 +228,7 @@ player addEventHandler [
 _action = [ "menu_self_cgqc", "CGQC", "CGQC_2022\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set patch --------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_patch", "Set patch", "", {["patch"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_patch", "Remettre ta patch personelle", "", {["patch"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
 _action = [ "self_radio1", "Set radios (Gauche: 1/Droite: 2)", "", {["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
