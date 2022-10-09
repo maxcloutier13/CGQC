@@ -90,8 +90,9 @@ do
 };
 
 // random welcome
-_welcome_list = ["Yo", "R’gard", "Allo", "Hello", "Ooooh", "Coucou", "Bonsoir", "Konnichiwa", "Guten Tag", "Asalaam alaikum"];
-_message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", "Ça roule ma poule?"];
+_welcome_list = ["Yo", "R’gard", "Allo", "Hello", "Ooooh", "Coucou", "Bonsoir", "Konnichiwa"];
+_message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", 
+"Ça roule ma poule?", "As-tu couché ta blonde?", "BAN dans 3,1,2...", "Prêt à répendre la démocratie dans l'monde?"];
 _welcome = selectRandom _welcome_list;
 _message = selectRandom _message_list;
 // default text and patch ------------------------------------------------------------------------------------------
@@ -122,7 +123,7 @@ if ((_name find["Cloutier", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:bottom' shadow='false' image='\cgqc\patches\cgqc_patch_cloutier.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Cloutier!</t><br/><t>%2</t>", _welcome, _message]);
 	player_patch = "cgqc_patch_cloutier";
-	#include "cloutier.sqf"
+	#include "init_cloutier.sqf"
 };
 
 if ((_name find["Comeau", 0]) > 0) then {
@@ -227,13 +228,13 @@ player addEventHandler [
 _action = [ "menu_self_cgqc", "CGQC", "CGQC_2022\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set patch --------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_patch", "Set patch", "", {[player, player_patch] execVM "\cgqc\factions\self_get_patch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_patch", "Set patch", "", {["patch"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
-_action = [ "self_radio1", "Set radios (Gauche: 1/Droite: 2)", "", {execVM "cgqc\factions\cgqc_radiosides.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio1", "Set radios (Gauche: 1/Droite: 2)", "", {["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
-_action = [ "self_radio", "Set radios (Gauche: 2/Droite: 1)", "", {execVM "cgqc\factions\cgqc_radiosides_1.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio", "Set radios (Gauche: 2/Droite: 1)", "", {["radio_sides_2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Set the radios left/right by default
-execVM "cgqc\factions\cgqc_radiosides.sqf";
+["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"
