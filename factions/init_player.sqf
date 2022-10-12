@@ -1,4 +1,7 @@
-sleep 10;
+hintSilent "init_player.";
+
+// Prevent player input
+disableUserInput true;
 
 // Check if dynamic group is initialized
 dynamic_group_check = ["IsInitialized"] call BIS_fnc_dynamicGroups;
@@ -88,7 +91,7 @@ do
 		sleep 6;
 	};
 };
-
+hintSilent "init_player..";
 // random welcome
 _welcome_list = ["Yo", "R’gard", "Allo", "Hello", "Ooooh", "Coucou", "Bonsoir", "Konnichiwa"];
 _message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", 
@@ -106,7 +109,6 @@ if (_unknown == 0) then {
 };
 
 // Assign patch based on name  ------------------------------------------------------------------------------------
-sleep 2;
 if ((_name find["Audi", 0]) > 0) then {
 	_text = ("<img size= '6' style='vertical-align:middle' shadow='false' image='\cgqc\patches\cgqc_patch_audi.paa'/>" +
 	"<br/>" + format["<t size='2' >%1 Audi!</t><br/><t>%2</t>", _welcome, _message]);
@@ -196,13 +198,9 @@ if ((_name find["Turcotte", 0]) > 0) then {
 	player_patch = "cgqc_patch_turcotte";
 };
 
+hintSilent "init_player...";
 //Set the patch 
 [ player, player_patch ] call BIS_fnc_setUnitInsignia;
-
-// Show text and patch ------------------------------------------------------------------------------------
-[ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
-// sleep a bit before going out
-sleep 4;
 
 // Fix pour le friendly fire
 player addEventHandler [
@@ -237,4 +235,15 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace
 _action = [ "self_radio", "Set radios (Gauche: 2/Droite: 1)", "", {["radio_sides_2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Set the radios left/right by default
-["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"
+["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
+
+cgqc_player_init = 1;
+
+// Return controls
+disableUserInput false;
+
+// Show text and patch ------------------------------------------------------------------------------------
+sleep 10;
+[ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
+// sleep a bit before going out
+sleep 4;
