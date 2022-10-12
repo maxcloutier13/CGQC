@@ -3,6 +3,12 @@ _type = _this select 0;
 switch (_type)
 do
 {
+	case "delete":
+	{
+		{
+			deleteVehicle _x
+		} forEach allDead;
+	};
 	case "micro":
 	{
 		player addItemToBackpack "sps_black_hornet_01_Static_F";
