@@ -77,7 +77,7 @@ class cgqc_cap_green : H_HelmetB
 		};
 	};
 	ace_hearing_protection = 0.75;
-	ace_hearing_lowerVolume = 0.5;
+	ace_hearing_lowerVolume = 0;
 	hiddenSelections[] = {"camo"};
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_cap_green.paa"};
 	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_cap_green.rvmat"};
