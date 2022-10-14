@@ -223,7 +223,7 @@ player addEventHandler [
 
 // Ace self interaction for players
 // --- Ace actions ---------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_cgqc", "CGQC", "CGQC_2022\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_cgqc", "CGQC", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set patch --------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "", {["patch"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
