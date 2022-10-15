@@ -16,11 +16,14 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action 
 // -- Admin stuff
 _action = [ "menu_spawn", "Admin Stuff", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// ------ Delete all dead
+_action = [ "max_delete", "Delete Dead", "", {["delete"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get micro drone + uav 
 _action = [ "max_micro", "Microdrone", "", {["micro"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get darter + uav 
-_action = [ "max_micro", "Darter", "", {["darter"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_darter", "Darter", "", {["darter"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get 343
 _action = [ "max_343", "343", "", {["343"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
