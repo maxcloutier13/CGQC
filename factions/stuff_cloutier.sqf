@@ -149,11 +149,6 @@ do
 		hintSilent "Dance!";
 		player switchMove "Acts_Dance_02";
 	};
-	case "naruto":
-	{
-		hintSilent "Naruto!";
-		player switchMove "PLP_RaidRun2";
-	};
 	default
 	{
 		hint "woops";
