@@ -134,6 +134,21 @@ do
 		removeBackpack _target;
 		_target addBackpack	"B_Parachute";
 	};
+	case "stop":
+	{
+		hintSilent "Stop";
+		player switchMove "";
+	};
+	case "dance1":
+	{
+		hintSilent "Dance!";
+		player switchMove "Acts_Dance_01";
+	};
+	case "dance2":
+	{
+		hintSilent "Dance!";
+		player switchMove "Acts_Dance_02";
+	};
 	default
 	{
 		hint "woops";
