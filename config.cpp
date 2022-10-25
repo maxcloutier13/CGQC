@@ -105,7 +105,7 @@ class CfgEditorSubcategories
 {
 	class EdSubcat_cgqc_Training
 	{
-		displayName = "Men (Training)";
+		displayName = "Men";
 	};
 };
 // Units, backpacks, flags
