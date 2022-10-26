@@ -118,3 +118,4 @@ class cfgVehicles
 };
 // Custom events
 #include "cfg_eventhandlers.cpp"
+
