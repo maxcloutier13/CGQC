@@ -1,7 +1,5 @@
-hintSilent "init_player.";
-
 // Prevent player input
-disableUserInput true;
+//disableUserInput true;
 
 // Check if dynamic group is initialized
 dynamic_group_check = ["IsInitialized"] call BIS_fnc_dynamicGroups;
@@ -91,7 +89,6 @@ do
 		sleep 6;
 	};
 };
-hintSilent "init_player..";
 // random welcome
 _welcome_list = ["Yo", "R’gard", "Allo", "Hello", "Ooooh", "Coucou", "Bonsoir", "Konnichiwa"];
 _message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", 
@@ -198,7 +195,6 @@ if ((_name find["Turcotte", 0]) > 0) then {
 	player_patch = "cgqc_patch_turcotte";
 };
 
-hintSilent "init_player...";
 //Set the patch 
 [ player, player_patch ] call BIS_fnc_setUnitInsignia;
 
@@ -225,25 +221,68 @@ player addEventHandler [
 // --- Ace actions ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cgqc", "CGQC", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Set patch --------------------------------------------------------------------------------------------------------------
+// Set patch 
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "", {["patch"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Set radios sides
-_action = [ "self_radio1", "Set radios (Gauche: 1/Droite: 2)", "", {["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
-// Set radios sides
-_action = [ "self_radio", "Set radios (Gauche: 2/Droite: 1)", "", {["radio_sides_2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
-// Set the radios left/right by default
-["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
 
+// Radios ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_radios", "Radios", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Set radios sides
+_action = [ "self_radio1", "SetRadio: Gauche/Droite", "", {["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Set radio roles ---------------------------------------------------------------------------------------------------------------
+// Spartan 1
+_action = [ "menu_self_spartan1", "Spartan 1", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "self_radio_spartan1", "Soldat", "", {["spartan1"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "self_radio_spartan1_2", "2iC", "", {["spartan1_2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "self_radio_spartan1_1", "Team Leader", "", {["spartan1_1"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Spartan 2
+_action = [ "menu_self_spartan2", "Spartan 2", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "self_radio_spartan2", "Soldat", "", {["spartan2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "self_radio_spartan2_2", "2iC", "", {["spartan2_2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "self_radio_spartan2_1", "Team Leader", "", {["spartan2_1"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Autres 
+_action = [ "menu_self_other", "Autres", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Centaure
+_action = [ "self_radio_centaure", "Centaure/Blindés", "", {["centaure"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_other"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Griffon
+_action = [ "self_radio_griffon", "Griffon/Heli", "", {["griffon"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_other"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// JTAC
+_action = [ "self_radio_jtac", "JTAC", "", {["jtac"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_other"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Set default left/right radios
+["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
 cgqc_player_init = 1;
 
 // Return controls
-disableUserInput false;
+//disableUserInput false;
 
 // Show text and patch ------------------------------------------------------------------------------------
 sleep 10;
 [ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
 // sleep a bit before going out
 sleep 4;
+
+//Sleep and re-set patch after 20mins 
+sleep 1200;
+hintSilent "Patch re-set";
+[ player, player_patch ] call BIS_fnc_setUnitInsignia;
