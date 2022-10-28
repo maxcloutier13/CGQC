@@ -15,7 +15,7 @@ do
 			_radio_2 = _radios select 1;
 			_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		};
-		hintSilent "Radios 1/2-Gauche/Droite";
+		hintSilent "Radios L/R";
 	};
 	case "radio_sides_2":
 	{
@@ -29,7 +29,7 @@ do
 			_radio_2 = _radios select 1;
 			_success = [_radio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		};
-		hintSilent "Radios 1/2-Droite/Gauche";
+		hintSilent "Radios R/L";
 	};
 	case "patch":
 	{

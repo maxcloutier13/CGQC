@@ -279,7 +279,7 @@ sleep 10;
 sleep 4;
 
 cgqc_player_init = 1;
-sleep 20;
+sleep 10;
 // Set default left/right radios
 ["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
 
