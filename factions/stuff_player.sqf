@@ -55,7 +55,9 @@ do
 	{
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-		_longRadio = ["ACRE_PRC177f"] call acre_api_fnc_getRadioByType;
+		_longRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
+		hintSilent format["%1-%2-%3", _personalRadio, _handheldRadio, _longRadio];
+		sleep 10;
 		// Channels
 		[_personalRadio, 1] call acre_api_fnc_setRadioChannel; 
 		[_handheldRadio, 4] call acre_api_fnc_setRadioChannel;
@@ -85,7 +87,7 @@ do
 	{
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-		_longRadio = ["ACRE_PRC177f"] call acre_api_fnc_getRadioByType;
+		_longRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
 		// Channels
 		[_personalRadio, 2] call acre_api_fnc_setRadioChannel; 
 		[_handheldRadio, 4] call acre_api_fnc_setRadioChannel;
@@ -156,9 +158,9 @@ do
 	{
 		// 152's
 		_handheldRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-		_handheldRadio_1 = _mediums select 0;
-		_handheldRadio_2 = _mediums select 1;
-		_longRadio = ["ACRE_PRC177f"] call acre_api_fnc_getRadioByType;
+		_handheldRadio_1 = _handheldRadios select 0;
+		_handheldRadio_2 = _handheldRadios select 1;
+		_longRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
 		// Channels
 		[_longRadio, 1] call acre_api_fnc_setRadioChannel; //Spartan
 		[_handheldRadio_1, 2] call acre_api_fnc_setRadioChannel; //Air-Net
