@@ -209,7 +209,7 @@ player addEventHandler [
             _return = abs rating _player;
         } else {
             if(_rating + rating _player < 0) then {
-				hintSilent "Teamkiller!!!";
+				hintSilent "Woops!!!!";
                 _return = 0;
             };
         };
