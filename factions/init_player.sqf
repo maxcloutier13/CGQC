@@ -15,6 +15,8 @@ player addMPEventHandler ["MPRespawn", {
 	hintC "Check tes radios! Ça inverse parfois au respawn.";
 }];
 
+// Boost dragging maximum 
+ACE_maxWeightDrag = 3000;
 
 //Find rank
 _name = name player;
