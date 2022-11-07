@@ -15,6 +15,8 @@ player addMPEventHandler ["MPRespawn", {
 	hintC "Check tes radios! Ça inverse parfois au respawn.";
 }];
 
+// Boost dragging maximum 
+ACE_maxWeightDrag = 3000;
 
 //Find rank
 _name = name player;
@@ -264,6 +266,9 @@ _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"],
 // JTAC
 _action = [ "self_radio_jtac", "JTAC", "", {["jtac"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// HQ
+_action = [ "self_radio_hq", "HQ Mobile", "", {["hq"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Return controls
 //disableUserInput false;
@@ -283,5 +288,5 @@ sleep 10;
 
 //Sleep and re-set patch after 20mins 
 sleep 1200;
-hintSilent "Patch re-set";
+//hintSilent "Patch re-set";
 [ player, player_patch ] call BIS_fnc_setUnitInsignia;

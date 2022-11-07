@@ -56,8 +56,6 @@ do
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		_longRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
-		hintSilent format["%1-%2-%3", _personalRadio, _handheldRadio, _longRadio];
-		sleep 10;
 		// Channels
 		[_personalRadio, 1] call acre_api_fnc_setRadioChannel; 
 		[_handheldRadio, 4] call acre_api_fnc_setRadioChannel;
@@ -67,7 +65,7 @@ do
 		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handheldRadio, _longRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "Radios Spartan1 lead: done";
+		hintSilent "L/343-Spartan1 R/152-Interteam LR/117-HQ";
 	};
 	case "spartan1_2":
 	{
@@ -81,7 +79,7 @@ do
 		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handheldRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "Radios Spartan1 2ic: done";
+		hintSilent "L/343-Spartan1 R/152-Interteam";
 	};
 	case "spartan2_1":
 	{
@@ -97,7 +95,7 @@ do
 		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handheldRadio, _longRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "Radios Spartan2 lead: done";
+		hintSilent "L/343-Spartan2 R/152-Interteam LR/117-HQ";
 	};
 	case "spartan2_2":
 	{
@@ -111,7 +109,7 @@ do
 		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handheldRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "Radios Spartan2 2ic: done";
+		hintSilent "L/343-Spartan2 R/152-Interteam";
 	};
 	case "centaure":
 	{
@@ -133,7 +131,7 @@ do
 		 [_handheldRadio,0.5] call acre_api_fnc_setRadioVolume;
 		// Set radio orders
 		_success = [ [ _rack1, _rack2, _handheldRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "Radios Centaure done";
+		hintSilent "L/117-Interteam R/117-HQ L/152-Emergency";
 	};
 	case "griffon":
 	{
@@ -152,7 +150,7 @@ do
 		// Set sides 
 		_success = [_rack1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_rack2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-		hintSilent "Radios Griffon done";
+		hintSilent "L/117-Interteam R/117-HQ L/152-Emergency";
 	};
 	case "jtac":
 	{
@@ -170,7 +168,25 @@ do
 		// Set sides 
 		_success = [_longRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_handheldRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-		hintSilent "Radios JTAC done";
+		hintSilent "L/152-Interteam R/152-Air LR/117-HQ";
+	};
+	case "hq":
+	{
+		// 152's
+		_longRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
+		_longRadio_1 = _longRadios select 0;
+		_longRadio_2 = _longRadios select 1;
+		_longRadio_3 = _longRadios select 1;
+		// Channels
+		[_longRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
+		[_longRadio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net
+		[_longRadio_3, 3] call acre_api_fnc_setRadioChannel; //Recon
+		// Set order
+		_success = [ [ _longRadio_1, _longRadio_2, _longRadio_3] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		// Set sides 
+		_success = [_longRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_longRadio_3, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		hintSilent "LR/117-Spartan L/117-Griffon R/117-Centaure";
 	};
 	default
 	{
