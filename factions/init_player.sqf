@@ -280,13 +280,6 @@ sleep 10;
 sleep 4;
 
 cgqc_player_init = 1;
-sleep 10;
+sleep 5;
 // Set default left/right radios
 ["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
-
-
-
-//Sleep and re-set patch after 20mins 
-sleep 1200;
-//hintSilent "Patch re-set";
-[ player, player_patch ] call BIS_fnc_setUnitInsignia;
