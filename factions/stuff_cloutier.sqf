@@ -38,9 +38,14 @@ do
 		player addItemToBackpack "ACRE_PRC152";
 		hint "Got: 152";
 	};
+	case "117":
+	{
+		player addItemToBackpack "ACRE_PRC117F";
+		hint "Got: 117";
+	};
 	case "crate":
 	{
-		max_crate="cgqc_box_mk1_plus_plus_green" createVehicle (position player);
+		max_crate="cgqc_box_mk1_arsenal" createVehicle (position player);
 		// Add Delete Crate option
 		_action = [ "max_delcrate", "Delete crate", "", {["del_crate"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -56,25 +61,45 @@ do
 		// Remove del crate option
 		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_delcrate"]] call ace_interact_menu_fnc_removeActionFromObject;
 	};
-	case "heli":
+	case "mh6":
 	{
 		// Spawn vic
-		max_vic ="cgqc_heli_dickforce" createvehicle (position player);
+		max_mh6 ="cgqc_heli_dickforce" createvehicle (position player);
 		// Add Delete heli
-		_action = [ "max_delheli", "Delete heli", "", {["del_heli"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_action = [ "max_delmh6", "Delete mh6", "", {["del_mh6"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 		// Remove add heli option
-		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_getheli"]] call ace_interact_menu_fnc_removeActionFromObject;
+		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_getmh6"]] call ace_interact_menu_fnc_removeActionFromObject;
 	};
-	case "del_heli":
+	case "del_mh6":
 	{
 		// Delete heli
-		deleteVehicle max_vic;
+		deleteVehicle max_mh6;
 		// Get heli
-		_action = [ "max_getheli", "Get heli", "", {["heli"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_action = [ "max_getmh6", "Get mh6", "", {["mh6"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 		// Remove delete heli option
-		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_delheli"]] call ace_interact_menu_fnc_removeActionFromObject;
+		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_delmh6"]] call ace_interact_menu_fnc_removeActionFromObject;
+	};
+	case "ah6":
+	{
+		// Spawn vic
+		max_ah6 ="cgqc_heli_cloutier" createvehicle (position player);
+		// Add Delete heli
+		_action = [ "max_delah6", "Delete ah6", "", {["del_ah6"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+		// Remove add heli option
+		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_getah6"]] call ace_interact_menu_fnc_removeActionFromObject;
+	};
+	case "del_ah6":
+	{
+		// Delete heli
+		deleteVehicle max_ah6;
+		// Get heli
+		_action = [ "max_getah6", "Get ah6", "", {["ah6"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+		// Remove delete heli option
+		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_delah6"]] call ace_interact_menu_fnc_removeActionFromObject;
 	};
 	case "chill":
 	{
