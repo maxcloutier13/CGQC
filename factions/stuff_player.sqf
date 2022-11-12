@@ -16,6 +16,8 @@ do
 			_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		};
 		hintSilent "Radios L/R";
+		sleep 3;
+		hintSilent"";
 	};
 	case "radio_sides_2":
 	{
@@ -30,12 +32,16 @@ do
 			_success = [_radio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		};
 		hintSilent "Radios R/L";
+		sleep 3;
+		hintSilent"";
 	};
 	case "patch":
 	{
 		//Set the patch 
 		[ player, player_patch ] call BIS_fnc_setUnitInsignia;
 		hintSilent "Patch restored";
+		sleep 3;
+		hintSilent"";
 	};
 	case "spartan1":
 	{
@@ -65,7 +71,7 @@ do
 		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handheldRadio, _longRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "L/343-Spartan1 R/152-Interteam LR/117-HQ";
+		hintSilent "Radio1:L/343/Spartan1 <br/> Radio2:R/152/Interteam <br/> Radio3:LR/117-HQ";
 	};
 	case "spartan1_2":
 	{
