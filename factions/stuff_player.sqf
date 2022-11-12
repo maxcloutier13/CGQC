@@ -210,20 +210,21 @@ do
 		_packRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
 		_packRadio_1 = _packRadios select 0;
 		_packRadio_2 = _packRadios select 1;
-		_longRadio_3 = _packRadios select 2;
+		_packRadio_3 = _packRadios select 2;
 		// Channels
 		[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
 		[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net
-		[_longRadio_3, 3] call acre_api_fnc_setRadioChannel; //Recon
+		[_packRadio_3, 3] call acre_api_fnc_setRadioChannel; //Recon
 		// Set order
-		_success = [ [ _packRadio_1, _packRadio_2, _longRadio_3] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		_success = [ [ _packRadio_1, _packRadio_2, _packRadio_3] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		// Set sides 
-		_success = [_packRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		_success = [_longRadio_3, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_3, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		hintSilent parseText "<t>
 		Radio1:Gauche/117/Spartan<br/> 
 		Radio2:Droite/117/Griffon<br/> 
-		Radio3:Both/117/Centaure</t>";
+		Radio3:Droite/117/Centaure</t>";
 	};
 	default
 	{
