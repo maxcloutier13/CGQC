@@ -52,6 +52,7 @@ do
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		hintSilent "Radio1:Gauche/343/Spartan-1";
+		sleep 10;
 	};
 	case "spartan2":
 	{
@@ -60,6 +61,7 @@ do
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		hintSilent "Radio1:Gauche/343/Spartan-2";
+		sleep 10;
 	};
 	case "spartan1_1":
 	{
@@ -82,6 +84,7 @@ do
 		Radio1:Gauche/343/Spartan-1 <br/> 
 		Radio2:Droite/152/Interteam <br/> 
 		Radio3:Both/117/HQ</t>";
+		sleep 10;
 	};
 	case "spartan1_2":
 	{
@@ -98,6 +101,7 @@ do
 		hintSilent parseText "<t>
 		Radio1:Gauche/343/Spartan-1 <br/> 
 		Radio2:Droite/152/Interteam</t>";
+		sleep 10;
 	};
 	case "spartan2_1":
 	{
@@ -117,6 +121,7 @@ do
 		Radio1:Gauche/343/Spartan-2<br/> 
 		Radio2:Droite/152/Interteam<br/> 
 		Radio3:Both/117/HQ</t>";
+		sleep 10;
 	};
 	case "spartan2_2":
 	{
@@ -133,6 +138,7 @@ do
 		hintSilent parseText "<t>
 		Radio1:Gauche/343/Spartan-2<br/> 
 		Radio2:Droite/152/Interteam</t>";
+		sleep 10;
 	};
 	case "centaure":
 	{
@@ -158,6 +164,7 @@ do
 		Radio1:Gauche/117/Inter-Centaure<br/> 
 		Radio2:Droite/117/Centaure-HQ<br/> 
 		Radio3:Droite/152/Urgence</t>";
+		sleep 10;
 	};
 	case "griffon":
 	{
@@ -180,6 +187,7 @@ do
 		Radio1:Gauche/117/Inter-Griffon<br/> 
 		Radio2:Droite/117/Griffon-HQ<br/> 
 		Radio3:Droite/152/Urgence</t>";
+		sleep 10;
 	};
 	case "jtac":
 	{
@@ -203,6 +211,7 @@ do
 		Radio1:Gauche/152/Inter-Recon<br/> 
 		Radio2:Droite/117/Spartan-HQ<br/> 
 		Radio3:Droite/117/Griffon-HQ</t>";
+		sleep 10;
 	};
 	case "hq":
 	{
@@ -225,6 +234,7 @@ do
 		Radio1:Gauche/117/Spartan<br/> 
 		Radio2:Droite/117/Griffon<br/> 
 		Radio3:Droite/117/Centaure</t>";
+		sleep 10;
 	};
 	default
 	{
