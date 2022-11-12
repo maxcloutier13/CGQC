@@ -274,12 +274,10 @@ _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"],
 //disableUserInput false;
 
 // Show text and patch ------------------------------------------------------------------------------------
-sleep 10;
-[ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
-// sleep a bit before going out
-sleep 4;
+sleep 20;
 // Set default left/right radios
 ["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
+[ _text, 0, 0, 3, 2 ] spawn BIS_fnc_dynamicText;
 cgqc_player_init = 1;
 sleep 5;
 
