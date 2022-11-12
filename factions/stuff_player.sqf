@@ -8,15 +8,17 @@ do
 		_radios = call acre_api_fnc_getCurrentRadioList;
 		_radio_count = count _radios;
 		if (_radio_count > 0) then {
+			hintSilent "Radio1: Gauche";
 			_radio_1 = _radios select 0;
 			_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		};
 		if (_radio_count > 1) then {
+			hintSilent "Radio2: Droite";
 			_radio_2 = _radios select 1;
 			_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		};
-		hintSilent "Radios L/R";
-		sleep 3;
+		hintSilent "Radios L/R Done";
+		sleep 2;
 		hintSilent"";
 	};
 	case "radio_sides_2":
@@ -31,8 +33,8 @@ do
 			_radio_2 = _radios select 1;
 			_success = [_radio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		};
-		hintSilent "Radios R/L";
-		sleep 3;
+		hintSilent "Radios R/L Done";
+		sleep 2;
 		hintSilent"";
 	};
 	case "patch":
@@ -49,6 +51,7 @@ do
 		[_personalRadio, 1] call acre_api_fnc_setRadioChannel;
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		hintSilent "Radio1:Gauche/343/Spartan-1";
 	};
 	case "spartan2":
 	{
@@ -56,143 +59,171 @@ do
 		[_personalRadio, 2] call acre_api_fnc_setRadioChannel;
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		hintSilent "Radio1:Gauche/343/Spartan-2";
 	};
 	case "spartan1_1":
 	{
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-		_longRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
+		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		_packRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
+		sleep 1;
 		// Channels
 		[_personalRadio, 1] call acre_api_fnc_setRadioChannel; 
-		[_handheldRadio, 4] call acre_api_fnc_setRadioChannel;
-		[_longRadio, 1] call acre_api_fnc_setRadioChannel; 
+		[_handRadio, 4] call acre_api_fnc_setRadioChannel;
+		[_packRadio, 1] call acre_api_fnc_setRadioChannel; 
+		sleep 1;
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		sleep 1;
 		// Set radio orders
-		_success = [ [ _personalRadio, _handheldRadio, _longRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "Radio1:L/343/Spartan1 <br/> Radio2:R/152/Interteam <br/> Radio3:LR/117-HQ";
+		_success = [ [ _personalRadio, _handRadio, _packRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		hintSilent parseText "<t>
+		Radio1:Gauche/343/Spartan-1 <br/> 
+		Radio2:Droite/152/Interteam <br/> 
+		Radio3:Both/117/HQ</t>";
 	};
 	case "spartan1_2":
 	{
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Channels
 		[_personalRadio, 1] call acre_api_fnc_setRadioChannel;
-		[_handheldRadio, 4] call acre_api_fnc_setRadioChannel;
+		[_handRadio, 4] call acre_api_fnc_setRadioChannel;
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
-		_success = [ [ _personalRadio, _handheldRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "L/343-Spartan1 R/152-Interteam";
+		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		hintSilent parseText "<t>
+		Radio1:Gauche/343/Spartan-1 <br/> 
+		Radio2:Droite/152/Interteam</t>";
 	};
 	case "spartan2_1":
 	{
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-		_longRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
+		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		_packRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
 		// Channels
 		[_personalRadio, 2] call acre_api_fnc_setRadioChannel; 
-		[_handheldRadio, 4] call acre_api_fnc_setRadioChannel;
-		[_longRadio, 1] call acre_api_fnc_setRadioChannel; 
+		[_handRadio, 4] call acre_api_fnc_setRadioChannel;
+		[_packRadio, 1] call acre_api_fnc_setRadioChannel; 
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
-		_success = [ [ _personalRadio, _handheldRadio, _longRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "L/343-Spartan2 R/152-Interteam LR/117-HQ";
+		_success = [ [ _personalRadio, _handRadio, _packRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		hintSilent parseText "<t>
+		Radio1:Gauche/343/Spartan-2<br/> 
+		Radio2:Droite/152/Interteam<br/> 
+		Radio3:Both/117/HQ</t>";
 	};
 	case "spartan2_2":
 	{
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Channels
 		[_personalRadio, 2] call acre_api_fnc_setRadioChannel; 
-		[_handheldRadio, 4] call acre_api_fnc_setRadioChannel;
+		[_handRadio, 4] call acre_api_fnc_setRadioChannel;
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		_success = [_handheldRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
-		_success = [ [ _personalRadio, _handheldRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "L/343-Spartan2 R/152-Interteam";
+		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		hintSilent parseText "<t>
+		Radio1:Gauche/343/Spartan-2<br/> 
+		Radio2:Droite/152/Interteam</t>";
 	};
 	case "centaure":
 	{
 		// Emergency 152
-		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Racks
 		_racks = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
 		_rack1 = _racks select 0; 
 		_rack2 = _racks select 1; 
 		// Channels
-		[_handheldRadio, 3] call acre_api_fnc_setRadioChannel; //Ground-net
+		[_handRadio, 3] call acre_api_fnc_setRadioChannel; //Sol-HQ
 		[_rack1, 6] call acre_api_fnc_setRadioChannel; //Interteam
 		[_rack2, 3] call acre_api_fnc_setRadioChannel; //Sol-HQ
 		// Set sides 
+		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_rack1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		_success = [_handheldRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_rack2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Lower volume of 152?
-		 [_handheldRadio,0.5] call acre_api_fnc_setRadioVolume;
+		 [_handRadio,0.5] call acre_api_fnc_setRadioVolume;
 		// Set radio orders
-		_success = [ [ _rack1, _rack2, _handheldRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hintSilent "L/117-Interteam R/117-HQ L/152-Emergency";
+		_success = [ [ _rack1, _rack2, _handRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		hintSilent parseText "<t>
+		Radio1:Gauche/117/Inter-Centaure<br/> 
+		Radio2:Droite/117/Centaure-HQ<br/> 
+		Radio3:Droite/152/Urgence</t>";
 	};
 	case "griffon":
 	{
 		// Emergency 152
-		_handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Racks
 		_racks = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
 		_rack1 = _racks select 0; 
 		_rack2 = _racks select 1; 
 		// Channels
-		[_handheldRadio, 2] call acre_api_fnc_setRadioChannel; //Air-net
+		[_handRadio, 2] call acre_api_fnc_setRadioChannel; //Air-net
 		[_rack1, 5] call acre_api_fnc_setRadioChannel; //Interteam
 		[_rack2, 2] call acre_api_fnc_setRadioChannel; //Air-HQ
 		// Set radio orders
-		_success = [ [ _rack1, _rack2, _handheldRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		_success = [ [ _rack1, _rack2, _handRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		// Set sides 
 		_success = [_rack1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_rack2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-		hintSilent "L/117-Interteam R/117-HQ L/152-Emergency";
+		hintSilent parseText "<t>
+		Radio1:Gauche/117/Inter-Griffon<br/> 
+		Radio2:Droite/117/Griffon-HQ<br/> 
+		Radio3:Droite/152/Urgence</t>";
 	};
 	case "jtac":
 	{
-		// 152's
-		_handheldRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-		_handheldRadio_1 = _handheldRadios select 0;
-		_handheldRadio_2 = _handheldRadios select 1;
-		_longRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
+		// Radios
+		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		_packRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
+		_packRadio_1 = _packRadios select 0;
+		_packRadio_2 = _packRadios select 1;
+		
 		// Channels
-		[_longRadio, 1] call acre_api_fnc_setRadioChannel; //Spartan
-		[_handheldRadio_1, 2] call acre_api_fnc_setRadioChannel; //Air-Net
-		[_handheldRadio_2, 7] call acre_api_fnc_setRadioChannel; //Recon
+		[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
+		[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net
+		[_handRadio, 7] call acre_api_fnc_setRadioChannel; //Recon
 		// Set order
-		_success = [ [ _handheldRadio_2, _longRadio, _handheldRadio_1] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		_success = [ [ _handRadio, _packRadio_1, _packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		// Set sides 
-		_success = [_longRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		_success = [_handheldRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-		hintSilent "L/152-Interteam R/152-Air LR/117-HQ";
+		_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		hintSilent parseText "<t>
+		Radio1:Gauche/152/Inter-Recon<br/> 
+		Radio2:Droite/117/Spartan-HQ<br/> 
+		Radio3:Droite/117/Griffon-HQ</t>";
 	};
 	case "hq":
 	{
 		// 152's
-		_longRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-		_longRadio_1 = _longRadios select 0;
-		_longRadio_2 = _longRadios select 1;
-		_longRadio_3 = _longRadios select 1;
+		_packRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
+		_packRadio_1 = _packRadios select 0;
+		_packRadio_2 = _packRadios select 1;
+		_longRadio_3 = _packRadios select 2;
 		// Channels
-		[_longRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
-		[_longRadio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net
+		[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
+		[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net
 		[_longRadio_3, 3] call acre_api_fnc_setRadioChannel; //Recon
 		// Set order
-		_success = [ [ _longRadio_1, _longRadio_2, _longRadio_3] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		_success = [ [ _packRadio_1, _packRadio_2, _longRadio_3] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		// Set sides 
-		_success = [_longRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_longRadio_3, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-		hintSilent "LR/117-Spartan L/117-Griffon R/117-Centaure";
+		hintSilent parseText "<t>
+		Radio1:Gauche/117/Spartan<br/> 
+		Radio2:Droite/117/Griffon<br/> 
+		Radio3:Both/117/Centaure</t>";
 	};
 	default
 	{
