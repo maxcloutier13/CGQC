@@ -228,7 +228,7 @@ _action = [ "menu_self_patch", "Remettre ta patch personelle", "", {["patch"] ex
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Radios ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_radios", "Auto-Settings", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_radios", "Presets", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
 _action = [ "self_radio1", "SetRadio: Gauche/Droite", "", {["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
