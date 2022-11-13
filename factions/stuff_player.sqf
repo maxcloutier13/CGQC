@@ -142,7 +142,7 @@ if (isNil "cgqc_flag_isTraining") then {
 		};
 		case "centaure":
 		{
-			sleep 3;
+			sleep 1;
 			// Emergency 152
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 			// Racks
@@ -169,7 +169,7 @@ if (isNil "cgqc_flag_isTraining") then {
 		};
 		case "griffon":
 		{
-			sleep 3;
+			sleep 1;
 			// Emergency 152
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 			// Racks
@@ -263,28 +263,13 @@ if (isNil "cgqc_flag_isTraining") then {
 			// Set sides 
 			_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 			// Add eventHandler to auto-connect to racks 
-			/*
 			cgqc_event_driver = player addEventHandler ["GetInMan", {
-				params ["_unit", "_role", "_vehicle", "_turret"];
-				_vic = vehicle player;
-				_player = player;		
-				if (_role == "driver") then 
+				params ["_unit", "_role", "_vehicle", "_turret"];	
+				if (_role == "driver" || _role == "commander" || _role == "gunner") then 
 				{
-					//Get racks
-					_accessibleRacks = [_vic, acre_player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
-					//Get mounted radios
-					_rack1 = _accessibleRacks select 0;
-					_rack2 = _accessibleRacks select 1;
-					hint format ["Rack1: %1/Rack2:%2", _rack1,_rack2];
-					_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
-					_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
-					[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
-					[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
-					// Set radios for centaure use
-					["centaure"] execVM "\cgqc\factions\stuff_player.sqf";
+					["set_centaure"] execVM "\cgqc\factions\stuff_player.sqf";
 				};
 			}];
-			*/
 			hintSilent "Radio1:Gauche/152/Centaure-HQ";
 			sleep 10;
 		};
@@ -294,8 +279,65 @@ if (isNil "cgqc_flag_isTraining") then {
 			[_handRadio, 2] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+			cgqc_event_driver = player addEventHandler ["GetInMan", {
+				params ["_unit", "_role", "_vehicle", "_turret"];	
+				if (_role == "driver" || _role == "commander" || _role == "gunner") then 
+				{
+					["set_griffon"] execVM "\cgqc\factions\stuff_player.sqf";
+				};
+			}];
 			hintSilent "Radio1:Gauche/152/Griffon-HQ";
 			sleep 10;
+		};
+		case "set_griffon":
+		{
+			_vic = vehicle player;
+			_player = player;
+			//hintc format ["Vic:%1/Plyr:%2", _vic, _player];	
+			sleep 1;
+			//Get racks
+			_accessibleRacks = [_vic, _player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
+			//sleep 1;
+			//_rack_count = count _accessibleRacks;
+			//hintc format ["Racks Count: %1", _rack_count];
+			//Get mounted radios
+			_rack1 = _accessibleRacks select 0;
+			_rack2 = _accessibleRacks select 1;
+			//sleep 1;
+			//hintc format ["Rack1: %1/Rack2:%2", _rack1, _rack2];
+			_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
+			_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
+			//sleep 1;
+			[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
+			[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
+			sleep 1;
+			// Set radios for centaure use
+			["griffon"] execVM "\cgqc\factions\stuff_player.sqf";
+		};
+		case "set_centaure":
+		{
+			_vic = vehicle player;
+			_player = player;
+			//hintc format ["Vic:%1/Plyr:%2", _vic, _player];	
+			sleep 1;
+			//Get racks
+			_accessibleRacks = [_vic, _player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
+			//sleep 1;
+			//_rack_count = count _accessibleRacks;
+			//hintc format ["Racks Count: %1", _rack_count];
+			//Get mounted radios
+			_rack1 = _accessibleRacks select 0;
+			_rack2 = _accessibleRacks select 1;
+			//sleep 1;
+			//hintc format ["Rack1: %1/Rack2:%2", _rack1, _rack2];
+			_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
+			_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
+			//sleep 1;
+			[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
+			[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
+			sleep 1;
+			// Set radios for centaure use
+			["centaure"] execVM "\cgqc\factions\stuff_player.sqf";
 		};
 		default
 		{
