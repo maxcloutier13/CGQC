@@ -1,5 +1,5 @@
 _type = _this select 0;
-_mpttSettings = [];
+
 switch (_type)
 do
 {
@@ -142,6 +142,7 @@ do
 	};
 	case "centaure":
 	{
+		sleep 3;
 		// Emergency 152
 		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Racks
@@ -168,6 +169,7 @@ do
 	};
 	case "griffon":
 	{
+		sleep 3;
 		// Emergency 152
 		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Racks
@@ -260,6 +262,29 @@ do
 		[_handRadio, 3] call acre_api_fnc_setRadioChannel;
 		// Set sides 
 		_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		// Add eventHandler to auto-connect to racks 
+		/*
+		cgqc_event_driver = player addEventHandler ["GetInMan", {
+			params ["_unit", "_role", "_vehicle", "_turret"];
+			_vic = vehicle player;
+			_player = player;		
+			if (_role == "driver") then 
+			{
+				//Get racks
+				_accessibleRacks = [_vic, acre_player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
+				//Get mounted radios
+				_rack1 = _accessibleRacks select 0;
+				_rack2 = _accessibleRacks select 1;
+				hint format ["Rack1: %1/Rack2:%2", _rack1,_rack2];
+				_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
+				_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
+				[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
+				[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
+				// Set radios for centaure use
+				["centaure"] execVM "\cgqc\factions\stuff_player.sqf";
+			};
+		}];
+		*/
 		hintSilent "Radio1:Gauche/152/Centaure-HQ";
 		sleep 10;
 	};
