@@ -1,5 +1,16 @@
 _type = _this select 0;
 
+CGQC_fnc_yeetTarget = {
+	_target = _this select 0; 
+	_target setVelocity [0, 0, 200]; 
+	sleep 2;
+	removeBackpack _target;
+	_target addBackpack	"B_Parachute";
+	hint "Attache ta tuque!";
+};
+
+
+
 switch (_type)
 do
 {
@@ -153,11 +164,8 @@ do
 	};
 	case "yeet":
 	{
-		_target = cursorTarget;
-		_target setVelocity [0, 0, 100]; 
-		sleep 2;
-		removeBackpack _target;
-		_target addBackpack	"B_Parachute";
+		_targetID = owner cursorTarget;
+    	[cursorTarget] remoteExec ["CGQC_fnc_yeetTarget", _targetID];
 	};
 	case "stop":
 	{
