@@ -239,22 +239,22 @@ _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"],
 _action = [ "menu_self_spartan1", "Spartan 1", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "self_radio_spartan1", "Soldat", "", {["spartan1"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan1", "343", "", {["spartan", 1] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan1_2", "2iC", "", {["spartan1_2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan1_2", "343+152", "", {["spartan_2", 1] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan1_1", "Team Leader", "", {["spartan1_1"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan1_1", "Team Leader", "", {["spartan_1", 1] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Spartan 2
 _action = [ "menu_self_spartan2", "Spartan 2", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "self_radio_spartan2", "Soldat", "", {["spartan2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan2", "343", "", {["spartan", 2] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan2_2", "2iC", "", {["spartan2_2"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan2_2", "343+152", "", {["spartan2", 2] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan2_1", "Team Leader", "", {["spartan2_1"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan2_1", "Team Leader", "", {["spartan1", 2] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Centaure
