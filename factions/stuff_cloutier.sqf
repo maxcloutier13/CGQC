@@ -5,8 +5,18 @@ CGQC_fnc_yeetTarget = {
 	_target setVelocity [0, 0, 200]; 
 	sleep 10;
 	hint "Tiens... un parachute ;o)";
+	_backpack = backpack _target;
+	_items = backpackItems _target;
 	removeBackpack _target;
 	_target addBackpack	"B_Parachute";
+	waitUntil{isTouchingGround _target};
+	sleep 1;
+	removeBackpack _target;
+	_target addBackpack _backpack;
+	{
+		_target addItemToBackpack _x;
+	}forEach _items;
+	hint "ton backpack is back";
 };
 
 CGQC_fnc_fuckOffTarget = {
