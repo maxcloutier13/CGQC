@@ -64,6 +64,8 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _actio
 // ------ Become medic/Eng/EOD
 _action = [ "max_skills", "Medic/Engineer", "", {["skills"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// --- Stuffs -------------------------------------------
+/*
 // Yeet
 _action = [ "max_yeet", "Yeet target", "", {["yeet"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
@@ -78,4 +80,5 @@ _action = [ "max_pout", "Pass out", "", {["passout"] execVM "\cgqc\factions\stuf
 _adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
 // wake up
 _action = [ "max_wup", "Wake up", "", {["wakeup"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
+_adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+*/		
