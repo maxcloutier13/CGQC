@@ -12,7 +12,7 @@ if (!dynamic_group_check) then {
 //Respawn handler 
 player addMPEventHandler ["MPRespawn", {
 	params ["_unit", "_corpse"];
-	hintC "Check tes radios! Ça inverse parfois au respawn.";
+	hint "Check tes radios! Ça inverse parfois au respawn.";
 }];
 
 // Boost dragging maximum 
