@@ -1,5 +1,5 @@
 // Prevent player input
-//disableUserInput true;
+disableUserInput true;
 
 // Check if dynamic group is initialized
 dynamic_group_check = ["IsInitialized"] call BIS_fnc_dynamicGroups;
@@ -271,7 +271,7 @@ _action = [ "self_radio_hq", "HQ Mobile", "", {["hq"] execVM "\cgqc\factions\stu
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Return controls
-//disableUserInput false;
+disableUserInput false;
 sleep 3;
 // Set default left/right radios
 ["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
