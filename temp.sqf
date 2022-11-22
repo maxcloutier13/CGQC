@@ -228,6 +228,3 @@ private _medicalSupplies = ["ACE_adenosine", "ACE_fieldDressing", "ACE_elasticBa
 [_medicalSupplies, "Medical", "aceAresenalCatagory\icon\medical.paa", 0] call ace_arsenal_fnc_addRightPanelButton;
 
 
-
-///
-
