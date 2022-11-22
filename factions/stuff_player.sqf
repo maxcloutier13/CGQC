@@ -1,6 +1,6 @@
 _type = _this select 0;
 _section = _this select 1;
-disableUserInput = true;
+//disableUserInput = true;
 if (isNil "cgqc_flag_isTraining") then {
 	switch (_type)
 	do
@@ -317,4 +317,4 @@ if (isNil "cgqc_flag_isTraining") then {
 	sleep 5;
 	hintSilent "";
 };
-disableUserInput = false;
+//disableUserInput = false;
