@@ -53,6 +53,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+			//Channel setup 
+			#include "\cgqc\factions\channels_low.sqf"
 			hintSilent "Radio1:Gauche/343/Spartan";
 			sleep 10;
 		};
@@ -74,6 +76,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam <br/> 
 			Radio3:Both/117/HQ</t>";
+			//Channel setup 
+			#include "\cgqc\factions\channels_low.sqf"
 			sleep 10;
 		};
 		case "spartan_2":
@@ -91,6 +95,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam</t>";
+			//Channel setup 
+			#include "\cgqc\factions\channels_low.sqf"
 			sleep 10;
 		};
 		case "centaure":
@@ -118,6 +124,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/117/Inter-Centaure<br/> 
 			Radio2:Droite/117/Centaure-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
+			//Channel setup 
+			#include "\cgqc\factions\channels_low.sqf"
 			sleep 10;
 		};
 		case "griffon":
@@ -142,6 +150,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/117/Inter-Griffon<br/> 
 			Radio2:Droite/117/Griffon-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
+			//Channel setup 
+			#include "\cgqc\factions\channels_high.sqf"
 			sleep 10;
 		};
 		case "jtac":
@@ -166,6 +176,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/152/Inter-Recon<br/> 
 			Radio2:Droite/117/Spartan-HQ<br/> 
 			Radio3:Droite/117/Griffon-HQ</t>";
+			#include "\cgqc\factions\channels_high.sqf"
 			sleep 10;
 		};
 		case "hq":
@@ -189,6 +200,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/117/Spartan<br/> 
 			Radio2:Droite/117/Griffon<br/> 
 			Radio3:Droite/117/Centaure</t>";
+			#include "\cgqc\factions\channels_high.sqf"
 			sleep 10;
 		};
 		case "recon":
@@ -207,6 +219,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			hintSilent parseText "<t>
 			Radio1:Gauche/152/Inter/Recon<br/> 
 			Radio2:Droite/152/Spartan-HQ</t>";
+			#include "\cgqc\factions\channels_high.sqf"
 			sleep 10;
 		};
 		case "centaure_pieton":
@@ -314,6 +327,12 @@ if (isNil "cgqc_flag_isTraining") then {
 	_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 	_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 	hint "Training Radio Setup";
+	// Disable channels except side
+	0 enableChannel false; //Global
+	//1 enableChannel false;	//Side
+	2 enableChannel false;	//Command
+	3 enableChannel false;	//Group
+	4 enableChannel false; //Vehicle
 	sleep 5;
 	hintSilent "";
 };
