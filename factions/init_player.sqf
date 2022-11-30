@@ -1,3 +1,5 @@
+cgqc_player_rank = 0;
+
 // Prevent player input
 disableUserInput true;
 
@@ -15,6 +17,20 @@ player addMPEventHandler ["MPRespawn", {
 	hint "Check tes radios! Ça inverse parfois au respawn.";
 }];
 
+//Maximum mags event handler 
+_id = ["ace_arsenal_displayClosed", {
+	execVm "\cgqc\factions\max_mags.sqf";
+}] call CBA_fnc_addEventHandler;
+
+//Lock channels by default 
+// Sets channels for infantry
+// Vehicle only
+//0 enableChannel false; //Global
+1 enableChannel false;	//Side
+2 enableChannel false;	//Command
+3 enableChannel false;	//Group
+4 enableChannel false; //Vehicle
+
 // Boost dragging maximum 
 ACE_maxWeightDrag = 3000;
 
@@ -28,56 +44,67 @@ do
 	case "Sdt.":
 	{
 		player setRank "PRIVATE";
+		cgqc_player_rank = 1;
 		//hint "Soldat";
 	};
 	case "Cpl.":
 	{
 		player setRank "CORPORAL";
+		cgqc_player_rank = 2;
 		//hint "Caporal";
 	};
 	case "CplC":
 	{
 		player setRank "CORPORAL";
+		cgqc_player_rank = 3;
 		//hint "Caporal-Chef";
 	};
 	case "Sgt.":
 	{
 		player setRank "SERGEANT";
+		cgqc_player_rank = 4;
 		//hint "Sergeant";
 	};
 	case "Adju":
 	{
 		player setRank "SERGEANT";
+		cgqc_player_rank = 5;
 		//hint "Adjudent";
 	};
 	case "SLt.":
 	{
 		player setRank "LIEUTENANT";
+		cgqc_player_rank = 6;
 		//hint "Sous-Lieutenant";
 	};
 	case "Lt. ":
 	{
 		player setRank "LIEUTENANT";
+		cgqc_player_rank = 7;
 		//hint "Lieutenant";
 	};
 	case "Capt":
 	{
 		player setRank "CAPTAIN";
+		cgqc_player_rank = 8;
 		//hint "Capitaine";
 	};
 	case "Maj.":
 	{
 		player setRank "MAJOR";
+		cgqc_player_rank = 9;
 		//hint "Major";
 	};
 	case "LCol":
 	{
 		player setRank "COLONEL";
+		cgqc_player_rank = 10;
 		//hint "Lieutenant-Colonel";
 	};
 	case "Col.":
 	{
 		player setRank "COLONEL";
+		cgqc_player_rank = 11;
 		//hint "Colonel";
 	};
 	default
@@ -221,7 +248,7 @@ player addEventHandler [
 
 // Ace self interaction for players
 // --- Ace actions ---------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_cgqc", "CGQC", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set patch 
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "", {["patch"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -229,7 +256,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 
 // Radios ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_radios", "Presets", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
 _action = [ "self_radio1", "SetRadio: Gauche/Droite", "", {["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;

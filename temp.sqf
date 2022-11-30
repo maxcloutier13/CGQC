@@ -228,3 +228,15 @@ private _medicalSupplies = ["ACE_adenosine", "ACE_fieldDressing", "ACE_elasticBa
 [_medicalSupplies, "Medical", "aceAresenalCatagory\icon\medical.paa", 0] call ace_arsenal_fnc_addRightPanelButton;
 
 
+
+
+
+primary_mag = primaryWeaponMagazine player;
+all_mags = magazines player;
+all_primary = all_mags select {_x find[primary_mag[0],0]>0};
+
+primary_mags = primaryWeaponMagazine player;
+primary_mag = primary_mags select 0;
+all_mags = magazines player; 
+all_primary = all_mags select {_x ==primary_mag};
+primary_count = count all_primary;
