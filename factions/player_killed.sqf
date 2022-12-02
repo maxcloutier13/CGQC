@@ -16,7 +16,7 @@ if (local _unit) then {
 		};
 		case 1: { // Player killed
 			_unit setVariable["Saved_Loadout",getUnitLoadout _unit];
-			hint format ["Woops! tu t'es fait pèté par: %1", _killer];
+			//hint format ["Woops! tu t'es fait pèté par: %1", _killer];
 		};
 	};
 };

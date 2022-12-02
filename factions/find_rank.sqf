@@ -1,6 +1,6 @@
 //Find rank
-_name = name player;
-_prefix = _name select[0, 4];
+cgqc_player_name = name player;
+_prefix = cgqc_player_name select[0, 4];
 
 switch (_prefix)
 do
@@ -90,3 +90,4 @@ if (cgqc_player_known) then {
 } else {
 	// Patch pour les outsiders
 	player_patch ="cgqc_patch_outsider";
+};
