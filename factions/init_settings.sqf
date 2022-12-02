@@ -1,5 +1,5 @@
-//_menu_name = "CGQC";
-_menu_name = "AA_CGQC";
+_menu_name = "CGQC";
+//_menu_name = "AA_CGQC";
 
 //Intro Stuff
 ["cgqc_config_author", "EDITBOX",
