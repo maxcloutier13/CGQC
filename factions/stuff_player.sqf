@@ -53,8 +53,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-			//Channel setup 
-			#include "\cgqc\factions\channels_low.sqf"
+			//Lock superfluous channels
+			["low"] execVm "\cgqc\factions\channels_lock.sqf";
 			hintSilent "Radio1:Gauche/343/Spartan";
 			sleep 10;
 		};
@@ -76,8 +76,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam <br/> 
 			Radio3:Both/117/HQ</t>";
-			//Channel setup 
-			#include "\cgqc\factions\channels_low.sqf"
+			//Lock superfluous channels
+			["low"] execVm "\cgqc\factions\channels_lock.sqf";
 			sleep 10;
 		};
 		case "spartan_2":
@@ -95,8 +95,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam</t>";
-			//Channel setup 
-			#include "\cgqc\factions\channels_low.sqf"
+			//Lock superfluous channels
+			["low"] execVm "\cgqc\factions\channels_lock.sqf";
 			sleep 10;
 		};
 		case "centaure":
@@ -124,8 +124,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/117/Inter-Centaure<br/> 
 			Radio2:Droite/117/Centaure-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
-			//Channel setup 
-			#include "\cgqc\factions\channels_low.sqf"
+			//Lock superfluous channels
+			["low"] execVm "\cgqc\factions\channels_lock.sqf";
 			sleep 10;
 		};
 		case "griffon":
@@ -151,7 +151,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio2:Droite/117/Griffon-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
 			//Channel setup 
-			#include "\cgqc\factions\channels_high.sqf"
+			//Lock superfluous channels
+			["high"] execVm "\cgqc\factions\channels_lock.sqf";
 			sleep 10;
 		};
 		case "jtac":
@@ -176,7 +177,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/152/Inter-Recon<br/> 
 			Radio2:Droite/117/Spartan-HQ<br/> 
 			Radio3:Droite/117/Griffon-HQ</t>";
-			#include "\cgqc\factions\channels_high.sqf"
+			//Lock superfluous channels
+			["high"] execVm "\cgqc\factions\channels_lock.sqf";
 			sleep 10;
 		};
 		case "hq":
@@ -200,7 +202,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/117/Spartan<br/> 
 			Radio2:Droite/117/Griffon<br/> 
 			Radio3:Droite/117/Centaure</t>";
-			#include "\cgqc\factions\channels_high.sqf"
+			//Lock superfluous channels
+			["high"] execVm "\cgqc\factions\channels_lock.sqf";
 			sleep 10;
 		};
 		case "recon":
@@ -219,7 +222,8 @@ if (isNil "cgqc_flag_isTraining") then {
 			hintSilent parseText "<t>
 			Radio1:Gauche/152/Inter/Recon<br/> 
 			Radio2:Droite/152/Spartan-HQ</t>";
-			#include "\cgqc\factions\channels_high.sqf"
+			//Lock superfluous channels
+			["high"] execVm "\cgqc\factions\channels_lock.sqf";
 			sleep 10;
 		};
 		case "centaure_pieton":
