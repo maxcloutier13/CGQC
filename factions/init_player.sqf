@@ -121,7 +121,7 @@ do
 // random welcome
 _welcome_list = ["Yo", "R’gard", "Allo", "Hello", "Ooooh", "Coucou", "Bonsoir", "Konnichiwa"];
 _message_list = ["what's up?", "what's up buddy?", "Time to fuck shit up", "Asti que t'es beau", 
-"Ça roule ma poule?", "As-tu couché ta blonde?", "BAN dans 3,1,2...", "Prêt à répandre la démocratie dans l'monde?"];
+"Ça roule ma poule?", "As-tu couché ta blonde?", "BAN dans 3,2,1...", "Prêt à répandre la démocratie dans l'monde?"];
 _welcome = selectRandom _welcome_list;
 _message = selectRandom _message_list;
 // default text and patch ------------------------------------------------------------------------------------------
