@@ -1,11 +1,10 @@
 class Extended_PreInit_EventHandlers
 {
-    class ADDON
+    class cgqc_init_settings_event
     {
         // This will be executed once in 3DEN, main menu and before briefing has started for every mission
-        //init = QUOTE(call COMPILE_FILE());
-        init = "execVM '\cgqc\factions\init_settings.sqf'";
-        
+        //init = "execVM '\cgqc\factions\init_settings.sqf'";
+        init = "call compile preprocessFileLineNumbers '\cgqc\factions\init_settings.sqf'";
     };
 };
 
