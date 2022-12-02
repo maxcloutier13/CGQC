@@ -8,7 +8,7 @@
 		_text = (
 		"<img size= '8' style='vertical-align:middle' shadow='false' image='textures\CGQC.paa'/>" +
 		"<br/>" +
-		"<t size='2' >%1</t><br /><t size = '1'>%2</t>"
+		"<t size='2' >%1</t><br /><t size = '1'>par %2</t>"
 		);
 		//Pop le logo et le texte
 		_text = format [_text, cgqc_config_mission_name, cgqc_config_author];
