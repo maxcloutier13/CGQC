@@ -8,31 +8,56 @@ dynamic_group_check = ["IsInitialized"] call BIS_fnc_dynamicGroups;
 if (!dynamic_group_check) then {
 	["Initialize"] call BIS_fnc_dynamicGroups;
 };
+
 // Add player to dynamic group 
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 //Respawn handler 
 player addMPEventHandler ["MPRespawn", {
 	params ["_unit", "_corpse"];
-	hint "Check tes radios! Ça inverse parfois au respawn.";
+	if (local _unit) then {
+		_unit setUnitLoadout(_unit getVariable["Saved_Loadout",[]]); //Load loadout saved on death
+		_unit enableStamina false; //Re-disable stamina, in-case 
+		["InitializePlayer", [_unit]] call BIS_fnc_dynamicGroups;
+		[ _unit, player_patch ] call BIS_fnc_setUnitInsignia; //Set insignia back
+		hint "Check tes radios! Ça inverse parfois au respawn.";
+	};
+}];
+
+//Death handler 
+player addMPEventHandler ["MPKilled", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	if (local _unit) then {
+		_unit setVariable["Saved_Loadout",getUnitLoadout _unit];
+		hint format ["Woops! tu t'es fait pèté par: %1", _killer];
+		sleep 5;
+	};
+	
 }];
 
 //Maximum mags event handler 
 _id = ["ace_arsenal_displayClosed", {
-	execVm "\cgqc\factions\max_mags.sqf";
+	spawn {execVm "\cgqc\factions\max_mags.sqf"};
 }] call CBA_fnc_addEventHandler;
 
 //Lock channels by default 
-// Sets channels for infantry
-// Vehicle only
-//0 enableChannel false; //Global
-1 enableChannel false;	//Side
-2 enableChannel false;	//Command
-3 enableChannel false;	//Group
-4 enableChannel false; //Vehicle
+["init"] spawn {execVm "\cgqc\factions\channels_lock.sqf"};
+
+//Sets radio channel names 
+[0] spawn {execVm "\cgqc\factions\set_radios.sqf"};
 
 // Boost dragging maximum 
 ACE_maxWeightDrag = 3000;
+
+//CGQC Info
+// Add briefing to mission begin and map menu ("<br/>") == retour à la ligne (+) == Continuation du texte dans la même variable
+_cgqc_info = (
+	"<font size='26' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
+	"<font size='20' color='#BDBDBD'>discord.gg/RCyRKWVG</font>" +"<br/>" +
+	"<font size='20' color='#BDBDBD'>Teamspeak: ts.cgqc.ca</font>"
+);
+player createDiaryRecord ["Diary", ["CGQC", _cgqc_info]];
+//player createDiaryRecord ["Diary", ["MK1", "Tentative de codifier un loadout standard pour simplifier la création de nos missions tout en offrant un haut niveau de détails pour les joueurs.</br>"]];
 
 //Find rank
 _name = name player;
@@ -256,46 +281,115 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 
 // Radios ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_radios", "Presets", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
 _action = [ "self_radio1", "SetRadio: Gauche/Droite", "", {["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Set radio roles ---------------------------------------------------------------------------------------------------------------
 // Spartan 1
 _action = [ "menu_self_spartan1", "Spartan 1", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "self_radio_spartan1", "343", "", {["spartan", 1] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "self_radio_spartan1_2", "343+152", "", {["spartan_2", 1] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "self_radio_spartan1_1", "Team Leader", "", {["spartan_1", 1] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Spartan 2
 _action = [ "menu_self_spartan2", "Spartan 2", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "self_radio_spartan2", "343", "", {["spartan", 2] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "self_radio_spartan2_2", "343+152", "", {["spartan2", 2] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "self_radio_spartan2_1", "Team Leader", "", {["spartan1", 2] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Centaure
 _action = [ "self_radio_centaure", "Centaure/Blindés", "", {["centaure"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Griffon
 _action = [ "self_radio_griffon", "Griffon/Heli", "", {["griffon"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // JTAC
 _action = [ "self_radio_jtac", "JTAC", "", {["jtac"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // HQ
 _action = [ "self_radio_hq", "HQ Mobile", "", {["hq"] execVM "\cgqc\factions\stuff_player.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "ACRE_Interact", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+//Set some variables from description.ext? 
+author = cgqc_config_author;                                             
+onLoadName = cgqc_config_mission_name; 
+//briefingName = cgqc_config_mission_name;
+// ----------------------------------------------------------------------
+// Tu peux changer ceci si tu as des screenshots customs
+// Custom images
+loadScreen = "textures\loading_screen_1.paa";
+overviewPicture = "textures\BG1.paa";
+
+// Zeus shenanigans... MAX - to review
+// Only run on clients, excluding HCs
+[] spawn {
+	// Delay until the server time has sync'd
+	waitUntil {
+		time > 5
+	};
+	// for JIP, wait until the main screen loads
+	waitUntil {
+		!isNull (findDisplay 46)
+	};
+	// Check if player name contains the word "Zeus"
+	if (["zeus", format["%1", player]] call BIS_fnc_inString) then {
+		_checkIfValidCuratorSlot = {
+			private _curatorList = _this;
+
+			// Check that Zeus has been assigned to player
+			if (isNull (getAssignedCuratorLogic player)) then {
+				private _exitLoop = false;
+				{
+					// find an unassigned Zeus slot and assign it to the player
+					if (isNull (getAssignedCuratorUnit _x)) then {
+						[player, _x] remoteExecCall ["assignCurator", 2];
+						sleep 2.0;
+						// Check if a valid Zeus slot
+						if (isNull (getAssignedCuratorLogic player)) then {
+							// Broken Zeus slot, so clear and repeat
+							_x remoteExecCall ["unassignCurator", 2];
+							sleep 2.0;
+						} else {
+							hint format["Zeus assigned to curator %1", _x];
+							_exitLoop = true;
+						};
+					};
+					if (_exitLoop) exitWith {};
+				} forEach _curatorList;
+			};
+		};
+
+		// find all curators and reverse list so to lessen chance of admin Zeus conflicts
+		private _curatorList = allCurators;
+		reverse _curatorList;
+
+		// Check that Zeus has been initially assigned to player
+		_curatorList call _checkIfValidCuratorSlot;
+
+		// Ensure Zeus keeps slot, despite admin logging
+		while { true } do {
+			// Check that Zeus has been assigned to player
+			_curatorList call _checkIfValidCuratorSlot;
+
+			sleep 10.0;
+		};
+	};
+};
+
+// Lower gun 
+player action ['SwitchWeapon', player, player, 100];
 
 // Return controls
 disableUserInput false;
