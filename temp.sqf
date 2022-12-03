@@ -240,3 +240,10 @@ primary_mag = primary_mags select 0;
 all_mags = magazines player; 
 all_primary = all_mags select {_x ==primary_mag};
 primary_count = count all_primary;
+
+
+//Speakers 
+//CHeck if speaker on:
+_isSpeaker = ["ACRE_PRC148_ID_123"] call acre_api_fnc_isRadioSpeaker
+//set on/off
+_success = ["ACRE_PRC148_ID_123", true] call acre_api_fnc_setRadioSpeaker
