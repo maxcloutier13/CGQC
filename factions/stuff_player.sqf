@@ -47,7 +47,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			sleep 3;
 			hintSilent"";
 		};
-		case "spartan":
+		case "spartan": //Grunts
 		{
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel;
@@ -58,7 +58,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			hintSilent "Radio1:Gauche/343/Spartan";
 			sleep 10;
 		};
-		case "spartan_1":
+		case "spartan_1": //Team Lead
 		{
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
@@ -78,9 +78,11 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio3:Both/117/HQ</t>";
 			//Lock superfluous channels
 			["low"] execVm "\cgqc\factions\channels_lock.sqf";
+			// Turn speaker on 
+			_success = [_handRadio, true] call acre_api_fnc_setRadioSpeaker;
 			sleep 10;
 		};
-		case "spartan_2":
+		case "spartan_2": //Spartan 2iC
 		{
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
@@ -212,7 +214,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			_handRadio_1 = _handRadios select 0;
 			_handRadio_2 = _handRadios select 1;
 			// Channels
-			[_handRadio_1, 6] call acre_api_fnc_setRadioChannel; 
+			[_handRadio_1, 7] call acre_api_fnc_setRadioChannel; 
 			[_handRadio_2, 4] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_handRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -309,6 +311,30 @@ if (isNil "cgqc_flag_isTraining") then {
 			// Set radios for centaure use
 			["centaure"] execVM "\cgqc\factions\stuff_player.sqf";
 		};
+		case "toggle_speaker":
+		{
+			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
+			{
+				_isSpeaker = [_x] call acre_api_fnc_isRadioSpeaker;
+				if(_isSpeaker) then {
+					// Turn speaker off 
+					_success = [_x, false] call acre_api_fnc_setRadioSpeaker;
+					_speaker_check = [_x] call acre_api_fnc_isRadioSpeaker;
+					hint format ["%1 Speaker: %2", _x, _speaker_check];
+					sleep 5;
+					hintSilent "";
+				}else{
+					// Turn speaker on 
+					_success = [_x, true] call acre_api_fnc_setRadioSpeaker;
+					_speaker_check = [_x] call acre_api_fnc_isRadioSpeaker;
+					hint format ["%1 Speaker: %2", _x, _speaker_check];
+					sleep 5;
+					hintSilent "";
+				};
+			} 
+			forEach _handRadios;
+		};
+		
 		default
 		{
 			hint "stuff_player.sqf fucked up. ";
