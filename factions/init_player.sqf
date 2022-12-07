@@ -30,7 +30,10 @@ player addMPEventHandler ["MPKilled", {
 } ] call CBA_fnc_addEventHandler;
 
 //Maximum mags event handler 
-#include "\cgqc\factions\limit_mags.sqf"
+["ace_arsenal_displayClosed", {
+	//hint "Arsenal closed";
+	execVm "\cgqc\factions\max_mags.sqf";
+}] call CBA_fnc_addEventHandler;
 
 //Lock channels by default 
 ["init"] execVm "\cgqc\factions\channels_lock.sqf";
