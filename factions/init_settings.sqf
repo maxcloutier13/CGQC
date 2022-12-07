@@ -55,6 +55,12 @@ _menu_name = "CGQC";
     true
 ] call CBA_fnc_addSetting;
 
+["cgqc_flag_isTraining", "CHECKBOX", 
+    ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
+    [_menu_name, "Training"],  
+    false
+] call CBA_fnc_addSetting;
+
 ["cgqc_config_ch1", "EDITBOX",
     ["Channel 1:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], 
