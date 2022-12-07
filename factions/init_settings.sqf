@@ -99,13 +99,27 @@ _menu_name = "CGQC";
 
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX",
-    ["Limite les Mags", "Limite le nombre de magazines par soldat"], 
-    [_menu_name, "Limit Mags"], 
+    ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
+    [_menu_name, "Loadouts"], 
     true
 ] call CBA_fnc_addSetting;
 
+/*
+["cgqc_setting_limitMags_always", "CHECKBOX",
+    ["Limite Mags en tout temps", "Limite le nombre de magazines par soldat"], 
+    [_menu_name, "Loadouts"], 
+    false
+] call CBA_fnc_addSetting;
+*/
+
 ["cgqc_setting_limitMags_max","SLIDER",
-    ["Maximum Mags/joueur", "Combien de mags maximum?"],
+    ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
+    [_menu_name, "Loadouts"], 
+    [6, 18, 6, 0]
+] call CBA_fnc_addSetting;
+
+["cgqc_setting_limit_ranks", "CHECKBOX",
+    ["Loadout limités aux rangs", "Limite l'inventaire mk2 selon le rang"], 
     [_menu_name, "Limit Mags"], 
-    [6, 22, 8, 0]
+    true
 ] call CBA_fnc_addSetting;
