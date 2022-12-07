@@ -6,7 +6,7 @@
 		waitUntil {time > 1};
 		sleep 4;
 		_text = (
-		"<img size= '8' style='vertical-align:middle' shadow='false' image='textures\CGQC.paa'/>" +
+		"<img size= '8' style='vertical-align:middle' shadow='false' image='\cgqc\textures\CGQC.paa'/>" +
 		"<br/>" +
 		"<t size='2' >%1</t><br /><t size = '1'>par %2</t>"
 		);
