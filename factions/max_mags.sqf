@@ -20,7 +20,7 @@ if (cgqc_setting_limitMags) then {
 		if (_mag_delta > 0) then  //Check if too much 
 		{
 			hint format["Too many mags mofo!! Max:%1!", cgqc_setting_limitMags_max];
-			for "_i" from 0 to _mag_delta do { 
+			for "_i" from 1 to _mag_delta do { 
 				player removeMagazine _primary_mag; //Remove excess
 			};
 			sleep 5;
