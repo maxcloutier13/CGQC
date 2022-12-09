@@ -1,6 +1,4 @@
-//Find rank
-cgqc_player_name = name player;
-cgqc_player_rank = 1;
+// Find rank prefix
 _prefix = cgqc_player_name select[0, 4];
 
 switch (_prefix)
@@ -87,9 +85,9 @@ do
 // Set les patchs par défaut
 if (cgqc_player_known) then {
 	// default patch pour les joueurs qui en ont pas de custom
-	player_patch = "cgqc_patch_logo";
+	cgqc_player_patch = "cgqc_patch_logo";
 } else {
 	// Patch pour les outsiders
-	player_patch ="cgqc_patch_outsider";
+	cgqc_player_patch ="cgqc_patch_outsider";
 };
 cgqc_player_rank_done = true;
