@@ -42,7 +42,7 @@ if (isNil "cgqc_flag_isTraining") then {
 		case "patch":
 		{
 			//Set the patch 
-			[ player, player_patch ] call BIS_fnc_setUnitInsignia;
+			[ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
 			hintSilent "Patch restored";
 			sleep 3;
 			hintSilent"";
