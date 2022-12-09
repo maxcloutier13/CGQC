@@ -1,4 +1,7 @@
-_type = _this select 0;
+// --- nameRadios ----------------------------------------------------------
+// Set radio channel names
+
+params ["_type"];
 switch (_type) do{
 	case 0: { 
 		// 152

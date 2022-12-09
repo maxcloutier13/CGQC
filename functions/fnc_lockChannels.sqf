@@ -1,3 +1,6 @@
+// --- lockChannels ----------------------------------------------------------
+// Lock some of the comms channels
+param ["_type"];
 if (cgqc_config_hide_channels) then {
 	_type = _this select 0;
 	switch (_type)

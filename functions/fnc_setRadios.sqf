@@ -1,5 +1,7 @@
-_type = _this select 0;
-_section = _this select 1;
+// --- postInit_client ----------------------------------------------------------
+// Set radio setups depending on role
+params ["_type", "_section"];
+
 //disableUserInput = true;
 if (isNil "cgqc_flag_isTraining") then {
 	switch (_type)
@@ -54,7 +56,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 			//Lock superfluous channels
-			["low"] execVm "\cgqc\factions\channels_lock.sqf";
+			["low"] spawn CGQC_fnc_lockChannels;
 			hintSilent "Radio1:Gauche/343/Spartan";
 			sleep 10;
 		};
@@ -77,7 +79,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio2:Droite/152/Interteam <br/> 
 			Radio3:Both/117/HQ</t>";
 			//Lock superfluous channels
-			["low"] execVm "\cgqc\factions\channels_lock.sqf";
+			["low"] spawn CGQC_fnc_lockChannels;
 			// Turn speaker on 
 			_success = [_handRadio, true] call acre_api_fnc_setRadioSpeaker;
 			sleep 10;
@@ -98,7 +100,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam</t>";
 			//Lock superfluous channels
-			["low"] execVm "\cgqc\factions\channels_lock.sqf";
+			["low"] spawn CGQC_fnc_lockChannels;
 			sleep 10;
 		};
 		case "centaure":
@@ -127,7 +129,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio2:Droite/117/Centaure-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
 			//Lock superfluous channels
-			["low"] execVm "\cgqc\factions\channels_lock.sqf";
+			["low"] spawn CGQC_fnc_lockChannels;
 			sleep 10;
 		};
 		case "griffon":
@@ -154,7 +156,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio3:Droite/152/Urgence</t>";
 			//Channel setup 
 			//Lock superfluous channels
-			["high"] execVm "\cgqc\factions\channels_lock.sqf";
+			["high"] spawn CGQC_fnc_lockChannels;
 			sleep 10;
 		};
 		case "jtac":
@@ -180,7 +182,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio2:Droite/117/Spartan-HQ<br/> 
 			Radio3:Droite/117/Griffon-HQ</t>";
 			//Lock superfluous channels
-			["high"] execVm "\cgqc\factions\channels_lock.sqf";
+			["high"] spawn CGQC_fnc_lockChannels;
 			sleep 10;
 		};
 		case "hq":
@@ -205,7 +207,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio2:Droite/117/Griffon<br/> 
 			Radio3:Droite/117/Centaure</t>";
 			//Lock superfluous channels
-			["high"] execVm "\cgqc\factions\channels_lock.sqf";
+			["high"] spawn CGQC_fnc_lockChannels;
 			sleep 10;
 		};
 		case "recon":
@@ -225,7 +227,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			Radio1:Gauche/152/Inter/Recon<br/> 
 			Radio2:Droite/152/Spartan-HQ</t>";
 			//Lock superfluous channels
-			["high"] execVm "\cgqc\factions\channels_lock.sqf";
+			["high"] spawn CGQC_fnc_lockChannels;
 			sleep 10;
 		};
 		case "centaure_pieton":
@@ -239,7 +241,7 @@ if (isNil "cgqc_flag_isTraining") then {
 				params ["_unit", "_role", "_vehicle", "_turret"];	
 				if (_role == "driver" || _role == "commander" || _role == "gunner") then 
 				{
-					["set_centaure"] execVM "\cgqc\factions\stuff_player.sqf";
+					["set_centaure"] spawn CGQC_fnc_setRadios;
 				};
 			}];
 			hintSilent "Radio1:Gauche/152/Centaure-HQ";
@@ -255,7 +257,7 @@ if (isNil "cgqc_flag_isTraining") then {
 				params ["_unit", "_role", "_vehicle", "_turret"];	
 				if (_role == "driver" || _role == "commander" || _role == "gunner") then 
 				{
-					["set_griffon"] execVM "\cgqc\factions\stuff_player.sqf";
+					["set_griffon"] spawn CGQC_fnc_setRadios;
 				};
 			}];
 			hintSilent "Radio1:Gauche/152/Griffon-HQ";
@@ -284,7 +286,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
 			sleep 1;
 			// Set radios for centaure use
-			["griffon"] execVM "\cgqc\factions\stuff_player.sqf";
+			["griffon"] spawn CGQC_fnc_setRadios;
 		};
 		case "set_centaure":
 		{
@@ -309,7 +311,7 @@ if (isNil "cgqc_flag_isTraining") then {
 			[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
 			sleep 1;
 			// Set radios for centaure use
-			["centaure"] execVM "\cgqc\factions\stuff_player.sqf";
+			["centaure"] spawn CGQC_fnc_setRadios;
 		};
 		case "toggle_speaker":
 		{
@@ -337,7 +339,7 @@ if (isNil "cgqc_flag_isTraining") then {
 		
 		default
 		{
-			hint "stuff_player.sqf fucked up. ";
+			hint "fnc_setRadios fucked up. ";
 		};
 	};
 } else { //Training radio setup

@@ -1,89 +1,92 @@
+// --- initCloutier ----------------------------------------------------------
+// It's a Cloutier thang
+
 // It's a Cloutier thang --------------------------------------------------------------------------------------------------------------
 _action = [ "menu_cloutier", "Cloutier", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ------ Zeus
-_action = [ "max_zeus", "Zeus", "", {["zeus"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_zeus", "Zeus", "", {["zeus"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 
 // -- Fun stuff --------------------------------------------------------------------------------------------------------------
 _action = [ "menu_fun", "FunStuff", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Cigs
-_action = [ "max_getcigs", "Cigs", "", {["cigs"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_getcigs", "Cigs", "", {["cigs"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Chill
-_action = [ "max_chill", "Chill", "", {["chill"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_chill", "Chill", "", {["chill"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Ready
-_action = [ "max_chill", "Ready", "", {["ready"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_chill", "Ready", "", {["ready"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 
 // -- Animations -----------------------------------------------------------------------------------------------------------------
 _action = [ "menu_animations", "Animations", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Stop
-_action = [ "max_stop", "Stop", "", {["stop"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_stop", "Stop", "", {["stop"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;  
 // ------ Dance
-_action = [ "max_dance", "Dance 1", "", {["dance1"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_dance", "Dance 1", "", {["dance1"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;  
 // ------ Dance2
-_action = [ "max_dance2", "Dance 2", "", {["dance2"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_dance2", "Dance 2", "", {["dance2"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;    
 
 // -- Admin stuff --------------------------------------------------------------------------------------------------------------
 _action = [ "menu_spawn", "Admin Stuff", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Delete all dead
-_action = [ "max_delete", "Delete Dead", "", {["delete"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_delete", "Delete Dead", "", {["delete"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get micro drone + uav 
-_action = [ "max_micro", "Microdrone", "", {["micro"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_micro", "Microdrone", "", {["micro"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get darter + uav 
-_action = [ "max_darter", "Darter", "", {["darter"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_darter", "Darter", "", {["darter"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get 343
-_action = [ "max_343", "343", "", {["343"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_343", "343", "", {["343"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;		
 // ------ Get 152
-_action = [ "max_152", "152", "", {["152"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_152", "152", "", {["152"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get 152
-_action = [ "max_117", "117f", "", {["117"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_117", "117f", "", {["117"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;		
 // ------ Get Crate
-_action = [ "max_getcrate", "Get crate", "", {["crate"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_getcrate", "Get crate", "", {["crate"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Get mh6
-_action = [ "max_getmh6", "Get mh6", "", {["mh6"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_getmh6", "Get mh6", "", {["mh6"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get ah6
-_action = [ "max_getah6", "Get ah6", "", {["ah6"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_getah6", "Get ah6", "", {["ah6"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;		
 // ------ Full arsenal 
-_action = [ "max_arse", "Arsenal", "", {["arsenal"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_arse", "Arsenal", "", {["arsenal"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Become medic/Eng/EOD
-_action = [ "max_skills", "Medic/Engineer", "", {["skills"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_skills", "Medic/Engineer", "", {["skills"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // --- Stuffs -------------------------------------------
 /*
 // Yeet
-_action = [ "max_yeet", "Yeet target", "", {["yeet"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_yeet", "Yeet target", "", {["yeet"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // Grief
-_action = [ "max_grief", "Grief", "", {["yeet"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_grief", "Grief", "", {["yeet"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // Fuck off
-_action = [ "max_foff", "Fuck Off", "", {["fuckoff"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_foff", "Fuck Off", "", {["fuckoff"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
 // Passout
-_action = [ "max_pout", "Pass out", "", {["passout"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_pout", "Pass out", "", {["passout"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
 // wake up
-_action = [ "max_wup", "Wake up", "", {["wakeup"] execVM "\cgqc\factions\stuff_cloutier.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_wup", "Wake up", "", {["wakeup"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 */		

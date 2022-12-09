@@ -13,7 +13,7 @@ class Extended_PostInit_EventHandlers
     {
         // This will be executed once for each mission, once the mission has started
         serverInit = "call CGQC_fnc_postInit_server";
-        //clientInit = "whatever";
+        clientInit = "call CGQC_fnc_postInit_client";
         init = "call CGQC_fnc_postInit";
     };
 };

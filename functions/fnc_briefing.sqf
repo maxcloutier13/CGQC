@@ -1,7 +1,10 @@
+// --- briefing ----------------------------------------------------------
+// Post group info in default briefing
+
 // CGQC Links
 _text = (
 	"<font size='22' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
-	"<font size='20' color='#BDBDBD'>Discord: http://cgqc.ca/</font>"+"<br/>" +
+	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca/</font>"+"<br/>" +
 	"<font size='20' color='#BDBDBD'>Teamspeak: ts.cgqc.ca</font>"
 );
 player createDiaryRecord ["Diary", ["CGQC", _text]];
@@ -20,3 +23,4 @@ _text = (
 	"<font size='20' color='#545454'>---------------------------------</font>"
 );
 player createDiaryRecord ["Diary", ["Référence Radios", _text]];
+true

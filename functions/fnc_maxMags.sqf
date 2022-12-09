@@ -1,3 +1,6 @@
+// --- postInit_client ----------------------------------------------------------
+// Start everything player related
+
 if (cgqc_setting_limitMags) then {
 	_primary_mag = (primaryWeaponMagazine player) select 0;
 	_all_primary = (magazines player) select {_x == _primary_mag}; 
