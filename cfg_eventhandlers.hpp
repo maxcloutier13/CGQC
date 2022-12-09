@@ -3,8 +3,7 @@ class Extended_PreInit_EventHandlers
     class cgqc_init_settings_event
     {
         // This will be executed once in 3DEN, main menu and before briefing has started for every mission
-        //init = "execVM '\cgqc\factions\init_settings.sqf'";
-        init = "call compile preprocessFileLineNumbers '\cgqc\factions\init_settings.sqf'";
+        init = "call CGQC_fnc_preInit";
     };
 };
 
@@ -13,8 +12,9 @@ class Extended_PostInit_EventHandlers
     class ADDON
     {
         // This will be executed once for each mission, once the mission has started
-        init = "execVM '\cgqc\factions\init_player.sqf'";
-        // init = QUOTE(call COMPILE_FILE(XEH_postInit));
+        serverInit = "call CGQC_fnc_postInit_server";
+        //clientInit = "whatever";
+        init = "call CGQC_fnc_postInit";
     };
 };
 
