@@ -45,7 +45,7 @@ _menu_name = "CGQC";
 ["cgqc_config_hide_channels", "CHECKBOX",
     ["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
     [_menu_name, "Radios"], 
-    true
+    false
 ] call CBA_fnc_addSetting;
 
 // Radio stuff ==============================================================================================
