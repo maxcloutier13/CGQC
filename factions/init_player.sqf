@@ -1,5 +1,5 @@
 cgqc_player_rank = 0;
-cgqc_player_known = true;
+cgqc_player_known = false;
 
 // Dynamic groups ------------------------------------------------------------------------------------------------
 // Check if dynamic group is initialized
@@ -16,6 +16,7 @@ if (!dynamic_group_check) then {
 player addMPEventHandler ["MPRespawn", {
 	params ["_unit", "_corpse"];
 	[0, _unit] execVm "\cgqc\factions\player_killed.sqf";
+	
 }];
 
 //Death handler 
@@ -49,14 +50,21 @@ ACE_maxWeightDrag = 3000;
 #include "\cgqc\factions\briefing.sqf"
 
 // Player identification --------------------------------------------------------------------------------------------
-//ID player and find rank
+//ID player
+cgqc_player_name = name player;
+cgqc_player_steamid = getPlayerUID player;
+cgqc_player_rank = 1;
+
+
+//Find rank
 #include "\cgqc\factions\find_rank.sqf"
-// random welcome
+// Build a random welcome
 #include "\cgqc\factions\welcome.sqf"
 // Assign patch based on name  
 #include "\cgqc\factions\find_patch.sqf"
-//Set the patch 
-[ player, player_patch ] call BIS_fnc_setUnitInsignia;
+
+// ----- Set and keep patch --------------------------------------------------------------------------------------
+_setPatch = [] spawn CGQC_fnc_setPatch;
 
 // Fix friendly fire --------------------------------------------------------------------------------------------
 #include "\cgqc\factions\fix_friendlyfire.sqf"
