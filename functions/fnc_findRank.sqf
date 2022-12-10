@@ -3,6 +3,8 @@
 
 // Find rank prefix
 _prefix = cgqc_player_name select[0, 4];
+_player_rank = 1;
+hintc format["Prefix: %1", _prefix];
 
 switch (_prefix) do {
 	case "Sdt.":{
@@ -61,5 +63,6 @@ switch (_prefix) do {
 		[ _text, 0, 0, 5, 2 ] spawn BIS_fnc_dynamicText;
 	};
 };
-// Return rank
-_player_rank
+// Set the variable
+cgqc_player_rank_found = true;
+cgqc_player_rank = _player_rank;

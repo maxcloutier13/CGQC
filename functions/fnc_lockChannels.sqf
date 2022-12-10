@@ -1,8 +1,11 @@
 // --- lockChannels ----------------------------------------------------------
 // Lock some of the comms channels
+
+/*
+
 param ["_type"];
+
 if (cgqc_config_hide_channels) then {
-	_type = _this select 0;
 	switch (_type)
 	do{
 		case "init": { //Locks everything but Global. For debug on logon mostly.
@@ -46,3 +49,4 @@ if (cgqc_config_hide_channels) then {
 
 
 
+*/

@@ -83,5 +83,13 @@ class CGQC {
             file = "\cgqc\functions\fnc_stuffCloutier.sqf";
             description = "It's a Cloutier thang";
         };
+        class perksBasic {
+            file = "\cgqc\functions\fnc_perksBasic.sqf";
+            description = "Perks for the everyman";
+        };
+        class perksRecon {
+            file = "\cgqc\functions\fnc_perksRecon.sqf";
+            description = "Perks for the camoman";
+        };
     };
 };

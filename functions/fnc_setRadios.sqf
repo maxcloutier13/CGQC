@@ -368,4 +368,5 @@ if (isNil "cgqc_flag_isTraining") then {
 	sleep 5;
 	hintSilent "";
 };
+true
 //disableUserInput = false;
