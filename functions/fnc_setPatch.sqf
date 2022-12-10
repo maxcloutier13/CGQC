@@ -1,6 +1,6 @@
 // --- setPatch ----------------------------------------------------------
 // Set player patch and keeps it set
-waitUntil {cgqc_player_patch_found};
+waitUntil {!isNil "cgqc_player_patch_found"};
 //Set patch initially
 [ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
 // Ensure Zeus keeps slot, despite admin logging

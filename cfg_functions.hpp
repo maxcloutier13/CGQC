@@ -2,9 +2,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Initialisation ----------------------------------------------------------------------------
-        class preInit {
-            file = "\cgqc\functions\fnc_preInit.sqf";
-            description = "Set everything that needs to be there before editor/menu/briefing";
+        /*
+        class preStart_client {
+            file = "\cgqc\functions\fnc_preStart_client.sqf";
+            description = "Start to find player info";
         };
         class postInit {
             file = "\cgqc\functions\fnc_postInit.sqf";
@@ -18,6 +19,7 @@ class CGQC {
             file = "\cgqc\functions\fnc_postInit_client.sqf";
             description = "Server-side stuff";
         };
+        */
         // Fonctions ----------------------------------------------------------------------------
         class setPatch {
             file = "\cgqc\functions\fnc_setPatch.sqf";
