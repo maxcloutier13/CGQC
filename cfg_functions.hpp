@@ -91,5 +91,9 @@ class CGQC {
             file = "\cgqc\functions\fnc_perksRecon.sqf";
             description = "Perks for the camoman";
         };
+        class checkZeus {
+            file = "\cgqc\functions\fnc_checkZeus.sqf";
+            description = "Check if player is zeus";
+        };
     };
 };
