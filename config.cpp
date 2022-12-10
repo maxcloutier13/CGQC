@@ -37,12 +37,11 @@ class cfgVehicles {
 	#include "cfg_items.hpp"
 };
 
-// Custom events
-#include "cfg_eventhandlers.hpp"
-
 // Custom functions
 class cfgFunctions {
 	#include "cfg_functions.hpp"
 };
 
+// Custom events
+#include "cfg_eventhandlers.hpp"
 
