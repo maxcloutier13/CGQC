@@ -4,7 +4,7 @@
 _unit = param [0, objNull, [objNull]];
 // Check that Zeus has been assigned to unit
 if (isNull (getAssignedCuratorLogic _unit)) then {
-	return false;
+	false;
 }else{
-	return true;
+	true;
 };

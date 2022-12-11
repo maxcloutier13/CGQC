@@ -2,18 +2,26 @@
 // Set everything that needs to be there before editor/menu/briefing
 
 // CGQC Variables ===================================================================================================
+// *** Init **********************
+cgqc_preInit_done = false;
+cgqc_postInitClient_done = false;
+cgqc_postInitServer_done = false;
+cgqc_postInit_done = false;
+// *** Player **********************
 cgqc_player_known = true;
 cgqc_player_patch = "";
 cgqc_player_patch_found = false;
 cgqc_player_rank = 1;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
-cgqc_mk2_arsenal_init_done = false;
-cgqc_player_init_done = false;
+// *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
+// *** Mk2 **********************
+cgqc_mk2_arsenal_init_done = false;
+cgqc_mk2_arsenal_locked = true;
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
@@ -102,33 +110,36 @@ _menu_name = "CGQC";
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX",
     ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
-    [_menu_name, "Loadouts"], 
+    [_menu_name, "Limit Mags"], 
     true
 ] call CBA_fnc_addSetting;
 
 
 ["cgqc_setting_limitMags_max","SLIDER",
     ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Loadouts"], 
+    [_menu_name, "Limit Mags"], 
     [6, 18, 6, 0]
 ] call CBA_fnc_addSetting;
+
+/*
 ["cgqc_setting_limit_ranks", "CHECKBOX",
     ["Loadout limités aux rangs", "Limite l'inventaire mk2 selon le rang"], 
     [_menu_name, "Limit Mags"], 
     true
 ] call CBA_fnc_addSetting;
 
-/*
+
 ["cgqc_config_fortify", "EDITBOX",
     ["Fortify:", "Les items que l'outil fortify permet de construire"], 
     [_menu_name, "Divers"], 
     "Land_BagFence_Short_F, Land_BagFence_Long_F, Land_BagFence_Round_F, Land_Plank_01_4m_F, Land_Plank_01_8m_F, Land_fortified_nest_small_EP1, Land_CamoNetVar_NATO"
 ] call CBA_fnc_addSetting;
-*/
-/*
+
 ["cgqc_setting_limitMags_always", "CHECKBOX",
     ["Limite Mags en tout temps", "Limite le nombre de magazines par soldat"], 
     [_menu_name, "Loadouts"], 
     false
 ] call CBA_fnc_addSetting;
 */
+
+cgqc_preInit_done = true;

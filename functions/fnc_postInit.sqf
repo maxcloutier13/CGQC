@@ -50,3 +50,4 @@ player addEventHandler [ "HandleRating", {
 // Boost dragging maximum 
 ACE_maxWeightDrag = 3000;
 
+cgqc_postInit_done = true;

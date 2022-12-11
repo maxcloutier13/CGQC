@@ -37,4 +37,4 @@ _radios = ["radio_sides"] spawn CGQC_fnc_setRadios;
 // Build a random welcome and shows it
 _welcome = [] spawn CGQC_fnc_welcome; 
 
-cgqc_player_init_done = true;
+cgqc_postInitClient_done = true;
