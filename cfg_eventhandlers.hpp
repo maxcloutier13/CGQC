@@ -3,8 +3,8 @@ class Extended_PreInit_EventHandlers
     class cgqc_init_settings_event
     {
         // This will be executed once in 3DEN, main menu and before briefing has started for every mission
-        init = "call CGQC_fnc_preInit";
-        //init = "execVM '\cgqc\functions\fnc_preInit.sqf'";
+        //init = "call CGQC_fnc_preInit";
+        init = "execVM '\cgqc\functions\fnc_preInit.sqf'";
         //init = QUOTE(call COMPILE_FILE(XEH_preInit));
     };
 };

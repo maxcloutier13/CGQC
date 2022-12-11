@@ -3,7 +3,7 @@
 params ["_type", "_section"];
 
 //disableUserInput = true;
-if (isNil "cgqc_flag_isTraining") then {
+if (!cgqc_flag_isTraining) then {
 	switch (_type)
 	do
 	{
