@@ -2,7 +2,7 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Initialisation ----------------------------------------------------------------------------
-        class preInit {
+        /*class preInit {
             file = "\cgqc\functions\fnc_preInit.sqf";
             description = "Set everything that needs to be there before editor/menu/briefing";
         };
@@ -17,7 +17,7 @@ class CGQC {
         class postInit_client {
             file = "\cgqc\functions\fnc_postInit_client.sqf";
             description = "Client-side stuff";
-        };
+        };*/
         // Fonctions ----------------------------------------------------------------------------
         class setPatch {
             file = "\cgqc\functions\fnc_setPatch.sqf";
@@ -46,11 +46,12 @@ class CGQC {
         class setZeus {
             file = "\cgqc\functions\fnc_setZeus.sqf";
             description = "Set zeus and keeps them there";
-        };  
+        };
+        /*  
         class setRadios {
             file = "\cgqc\functions\fnc_setRadios.sqf";
             description = "Set radio setups depending on role";
-        };
+        };*/
         class lockChannels {
             file = "\cgqc\functions\fnc_lockChannels.sqf";
             description = "Lock some of the comms channels";
