@@ -1,7 +1,7 @@
 // --- nameRadios ----------------------------------------------------------
 // Set radio channel names
 
-params ["_type"];
+param ["_type"];
 switch (_type) do{
 	case 0: { 
 		// 152
