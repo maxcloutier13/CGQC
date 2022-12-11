@@ -49,7 +49,7 @@ _menu_name = "CGQC";
 ["cgqc_config_ch1", "EDITBOX", ["Channel 1:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Spartan/HQ"] call CBA_fnc_addSetting;
 ["cgqc_config_ch2", "EDITBOX", ["Channel 2:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], Griffon/HQ"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Griffon/HQ"] call CBA_fnc_addSetting;
 ["cgqc_config_ch3", "EDITBOX", ["Channel 3:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Centaure/HQ"] call CBA_fnc_addSetting;
 ["cgqc_config_ch4", "EDITBOX", ["Channel 4:", "Nom affiché dans le jeux"], 
