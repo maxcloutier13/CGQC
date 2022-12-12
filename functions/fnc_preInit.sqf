@@ -21,7 +21,9 @@ cgqc_perks_medic = false;
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
-
+// *** Refueling *****************
+cgqc_flag_supply = false;
+cgqc_flag_supply_rapide = false;
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
 //_menu_name = "AA_CGQC";
