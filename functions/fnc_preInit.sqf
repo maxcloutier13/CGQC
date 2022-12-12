@@ -6,7 +6,6 @@
 cgqc_preInit_done = false;
 cgqc_postInitClient_done = false;
 cgqc_postInitServer_done = false;
-cgqc_postInit_done = false;
 // *** Player **********************
 cgqc_player_known = true;
 cgqc_player_patch = "";
@@ -22,7 +21,9 @@ cgqc_perks_medic = false;
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
-
+// *** Refueling *****************
+cgqc_flag_supply = false;
+cgqc_flag_supply_rapide = false;
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
 //_menu_name = "AA_CGQC";
@@ -40,7 +41,7 @@ _menu_name = "CGQC";
     [_menu_name, "Skip"], true] call CBA_fnc_addSetting;
 // Channels =================================================================================================
 ["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
-    [_menu_name, "Radios"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
 // Radio stuff ==============================================================================================
 ["cgqc_config_DefaultRadios", "CHECKBOX", ["Radios CGQC", "Utilise les noms de channels CGQC par défaut"], 
     [_menu_name, "Radios"], true] call CBA_fnc_addSetting;

@@ -1,9 +1,6 @@
 // --- lockChannels ----------------------------------------------------------
 // Lock some of the comms channels
-
-/*
-
-param ["_type"];
+_type = param [0, 1];
 
 if (cgqc_config_hide_channels) then {
 	switch (_type)
@@ -46,7 +43,3 @@ if (cgqc_config_hide_channels) then {
 	3 enableChannel true;	//Group
 	4 enableChannel true; //Vehicle
 };
-
-
-
-*/

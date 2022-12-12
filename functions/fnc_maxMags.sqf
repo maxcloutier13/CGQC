@@ -1,5 +1,5 @@
-// --- postInit_client ----------------------------------------------------------
-// Start everything player related
+// --- maxMags ----------------------------------------------------------
+// Limit maximum mags
 
 if (cgqc_setting_limitMags) then {
 	_primary_mag = (primaryWeaponMagazine player) select 0;
