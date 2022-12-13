@@ -20,7 +20,7 @@ if (!cgqc_player_known) then {
 		case "76561198249898654" : {cgqc_player_patch = "cgqc_patch_laforest";};
 		case "76561198087933626" : {cgqc_player_patch = "cgqc_patch_pinard";};
 		case "76561197981463935" : {cgqc_player_patch = "cgqc_patch_tremblay";};
-		case "76561198065449719" : {cgqc_player_patch = "cgqc_patch_villeneuve";};
+		case "76561198065449719" : {cgqc_player_patch = "cgqc_patch_villeneuve1";};
 		case "76561198255907431" : {cgqc_player_patch = "cgqc_patch_turcotte";};
 		default	{
 			// Patch par défaut: CGQC logo
