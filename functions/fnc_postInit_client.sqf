@@ -38,6 +38,7 @@ player addMPEventHandler ["MPKilled", {
 //Maximum mags event handler 
 ["ace_arsenal_displayClosed", {
 	[] spawn CGQC_fnc_maxMags;
+	[player, true] call ace_arsenal_fnc_removeBox;
 }] call CBA_fnc_addEventHandler;
 
 // Shows intro screen with logo and stuff

@@ -59,8 +59,6 @@ _menu_name = "CGQC";
 // Radio stuff ==============================================================================================
 ["cgqc_config_DefaultRadios", "CHECKBOX", ["Radios CGQC", "Utilise les noms de channels CGQC par défaut"], 
     [_menu_name, "Radios"], true] call CBA_fnc_addSetting;
-["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
-    [_menu_name, "Training"], false] call CBA_fnc_addSetting;
 ["cgqc_config_ch1", "EDITBOX", ["Channel 1:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Spartan/HQ"] call CBA_fnc_addSetting;
 ["cgqc_config_ch2", "EDITBOX", ["Channel 2:", "Nom affiché dans le jeux"], 
@@ -81,6 +79,11 @@ _menu_name = "CGQC";
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
     [_menu_name, "Limit Mags"], [6, 18, 6, 0]] call CBA_fnc_addSetting;
 
+// Training ===============================================================================================
+["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
+    [_menu_name, "Training"], false] call CBA_fnc_addSetting;
+["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
+    [_menu_name, "Training"], true] call CBA_fnc_addSetting;
 /*
 ["cgqc_setting_limit_ranks", "CHECKBOX",
     ["Loadout limités aux rangs", "Limite l'inventaire mk2 selon le rang"], 
