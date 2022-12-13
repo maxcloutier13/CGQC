@@ -11,7 +11,7 @@ _type = _this select 0;
 		disableUserInput true;
 		// Start with a silent black screen.
 		titleCut ["", "BLACK FADED", 999];
-		sleep 4;
+		sleep 2;
 		_text = (
 			"<img size= '8' style='vertical-align:middle' shadow='false' image='\cgqc\textures\CGQC.paa'/>" +
 			"<br/>" +
@@ -30,6 +30,7 @@ _type = _this select 0;
 		"dynamicBlur" ppEffectAdjust [0.0];  
 		"dynamicBlur" ppEffectCommit 5;  
 		titleCut ["", "BLACK IN", 5];
+		sleep 10;
 		ace_hearing_disableVolumeUpdate = false;	
 	};
 };
