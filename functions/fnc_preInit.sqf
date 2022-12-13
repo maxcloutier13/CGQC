@@ -42,13 +42,13 @@ cgqc_flag_supply_rapide = false;
 _menu_name = "CGQC";
 //_menu_name = "AA_CGQC";
 //Intro Stuff
+["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
+    [_menu_name, "Intro"], true] call CBA_fnc_addSetting;
 ["cgqc_config_author", "EDITBOX", ["Auteur:", "Le nom du créateur de la map, pour display dans l'intro"], 
     [_menu_name, "Intro"], "Cpl. Quelque chose"] call CBA_fnc_addSetting;
 ["cgqc_config_mission_name", "EDITBOX", ["Nom de la mission:", "Le nom du ta mission, pour display dans l'intro"], 
     [_menu_name, "Intro"], "Le nom de ta mission"] call CBA_fnc_addSetting;
 // Options skippables ===================================================================================================
-["cgqc_config_showIntro", "CHECKBOX", ["Show Intro", "Montre le popup avec logo en début de mission"], 
-    [_menu_name, "Skip"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_show_transition", "CHECKBOX", ["Show Transition", "Transition lors d'un loadout swtich "], 
     [_menu_name, "Skip"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_show_welcome", "CHECKBOX", ["Show Msg de Bienvenue", "Message de bienvenue avec la patch si dispo"], 
@@ -75,15 +75,15 @@ _menu_name = "CGQC";
     [_menu_name, "Radios"], "Inter/Recon"] call CBA_fnc_addSetting;
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
-    [_menu_name, "Limit Mags"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Limit Mags and Mk2 Lock"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Limit Mags"], [6, 18, 6, 0]] call CBA_fnc_addSetting;
-
+    [_menu_name, "Limit Mags and Mk2 Lock"], [6, 18, 6, 0]] call CBA_fnc_addSetting;
+["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
+    [_menu_name, "Limit Mags and Mk2 Lock"], true] call CBA_fnc_addSetting;
 // Training ===============================================================================================
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
     [_menu_name, "Training"], false] call CBA_fnc_addSetting;
-["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
-    [_menu_name, "Training"], true] call CBA_fnc_addSetting;
+
 /*
 ["cgqc_setting_limit_ranks", "CHECKBOX",
     ["Loadout limités aux rangs", "Limite l'inventaire mk2 selon le rang"], 
