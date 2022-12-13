@@ -360,6 +360,7 @@ if (!cgqc_flag_isTraining) then {
 	{
 		player removeItem _x;
 	} forEach _radios;
+	sleep 0.5;
 	player addItemToUniform "ACRE_PRC343";
 	player addItemToUniform "ACRE_PRC152";
 	sleep 0.5;
