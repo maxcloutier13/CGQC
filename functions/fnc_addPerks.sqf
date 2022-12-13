@@ -7,6 +7,7 @@ cgqc_perks_basic = true;
 cgqc_perks_recon = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
+cgqc_cloutier_crate = false;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -102,6 +103,19 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"]
 _action = [ "self_radio_hq", "HQ Mobile", "", {_ct = ["hq"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+
+// Zeus ---------------------------------------------------------------------------------------------------------------
+
+// ------ Delete all dead
+_action = [ "zeus_delete", "Delete Dead", "", {_ct = ["delete"] spawn CGQC_fnc_stuffCloutier}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// ------ Get Crate
+_action = [ "zeus_getcrate", "Get crate", "", {_ct = ["crate"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_crate && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+//  ------ Delete Crate 
+_action = [ "zeus_delcrate", "Delete crate", "", {["del_crate"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_crate && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 
 
 // Return true 
