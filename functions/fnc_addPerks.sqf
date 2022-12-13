@@ -1,20 +1,6 @@
 // --- addPerks ----------------------------------------------------------
 // Add all perks to player and set defaults
 
-// ==== Perks ==================================================================================================
-// Add basic perks
-cgqc_perks_basic = true;
-cgqc_perks_recon = false;
-cgqc_perks_eng = false;
-cgqc_perks_medic = false;
-// Advanced perks 
-cgqc_perks_ghillie_isOn = false;
-cgqc_perks_ghillie_uniform = "";
-cgqc_perk_player_stash_on = false;
-// Zeus perks
-cgqc_zeus_crate = false;
-cgqc_zeus_cargo = false;
-
 // --- Perks Menu  ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;

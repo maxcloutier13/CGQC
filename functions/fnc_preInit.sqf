@@ -18,12 +18,26 @@ cgqc_perks_basic = false;
 cgqc_perks_recon = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
+// Advanced perks 
+cgqc_perks_ghillie_isOn = false;
+cgqc_perks_ghillie_uniform = "";
+cgqc_perk_player_stash_on = false;
+// Zeus perks
+cgqc_zeus_crate = false;
+cgqc_zeus_cargo = false;
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
 // *** Refueling *****************
 cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
+
+
+
+
+
+
+
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
 //_menu_name = "AA_CGQC";
