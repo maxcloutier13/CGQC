@@ -39,6 +39,7 @@ do
 		{
 			deleteVehicle _x
 		} forEach allDead;
+		hint "Dead deleted";
 	};
 	case "micro":
 	{
@@ -78,60 +79,36 @@ do
 	case "crate":
 	{
 		max_crate="cgqc_box_mk1_arsenal" createVehicle (position player);
-		// Add Delete Crate option
-		_action = [ "max_delcrate", "Delete crate", "", {["del_crate"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
-		// Remove add crate option
-		_remove = [ player, 1, ["ACE_SelfActions", "menu_cloutier", "menu_spawn", "max_getcrate"]] call ace_interact_menu_fnc_removeActionFromObject;
+		cgqc_cloutier_crate = true;
 	};
 	case "del_crate":
 	{
 		deleteVehicle max_crate;
-		// Bring back add crate
-		_action = [ "max_getcrate", "Get crate", "", {["crate"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
-		// Remove del crate option
-		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_delcrate"]] call ace_interact_menu_fnc_removeActionFromObject;
+		cgqc_cloutier_crate = false;
 	};
 	case "mh6":
 	{
 		// Spawn vic
 		max_mh6 ="cgqc_heli_dickforce" createvehicle (position player);
-		// Add Delete heli
-		_action = [ "max_delmh6", "Delete mh6", "", {["del_mh6"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
-		// Remove add heli option
-		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_getmh6"]] call ace_interact_menu_fnc_removeActionFromObject;
+		cgqc_cloutier_mh6 = true;
 	};
 	case "del_mh6":
 	{
 		// Delete heli
 		deleteVehicle max_mh6;
-		// Get heli
-		_action = [ "max_getmh6", "Get mh6", "", {["mh6"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
-		// Remove delete heli option
-		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_delmh6"]] call ace_interact_menu_fnc_removeActionFromObject;
+		cgqc_cloutier_mh6 = false;
 	};
 	case "ah6":
 	{
 		// Spawn vic
 		max_ah6 ="cgqc_heli_cloutier" createvehicle (position player);
-		// Add Delete heli
-		_action = [ "max_delah6", "Delete ah6", "", {["del_ah6"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
-		// Remove add heli option
-		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_getah6"]] call ace_interact_menu_fnc_removeActionFromObject;
+		cgqc_cloutier_ah6 = true;
 	};
 	case "del_ah6":
 	{
 		// Delete heli
 		deleteVehicle max_ah6;
-		// Get heli
-		_action = [ "max_getah6", "Get ah6", "", {["ah6"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
-		// Remove delete heli option
-		_remove = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn", "max_delah6"]] call ace_interact_menu_fnc_removeActionFromObject;
+		cgqc_cloutier_ah6 = false;
 	};
 	case "chill":
 	{
@@ -156,6 +133,7 @@ do
 		{
 			player addItemToVest _x
 		} forEach _items_vest;
+		cgqc_cloutier_chill = true;
 	};
 	case "ready":
 	{
@@ -172,6 +150,7 @@ do
 		{
 			player addItemToVest _x
 		} forEach _items_vest;
+		cgqc_cloutier_chill = false;
 	};
 	case "skills":
 	{
@@ -205,16 +184,19 @@ do
 	{
 		hintSilent "Stop";
 		player switchMove "";
+		cgqc_cloutier_dancing = false;
 	};
 	case "dance1":
 	{
 		hintSilent "Dance!";
 		player switchMove "Acts_Dance_01";
+		cgqc_cloutier_dancing = true;
 	};
 	case "dance2":
 	{
 		hintSilent "Dance!";
 		player switchMove "Acts_Dance_02";
+		cgqc_cloutier_dancing = true;
 	};
 	case "zeus":
 	{
