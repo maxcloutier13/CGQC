@@ -6,6 +6,8 @@ _section = _this select 1;
 //_type = param [0, 1];
 //_section = param [0, 2];
 
+waitUntil {sleep 1;cgqc_postInitClient_done};
+
 //disableUserInput = true;
 if (!cgqc_flag_isTraining) then {
 	switch (_type) do {
