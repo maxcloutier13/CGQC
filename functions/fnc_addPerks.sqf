@@ -7,11 +7,13 @@ cgqc_perks_basic = true;
 cgqc_perks_recon = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
-cgqc_cloutier_crate = false;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
 cgqc_perk_player_stash_on = false;
+// Zeus perks
+cgqc_zeus_crate = false;
+cgqc_zeus_cargo = false;
 
 // --- Perks Menu  ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -105,16 +107,29 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"]
 
 
 // Zeus ---------------------------------------------------------------------------------------------------------------
-
 // ------ Delete all dead
-_action = [ "zeus_delete", "Delete Dead", "", {_ct = ["delete"] spawn CGQC_fnc_stuffCloutier}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_delete", "Delete Dead", "", {["delete"] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
+// ------ Get 343
+_action = [ "max_343", "343", "", {["343"] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;		
+// ------ Get 152
+_action = [ "max_152", "152", "", {["152"] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// ------ Get 152
+_action = [ "max_117", "117f", "", {["117"] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;		
 // ------ Get Crate
-_action = [ "zeus_getcrate", "Get crate", "", {_ct = ["crate"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_crate && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_getcrate", "Get crate", "", {["crate"] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_crate && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 //  ------ Delete Crate 
-_action = [ "zeus_delcrate", "Delete crate", "", {["del_crate"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_crate && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_delcrate", "Delete crate", "", {["del_crate"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_crate && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// ------ Get Cargo
+_action = [ "zeus_getcargo", "Get Cargo", "", {["cargo"] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_cargo && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+//  ------ Delete Cargo 
+_action = [ "zeus_delcargo", "Delete Cargo", "", {["del_cargo"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_cargo && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 
 
