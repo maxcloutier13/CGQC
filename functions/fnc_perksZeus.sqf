@@ -37,7 +37,7 @@ switch (_type) do {
 	};
 	case "cargo":
 	{
-		zeus_cargo="cgqc_box_mk1_cargo" createVehicle (position player);
+		zeus_cargo="cgqc_box_mk2_cargo" createVehicle (position player);
 		cgqc_zeus_cargo = true;
 	};
 	case "del_cargo":
