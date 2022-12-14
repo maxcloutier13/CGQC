@@ -31,11 +31,8 @@ CGQC_fnc_fuckOffTarget = {
 	removeBackpack _target;
 };
 
-switch (_type)
-do
-{
-	case "delete":
-	{
+switch (_type) do {
+	case "delete": {
 		{
 			deleteVehicle _x
 		} forEach allDead;
@@ -244,6 +241,6 @@ do
 
 	default
 	{
-		hint "woops";
+		hint "fnc_stuffCloutier fail";
 	};
 };
