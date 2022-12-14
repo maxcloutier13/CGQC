@@ -73,6 +73,11 @@ _menu_name = "CGQC";
     [_menu_name, "Radios"], "Inter/Centaure"] call CBA_fnc_addSetting;
 ["cgqc_config_ch7", "EDITBOX", ["Channel 7:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Inter/Recon"] call CBA_fnc_addSetting;
+["cgqc_config_ch8", "EDITBOX", ["Channel 8:", "Nom affiché dans le jeux"], 
+    [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
+["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"], 
+    [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
+
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
     [_menu_name, "Limit Mags and Mk2 Lock"], true] call CBA_fnc_addSetting;
