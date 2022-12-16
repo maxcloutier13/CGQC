@@ -5,7 +5,7 @@
 _prefix = cgqc_player_name select[0, 4];
 _player_rank = 1;
 _player_rank_name = "Soldat";
-hintc format["Prefix: %1", _prefix];
+//hintc format["Prefix: %1", _prefix];
 
 switch (_prefix) do {
 	case "Sdt.":{
