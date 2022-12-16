@@ -3,10 +3,9 @@
 
 if (cgqc_setting_limitMags) then {
 	_primary_mag = (primaryWeaponMagazine player) select 0;
-	_all_primary = (magazines player) select {_x == _primary_mag}; 
-	_primary_count = count _all_primary;
-
 	if(!isNil "_primary_mag") then {
+		_all_primary = (magazines player) select {_x == _primary_mag}; 
+		_primary_count = count _all_primary;
 		// Find type of mags
 		_magname = toLower _primary_mag;
 		_ratio = 0;
