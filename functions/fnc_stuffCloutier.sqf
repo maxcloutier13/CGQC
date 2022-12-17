@@ -195,6 +195,11 @@ switch (_type) do {
 		player switchMove "Acts_Dance_02";
 		cgqc_cloutier_dancing = true;
 	};
+	case "radiopack":
+	{
+		hintSilent "It's on!";
+		[player] call klpq_musicRadio_fnc_addBackpackRadio;
+	};
 	case "zeus":
 	{
 		_checkIfValidCuratorSlot = {
