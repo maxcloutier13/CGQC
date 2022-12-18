@@ -6,8 +6,7 @@ cgqc_cloutier_mh6 = false;
 cgqc_cloutier_crate = false;
 cgqc_cloutier_dancing = false;
 
-// Enable backpackradio mofo
-[player] call klpq_musicRadio_fnc_addBackpackRadio;
+
 
 // It's a Cloutier thang --------------------------------------------------------------------------------------------------------------
 _action = [ "menu_cloutier", "Cloutier", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -29,6 +28,11 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action 
 // ------ Ready
 _action = [ "max_chill", "Ready", "", {_ct = ["ready"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+// ------ Radiopack
+_action = [ "max_radiopack", "RadioPack", "", {_ct = ["radiopack"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+
+
 
 // -- Animations -----------------------------------------------------------------------------------------------------------------
 _action = [ "menu_animations", "Animations", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
