@@ -13,7 +13,7 @@ if (!cgqc_flag_isTraining) then {
 	switch (_type) do {
 		case "radio_sides":	{
 			_radios = call acre_api_fnc_getCurrentRadioList;
-			waitUntil {!isNil "_radios"};
+			waitUntil {sleep 0.5;!isNil "_radios"};
 			_radio_count = count _radios;
 			if (_radio_count > 0) then {
 				hintSilent "Radio1: Gauche";
@@ -29,7 +29,7 @@ if (!cgqc_flag_isTraining) then {
 		};
 		case "radio_sides_2": {
 			_radios = call acre_api_fnc_getCurrentRadioList;
-			waitUntil {!isNil "_radios"};
+			waitUntil {sleep 0.5;!isNil "_radios"};
 			_radio_count = count _radios;
 			if (_radio_count > 0) then {
 				_radio_1 = _radios select 0;
@@ -52,9 +52,9 @@ if (!cgqc_flag_isTraining) then {
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 			_handRadio = ["ACRE_PRC148"] call acre_api_fnc_getRadioByType;
 			// Channels
-			waitUntil {!isNil "_personalRadio"};
+			waitUntil {sleep 0.5;!isNil "_personalRadio"};
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel;
-			waitUntil {!isNil "_handRadio"};
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 1] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -72,17 +72,16 @@ if (!cgqc_flag_isTraining) then {
 		case "spartan_1": { //Team Lead
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-			sleep 0.2;
-			waitUntil {!isNil "_handRadios"};
+			waitUntil {sleep 0.5;!isNil "_handRadios"};
 			_handRadio_1 = _handRadios select 0;
 			_handRadio_2 = _handRadios select 1;
 			// Channels
-			waitUntil {!isNil "_personalRadio"};
+			waitUntil {sleep 0.5;!isNil "_personalRadio"};
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel; 
 			// Channels
-			waitUntil {!isNil "_handRadio_1"};
+			waitUntil {sleep 0.5;!isNil "_handRadio_1"};
 			[_handRadio_1, 4] call acre_api_fnc_setRadioChannel; 
-			waitUntil {!isNil "_handRadio_2"};
+			waitUntil {sleep 0.5;!isNil "_handRadio_2"};
 			[_handRadio_2, 1] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -102,9 +101,9 @@ if (!cgqc_flag_isTraining) then {
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 			// Channels
-			waitUntil {!isNil "_personalRadio"};
+			waitUntil {sleep 0.5;!isNil "_personalRadio"};
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel;
-			waitUntil {!isNil "_handRadio"};
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 4] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -122,15 +121,15 @@ if (!cgqc_flag_isTraining) then {
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 			// Racks
 			_racks = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {!isNil "_racks"};
+			waitUntil {sleep 0.5;!isNil "_racks"};
 			_rack1 = _racks select 0; 
 			_rack2 = _racks select 1; 
 			// Channels
-			waitUntil {!isNil "_handRadio"};
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 3] call acre_api_fnc_setRadioChannel; //Sol-HQ
-			waitUntil {!isNil "_rack1"};
+			waitUntil {sleep 0.5;!isNil "_rack1"};
 			[_rack1, 6] call acre_api_fnc_setRadioChannel; //Interteam
-			waitUntil {!isNil "_rack2"};
+			waitUntil {sleep 0.5;!isNil "_rack2"};
 			[_rack2, 3] call acre_api_fnc_setRadioChannel; //Sol-HQ
 			// Set sides 
 			_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
@@ -152,15 +151,15 @@ if (!cgqc_flag_isTraining) then {
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 			// Racks
 			_racks = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {!isNil "_racks"};
+			waitUntil {sleep 0.5;!isNil "_racks"};
 			_rack1 = _racks select 0; 
 			_rack2 = _racks select 1; 
 			// Channels
-			waitUntil {!isNil "_handRadio"};
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 2] call acre_api_fnc_setRadioChannel; //Air-net
-			waitUntil {!isNil "_rack1"};
+			waitUntil {sleep 0.5;!isNil "_rack1"};
 			[_rack1, 5] call acre_api_fnc_setRadioChannel; //Interteam
-			waitUntil {!isNil "_rack2"};
+			waitUntil {sleep 0.5;!isNil "_rack2"};
 			[_rack2, 2] call acre_api_fnc_setRadioChannel; //Air-HQ
 			// Set radio orders
 			_success = [ [ _rack1, _rack2, _handRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
@@ -179,15 +178,15 @@ if (!cgqc_flag_isTraining) then {
 			// Radios
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 			_packRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {!isNil "_packRadios"};
+			waitUntil {sleep 0.5;!isNil "_packRadios"};
 			_packRadio_1 = _packRadios select 0;
 			_packRadio_2 = _packRadios select 1;
 			// Channels
-			waitUntil {!isNil "_packRadio_1"};
+			waitUntil {sleep 0.5;!isNil "_packRadio_1"};
 			[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
-			waitUntil {!isNil "_packRadio_2"};
+			waitUntil {sleep 0.5;!isNil "_packRadio_2"};
 			[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net
-			waitUntil {!isNil "_handRadio"};
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 7] call acre_api_fnc_setRadioChannel; //Recon
 			// Set order
 			_success = [ [ _handRadio, _packRadio_1, _packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
@@ -205,16 +204,16 @@ if (!cgqc_flag_isTraining) then {
 		case "hq": {
 			// 117f's
 			_packRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {!isNil "_packRadios"};
+			waitUntil {sleep 0.5;!isNil "_packRadios"};
 			_packRadio_1 = _packRadios select 0;
 			_packRadio_2 = _packRadios select 1;
 			_packRadio_3 = _packRadios select 2;
 			// Channels
-			waitUntil {!isNil "_packRadio_1"};
+			waitUntil {sleep 0.5;!isNil "_packRadio_1"};
 			[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
-			waitUntil {!isNil "_packRadio_2"};
+			waitUntil {sleep 0.5;!isNil "_packRadio_2"};
 			[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net
-			waitUntil {!isNil "_packRadio_3"};
+			waitUntil {sleep 0.5;!isNil "_packRadio_3"};
 			[_packRadio_3, 3] call acre_api_fnc_setRadioChannel; //Recon
 			// Set order
 			_success = [ [ _packRadio_1, _packRadio_2, _packRadio_3] ] call acre_api_fnc_setMultiPushToTalkAssignment;
@@ -231,13 +230,13 @@ if (!cgqc_flag_isTraining) then {
 		};
 		case "recon": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {!isNil "_handRadios"};
+			waitUntil {sleep 0.5;!isNil "_handRadios"};
 			_handRadio_1 = _handRadios select 0;
 			_handRadio_2 = _handRadios select 1;
 			// Channels
-			waitUntil {!isNil "_handRadio_1"};
+			waitUntil {sleep 0.5;!isNil "_handRadio_1"};
 			[_handRadio_1, 7] call acre_api_fnc_setRadioChannel; 
-			waitUntil {!isNil "_handRadio_2"};
+			waitUntil {sleep 0.5;!isNil "_handRadio_2"};
 			[_handRadio_2, 4] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_handRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -252,7 +251,7 @@ if (!cgqc_flag_isTraining) then {
 		};
 		case "centaure_pieton":	{
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-			waitUntil {!isNil "_handRadio"};
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 3] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -268,7 +267,7 @@ if (!cgqc_flag_isTraining) then {
 		};
 		case "griffon_pieton": {
 			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-			waitUntil {!isNil "_handRadio"};
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 2] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -287,16 +286,16 @@ if (!cgqc_flag_isTraining) then {
 			//Get racks
 			_accessibleRacks = [_vic, _player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
 			//Get mounted radios
-			waitUntil {!isNil "_accessibleRacks"};
+			waitUntil {sleep 0.5;!isNil "_accessibleRacks"};
 			_rack1 = _accessibleRacks select 0;
 			_rack2 = _accessibleRacks select 1;
-			waitUntil {!isNil "_rack1"};
+			waitUntil {sleep 0.5;!isNil "_rack1"};
 			_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
-			waitUntil {!isNil "_rack2"};
+			waitUntil {sleep 0.5;!isNil "_rack2"};
 			_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
-			waitUntil {!isNil "_radio1"};
+			waitUntil {sleep 0.5;!isNil "_radio1"};
 			[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
-			waitUntil {!isNil "_radio2"};
+			waitUntil {sleep 0.5;!isNil "_radio2"};
 			[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
 			sleep 0.5;
 			// Set radios for centaure use
@@ -308,28 +307,28 @@ if (!cgqc_flag_isTraining) then {
 			//Get racks
 			_accessibleRacks = [_vic, _player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
 			//Get mounted radios
-			waitUntil {!isNil "_accessibleRacks"};
+			waitUntil {sleep 0.5;!isNil "_accessibleRacks"};
 			_rack1 = _accessibleRacks select 0;
 			_rack2 = _accessibleRacks select 1;
-			waitUntil {!isNil "_rack1"};
+			waitUntil {sleep 0.5;!isNil "_rack1"};
 			_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
-			waitUntil {!isNil "_rack2"};
+			waitUntil {sleep 0.5;!isNil "_rack2"};
 			_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
-			waitUntil {!isNil "_radio_1"};
+			waitUntil {sleep 0.5;!isNil "_radio_1"};
 			[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
-			waitUntil {!isNil "_radio2"};
+			waitUntil {sleep 0.5;!isNil "_radio2"};
 			[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
 			// Set radios for centaure use
 			["centaure"] execVM "\cgqc\functions\fnc_setRadios.sqf";
 		};
 		case "toggle_speaker": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {!isNil "_handRadios"};
+			waitUntil {sleep 0.5;!isNil "_handRadios"};
 			_handRadio_1 = _handRadios select 0;
-			waitUntil {!isNil "_handRadio_1"};
+			waitUntil {sleep 0.5;!isNil "_handRadio_1"};
 			// Check speaker state
 			_isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-			waitUntil {!isNil "_isSpeaker"};
+			waitUntil {sleep 0.5;!isNil "_isSpeaker"};
 			if(_isSpeaker) then {
 				// Turn speaker off 
 				_success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
@@ -346,12 +345,12 @@ if (!cgqc_flag_isTraining) then {
 		};
 		case "toggle_speaker_2": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {!isNil "_handRadios"};
+			waitUntil {sleep 0.5;!isNil "_handRadios"};
 			_handRadio_2 = _handRadios select 1;
-			waitUntil {!isNil "_handRadio_2"};
+			waitUntil {sleep 0.5;!isNil "_handRadio_2"};
 			// Check speaker state
 			_isSpeaker = [_handRadio_2] call acre_api_fnc_isRadioSpeaker;
-			waitUntil {!isNil "_isSpeaker"};
+			waitUntil {sleep 0.5;!isNil "_isSpeaker"};
 			if(_isSpeaker) then {
 				// Turn speaker off 
 				_success = [_handRadio_2, false] call acre_api_fnc_setRadioSpeaker;
@@ -373,7 +372,7 @@ if (!cgqc_flag_isTraining) then {
 } else { //Training radio setup
 	// Remove all radios 
 	_radios = call acre_api_fnc_getCurrentRadioList;
-	waitUntil {!isNil "_radios"};
+	waitUntil {sleep 0.5;!isNil "_radios"};
 	{
 		player removeItem _x;
 	} forEach _radios;
@@ -382,12 +381,12 @@ if (!cgqc_flag_isTraining) then {
 	sleep 0.5;
 	// Set radios left/right 
 	_radiosNow = call acre_api_fnc_getCurrentRadioList;
-	waitUntil {!isNil "_radiosNow"};
+	waitUntil {sleep 0.5;!isNil "_radiosNow"};
 	_radio_1 = _radiosNow select 0;
 	_radio_2 = _radiosNow select 1;
-	waitUntil {!isNil "_radio_1"};
+	waitUntil {sleep 0.5;!isNil "_radio_1"};
 	_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-	waitUntil {!isNil "_radio_2"};
+	waitUntil {sleep 0.5;!isNil "_radio_2"};
 	_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 	hint "Training Radio Setup";
 	// Disable channels except global
