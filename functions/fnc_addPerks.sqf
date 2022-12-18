@@ -40,6 +40,25 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 	["Land_fortified_nest_small_EP1", 50]
 ]] call ace_fortify_fnc_registerObjects;
 
+// ------ Heli pilot --------------------------------------------------------------------------------------
+_action = [ "cgqc_perk_heli_pilot_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
+	cgqc_perks_pilot && 
+	!cgqc_perks_pilot_hasCrew &&
+	(vehicle player isKindOf "Helicopter")
+} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_heli_pilot_delCrew", "Delete Crew", "", {["delCrew"] spawn CGQC_fnc_perksPilot}, {cgqc_perks_pilot && cgqc_perks_pilot_hasCrew} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// ------ Tank driver --------------------------------------------------------------------------------------
+_action = [ "cgqc_perk_driver_getDriver", "Spawn Driver", "", {["getDriver"] spawn CGQC_fnc_perksPilot}, {
+	cgqc_perks_driver && 
+	!cgqc_perks_driver_hasDriver &&
+	(vehicle player isKindOf "LandVehicle")
+} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_driver_delDriver", "Delete Driver", "", {["delDriver"] spawn CGQC_fnc_perksPilot}, {cgqc_perks_driver && cgqc_perks_driver_hasDriver} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Set patch ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;

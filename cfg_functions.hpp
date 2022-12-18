@@ -92,6 +92,10 @@ class CGQC {
             file = "\cgqc\functions\fnc_perksRecon.sqf";
             description = "Perks for the camoman";
         };
+        class perksPilot {
+            file = "\cgqc\functions\fnc_perksPilot.sqf";
+            description = "Perks for the flyingman";
+        };
         class perksZeus {
             file = "\cgqc\functions\fnc_perksZeus.sqf";
             description = "Perks for the gods";

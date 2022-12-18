@@ -16,6 +16,10 @@ cgqc_player_rank_found = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
+cgqc_perks_pilot = false;
+cgqc_perks_driver = false;
+cgqc_perks_pilot_hasCrew = false;
+cgqc_perks_driver_hasDriver = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
 // Advanced perks 
