@@ -7,39 +7,44 @@ _section = _this select 1;
 //_section = param [0, 2];
 
 waitUntil {cgqc_postInitClient_done};
-
+sleep 1;
 //disableUserInput = true;
 if (!cgqc_flag_isTraining) then {
 	switch (_type) do {
 		case "radio_sides":	{
 			_radios = call acre_api_fnc_getCurrentRadioList;
-			waitUntil {sleep 0.5;!isNil "_radios"};
-			_radio_count = count _radios;
-			if (_radio_count > 0) then {
-				hintSilent "Radio1: Gauche";
-				_radio_1 = _radios select 0;
-				_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-			};
-			if (_radio_count > 1) then {
-				hintSilent "Radio2: Droite";
-				_radio_2 = _radios select 1;
-				_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-			};
-			hintSilent "Radios L/R Done";
-		};
-		case "radio_sides_2": {
-			_radios = call acre_api_fnc_getCurrentRadioList;
-			waitUntil {sleep 0.5;!isNil "_radios"};
 			_radio_count = count _radios;
 			if (_radio_count > 0) then {
 				_radio_1 = _radios select 0;
-				_success = [_radio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+				_side = [_radio_1] call acre_api_fnc_getRadioSpatial;
+				switch (_side) do {
+					case "LEFT":	{
+						_success = [_radio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+					};
+					case "RIGHT":	{
+						_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+					};
+					case "CENTER":	{
+						_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+					};
+				};
 			};
 			if (_radio_count > 1) then {
 				_radio_2 = _radios select 1;
-				_success = [_radio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+				_side_2 = [_radio_2] call acre_api_fnc_getRadioSpatial;
+				switch (_side_2) do {
+					case "LEFT":	{
+						_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+					};
+					case "RIGHT":	{
+						_success = [_radio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+					};
+					case "CENTER":	{
+						_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+					};
+				};
 			};
-			hintSilent "Radios R/L Done";
+			hintSilent "Radio Sides: Set";
 		};
 		case "patch": {
 			// Remove patch
