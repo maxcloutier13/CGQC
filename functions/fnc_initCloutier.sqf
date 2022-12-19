@@ -39,7 +39,7 @@ _action = [ "menu_animations", "Animations", "", {""}, {true} ] call ace_interac
 _adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Stop
 _action = [ "max_stop", "Stop", "", {_ct = ["stop"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
 // ------ Dance
 _action = [ "max_dance", "Dance 1", "", {_ct = ["dance1"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;  
