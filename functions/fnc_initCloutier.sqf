@@ -94,20 +94,18 @@ _action = [ "max_skills", "Medic/Engineer", "", {["skills"] spawn CGQC_fnc_stuff
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // --- Stuffs -------------------------------------------
-/*
 // Yeet
 _action = [ "max_yeet", "Yeet target", "", {["yeet"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // Grief
-_action = [ "max_grief", "Grief", "", {["yeet"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_action = [ "max_grief", "Grief", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // Fuck off
 _action = [ "max_foff", "Fuck Off", "", {["fuckoff"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
 // Passout
 _action = [ "max_pout", "Pass out", "", {["passout"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;			
 // wake up
 _action = [ "max_wup", "Wake up", "", {["wakeup"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;	
-*/		
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "max_grief"], _action ] call ace_interact_menu_fnc_addActionToObject;		
