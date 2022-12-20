@@ -3,34 +3,6 @@
 
 _type = _this select 0;
 
-CGQC_fnc_yeetTarget = {
-	_target = _this select 0; 
-	_target setVelocity [0, 0, 200]; 
-	sleep 10;
-	hint "Tiens... un parachute ;o)";
-	_backpack = backpack _target;
-	_items = backpackItems _target;
-	removeBackpack _target;
-	_target addBackpack	"B_Parachute";
-	waitUntil{isTouchingGround _target};
-	sleep 1;
-	removeBackpack _target;
-	_target addBackpack _backpack;
-	{
-		_target addItemToBackpack _x;
-	}forEach _items;
-	hint "ton backpack is back";
-};
-
-CGQC_fnc_fuckOffTarget = {
-	_target = _this select 0; 
-	_target setVelocity [0, 0, 25];
-	 _target setVelocity [100, 100, 100];
-	sleep 10;
-	hint "No chute for you! ;o)";
-	removeBackpack _target;
-};
-
 switch (_type) do {
 	case "delete": {
 		{
@@ -161,21 +133,44 @@ switch (_type) do {
 	};
 	case "yeet":
 	{
-		_targetID = owner cursorTarget;
-    	[cursorTarget] remoteExec ["CGQC_fnc_yeetTarget", _targetID];
+		[] spawn {
+			_target = cursorTarget;
+			_targetID = owner _target;
+			[_target, [0, 0, 200]] remoteExec ["setVelocity", _targetID];
+			sleep 5; 
+			["Tiens... un parachute ;o)"] remoteExec ["hint", _targetID];
+			y_backpack = backpack _target; 
+			y_items = backpackItems _target;
+			[_target] remoteExec ["removeBackpack", _targetID];
+			[_target, "B_Parachute"] remoteExec ["addBackpack", _targetID];  
+			waitUntil{sleep 1;isTouchingGround _target}; 
+			[_target] remoteExec ["removeBackpack", _targetID];
+			[_target, y_backpack] remoteExec ["addBackpack", _targetID];  
+			{ 
+				[_target, _x] remoteExec ["addItemToBackpack", _targetID];  
+			}forEach y_items; 
+			["ton backpack is back"] remoteExec ["hint", _targetID];
+		};
 	};
 	case "fuckoff":
 	{
-		_targetID = owner cursorTarget;
-    	[cursorTarget] remoteExec ["CGQC_fnc_fuckOffTarget", _targetID];
+		[] spawn {
+			_target = cursorTarget; 
+			_targetID = owner cursorTarget;
+			[_target, [0, 0, 25]] remoteExec ["setVelocity", _targetID];
+			sleep 0.5;
+			[_target, [200, 500, 200]] remoteExec ["setVelocity", _targetID];
+			sleep 0.5;
+			["Boooooooonsoiiiiirrrrrr elle est partie!"] remoteExec ["hint", _targetID];
+		};
 	};
 	case "passout":
 	{
-		cursorTarget setUnconscious true;
+		[cursorTarget, true] remoteExec ["setUnconscious", owner cursorTarget];
 	};
 	case "wakeup":
 	{
-		cursorTarget setUnconscious false;
+		[cursorTarget, false] remoteExec ["setUnconscious", owner cursorTarget];
 	};
 	case "stop":
 	{
