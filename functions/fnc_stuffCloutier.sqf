@@ -47,7 +47,7 @@ switch (_type) do {
 	};
 	case "crate":
 	{
-		max_crate="cgqc_box_mk1_arsenal" createVehicle (position player);
+		max_crate="cgqc_box_mk2_arsenal" createVehicle (position player);
 		cgqc_cloutier_crate = true;
 	};
 	case "del_crate":
