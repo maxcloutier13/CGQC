@@ -157,14 +157,14 @@ switch (_type) do {
 		[] spawn {
 			_target = cursorTarget; 
 			_targetID = owner cursorTarget;
-			_targetPlayerID = getPlayerID _targetID;
+			//_targetPlayerID = getPlayerID _target;
 			[_target, [0, 0, 25]] remoteExec ["setVelocity", _targetID];
 			sleep 0.5;
-			[_target, [200, 500, 200]] remoteExec ["setVelocity", _targetID];
+			[_target, [0, 0, 50000]] remoteExec ["setVelocity", _targetID];
 			sleep 0.5;
 			["Bye"] remoteExec ["hint", _targetID];
 			sleep 5;
-			[_targetPlayerID] remoteExec ["kick", _targetID];
+			//[_targetPlayerID] remoteExec ["kick", _targetID];
 		};
 	};
 	case "passout":
@@ -219,35 +219,44 @@ switch (_type) do {
 	};
 	case "dance_all":
 	{
-		// only gets human players
-		_headlessClients = entities "HeadlessClient_F";
-		_humanPlayers = allPlayers - _headlessClients;
-		{
-			_targetID = owner _x;
-			["Dance muthafuckaz!"] remoteExec ["hint", _targetID];
-			sleep 0.5;
-			if (cgqc_dancing_all_move) then {
-				[_x, "Acts_Dance_02"] remoteExec ["switchMove", _targetID];
-			}else{
-				[_x, "Acts_Dance_01"] remoteExec ["switchMove", _targetID];
-			};
-			sleep 0.5;
+		[] spawn {
+			//Set radio backpack in case
+			[player] call klpq_musicRadio_fnc_addBackpackRadio;
+
+			// only gets human players
+			_headlessClients = entities "HeadlessClient_F";
+			_humanPlayers = allPlayers - _headlessClients;
+			{
+				_targetID = owner _x;
+				["Dance muthafuckaz!"] remoteExec ["hint", _targetID];
+				if (cgqc_dancing_all_move) then {
+					[_x, "Acts_Dance_02"] remoteExec ["switchMove", _targetID];
+					cgqc_dancing_all_move = false;
+				}else{
+					[_x, "Acts_Dance_01"] remoteExec ["switchMove", _targetID];
+					cgqc_dancing_all_move = true;
+				};
+				sleep 0.5;
+			} forEach _humanPlayers;
+			_backpack = backpackContainer player; 
+			[_backpack] remoteExec ["klpq_musicRadio_fnc_registerRadio", 2]; 
+			[_backpack] remoteExec ["klpq_musicRadio_fnc_startSong"];
 			cgqc_dancing_all = true;
-		} forEach _humanPlayers;
+		};
 	};
 	case "dance_all_stop":
 	{
-		// only gets human players
-		_headlessClients = entities "HeadlessClient_F";
-		_humanPlayers = allPlayers - _headlessClients;
-		{
-			_targetID = owner _x;
-			["Break it down"] remoteExec ["hint", _targetID];
-			sleep 0.5;
-			[_x, ""] remoteExec ["switchMove", _targetID];
-			sleep 0.5;
+		[] spawn {
+			// only gets human players
+			_headlessClients = entities "HeadlessClient_F";
+			_humanPlayers = allPlayers - _headlessClients;
+			{
+				_targetID = owner _x;
+				["Break it down"] remoteExec ["hint", _targetID];
+				[_x, ""] remoteExec ["switchMove", _targetID];
+			} forEach _humanPlayers;
 			cgqc_dancing_all = false;
-		} forEach _humanPlayers;
+		};
 	};
 	case "radiopack":
 	{
