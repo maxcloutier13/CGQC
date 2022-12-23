@@ -90,19 +90,19 @@ _action = [ "max_getcrate", "Get crate", "", {_ct = ["crate"] spawn CGQC_fnc_stu
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 //  ------ Delete Crate 
 _action = [ "max_delcrate", "Delete crate", "", {["del_crate"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_crate} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Get mh6
 _action = [ "max_getmh6", "Get mh6", "", {_ct = ["mh6"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_mh6} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Delete mh6
 _action = [ "max_delmh6", "Delete mh6", "", {["del_mh6"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_mh6} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Get ah6
 _action = [ "max_getah6", "Get ah6", "", {_ct = ["ah6"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_ah6} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;		
 // ------ Delete ah6
 _action = [ "max_delah6", "Delete ah6", "", {["del_ah6"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_ah6} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Full arsenal 
 _action = [ "max_arse", "Arsenal", "", {_ct = ["arsenal"] spawn CGQC_fnc_stuffCloutier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_spawn"], _action ] call ace_interact_menu_fnc_addActionToObject;
