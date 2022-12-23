@@ -2,63 +2,63 @@
 // Match name with ranks
 
 // Find rank prefix
-_prefix = cgqc_player_name select[0, 4];
+_prefix = toLower (cgqc_player_name select[0, 4]);
 _player_rank = 1;
 _player_rank_name = "Soldat";
 //hintc format["Prefix: %1", _prefix];
 
-switch (_prefix) do {
-	case "Sdt.":{
+switch (true) do {
+	case (_prefix find "sdt" == 0): {
 		player setRank "PRIVATE";
 		_player_rank = 1;
 		_player_rank_name = "Soldat";
 	};
-	case "Cpl.":{
+	case (_prefix find "cpl " == 0):{
 		player setRank "CORPORAL";
 		_player_rank = 2;
 		_player_rank_name = "Caporal";
 	};
-	case "CplC":{
+	case (_prefix find "cplc" == 0):{
 		player setRank "CORPORAL";
 		_player_rank = 3;
 		_player_rank_name = "Caporal Chef";
 	};
-	case "Sgt.":{
+	case (_prefix find "sgt" == 0):{
 		player setRank "SERGEANT";
 		_player_rank = 4;
 		_player_rank_name = "Sergent";
 	};
-	case "Adju":{
+	case (_prefix find "adju" == 0):{
 		player setRank "SERGEANT";
 		_player_rank = 5;
 		_player_rank_name = "Adjudent";
 	};
-	case "SLt.":{
+	case (_prefix find "slt" == 0):{
 		player setRank "LIEUTENANT";
 		_player_rank = 6;
 		_player_rank_name = "Sous-Lieutenant";
 	};
-	case "Lt. ":{
+	case (_prefix find "lt" == 0):{
 		player setRank "LIEUTENANT";
 		_player_rank = 7;
 		_player_rank_name = "Lieutenant";
 	};
-	case "Capt":{
+	case (_prefix find "capt" == 0):{
 		player setRank "CAPTAIN";
 		_player_rank = 8;
 		_player_rank_name = "Capitaine";
 	};
-	case "Maj.":{
+	case (_prefix find "maj" == 0):{
 		player setRank "MAJOR";
 		_player_rank = 9;
 		_player_rank_name = "Major";
 	};
-	case "LCol":{
+	case (_prefix find "lcol" == 0):{
 		player setRank "COLONEL";
 		_player_rank_name = "Lieutenant Colonel";
 		_player_rank = 10;
 	};
-	case "Col.":{
+	case (_prefix find "col" == 0):{
 		player setRank "COLONEL";
 		_player_rank = 11;
 		_player_rank_name = "Colonel";
@@ -69,10 +69,10 @@ switch (_prefix) do {
 		// Set as soldier
 		player setRank "PRIVATE";
 		_player_rank = 1;
-		_text = ("<br/>" + "<br/>" + "<t size='2' >Bonsoir, Visiteur!</t>" +
-		"<br/>" + "<t size='1' >Joint nous sur teamspeak: ts.cgqc.ca</t>" +
-		"<br/>" + "<t size='1' >Discord: CGQC.CA</t>");
-		[ _text, 0, 0, 5, 2 ] spawn BIS_fnc_dynamicText;
+		//_text = ("<br/>" + "<br/>" + "<t size='2' >Bonsoir, Visiteur!</t>" +
+		//"<br/>" + "<t size='1' >Joint nous sur teamspeak: ts.cgqc.ca</t>" +
+		//"<br/>" + "<t size='1' >Discord: CGQC.CA</t>");
+		//[ _text, 0, 0, 5, 2 ] spawn BIS_fnc_dynamicText;
 	};
 };
 // Set the variable
