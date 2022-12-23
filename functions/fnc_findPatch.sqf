@@ -28,6 +28,17 @@ if (!cgqc_player_known) then {
 		};
 	};
 };
+
+// dubé 76561198056436035
+// gagnon 76561199217287480
+// lauzon 76561198062504123
+// kruger 76561198037344119
+// Denny Lortie 76561198077195969
+// Lustersheen 76561199156866182
+// epic 76561198171218045
+// pike 76561198171218045
+// ben 76561198030215888
+
 //Set variable
 cgqc_player_patch_found = true;
 

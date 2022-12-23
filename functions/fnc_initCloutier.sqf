@@ -5,6 +5,9 @@ cgqc_cloutier_ah6 = false;
 cgqc_cloutier_mh6 = false;
 cgqc_cloutier_crate = false;
 cgqc_cloutier_dancing = false;
+cgqc_dancing_target = false;
+cgqc_dancing_all = false;
+cgqc_dancing_all_move = false;
 
 
 
@@ -38,14 +41,28 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_fun"], _action 
 _action = [ "menu_animations", "Animations", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_cloutier"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Stop
-_action = [ "max_stop", "Stop", "", {_ct = ["stop"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_stop", "Stop", "", {["stop"] spawn CGQC_fnc_stuffCloutier}, {cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
 // ------ Dance
-_action = [ "max_dance", "Dance 1", "", {_ct = ["dance1"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_dance", "Dance 1", "", {["dance1"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;  
 // ------ Dance2
-_action = [ "max_dance2", "Dance 2", "", {_ct = ["dance2"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
+_action = [ "max_dance2", "Dance 2", "", {["dance2"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_cloutier_dancing} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;    
+// ------ Traget: dance
+_action = [ "max_dance_target", "Target: Dance", "", {["dance_target"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_dancing_target} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+// ------ Traget: stop dancing
+_action = [ "max_dance_target_stop", "Target: Stop", "", {["dance_target_stop"] spawn CGQC_fnc_stuffCloutier}, {cgqc_dancing_target} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+
+// ------ Everybody: dance!
+_action = [ "max_dance_all", "EVERYONE DANCE!", "", {["dance_all"] spawn CGQC_fnc_stuffCloutier}, {!cgqc_dancing_all} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_cloutier", "menu_animations"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+// ------ Everybody: stop dance!
+_action = [ "max_dance_all_stop", "EVERYONE STOP!", "", {["dance_all"] spawn CGQC_fnc_stuffCloutier}, {cgqc_dancing_all} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+
 
 // -- Admin stuff --------------------------------------------------------------------------------------------------------------
 _action = [ "menu_spawn", "Admin Stuff", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;

@@ -157,11 +157,14 @@ switch (_type) do {
 		[] spawn {
 			_target = cursorTarget; 
 			_targetID = owner cursorTarget;
+			_targetPlayerID = getPlayerID _targetID;
 			[_target, [0, 0, 25]] remoteExec ["setVelocity", _targetID];
 			sleep 0.5;
 			[_target, [200, 500, 200]] remoteExec ["setVelocity", _targetID];
 			sleep 0.5;
-			["Boooooooonsoiiiiirrrrrr elle est partie!"] remoteExec ["hint", _targetID];
+			["Bye"] remoteExec ["hint", _targetID];
+			sleep 5;
+			[_targetPlayerID] remoteExec ["kick", _targetID];
 		};
 	};
 	case "passout":
@@ -189,6 +192,62 @@ switch (_type) do {
 		hintSilent "Dance!";
 		player switchMove "Acts_Dance_02";
 		cgqc_cloutier_dancing = true;
+	};
+	case "dance_target":
+	{
+		[] spawn {
+			_target = cursorTarget; 
+			_targetID = owner cursorTarget;
+			["Dance muthafucka!"] remoteExec ["hint", _targetID];
+			sleep 0.5;
+			[_target, "Acts_Dance_02"] remoteExec ["switchMove", _targetID];
+			sleep 0.5;
+			cgqc_dancing_target = true;
+		};
+	};
+	case "dance_target_stop":
+	{
+		[] spawn {
+			_target = cursorTarget; 
+			_targetID = owner cursorTarget;
+			["Breack it down"] remoteExec ["hint", _targetID];
+			sleep 0.5;
+			[_target, ""] remoteExec ["switchMove", _targetID];
+			sleep 0.5;
+			cgqc_dancing_target = false;
+		};
+	};
+	case "dance_all":
+	{
+		// only gets human players
+		_headlessClients = entities "HeadlessClient_F";
+		_humanPlayers = allPlayers - _headlessClients;
+		{
+			_targetID = owner _x;
+			["Dance muthafuckaz!"] remoteExec ["hint", _targetID];
+			sleep 0.5;
+			if (cgqc_dancing_all_move) then {
+				[_x, "Acts_Dance_02"] remoteExec ["switchMove", _targetID];
+			}else{
+				[_x, "Acts_Dance_01"] remoteExec ["switchMove", _targetID];
+			};
+			sleep 0.5;
+			cgqc_dancing_all = true;
+		} forEach _humanPlayers;
+	};
+	case "dance_all_stop":
+	{
+		// only gets human players
+		_headlessClients = entities "HeadlessClient_F";
+		_humanPlayers = allPlayers - _headlessClients;
+		{
+			_targetID = owner _x;
+			["Break it down"] remoteExec ["hint", _targetID];
+			sleep 0.5;
+			[_x, ""] remoteExec ["switchMove", _targetID];
+			sleep 0.5;
+			cgqc_dancing_all = false;
+		} forEach _humanPlayers;
 	};
 	case "radiopack":
 	{
