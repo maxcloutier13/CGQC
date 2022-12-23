@@ -16,7 +16,12 @@ if(cgqc_player_known) then {
 	cgqc_welcome_text = (_cgqc_welcome_pic + "<br/>" + _cgqc_welcome_message);
 } else {
 	// default text and patch ------------------------------------------------------------------------------------------
-	cgqc_welcome_text = ("<br/>" + "<br/>" + format["<t size='2' >Bonjour %1</t><br/><t>what's up?</t>", cgqc_player_name]);
+	//cgqc_welcome_text = ("<br/>" + "<br/>" + format["<t size='2' >Bonjour %1</t><br/><t>what's up?</t>", //cgqc_player_name]);
+	cgqc_welcome_text = ("<br/>" + "<br/>" + "<t size='2' >Bonsoir, Visiteur!</t>" +
+		"<br/>" + "<t size='1' >Joint nous sur teamspeak: ts.cgqc.ca</t>" +
+		"<br/>" + "<t size='1' >Discord: CGQC.CA</t>");
+		[ _text, 0, 0, 5, 2 ] spawn BIS_fnc_dynamicText;
+
 };
 
 // Welcome screen avec la patch et le message random
