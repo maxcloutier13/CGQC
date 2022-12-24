@@ -9,7 +9,10 @@ cgqc_dancing_target = false;
 cgqc_dancing_all = false;
 cgqc_dancing_all_move = false;
 
-
+player addItemToVest "murshun_cigs_lighter";
+player addItemToVest "murshun_cigs_cigpack";
+player addItemToVest "grad_paceCountBeads_functions_paceCountBeads";
+player addItemToVest "immersion_cigs_cigar0_nv";
 
 // It's a Cloutier thang --------------------------------------------------------------------------------------------------------------
 _action = [ "menu_cloutier", "Cloutier", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;

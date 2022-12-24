@@ -25,7 +25,7 @@ switch (_type) do {
 	case "cigs":
 	{
 		player addItemToVest "murshun_cigs_lighter";
-		//player addItemToVest "murshun_cigs_cigpack";
+		player addItemToVest "murshun_cigs_cigpack";
 		player addItemToVest "grad_paceCountBeads_functions_paceCountBeads";
 		player addItemToVest "immersion_cigs_cigar0_nv";
 		hint "Got: cigs";
@@ -81,27 +81,28 @@ switch (_type) do {
 	};
 	case "chill":
 	{
-		_new_hat = "UK3CB_H_Woolhat_BLK";
-		_new_face = "G_Aviator";
-		_new_vest = "V_SmershVest_01_radio_F";
-
+		cnew_hat = "UK3CB_H_Woolhat_BLK";
+		c_new_face = "G_Aviator";
+		c_new_vest = "V_SmershVest_01_radio_F";
+		//c_new_nvg = "immersion_cigs_cigar0_nv";
 		// Sling helmet
 		[player] call GRAD_slingHelmet_fnc_actionSling;
 		// Send facestuff to backpack
 		face_old = goggles player;
 		player addItemToBackpack face_old;
 		// set hat
-		player addHeadgear _new_hat;
+		player addHeadgear c_new_hat;
 		// set glasses 
-		player addGoggles _new_face;
+		player addGoggles c_new_face;
 		// set vest
 		vest_old = vest player;
-		_items_vest = vestItems player;
+		c_items_vest = vestItems player;
 		player addVest _new_vest;
 		// get vest items back 
 		{
 			player addItemToVest _x
-		} forEach _items_vest;
+		} forEach c_items_vest;
+		//player linkItem c_new_nvg;
 		cgqc_cloutier_chill = true;
 	};
 	case "ready":
@@ -115,10 +116,12 @@ switch (_type) do {
 		// get old vest back
 		_items_vest = vestItems player;
 		player addVest vest_old;
+		player unlinkItem c_new_nvg;
 		// get vest items back 
 		{
 			player addItemToVest _x
 		} forEach _items_vest;
+		player addItemToVest c_new_nvg;
 		cgqc_cloutier_chill = false;
 	};
 	case "skills":
