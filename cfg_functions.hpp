@@ -76,14 +76,6 @@ class CGQC {
             file = "\cgqc\functions\fnc_showIntro.sqf";
             description = "Show intro on load";
         };
-        class initCloutier {
-            file = "\cgqc\functions\fnc_initCloutier.sqf";
-            description = "It's a Cloutier thang";
-        };
-        class stuffCloutier {
-            file = "\cgqc\functions\fnc_stuffCloutier.sqf";
-            description = "It's a Cloutier thang";
-        };
         class perksBasic {
             file = "\cgqc\functions\fnc_perksBasic.sqf";
             description = "Perks for the everyman";
