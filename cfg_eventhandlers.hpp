@@ -1,6 +1,6 @@
 class Extended_PreInit_EventHandlers
 {
-    class cgqc_init_settings_event
+    class CGQC
     {
         // This will be executed once in 3DEN, main menu and before briefing has started for every mission
         //init = "call CGQC_fnc_preInit";
@@ -11,7 +11,7 @@ class Extended_PreInit_EventHandlers
 
 class Extended_PostInit_EventHandlers
 {
-    class ADDON
+    class CGQC
     {
         // This will be executed once for each mission, once the mission has started
         //init = QUOTE(call COMPILE_FILE(XEH_postInit));
@@ -25,7 +25,7 @@ class Extended_PostInit_EventHandlers
 
 class Extended_PreStart_EventHandlers
 {
-    class ADDON
+    class CGQC
     {
         // This will be executed once before entering the main menu.
         // init = QUOTE(call COMPILE_FILE(XEH_preStart));

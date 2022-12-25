@@ -10,6 +10,7 @@ cgqc_postInitServer_done = false;
 cgqc_player_known = true;
 cgqc_player_patch = "";
 cgqc_player_patch_found = false;
+cgqc_custom_playername = "";
 cgqc_player_rank = 1;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
