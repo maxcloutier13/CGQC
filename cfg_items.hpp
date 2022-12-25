@@ -27,7 +27,7 @@ class Weapon_cgqc_gun_p99_wood : Pistol_Base_F
         };
     };
 };
-
+/*
 class Weapon_Base_F;
 class Weapon_cgqc_gun_spar17_tremblay : Weapon_Base_F
 {
@@ -107,7 +107,7 @@ class Weapon_cgqc_gun_spar17_wood : Weapon_Base_F
         };
     };
 };
-
+*/
 // Headgear -----------------------------------------------------------------------------------------------------
 class Headgear_Base_F;
 class Headgear_cgqc_beret_green : Headgear_Base_F
