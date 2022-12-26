@@ -344,3 +344,34 @@ if (cgqc_setting_show_welcome) then {
 cgqc_player_init = 1;
 sleep 5;
 
+
+
+UK3CB_B_M151_Jeep_Closed_HIDF
+
+UK3CB_B_M151_Jeep_HMG_HIDF
+
+rhsusf_mrzr4_d
+
+B_W_LSV_01_unarmed_F
+
+B_W_LSV_01_armed_F
+
+B_W_LSV_01_AT_F
+
+rhsusf_m998_d_s_4dr
+
+rhsusf_m1025_d_s_m2
+
+rhsusf_m1165a1_gmv_m2_m240_socom_d
+
+B_W_MRAP_01_F
+
+B_W_MRAP_01_hmg_F
+
+B_T_Truck_01_ammo_F
+
+B_T_Truck_01_cargo_F
+
+B_T_Truck_01_fuel_F
+
+B_T_Truck_01_Repair_F

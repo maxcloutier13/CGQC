@@ -5,6 +5,13 @@
 _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Repos ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_chill", "au Repos", "", {["chill"] spawn CGQC_fnc_perksBasic}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Ready ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_ready", "Ready to rock", "", {["ready"] spawn CGQC_fnc_perksBasic}, {cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // ------ Personal stash --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_stash", "Personal Stash", "", {_ct = ["stash"] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
@@ -63,6 +70,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 // Set patch ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 
 // Radios ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_radios", "Radio Presets", "CGQC\textures\radio.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;

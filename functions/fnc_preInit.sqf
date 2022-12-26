@@ -15,6 +15,9 @@ cgqc_player_rank = 1;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
 cgqc_player_rank_unknown = false;
+cgqc_player_chill = false;
+cgqc_player_oldNvg = "";
+cgqc_player_oldFace = "";
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
