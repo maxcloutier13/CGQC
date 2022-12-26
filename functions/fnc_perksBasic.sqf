@@ -17,7 +17,7 @@ switch (_type) do {
     {
         _new_hat = "";
         switch (true) do {
-            case (cgqc_player_rank > 3): { // Sous-officiers
+            case (cgqc_player_rank > 3 && cgqc_player_rank <= 5): { // Sous-officiers
                 _new_hat = "cgqc_beret_blue";
             };
             case (cgqc_player_rank > 5): { // Officiers
@@ -49,6 +49,8 @@ switch (_type) do {
         };
         player addItemToBackpack cgqc_player_oldNvg;
         player unlinkItem cgqc_player_oldNvg;
+        // Holster all weapons
+        player action ['SwitchWeapon', player, player, 250];
 		cgqc_player_chill = true;
         hint "au Repos!";
         sleep 5;
