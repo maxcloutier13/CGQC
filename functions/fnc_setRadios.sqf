@@ -44,7 +44,7 @@ if (!cgqc_flag_isTraining) then {
 					};
 				};
 			};
-			hintSilent "Radio Sides: Set";
+			//hintSilent "Radio Sides: Set";
 		};
 		case "patch": {
 			// Remove patch
