@@ -96,5 +96,9 @@ class CGQC {
             file = "\cgqc\functions\fnc_checkZeus.sqf";
             description = "Check if player is zeus";
         };
+        class getRankedBeret {
+            file = "\cgqc\functions\fnc_getRankedBeret.sqf";
+            description = "Find beret for current rank";
+        };
     };
 };

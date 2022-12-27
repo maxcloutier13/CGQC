@@ -58,6 +58,7 @@ class CfgPatches
 		weapons[] = {"cgqc_beret_vanilla",
 					 "cgqc_beret_green",
 					 "cgqc_beret_blue",
+					 "cgqc_beret_red",
 					 "cgqc_cap_green",
 					 "cgqc_gun_p99_wood"};
 	};

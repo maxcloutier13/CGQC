@@ -41,6 +41,12 @@ player addMPEventHandler ["MPKilled", {
 	[player, true] call ace_arsenal_fnc_removeBox;
 }] call CBA_fnc_addEventHandler;
 
+//Switch beret to ready when getting inside vehicle
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+	["ready"] spawn CGQC_fnc_perksBasic;
+}];
+
 // Shows intro screen with logo and stuff
 [ "CBA_loadingScreenDone", {
 	[] spawn CGQC_fnc_showIntro;
