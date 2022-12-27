@@ -22,22 +22,22 @@ class cgqc_beret_vanilla : H_Beret_02{
 	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
 };
 
-class cgqc_beret_blue : cgqc_beret_vanilla
+class cgqc_beret_blue : H_Beret_blk
 {
 	author = "silent1";
 	displayName = "CGQC Beret bleu";
 	_generalMacro = "cgqc_beret_blue";
 	picture = "\A3\characters_f\Data\UI\icon_H_Beret_blk_CA.paa";
-	//model = "\CGQC\helmets\cgqc_beret.p3d";
+	model = "\CGQC\helmets\cgqc_beret.p3d";
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_blue.paa"};
-	//hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
-	/*class ItemInfo : ItemInfo
+	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
+	class ItemInfo : ItemInfo
 	{
 		mass = 6;
 		allowedSlots[] = {801, 901, 701, 605};
 		uniformModel = "\CGQC\helmets\cgqc_beret.p3d";
 		modelSides[] = {3};
-	};*/
+	};
 };
 
 class cgqc_beret_green : cgqc_beret_blue
