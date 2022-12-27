@@ -16,6 +16,7 @@ cgqc_player_rank = 1;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
 cgqc_player_rank_unknown = false;
+cgqc_player_rank_beret = "";
 cgqc_player_role = "";
 cgqc_player_chill = false;
 cgqc_player_oldNvg = "";
