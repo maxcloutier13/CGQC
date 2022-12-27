@@ -6,6 +6,7 @@ _type = _this select 0;
 [] spawn {
 	waitUntil {!isNull (findDisplay 46)};
 	if (cgqc_config_showIntro) then {
+		cgqc_intro_running = true;
 		ace_hearing_disableVolumeUpdate = true;
 		0 fadeSound 0;
 		disableUserInput true;
@@ -29,8 +30,11 @@ _type = _this select 0;
 		"dynamicBlur" ppEffectCommit 0;     
 		"dynamicBlur" ppEffectAdjust [0.0];  
 		"dynamicBlur" ppEffectCommit 5;  
-		titleCut ["", "BLACK IN", 5];
+		titleCut ["", "BLACK IN", 10];
 		sleep 10;
+		cgqc_intro_running = false;
 		ace_hearing_disableVolumeUpdate = false;	
 	};
+	
 };
+
