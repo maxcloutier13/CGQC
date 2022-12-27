@@ -29,8 +29,10 @@ _type = _this select 0;
 		"dynamicBlur" ppEffectCommit 0;     
 		"dynamicBlur" ppEffectAdjust [0.0];  
 		"dynamicBlur" ppEffectCommit 5;  
-		titleCut ["", "BLACK IN", 5];
+		titleCut ["", "BLACK IN", 8];
 		sleep 10;
 		ace_hearing_disableVolumeUpdate = false;	
 	};
+	cgqc_intro_done = true;
 };
+

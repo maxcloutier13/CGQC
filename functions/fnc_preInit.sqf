@@ -6,6 +6,7 @@
 cgqc_preInit_done = false;
 cgqc_postInitClient_done = false;
 cgqc_postInitServer_done = false;
+cgqc_intro_done = false;
 // *** Player **********************
 cgqc_player_known = true;
 cgqc_player_patch = "";
@@ -15,6 +16,7 @@ cgqc_player_rank = 1;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
 cgqc_player_rank_unknown = false;
+cgqc_player_role = "";
 cgqc_player_chill = false;
 cgqc_player_oldNvg = "";
 cgqc_player_oldFace = "";
