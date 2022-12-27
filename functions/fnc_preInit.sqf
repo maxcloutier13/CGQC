@@ -21,6 +21,9 @@ cgqc_player_role = "";
 cgqc_player_chill = false;
 cgqc_player_oldNvg = "";
 cgqc_player_oldFace = "";
+// *** DLC stuff *******************
+cgqc_player_ownedDLCs = [];
+cgqc_player_hasContact = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
