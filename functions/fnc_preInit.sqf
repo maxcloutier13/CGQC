@@ -47,12 +47,6 @@ cgqc_mk2_arsenal_locked = true;
 cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
 
-
-
-
-
-
-
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
 //_menu_name = "AA_CGQC";

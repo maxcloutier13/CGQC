@@ -89,12 +89,12 @@ _perks = [] spawn CGQC_fnc_addPerks;
 _zeus = [] spawn CGQC_fnc_setZeus; 
 
 // Lower gun 
-player action ['SwitchWeapon', player, player, 100];
-
-// Set default left/right radios
-_radios = ["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"; 
+player action ['SwitchWeapon', player, player, 250];
 
 // Build a random welcome and shows it
 _welcome = [] spawn CGQC_fnc_welcome; 
+
+// Set default left/right radios
+_radios = ["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"; 
 
 cgqc_postInitClient_done = true;
