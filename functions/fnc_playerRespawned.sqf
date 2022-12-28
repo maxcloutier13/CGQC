@@ -9,5 +9,7 @@ _unit enableStamina false; //Re-disable stamina, in-case
 //["InitializePlayer", [_unit]] call BIS_fnc_dynamicGroups; //Reinit dynamic groups? Necessary?
 _setPatch = [] spawn CGQC_fnc_setPatch; //Set patch again
 hint "Check tes radios! Ça inverse parfois au respawn.";
+// Lower gun 
+player action ['SwitchWeapon', player, player, 250];
 sleep 5;
 hintSilent "";
