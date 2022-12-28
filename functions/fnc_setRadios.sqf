@@ -394,13 +394,16 @@ if (!cgqc_flag_isTraining) then {
 	_radio_2 = "";
 	// Remove all radios 
 	_radios = call acre_api_fnc_getCurrentRadioList;
-	waitUntil {sleep 0.5;!isNil "_radios"};
+	sleep 1;
+	waitUntil {sleep 1;!isNil "_radios"};
 	{
 		player removeItem _x;
+		sleep 0.5;
 	} forEach _radios;
+	sleep 1;
 	player addItemToUniform "ACRE_PRC343";
 	player addItemToUniform "ACRE_PRC152";
-	sleep 1;
+	sleep 0.5;
 	// Set radios left/right 
 	_radiosNow = call acre_api_fnc_getCurrentRadioList;
 	waitUntil {sleep 1;!isNil "_radiosNow"};
