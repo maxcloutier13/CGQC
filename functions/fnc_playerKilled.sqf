@@ -3,4 +3,5 @@
 params ["_unit", "_killer"];
 _unit setVariable["Saved_Loadout",getUnitLoadout _unit];
 _unit setVariable["Saved_Face", face _unit];
+_unit setVariable["Saved_Slinged_Helmet", [player] call GRAD_slingHelmet_fnc_getSlungHelmet];
 //hint format ["Woops! tu t'es fait pèté par: %1", _killer];
