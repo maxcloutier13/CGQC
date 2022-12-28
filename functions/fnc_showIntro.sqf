@@ -35,6 +35,5 @@ _type = _this select 0;
 		cgqc_intro_running = false;
 		ace_hearing_disableVolumeUpdate = false;	
 	};
-	
 };
 

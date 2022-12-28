@@ -3,8 +3,21 @@
 
 _type = _this select 0;
 _section = _this select 1;
-//_type = param [0, 1];
-//_section = param [0, 2];
+_handRadios = [];
+_racks = [];
+_accessibleRacks = [];
+_packRadios = [];
+_personalRadio = "";
+_handRadio = "";
+_handRadio_1 = "";
+_handRadio_2 = "";
+_rack1 = "";
+_rack2 = "";
+_radio1 = "";
+_radio2 = "";
+_packRadio_1 = "";
+_packRadio_2 = "";
+_packRadio_3 = "";
 
 waitUntil {cgqc_postInitClient_done};
 sleep 1;
@@ -375,6 +388,10 @@ if (!cgqc_flag_isTraining) then {
 		};
 	};
 } else { //Training radio setup
+	_radios = [];
+	_radiosNow = [];
+	_radio_1 = "";
+	_radio_2 = "";
 	// Remove all radios 
 	_radios = call acre_api_fnc_getCurrentRadioList;
 	waitUntil {sleep 0.5;!isNil "_radios"};
@@ -383,15 +400,15 @@ if (!cgqc_flag_isTraining) then {
 	} forEach _radios;
 	player addItemToUniform "ACRE_PRC343";
 	player addItemToUniform "ACRE_PRC152";
-	sleep 0.5;
+	sleep 1;
 	// Set radios left/right 
 	_radiosNow = call acre_api_fnc_getCurrentRadioList;
-	waitUntil {sleep 0.5;!isNil "_radiosNow"};
+	waitUntil {sleep 1;!isNil "_radiosNow"};
 	_radio_1 = _radiosNow select 0;
 	_radio_2 = _radiosNow select 1;
-	waitUntil {sleep 0.5;!isNil "_radio_1"};
+	waitUntil {sleep 1;!isNil "_radio_1"};
 	_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-	waitUntil {sleep 0.5;!isNil "_radio_2"};
+	waitUntil {sleep 1;!isNil "_radio_2"};
 	_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 	hint "Training Radio Setup";
 	// Disable channels except global
@@ -400,3 +417,4 @@ if (!cgqc_flag_isTraining) then {
 
 sleep 10;
 hintSilent "";
+

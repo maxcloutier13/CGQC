@@ -8,6 +8,10 @@ cgqc_player_steamid = getPlayerUID player;
 cgqc_player_steamName = profileNameSteam;
 cgqc_perks_basic = true;
 
+// Check what DLC the player owns 
+cgqc_player_ownedDLCs = getDLCs 1;
+cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
+
 //ID player and find patch
 _rank = [] spawn CGQC_fnc_findRank;
 _patch = [] spawn CGQC_fnc_findPatch;
@@ -85,12 +89,12 @@ _perks = [] spawn CGQC_fnc_addPerks;
 _zeus = [] spawn CGQC_fnc_setZeus; 
 
 // Lower gun 
-player action ['SwitchWeapon', player, player, 100];
-
-// Set default left/right radios
-_radios = ["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"; 
+player action ['SwitchWeapon', player, player, 250];
 
 // Build a random welcome and shows it
 _welcome = [] spawn CGQC_fnc_welcome; 
+
+// Set default left/right radios
+_radios = ["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"; 
 
 cgqc_postInitClient_done = true;
