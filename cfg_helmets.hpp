@@ -28,7 +28,7 @@ class cgqc_beret_blue : H_Beret_blk
 	displayName = "CGQC Beret bleu";
 	_generalMacro = "cgqc_beret_blue";
 	picture = "\A3\characters_f\Data\UI\icon_H_Beret_blk_CA.paa";
-	model = "\CGQC\helmets\cgqc_beret.p3d";
+	model = "\CGQC\helmets\cgqc_beret_1.p3d";
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_blue.paa"};
 	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
 	class ItemInfo : ItemInfo

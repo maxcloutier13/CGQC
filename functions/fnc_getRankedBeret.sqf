@@ -1,6 +1,6 @@
  cgqc_player_rank_beret = "";
 
-if (cgqc_player_hasContact) then {
+//if (cgqc_player_hasContact) then {
 	switch (cgqc_player_rank) do {
 		case 1: {  // Sdt
 			cgqc_player_rank_beret = "cgqc_beret_vanilla"; // Subalternes
@@ -39,7 +39,7 @@ if (cgqc_player_hasContact) then {
 			cgqc_player_rank_beret = "cgqc_beret_vanilla"; // Subalternes
 		};
 	};
-}else{ // Player doesn't have Contact! BOOOOO THIS MAN!
-	cgqc_player_rank_beret = "cgqc_beret_vanilla";
-};
+//}else{ // Player doesn't have Contact! BOOOOO THIS MAN!
+//	cgqc_player_rank_beret = "cgqc_beret_vanilla";
+//};
 

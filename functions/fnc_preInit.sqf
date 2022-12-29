@@ -23,8 +23,8 @@ cgqc_player_oldNvg = "";
 cgqc_player_oldFace = "";
 cgqc_player_slinged_helmet = "";
 // *** DLC stuff *******************
-cgqc_player_ownedDLCs = [];
-cgqc_player_hasContact = false;
+//cgqc_player_ownedDLCs = [];
+//cgqc_player_hasContact = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
