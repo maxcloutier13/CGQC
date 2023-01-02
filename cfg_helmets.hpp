@@ -13,23 +13,13 @@ class H_Beret_blk : HelmetBase
 };
 // Berets ----------------------------------------------------------------------
 class H_Beret_02;
-class cgqc_beret_vanilla : H_Beret_02{
+class cgqc_beret_vanilla : H_Beret_blk {
 	author = "silent1";
 	displayName = "CGQC Beret Vanilla";
 	_generalMacro = "cgqc_beret_vanilla";
 	picture = "\A3\characters_f\Data\UI\icon_H_Beret_blk_CA.paa";
+	model = "\CGQC\helmets\cgqc_beret_1.p3d";
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_vanilla.paa"};
-	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
-};
-
-class cgqc_beret_blue : H_Beret_blk
-{
-	author = "silent1";
-	displayName = "CGQC Beret bleu";
-	_generalMacro = "cgqc_beret_blue";
-	picture = "\A3\characters_f\Data\UI\icon_H_Beret_blk_CA.paa";
-	model = "\CGQC\helmets\cgqc_beret.p3d";
-	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_blue.paa"};
 	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
 	class ItemInfo : ItemInfo
 	{
@@ -40,22 +30,47 @@ class cgqc_beret_blue : H_Beret_blk
 	};
 };
 
-class cgqc_beret_green : cgqc_beret_blue
-{
+class cgqc_beret_blue : cgqc_beret_vanilla {
+	author = "silent1";
+	displayName = "CGQC Beret bleu";
+	_generalMacro = "cgqc_beret_blue";
+	picture = "\A3\characters_f\Data\UI\icon_H_Beret_blk_CA.paa";
+	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_blue.paa"};
+};
+
+class cgqc_beret_green : cgqc_beret_vanilla {
 	author = "silent1";
 	displayName = "CGQC Beret Vert";
 	_generalMacro = "cgqc_beret_green";
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_green.paa"};
-	//hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
 };
 
-class cgqc_beret_red : cgqc_beret_blue
-{
+class cgqc_beret_red : cgqc_beret_vanilla {
 	author = "silent1";
 	displayName = "CGQC Beret Rouge";
 	_generalMacro = "cgqc_beret_red";
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_red.paa"};
-	//hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_beret.rvmat"};
+};
+
+class cgqc_beret_gray : cgqc_beret_vanilla {
+	author = "silent1";
+	displayName = "CGQC Beret Gris";
+	_generalMacro = "cgqc_beret_gray";
+	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_gray.paa"};
+};
+
+class cgqc_beret_yellow : cgqc_beret_vanilla {
+	author = "silent1";
+	displayName = "CGQC Beret Jaune";
+	_generalMacro = "cgqc_beret_yellow";
+	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_yellow.paa"};
+};
+
+class cgqc_beret_orange : cgqc_beret_vanilla {
+	author = "silent1";
+	displayName = "CGQC Beret Orange";
+	_generalMacro = "cgqc_beret_orange";
+	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_beret_orange.paa"};
 };
 
 class cgqc_cap_green : H_HelmetB
