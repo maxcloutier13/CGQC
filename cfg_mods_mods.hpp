@@ -24,3 +24,4 @@ class ace_medical_treatment
         };
     };
 };
+

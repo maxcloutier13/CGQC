@@ -38,6 +38,7 @@ class cfgVehicles {
 	#include "cfg_units.hpp"
 	#include "cfg_backpacks.hpp"
 	#include "cfg_items.hpp"
+	#include "cfg_actions.hpp"
 };
 
 // Custom functions
