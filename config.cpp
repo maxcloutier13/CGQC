@@ -5,6 +5,9 @@ class cfgFactionClasses {
 	#include "cfg_factions.hpp"
 };
 
+// Mods Modifications ----------------------------------------------------------------------
+#include "cfg_mods_mods.hpp"
+
 // Heads/Faces --------------------------------------------------------------------------------------
 class CfgFaces {
 	#include "cfg_heads.hpp"
