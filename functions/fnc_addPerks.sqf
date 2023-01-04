@@ -150,6 +150,5 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_
 _action = [ "zeus_delcargo", "delete Cargo", "", {["del_cargo"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_cargo && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 
-
 // Return true 
 true
