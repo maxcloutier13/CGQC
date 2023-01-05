@@ -80,7 +80,6 @@ if (!cgqc_flag_isTraining) then {
 			// Set radio PTT: 152 is listen-only
 			_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 			// Fuck up the sending frequency of ch1 to make listen only
-
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/Listen-Only/Interteam</t>";
