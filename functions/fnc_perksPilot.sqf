@@ -5,9 +5,9 @@ params ["_type"];
 if (hasInterface) then {
 	// Init stuff
 	_vic = vehicle player;
-	_pilot_class = "CGQC_units_mk1_4_pilot_heli";
-	_gunner_class = "CGQC_units_mk1_4_crew_heli";
-	_driver_class = "CGQC_units_mk1_4_Tank_Crew";
+	_pilot_class = "CGQC_units_mk2_Pilot_heli_ai";
+	_gunner_class = "CGQC_units_mk2_crew_heli_ai";
+	_driver_class = "CGQC_units_mk2_Tank_Crew_ai";
 
 	// find player group
 	_player_group = group player;
