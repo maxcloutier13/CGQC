@@ -22,6 +22,7 @@ cgqc_player_chill = false;
 cgqc_player_oldNvg = "";
 cgqc_player_oldFace = "";
 cgqc_player_slinged_helmet = "";
+cgqc_player_max = false;
 // *** DLC stuff *******************
 //cgqc_player_ownedDLCs = [];
 //cgqc_player_hasContact = false;
