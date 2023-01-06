@@ -41,6 +41,10 @@ switch (_type) do {
             player unlinkItem cgqc_player_oldNvg;
             // Holster all weapons
             player action ['SwitchWeapon', player, player, 250];
+            if (cgqc_player_max) then {
+                player linkItem "immersion_cigs_cigar0_nv";
+                player addGoggles "G_Aviator";
+            };
             cgqc_player_chill = true;
             hint "au Repos!";
             sleep 5;

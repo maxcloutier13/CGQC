@@ -24,10 +24,13 @@ class CGQC_Soldat_Base : B_Soldier_f
 		"ACE_IR_Strobe_Item", "ACE_microDAGR"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	respawnMagazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
-	linkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "Rangefinder", "cgqc_beret_vanilla", "V_Rangemaster_belt", "None"};
-	respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "Rangefinder", "cgqc_beret_vanilla", "V_Rangemaster_belt", "None"};
+	linkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "Rangefinder", "cgqc_cap_green", "V_Rangemaster_belt", "None"};
+	respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "Rangefinder", "cgqc_cap_green", "V_Rangemaster_belt", "None"};
 	backpack = "cgqc_pack_mk1_magic";
 	editorPreview = "cgqc\pics\cgqc_soldat_base.jpg";
+	class EventHandlers {
+        init = "[] execVM '\CGQC\functions\fnc_loadTraining.sqf'";
+    };
 };
 class CGQC_Officer_Base : B_Soldier_f
 {
@@ -61,4 +64,7 @@ class CGQC_Officer_Base : B_Soldier_f
 	respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "Rangefinder", "cgqc_cap_green", "V_Rangemaster_belt", "None"};
 	backpack = "cgqc_pack_mk1_magic";
 	editorPreview = "cgqc\pics\cgqc_officer_base.jpg";
+	class EventHandlers {
+        init = "[] execVM '\CGQC\functions\fnc_loadTraining.sqf'";
+    };
 };
