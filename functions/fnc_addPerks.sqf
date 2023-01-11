@@ -6,17 +6,17 @@ _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""},
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Repos ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_chill", "au Repos", "", {["chill"] spawn CGQC_fnc_perksBasic}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_chill", "au Repos", "", {["chill", false] spawn CGQC_fnc_perksBasic}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Ready ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_ready", "Ready to rock", "", {["ready"] spawn CGQC_fnc_perksBasic}, {cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_ready", "Ready to rock", "", {["ready", false] spawn CGQC_fnc_perksBasic}, {cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Personal stash --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_stash", "Personal Stash", "", {_ct = ["stash"] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_stash", "Personal Stash", "", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // Add Delete stash option
-_action = [ "cgqc_perk_stash_delete", "Delete Stash", "", {_ct = ["del_stash"] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_stash_delete", "Delete Stash", "", {["del_stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Ghillie up --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_ghillie", "Ghillie up", "", {}, {cgqc_perks_recon && !cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
@@ -34,7 +34,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_ghillie"]
 _action = [ "cgqc_perk_ghillie_uniform", "Ghillie-> Uniforme", "", {_ct = ["uniform"] spawn CGQC_fnc_perksRecon}, {cgqc_perks_recon && cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // ------ Cut Grass --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_cutgrass", "Cut grass", "", {_ct = ["cut_grass"] spawn CGQC_fnc_perksRecon}, {cgqc_perks_recon} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_cutgrass", "Coupe l'herbe", "", {_ct = ["cut_grass"] spawn CGQC_fnc_perksRecon}, {cgqc_perks_recon} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // ------ Fortify --------------------------------------------------------------------------------------
 [west, 500, [

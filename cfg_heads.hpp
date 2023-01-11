@@ -21,6 +21,7 @@ class Man_A3 : Default
 		materialHL2 = "\A3\Characters_F\Heads\Data\hl_white_bald_muscular.rvmat";
 		disabled = 0;
 	};
+	/*
 	class CGQCHead_13_0 : CGQCHead_13
 	{
 		author = "silent1";
@@ -37,4 +38,12 @@ class Man_A3 : Default
 		material = "\CGQC\heads\cloutier\cgqc_cloutier_1.rvmat";
 		disabled = 0;
 	};
+	class CGQCHead_13_blk : CGQCHead_13
+	{
+		author = "silent1";
+		displayName = "CGQC Cloutier Black";
+		texture = "\CGQC\heads\cloutier\cgqc_cloutier_co_blk.paa";
+		//material = "\CGQC\heads\cloutier\cgqc_cloutier_1.rvmat";
+		disabled = 0;
+	};*/
 };

@@ -100,5 +100,9 @@ class CGQC {
             file = "\cgqc\functions\fnc_getRankedBeret.sqf";
             description = "Find beret for current rank";
         };
+        class initTraining {
+            file = "\cgqc\functions\fnc_initTraining.sqf";
+            description = "Init for training units";
+        };
     };
 };
