@@ -48,7 +48,7 @@ player addMPEventHandler ["MPKilled", {
 //Switch beret to ready when getting inside vehicle
 player addEventHandler ["GetInMan", {
 	params ["_unit", "_role", "_vehicle", "_turret"];
-	["ready"] spawn CGQC_fnc_perksBasic;
+	["ready", false] spawn CGQC_fnc_perksBasic;
 }];
 
 // Shows intro screen with logo and stuff
@@ -94,7 +94,15 @@ player action ['SwitchWeapon', player, player, 250];
 // Build a random welcome and shows it
 _welcome = [] spawn CGQC_fnc_welcome; 
 
+_unit = typeOf player;
+switch (_unit) do {
+    case "CGQC_Soldat_Base";
+	case "CGQC_Officer_Base": {
+		[] spawn CGQC_fnc_initTraining;
+	};
+};
+
 // Set default left/right radios
-_radios = ["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"; 
+//_radios = ["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"; 
 
 cgqc_postInitClient_done = true;

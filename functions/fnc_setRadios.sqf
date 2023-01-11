@@ -19,10 +19,9 @@ _packRadio_1 = "";
 _packRadio_2 = "";
 _packRadio_3 = "";
 
-waitUntil {cgqc_postInitClient_done};
-sleep 1;
+waitUntil {sleep 1;cgqc_postInitClient_done};
+
 //disableUserInput = true;
-if (!cgqc_flag_isTraining) then {
 	switch (_type) do {
 		case "radio_sides":	{
 			_radios = call acre_api_fnc_getCurrentRadioList;
@@ -57,7 +56,7 @@ if (!cgqc_flag_isTraining) then {
 					};
 				};
 			};
-			//hintSilent "Radio Sides: Set";
+			hintSilent "Radio Sides: Set";
 		};
 		case "patch": {
 			// Remove patch
@@ -425,39 +424,24 @@ if (!cgqc_flag_isTraining) then {
 				hint format ["%1 Speaker: %2", _handRadio_2, _speaker_check];
 			};
 		};
+		case "training": {	
+			// Set radios left/right 
+			_radiosNow = call acre_api_fnc_getCurrentRadioList;
+			waitUntil {sleep 0.5;!isNil "_radiosNow"};
+			_radio_1 = _radiosNow select 0;
+			_radio_2 = _radiosNow select 1;
+			waitUntil {sleep 0.5;!isNil "_radio_1"};
+			_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+			waitUntil {sleep 0.5;!isNil "_radio_2"};
+			_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+			hint "Training Radio Setup";
+			// Disable channels except global
+			["init"] spawn CGQC_fnc_lockChannels;
+		};
 		default	{
 			hint "fnc_setRadios fucked up. ";
 		};
 	};
-} else { //Training radio setup
-	_radios = [];
-	_radiosNow = [];
-	_radio_1 = "";
-	_radio_2 = "";
-	sleep 5;
-	// Remove all radios 
-	_radios = call acre_api_fnc_getCurrentRadioList;
-	waitUntil {sleep 1;!isNil "_radios"};
-	{
-		player removeItem _x;
-	} forEach _radios;
-	sleep 0.5;
-	player addItemToUniform "ACRE_PRC343";
-	player addItemToUniform "ACRE_PRC152";
-	sleep 0.5;
-	// Set radios left/right 
-	_radiosNow = call acre_api_fnc_getCurrentRadioList;
-	waitUntil {sleep 0.5;!isNil "_radiosNow"};
-	_radio_1 = _radiosNow select 0;
-	_radio_2 = _radiosNow select 1;
-	waitUntil {sleep 0.5;!isNil "_radio_1"};
-	_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-	waitUntil {sleep 0.5;!isNil "_radio_2"};
-	_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-	hint "Training Radio Setup";
-	// Disable channels except global
-	["init"] spawn CGQC_fnc_lockChannels;
-};
 
 sleep 10;
 hintSilent "";

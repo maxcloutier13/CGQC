@@ -1,7 +1,9 @@
 // --- perksBasic ----------------------------------------------------------
 // Perks for the everyman
-params ["_type"];
-
+params ["_type", "_fromLoadout"];
+//Make sure the call is local
+waitUntil {!isNil "cgqc_player_patch_found"};
+waitUntil {cgqc_player_rank_found};
 switch (_type) do {
     case "stash":
     {
@@ -46,9 +48,11 @@ switch (_type) do {
                 player addGoggles "G_Aviator";
             };
             cgqc_player_chill = true;
-            hint "au Repos!";
-            sleep 5;
-            hintSilent "";
+            // Set radio left/right if this is from init 
+            if !(_fromLoadout) then {
+                _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Au Repos...</t><br/>");
+                [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
+            };
         };
     };
     case "ready":
@@ -61,9 +65,11 @@ switch (_type) do {
             player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
             player linkItem cgqc_player_oldNvg;
             cgqc_player_chill = false; // All done
-            hint "Ready to roll";
-            sleep 5;
-            hintSilent "";
+            if !(_fromLoadout) then {
+                _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Prêt au combat</t><br/>");
+                [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
+            };
         };
     };
 };
+
