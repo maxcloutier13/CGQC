@@ -9,8 +9,8 @@ cgqc_player_steamName = profileNameSteam;
 cgqc_perks_basic = true;
 
 // Check what DLC the player owns 
-//cgqc_player_ownedDLCs = getDLCs 1;
-//cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
+cgqc_player_ownedDLCs = getDLCs 1;
+cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 
 //ID player and find patch
 _rank = [] spawn CGQC_fnc_findRank;
