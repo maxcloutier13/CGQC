@@ -13,14 +13,21 @@ class ACRE_PRC152: ACRE_BaseRadio
 {
 	class ItemInfo: CBA_MiscItem_ItemInfo
 	{
-		mass = 4;
+		mass = 2;
+	};
+};
+class ACRE_PRC148: ACRE_BaseRadio
+{
+	class ItemInfo: CBA_MiscItem_ItemInfo
+	{
+		mass = 2;
 	};
 };
 class ACRE_PRC343: ACRE_BaseRadio
 {
 	class ItemInfo: CBA_MiscItem_ItemInfo
 	{
-		mass = 4;
+		mass = 2;
 	};
 };
 // Items
