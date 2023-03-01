@@ -6,7 +6,7 @@ waitUntil {	time > 5};
 // for JIP, wait until the main screen loads
 waitUntil {	!isNull (findDisplay 46)};
 // Check if player name contains the word "Zeus"
-if (["zeus", format["%1", player]] call BIS_fnc_inString) then {
+if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString) then {
 	_checkIfValidCuratorSlot = {
 		private _curatorList = _this;
 
@@ -44,6 +44,19 @@ if (["zeus", format["%1", player]] call BIS_fnc_inString) then {
 	while { true } do {
 		// Check that Zeus has been assigned to player
 		_curatorList call _checkIfValidCuratorSlot;
+		/*
+		// Check if player has 152
+		_zeus_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+		sleep 0.5;
+		if (isNil "_zeus_handRadio") then {
+			player addItemToUniform "ACRE_PRC152";
+			sleep 0.5;
+			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+			sleep 0.5;
+			_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+			_success = [ [ _handRadio, "" , "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		};
+		*/
 		sleep 10.0;
 	};
 };
