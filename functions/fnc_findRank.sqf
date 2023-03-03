@@ -13,7 +13,7 @@ switch (true) do {
 		_player_rank = 1;
 		_player_rank_name = "Soldat";
 	};
-	case (_prefix find "cpl " == 0):{
+	case (_prefix find "cpl" == 0):{
 		player setRank "CORPORAL";
 		_player_rank = 2;
 		_player_rank_name = "Caporal";

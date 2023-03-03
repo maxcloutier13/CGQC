@@ -8,11 +8,15 @@ waitUntil {	!isNull (findDisplay 46)};
 // Check if player name contains the word "Zeus"
 
 if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["zeus", format["%1", player]] call BIS_fnc_inString) then {
-	_checkIfValidCuratorSlot = {
-		private _curatorList = _this;
-
+	//hintc "Zeus!";
+	//sleep 1;
+	// Ensure Zeus keeps slot, despite admin logging
+	while { true } do {
 		// Check that Zeus has been assigned to player
 		if (isNull (getAssignedCuratorLogic player)) then {
+			// find all curators and reverse list so to lessen chance of admin Zeus conflicts
+			private _curatorList = allCurators;
+			reverse _curatorList;
 			private _exitLoop = false;
 			{
 				// find an unassigned Zeus slot and assign it to the player
@@ -32,32 +36,6 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 				if (_exitLoop) exitWith {};
 			} forEach _curatorList;
 		};
-	};
-
-	// find all curators and reverse list so to lessen chance of admin Zeus conflicts
-	private _curatorList = allCurators;
-	reverse _curatorList;
-
-	// Check that Zeus has been initially assigned to player
-	_curatorList call _checkIfValidCuratorSlot;
-
-	// Ensure Zeus keeps slot, despite admin logging
-	while { true } do {
-		// Check that Zeus has been assigned to player
-		_curatorList call _checkIfValidCuratorSlot;
-		/*
-		// Check if player has 152
-		_zeus_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-		sleep 0.5;
-		if (isNil "_zeus_handRadio") then {
-			player addItemToUniform "ACRE_PRC152";
-			sleep 0.5;
-			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-			sleep 0.5;
-			_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-			_success = [ [ _handRadio, "" , "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		};
-		*/
 		sleep 10.0;
 	};
 };
