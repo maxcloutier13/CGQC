@@ -1,6 +1,8 @@
  cgqc_player_rank_beret = "";
 
-//if (cgqc_player_hasContact) then {
+if (cgqc_player_23rd) then {
+	cgqc_player_rank_beret = "23rd_logo_berret_purp"; //23rd basic beret
+} else {
 	switch (cgqc_player_rank) do {
 		case 1: {  // Sdt
 			cgqc_player_rank_beret = "cgqc_beret_yellow"; // Subalternes
@@ -39,7 +41,5 @@
 			cgqc_player_rank_beret = "cgqc_beret_vanilla"; 
 		};
 	};
-//}else{ // Player doesn't have Contact! BOOOOO THIS MAN!
-//	cgqc_player_rank_beret = "cgqc_beret_vanilla";
-//};
+};
 
