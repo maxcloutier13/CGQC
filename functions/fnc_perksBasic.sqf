@@ -18,7 +18,7 @@ switch (_type) do {
     case "chill":
     {
         if !(cgqc_player_chill) then {
-            [] call CGQC_fnc_getRankedBeret;
+            //[] call CGQC_fnc_getRankedBeret;
             _new_face = "";
             //c_new_vest = "V_SmershVest_01_radio_F";
             //c_new_nvg = "immersion_cigs_cigar0_nv";
