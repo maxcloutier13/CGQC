@@ -14,14 +14,15 @@ switch (true) do {
 		_player_rank_name = "Soldat";
 	};
 	case (_prefix find "cpl" == 0):{
-		player setRank "CORPORAL";
-		_player_rank = 2;
-		_player_rank_name = "Caporal";
-	};
-	case (_prefix find "cplc" == 0):{
-		player setRank "CORPORAL";
-		_player_rank = 3;
-		_player_rank_name = "Caporal Chef";
+		if (_prefix find "cplc" == 0) then {
+			player setRank "CORPORAL";
+			_player_rank = 3;
+			_player_rank_name = "Caporal Chef";
+		}else{
+			player setRank "CORPORAL";
+			_player_rank = 2;
+			_player_rank_name = "Caporal";
+		};
 	};
 	case (_prefix find "sgt" == 0):{
 		player setRank "SERGEANT";
