@@ -38,6 +38,7 @@ if (cgqc_player_23rd) then {
 			cgqc_player_rank_beret = "cgqc_beret_red";
 		};
 		default	{
+			hintc "Rank not detected";
 			cgqc_player_rank_beret = "cgqc_beret_vanilla"; 
 		};
 	};

@@ -80,4 +80,3 @@ switch (true) do {
 cgqc_player_rank_found = true;
 cgqc_player_rank = _player_rank;
 cgqc_player_rank_name = _player_rank_name;
-[] spawn CGQC_fnc_getRankedBeret;

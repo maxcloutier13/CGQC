@@ -15,6 +15,7 @@ cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 //ID player and find patch
 _rank = [] spawn CGQC_fnc_findRank;
 _patch = [] spawn CGQC_fnc_findPatch;
+_beret = [] spawn CGQC_fnc_getRankedBeret;
 
 // Set and keep patch 
 _set = [] spawn CGQC_fnc_setPatch;
