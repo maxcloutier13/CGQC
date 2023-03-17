@@ -45,6 +45,17 @@ switch (_type) do {
 		deleteVehicle zeus_cargo;
 		cgqc_zeus_cargo = false;
 	};
+	case "animation_on": {
+		cgqc_mk2_animation_locked = true; 
+		publicVariable "cgqc_mk2_animation_locked";
+	};
+	case "animation_off": {
+		cgqc_mk2_animation_locked = false;
+		publicVariable "cgqc_mk2_animation_locked";
+	};
+	case "animation_setting": {
+		publicVariable "cgqc_mk2_animation_locked";
+	};
 	default
 	{
 		hint "fnc_perksZeus fucked up";

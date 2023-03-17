@@ -46,6 +46,7 @@ cgqc_zeus_cargo = false;
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
+cgqc_mk2_animation_locked = false;
 // *** Refueling *****************
 cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
@@ -95,11 +96,13 @@ _menu_name = "CGQC";
 
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
-    [_menu_name, "Limit Mags and Mk2 Lock"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Limit Mags and Mk2 Lock"], [6, 18, 6, 0]] call CBA_fnc_addSetting;
+    [_menu_name, "Limitations"], [6, 18, 6, 0]] call CBA_fnc_addSetting;
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
-    [_menu_name, "Limit Mags and Mk2 Lock"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
+["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"], 
+    [_menu_name, "Limitations"], false, 1, {["animation_setting"] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
 // Training ===============================================================================================
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
     [_menu_name, "Training"], false] call CBA_fnc_addSetting;

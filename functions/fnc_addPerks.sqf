@@ -124,6 +124,11 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"]
 
 
 // Zeus ---------------------------------------------------------------------------------------------------------------
+// ------ Animation on/off 
+_action = [ "zeus_anim_on", "Animations: Lock", "", {["animation_on"] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && !cgqc_mk2_animation_locked} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_anim_off", "Animations: Unlock", "", {["animation_off"] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_mk2_animation_locked }] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Delete all dead
 _action = [ "zeus_delete", "Delete Dead", "", {["delete"] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
