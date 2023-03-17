@@ -35,6 +35,8 @@ cgqc_custom_playername = cgqc_player_patch select[11, 22];
 // epic 76561198171218045
 // pike 76561198171218045
 // ben 76561198030215888
+// mouland 76561199156866182
+// deslauriers 76561198209656813
 
 //Set variable
 cgqc_player_patch_found = true;
