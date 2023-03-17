@@ -4,7 +4,7 @@ class CAManBase: Man {
 		class ACE_Animations {
 			displayName = "Animations";
 			//icon = "\z\ace\addons\gestures\UI\gestures_ca.paa";
-			condition = "cgqc_player_rank > 0";
+			condition = "!cgqc_mk2_animation_locked || cgqc_player_rank > 8";
 			class tsp_ace_animate_cancel
 			{
 				displayName = "Cancel";
