@@ -37,16 +37,34 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 _action = [ "cgqc_perk_cutgrass", "Coupe l'herbe", "", {_ct = ["cut_grass"] spawn CGQC_fnc_perksRecon}, {cgqc_perks_recon} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // ------ Fortify --------------------------------------------------------------------------------------
-[west, 500, [
-	["Land_BagFence_Short_F", 5],
-	["Land_BagFence_Long_F", 5], 
-	["Land_BagFence_Round_F", 5], 
-	["Land_Plank_01_4m_F", 5], 
-	["Land_Plank_01_8m_F", 5], 
-	["Land_CamoNetVar_NATO", 5], 
-	["Land_fortified_nest_small_EP1", 50]
-]] call ace_fortify_fnc_registerObjects;
-
+if (cgqc_config_fortify) then {
+	fortify_list = format [
+		"[
+		['%1', 0],
+		['%2', 0], 
+		['%3', 0], 
+		['%4', 0], 
+		['%5', 0], 
+		['%6', 0], 
+		['%7', 0],
+		['%8', 0], 
+		['%9', 0], 
+		['%10', 0]
+		]", 
+		cgqc_config_fortify_1, 
+		cgqc_config_fortify_2, 
+		cgqc_config_fortify_3, 
+		cgqc_config_fortify_4,
+		cgqc_config_fortify_5, 
+		cgqc_config_fortify_6, 
+		cgqc_config_fortify_7, 
+		cgqc_config_fortify_8, 
+		cgqc_config_fortify_9,
+		cgqc_config_fortify_10
+	];
+	cgqc_config_fortify_list = parseSimpleArray fortify_list;
+	[west, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+};
 // ------ Heli pilot --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_heli_pilot_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_pilot && 
