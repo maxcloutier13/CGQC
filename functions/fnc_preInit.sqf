@@ -36,6 +36,18 @@ cgqc_perks_pilot_hasCrew = false;
 cgqc_perks_driver_hasDriver = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
+cgqc_config_fortify = false;
+cgqc_config_fortify_1 = "";
+cgqc_config_fortify_2 = "";
+cgqc_config_fortify_3 = "";
+cgqc_config_fortify_4 = "";
+cgqc_config_fortify_5 = "";
+cgqc_config_fortify_6 = "";
+cgqc_config_fortify_7 = "";
+cgqc_config_fortify_8 = "";
+cgqc_config_fortify_9 = "";
+cgqc_config_fortify_10 = "";
+cgqc_config_fortify_list = [];
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -56,7 +68,7 @@ cgqc_flag_supply_rapide = false;
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
-//_menu_name = "AA_CGQC";
+
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
     [_menu_name, "Intro"], true] call CBA_fnc_addSetting;
@@ -107,19 +119,46 @@ _menu_name = "CGQC";
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
     [_menu_name, "Training"], false] call CBA_fnc_addSetting;
 
+// Fortify toggle
+["cgqc_config_fortify", "CHECKBOX", ["Custom Fortify", "Les items que l'outil fortify permet de construire"], 
+    [_menu_name, "Fortify"], true
+] call CBA_fnc_addSetting;
+// Item list
+["cgqc_config_fortify_1", "EDITBOX", ["Item 1:", "Item 1"], 
+    [_menu_name, "Fortify"],"Land_BagFence_Short_F"
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_2", "EDITBOX", ["Item 2:", "Item 2"], 
+    [_menu_name, "Fortify"],"Land_BagFence_Long_F"
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_3", "EDITBOX", ["Item 3:", "Item 3"], 
+    [_menu_name, "Fortify"],"Land_BagFence_Round_F"
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_4", "EDITBOX", ["Item 4:", "Item 4"], 
+    [_menu_name, "Fortify"],"Land_Plank_01_4m_F"
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_5", "EDITBOX", ["Item 5:", "Item 5"], 
+    [_menu_name, "Fortify"],"Land_Plank_01_8m_F"
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_6", "EDITBOX", ["Item 6:", "Item 6"], 
+    [_menu_name, "Fortify"],"Land_CamoNetVar_NATO"
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_7", "EDITBOX", ["Item 7:", "Item 7"], 
+    [_menu_name, "Fortify"],"Land_fortified_nest_small_EP1"
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_8", "EDITBOX", ["Item 8:", "Item 8"], 
+    [_menu_name, "Fortify"],""
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_9", "EDITBOX", ["Item 9:", "Item 9"], 
+    [_menu_name, "Fortify"],""
+] call CBA_fnc_addSetting;
+["cgqc_config_fortify_10", "EDITBOX", ["Item 10:", "Item 10"], 
+    [_menu_name, "Fortify"],""
+] call CBA_fnc_addSetting;
+
+
 /*
-["cgqc_setting_limit_ranks", "CHECKBOX",
-    ["Loadout limités aux rangs", "Limite l'inventaire mk2 selon le rang"], 
-    [_menu_name, "Limit Mags"], 
-    true
-] call CBA_fnc_addSetting;
 
 
-["cgqc_config_fortify", "EDITBOX",
-    ["Fortify:", "Les items que l'outil fortify permet de construire"], 
-    [_menu_name, "Divers"], 
-    "Land_BagFence_Short_F, Land_BagFence_Long_F, Land_BagFence_Round_F, Land_Plank_01_4m_F, Land_Plank_01_8m_F, Land_fortified_nest_small_EP1, Land_CamoNetVar_NATO"
-] call CBA_fnc_addSetting;
 
 ["cgqc_setting_limitMags_always", "CHECKBOX",
     ["Limite Mags en tout temps", "Limite le nombre de magazines par soldat"], 
