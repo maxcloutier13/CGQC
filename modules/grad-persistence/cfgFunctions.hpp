@@ -1,5 +1,5 @@
 #ifndef MODULES_DIRECTORY
-    #define MODULES_DIRECTORY modules
+    #define MODULES_DIRECTORY "cgqc\modules"
 #endif
 
 class GRAD_persistence {
@@ -57,6 +57,7 @@ class GRAD_persistence {
         file = MODULES_DIRECTORY\grad-persistence\functions\save;
 
         class deInstanceTFARRadios {};
+        class deinstanceACRERadios {}; // ACRE2 bug fix
         class getApplicableMarkers {};
         class getInventory {};
         class saveAllPlayers {};

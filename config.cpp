@@ -46,12 +46,12 @@ class cfgFunctions {
 	//CGQC functions
 	#include "cfg_functions.hpp"
 	//GRAD Persistence
-	#include "modules\grad-persistence\cfgFunctions.hpp"
+	#include "\cgqc\modules\grad-persistence\cfgFunctions.hpp"
 };
 
 // Custom events
 #include "cfg_eventhandlers.hpp"
 
 // GRAD Persistence
-#include "cfg_persistence.hpp"
+//#include "cfg_persistence.hpp"
 
