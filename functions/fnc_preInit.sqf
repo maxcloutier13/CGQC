@@ -120,7 +120,7 @@ _menu_name = "CGQC";
     [_menu_name, "Training"], false] call CBA_fnc_addSetting;
 
 // Fortify toggle
-["cgqc_config_fortify", "CHECKBOX", ["Custom Fortify", "Les items que l'outil fortify permet de construire"], 
+["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"], 
     [_menu_name, "Fortify"], true
 ] call CBA_fnc_addSetting;
 // Item list
