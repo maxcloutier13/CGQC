@@ -7,9 +7,9 @@ class CAManBase: Man {
 			condition = "!cgqc_mk2_animation_locked || cgqc_player_rank > 8";
 			class tsp_ace_animate_cancel
 			{
-				displayName = "Cancel";
+				//displayName = "Cancel Patate Poil";
 				//icon = "tsp_animate\gui\cancel.paa";
-				statement = "[_player, ''] remoteExec ['switchMove', 0]; (call tsp_fnc_playa) setVariable ['tsp_gestureStop', true];";
+				//statement = "[_player, ''] remoteExec ['switchMove', 0]; (call tsp_fnc_playa) setVariable ['tsp_gestureStop', true];";
 			};
 			class tsp_ace_animate_emotes
 			{
