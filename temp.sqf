@@ -395,3 +395,44 @@ B_T_Truck_01_Repair_F
 
 
 @CBA_A3;@ace;@ACRE2;@RHSAFRF;@RHSUSAF;@RHSGREF;@RHSSAF;@ACE Compats - RHS Compats;@Antistasi Plus 20;@JSRS SOUNDMOD;@JSRS SOUNDMOD - RHS AiO Mod Pack Sound Support;@CGQC - Addons - Basic;@CGQC - Core - Mk2;
+
+
+//Remove ACE eventhandlers
+this removeAllEventHandlers "HandleDamage";
+
+// Add an on-hit event to the VIP/HVT unit
+this addEventHandler ["HandleDamage", {
+    params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex"];
+	// Check if the damage would be fatal
+	if (_damage > 0.8) then {
+		// Make the unit pass out instead of dying
+		_unit setUnconscious true;
+		_unit setVariable ["ACE_isUnconscious", true];
+		_return = _unit call ace_medical_fnc_handleDamage;
+	};
+}];
+
+// Add a revive event to the VIP/HVT unit
+this addEventHandler ["ACE_revive", {
+    params ["_unit", "_medic", "_status", "_source"];
+    // Reset the unit's damage to 0
+    _unit setDamage 0;
+}];
+
+
+// Example 
+this setVariable ["ACE_medical_headHitMuliplier", 0.1]; 
+this setVariable ["ace_medical_fatalInjuryProbability", 0];
+this setVariable ["ace_medical_injury_bleedingCoefficient", 0.1]; 
+this addEventHandler ["HandleDamage", {  
+    params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex"];  
+ vip_health = getDammage _unit; 
+ vip_damage = _damage;
+ heartRate = _unit getVariable ["ace_medical_heartrate", "fail"];
+  if (vip_health < 0.2) then {  
+ _damage = _damage * 0.1;
+ _unit setUnconscious true;  
+ _unit setVariable ["ACE_isUnconscious", true]; 
+ _unit setDamage 0.3; 
+ };  
+}];
