@@ -71,7 +71,7 @@ _menu_name = "CGQC";
 
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
-    [_menu_name, "Intro"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Description et Intro"], true] call CBA_fnc_addSetting;
 ["cgqc_config_author", "EDITBOX", ["Auteur:", "Le nom du créateur de la map, pour display dans l'intro"], 
     [_menu_name, "Intro"], "Cpl. Quelque chose"] call CBA_fnc_addSetting;
 ["cgqc_config_mission_name", "EDITBOX", ["Nom de la mission:", "Le nom du ta mission, pour display dans l'intro"], 
