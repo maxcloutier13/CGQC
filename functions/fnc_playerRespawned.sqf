@@ -9,7 +9,10 @@ _unit setFace(_unit getVariable["Saved_Face",[]]);
 _unit enableStamina false; //Re-disable stamina, in-case 
 //["InitializePlayer", [_unit]] call BIS_fnc_dynamicGroups; //Reinit dynamic groups? Necessary?
 _setPatch = [] spawn CGQC_fnc_setPatch; //Set patch again
-hint "Check tes radios! Ça inverse parfois au respawn.";
+// Load Radio priorities
+y_mpttRadioList1 = _unit getVariable["Radio_Settings",[]];
+_success = [y_mpttRadioList1] call acre_api_fnc_setMultiPushToTalkAssignment;
+//hint "Check tes radios! Ça inverse parfois au respawn.";
 // Lower gun 
 player action ['SwitchWeapon', player, player, 250];
 sleep 5;
