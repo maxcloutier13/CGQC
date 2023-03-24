@@ -30,6 +30,7 @@ cgqc_player_hasContact = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
+cgqc_perks_diver = false;
 cgqc_perks_pilot = false;
 cgqc_perks_driver = false;
 cgqc_perks_pilot_hasCrew = false;
