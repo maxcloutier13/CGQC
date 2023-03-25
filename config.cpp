@@ -35,6 +35,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Men (Mk2)";
 	};
+	class EdSubcat_cgqc_mk1_divers
+	{
+		displayName = "Men (Mk2 Divers)";
+	};
 	class EdSubcat_cgqc_spawn
 	{
 		displayName = "Men (Spartan)";
@@ -58,6 +62,10 @@ class CfgEditorSubcategories
 	class EdSubcat_cgqc_drones
 	{
 		displayName = "Drones";
+	};
+	class EdSubcat_cgqc_boats
+	{
+		displayName = "Boats";
 	};
 	class EdSubcat_cgqc_vic_ifv
 	{

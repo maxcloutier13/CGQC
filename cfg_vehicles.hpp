@@ -1,5 +1,6 @@
 class B_T_Truck_01_box_F;
 
+
 class cgqc_vic_construction : B_T_Truck_01_box_F
 {
     scope = 2;
