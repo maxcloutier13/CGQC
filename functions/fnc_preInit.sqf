@@ -24,6 +24,8 @@ cgqc_player_oldFace = "";
 cgqc_player_slinged_helmet = "";
 cgqc_player_max = false;
 cgqc_player_23rd = false;
+cgqc_roleSwitch_done = true;
+cgqc_camoSwitch_done = true;
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasContact = false;
@@ -31,6 +33,7 @@ cgqc_player_hasContact = false;
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
 cgqc_perks_diver = false;
+cgqc_perks_para = false;
 cgqc_perks_pilot = false;
 cgqc_perks_driver = false;
 cgqc_perks_pilot_hasCrew = false;
