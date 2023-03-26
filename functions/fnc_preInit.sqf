@@ -72,7 +72,6 @@ cgqc_flag_supply_rapide = false;
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
-
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
     [_menu_name, "Description et Intro"], true] call CBA_fnc_addSetting;

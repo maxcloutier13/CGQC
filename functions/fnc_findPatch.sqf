@@ -25,6 +25,9 @@ if (!cgqc_player_known) then {
 		};
 	};
 };
+if (cgqc_player_23rd) then {
+	cgqc_player_patch = "23rd_Logo_Unit_Old";
+};
 cgqc_custom_playername = cgqc_player_patch select[11, 22];
 // dubé 76561198056436035
 // gagnon 76561199217287480
