@@ -8,6 +8,14 @@ _player_rank_name = "Soldat";
 //hintc format["Prefix: %1", _prefix];
 
 switch (true) do {
+	//Global 23rd catch 
+	case (_prefix find "[23r" == 0): {
+		//23rd tag detected
+		player setRank "SERGEANT";
+		_player_rank = 5;
+		_player_rank_name = "Adjudent";
+		cgqc_player_23rd = true;
+	};
 	case (_prefix find "sdt" == 0): {
 		player setRank "PRIVATE";
 		_player_rank = 1;

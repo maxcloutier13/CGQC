@@ -29,6 +29,7 @@ cgqc_camoSwitch_done = true;
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasContact = false;
+cgqc_player_has23rd = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
@@ -72,7 +73,6 @@ cgqc_flag_supply_rapide = false;
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
-
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
     [_menu_name, "Description et Intro"], true] call CBA_fnc_addSetting;
