@@ -41,6 +41,7 @@ cgqc_perks_pilot_hasCrew = false;
 cgqc_perks_driver_hasDriver = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
+cgqc_perks_silence = false;
 cgqc_config_fortify = false;
 cgqc_config_fortify_1 = "";
 cgqc_config_fortify_2 = "";
@@ -60,6 +61,7 @@ cgqc_perk_player_stash_on = false;
 // Zeus perks
 cgqc_zeus_crate = false;
 cgqc_zeus_cargo = false;
+cgqc_zeus_briefing = false;
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
