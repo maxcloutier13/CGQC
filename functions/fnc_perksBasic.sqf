@@ -11,8 +11,8 @@ try {
         case "cone":
         {
             // Setup trigger
-			y_act = "{[] call ace_volume_fnc_lowerVolume; } forEach (allUnits inAreaArray thisTrigger)";
-			y_deAct = "{if (vehicle _x == _x) then {[] call ace_volume_fnc_restoreVolume;};} forEach allPlayers;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false;hint 'Cone of silence: Off';";
+			y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
+			y_deAct = "[] call ace_volume_fnc_restoreVolume;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false; hint 'Cone of silence: Off';";
 			_int = 2;
 			// Create trigger
 			cgqc_cone_silence = createTrigger ["EmptyDetector",getPos player, true];
@@ -26,12 +26,15 @@ try {
         };
         case "cone_off":
         {
+            //Delete trigger zone
             deleteVehicle cgqc_cone_silence;
-            {if (vehicle _x == _x) then {[] call ace_volume_fnc_restoreVolume;};} forEach allPlayers;
+            //Restore volume
+            [] call ace_volume_fnc_restoreVolume;
             cgqc_perks_silence = false;
             hint "Cone of silence: Off";
+            sleep 5;
+            hintSilent "";
         };
-        thisTrigger triggerAttachVehicle [ player ];
         case "stash":
         {
             cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
