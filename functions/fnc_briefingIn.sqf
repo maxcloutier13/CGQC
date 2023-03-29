@@ -5,4 +5,5 @@ if (!trgBrief_player_lowered) then {
 	[0.7] call acre_api_fnc_setSelectableVoiceCurve;
 };
 trgBrief_player_lowered = true;
-hintSilent "Briefing! Volume extérieur réduit.";
+_txt = parseText ("Briefing in progress..." + "<br/>" + "External volume reduced.");
+hintSilent _txt;
