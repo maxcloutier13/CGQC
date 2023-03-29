@@ -5,4 +5,5 @@ if (vehicle player == player && trgBrief_player_lowered) then {
 	[] call ace_volume_fnc_restoreVolume;
 	trgBrief_player_lowered = false;
 };
-hintSilent "Briefing en cours. Votre volume de voix est réduit.";
+_txt = parseText ("Briefing!!!" + "<br/>" + "You are too far.");
+hintSilent _txt;

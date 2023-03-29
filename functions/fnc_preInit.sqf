@@ -62,6 +62,8 @@ cgqc_perk_player_stash_on = false;
 cgqc_zeus_crate = false;
 cgqc_zeus_cargo = false;
 cgqc_zeus_briefing = false;
+cgqc_zeus_briefingCmd = false;
+cgqc_zeus_mapRestricted = true;
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
@@ -112,6 +114,12 @@ _menu_name = "CGQC";
 ["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
 
+// Briefing  ===============================================================================================
+["cgqc_setting_briefingCmd_area","SLIDER", ["Commander's Briefing area size", "Square around the Zeus"],
+[_menu_name, "Briefing"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
+["cgqc_setting_briefing_area","SLIDER", ["General Briefing area size", "Square around the Zeus"],
+[_menu_name, "Briefing"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
+
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
     [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
@@ -161,16 +169,75 @@ _menu_name = "CGQC";
     [_menu_name, "Fortify"],""
 ] call CBA_fnc_addSetting;
 
+// === Custom arsenal categories ===============================================================================
+private _medical = [
+	"ACE_fieldDressing",
+	"ACE_elasticBandage",
+	"ACE_packingBandage",
+	"ACE_quikclot",
+	"ACE_bloodIV",
+	"ACE_bloodIV_250",
+	"ACE_bloodIV_500",
+	"ACE_epinephrine",
+	"Empty_bloodIV_250",
+	"Empty_bloodIV_500",
+	"ACE_morphine",
+	"ACE_personalAidKit",
+	"ACE_plasmaIV",
+	"ACE_plasmaIV_250",
+	"ACE_plasmaIV_500",
+	"ACE_salineIV",
+	"ACE_salineIV_250",
+	"ACE_salineIV_500",
+	"ACE_splint",
+	"ACE_surgicalKit",
+	"ACE_tourniquet",
+	"FSGm_ItemMedicBag",
+	"FF_Painkiller",
+	"ACE_adenosine",
+	"ACE_bodyBag"
+];
 
-/*
+private _electronics = [
+	"ACRE_PRC117F",
+	"ACRE_PRC148",
+	"ACRE_PRC152",
+	"ACRE_PRC343",
+	"ACRE_PRC77",
+	"ACE_ATragMX",
+	"ACRE_BF888S",
+	"ACE_Cellphone",
+	"ACE_DAGR",
+	"ACE_DeadManSwitch",
+	"ACE_Kestrel4500",
+	"ACE_M26_Clacker",
+	"Ace_Clacker",
+	"Ace_Microdagr",
+	"MineDetector",
+	"ACRE_SEM52SL",
+	"ACRE_SEM70",
+	"ACE_UAVBattery",
+	"Laserbatteries",
+	"ACRE_VHF30108SPIKE",
+	"ACRE_VHF30108",
+	"ACRE_VHF30108MAST",
+	"ACE_Flashlight_KSF1",
+	"ace_flashlight_xl50",
+	"ACE_IR_Strobe_Item",
+	"ACE_HuntIR_monitor",
+	"ACE_Flashlight_MX991",
+	"REV_pelican_item",
+	"REV_darter_item",
+	"REV_demine_item",
+	"ItemAndroid",
+	"ItemcTabHCam",
+	"ItemcTab",
+	"WBK_HeadLampItem"
+];
+
+[_medical, "Medical", "cgqc_2022\textures\medical.paa", 0] call ace_arsenal_fnc_addRightPanelButton;
+[_electronics, "Electronics", "cgqc_2022\textures\electronics.paa", 1] call ace_arsenal_fnc_addRightPanelButton;
 
 
-
-["cgqc_setting_limitMags_always", "CHECKBOX",
-    ["Limite Mags en tout temps", "Limite le nombre de magazines par soldat"], 
-    [_menu_name, "Loadouts"], 
-    false
-] call CBA_fnc_addSetting;
-*/
-
+// **************************************************************************************************************
 cgqc_preInit_done = true;

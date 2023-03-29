@@ -38,4 +38,3 @@ _type = _this select 0;
 		};	
 	};
 };
-
