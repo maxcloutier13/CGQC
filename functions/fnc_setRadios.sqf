@@ -73,6 +73,8 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel;
 			waitUntil {sleep 0.5;!isNil "_handRadio"};
 			[_handRadio, 1] call acre_api_fnc_setRadioChannel;
+			//Lower volume of the 148 a little bit 
+			[_handRadio,0.5] call acre_api_fnc_setRadioVolume;
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 			_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;

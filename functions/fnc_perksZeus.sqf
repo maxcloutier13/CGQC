@@ -2,26 +2,28 @@
 // Perks for the gods
 
 _type = _this select 0;
-y_time = _this select 1;
+briefing_time = _this select 1;
 
 switch (_type) do {
 	case "briefing":
 	{
 		// Briefing started
 		cgqc_zeus_briefing = true;
+		publicVariable "cgqc_zeus_briefing";
 		// Create briefing marker 
 		_markerstr = createMarker ["cgqcBriefing", player];
 		"cgqcBriefing" setMarkerType "mil_objective"; 
 		"cgqcBriefing" setMarkerText "Briefing";
 		"cgqcBriefing" setMarkerColor "colorBLUFOR";
 		//Timer before briefing start 
-		while {y_time > 0 && cgqc_zeus_briefing} do { 
-			_min = floor (y_time / 60);
-			_sec =  y_time - (_min * 60); 
+		while {briefing_time > 0 && cgqc_zeus_briefing} do { 
+			_min = floor (briefing_time / 60);
+			_sec =  briefing_time - (_min * 60); 
 			_min_sec = format["%1:%2", _min, _sec];
-			hintSilent format["Briefing Général dans: \n %1", _min_sec];
+			_msg = format["Briefing Général dans: \n %1", _min_sec];
+			[_msg] remoteExec ["hintSilent"];
 			"cgqcBriefing" setMarkerText format["Briefing dans %1", _min_sec];
-			y_time = y_time - 1;   
+			briefing_time = briefing_time - 1;   
 			sleep 1; 
 		};
 		if(cgqc_zeus_briefing) then {
@@ -29,17 +31,18 @@ switch (_type) do {
 			jibrm_restrictmarkers_shareDistance = 200;
 			publicVariable "jibrm_restrictmarkers_shareDistance";
 			// Cone of silence for briefing
-			// Setup trigger
-			y_act = "{[] call ace_volume_fnc_lowerVolume; } forEach (allUnits inAreaArray thisTrigger)";
-			y_deAct = "{if (vehicle _x == _x) then {[] call ace_volume_fnc_restoreVolume;};} forEach allPlayers";
+			// Act: lowerVolume on units_in. LowerVoice on units_out 
+			_act = format ["['\cgqc\functions\fnc_briefingStart.sqf'] remoteExec ['execVM',%1];", player];
+			_deAct = "";
 			_int = 2;
 			// Create trigger
-			cgqc_briefing_trg = createTrigger ["EmptyDetector",getPos player, true];
-			cgqc_briefing_trg setTriggerArea [20, 20, 0, true];
+			cgqc_briefing_trg = createTrigger ["EmptyDetector",getPos player, false];
+			cgqc_briefing_trg setTriggerArea [5, 5, getDir player, true];
 			cgqc_briefing_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-			cgqc_briefing_trg setTriggerStatements ["this", y_act, y_deAct];
+			cgqc_briefing_trg setTriggerStatements ["this", _act, _deAct];
 			cgqc_briefing_trg setTriggerInterval _int;
-			hint "BRIEFING NOW!!!";
+		
+			["BRIEFING NOW!!!"] remoteExec ["hint"];
 			
 			// Redo the briefing marker in case zeus moved
 			_markerstr = createMarker ["cgqcBriefing", player];
@@ -47,23 +50,27 @@ switch (_type) do {
 			"cgqcBriefing" setMarkerText "BRIEFING NOW!!!";
 			"cgqcBriefing" setMarkerColor "ColorRed";
 			sleep 10;
-			hintSilent "";
+			[""] remoteExec ["hintSilent"];
 		};
 	};
 	case "briefing_stop":
 	{
 		// Briefing done
 		cgqc_zeus_briefing = false;
-		hint "Briefing stop!";
+		publicVariable "cgqc_zeus_briefing";
+		["Briefing done!"] remoteExec ["hint"];
 		// Delete briefing marker 
 		deleteMarker "cgqcBriefing";
 		//Return to default map sharing distance
 		jibrm_restrictmarkers_shareDistance = 5; 
 		publicVariable "jibrm_restrictmarkers_shareDistance";
-		// Delete cone of silence 
-		deleteVehicle cgqc_briefing_trg;
-		// Return hearing to everyone on foot in case.
-		{if (vehicle _x == _x) then {[] call ace_volume_fnc_restoreVolume;};} forEach allPlayers
+		// Delete trigger of silence
+		if !(isNil "cgqc_briefing_trg") then {
+			deleteVehicle cgqc_briefing_trg;
+		};	 
+		// Remote reset volumes on everyone
+		{['\cgqc\functions\fnc_briefingStop.sqf'] remoteExec ['execVM',vehicle _x];
+		} forEach allPlayers;
 	};
 	case "delete": {
 		{
