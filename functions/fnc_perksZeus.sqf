@@ -27,7 +27,7 @@ switch (_type) do {
 		"cgqcBriefingCmd" setMarkerText "Commander's Briefing";
 		"cgqcBriefingCmd" setMarkerColor "colorBLUFOR";
 		//Super high sharing distance for briefing.
-		jibrm_restrictmarkers_shareDistance = 200;
+		jibrm_restrictmarkers_shareDistance = 2000;
 		publicVariable "jibrm_restrictmarkers_shareDistance";
 		// Cone of silence for briefing
 		// Act: lowerVolume on units_in. LowerVoice on units_out 
