@@ -6,6 +6,7 @@
 cgqc_preInit_done = false;
 cgqc_postInitClient_done = false;
 cgqc_postInitServer_done = false;
+cgqc_2023_preInit_done = false;
 cgqc_intro_running = false;
 // *** Player **********************
 cgqc_player_known = true;
@@ -30,6 +31,7 @@ cgqc_camoSwitch_done = true;
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasContact = false;
 cgqc_player_has23rd = false;
+cgqc_player_has2023 = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
@@ -71,6 +73,12 @@ cgqc_mk2_animation_locked = false;
 // *** Refueling *****************
 cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
+
+// Check what DLC the player owns 
+cgqc_player_ownedDLCs = getDLCs 1;
+cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
+cgqc_player_has2023 = isClass(configFile >> "cfgPatches" >> "CGQC_2022"); // Returns true if 2023 is enabled
+cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core"); // Returns true if 23rd is enabled
 
 // Acre default radio 
 ["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
@@ -169,6 +177,25 @@ _menu_name = "CGQC";
     [_menu_name, "Fortify"],""
 ] call CBA_fnc_addSetting;
 
+// Player custom Options ===================================================================================================
+// Check that 2023 is not present 
+if (!cgqc_player_has2023) then {
+_menu_name = "CGQC Player settings";
+	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"], 
+		[_menu_name, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
+	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"], 
+		[_menu_name, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
+	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"], 
+		[_menu_name, "Sidearm Perso (Vanilla)"], "30Rnd_9x21_Mag"] call CBA_fnc_addSetting;
+	["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
+		[_menu_name, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
+	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"], 
+		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"], 
+		[_menu_name, "Sidearm Perso (Vanilla)"], "muzzle_snds_l"] call CBA_fnc_addSetting;
+	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"], 
+		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+};
 // === Custom arsenal categories ===============================================================================
 private _medical = [
 	"ACE_fieldDressing",
