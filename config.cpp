@@ -94,6 +94,7 @@ class cfgVehicles {
 	#include "cfg_flags.hpp"
 	#include "cfg_units.hpp"
 	#include "cfg_backpacks.hpp"
+	#include "cfg_containers.hpp"
 	#include "cfg_items.hpp"
 	#include "cfg_actions.hpp"
 	#include "cfg_vehicles.hpp"

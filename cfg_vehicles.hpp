@@ -1,5 +1,114 @@
+class Air;
+class Car;
+class Tank;
 class B_T_Truck_01_box_F;
 
+// Class overrides for spares/Acre settings
+class Car_F : Car{
+    ace_cargo_space = 8;
+    class AcreRacks {
+        class Rack_1 {
+            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            shortName = "Rack1";
+            componentName = "ACRE_VRC103";
+            allowedPositions[] = {"driver", {"cargo", 0}, "external"};
+            mountedRadio = "ACRE_PRC117F";
+            intercom[] = {};
+        };
+        class Rack_2: Rack_1 {
+            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            shortName = "Rack2";
+        };
+    };
+    class EventHandlers
+    {
+         init = "[_this select 0, 'car'] execVM '\cgqc\functions\fnc_addSpares.sqf'";
+    };
+};
+
+class Helicopter : Air
+{
+    class ViewPilot;
+    class Turrets;
+    class HitPoints {
+        class HitGlass1;
+        class HitGlass2;
+        class HitGlass3;
+        class HitGlass4;
+        class HitGlass5;
+        class HitGlass6;
+        class HitHull;
+        class HitEngine;
+        class HitAvionics;
+    };
+    class EventHandlers {
+        init = "[_this select 0, 'air'] execVM '\cgqc\functions\fnc_addSpares.sqf';";
+    };
+    class AcreRacks {
+        class Rack_1 {
+            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            shortName = "Rack1";
+            componentName = "ACRE_VRC103";
+            allowedPositions[] = {"driver", "gunner", "copilot", "external"}; // Attack helicopters have "gunner" copilots usually
+            mountedRadio = "ACRE_PRC117F";
+            intercom[] = {};
+        };
+
+        class Rack_2: Rack_1 {
+            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            shortName = "Rack2";
+        };
+    };
+};
+
+// APC Acre settings--------------------------------------------------------------------------
+class Wheeled_APC_F: Car_F {
+    ace_cargo_space = 8;
+    class AcreRacks {
+        class Rack_1 {
+            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            shortName = "Rack1";
+            componentName = "ACRE_VRC103";
+            allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+            mountedRadio = "ACRE_PRC117F";
+            intercom[] = {};
+        };
+        class Rack_2 {
+            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            shortName = "Rack2";
+            componentName = "ACRE_VRC103";
+            allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+            mountedRadio = "ACRE_PRC117F";
+            intercom[] = {};
+        };
+     };
+};
+
+class Tank_F: Tank {
+    ace_cargo_space = 8;
+    class AcreRacks {
+        class Rack_1 {
+            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            shortName = "Rack1";
+            componentName = "ACRE_VRC103";
+            allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+            mountedRadio = "ACRE_PRC117F";
+            intercom[] = {};
+        };
+        class Rack_2 {
+            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            shortName = "Rack2";
+            componentName = "ACRE_VRC103";
+            allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+            mountedRadio = "ACRE_PRC117F";
+            intercom[] = {};
+        };
+    };
+    class EventHandlers
+    {
+         init = "[_this select 0, 'tank'] execVM '\cgqc\functions\fnc_addSpares.sqf'";
+    };
+};
 
 class cgqc_vic_construction : B_T_Truck_01_box_F
 {
@@ -17,23 +126,9 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
 			"\A3\Soft_F_Exp\Truck_01\Data\truck_01_ammo_olive_CO.paa",
 			"\CGQC\vehicles\cgqc_vic_construction_container.paa"
 		};
-    class AcreRacks {
-        class Rack_1 {
-            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
-            shortName = "Rack1";
-            componentName = "ACRE_VRC103";
-            allowedPositions[] = {"driver", {"cargo", 0}, "external"};
-            mountedRadio = "ACRE_PRC117F";
-            intercom[] = {};
-        };
-        class Rack_2: Rack_1 {
-            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
-            shortName = "Rack2";
-        };
-    };
 	class EventHandlers
     {
-    	init = "[_this] execVM '\cgqc\vehicles\loadout_construction.sqf'"; 
+    	init = "[_this] execVM '\cgqc\vehicles\loadout_construction.sqf';[_this select 0, 'car'] execVM '\cgqc\functions\fnc_addSpares.sqf'"; 
     };
     //#include "vehicles\cgqc_vic_loadout_construction.sqf"
 };
