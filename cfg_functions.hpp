@@ -35,10 +35,10 @@ class CGQC {
             file = "\cgqc\functions\fnc_setRadios.sqf";
             description = "Set radio setups depending on role";
         };*/
-        class lockChannels {
+       /* class lockChannels {
             file = "\cgqc\functions\fnc_lockChannels.sqf";
             description = "Lock some of the comms channels";
-        };  
+        };  */
         class nameRadios {
             file = "\cgqc\functions\fnc_nameRadios.sqf";
             description = "Set radio channel names";
