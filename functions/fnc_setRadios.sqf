@@ -84,8 +84,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/Listen-Only/Interteam</t>";
-			//Lock superfluous channels
-			["low"] spawn CGQC_fnc_lockChannels;
 		};
 		case "spartan_1": { //Team Lead
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -112,8 +110,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam <br/> 
 			Radio3:Speaker/152/HQ</t>";
-			//Lock superfluous channels
-			["low"] spawn CGQC_fnc_lockChannels;
 		};
 		case "spartan_2": { //Spartan 2iC
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -131,8 +127,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam</t>";
-			//Lock superfluous channels
-			["low"] spawn CGQC_fnc_lockChannels;
 		};
 		case "centaure": {
 			// Emergency 152
@@ -161,8 +155,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/117/Inter-Centaure<br/> 
 			Radio2:Droite/117/Centaure-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
-			//Lock superfluous channels
-			["low"] spawn CGQC_fnc_lockChannels;
 		};
 		case "griffon":	{
 			// Emergency 152
@@ -188,9 +180,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/117/Inter-Griffon<br/> 
 			Radio2:Droite/117/Griffon-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
-			//Channel setup 
-			//Lock superfluous channels
-			["high"] spawn CGQC_fnc_lockChannels;
 		};
 		case "jtac": {
 			// Radios
@@ -216,8 +205,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/152/Inter-Recon<br/> 
 			Radio2:Droite/117/Spartan-HQ<br/> 
 			Radio3:Droite/117/Griffon-HQ</t>";
-			//Lock superfluous channels
-			["high"] spawn CGQC_fnc_lockChannels;
 		};
 		case "hq": {
 			// 117f's
@@ -243,8 +230,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/117/Spartan<br/> 
 			Radio2:Droite/117/Griffon<br/> 
 			Radio3:Droite/117/Centaure</t>";
-			//Lock superfluous channels
-			["high"] spawn CGQC_fnc_lockChannels;
 		};
 		case "recon": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -264,8 +249,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/152/Inter/Recon<br/> 
 			Radio2:Droite/152/Spartan-HQ</t>";
-			//Lock superfluous channels
-			["high"] spawn CGQC_fnc_lockChannels;
 		};
 		case "centaure_pieton":	{
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -285,24 +268,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/152/Inter-Centaure<br/> 
 			Radio2:Droite/152/Centaure-HQ</t>";
-			//Lock superfluous channels
-			["high"] spawn CGQC_fnc_lockChannels;
-			/*
-			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-			waitUntil {sleep 0.5;!isNil "_handRadio"};
-			[_handRadio, 3] call acre_api_fnc_setRadioChannel;
-			// Set sides 
-			_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-			// Add eventHandler to auto-connect to racks 
-			cgqc_event_driver = player addEventHandler ["GetInMan", {
-				params ["_unit", "_role", "_vehicle", "_turret"];	
-				if (_role == "driver" || _role == "commander" || _role == "gunner") then 
-				{
-					["set_centaure"] execVM "\cgqc\functions\fnc_setRadios.sqf";
-				};
-			}];
-			hintSilent "Radio1:Gauche/152/Centaure-HQ";
-			*/
 		};
 		case "griffon_pieton": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -322,24 +287,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/117/Inter-Griffon<br/> 
 			Radio2:Droite/117/Griffon-HQ</t>";
-			//Channel setup 
-			//Lock superfluous channels
-			["high"] spawn CGQC_fnc_lockChannels;
-			/*
-			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
-			waitUntil {sleep 0.5;!isNil "_handRadio"};
-			[_handRadio, 2] call acre_api_fnc_setRadioChannel;
-			// Set sides 
-			_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-			cgqc_event_driver = player addEventHandler ["GetInMan", {
-				params ["_unit", "_role", "_vehicle", "_turret"];	
-				if (_role == "driver" || _role == "commander" || _role == "gunner") then 
-				{
-					["set_griffon"] execVM "\cgqc\functions\fnc_setRadios.sqf";
-				};
-			}];
-			hintSilent "Radio1:Gauche/152/Griffon-HQ";
-			*/
 		};
 		case "set_griffon":	{
 			_vic = vehicle player;
@@ -437,8 +384,6 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			waitUntil {sleep 0.5;!isNil "_radio_2"};
 			_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			hint "Training Radio Setup";
-			// Disable channels except global
-			["init"] spawn CGQC_fnc_lockChannels;
 		};
 		default	{
 			hint "fnc_setRadios fucked up. ";
