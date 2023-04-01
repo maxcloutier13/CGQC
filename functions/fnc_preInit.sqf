@@ -8,6 +8,9 @@ cgqc_postInitClient_done = false;
 cgqc_postInitServer_done = false;
 cgqc_2023_preInit_done = false;
 cgqc_intro_running = false;
+cgqc_intro_done = false;
+cgqc_welcome_message = "";
+cgqc_welcome_pic = "";
 // *** Player **********************
 cgqc_player_known = true;
 cgqc_player_patch = "";
@@ -66,6 +69,9 @@ cgqc_zeus_cargo = false;
 cgqc_zeus_briefing = false;
 cgqc_zeus_briefingCmd = false;
 cgqc_zeus_mapRestricted = true;
+cgqc_zeus_mapRestricted_count = 0;
+cgqc_zeus_mapRestricted_txt = "";
+cgqc_zeus_mapRestricted_txt_on = false;
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;

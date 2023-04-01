@@ -37,4 +37,5 @@ _type = _this select 0;
 			ace_hearing_disableVolumeUpdate = false;
 		};	
 	};
+	cgqc_intro_done = true;
 };

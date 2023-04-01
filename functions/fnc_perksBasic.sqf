@@ -8,6 +8,12 @@ waitUntil {cgqc_player_rank_found};
 try {
     disableUserInput true;
     switch (_type) do {
+        case "fix":
+        {
+            hint "Sound: Volumes reset";
+            [] call ace_volume_fnc_restoreVolume;
+            [0.7] call acre_api_fnc_setSelectableVoiceCurve;
+        };
         case "cone":
         {
             // Setup trigger

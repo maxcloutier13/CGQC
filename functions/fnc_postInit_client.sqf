@@ -24,6 +24,9 @@ _set = [] spawn CGQC_fnc_setPatch;
 _brief = [] call CGQC_fnc_briefing; 
 
 // Event Handers ----------------
+//On map click (_pos, _units,_shift,_alt)
+onMapSingleClick "execVM '\cgqc\functions\fnc_mapShare_list.sqf';false;";
+
 //Respawn handler 
 player addMPEventHandler ["MPRespawn", {
 	params ["_unit", "_corpse"];

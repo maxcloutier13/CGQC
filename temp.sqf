@@ -436,3 +436,14 @@ this addEventHandler ["HandleDamage", {
  _unit setDamage 0.3; 
  };  
 }];
+
+
+
+// upgrade to welcome screen 
+ [] spawn {
+_cgqc_welcome_pic = parseText format["<img size= '3' style='vertical-align:bottom' shadow='false' image='\cgqc\patches\%1.paa'/>", cgqc_player_patch]; 
+cgqc_welcome_message = parseText format["%1<br /><t font='PuristaBold' size='1.6'>%2</t><br />%3", "Whats up ",cgqc_player_steamName," ready to blow shit up?"]; 
+[ _cgqc_welcome_pic, 1, 0.8, 6, 2 ] spawn BIS_fnc_dynamicText; 
+sleep 1;
+  // Welcome msg as textTiles  
+[cgqc_welcome_message, [1.35,1,1,1], nil, 4, [3,3], 0] spawn BIS_fnc_textTiles;};
