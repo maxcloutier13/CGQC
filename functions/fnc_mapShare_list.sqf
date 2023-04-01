@@ -21,7 +21,7 @@ if (!cgqc_zeus_mapRestricted_txt_on && cgqc_intro_done) then {
 			cgqc_zeus_mapRestricted_txt = parseText(cgqc_zeus_mapRestricted_txt);
 		}else{
 			cgqc_zeus_mapRestricted_txt = parseText ("Alone"  + "<br/>" + "Map Private");
-		};
+		}; 
 	}; 
 	[cgqc_zeus_mapRestricted_txt, 0.9, 0.5, 5, 0] spawn BIS_fnc_dynamicText;
 	[] spawn {
