@@ -16,7 +16,6 @@ _beret = [] spawn CGQC_fnc_getRankedBeret;
 // Set and keep patch 
 _set = [] spawn CGQC_fnc_setPatch;
 
-
 // Dynamic group -------------------------------------------------------------------------------------------------
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
@@ -72,9 +71,6 @@ player addEventHandler [ "HandleRating", {
 		_return
 	}
 ];
-
-//Lock channels by default 
-["init"] spawn CGQC_fnc_lockChannels;
 
 //Sets radio channel names 
 [0] spawn CGQC_fnc_nameRadios;

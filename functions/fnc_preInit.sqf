@@ -1,6 +1,10 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
 
+// Start with a silent black screen. 
+0 fadeSound 0;
+titleCut ["", "BLACK FADED", 999];
+
 // CGQC Variables ===================================================================================================
 // *** Init **********************
 cgqc_preInit_done = false;
@@ -104,8 +108,11 @@ _menu_name = "CGQC";
 ["cgqc_setting_show_welcome", "CHECKBOX", ["Show Msg de Bienvenue", "Message de bienvenue avec la patch si dispo"], 
     [_menu_name, "Skip"], true] call CBA_fnc_addSetting;
 // Channels =================================================================================================
-["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
-    [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
+//["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
+//   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
+// Spares =================================================================================================
+["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"], 
+[_menu_name, "Spares in Vehicles"], true] call CBA_fnc_addSetting;
 // Radio stuff ==============================================================================================
 ["cgqc_config_DefaultRadios", "CHECKBOX", ["Radios CGQC", "Utilise les noms de channels CGQC par défaut"], 
     [_menu_name, "Radios"], true] call CBA_fnc_addSetting;
