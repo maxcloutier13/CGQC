@@ -27,11 +27,12 @@ switch (_type) do {
 		"cgqcBriefingCmd" setMarkerText "Commander's Briefing";
 		"cgqcBriefingCmd" setMarkerColor "colorBLUFOR";
 		//Super high sharing distance for briefing.
-		jibrm_restrictmarkers_shareDistance = 200;
+		jibrm_restrictmarkers_shareDistance = 2000;
 		publicVariable "jibrm_restrictmarkers_shareDistance";
 		// Cone of silence for briefing
-		// Act: lowerVolume on units_in. LowerVoice on units_out 
-		_act = format ["['\cgqc\functions\fnc_briefingCmdStart.sqf'] remoteExec ['execVM',%1];", player];
+		// Run code directly instead of with the activation. Trigger is only for getting player list
+		_startBriefing = execVM "\cgqc\functions\fnc_briefingCmdStart.sqf";
+		_act = "";
 		_deAct = "";
 		_int = 2;
 		// Create trigger
@@ -86,7 +87,8 @@ switch (_type) do {
 			publicVariable "jibrm_restrictmarkers_shareDistance";
 			// Cone of silence for briefing
 			// Act: lowerVolume on units_in. LowerVoice on units_out 
-			_act = format ["['\cgqc\functions\fnc_briefingStart.sqf'] remoteExec ['execVM',%1];", player];
+			_startBriefing = execVM "\cgqc\functions\fnc_briefingStart.sqf";
+			_act = "";
 			_deAct = "";
 			_int = 2;
 			// Create trigger
