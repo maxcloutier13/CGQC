@@ -31,11 +31,14 @@ _type = _this select 0;
 			"dynamicBlur" ppEffectCommit 0;     
 			"dynamicBlur" ppEffectAdjust [0.0];  
 			"dynamicBlur" ppEffectCommit 5;  
-			titleCut ["", "BLACK IN", 10];
+			titleCut ["", "BLACK IN", 8];
 			sleep 10;
 			cgqc_intro_running = false;
 			ace_hearing_disableVolumeUpdate = false;
 		};	
+	}else {
+		titleCut ["", "BLACK IN", 1];
+		1 fadeSound 1;
 	};
 	cgqc_intro_done = true;
 };
