@@ -1,6 +1,6 @@
 // --- setPatch ----------------------------------------------------------
 // Set player patch and keeps it set
-waitUntil {!isNil "cgqc_player_patch_found"};
+waitUntil {cgqc_player_patch_found};
 //Set patch initially
 player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
 [ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
