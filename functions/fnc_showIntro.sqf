@@ -37,6 +37,7 @@ _type = _this select 0;
 			ace_hearing_disableVolumeUpdate = false;
 		};	
 	}else {
+		cgqc_intro_skipped = true;
 		titleCut ["", "BLACK IN", 1];
 		1 fadeSound 1;
 	};

@@ -37,7 +37,12 @@ if (cgqc_setting_show_welcome) then {
 
 	};
 	waitUntil {cgqc_intro_done};
-	sleep 5;
+	if (cgqc_intro_skipped) then {
+		sleep 10;
+	} else{
+		sleep 5;
+	};
+	
 	if (cgqc_player_known) then {
 		// Image in small at right of screen
 		[ cgqc_welcome_pic, 1, 0.8, 6, 2 ] spawn BIS_fnc_dynamicText; 
