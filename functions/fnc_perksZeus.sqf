@@ -10,12 +10,14 @@ switch (_type) do {
 		jib_restrictmarkers_enabled = true;
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = true;
+		hint "Map Sharing Restricted";
 	};
 	case "mapshare":
 	{
 		jib_restrictmarkers_enabled = false;
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = false;
+		hint "Map Sharing UN-Restricted";
 	};
 	case "briefingCmd":
 	{
