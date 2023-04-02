@@ -22,6 +22,7 @@ if (cgqc_setting_show_welcome) then {
 			//cgqc_welcome_pic = "<img size= '4' style='vertical-align:bottom' shadow='false' align='right' image='\cgqc\textures\23rd_logo_mod_ca.paa'/>";
 		} else { //CGQC it is
 			cgqc_welcome_pic = format["<img size= '3' style='vertical-align:bottom' shadow='false' image='\cgqc\patches\%1.paa'/>", cgqc_player_patch]; 
+			cgqc_player_rank_icon = format["<img size= '3' style='vertical-align:bottom' shadow='false' image='\cgqc\patches\cgqc_rank_%1.paa'/>", cgqc_player_rank];
 			//cgqc_welcome_pic = format["<img size= '4' style='vertical-align:bottom' shadow='false' align='right' image='\cgqc\patches\%1.paa'/>", cgqc_player_patch];
 		};
 		//cgqc_welcome_message = format["<t size='2' >%1 %2!</t><br/><t>%3</t>", _cgqc_welcome, cgqc_player_steamName, _cgqc_message];
@@ -37,6 +38,16 @@ if (cgqc_setting_show_welcome) then {
 
 	};
 	waitUntil {cgqc_intro_done};
+	if (cgqc_player_rank_icon != "") then {
+		[cgqc_player_rank_icon, 1, 0.8, 6, 2 ] spawn BIS_fnc_dynamicText;
+		sleep 1;
+		//_showRank = parseText format["<t font='PuristaBold' size='1.6'>%1</t>", cgqc_player_rank_name ];
+		//[_showRank, [1.35,1,1,1], nil, 4, [3,3], 0] spawn BIS_fnc_textTiles; 
+		[[ 
+			["Rang: ", "align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"], 
+			[format ["%1", cgqc_player_rank_name], "align = 'center' shadow = '1' size = '1.2'", "##EFEFEF"]
+		]] spawn BIS_fnc_typeText2;
+	};
 	if (cgqc_intro_skipped) then {
 		sleep 10;
 	} else{

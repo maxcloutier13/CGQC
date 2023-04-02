@@ -19,22 +19,28 @@ if (cgqc_player_23rd) then {
 		case 5: { // Adju
 			cgqc_player_rank_beret = "cgqc_beret_gray"; 
 		};
-		case 6: { // SLdt
+		case 6: { // AdjuM
+			cgqc_player_rank_beret = "cgqc_beret_gray"; 
+		};
+		case 7: { // AdjuC
+			cgqc_player_rank_beret = "cgqc_beret_gray"; 
+		};
+		case 8: { // SLdt
 			cgqc_player_rank_beret = "cgqc_beret_blue";// Officiers
 		};
-		case 7: { // Lieutenant
+		case 9: { // Lieutenant
 			cgqc_player_rank_beret = "cgqc_beret_blue";
 		};
-		case 8: { // Capitaine
+		case 10: { // Capitaine
 			cgqc_player_rank_beret = "cgqc_beret_blue";
 		};
-		case 9: { // Major
+		case 11: { // Major
 			cgqc_player_rank_beret = "cgqc_beret_red";
 		};
-		case 10: { // L-Col
+		case 12: { // L-Col
 			cgqc_player_rank_beret = "cgqc_beret_red";
 		};
-		case 11: { // Colonel
+		case 13: { // Colonel
 			cgqc_player_rank_beret = "cgqc_beret_red";
 		};
 		default	{

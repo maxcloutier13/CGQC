@@ -39,37 +39,48 @@ switch (true) do {
 	};
 	case (_prefix find "adju" == 0):{
 		player setRank "SERGEANT";
-		_player_rank = 5;
-		_player_rank_name = "Adjudent";
+		if (_prefix find "adjum" == 0) then {
+			//Adju Maitre
+			_player_rank = 6;
+			_player_rank_name = "Adjudent Maître";
+		} else if (_prefix find "adjuc" == 0) then {
+			//Adju chef 
+			_player_rank = 7;
+			_player_rank_name = "Adjudent Chef";
+		} else {
+			//Adju tout court
+			_player_rank = 5;
+			_player_rank_name = "Adjudent";
+		};
 	};
 	case (_prefix find "slt" == 0):{
 		player setRank "LIEUTENANT";
-		_player_rank = 6;
+		_player_rank = 8;
 		_player_rank_name = "Sous-Lieutenant";
 	};
 	case (_prefix find "lt" == 0):{
 		player setRank "LIEUTENANT";
-		_player_rank = 7;
+		_player_rank = 9;
 		_player_rank_name = "Lieutenant";
 	};
 	case (_prefix find "capt" == 0):{
 		player setRank "CAPTAIN";
-		_player_rank = 8;
+		_player_rank = 10;
 		_player_rank_name = "Capitaine";
 	};
 	case (_prefix find "maj" == 0):{
 		player setRank "MAJOR";
-		_player_rank = 9;
+		_player_rank = 11;
 		_player_rank_name = "Major";
 	};
 	case (_prefix find "lcol" == 0):{
 		player setRank "COLONEL";
 		_player_rank_name = "Lieutenant Colonel";
-		_player_rank = 10;
+		_player_rank = 12;
 	};
 	case (_prefix find "col" == 0):{
 		player setRank "COLONEL";
-		_player_rank = 11;
+		_player_rank = 13;
 		_player_rank_name = "Colonel";
 	};
 	default
