@@ -1,10 +1,6 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
 
-// Start with a silent black screen. 
-0 fadeSound 0;
-titleCut ["", "BLACK FADED", 999];
-
 // CGQC Variables ===================================================================================================
 // *** Init **********************
 cgqc_preInit_done = false;
@@ -13,6 +9,7 @@ cgqc_postInitServer_done = false;
 cgqc_2023_preInit_done = false;
 cgqc_intro_running = false;
 cgqc_intro_done = false;
+cgqc_intro_skipped = false;
 cgqc_welcome_message = "";
 cgqc_welcome_pic = "";
 // *** Player **********************
