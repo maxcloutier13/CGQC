@@ -272,8 +272,8 @@ private _electronics = [
 	"WBK_HeadLampItem"
 ];
 
-[_medical, "Medical", "cgqc_2022\textures\medical.paa", 0] call ace_arsenal_fnc_addRightPanelButton;
-[_electronics, "Electronics", "cgqc_2022\textures\electronics.paa", 1] call ace_arsenal_fnc_addRightPanelButton;
+[_medical, "Medical", "cgqc\textures\medical.paa", 0] call ace_arsenal_fnc_addRightPanelButton;
+[_electronics, "Electronics", "cgqc\textures\electronics.paa", 1] call ace_arsenal_fnc_addRightPanelButton;
 
 
 // **************************************************************************************************************
