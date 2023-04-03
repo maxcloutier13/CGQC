@@ -100,17 +100,10 @@ class cfgVehicles {
 	#include "cfg_vehicles.hpp"
 };
 
-//#include "\cgqc\modules\grad-fortifications\grad_fortifications.hpp"
-
 // Custom functions
 class cfgFunctions {
 	//CGQC functions
 	#include "cfg_functions.hpp"
-	//GRAD Persistence
-	//#include "\cgqc\modules\grad-persistence\cfgFunctions.hpp"
-	//GRAD Fortification
-	//#include "\cgqc\modules\grad-fortifications\cfgFunctions.hpp"
-
 };
 
 // Custom events
