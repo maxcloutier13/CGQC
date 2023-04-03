@@ -48,17 +48,6 @@ cgqc_perks_driver_hasDriver = false;
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
 cgqc_perks_silence = false;
-cgqc_config_fortify = false;
-cgqc_config_fortify_1 = "";
-cgqc_config_fortify_2 = "";
-cgqc_config_fortify_3 = "";
-cgqc_config_fortify_4 = "";
-cgqc_config_fortify_5 = "";
-cgqc_config_fortify_6 = "";
-cgqc_config_fortify_7 = "";
-cgqc_config_fortify_8 = "";
-cgqc_config_fortify_9 = "";
-cgqc_config_fortify_10 = "";
 cgqc_config_fortify_list = [];
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
