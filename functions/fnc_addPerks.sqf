@@ -71,6 +71,8 @@ if (cgqc_config_fortify) then {
 	];
 	cgqc_config_fortify_list = parseSimpleArray fortify_list;
 	[west, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+	[east, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+	[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
 };
 // ------ Heli pilot --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_heli_pilot_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
