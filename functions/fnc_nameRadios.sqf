@@ -15,10 +15,13 @@ switch (_type) do{
 		["ACRE_PRC152", "Default", 8, "description", cgqc_config_ch8] call acre_api_fnc_setPresetChannelField;
 		["ACRE_PRC152", "Default", 9, "description", cgqc_config_ch9] call acre_api_fnc_setPresetChannelField;
 		// 148
-		["ACRE_PRC148", "Default", 1, "description", ("Listen:" + cgqc_config_ch4)] call acre_api_fnc_setPresetChannelField;
+		["ACRE_PRC148", "Default", 1, "description", ("1-Listen:" + cgqc_config_ch4)] call acre_api_fnc_setPresetChannelField;
 		["ACRE_PRC148", "default", 1, "frequencyTX", 59.30000] call acre_api_fnc_setPresetChannelField;
-		["ACRE_PRC148", "Default", 2, "description", cgqc_config_ch4] call acre_api_fnc_setPresetChannelField;
-		["ACRE_PRC148", "Default", 3, "description", cgqc_config_ch1] call acre_api_fnc_setPresetChannelField;
+		["ACRE_PRC148", "Default", 2, "description", ("2-" + cgqc_config_ch1)] call acre_api_fnc_setPresetChannelField;
+		["ACRE_PRC148", "Default", 3, "description", ("3-" + cgqc_config_ch4] call acre_api_fnc_setPresetChannelField;
+		["ACRE_PRC148", "Default", 4, "description", ("4-" + cgqc_config_ch2] call acre_api_fnc_setPresetChannelField;
+		["ACRE_PRC148", "Default", 5, "description", ("5-" + cgqc_config_ch3] call acre_api_fnc_setPresetChannelField;
+		
 		// 117f
 		["ACRE_PRC117f", "Default", 1, "name", cgqc_config_ch1] call acre_api_fnc_setPresetChannelField;
 		["ACRE_PRC117f", "Default", 2, "name", cgqc_config_ch2] call acre_api_fnc_setPresetChannelField;
