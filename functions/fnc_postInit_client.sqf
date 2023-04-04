@@ -102,7 +102,9 @@ switch (_unit) do {
 	};
 };
 
-// Set default left/right radios
-//_radios = ["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"; 
-
+// Give basic items to unit in case it's missing 
+// Admin stuff 
+_items = (items player);
+if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
+if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
 cgqc_postInitClient_done = true;
