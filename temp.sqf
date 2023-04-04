@@ -447,3 +447,45 @@ cgqc_welcome_message = parseText format["%1<br /><t font='PuristaBold' size='1.6
 sleep 1;
   // Welcome msg as textTiles  
 [cgqc_welcome_message, [1.35,1,1,1], nil, 4, [3,3], 0] spawn BIS_fnc_textTiles;};
+
+
+
+cgqc_event_148 = ["acre_startedSpeaking", { 
+    params ["_unit", "_onRadio", "_radioId", "_speakingType"]; 
+    //hint format["Unit:%1 -onRadio:%2 -radioId:%3 -speakingType:%4", _unit,_onRadio,_radioId,_speakingType ]; 
+    if !(_onRadio) then {
+        if(_radioId find "148" == 0) then {
+            Hint parseText( "148 Ch:1 = Listen Only" + "<br/>" + "Change channel to communicate");
+        };
+    };
+}] call CBA_fnc_addEventHandler;
+
+cgqc_event_148 = ["acre_startedSpeaking", {  
+	params ["_unit", "_onRadio", "_radioId", "_speakingType"];  
+	//hint format["Unit:%1 -onRadio:%2 -radioId:%3 -speakingType:%4", _unit,_onRadio,_radioId,_speakingType ]; 
+	Y_unit =_unit; 
+	Y_onRadio = _onRadio;
+	Y_radioId = _radioId;
+	Y_speakingType = _speakingType;
+	if (Y_onRadio) then { 
+		if(Y_radioId find "148" == 0) then { 
+			hintc "148!";
+			//Hint parseText( "148 Ch:1 = Listen Only" + "<br/>" + "Change channel to communicate"); 
+		}; 
+	}; 
+}] call CBA_fnc_addEventHandler;
+
+
+
+cgqc_event_148 = ["acre_startedSpeaking", {   
+ params ["_unit", "_onRadio", "_radioId", "_speakingType"];   
+ if (_onRadio) then {  
+  if(_radioId find "148" > -1) then {
+	y_channel = [] call acre_api_fnc_getCurrentRadioChannelNumber;
+	if(y_channel == 1) then {
+		_channel_txt = parseText( "148:Ch1 = Listen Only" + "<br/>" + "Change channel to communicate!");
+		[ _channel_txt, 0, 0, 3, 1 ] spawn BIS_fnc_dynamicText;
+	}; 
+  };  
+ };  
+}] call CBA_fnc_addEventHandler;
