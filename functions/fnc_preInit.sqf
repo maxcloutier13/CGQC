@@ -36,6 +36,8 @@ cgqc_player_ownedDLCs = [];
 cgqc_player_hasContact = false;
 cgqc_player_has23rd = false;
 cgqc_player_has2023 = false;
+cgqc_player_hasIfa3 = false; 
+cgqc_player_hasScandinavia = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
@@ -74,7 +76,9 @@ cgqc_flag_supply_rapide = false;
 cgqc_player_ownedDLCs = getDLCs 1;
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 cgqc_player_has2023 = isClass(configFile >> "cfgPatches" >> "CGQC_2022"); // Returns true if 2023 is enabled
-cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core"); // Returns true if 23rd is enabled
+cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");
+cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_c"); 
+cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
 
 // Acre default radio 
 ["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
