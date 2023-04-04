@@ -75,7 +75,7 @@ if (cgqc_config_fortify) then {
 	[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
 };
 // ------ Heli pilot --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_heli_pilot_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
+_action = [ "cgqc_perk_heli_pilot_getCrew", "Griffon: Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_pilot && 
 	!cgqc_perks_pilot_hasCrew &&
 	(vehicle player isKindOf "Helicopter")
@@ -85,7 +85,7 @@ _action = [ "cgqc_perk_heli_pilot_delCrew", "Delete Crew", "", {["delCrew"] spaw
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Tank driver --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_driver_getDriver", "Spawn Driver", "", {["getDriver"] spawn CGQC_fnc_perksPilot}, {
+_action = [ "cgqc_perk_driver_getDriver", "Centaure: Spawn Driver", "", {["getDriver"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_driver && 
 	!cgqc_perks_driver_hasDriver &&
 	(vehicle player isKindOf "LandVehicle")
@@ -214,11 +214,11 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], 
 _action = [ "max_117", "get 117f", "", {["117"] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;		
 // ------ Get Crate
-_action = [ "zeus_getcrate", "get crate", "", {["crate"] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_action = [ "zeus_getcrate", "Spawn: Arsenal mk2", "", {["crate"] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 //  ------ Delete Crate 
-_action = [ "zeus_delcrate", "delete crate", "", {["del_crate"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_delcrate", "Delete Arsenal", "", {["del_crate"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // ------ Get Cargo
 _action = [ "zeus_getcargo", "get Cargo", "", {["cargo"] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;	
