@@ -106,4 +106,13 @@ class cgqc_cap_green : H_HelmetB
 	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_cap_green.rvmat"};
 };
 
+class cgqc_beret_23: H_Beret_02
+{
+	author = "23rd CTF";
+	displayName = "23rd beret";
+	picture = "\cgqc\helmets\23rd_logo_picture_beret_lila_ca.paa";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\23rd_logo_berret_purp_co.paa"};
+	hiddenSelectionsMaterials[] = {"\cgqc\helmets\23rd_logo_berret.rvmat"};
+};
+
 

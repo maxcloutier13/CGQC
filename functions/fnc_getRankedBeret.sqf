@@ -1,7 +1,7 @@
  cgqc_player_rank_beret = "";
 waitUntil {cgqc_player_rank_found};
 if (cgqc_player_23rd) then {
-	cgqc_player_rank_beret = "23rd_logo_berret_purp"; //23rd basic beret
+	cgqc_player_rank_beret = "cgqc_beret_23"; //23rd basic beret
 } else {
 	switch (cgqc_player_rank) do {
 		case 1: {  // Sdt

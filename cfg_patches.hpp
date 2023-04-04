@@ -67,6 +67,7 @@ class CfgPatches
 					 "cgqc_beret_yellow",
 					 "cgqc_beret_orange",
 					 "cgqc_cap_green",
+					 "cgqc_beret_23",
 					 "cgqc_gun_p99_wood"};
 	};
 };
