@@ -34,12 +34,14 @@ _type = _this select 0;
 			titleCut ["", "BLACK IN", 8];
 			sleep 10;
 			cgqc_intro_running = false;
+			cgqc_intro_done = true;
 			ace_hearing_disableVolumeUpdate = false;
 		};	
-	}else {
-		cgqc_intro_skipped = true;
+	};
+	if (!cgqc_intro_done) then {
 		titleCut ["", "BLACK IN", 1];
 		1 fadeSound 1;
+		cgqc_intro_skipped = true;
+		cgqc_intro_done = true;
 	};
-	cgqc_intro_done = true;
 };
