@@ -28,9 +28,9 @@ switch (_type) do {
 		"cgqcBriefingCmd" setMarkerType "mil_objective"; 
 		"cgqcBriefingCmd" setMarkerText "Commander's Briefing";
 		"cgqcBriefingCmd" setMarkerColor "colorBLUFOR";
-		//Super high sharing distance for briefing.
-		jibrm_restrictmarkers_shareDistance = 2000;
-		publicVariable "jibrm_restrictmarkers_shareDistance";
+		//Remove map sharing restriction for briefing
+		jib_restrictmarkers_enabled = false;
+		publicVariable "jib_restrictmarkers_enabled";
 		// Cone of silence for briefing
 		// Run code directly instead of with the activation. Trigger is only for getting player list
 		_startBriefing = execVM "\cgqc\functions\fnc_briefingCmdStart.sqf";
@@ -51,9 +51,9 @@ switch (_type) do {
 		publicVariable "cgqc_zeus_briefingCmd";
 		// Delete briefing marker 
 		deleteMarker "cgqcBriefing";
-		//Return to default map sharing distance
-		jibrm_restrictmarkers_shareDistance = 5; 
-		publicVariable "jibrm_restrictmarkers_shareDistance";
+		//Restriction back on
+		jib_restrictmarkers_enabled = true;
+		publicVariable "jib_restrictmarkers_enabled";
 		// Delete trigger of silence
 		if !(isNil "cgqc_briefingCmd_trg") then {
 			deleteVehicle cgqc_briefingCmd_trg;
@@ -84,9 +84,9 @@ switch (_type) do {
 			sleep 1; 
 		};
 		if(cgqc_zeus_briefing) then {
-			//Super high sharing distance for briefing.
-			jibrm_restrictmarkers_shareDistance = 200;
-			publicVariable "jibrm_restrictmarkers_shareDistance";
+			//Remove map sharing restriction for briefing
+			jib_restrictmarkers_enabled = false;
+			publicVariable "jib_restrictmarkers_enabled";
 			// Cone of silence for briefing
 			// Act: lowerVolume on units_in. LowerVoice on units_out 
 			_startBriefing = execVM "\cgqc\functions\fnc_briefingStart.sqf";
@@ -116,9 +116,9 @@ switch (_type) do {
 		publicVariable "cgqc_zeus_briefing";
 		// Delete briefing marker 
 		deleteMarker "cgqcBriefing";
-		//Return to default map sharing distance
-		jibrm_restrictmarkers_shareDistance = 5; 
-		publicVariable "jibrm_restrictmarkers_shareDistance";
+		//Restriction back on
+		jib_restrictmarkers_enabled = true;
+		publicVariable "jib_restrictmarkers_enabled";
 		// Delete trigger of silence
 		if !(isNil "cgqc_briefing_trg") then {
 			deleteVehicle cgqc_briefing_trg;
