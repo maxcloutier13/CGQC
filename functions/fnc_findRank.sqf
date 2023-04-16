@@ -86,11 +86,15 @@ switch (true) do {
 		break;
 	};
 	case (_whole_name find "[mann"  > -1): 
+	case (_whole_name find "[asthma"  > -1): 
 	case (_whole_name find "[aliens"  > -1):  
 	case (_whole_name find "[kanman"  > -1): 
 	case (_whole_name find "[melonmafia"  > -1):
 	case (_whole_name find "[bishopsarch"  > -1):
 	case (_whole_name find "[peerse"  > -1):
+	case (_whole_name find "[jamie"  > -1):
+	case (_whole_name find "[larsen"  > -1):
+	case (_whole_name find "[cactus"  > -1):
 	case (_whole_name find "[veskar"  > -1):    
 	{
 		//23rd tag detected
