@@ -82,6 +82,8 @@ try {
                 if (cgqc_player_max) then {
                     player linkItem "immersion_cigs_cigar0_nv";
                     player addGoggles "G_Aviator";
+                    player allowDamage false;
+                    hint "NoDamage";
                 };
                 cgqc_player_chill = true;
                 // Set radio left/right if this is from init 
@@ -96,6 +98,11 @@ try {
             if (cgqc_player_chill) then {
                 removeHeadgear player; // Get rid of beret
                 [player] call GRAD_slingHelmet_fnc_actionUnSling;  // Unsling helmet
+                if (cgqc_player_max) then {
+                    player unlinkItem "immersion_cigs_cigar0_nv";
+                    removeGoggles player;
+                    player allowDamage true;
+                };
                 player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
                 player addGoggles cgqc_player_oldFace;
                 player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
