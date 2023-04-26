@@ -116,13 +116,6 @@ class cgqc_beanie_black: H_Watchcap_blk
 	scope = 2;
 	displayName = "CGQC Beanie Black";
 	allowedFacewear[] = {"",6,"G_Aviator",1,"G_Bandanna_aviator",1,"G_Bandanna_beast",1,"G_Bandanna_blk",1,"G_Bandanna_khk",1,"G_Bandanna_oli",1,"G_Bandanna_shades",1,"G_Bandanna_sport",1,"G_Shades_Black",1,"G_Shades_Blue",1,"G_Shades_Red",1,"G_Shades_Green",1};
-	class ItemInfo: ItemInfo
-	{
-		mass = 6;
-		allowedSlots[] = {801,901,701,605};
-		uniformModel = "\A3\Characters_F\Civil\headgear_beaniehat01";
-		modelSides[] = {6};
-	};
 	ace_hearing_protection = 0.75;
 	ace_hearing_lowerVolume = 0;
 };
@@ -162,6 +155,5 @@ class cgqc_beanie_sage: cgqc_beanie_black
 	_generalMacro = "cgqc_beanie_sage";
 	scope = 2;
 	displayName = "CGQC Beanie Sage";
-	displayName = "$STR_A3_H_Watchcap_sgg0";
 	hiddenSelectionsTextures[] = {"\a3\characters_f\common\data\woolhat_blue_co.paa"};
 };
