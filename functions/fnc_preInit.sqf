@@ -34,6 +34,8 @@ cgqc_camoSwitch_done = true;
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasContact = false;
+cgqc_player_hasRHS = false;
+cgqc_player_hasDrongoFactions = false;
 cgqc_player_has23rd = false;
 cgqc_player_has2023 = false;
 cgqc_player_hasIfa3 = false; 
@@ -79,6 +81,8 @@ cgqc_player_has2023 = isClass(configFile >> "cfgPatches" >> "CGQC_2022"); // Ret
 cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");
 cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_c"); 
 cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
+cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
+cgqc_player_hasDrongoFactions = isClass(configFile >> "cfgPatches" >> "DSF_ABUS");
 
 // Acre default radio 
 ["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
