@@ -59,15 +59,21 @@ class CfgPatches
 					"Weapon_cgqc_gun_spar17_canpat",
 					"Weapon_cgqc_gun_spar17_wood"*/
 		// List of weapons (CfgWeapons classes) contained in the addon.
-		weapons[] = {"cgqc_beret_vanilla",
-					 "cgqc_beret_green",
-					 "cgqc_beret_blue",
-					 "cgqc_beret_red",
-					 "cgqc_beret_gray",
-					 "cgqc_beret_yellow",
-					 "cgqc_beret_orange",
-					 "cgqc_cap_green",
-					 "cgqc_beret_23",
-					 "cgqc_gun_p99_wood"};
+		weapons[] = {
+					"cgqc_beret_vanilla",
+					"cgqc_beret_green",
+					"cgqc_beret_blue",
+					"cgqc_beret_red",
+					"cgqc_beret_gray",
+					"cgqc_beret_yellow",
+					"cgqc_beret_orange",
+					"cgqc_cap_green",
+					"cgqc_beret_23",
+					"cgqc_beanie_black",
+					"cgqc_beanie_sage",
+					"cgqc_beanie_green",
+					"cgqc_beanie_khaki",
+					"cgqc_beanie_coyote",
+					"cgqc_gun_p99_wood"};
 	};
 };
