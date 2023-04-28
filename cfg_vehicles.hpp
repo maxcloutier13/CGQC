@@ -132,3 +132,29 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     };
     //#include "vehicles\cgqc_vic_loadout_construction.sqf"
 };
+
+// CQB Laptop--------------------------------------------------------------------------
+class Land_Laptop_03_base_F;
+class cqgc_item_cgcLaptop: Land_Laptop_03_base_F
+	{
+		author = "silent1";
+		class SimpleObject
+		{
+			eden = 1;
+			animate[] = {};
+			hide[] = {};
+			verticalOffset = 0.167;
+			verticalOffsetWorld = 0;
+			init = "[this, '', []] call bis_fnc_initVehicle";
+		};
+		editorPreview = "\A3\EditorPreviews_F_Enoch\Data\CfgVehicles\Land_Laptop_03_black_F.jpg";
+		_generalMacro = "cqgc_item_cgcLaptop";
+		scope = 2;
+		scopeCurator = 2;
+		displayName = "CGQC Laptop CQB";
+		hiddenSelectionsTextures[] = {"a3\Props_F_Enoch\Military\Equipment\data\Laptop_03_black_CO.paa"};
+        class EventHandlers
+        {
+            init = "_this execVM '\cgqc\functions\fnc_cqbHouse_menu.sqf'"; 
+        };
+    };

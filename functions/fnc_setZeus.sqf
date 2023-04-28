@@ -8,8 +8,8 @@ waitUntil {	!isNull (findDisplay 46)};
 // Check if player name contains the word "Zeus"
 
 if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["zeus", format["%1", player]] call BIS_fnc_inString) then {
-	//hintc "Zeus!";
-	//sleep 1;
+	hint "Zeus!";
+	sleep 1;
 	// Ensure Zeus keeps slot, despite admin logging
 	while { true } do {
 		// Check that Zeus has been assigned to player
@@ -36,10 +36,4 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 				if (_exitLoop) exitWith {};
 			} forEach _curatorList;
 		};
-		if !([player, "ACRE_PRC152"] call BIS_fnc_hasItem) then {
-			player addItem "ACRE_PRC152";
-			hint "152 added!";
-        };
-		sleep 10.0;
-	};
 };
