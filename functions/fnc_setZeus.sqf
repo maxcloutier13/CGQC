@@ -11,7 +11,7 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 	hint "Zeus!";
 	sleep 1;
 	// Ensure Zeus keeps slot, despite admin logging
-	//while { true } do {
+	while { true } do {
 		// Check that Zeus has been assigned to player
 		if (isNull (getAssignedCuratorLogic player)) then {
 			// find all curators and reverse list so to lessen chance of admin Zeus conflicts
@@ -36,15 +36,4 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 				if (_exitLoop) exitWith {};
 			} forEach _curatorList;
 		};
-		//sleep 10.0;
-	[] spawn {
-		while { true } do {
-			if !([player, "ACRE_PRC152"] call BIS_fnc_hasItem) then {
-				player addItem "ACRE_PRC152";
-				hint "152 given";
-			};
-			sleep 10.0;
-		};
-	};
-	//};
 };
