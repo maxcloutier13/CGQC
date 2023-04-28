@@ -1,6 +1,42 @@
 _type = _this select 0;
 
 switch (_type) do {
+	case -1: {player call ACE_medical_treatment_fnc_fullHealLocal;hint "Patched up";};
+	case -2: {
+		_bandage = "ACE_fieldDressing";
+		_painkiller = "FF_Painkiller";
+		for "_i" from 1 to 10 do {player addItem _bandage;};
+		for "_i" from 1 to 5 do {player addItem _painkiller;};
+		hint "10x Bandages + 5 painkillers";
+	};
+	case -3: {
+		_primary_mag = (primaryWeaponMagazine player) select 0;
+		for "_i" from 1 to 10 do { 
+			player addItem _primary_mag;
+		};
+		hint "10x Primary mags";
+	};
+	case -4: {
+		_sec_mag = (secondaryWeaponMagazine player) select 0;
+		for "_i" from 1 to 4 do { 
+			player addItem _sec_mag;
+		};
+		hint "5x Secondary mags";
+	};
+	case -5: {
+		_bang = "ACE_M84";
+		for "_i" from 1 to 5 do { 
+			player addItem _bang;
+		};
+		hint "5x Flashbangs";
+	};
+	case -6: {
+		_bang = "ACE_CTS9";
+		for "_i" from 1 to 5 do { 
+			player addItem _bang;
+		};
+		hint "5x 9-bangs";
+	};
 	case 0: {cgqc_house1_on = false;publicVariable "cgqc_house1_on";hint "CQC Off";};
 	case 1: {cqb_house1_hostile_class = ["rhsgref_tla_warlord"];};
 	case 2: {cqb_house1_hostile_class = ["O_G_Soldier_TL_F", "O_G_Soldier_SL_F", "O_G_officer_F"];};

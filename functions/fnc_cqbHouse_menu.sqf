@@ -19,11 +19,8 @@ if (hasInterface) then {
     _action = [ "menu_house1_clear", "Stop CQB", "", {[0] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
 
-    _action = [ "menu_house1_settings", "Show Current Settings", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
-    _adding = [ _type, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_option", "Options", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-    
     _action = [ "menu_house1_nbr", "Target number", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_nbr5", "+5", "", {[40] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
@@ -121,5 +118,20 @@ if (hasInterface) then {
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_cartel", "Full: Cartel", "", {[18] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
+    //Rearm-Ressupply
+    _action = [ "menu_house1_supplies", "Rearm/Ressuply", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_supplies_heal", "Quick heal", "", {[-1] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_supplies_bandage", "10x bandages", "", {[-2] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_supplies_primary", "10x Primary mags", "", {[-3] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_supplies_secondary", "5x Secondary mags", "", {[-4] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_supplies_bangs", "5x Flashbangs m84", "", {[-5] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_supplies_9bangs", "5x 9-bangs", "", {[-6] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    
 };
