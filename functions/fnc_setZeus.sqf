@@ -37,14 +37,18 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 			} forEach _curatorList;
 		};
 		//sleep 10.0;
+	/*	
 	[] spawn {
 		while { true } do {
-			if !([player, "ACRE_PRC152"] call BIS_fnc_hasItem) then {
-				player addItem "ACRE_PRC152";
+			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType; 
+			y_radio_count = count _handRadios;
+			if (y_radio_count < 1) then {
+				_unit = vehicle player;
+				_unit addItem "ACRE_PRC152";
 				hint "152 given";
 			};
 			sleep 10.0;
 		};
-	};
+	};*/
 	//};
 };
