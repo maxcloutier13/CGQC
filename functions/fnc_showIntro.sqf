@@ -6,7 +6,7 @@ _type = _this select 0;
 [] spawn {
 	waitUntil {!isNull (findDisplay 46)};
 	if (cgqc_config_showIntro) then {
-		if (!isNil "cgqc_config_author") then {
+		if (!isNil "cgqc_config_author" && !isNil "cgqc_config_mission_name") then {
 			if (cgqc_config_author find "Cpl. Quelque chose" != 0) then {
 				cgqc_intro_running = true;
 				ace_hearing_disableVolumeUpdate = true;

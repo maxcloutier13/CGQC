@@ -35,6 +35,8 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 				};
 				if (_exitLoop) exitWith {};
 			} forEach _curatorList;
-      sleep 10.0;
 		};
+	sleep 10.0;
+	};
 };
+
