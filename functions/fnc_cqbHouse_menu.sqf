@@ -21,8 +21,9 @@ if (hasInterface) then {
 
     _action = [ "menu_house1_option", "Options", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    
     _action = [ "menu_house1_nbr", "Target number", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
-    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_nbr5", "+5", "", {[40] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_nbrm5", "-5", "", {[41] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
