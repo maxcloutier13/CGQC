@@ -9,6 +9,7 @@ cgqc_house1_on = false;
 cqb_house1_target_nbr = 10;
 cqb_house1_move = 0;
 cqb_house1_timer = 0;
+cqb_house1_timer_random = false; 
 cqb_house1_civ = false;
 cqb_house1_nade = false;
 cqb_house1_tgt_move = 0;
@@ -36,6 +37,13 @@ if (hasInterface) then {
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_nbrm20", "-20", "", {[45] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_nbrRdm1", "Random Small: 10-20", "", {[46] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_nbrRdm2", "Random Medium: 20-30", "", {[47] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_nbrRdm3", "Random Large: 30-50", "", {[47] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 
     _action = [ "menu_house1_static", "Target movement", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -49,6 +57,9 @@ if (hasInterface) then {
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_static"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_m25", "75% move", "", {[54] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_static"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_mRandom", "Random", "", {[55] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_static"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 
     _action = [ "menu_house1_civ", "Civilian presence", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -75,6 +86,8 @@ if (hasInterface) then {
     _action = [ "menu_house1_timer30", "+60secs", "", {[73] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_timer"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     _action = [ "menu_house1_timerm30", "-60secs", "", {[74] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+    _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_timer"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+    _action = [ "menu_house1_timermRandom", "Random", "", {[75] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions", "menu_house1_option", "menu_house1_timer"], _action ] call  ace_interact_menu_fnc_addActionToObject;
     
     _action = [ "menu_house1_start", "Start CQB", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       

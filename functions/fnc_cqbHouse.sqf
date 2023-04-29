@@ -62,20 +62,27 @@ switch (_type) do {
 	case 43: {cqb_house1_target_nbr = cqb_house1_target_nbr - 10; hint format["Targets:%1",cqb_house1_target_nbr];};
 	case 44: {cqb_house1_target_nbr = cqb_house1_target_nbr + 20; hint format["Targets:%1",cqb_house1_target_nbr];};
 	case 45: {cqb_house1_target_nbr = cqb_house1_target_nbr - 20; hint format["Targets:%1",cqb_house1_target_nbr];};
+
+	case 46: {cqb_house1_target_nbr = selectRandom [10,12,15,17,19,20]; hint format["Targets:%1",cqb_house1_target_nbr];};
+	case 47: {cqb_house1_target_nbr = selectRandom [20,22,25,27,29,30]; hint format["Targets:%1",cqb_house1_target_nbr];};
+	case 48: {cqb_house1_target_nbr = selectRandom [30,32,35,37,40,42,45,47,50]; hint format["Targets:%1",cqb_house1_target_nbr];};
+
 	case 50: {cqb_house1_move = 0; hint "No movement";};//Movement
 	case 51: {cqb_house1_move = 1; hint "10% move";};
 	case 52: {cqb_house1_move = 2; hint "25% move";};
 	case 53: {cqb_house1_move = 3; hint "50% move";};
 	case 54: {cqb_house1_move = 4; hint "75% move";};
+	case 55: {cqb_house1_move = 5; hint "Random move";};
 	case 60: {cqb_house1_civ = true; hint "Civilian present";};//Civ presence
 	case 61: {cqb_house1_civ = false; hint "No Civs";};
 	case 62: {cqb_house1_nade = true; hint "Grenades: On";};
 	case 63: {cqb_house1_nade = false; hint "Grenades: Off";};
-	case 70: {cqb_house1_civ = false; hint "No Release";};
-	case 71: {cqb_house1_civ = false; cqb_house1_timer = cqb_house1_timer + 30; hint format["Time until release:%1secs",cqb_house1_timer];};
-	case 72: {cqb_house1_civ = false; cqb_house1_timer = cqb_house1_timer - 30; hint format["Time until release:%1secs",cqb_house1_timer];};
-	case 73: {cqb_house1_civ = false; cqb_house1_timer = cqb_house1_timer + 60; hint format["Time until release:%1secs",cqb_house1_timer];};
-	case 74: {cqb_house1_civ = false; cqb_house1_timer = cqb_house1_timer - 60; hint format["Time until release:%1secs",cqb_house1_timer];};
+	case 70: {cqb_house1_timer = 0; hint "No Release";};
+	case 71: {cqb_house1_timer = cqb_house1_timer + 30; hint format["Time until release:%1secs",cqb_house1_timer];};
+	case 72: {cqb_house1_timer = cqb_house1_timer - 30; hint format["Time until release:%1secs",cqb_house1_timer];};
+	case 73: {cqb_house1_timer = cqb_house1_timer + 60; hint format["Time until release:%1secs",cqb_house1_timer];};
+	case 74: {cqb_house1_timer = cqb_house1_timer - 60; hint format["Time until release:%1secs",cqb_house1_timer];};
+	case 75: {cqb_house1_timer = 10; cqb_house1_timer_random = true; hint "Time until release:Random";};
 	
 	default {
 		hint "cqb_house_1 error";
@@ -116,6 +123,9 @@ if (_type < 40) then {
 			};
 			doStop _unit;
 			_move = 0;
+			if (cqb_house1_move == 5) then {
+				cqb_house1_move = selectRandom [1,2,3,4];
+			};
 			switch (cqb_house1_move) do {
 				case 0: {_move = 0};
 				case 1: {_move = selectRandom [0,0,0,0,0,0,0,0,0,1];};
@@ -185,13 +195,17 @@ if (_type < 40) then {
 		publicVariable "cgqc_house1_on";
 		if (cqb_house1_timer > 0) then {
 			while {cgqc_house1_on} do {
+				if (cqb_house1_timer_random) then {
+					//cqb_house1_timer = selectRandom [5,10,15,20,30];
+					cqb_house1_timer = selectRandom [5,10,15,20,30,60,90,120,180,240,300,360];
+				};
 				sleep cqb_house1_timer;
 				if (count cqb_house1_list_static > 0) then {
 					_random_pax = selectRandom cqb_house1_list_static;
 					cqb_house1_list_static = cqb_house1_list_static - [_random_pax];
 					cqb_house1_list_moving pushBack _random_pax;
 					_random_pax enableAI "PATH";
-					//systemChat format ["%1 started moving", typeOf _random_pax]; 
+					systemChat format ["%1 started moving", typeOf _random_pax]; 
 				};
 			};
 		};
