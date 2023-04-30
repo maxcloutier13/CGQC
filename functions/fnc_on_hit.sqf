@@ -56,4 +56,4 @@ if ((typeOf _target) in ["TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_I
 
 Projectile_Impact_Aux setPosASL _position;
 
-PlaySound "Hit";
+//PlaySound "Hit";
