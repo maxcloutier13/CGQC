@@ -131,11 +131,11 @@ class cgqc_box_mk2_stash :  NATO_Box_Base
 };
 // Mk3 Arsenal
 class B_supplyCrate_F;
-class cgqc_box_mk2_arsenal : B_supplyCrate_F
+class cgqc_box_mk3_arsenal : B_supplyCrate_F
 {
     scope = 2;
     author = "silent1";
-    _generalMacro = "cgqc_box_mk2_arsenal";
+    _generalMacro = "cgqc_box_mk3_arsenal";
     displayName = "CGQC MK3 Arsenal";
     hiddenSelectionsTextures[] = {"\CGQC\containers\cgqc_box_mk3.paa"};
     editorPreview = "\A3\EditorPreviews_F_Orange\Data\CfgVehicles\C_IDAP_supplyCrate_F.jpg";
