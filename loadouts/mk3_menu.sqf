@@ -211,9 +211,15 @@ if (hasInterface) then {
 		};
 	};
 
+	// Scandinavia shit ===============================================================================================
+	if (cgqc_player_hasScandinavia) then {
+		// 2023 ---------------------------------------------------------------------------------------------------------
+		_action = [ "menu_scandinavia", "ww2 Scandinavia", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+	};
+
 	// 23rd shit if 23rd mod is present===============================================================================================
 	if (cgqc_player_has23rd) then {
-		//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// 2023 ---------------------------------------------------------------------------------------------------------
 		_action = [ "menu_23RD", "23RD", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_23rd} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
