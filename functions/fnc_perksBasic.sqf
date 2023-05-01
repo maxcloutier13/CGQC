@@ -128,7 +128,8 @@ try {
             // Drop parachute
             _backpack = backpack player;
             // Get backpack back
-            if (_backpack find "B_Parachute" == 0) then {
+            if (_backpack != "") then {
+                if (_backpack find "B_Parachute" == 0) then {
                 player playMove "AinvPknlMstpSnonWnonDnon_medic4";
                 sleep 2;
                 removeBackpack player;
@@ -136,6 +137,7 @@ try {
                 //Backpack on back
                 [player] call bocr_main_fnc_actionOnBack;
                 sleep 2;
+                };
             };
             // Watch / Altimeter
             _items = assignedItems player;

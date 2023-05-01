@@ -39,6 +39,7 @@ class CfgPatches
 					"cgqc_box_mk1_ammocan",
 					"cgqc_box_mk2_stash",
 					"cgqc_box_mk1_supplies",
+					"cgqc_box_mk3_arsenal",
 					"Headgear_cgqc_beret_green",
 					"Headgear_cgqc_beret_blue",
 					"Headgear_cgqc_cap_green",

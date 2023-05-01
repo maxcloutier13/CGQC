@@ -129,5 +129,25 @@ class cgqc_box_mk2_stash :  NATO_Box_Base
     ace_dragging_carryPosition[] = {0, 1, 1};  // Offset of the model from the body while dragging (same as attachTo) (default: [0, 1, 1])
     ace_dragging_carryDirection = 0;  // Model direction while dragging (same as setDir after attachTo) (default: 0)
 };
-
+// Mk3 Arsenal
+class B_supplyCrate_F;
+class cgqc_box_mk3_arsenal : B_supplyCrate_F
+{
+    scope = 2;
+    author = "silent1";
+    _generalMacro = "cgqc_box_mk3_arsenal";
+    displayName = "CGQC MK3 Arsenal";
+    hiddenSelectionsTextures[] = {"\CGQC\containers\cgqc_box_mk3.paa"};
+    editorPreview = "\A3\EditorPreviews_F_Orange\Data\CfgVehicles\C_IDAP_supplyCrate_F.jpg";
+    ace_cargo_canLoad = 0;  // Enables the object to be loaded (1-yes, 0-no)
+    ace_cargo_noRename = 1;
+    class EventHandlers
+    {
+        init = "_this execVM '\CGQC\loadouts\mk3_menu.sqf'";
+    };
+    class TransportMagazines{};
+    class TransportWeapons{};
+    class TransportItems{};
+    class TransportBackpacks{};
+};
 
