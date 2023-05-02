@@ -23,6 +23,16 @@ _set = [] spawn CGQC_fnc_setPatch;
 // Dynamic group -------------------------------------------------------------------------------------------------
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
+// Init arsenal ---------------------------------------------------------------------------------------------------
+if(cgqc_player_hasUnsung) then {
+	cgqc_unsung_arsenal_1 = [];
+	cgqc_unsung_arsenal_8 = [];
+	#include "\cgqc\loadouts\unsung\all_items.sqf";
+	cgqc_unsung_arsenal_8 = cgqc_unsung_arsenal_all;
+	cgqc_unsung_arsenal_init_done = true;
+};
+
+
 // Briefing entry -------------------------------------------------------------------------------------------------
 _brief = [] call CGQC_fnc_briefing; 
 

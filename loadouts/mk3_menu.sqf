@@ -4,11 +4,36 @@ _type = _this select 0;
 if (hasInterface) then {   
 
 	// Zeus lock toggle ===============================================================================================
-	_action = [ "menu_zeus_lock", "Lock Arsenal", "", {hint 'Mk2 lock!'; cgqc_mk2_arsenal_locked = true; publicVariable "cgqc_mk2_arsenal_locked"}, {!cgqc_mk2_arsenal_locked && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "menu_zeus_lock", "Lock Arsenal", "", {hint 'Arsenal lock!'; cgqc_mk2_arsenal_locked = true; publicVariable "cgqc_mk2_arsenal_locked"}, {!cgqc_mk2_arsenal_locked && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
-	_action = [ "menu_zeus_unlock", "Unlock Arsenal", "", {hint 'Mk2 unlocked!'; cgqc_mk2_arsenal_locked = false; publicVariable "cgqc_mk2_arsenal_locked"}, {cgqc_mk2_arsenal_locked && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "menu_zeus_unlock", "Unlock Arsenal", "", {hint 'Arsenal unlocked!'; cgqc_mk2_arsenal_locked = false; publicVariable "cgqc_mk2_arsenal_locked"}, {cgqc_mk2_arsenal_locked && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+	// Vietnam arsenal if Unsung is pressent ===============================================================================================
+	if (cgqc_player_hasUnsung) then {
+		waitUntil {sleep 1; cgqc_unsung_arsenal_init_done};
+		// Unsung ---------------------------------------------------------------------------------------------------------
+		_action = [ "menu_unsung", "Vietnam", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+		// Unsung Arsenal Complet 
+		_action = [ "menu_unsung_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\unsung\load_unsung.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_unsung" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		// Unsung Loadout switcher ---------------------------------------------------------------------------------------------------------
+		_action = [ "menu_unsung_loadouts", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_unsung"], _action ] call ace_interact_menu_fnc_addActionToObject;
+		// Basic soldier 
+		//_action = [ "menu_unsung_basic", "Basic Soldier", "", {["unsung_basic", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		//_adding = [ _type, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		// 1-0 - TL 
+		_action = [ "menu_unsung_10", "1-0 -Team Leader", "", {["unsung_10", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		// 1-1 - Radio man
+		_action = [ "menu_unsung_11", "1-1 -Radio guy", "", {["unsung_11", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		// 1-2 - Medic
+		_action = [ "menu_unsung_12", "1-2 -Medic", "", {["unsung_12", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;		
+	};
 	// Mk2 Arsenal if 2023 mod is present  ===============================================================================================
 	if (cgqc_player_has2023) then {
 		waitUntil {sleep 1; cgqc_mk2_arsenal_init_done};
@@ -205,12 +230,9 @@ if (hasInterface) then {
 			// Complet -  
 			_action = [ "menu_mk2_5", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC_2022\functions\loadMk2.sqf"}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _type, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			// Zeus
-			_action = [ "menu_mk2_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[5] execVM "\CGQC_2022\functions\loadMk2.sqf"}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _type, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		};
 	};
-
+	
 	// Scandinavia shit ===============================================================================================
 	if (cgqc_player_hasScandinavia) then {
 		// 2023 ---------------------------------------------------------------------------------------------------------
@@ -243,20 +265,30 @@ if (hasInterface) then {
 		_adding = [ _type, 0, ["ACE_MainActions", "menu_23RD" , "menu_mk2_23_camo"], _action ] call ace_interact_menu_fnc_addActionToObject;
 	};
 	
+	// Zeus Arsenal ========================================================================================================
+	_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[] execVM "\CGQC\loadouts\mk3_zeusArsenal.sqf"}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _type, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		
+
 	// Items Rapides ========================================================================================================
 	_action = [ "menu_items", "Items Rapides", "CGQC\textures\icon_items", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 	// Quick Heal
 	_action = [ "menu_items9", "Quick heal", "", {["heal"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;       
     _adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-	//Radio1 
-	_action = [ "menu_items1", "Radio: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+	//Radios 
+	_action = [ "menu_items1", "Radio: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
-	//Radio2
-	_action = [ "menu_items2", "Radio: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "menu_items2", "Radio: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
-	//Radio3
-	_action = [ "menu_items3", "Radio: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "menu_items3", "Radio: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
+	_action = [ "menu_items3", "Radio: 117f", "", {["117"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
+	//Radios Vietnam 
+	_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
+	_action = [ "menu_items77", "Radio: Long-Range", "", {["77"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 	//Earplugs
 	_action = [ "menu_items3", "Earplugs", "", {["earplugs"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -268,7 +300,7 @@ if (hasInterface) then {
 	_action = [ "menu_items5", "Painkillers x5", "", {["painkillers"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 	//Kidnapping Kit
-	_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 	//Ammo
 	_action = [ "menu_items10", "5x Primary mags", "", {["mags_primary"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;       
