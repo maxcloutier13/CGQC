@@ -40,6 +40,7 @@ cgqc_player_has23rd = false;
 cgqc_player_has2023 = false;
 cgqc_player_hasIfa3 = false; 
 cgqc_player_hasScandinavia = false;
+cgqc_player_hasUnsung = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
@@ -83,6 +84,7 @@ cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_
 cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
 cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
 cgqc_player_hasDrongoFactions = isClass(configFile >> "cfgPatches" >> "DSF_ABUS");
+cgqc_player_hasUnsung =  isClass(configFile >> "cfgPatches" >> "uns_base");
 
 // Acre default radio 
 ["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
