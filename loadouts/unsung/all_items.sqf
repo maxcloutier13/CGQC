@@ -1,4 +1,6 @@
-// - Uniformes/Vestes/Backpacks de base
+// --- all_Items UNSUNG ----------------------------------------------------------
+// - All arsenal Items
+
 cgqc_unsung_arsenal_all = [ 
     "ACRE_SEM52SL",
 	"ACE_adenosine",
