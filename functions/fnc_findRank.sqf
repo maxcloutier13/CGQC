@@ -85,6 +85,7 @@ switch (true) do {
 		cgqc_player_23rd = true;
 		break;
 	};
+	/*
 	case (_whole_name find "[mann"  > -1): 
 	case (_whole_name find "[asthma"  > -1): 
 	case (_whole_name find "[aliens"  > -1):  
@@ -103,13 +104,14 @@ switch (true) do {
 		_player_rank_name = "Adjudent";
 		cgqc_player_23rd = true;
 		break;
-	};
+	};*/
 	default
 	{
 		cgqc_player_known = false;
 		// Set as soldier
 		player setRank "PRIVATE";
 		_player_rank = 1;
+		_player_rank_name = "Soldat";
 		//_text = ("<br/>" + "<br/>" + "<t size='2' >Bonsoir, Visiteur!</t>" +
 		//"<br/>" + "<t size='1' >Joint nous sur teamspeak: ts.cgqc.ca</t>" +
 		//"<br/>" + "<t size='1' >Discord: CGQC.CA</t>");

@@ -33,7 +33,7 @@ if (cgqc_setting_show_welcome) then {
 		cgqc_welcome_text = ("<br/>" + "<br/>" + "<t size='2' >Bonsoir, Visiteur!</t>" +
 			"<br/>" + "<t size='1' >Joint nous sur teamspeak: ts.cgqc.ca</t>" +
 			"<br/>" + "<t size='1' >Discord: CGQC.CA</t>");
-			[ _text, 0, 0, 5, 2 ] spawn BIS_fnc_dynamicText;
+			[ cgqc_welcome_text, 0, 0, 5, 2 ] spawn BIS_fnc_dynamicText;
 
 	};
 	waitUntil {cgqc_intro_done};
