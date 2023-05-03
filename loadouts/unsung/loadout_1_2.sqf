@@ -1,6 +1,8 @@
 // --- loadout_12 ----------------------------------------------------------
 // Loadout for 1-2 Medic
 sleep 0.5;
+// === Set Traits
+player setUnitTrait ["Medic", true];
 // Vest 
 ["vest", "UNS_m1956_S4"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
 // Backpack 
