@@ -15,6 +15,18 @@ do
 		player addItem "ACRE_PRC148";
 		hintSilent "148 ajoutée";
 	};
+	case "117":	{
+		player addItem "ACRE_PRC117F";
+		hintSilent "117f ajoutée";
+	};
+	case "77":	{
+		player addItem "ACRE_PRC77";
+		hintSilent "77 ajoutée";
+	};
+	case "52":	{
+		player addItem "ACRE_SEM52SL";
+		hintSilent "52 ajoutée";
+	};
 	case "earplugs": {
 		player addItem "ACE_EarPlugs";
 		hintSilent "earplugs ajoutés";

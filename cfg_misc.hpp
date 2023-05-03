@@ -16,7 +16,21 @@ class ACRE_PRC117F: ACRE_BaseRadio
 		mass = 30;
 	};
 };
+class ACRE_PRC77: ACRE_BaseRadio
+{
+	class ItemInfo: CBA_MiscItem_ItemInfo
+	{
+		mass = 30;
+	};
+};
 class ACRE_PRC152: ACRE_BaseRadio
+{
+	class ItemInfo: CBA_MiscItem_ItemInfo
+	{
+		mass = 2;
+	};
+};
+class ACRE_SEM52SL: ACRE_BaseRadio
 {
 	class ItemInfo: CBA_MiscItem_ItemInfo
 	{

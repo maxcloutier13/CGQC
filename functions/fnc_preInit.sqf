@@ -40,6 +40,7 @@ cgqc_player_has23rd = false;
 cgqc_player_has2023 = false;
 cgqc_player_hasIfa3 = false; 
 cgqc_player_hasScandinavia = false;
+cgqc_player_hasUnsung = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
@@ -70,6 +71,11 @@ cgqc_zeus_mapRestricted_txt_on = false;
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
 cgqc_mk2_animation_locked = false;
+// *** Mk3 **********************
+cgqc_mk3_switching_vest = false;
+cgqc_mk3_switching_backpack = false;
+// *** Unsung **********************
+cgqc_unsung_arsenal_init_done = false;
 // *** Refueling *****************
 cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
@@ -83,9 +89,15 @@ cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_
 cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
 cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
 cgqc_player_hasDrongoFactions = isClass(configFile >> "cfgPatches" >> "DSF_ABUS");
+cgqc_player_hasUnsung =  isClass(configFile >> "cfgPatches" >> "uns_base");
 
 // Acre default radio 
-["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
+if (cgqc_player_hasUnsung) then {
+	["ACRE_SEM52SL"] call acre_api_fnc_setItemRadioReplacement;
+}else{
+	["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
+};
+
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
