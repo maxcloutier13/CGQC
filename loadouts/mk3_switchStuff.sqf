@@ -11,7 +11,7 @@ do
 		removeVest player;
 		player addVest _arg;
 		_items_old = vestItems player;
-		{player removeItemFromBackpack _x} forEach _items_old;
+		{player removeItemFromVest _x} forEach _items_old;
 		{player addItemToVest _x} forEach _items_vest;
 		cgqc_mk3_switching_vest = true;
 	};
@@ -19,8 +19,7 @@ do
 		_items_pack = backpackItems player;
 		removeBackpack player;
 		player addBackpack _arg;
-		_items_old = backpackItems player;
-		{player removeItemFromBackpack _x} forEach _items_old;
+		clearAllItemsFromBackpack player;
 		{player addItemToBackpack _x} forEach _items_pack;
 		cgqc_mk3_switching_backpack = true;
 	};

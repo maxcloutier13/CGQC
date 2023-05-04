@@ -124,19 +124,22 @@ try {
                 removeGoggles player;
                 player removeItemFromBackpack player_goggles_old; // Get back goggles's from backpack
                 player addGoggles player_goggles_old;
+                hint "Removed Para Mask";
             };
             // Drop parachute
             _backpack = backpack player;
             // Get backpack back
             if (_backpack != "") then {
                 if (_backpack find "B_Parachute" == 0) then {
-                player playMove "AinvPknlMstpSnonWnonDnon_medic4";
-                sleep 2;
-                removeBackpack player;
-                sleep 2;
-                //Backpack on back
-                [player] call bocr_main_fnc_actionOnBack;
-                sleep 2;
+                    player playMove "AinvPknlMstpSnonWnonDnon_medic4";
+                    sleep 2;
+                    removeBackpack player;
+                    hint "Removed parachute";
+                    sleep 2;
+                    //Backpack on back
+                    [player] call bocr_main_fnc_actionOnBack;
+                    hint "Backpack on back";
+                    sleep 2;
                 };
             };
             // Watch / Altimeter
@@ -144,6 +147,8 @@ try {
             _current_watch = _items select 2;
             if (_current_watch == "ACE_Altimeter") then {
                 player linkItem "ItemWatch";
+                hint "Removed altimeter";
+                sleep 1;
             };
             cgqc_perks_para = false;
         };
@@ -156,6 +161,9 @@ try {
             _goggles = goggles player;
             if (_goggles find "cgqc_goggles_mk1_diver" == 0) then {
                 player addGoggles player_goggles_old;
+                hint "Removed diving mask";
+            }else{
+                hint "No diving mask?";
             };
             sleep 2;
             // Switch uniform 
@@ -164,6 +172,9 @@ try {
                 _items_uniform = uniformItems player;
                 player forceAddUniform player_uniform_old;
                 {player addItemToUniform _x} forEach _items_uniform;
+                hint "Removed diving suit";
+            }else{
+                hint "No diving suit?";
             };
             sleep 2;
             // Switch Vest 
@@ -172,14 +183,19 @@ try {
                 _items_vest = vestItems player;
                 player addVest player_vest_old;
                 {player addItemToVest _x} forEach _items_vest;
+                hint "Removed Rebreather";
+            }else{
+                hint "No rebreather?";
             }; 
-            sleep 2;
+            sleep 1;
             // Switch backpack
             _items_pack = backpackItems player;
             removeBackpack player;
             player addBackpack player_backpack_old;
             clearAllItemsFromBackpack player;
             {player addItemToBackpack _x} forEach _items_pack;
+            hint "Switched Backpack";
+            sleep 1;
             cgqc_perks_diver = false;
         };
     };
