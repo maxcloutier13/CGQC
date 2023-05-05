@@ -116,46 +116,65 @@ try {
         };
         case "para":
         {
+            cgqc_perks_para = false;
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Tu drop ton kit de parachutiste</t><br/>");
-            [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
+            [_text, 0, 0, 10, 4] spawn BIS_fnc_dynamicText;
+            player playMove "AinvPknlMstpSnonWnonDnon_medic4";
+            // Watch / Altimeter
+            _items = assignedItems player;
+            _current_watch = _items select 2;
+            if (_current_watch == "ACE_Altimeter") then {
+                player linkItem "ItemWatch";
+                hint "Removed altimeter";
+                sleep 1;
+            };
             //Switch mask 
             _goggles = goggles player;
             if (_goggles find "cgqc_goggles_mk1_para" == 0) then {
                 removeGoggles player;
                 player removeItemFromBackpack player_goggles_old; // Get back goggles's from backpack
                 player addGoggles player_goggles_old;
+                hint "Removed Para Mask";
+                sleep 1;
             };
             // Drop parachute
             _backpack = backpack player;
             // Get backpack back
             if (_backpack != "") then {
                 if (_backpack find "B_Parachute" == 0) then {
-                player playMove "AinvPknlMstpSnonWnonDnon_medic4";
-                sleep 2;
-                removeBackpack player;
-                sleep 2;
+                    sleep 1;
+                    removeBackpack player;
+                    hint "Removed parachute";
+                    sleep 2;
+                    //Backpack on back
+                    [player] call bocr_main_fnc_actionOnBack;
+                    hint "Backpack on back";
+                    sleep 2;
+                };
+            } else{ //Player already dropped his chute?
                 //Backpack on back
                 [player] call bocr_main_fnc_actionOnBack;
+                hint "No chute? Backpack on back";
                 sleep 2;
-                };
             };
-            // Watch / Altimeter
-            _items = assignedItems player;
-            _current_watch = _items select 2;
-            if (_current_watch == "ACE_Altimeter") then {
-                player linkItem "ItemWatch";
-            };
-            cgqc_perks_para = false;
+            sleep 3;
+            _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Good to go!</t><br/>");
+            [_text, 0, 0, 3, 2] spawn BIS_fnc_dynamicText;
+            sleep 3;
+            hintSilent "";
         };
         case "diver":
         {
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Tu drop ton kit de plongeur</t><br/>");
-            [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
+            [_text, 0, 0, 10, 3] spawn BIS_fnc_dynamicText;
             //Switch mask 
             player playMove "AinvPknlMstpSnonWnonDnon_medic4";
             _goggles = goggles player;
             if (_goggles find "cgqc_goggles_mk1_diver" == 0) then {
                 player addGoggles player_goggles_old;
+                hint "Removed diving mask";
+            }else{
+                hint "No diving mask?";
             };
             sleep 2;
             // Switch uniform 
@@ -164,6 +183,9 @@ try {
                 _items_uniform = uniformItems player;
                 player forceAddUniform player_uniform_old;
                 {player addItemToUniform _x} forEach _items_uniform;
+                hint "Removed diving suit";
+            }else{
+                hint "No diving suit?";
             };
             sleep 2;
             // Switch Vest 
@@ -172,14 +194,20 @@ try {
                 _items_vest = vestItems player;
                 player addVest player_vest_old;
                 {player addItemToVest _x} forEach _items_vest;
+                hint "Removed Rebreather";
+            }else{
+                hint "No rebreather?";
             }; 
-            sleep 2;
+            sleep 1;
             // Switch backpack
             _items_pack = backpackItems player;
             removeBackpack player;
             player addBackpack player_backpack_old;
             clearAllItemsFromBackpack player;
             {player addItemToBackpack _x} forEach _items_pack;
+            hint "Switched Backpack";
+            sleep 1;
+            hintSilent "";
             cgqc_perks_diver = false;
         };
     };
