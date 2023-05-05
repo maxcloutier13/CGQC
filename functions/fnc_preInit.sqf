@@ -79,6 +79,8 @@ cgqc_unsung_arsenal_init_done = false;
 // *** Refueling *****************
 cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
+// *** Unconscious sounds *****************
+cgqc_unconscious_sounds = [];
 
 // Check what DLC the player owns 
 cgqc_player_ownedDLCs = getDLCs 1;
@@ -164,7 +166,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
     [_menu_name, "Training"], false] call CBA_fnc_addSetting;
 
-// Fortify toggle
+// Fortify twavle
 ["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"], 
     [_menu_name, "Fortify"], true
 ] call CBA_fnc_addSetting;
@@ -284,10 +286,28 @@ private _electronics = [
 	"ItemcTab",
 	"WBK_HeadLampItem"
 ];
-
 [_medical, "Medical", "cgqc\textures\medical.paa", 0] call ace_arsenal_fnc_addRightPanelButton;
 [_electronics, "Electronics", "cgqc\textures\electronics.paa", 1] call ace_arsenal_fnc_addRightPanelButton;
 
+// === Sounds ===============================================================================
+cgqc_unconscious_sounds = [
+	"cgqc\sounds\scream_01.wav",
+	"cgqc\sounds\scream_02.wav",
+	"cgqc\sounds\scream_03.wav",
+	"cgqc\sounds\scream_04.wav",
+	"cgqc\sounds\scream_05.wav",
+	"cgqc\sounds\scream_06.wav",
+	"cgqc\sounds\scream_07.wav",
+	"cgqc\sounds\scream_08.wav",
+	"cgqc\sounds\scream_09.wav",
+	"cgqc\sounds\scream_10.wav",
+	"cgqc\sounds\scream_11.wav",
+	"cgqc\sounds\scream_12.wav",
+	"cgqc\sounds\scream_13.wav",
+	"cgqc\sounds\scream_14.wav",
+	"cgqc\sounds\scream_15.wav",
+	"cgqc\sounds\scream_16.wav"
+];
 
 // **************************************************************************************************************
 cgqc_preInit_done = true;
