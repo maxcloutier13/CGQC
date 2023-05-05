@@ -108,6 +108,3 @@ class cfgFunctions {
 
 // Custom events
 #include "cfg_eventhandlers.hpp"
-
-
-

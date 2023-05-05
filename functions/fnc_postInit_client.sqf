@@ -64,6 +64,15 @@ player addEventHandler ["GetInMan", {
 	["ready", false] spawn CGQC_fnc_perksBasic;
 }];
 
+//Unconcious event 
+["ace_unconscious", {
+	params ["_unit", "_isUnconscious"];
+   if (_isUnconscious) then {
+		//hint format ["%1 is now unconscious", name _unit];
+		if (isServer) then {playSound3D ["cgqc\sounds\youwin.ogg", _unit, false, getPosASL _unit, 1, 1, 20]};
+	};
+}] call CBA_fnc_addEventHandler;
+
 // Shows intro screen with logo and stuff
 [ "CBA_loadingScreenDone", {
 	[] spawn CGQC_fnc_showIntro;
