@@ -29,7 +29,7 @@ if (hasInterface) then {
         };
 
 		switch (_type) do {
-            // Command ========================================================================
+            // === Unsung ========================================================================
             case "unsung_basic":{ 
                 [] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
 				cgqc_role = "Basic Soldier";
@@ -48,6 +48,11 @@ if (hasInterface) then {
 				[] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
                 [] execVM "\CGQC\loadouts\unsung\loadout_1_2.sqf";
 				cgqc_role = "1-2 Medic";
+            };
+            // === Scandinavia ========================================================================
+            case "scandinavia_basic":{ 
+                [] execVM "\CGQC\loadouts\scandinavia\loadout_basic.sqf";
+				cgqc_role = "Basic Soldier";
             };
             default	{
                 hintc "mk3_roleSwitch.sqf fail";

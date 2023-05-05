@@ -9,7 +9,25 @@ if (hasInterface) then {
 	_action = [ "menu_zeus_unlock", "Unlock Arsenal", "", {hint 'Arsenal unlocked!'; cgqc_mk2_arsenal_locked = false; publicVariable "cgqc_mk2_arsenal_locked"}, {cgqc_mk2_arsenal_locked && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _type, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-	// Vietnam arsenal if Unsung is pressent ===============================================================================================
+	// WW2 Scandinavia ===============================================================================================
+	if (cgqc_player_hasScandinavia) then {
+		waitUntil {sleep 1; cgqc_scandinavia_arsenal_init_done};
+		// scandinavia ---------------------------------------------------------------------------------------------------------
+		_action = [ "menu_scandinavia", "Scandinavia", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+		// scandinavia Arsenal Complet 
+		_action = [ "menu_scandinavia_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\scandinavia\load_scandinavia.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_scandinavia" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		// scandinavia Loadout switcher ---------------------------------------------------------------------------------------------------------
+		_action = [ "menu_scandinavia_loadouts", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_scandinavia"], _action ] call ace_interact_menu_fnc_addActionToObject;
+		// Basic soldier 
+		_action = [ "menu_scandinavia_basic", "Basic Soldier", "", {["scandinavia_basic", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		_adding = [ _type, 0, ["ACE_MainActions", "menu_scandinavia", "menu_scandinavia_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		
+	};
+
+	// Vietnam UNSUNG ===============================================================================================
 	if (cgqc_player_hasUnsung) then {
 		waitUntil {sleep 1; cgqc_unsung_arsenal_init_done};
 		// Unsung ---------------------------------------------------------------------------------------------------------
@@ -233,13 +251,6 @@ if (hasInterface) then {
 		};
 	};
 	
-	// Scandinavia shit ===============================================================================================
-	if (cgqc_player_hasScandinavia) then {
-		// 2023 ---------------------------------------------------------------------------------------------------------
-		_action = [ "menu_scandinavia", "ww2 Scandinavia", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ _type, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-	};
-
 	// 23rd shit if 23rd mod is present===============================================================================================
 	if (cgqc_player_has23rd) then {
 		// 2023 ---------------------------------------------------------------------------------------------------------

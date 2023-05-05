@@ -489,3 +489,11 @@ cgqc_event_148 = ["acre_startedSpeaking", {
   };  
  };  
 }] call CBA_fnc_addEventHandler;
+
+
+
+
+{
+	e_traits = getAllUnitTraits _x;
+	e_linked = 	
+}forEach allUnits;

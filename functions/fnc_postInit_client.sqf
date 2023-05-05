@@ -31,6 +31,14 @@ if(cgqc_player_hasUnsung) then {
 	cgqc_unsung_arsenal_8 = cgqc_unsung_arsenal_all;
 	cgqc_unsung_arsenal_init_done = true;
 };
+if(cgqc_player_hasScandinavia) then {
+	cgqc_scandinavia_arsenal_1 = [];
+	cgqc_scandinavia_arsenal_8 = [];
+	#include "\cgqc\loadouts\scandinavia\all_items.sqf";
+	#include "\cgqc\loadouts\scandinavia\all_loadouts.sqf";
+	cgqc_scandinavia_arsenal_8 = cgqc_scandinavia_arsenal_all;
+	cgqc_scandinavia_arsenal_init_done = true;
+};
 
 
 // Briefing entry -------------------------------------------------------------------------------------------------
@@ -115,6 +123,6 @@ switch (_unit) do {
 // Give basic items to unit in case it's missing 
 // Admin stuff 
 _items = (items player);
-if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
+if (!("ACE_MapTools" in _items) && "ItemMap" in _items) then {player addItem "ACE_MapTools";};
 if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
 cgqc_postInitClient_done = true;
