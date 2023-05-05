@@ -68,8 +68,7 @@ player addEventHandler ["GetInMan", {
 ["ace_unconscious", {
 	params ["_unit", "_isUnconscious"];
    if (_isUnconscious) then {
-		//hint format ["%1 is now unconscious", name _unit];
-		if (isServer) then {playSound3D ["cgqc\sounds\youwin.ogg", _unit, false, getPosASL _unit, 1, 1, 20]};
+		if (isServer) then {playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30]};
 	};
 }] call CBA_fnc_addEventHandler;
 
