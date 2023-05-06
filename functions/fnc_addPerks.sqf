@@ -18,6 +18,16 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 _action = [ "menu_self_dropDiver", "Drop Habit de Plongée", "CGQC\textures\cgqc_ace_dive", {["diver", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Chemlights ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_chemlights", "Drop Chemlight", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_chem_green", "Green", "", {["chem_green", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_chem_green > 0} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_chem_ir", "IR", "", {["chem_ir", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_chem_ir > 0} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_chem_green", "Ultra-hi Orange", "", {["chem_orange", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_chem_orange > 0} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 
 // ------ Personal stash --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_stash", "Personal Stash", "", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;

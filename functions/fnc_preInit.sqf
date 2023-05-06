@@ -54,6 +54,9 @@ cgqc_perks_eng = false;
 cgqc_perks_medic = false;
 cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
+cgqc_perks_chem_green = 10;
+cgqc_perks_chem_ir = 10;
+cgqc_perks_chem_orange = 10;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
