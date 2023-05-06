@@ -94,15 +94,15 @@ try {
 				[_skip_msg, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
 			}else{//Keep proceeding
 				["prep"] execVM "\cgqc\loadouts\mk3_switchStuff.sqf";
-				sleep 1;
+				sleep 0.5;
 				// Keep uniform
 				_uniform_new = player_uniform_old;
 				// Keep Vest
 				_vest_new = player_vest_old;
 				// Switch to mask
 				_goggles_new = "cgqc_goggles_mk1_para";
-				// Parachute
-				_backpack_new  = "B_Parachute";
+				hint "Jump Mask";
+				sleep 1;
 				// Add Paradrop perks
 				cgqc_perks_para = true;
 				// Add old backpack on chest
@@ -114,9 +114,13 @@ try {
 				_items = assignedItems player;
 				_current_watch = _items select 2;
 				if (_current_watch == "ItemWatch") then {player linkItem "ACE_Altimeter";};
-				sleep 0.5;
 				[player] call bocr_main_fnc_actionOnChest;
-				sleep 2;
+				hint "Backpack on Chest";
+				sleep 1;
+				// Parachute
+				_backpack_new  = "B_Parachute";
+				hint "Parachute";
+				sleep 1;
 				hint parseText ("Prêt à sauter" + "<br/>" + "Ace Self-Action->Drop Parachute" + "<br/>" + "une fois au sol...");
 			};
 		};

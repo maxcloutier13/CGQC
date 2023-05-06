@@ -106,26 +106,20 @@ switch (_type) do {
                 waitUntil {cgqc_welcome_done};
                 sleep 10;
             };
-
-            //cgqc_welcome_pic = format["<img size= '3' style='vertical-align:bottom' shadow='false' image='textures\%1.paa'/>", cgqc_player_rank_badge]; 
-            _txt = parseText format[
-            "<t font='PuristaBold' size='1.6'>Au Repos!</t><br />
-            <t font='PuristaBold' size='1.2'>Rang: %1</t><br/>
-            <t font='PuristaBold' size='1.2'>Beret: %2</t><br/>", cgqc_player_rank_name ,cgqc_player_beret_name]; 
-            //[cgqc_welcome_pic, 0.9, 0.2, 6, 2 ] spawn BIS_fnc_dynamicText; 
-            //sleep 1;
-            // Rank and color up top
-            [_txt, [1.25,0,1,1], nil, 4, [2,3], 0] spawn BIS_fnc_textTiles;
-
-
-            player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
-            player addGoggles cgqc_player_oldFace;
-            player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
-            player linkItem cgqc_player_oldNvg;
-            
-            if (_fromLoadout) then {
-                _txt = parseText format["<t font='PuristaBold' size='1.6'>Prêt au Combat!</t>"]; 
-                        [_txt, [1.25,0,1,1], nil, 2, [1,3], 0] spawn BIS_fnc_textTiles;
+            if (cgqc_player_chill) then {
+                //cgqc_welcome_pic = format["<img size= '3' style='vertical-align:bottom' shadow='false' image='textures\%1.paa'/>", cgqc_player_rank_badge]; 
+                _txt = parseText format[
+                "<t font='PuristaBold' size='1.6'>Au Repos!</t><br />
+                <t font='PuristaBold' size='1.2'>Rang: %1</t><br/>
+                <t font='PuristaBold' size='1.2'>Beret: %2</t><br/>", cgqc_player_rank_name ,cgqc_player_beret_name]; 
+                //[cgqc_welcome_pic, 0.9, 0.2, 6, 2 ] spawn BIS_fnc_dynamicText; 
+                //sleep 1;
+                // Rank and color up top
+                [_txt, [1.25,0,1,1], nil, 4, [2,3], 0] spawn BIS_fnc_textTiles;
+                player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
+                player addGoggles cgqc_player_oldFace;
+                player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
+                player linkItem cgqc_player_oldNvg;
             };
         };
         break;
