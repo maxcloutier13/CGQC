@@ -8,16 +8,6 @@ class cgqc_pack_mk1_magic : B_AssaultPack_rgr
     model = "\A3\weapons_f\empty";
     class TransportMagazines
     {
-        class _xx_ACE_Chemlight_HiRed
-        {
-            count = 1;
-            magazine = "ACE_Chemlight_HiRed";
-        };
-        class _xx_ACE_Chemlight_IR
-        {
-            count = 1;
-            magazine = "ACE_Chemlight_IR";
-        };
         class _xx_SmokeShell
         {
             count = 3;
