@@ -11,6 +11,7 @@ cgqc_intro_running = false;
 cgqc_intro_done = false;
 cgqc_intro_skipped = false;
 cgqc_welcome_message = "";
+cgqc_welcome_done = false;
 cgqc_welcome_pic = "";
 // *** Player **********************
 cgqc_player_known = true;
@@ -21,7 +22,8 @@ cgqc_player_rank = 0;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
 cgqc_player_rank_unknown = false;
-cgqc_player_rank_beret = "";
+cgqc_player_beret = "";
+cgqc_player_beret_name = "";
 cgqc_player_role = "";
 cgqc_player_chill = false;
 cgqc_player_oldNvg = "";
@@ -55,6 +57,9 @@ cgqc_perks_eng = false;
 cgqc_perks_medic = false;
 cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
+cgqc_perks_chem_green = 10;
+cgqc_perks_chem_ir = 10;
+cgqc_perks_chem_orange = 10;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";

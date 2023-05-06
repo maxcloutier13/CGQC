@@ -55,6 +55,7 @@ if (cgqc_setting_show_welcome) then {
 	};
 };
 
+cgqc_welcome_done = true;
 /*
 cgqc_welcome_text = (cgqc_welcome_pic + "<br/>" + cgqc_welcome_message);
 
