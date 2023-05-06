@@ -18,6 +18,7 @@ class cfgWeapons {
 	#include "cfg_helmets.hpp"
 	#include "cfg_guns.hpp"
 	#include "cfg_misc.hpp"
+	#include "cfg_uniforms.hpp"
 };
 
 // Patches
@@ -93,7 +94,6 @@ class CfgEditorSubcategories
 class cfgVehicles {
 	#include "cfg_flags.hpp"
 	#include "cfg_units.hpp"
-	#include "cfg_backpacks.hpp"
 	#include "cfg_containers.hpp"
 	#include "cfg_items.hpp"
 	#include "cfg_actions.hpp"
@@ -104,6 +104,12 @@ class cfgVehicles {
 class cfgFunctions {
 	//CGQC functions
 	#include "cfg_functions.hpp"
+};
+
+// Face stuff
+class CfgGlasses
+{
+	#include "cfg_goggles.hpp"
 };
 
 // Custom events

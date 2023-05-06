@@ -60,7 +60,7 @@ try {
                 //c_new_nvg = "immersion_cigs_cigar0_nv";
                 // Sling helmet
                 [player] call GRAD_slingHelmet_fnc_actionSling;
-                // Send facestuff to backpack
+                // Send goggles to backpack
                 cgqc_player_oldFace = goggles player;
                 player addItemToBackpack cgqc_player_oldFace;
                 removeGoggles player;
@@ -103,7 +103,7 @@ try {
                     removeGoggles player;
                     player allowDamage true;
                 };
-                player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
+                player removeItemFromBackpack cgqc_player_oldFace; // Get back goggles to backpack
                 player addGoggles cgqc_player_oldFace;
                 player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
                 player linkItem cgqc_player_oldNvg;
@@ -141,7 +141,7 @@ try {
             _backpack = backpack player;
             // Get backpack back
             if (_backpack != "") then {
-                if (_backpack find "B_Parachute" == 0) then {
+                if (_backpack find "chute" > 0) then {
                     sleep 1;
                     removeBackpack player;
                     hint "Removed parachute";
@@ -188,27 +188,41 @@ try {
                 hint "No diving suit?";
             };
             sleep 2;
-            // Switch Vest 
-            _vest = vest player;
-            if (_vest find "cgqc_vest_mk1_diver" == 0) then {
-                _items_vest = vestItems player;
-                player addVest player_vest_old;
-                {player addItemToVest _x} forEach _items_vest;
-                hint "Removed Rebreather";
-            }else{
-                hint "No rebreather?";
-            }; 
-            sleep 1;
-            // Switch backpack
-            _items_pack = backpackItems player;
-            removeBackpack player;
-            player addBackpack player_backpack_old;
-            clearAllItemsFromBackpack player;
-            {player addItemToBackpack _x} forEach _items_pack;
-            hint "Switched Backpack";
+
+            if (cgqc_player_has2023) then{
+                // Switch Vest 
+                if (vest player find "cgqc_vest_mk1_diver" == 0) then {
+                    _items_vest = vestItems player;
+                    player addVest player_vest_old;
+                    {player addItemToVest _x} forEach _items_vest;
+                    hint "Removed Rebreather";
+                }else{
+                    hint "No rebreather?";
+                }; 
+                sleep 1;
+                // Switch backpack
+                _items_pack = backpackItems player;
+                removeBackpack player;
+                player addBackpack player_backpack_old;
+                clearAllItemsFromBackpack player;
+                {player addItemToBackpack _x} forEach _items_pack;
+                hint "Switched Backpack";
+            } else{ // Default stuff
+                // Switch Vest 
+                if (backpack player find "cgqc_backpack_mk1_diver" == 0) then {
+                    _items_back = backpackItems player;
+                    removeBackpack player;
+                    player addBackpack player_backpack_old;
+                    {player addItemToBackpack _x} forEach _items_back;
+                    hint "Removed Diving Bottle";
+                }else{
+                    hint "No Diving Bottle?";
+                }; 
+            };
             sleep 1;
             hintSilent "";
-            cgqc_perks_diver = false;
+            cgqc_perks_diver_suit_on = false;
+            //cgqc_perks_diver = false;
         };
     };
     disableUserInput false;
