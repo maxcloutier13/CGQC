@@ -18,6 +18,7 @@ class cfgWeapons {
 	#include "cfg_helmets.hpp"
 	#include "cfg_guns.hpp"
 	#include "cfg_misc.hpp"
+	#include "cfg_uniforms.hpp"
 };
 
 // Patches
@@ -103,6 +104,12 @@ class cfgVehicles {
 class cfgFunctions {
 	//CGQC functions
 	#include "cfg_functions.hpp"
+};
+
+// Face stuff
+class CfgGlasses
+{
+	#include "cfg_goggles.hpp"
 };
 
 // Custom events

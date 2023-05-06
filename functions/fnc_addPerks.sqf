@@ -15,8 +15,11 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 _action = [ "menu_self_dropPara", " Drop Parachute", "CGQC\textures\cgqc_ace_para", {["para", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_para && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Drop Diving suit ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_dropDiver", " Drop Habit de Plongée", "CGQC\textures\cgqc_ace_dive", {["diver", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_dropDiver", "Drop Habit de Plongée", "CGQC\textures\cgqc_ace_dive", {["diver", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_diver_suit_on && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Diver suit back on ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_dive", {["diver", false] execVM "\CGQC\loadouts\mk3_camoSwitch.sqf"}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Chemlights ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_chemlights", "Drop Chemlight", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -27,7 +30,6 @@ _action = [ "menu_self_chem_ir", "IR", "", {["chem_ir", false] spawn CGQC_fnc_pe
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_chem_green", "Ultra-hi Orange", "", {["chem_orange", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_chem_orange > 0} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
 
 // ------ Personal stash --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_stash", " Personal Stash", "CGQC\textures\cgqc_ace_stash", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
@@ -85,7 +87,7 @@ if (cgqc_config_fortify) then {
 	[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
 };
 // ------ Heli pilot --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_heli_pilot_getCrew", "Griffon: Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
+_action = [ "cgqc_perk_heli_pilot_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_pilot && 
 	!cgqc_perks_pilot_hasCrew &&
 	(vehicle player isKindOf "Helicopter")
@@ -95,7 +97,7 @@ _action = [ "cgqc_perk_heli_pilot_delCrew", "Delete Crew", "", {["delCrew"] spaw
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Tank driver --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_driver_getDriver", "Centaure: Spawn Driver", "", {["getDriver"] spawn CGQC_fnc_perksPilot}, {
+_action = [ "cgqc_perk_driver_getDriver", "Spawn Driver", "", {["getDriver"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_driver && 
 	!cgqc_perks_driver_hasDriver &&
 	(vehicle player isKindOf "LandVehicle")
@@ -105,8 +107,8 @@ _action = [ "cgqc_perk_driver_delDriver", "Delete Driver", "", {["delDriver"] sp
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Set patch ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_patch", "Remettre ta patch personelle", "", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+//_action = [ "menu_self_patch", "Remettre ta patch personelle", "", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 
 // Radios ---------------------------------------------------------------------------------------------------------------

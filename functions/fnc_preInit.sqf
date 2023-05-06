@@ -47,6 +47,7 @@ cgqc_player_hasUnsung = false;
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
 cgqc_perks_diver = false;
+cgqc_perks_diver_suit_on = false;
 cgqc_perks_para = false;
 cgqc_perks_pilot = false;
 cgqc_perks_driver = false;

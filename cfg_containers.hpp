@@ -1,5 +1,6 @@
 class Land_Ammobox_rounds_F;
 class Land_CanisterFuel_F;
+class Box_NATO_Equip_F;
 class NATO_Box_Base;
 // Vanilla vehicle items ===================================================================================================
 // Mk1 Fuel can
@@ -139,16 +140,190 @@ class cgqc_box_mk2_arsenal : B_supplyCrate_F
     displayName = "CGQC MK3 Arsenal";
     hiddenSelectionsTextures[] = {"\CGQC\containers\cgqc_box_mk3.paa"};
     editorPreview = "\A3\EditorPreviews_F_Orange\Data\CfgVehicles\C_IDAP_supplyCrate_F.jpg";
-    ace_cargo_canLoad = 0;  // Enables the object to be loaded (1-yes, 0-no)
+    ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
     ace_cargo_noRename = 1;
     class EventHandlers
     {
-        init = "_this execVM '\CGQC\loadouts\mk3_menu.sqf'";
+        init = "[_this, 'arsenal'] execVM '\CGQC\loadouts\mk3_menu.sqf'";
     };
     class TransportMagazines{};
     class TransportWeapons{};
     class TransportItems{};
     class TransportBackpacks{};
+};
+// Parachute stuff
+class cgqc_box_mk2_parachute : Box_NATO_Equip_F
+{
+    scope = 2;
+    author = "silent1";
+    _generalMacro = "cgqc_box_mk2_parachute";
+    displayName = "CGQC MK2 Parachute Box";
+    hiddenSelectionsTextures[] = {"\CGQC\containers\cgqc_box_mk2_red.paa",
+                                  "\CGQC\containers\cgqc_box_mk2_parachutes.paa"};
+    editorPreview = "\A3\EditorPreviews_F_Exp\Data\CfgVehicles\Box_NATO_Equip_F.jpg";
+    ace_cargo_canLoad = 0;  // Enables the object to be loaded (1-yes, 0-no)
+    ace_cargo_noRename = 1;
+    class SimpleObject
+    {
+        eden = 1;
+        animate[] = {};
+        hide[] = {};
+        verticalOffset = 0.382;
+        verticalOffsetWorld = 0;
+        init = "''";
+    };
+    class TransportMagazines
+    {
+    };
+    class TransportWeapons
+    {
+    };
+    class TransportItems
+    {
+        class _xx_ACE_Altimeter
+        {
+            count = 30;
+            name = "ACE_Altimeter";
+        };
+    };
+    class TransportBackpacks
+    {
+        class _xx_B_Parachute
+        {
+            backpack = "B_Parachute";
+            count = 30;
+        };
+    };
+    class EventHandlers
+    {
+        init = "[_this, 'para'] execVM '\CGQC\loadouts\mk3_menu.sqf'";
+    };
+};
+// Diving stuff
+class cgqc_box_mk2_diving : Box_NATO_Equip_F
+{
+    scope = 2;
+    author = "silent1";
+    _generalMacro = "cgqc_box_mk2_diving";
+    displayName = "CGQC MK2 Diving box";
+    hiddenSelectionsTextures[] = {"\CGQC\containers\cgqc_box_mk2_blue.paa",
+                                  "\CGQC\containers\cgqc_box_mk2_plongee.paa"};
+    editorPreview = "\A3\EditorPreviews_F_Exp\Data\CfgVehicles\Box_NATO_Equip_F.jpg";
+    ace_cargo_canLoad = 0;  // Enables the object to be loaded (1-yes, 0-no)
+    ace_cargo_noRename = 1;
+    class SimpleObject
+    {
+        eden = 1;
+        animate[] = {};
+        hide[] = {};
+        verticalOffset = 0.382;
+        verticalOffsetWorld = 0;
+        init = "''";
+    };
+    class TransportMagazines
+    {
+    };
+    class TransportWeapons
+    {
+    };
+    class TransportItems
+    {
+        class _xx_cgqc_uniform_mk1_diver
+        {
+            count = 30;
+            name = "cgqc_uniform_mk1_diver";
+        };
+        class _xx_cgqc_backpack_mk1_diver
+        {
+            count = 30;
+            name = "cgqc_backpack_mk1_diver";
+        };
+        class _xx_cgqc_goggles_mk1_diver
+        {
+            count = 30;
+            name = "cgqc_goggles_mk1_diver";
+        };
+    };
+    class EventHandlers
+    {
+        init = "[_this, 'dive'] execVM '\CGQC\loadouts\mk3_menu.sqf'";
+    };
+};
+
+class B_AssaultPack_rgr;
+class cgqc_pack_mk1_magic : B_AssaultPack_rgr
+{
+    scope = 2;
+    author = "silent1";
+    displayName = "CGQC Backpack magique";
+    hiddenSelectionsTextures[] = {""};
+    model = "\A3\weapons_f\empty";
+    class TransportMagazines
+    {
+        class _xx_ACE_Chemlight_HiRed
+        {
+            count = 1;
+            magazine = "ACE_Chemlight_HiRed";
+        };
+        class _xx_ACE_Chemlight_IR
+        {
+            count = 1;
+            magazine = "ACE_Chemlight_IR";
+        };
+        class _xx_SmokeShell
+        {
+            count = 3;
+            magazine = "SmokeShell";
+        };
+        class _xx_SmokeShellBlue
+        {
+            count = 3;
+            magazine = "SmokeShellBlue";
+        };
+        class _xx_SmokeShellRed
+        {
+            count = 3;
+            magazine = "SmokeShellRed";
+        };
+        class _xx_B_IR_Grenade
+        {
+            count = 1;
+            magazine = "B_IR_Grenade";
+        };
+    };
+    class TransportItems
+    {
+        class _xx_ACE_fieldDressing
+        {
+            count = 10;
+            name = "ACE_fieldDressing";
+        };
+        class _xx_ACE_salineIV_500
+        {
+            count = 2;
+            name = "ACE_salineIV_500";
+        };
+        class _xx_ACE_EntrenchingTool
+        {
+            count = 1;
+            name = "ACE_EntrenchingTool";
+        };
+    };
+    class TransportWeapons
+    {
+    };
+};
+
+class B_SCBA_01_F;
+//Diver Rebreather
+class cgqc_backpack_mk1_diver : B_SCBA_01_F
+{
+    author = "silent1";
+    _generalMacro = "cgqc_vest_mk1_diver";
+    displayName = "CGQC Tank Plongeur";
+	maximumLoad = 365;
+    mass = 60;
+    //hiddenSelectionsTextures[] = {"\cgqc_2022\vests\cgqc_vest_tank_green.paa"};
 };
 
 class B_AssaultPack_rgr;

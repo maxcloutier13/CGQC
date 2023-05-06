@@ -23,6 +23,7 @@ class CfgPatches
 		units[] = {	"CGQC_Soldat_Base",
 					"CGQC_Officer_Base",
 					"cgqc_pack_mk1_magic",
+					"cgqc_backpack_mk1_diver",					
 					"cgqc_flag_coop_black",
 					"cgqc_flag_coop_white",
 					"cgqc_flag_logo_black",
@@ -40,6 +41,8 @@ class CfgPatches
 					"cgqc_box_mk2_stash",
 					"cgqc_box_mk1_supplies",
 					"cgqc_box_mk2_arsenal",
+					"cgqc_box_mk2_parachute",
+					"cgqc_box_mk2_diving",
 					"Headgear_cgqc_beret_green",
 					"Headgear_cgqc_beret_blue",
 					"Headgear_cgqc_cap_green",
@@ -75,6 +78,7 @@ class CfgPatches
 					"cgqc_beanie_green",
 					"cgqc_beanie_khaki",
 					"cgqc_beanie_coyote",
+					"cgqc_uniform_mk1_diver",
 					"cgqc_gun_p99_wood"};
 	};
 };
