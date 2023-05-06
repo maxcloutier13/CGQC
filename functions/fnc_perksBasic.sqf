@@ -7,7 +7,6 @@ waitUntil {cgqc_player_rank_found};
 
 try {
     disableUserInput true;
-    
     if (_type find "chem"  > -1) then {
         switch (_type) do {
             case "chem_ir": {
@@ -25,110 +24,132 @@ try {
                 cgqc_perks_chem_orange = cgqc_perks_chem_orange - 1;
                 _count = cgqc_perks_chem_orange;
             };
-        };
-        sleep 1;
-        player playMove "Acts_Pointing_Down";
-        sleep 2;
-        hint format ["Dropped chemlight %1 left", _count];
-        _chem createVehicle getPosATL player;
-        sleep 1;
-        player playMove "";
-        hintSilent "";
+      };
+      sleep 1;
+      player 
+      "Acts_Pointing_Down";
+      sleep 2;
+      hint format ["Dropped chemlight %1 left", _count];
+      _chem createVehicle getPosATL player;
+      sleep 1;
+      player playMove "";
+      hintSilent "";
     }else{
-        switch (_type) do {
-            case "fix":
-            {
-                hint "Sound: Volumes reset";
-                [] call ace_volume_fnc_restoreVolume;
-                [0.7] call acre_api_fnc_setSelectableVoiceCurve;
-                sleep 5;
-                hintSilent "";
-            };
-            case "cone":
-            {
-                // Setup trigger
-                y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
-                y_deAct = "[] call ace_volume_fnc_restoreVolume;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false; hint 'Cone of silence: Off';";
-                _int = 2;
-                // Create trigger
-                cgqc_cone_silence = createTrigger ["EmptyDetector",getPos player, true];
-                cgqc_cone_silence triggerAttachVehicle [player];
-                cgqc_cone_silence setTriggerArea [2, 2, 0, false];
-                cgqc_cone_silence setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-                cgqc_cone_silence setTriggerStatements ["this", y_act, y_deAct];
-                cgqc_cone_silence setTriggerInterval _int;
-                cgqc_perks_silence = true;
-                hint "Cone of silence: On";
-                sleep 5;
-                hintSilent "";
-            };
-            case "cone_off":
-            {
-                //Delete trigger zone
-                deleteVehicle cgqc_cone_silence;
-                //Restore volume
-                [] call ace_volume_fnc_restoreVolume;
-                cgqc_perks_silence = false;
-                hint "Cone of silence: Off";
-                sleep 5;
-                hintSilent "";
-            };
-            case "stash":
-            {
-                cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
-                cgqc_perk_player_stash_on = true;
-                hint "Stash spawned";
-                sleep 5;
-                hintSilent "";
-            };
-            case "del_stash":
-            {
-                deleteVehicle cgqc_perk_player_stash;
-                cgqc_perk_player_stash_on = false;
-                hint "Stash deleted";
-                sleep 5;
-                hintSilent "";
-            };
-            case "chill":
-            {
-                if !(cgqc_player_chill) then {
-                    //[] call CGQC_fnc_getRankedBeret;
-                    _new_face = "";
-                    //c_new_vest = "V_SmershVest_01_radio_F";
-                    //c_new_nvg = "immersion_cigs_cigar0_nv";
-                    // Sling helmet
-                    [player] call GRAD_slingHelmet_fnc_actionSling;
-                    // Send facestuff to backpack
-                    cgqc_player_oldFace = goggles player;
-                    player addItemToBackpack cgqc_player_oldFace;
-                    removeGoggles player;
-                    // set hat
-                    player addHeadgear cgqc_player_rank_beret;
-                    // set glasses 
-                    player addGoggles _new_face;
-                    // Find nvgs
-                    if ([player, "JAS_GPNVG18_Full_blk_TI"] call BIS_fnc_hasItem) then {
-                        cgqc_player_oldNvg = "JAS_GPNVG18_Full_blk_TI";
-                    };
-                    if ([player, "JAS_GPNVG18_blk"] call BIS_fnc_hasItem) then {
-                        cgqc_player_oldNvg = "JAS_GPNVG18_blk";
-                    };
-                    player addItemToBackpack cgqc_player_oldNvg;
-                    player unlinkItem cgqc_player_oldNvg;
-                    // Holster all weapons
-                    player action ['SwitchWeapon', player, player, 250];
-                    if (cgqc_player_max) then {
-                        player linkItem "immersion_cigs_cigar0_nv";
-                        player addGoggles "G_Aviator";
-                        player allowDamage false;
-                        hint "NoDamage";
-                    };
-                    cgqc_player_chill = true;
-                    // Set radio left/right if this is from init 
-                    if !(_fromLoadout) then {
-                        _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Au Repos...</t><br/>");
-                        [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
-                    };
+    
+    
+    switch (_type) do {
+        case "fix":
+        {
+            hint "Sound: Volumes reset";
+            [] call ace_volume_fnc_restoreVolume;
+            [0.7] call acre_api_fnc_setSelectableVoiceCurve;
+            sleep 5;
+            hintSilent "";
+        };
+        case "cone":
+        {
+            // Setup trigger
+            y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
+            y_deAct = "[] call ace_volume_fnc_restoreVolume;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false; hint 'Cone of silence: Off';";
+            _int = 2;
+            // Create trigger
+            cgqc_cone_silence = createTrigger ["EmptyDetector",getPos player, true];
+                  cgqc_cone_silence triggerAttachVehicle [player];
+            cgqc_cone_silence setTriggerArea [2, 2, 0, false];
+            cgqc_cone_silence setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+            cgqc_cone_silence setTriggerStatements ["this", y_act, y_deAct];
+            cgqc_cone_silence setTriggerInterval _int;
+            cgqc_perks_silence = true;
+            hint "Cone of silence: On";
+            sleep 5;
+            hintSilent "";
+        };
+        case "cone_off":
+        {
+            //Delete trigger zone
+            deleteVehicle cgqc_cone_silence;
+            //Restore volume
+            [] call ace_volume_fnc_restoreVolume;
+            cgqc_perks_silence = false;
+            hint "Cone of silence: Off";
+            sleep 5;
+            hintSilent "";
+        };
+        case "stash":
+        {
+            cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
+            cgqc_perk_player_stash_on = true;
+            hint "Stash spawned";
+            sleep 5;
+            hintSilent "";
+        };
+        case "del_stash":
+        {
+            deleteVehicle cgqc_perk_player_stash;
+            cgqc_perk_player_stash_on = false;
+            hint "Stash Deleted";
+            sleep 5;
+            hintSilent "";
+        };
+        case "chill":
+        {
+            if !(cgqc_player_chill) then {
+                //[] call CGQC_fnc_getRankedBeret;
+                _new_face = "";
+                //c_new_vest = "V_SmershVest_01_radio_F";
+                //c_new_nvg = "immersion_cigs_cigar0_nv";
+                // Sling helmet
+                [player] call GRAD_slingHelmet_fnc_actionSling;
+                // Send facestuff to backpack
+                cgqc_player_oldFace = goggles player;
+                player addItemToBackpack cgqc_player_oldFace;
+                removeGoggles player;
+                // set hat
+                player addHeadgear cgqc_player_beret;
+                // set glasses 
+                player addGoggles _new_face;
+                // Find nvgs
+                if ([player, "JAS_GPNVG18_Full_blk_TI"] call BIS_fnc_hasItem) then {
+                    cgqc_player_oldNvg = "JAS_GPNVG18_Full_blk_TI";
+                };
+                if ([player, "JAS_GPNVG18_blk"] call BIS_fnc_hasItem) then {
+                    cgqc_player_oldNvg = "JAS_GPNVG18_blk";
+                };
+                player addItemToBackpack cgqc_player_oldNvg;
+                player unlinkItem cgqc_player_oldNvg;
+                // Holster all weapons
+                player action ['SwitchWeapon', player, player, 250];
+                if (cgqc_player_max) then {
+                    player linkItem "immersion_cigs_cigar0_nv";
+                    player addGoggles "G_Aviator";
+                    player allowDamage false;
+                    hint "NoDamage";
+                };
+                cgqc_player_chill = true;
+                if !(cgqc_welcome_done) then {
+                    disableUserInput false;
+                    waitUntil {cgqc_welcome_done};
+                    sleep 10;
+                };
+                //cgqc_welcome_pic = format["<img size= '3' style='vertical-align:bottom' shadow='false' image='textures\%1.paa'/>", cgqc_player_rank_badge]; 
+                _txt = parseText format[
+                "<t font='PuristaBold' size='1.6'>Au Repos!</t><br />
+                <t font='PuristaBold' size='1.2'>Rang: %1</t><br/>
+                <t font='PuristaBold' size='1.2'>Beret: %2</t><br/>", cgqc_player_rank_name ,cgqc_player_beret_name]; 
+                //[cgqc_welcome_pic, 0.9, 0.2, 6, 2 ] spawn BIS_fnc_dynamicText; 
+                //sleep 1;
+                // Rank and color up top
+                [_txt, [1.25,0,1,1], nil, 4, [2,3], 0] spawn BIS_fnc_textTiles;
+
+
+                player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
+                player addGoggles cgqc_player_oldFace;
+                player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
+                player linkItem cgqc_player_oldNvg;
+                
+                if (_fromLoadout) then {
+                    _txt = parseText format["<t font='PuristaBold' size='1.6'>Prêt au Combat!</t>"]; 
+					          [_txt, [1.25,0,1,1], nil, 2, [1,3], 0] spawn BIS_fnc_textTiles;
                 };
             };
             case "ready":
@@ -151,7 +172,7 @@ try {
                         [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
                     };
                 };
-            };
+            };            
             case "para":
             {
                 cgqc_perks_para = false;

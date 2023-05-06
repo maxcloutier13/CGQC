@@ -11,6 +11,7 @@ cgqc_intro_running = false;
 cgqc_intro_done = false;
 cgqc_intro_skipped = false;
 cgqc_welcome_message = "";
+cgqc_welcome_done = false;
 cgqc_welcome_pic = "";
 // *** Player **********************
 cgqc_player_known = true;
@@ -21,7 +22,8 @@ cgqc_player_rank = 0;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
 cgqc_player_rank_unknown = false;
-cgqc_player_rank_beret = "";
+cgqc_player_beret = "";
+cgqc_player_beret_name = "";
 cgqc_player_role = "";
 cgqc_player_chill = false;
 cgqc_player_oldNvg = "";
