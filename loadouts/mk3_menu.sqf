@@ -1,3 +1,6 @@
+// --- mk3_menu ----------------------------------------------------------
+// Ace menu for mk3 sheeits
+
 waitUntil {!isNil "cgqc_postInitClient_done"};
 waitUntil {cgqc_postInitClient_done};
 _crate = (_this select 0) select 0;

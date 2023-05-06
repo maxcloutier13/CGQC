@@ -254,32 +254,23 @@ switch (_type) do {
         //cgqc_perks_diver = false;
         break;
     };
-    case (_type find "chem"  > -1): {
-        switch (_type) do {
-            case "chem_ir": {
-                _chem = "ACE_G_Chemlight_IR";
-                cgqc_perks_chem_ir = cgqc_perks_chem_ir - 1;
-                _count = cgqc_perks_chem_ir;
-            };
-            case "chem_green": {
-                _chem = "Chemlight_green";
-                cgqc_perks_chem_green = cgqc_perks_chem_green - 1;
-                _count = cgqc_perks_chem_green;
-            };
-            case "chem_orange": {
-                _chem = "ACE_G_Chemlight_UltraHiOrange";
-                cgqc_perks_chem_orange = cgqc_perks_chem_orange - 1;
-                _count = cgqc_perks_chem_orange;
-            };
-        };
-        sleep 1;
-        player playMove "Acts_Pointing_Down";
-        sleep 2;
-        hint format ["Dropped chemlight %1 left", _count];
-        _chem createVehicle getPosATL player;
-        sleep 1;
-        player playMove "";
-        hintSilent "";
+    case "chem_ir": {
+        _chem = "ACE_G_Chemlight_IR";
+        cgqc_perks_chem_ir = cgqc_perks_chem_ir - 1;
+        _count = cgqc_perks_chem_ir;
+        [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
+    };
+    case "chem_green": {
+        _chem = "Chemlight_green";
+        cgqc_perks_chem_green = cgqc_perks_chem_green - 1;
+        _count = cgqc_perks_chem_green;
+        [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
+    };
+    case "chem_orange": {
+        _chem = "ACE_G_Chemlight_UltraHiOrange";
+        cgqc_perks_chem_orange = cgqc_perks_chem_orange - 1;
+        _count = cgqc_perks_chem_orange;
+        [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
     };
 };
 // Return control to player
