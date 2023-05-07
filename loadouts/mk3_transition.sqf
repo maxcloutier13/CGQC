@@ -23,6 +23,10 @@ if (cgqc_setting_show_transition) then {
             _text_insert = "Parachutiste";
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Kit: %1</t><br/>");
         };
+        case "basic_orient":{
+            _text_insert = "Orientation";
+            _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>");
+        };
     };
     //Pop le texte
     _text = format [_text, _text_insert];

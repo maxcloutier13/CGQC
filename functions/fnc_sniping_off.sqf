@@ -2,7 +2,7 @@
 waitUntil {
 	!isNull player
 };
-
+cgqc_sniping = false;
 // Deactivate Alt+click teleport
 // ["teleportHandler", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 
