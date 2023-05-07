@@ -5,6 +5,7 @@ _type = _this select 0;
 switch (_type) do {
 	case "basic_on":	{
 		cgqc_orienteering = true;
+		cgqc_orient_won = false;
 		cgqc_orient_pos = getPosATL player;
 		cgqc_orient_targets = [];
 		cgqc_orient_target_found = false;
@@ -52,7 +53,7 @@ switch (_type) do {
 		};
 		
 		// Create trigger
-		_act = "hint format['Good job Viper! %1mins', cgqc_orienteering_timer/60]; ['basic_off'] execVM '\cgqc\functions\fnc_trainingOrient.sqf';";
+		_act = "cgqc_orient_won = true; ['basic_off'] execVM '\cgqc\functions\fnc_trainingOrient.sqf';";
 		_deAct = "";
 		_int = 2;
 		if !(isNil "y_markerTarget") then {deleteMarker "cgqc_orient_target";};	 
@@ -122,8 +123,13 @@ switch (_type) do {
 		deleteVehicle cgqc_orient_crate;
 		deleteVehicle cgqc_orient_target_crate;
 		player setPos cgqc_orient_pos;
-		hint "Orientation off";
-		sleep 5;
+		if (cgqc_orient_won) then {
+			hint format['Good job Viper! %1mins', cgqc_orienteering_timer/60];)
+			sleep 15;
+		}else{
+			hint "Orientation off";
+			sleep 5;
+		};
 		hintSilent "";
 	};
 };

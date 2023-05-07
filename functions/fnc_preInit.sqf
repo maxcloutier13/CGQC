@@ -83,6 +83,7 @@ cgqc_orienteering = false;
 cgqc_orienteering_timer = 0;
 cgqc_orient_opt_patrols = false;
 cgqc_orient_opt_hunters = false;
+cgqc_orient_won = false;
 cgqc_orient_target_list = [];
 // CQB house training stuff
 cqb_house1_list = [];
