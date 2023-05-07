@@ -3,6 +3,7 @@ waitUntil {
 	!isNull player
 };
 
+cgqc_sniping = true;
 // Activate Alt+click teleport
 /*
 	["teleportHandler", "onMapSingleClick", {

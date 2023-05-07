@@ -364,34 +364,24 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
 			
 			// Sniping ---------------------------------------------------------------------------------------------------------
-			cgqc_sniping_on = false;
 			_action = [ "menu_training_sniping", "Sniping", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_sniping_on", "Advanced sniping mode->ON", "", {[0] execVM '\cgqc\functions\fnc_sniping.sqf'}, {!cgqc_sniping_on} ] call ace_interact_menu_fnc_createAction;     
+			_action = [ "menu_sniping_on", "Sniping mode->ON", "", {execVM '\cgqc\functions\fnc_sniping_on.sqf'}, {!cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-			_action = [ "menu_sniping_off", "Advanced sniping mode->OFF", "", {[1] execVM '\cgqc\functions\fnc_sniping.sqf'}, {cgqc_sniping_on} ] call ace_interact_menu_fnc_createAction;     
+			_action = [ "menu_sniping_off", "Sniping mode->OFF", "", {execVM '\cgqc\functions\fnc_sniping_off.sqf'}, {cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 
+			// Orienteering ---------------------------------------------------------------------------------------------------------
+			_action = [ "menu_training_orient", "Orientation", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			_action = [ "menu_training_orient_basic", "Basic Orientation->ON", "", {["basic_on"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {!cgqc_orienteering} ] call ace_interact_menu_fnc_createAction;     
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+			_action = [ "menu_training_orient_basic_off", "Basic Orientation->Off", "", {["basic_off"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {cgqc_orienteering} ] call ace_interact_menu_fnc_createAction;     
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+			
 			// CQB ---------------------------------------------------------------------------------------------------------
 			_action = [ "menu_training_cqb", "CQB", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			// CQB house training stuff
-			cqb_house1_list = [];
-			cqb_house1_list_moving = [];
-			cqb_house1_list_static = [];
-			cqb_house1_list_civ = [];
-			cgqc_house1_on = false;
-			cqb_house1_target_nbr = 10;
-			cqb_house1_move = 0;
-			cqb_house1_timer = 0;
-			cqb_house1_timer_random = false; 
-			cqb_house1_civ = false;
-			cqb_house1_nade = false;
-			cqb_house1_tgt_move = 0;
-			cqb_house1_tgt_static = 0;
-			cqb_house1_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];
-			cqb_house1_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
-
 			_action = [ "menu_house1_clear", "Stop CQB", "", {[0] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
 
