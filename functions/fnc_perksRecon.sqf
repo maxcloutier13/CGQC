@@ -8,37 +8,82 @@ if (hasInterface) then {
 		_ghillie = "";
 		_to_ghillie = 0;
 		switch (_type) do	{
-			case "arid":
-			{
+			case "face_0":{
+				player setFace(cgqc_player_face);
+			};
+			case "face_1":{
+				player setFace(format["%1_camo_01",cgqc_player_face]);
+			};
+			case "face_2":{
+				player setFace(format["%1_camo_02",cgqc_player_face]);
+			};
+			case "face_3":{
+				player setFace(format["%1_camo_03",cgqc_player_face]);
+			};
+			case "face_4":{
+				player setFace(format["%1_camo_04",cgqc_player_face]);
+			};
+			case "face_5":{
+				player setFace(format["%1_camo_05",cgqc_player_face]);
+			};
+			case "face_6":{
+				player setFace(format["%1_camo_06",cgqc_player_face]);
+			};
+			case "face_7":{
+				player setFace(format["%1_camo_07",cgqc_player_face]);
+			};
+			case "face_8":{
+				player setFace(format["%1_camo_08",cgqc_player_face]);
+			};
+			case "face_9":{
+				player setFace(format["%1_camo_09",cgqc_player_face]);
+			};
+			case "face_10":{
+				player setFace(format["%1_camo_10",cgqc_player_face]);
+			};
+			case "face_11":{
+				player setFace(format["%1_camo_11",cgqc_player_face]);
+			};
+			case "face_12":{
+				player setFace(format["%1_camo_12",cgqc_player_face]);
+			};
+			case "face_13":{
+				player setFace(format["%1_camo_13",cgqc_player_face]);
+			};
+			case "face_14":{
+				player setFace(format["%1_camo_14",cgqc_player_face]);
+			};
+			case "face_15":{
+				player setFace(format["%1_camo_15",cgqc_player_face]);
+			};
+			case "face_16":{
+				player setFace(format["%1_camo_16",cgqc_player_face]);
+			};
+			case "arid":{
 				_ghillie = "U_B_FullGhillie_ard";
 				hintSilent "Ghillie: Arid";
 				_to_ghillie = 1;
 			};
-			case "sarid":
-			{
+			case "sarid":{
 				_ghillie = "U_B_FullGhillie_sard";
 				hintSilent "Ghillie: Semi-Arid";
 				_to_ghillie = 1;
 			};
-			case "lush":
-			{
+			case "lush":{
 				_ghillie = "U_B_FullGhillie_lsh";
 				hintSilent "Ghillie: Lush";
 				_to_ghillie = 1;
 			};
-			case "jungle":
-			{
+			case "jungle":{
 				_ghillie = "U_B_T_FullGhillie_tna_F";
 				hintSilent "Ghillie: Jungle";
 				_to_ghillie = 1;
 			};
-			case "uniform":
-			{
+			case "uniform":{
 				hintSilent "Ghillie: Back to Uniform";
 				_to_ghillie = 2;
 			};
-			case "cut_grass":
-			{
+			case "cut_grass":{
 				hintSilent "Cutting grass";
 				_to_ghillie = 0;
 				sleep 2;

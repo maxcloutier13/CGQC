@@ -11,6 +11,8 @@ cgqc_player_name = name player;
 cgqc_player_steamid = getPlayerUID player;
 cgqc_player_steamName = profileNameSteam;
 cgqc_perks_basic = true;
+cgqc_player_face = face player;
+
 
 //ID player and find patch
 _rank = [] spawn CGQC_fnc_findRank;

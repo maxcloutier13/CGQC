@@ -15,6 +15,7 @@ cgqc_welcome_done = false;
 cgqc_welcome_pic = "";
 // *** Player **********************
 cgqc_player_known = true;
+cgqc_player_face = "";
 cgqc_player_patch = "";
 cgqc_player_patch_found = false;
 cgqc_custom_playername = "";
