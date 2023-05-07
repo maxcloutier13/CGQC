@@ -43,6 +43,9 @@ cgqc_player_has2023 = false;
 cgqc_player_hasIfa3 = false; 
 cgqc_player_hasScandinavia = false;
 cgqc_player_hasUnsung = false;
+cgqc_player_isModern = false;
+cgqc_player_isWw2 = false;
+cgqc_player_isVietnam = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
 cgqc_perks_recon = false;
@@ -91,13 +94,19 @@ cgqc_unconscious_sounds = [];
 // Check what DLC the player owns 
 cgqc_player_ownedDLCs = getDLCs 1;
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
-cgqc_player_has2023 = isClass(configFile >> "cfgPatches" >> "CGQC_2022"); // Returns true if 2023 is enabled
 cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");
-cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_c"); 
-cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
 cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
 cgqc_player_hasDrongoFactions = isClass(configFile >> "cfgPatches" >> "DSF_ABUS");
+// Modern era
+cgqc_player_has2023 = isClass(configFile >> "cfgPatches" >> "CGQC_2022"); // Returns true if 2023 is enabled
+if (cgqc_player_has2023) then {cgqc_player_isModern = true;};
+// WW2
+cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
+cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_c");
+if (cgqc_player_hasIfa3) then {cgqc_player_isWw2 = true;};
+// Vietnam 
 cgqc_player_hasUnsung =  isClass(configFile >> "cfgPatches" >> "uns_base");
+if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;};
 
 // Acre default radio 
 if (cgqc_player_hasUnsung) then {

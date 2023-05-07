@@ -22,7 +22,7 @@ _action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_d
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Chemlights ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_chemlights", "Drop Chemlight", "CGQC\textures\cgqc_ace_chems", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_chemlights", "Drop Chemlight", "CGQC\textures\cgqc_ace_chems", {}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_chem_green", "Green", "", {["chem_green", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_chem_green > 0} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
