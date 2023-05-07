@@ -106,6 +106,7 @@ cqb_house1_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
 cgqc_mk2_animation_locked = false;
+cgqc_mk2_arsenal_ctr = 0;
 // *** Mk3 **********************
 cgqc_mk3_switching_vest = false;
 cgqc_mk3_switching_backpack = false;
