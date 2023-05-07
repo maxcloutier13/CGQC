@@ -112,5 +112,10 @@ class CfgGlasses
 	#include "cfg_goggles.hpp"
 };
 
+// Sounds
+class CfgSounds
+{
+	#include "cfg_sounds.hpp"
+};
 // Custom events
 #include "cfg_eventhandlers.hpp"
