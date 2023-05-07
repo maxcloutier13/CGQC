@@ -73,6 +73,26 @@ cgqc_zeus_mapRestricted = true;
 cgqc_zeus_mapRestricted_count = 0;
 cgqc_zeus_mapRestricted_txt = "";
 cgqc_zeus_mapRestricted_txt_on = false;
+// Training stuff 
+cgqc_sniping = false;
+// Orientation
+cgqc_orienteering = false;
+// CQB house training stuff
+cqb_house1_list = [];
+cqb_house1_list_moving = [];
+cqb_house1_list_static = [];
+cqb_house1_list_civ = [];
+cgqc_house1_on = false;
+cqb_house1_target_nbr = 10;
+cqb_house1_move = 0;
+cqb_house1_timer = 0;
+cqb_house1_timer_random = false; 
+cqb_house1_civ = false;
+cqb_house1_nade = false;
+cqb_house1_tgt_move = 0;
+cqb_house1_tgt_static = 0;
+cqb_house1_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];
+cqb_house1_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
