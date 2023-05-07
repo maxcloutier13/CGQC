@@ -7,7 +7,9 @@ waitUntil {cgqc_player_rank_found};
 
 disableUserInput true;
 switch (_type) do {
-
+    case "click":{
+        [player, "click"] remoteExec ["say3D"];
+    };
     case "fix":
     {
         hint "Sound: Volumes reset";
