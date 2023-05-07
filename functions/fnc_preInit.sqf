@@ -80,6 +80,9 @@ cgqc_zeus_mapRestricted_txt_on = false;
 cgqc_sniping = false;
 // Orientation
 cgqc_orienteering = false;
+cgqc_orient_opt_patrols = false;
+cgqc_orient_opt_hunters = false;
+cgqc_orient_target_list = [];
 // CQB house training stuff
 cqb_house1_list = [];
 cqb_house1_list_moving = [];
@@ -117,17 +120,30 @@ cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");
 cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
 cgqc_player_hasDrongoFactions = isClass(configFile >> "cfgPatches" >> "DSF_ABUS");
-// Modern era
 cgqc_player_has2023 = isClass(configFile >> "cfgPatches" >> "CGQC_2022"); // Returns true if 2023 is enabled
-if (cgqc_player_has2023) then {cgqc_player_isModern = true;};
-// WW2
 cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
 cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_c");
-if (cgqc_player_hasIfa3) then {cgqc_player_isWw2 = true;};
-// Vietnam 
 cgqc_player_hasUnsung =  isClass(configFile >> "cfgPatches" >> "uns_base");
-if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;};
+// Eras
+if (cgqc_player_hasIfa3) then {cgqc_player_isWw2 = true;}; // WW2
+if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam 
+if (cgqc_player_has2023) then {cgqc_player_isModern = true;}; // Modern era
 
+// Patrols 
+if (cgqc_player_has2023) then {
+	cgqc_orient_patrol = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
+	cgqc_orient_hunters = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
+};
+if (cgqc_player_hasScandinavia) then {
+	cgqc_orient_patrol = [];
+	cgqc_orient_hunters = [];
+};
+if (cgqc_player_hasUnsung) then {
+	cgqc_orient_patrol = ["uns_men_VC_local_off", "uns_men_VC_local_RF7", "uns_men_VC_local_AS5"];
+	cgqc_orient_hunters = ["uns_men_VC_local_MRK", "uns_men_VC_local_MRK2"];
+	cgqc_orient_team = ["uns_men_VC_local_off", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4", "uns_men_VC_local_AS3"];
+};
+	
 // Acre default radio 
 if (cgqc_player_hasUnsung) then {
 	["ACRE_SEM52SL"] call acre_api_fnc_setItemRadioReplacement;

@@ -7,7 +7,6 @@ switch (_type) do {
 		cgqc_orienteering = true;
 		cgqc_orient_pos = getPosATL player;
 		cgqc_orient_targets = [];
-		cgqc_orient_target = [];
 		cgqc_orient_target_found = false;
 		["basic_orient"] execVM "\CGQC\loadouts\mk3_transition.sqf";
 		// Remove shits 
@@ -64,14 +63,37 @@ switch (_type) do {
 		cgqc_orient_trg setTriggerStatements ["this", _act, _deAct];
 		cgqc_orient_trg setTriggerInterval _int;
 		y_markerTarget = createMarker ["cgqc_orient_target", y_nearestCity_pos];
-		"cgqc_orient_target" setMarkerType "mil_objective"; 
+		"cgqc_orient_target" setMarkerType "Contact_circle4"; 
 		"cgqc_orient_target" setMarkerText format["Target:%1", y_nearestCity_name];
-		"cgqc_orient_target" setMarkerColor "ColorRed"; 
+		"cgqc_orient_target" setMarkerColor "ColorBlue"; 
+		"cgqc_orient_target" setMarkerSize [1.5, 1.5];
+		/*
 		//Player marker
 		y_markerPlayer = createMarker ["cgqc_orient_player", player];
 		"cgqc_orient_player" setMarkerType "mil_objective"; 
 		"cgqc_orient_player" setMarkerText "Player";
 		"cgqc_orient_player" setMarkerColor "ColorBlue";
+		*/
+		if(cgqc_orient_opt_patrols) then {
+			cgqc_orient_patrol_group = [ y_nearestCity_pos, east, cgqc_orient_patrol] call BIS_fnc_spawnGroup;
+			[cgqc_orient_patrol_group, y_nearestCity_pos, 100] call BIS_fnc_taskPatrol;
+			cgqc_orient_patrol_group setBehaviour "SAFE";
+			// add all units to target list
+			{
+				cgqc_orient_target_list pushBack _x;
+			} forEach units cgqc_orient_patrol_group;
+		};
+		// Hunters 
+		if(cgqc_orient_opt_hunters) then {
+			_randomPos = [getPos player, 800, 1500, 5, 0, 0, 0, [], []] call BIS_fnc_findSafePos;
+			cgqc_orient_hunters_group = [ _randomPos, east, cgqc_orient_hunters] call BIS_fnc_spawnGroup;
+			cgqc_orient_hunters_group setBehaviour "SAFE";
+			[cgqc_orient_hunters_group, 2000, 15, [], [], true, false, false] spawn lambs_wp_fnc_taskHunt;
+			// add all units to target list
+			{
+				cgqc_orient_target_list pushBack _x;
+			} forEach units cgqc_orient_hunters_group;
+		};
 	};
 	case "basic_off":	{
 		cgqc_orienteering = false;
@@ -80,6 +102,10 @@ switch (_type) do {
 		// Delete markers
 		if !(isNil "y_markerTarget") then {deleteMarker "cgqc_orient_target";};	 
 		if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_orient_player";};
+		//Delete all units 
+		{deleteVehicle _x;} forEach cgqc_orient_target_list;
+		{deleteVehicle _x;} forEach allDead;
+		{deleteVehicle _x;} forEach nearestObjects [getpos player, ["WeaponHolder", "GroundWeaponHolder"], 5000];
 		hint "Orientation off";
 		sleep 5;
 		hintSilent "";
