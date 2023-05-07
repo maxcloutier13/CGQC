@@ -132,3 +132,42 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     };
     //#include "vehicles\cgqc_vic_loadout_construction.sqf"
 };
+
+// Objects ===================================================================================
+// Helipad
+class Land_HelipadSquare_F;
+class cgqc_refuel_h : Land_HelipadSquare_F
+{
+    author = "silent1";
+    //faction = "cgqc";
+    //editorSubcategory = "EdSubcat_cgqc_vic_unarmed";
+    _generalMacro = "cgqc_refuel_h";
+    displayName = "CGQC Helipad - Standard";
+    class EventHandlers
+    {
+        init = "[_this, 0] execVM '\cgqc\functions\fnc_refuel_setup.sqf'"; 
+    };
+};
+class cgqc_refuel_h_short : Land_HelipadSquare_F
+{
+    author = "silent1";
+    //faction = "cgqc";
+    //editorSubcategory = "EdSubcat_cgqc_vic_unarmed";
+    _generalMacro = "cgqc_refuel_h";
+    displayName = "CGQC Helipad - Rapide";
+    class EventHandlers
+    {
+        init = "[_this, 1] execVM '\cgqc\functions\fnc_refuel_setup.sqf'";  
+    };
+};
+// Whiteboards
+class Land_MapBoard_F;
+class cgqc_whiteboard_radios : Land_MapBoard_F
+{
+    _generalMacro = "MapBoard_altis_F";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - Radios";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard_radio.paa"};
+};

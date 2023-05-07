@@ -266,5 +266,13 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ac
 _action = [ "menu_self_orient_basic_off", "Basic Orientation->Off", "", {["basic_off"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {cgqc_orienteering} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 
+
+// Refuel actions ---------------------------------------------------------------------------------
+_action = [ "menu_self_rrr", "Maintenance Véhicule", "CGQC_2022\textures\icon_maintenance", {['normal'] execVM "\cgqc\functions\fnc_refuel.sqf"}, {cgqc_flag_supply && (vehicle player isKindOf "Air") && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Fast refuel
+_action = [ "menu_self_rrr_short", "Maintenance Rapide", "CGQC_2022\textures\icon_maintenance", {['short'] execVM "\cgqc\functions\fnc_refuel.sqf"}, {cgqc_flag_supply_rapide && (vehicle player isKindOf "Air") && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Return true 
 true
