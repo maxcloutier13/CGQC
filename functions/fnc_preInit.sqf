@@ -80,6 +80,7 @@ cgqc_zeus_mapRestricted_txt_on = false;
 cgqc_sniping = false;
 // Orientation
 cgqc_orienteering = false;
+cgqc_orienteering_timer = 0;
 cgqc_orient_opt_patrols = false;
 cgqc_orient_opt_hunters = false;
 cgqc_orient_target_list = [];
@@ -113,6 +114,8 @@ cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
 // *** Unconscious sounds *****************
 cgqc_unconscious_sounds = [];
+// *** MapSharing default value (instead of 7) *****************
+jibrm_restrictmarkers_shareDistance = 10;
 
 // Check what DLC the player owns 
 cgqc_player_ownedDLCs = getDLCs 1;
@@ -146,8 +149,10 @@ if (cgqc_player_hasUnsung) then {
 	
 // Acre default radio 
 if (cgqc_player_hasUnsung) then {
+	// Weird radio for Vietnam use
 	["ACRE_SEM52SL"] call acre_api_fnc_setItemRadioReplacement;
 }else{
+	// Default modern radio = 152
 	["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
 };
 

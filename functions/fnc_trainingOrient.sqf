@@ -8,6 +8,7 @@ switch (_type) do {
 		cgqc_orient_pos = getPosATL player;
 		cgqc_orient_targets = [];
 		cgqc_orient_target_found = false;
+		cgqc_orienteering_timer = 0;
 		["basic_orient"] execVM "\CGQC\loadouts\mk3_transition.sqf";
 		// Remove shits 
 		player unlinkItem "ItemGPS";
@@ -49,19 +50,25 @@ switch (_type) do {
 				hintSilent "";
 			};
 		};
+		
 		// Create trigger
-		_act = "hint 'Good job Viper!';player setPos cgqc_orient_pos; ['basic_off'] execVM '\cgqc\functions\fnc_trainingOrient.sqf';";
+		_act = "hint format['Good job Viper! %1mins', cgqc_orienteering_timer/60]; ['basic_off'] execVM '\cgqc\functions\fnc_trainingOrient.sqf';";
 		_deAct = "";
 		_int = 2;
 		if !(isNil "y_markerTarget") then {deleteMarker "cgqc_orient_target";};	 
 		if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_orient_player";};
 		y_nearestCity_name = cgqc_orient_target select 1;
 		y_nearestCity_pos = cgqc_orient_target select 2;
+		// Crate on spawn location 
+		cgqc_orient_crate="cgqc_box_mk2_arsenal" createVehicle (position player);
+		cgqc_orient_target_crate="cgqc_box_mk2_arsenal" createVehicle (y_nearestCity_pos);
+		// Trigger
 		cgqc_orient_trg = createTrigger ["EmptyDetector",y_nearestCity_pos, false];
 		cgqc_orient_trg setTriggerArea [50, 50, getDir player, true];
 		cgqc_orient_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		cgqc_orient_trg setTriggerStatements ["this", _act, _deAct];
 		cgqc_orient_trg setTriggerInterval _int;
+		// Markers 
 		y_markerTarget = createMarker ["cgqc_orient_target", y_nearestCity_pos];
 		"cgqc_orient_target" setMarkerType "Contact_circle4"; 
 		"cgqc_orient_target" setMarkerText format["Target:%1", y_nearestCity_name];
@@ -94,6 +101,12 @@ switch (_type) do {
 				cgqc_orient_target_list pushBack _x;
 			} forEach units cgqc_orient_hunters_group;
 		};
+		[] spawn {
+			while {cgqc_orienteering} do {
+				cgqc_orienteering_timer = cgqc_orienteering_timer + 1;
+				sleep 1;
+			};
+		};
 	};
 	case "basic_off":	{
 		cgqc_orienteering = false;
@@ -106,6 +119,9 @@ switch (_type) do {
 		{deleteVehicle _x;} forEach cgqc_orient_target_list;
 		{deleteVehicle _x;} forEach allDead;
 		{deleteVehicle _x;} forEach nearestObjects [getpos player, ["WeaponHolder", "GroundWeaponHolder"], 5000];
+		deleteVehicle cgqc_orient_crate;
+		deleteVehicle cgqc_orient_target_crate;
+		player setPos cgqc_orient_pos;
 		hint "Orientation off";
 		sleep 5;
 		hintSilent "";
