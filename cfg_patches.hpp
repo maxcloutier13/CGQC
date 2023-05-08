@@ -61,6 +61,8 @@ class CfgPatches
 					"cgqc_gun_p99_wood",
 					"cgqc_refuel_h",
 					"cgqc_refuel_h_short",
+					"cgqc_refuel_h_invis",
+					"cgqc_refuel_h_short_invis",
 					"cgqc_whiteboard_radios"};
 					/*"cgqc_gun_hk417_tremblay",
 					"Weapon_cgqc_gun_spar17_canpat",
