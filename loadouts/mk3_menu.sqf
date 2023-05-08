@@ -5,6 +5,20 @@ waitUntil {!isNil "cgqc_postInitClient_done"};
 waitUntil {cgqc_postInitClient_done};
 _crate = (_this select 0) select 0;
 _type = _this select 1;
+
+//cgqc_spawn_module = createGroup createUnit ["SpyderAddons_sup_vehiclespawn", getPosATL _crate, [], 0, "NONE"];
+//cgqc_spawn_module synchronizeObjectsAdd [_crate];
+// Optional: Set any additional module parameters
+//cgqc_spawn_module setVariable ["SpawnPosition", nearestPosition [getPos _crate, [], 10];];
+//cgqc_spawn_module setVariable ["SpawnHeight", 0];
+//cgqc_spawn_module setVariable ["VehiclesWhitelist", "value"];
+//cgqc_spawn_module setVariable ["VehiclesBlacklist", "value"];
+//cgqc_spawn_module setVariable ["VehiclesTypeBlacklist", "value"];
+//cgqc_spawn_module setVariable ["VehiclesTypeWhitelist", "value"];
+//cgqc_spawn_module setVariable ["SpawnCode", "value"];
+//cgqc_spawn_module setVariable ["SpawnCondition", "value"];
+
+
 if (hasInterface) then { 
 	switch (_type) do {
 		// Command ========================================================================
@@ -31,6 +45,8 @@ if (hasInterface) then {
 			// Vietnam arsenal if Unsung is pressent ===============================================================================================
 			if (cgqc_player_hasUnsung) then {
 				waitUntil {sleep 1; cgqc_unsung_arsenal_init_done};
+				// Spawnmodule faction
+				//cgqc_spawn_module setVariable ["VehicleFactions", "UNSUNG_W"];
 				// Unsung ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_unsung", "Vietnam", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -57,6 +73,8 @@ if (hasInterface) then {
 			if (cgqc_player_has2023) then {
 				waitUntil {sleep 1; cgqc_mk2_arsenal_init_done};
 				if (!isNil "_crate") then {
+					// Spawnmodule faction
+					//cgqc_spawn_module setVariable ["VehicleFactions", "CGQC"];
 					// 2023 ---------------------------------------------------------------------------------------------------------
 					_action = [ "menu_2023", "2023", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -252,11 +270,16 @@ if (hasInterface) then {
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				};
 			};
-			
+			// WW2 shit ===============================================================================================
+			if (cgqc_player_hasIfa3) then {
+				// Main Menu ---------------------------------------------------------------------------------------------------------
+				_action = [ "menu_ifa3", "WW2", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasIfa3} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			};
 			// Scandinavia shit ===============================================================================================
 			if (cgqc_player_hasScandinavia) then {
-				// 2023 ---------------------------------------------------------------------------------------------------------
-				_action = [ "menu_scandinavia", "ww2 Scandinavia", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+				// Main Menu ---------------------------------------------------------------------------------------------------------
+				_action = [ "menu_scandinavia", "ww2 Scandinavia", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasScandinavia} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			};
 
@@ -299,18 +322,18 @@ if (hasInterface) then {
 			//Radios 
 			_action = [ "menu_items_radios", "Radios", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items1", "Radio: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items1", "Radio: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items2", "Radio: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items2", "Radio: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Radio: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Radio: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Radio: 117f", "", {["117"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Radio: 117f", "", {["117"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Radios Vietnam 
 			_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items77", "Radio: Long-Range", "", {["77"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items77", "Radio: Long-Range", "", {["77"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Earplugs
 			_action = [ "menu_items3", "Earplugs", "", {["earplugs"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -322,7 +345,7 @@ if (hasInterface) then {
 			_action = [ "menu_items5", "Painkillers x5", "", {["painkillers"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Kidnapping Kit
-			_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Ammo
 			_action = [ "menu_items10", "5x Primary mags", "", {["mags_primary"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;       
@@ -358,7 +381,7 @@ if (hasInterface) then {
 				"Sniper", 
 				"", 
 				{cgqc_perks_recon = true},
-				{(cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining) && (isNil "cgqc_perk_ghillie")} 
+				{(cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining) && (isNil "cgqc_perk_ghillie") && cgqc_player_isModern} 
 			] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject; 
 

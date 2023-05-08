@@ -160,6 +160,16 @@ class cgqc_refuel_h_short : Land_HelipadSquare_F
         init = "[_this, 1] execVM '\cgqc\functions\fnc_refuel_setup.sqf'";  
     };
 };
+class cgqc_refuel_h_invis: cgqc_refuel_h
+{
+    displayName = "CGQC Helipad Invisible";
+    model = "\A3\Structures_F\Mil\Helipads\HelipadEmpty_F.p3d";
+};
+class cgqc_refuel_h_short_invis: cgqc_refuel_h
+{
+    displayName = "CGQC Helipad Invisible - Rapide";
+    model = "\A3\Structures_F\Mil\Helipads\HelipadEmpty_F.p3d";
+};
 // Whiteboards
 class Land_MapBoard_F;
 class cgqc_whiteboard_radios : Land_MapBoard_F

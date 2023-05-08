@@ -489,3 +489,11 @@ cgqc_event_148 = ["acre_startedSpeaking", {
   };  
  };  
 }] call CBA_fnc_addEventHandler;
+
+
+
+_this addAction ["Delete Vehicle", "{deleteVehicle _x;} forEach (vehicles select { _x inArea spawn_zone })", [], 1, false, true, "", "_this distance _target < 3"]; 
+
+if (hasInterface) then {
+	 " \n " this addAction [""Advanced sniping mode->ON"", { " \n "  titleText [""Advanced mode on"", ""BLACK FADED"", 5]; " \n "  titleFadeOut 2; " \n "  nul=execVM ""scripts\max_dynamic_range.sqf""; " \n " }, [], 10, true, true]; " \n 
+	 " this addAction [""Advanced sniping mode->OFF"", { " \n "  titleText [""Advanced mode on"", ""BLACK FADED"", 5]; " \n "  titleFadeOut 2; " \n "  nul=execVM ""scripts\max_dynamic_range_off.sqf""; " \n " }, [], 10, true, true]; " \n "};this attachTo[table_snipe];";

@@ -86,6 +86,11 @@ cgqc_orient_opt_patrols = false;
 cgqc_orient_opt_hunters = false;
 cgqc_orient_won = false;
 cgqc_orient_target_list = [];
+// Defense 
+cgqc_defense_timer = 0;
+cgqc_defense_mode = false;
+cgqc_defense_done = false;
+cgqc_defense_start = false;
 // CQB house training stuff
 cqb_house1_list = [];
 cqb_house1_list_moving = [];
@@ -112,6 +117,13 @@ cgqc_mk3_switching_vest = false;
 cgqc_mk3_switching_backpack = false;
 // *** Unsung **********************
 cgqc_unsung_arsenal_init_done = false;
+cgqc_unsung_blufor = ["UNSUNG_W","UNSUNG_ROK","UNSUNG_AUS","UNSUNG_NZ"];
+// *** IFA3 **********************
+cgqc_ifa3_arsenal_init_done = false;
+cgqc_ifa3_blufor = ["LIB_DAK", "LIB_FSJ", "LIB_WEHRMACHT", "LIB_WEHRMACHT_w", "SG_STURM"];
+// *** Scandinavia **********************
+cgqc_scandinavia_arsenal_init_done = false;
+cgqc_scandinavia_blufor = ["NORTH_FIN", "NORTH_NOR","LIB_US_ARMY_w", "LIB_UK_ARMY_w", "LIB_UK_AB_w"];
 // *** Refueling *****************
 cgqc_flag_supply = false;
 cgqc_flag_supply_rapide = false;
@@ -148,6 +160,7 @@ if (cgqc_player_hasUnsung) then {
 	cgqc_orient_patrol = ["uns_men_VC_local_off", "uns_men_VC_local_RF7", "uns_men_VC_local_AS5"];
 	cgqc_orient_hunters = ["uns_men_VC_local_MRK", "uns_men_VC_local_MRK2"];
 	cgqc_orient_team = ["uns_men_VC_local_off", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4", "uns_men_VC_local_AS3"];
+	cgqc_orient_squad = ["uns_men_VC_local_off", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4", "uns_men_VC_local_AS3", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4"];
 };
 	
 // Acre default radio 
