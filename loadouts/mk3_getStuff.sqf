@@ -111,6 +111,20 @@ do
 		player setUnitTrait ["explosiveSpecialist", false];
 		hint "Tu es EOD";
 	};
+	case "recon":{
+		cgqc_perks_recon = true;
+		hint "Tu es Recon";
+	};
+	case "driver": {
+		cgqc_perks_driver = true;
+		player setUnitTrait ["engineer", true];	
+		hint "Tu es Driver";
+	};
+	case "pilot": {
+		cgqc_perks_pilot = true;
+		player setUnitTrait ["engineer", true];	
+		hint "Tu es Pilote";
+	};
 	default	{
 		hint "mk3_getStuff error";
 		sleep 3;

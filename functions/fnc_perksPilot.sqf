@@ -4,14 +4,30 @@ params ["_type"];
 
 if (hasInterface) then {
 	// Init stuff
+	_pilot_class = "";
+	_gunner_class = "";
+	_driver_class = "";
 	_vic = vehicle player;
-	_pilot_class = "CGQC_units_mk2_Pilot_heli_ai";
-	_gunner_class = "CGQC_units_mk2_crew_heli_ai";
-	_driver_class = "CGQC_units_mk2_Tank_Crew_ai";
-
+	switch (true) do {
+		case cgqc_player_has2023 : {
+			_pilot_class = "CGQC_units_mk2_Pilot_heli_ai";
+			_gunner_class = "CGQC_units_mk2_crew_heli_ai";
+			_driver_class = "CGQC_units_mk2_Tank_Crew_ai";
+		};
+		case cgqc_player_hasUnsung : {
+			_pilot_class = "uns_pilot3";
+			_gunner_class = "uns_pilot2";
+			_driver_class = "uns_US_2MI_DRV";
+		};
+		default { // If unknown, fill with player class
+		_player_class = typeOf player;
+		_pilot_class = _player_class;
+		_gunner_class = _player_class;
+		_driver_class = _player_class;
+		};
+	};
 	// find player group
 	_player_group = group player;
-
 	switch (_type) do	{
 		case "getCrew":{
 			cgqc_crew_heli = [];
