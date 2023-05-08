@@ -164,7 +164,7 @@ if (cgqc_player_hasUnsung) then {
 };
 	
 // Acre default radio 
-if (cgqc_player_hasUnsung) then {
+if (!cgqc_player_isModern) then {
 	// Weird radio for Vietnam use
 	["ACRE_SEM52SL"] call acre_api_fnc_setItemRadioReplacement;
 }else{
