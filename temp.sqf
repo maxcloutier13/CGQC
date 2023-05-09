@@ -497,3 +497,16 @@ _this addAction ["Delete Vehicle", "{deleteVehicle _x;} forEach (vehicles select
 if (hasInterface) then {
 	 " \n " this addAction [""Advanced sniping mode->ON"", { " \n "  titleText [""Advanced mode on"", ""BLACK FADED"", 5]; " \n "  titleFadeOut 2; " \n "  nul=execVM ""scripts\max_dynamic_range.sqf""; " \n " }, [], 10, true, true]; " \n 
 	 " this addAction [""Advanced sniping mode->OFF"", { " \n "  titleText [""Advanced mode on"", ""BLACK FADED"", 5]; " \n "  titleFadeOut 2; " \n "  nul=execVM ""scripts\max_dynamic_range_off.sqf""; " \n " }, [], 10, true, true]; " \n "};this attachTo[table_snipe];";
+
+
+
+[] spawn { 
+player switchCamera "external";
+private _camera = "camera" camCreate getPosATL player;
+_camera cameraEffect ["EXTERNAL", "BACK"];
+sleep 5;
+player switchCamera "INTERNAL";
+_camera cameraEffect ["TERMINATE", "BACK"];
+
+
+}; 
