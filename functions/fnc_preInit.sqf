@@ -163,13 +163,13 @@ if (cgqc_player_has2023) then {
 	cgqc_orient_squad = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
 
 };
-if (cgqc_player_hasIfa3) then {
-	cgqc_orient_unit = ["LIB_SOV_rifleman"];
+if (cgqc_player_hasIfa3) then { //Independant. Russians are invincible!
+	cgqc_orient_unit = ["LIB_UK_DR_Rifleman"];
 	cgqc_orient_tank = ["LIB_T34_76_w_DLV"];
-	cgqc_orient_patrol = ["LIB_SOV_sergeant", "LIB_SOV_rifleman"];
-	cgqc_orient_hunters = ["LIB_SOV_scout_sniper", "LIB_SOV_scout_sniper"];
-	cgqc_orient_team = ["LIB_SOV_sergeant", "LIB_SOV_smgunner", "LIB_SOV_mgunner", "LIB_SOV_medic"];
-	cgqc_orient_squad =["LIB_SOV_sergeant", "LIB_SOV_smgunner", "LIB_SOV_mgunner", "LIB_SOV_medic", "LIB_SOV_LAT_Soldier", "LIB_SOV_AT_grenadier", "LIB_SOV_LC_rifleman", "LIB_SOV_rifleman"];
+	cgqc_orient_patrol = ["LIB_UK_DR_Sergeant", "LIB_UK_DR_Rifleman"];
+	cgqc_orient_hunters = ["LIB_UK_DR_Sniper", "LIB_UK_DR_Sniper"];
+	cgqc_orient_team = ["LIB_UK_DR_Sergeant", "LIB_UK_DR_LanceCorporal", "LIB_UK_DR_Corporal", "LIB_UK_DR_Grenadier"];
+	cgqc_orient_squad =["LIB_UK_DR_Sergeant", "LIB_UK_DR_LanceCorporal", "LIB_UK_DR_Corporal", "LIB_UK_DR_Grenadier","LIB_UK_DR_Rifleman", "LIB_UK_DR_Medic"];
 };
 if (cgqc_player_hasScandinavia) then {
 	cgqc_orient_unit = ["LIB_GER_Unterofficer_w"];
