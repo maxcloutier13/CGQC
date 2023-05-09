@@ -33,6 +33,13 @@ if(cgqc_player_hasUnsung) then {
 	cgqc_unsung_arsenal_8 = cgqc_unsung_arsenal_all;
 	cgqc_unsung_arsenal_init_done = true;
 };
+if(cgqc_player_hasIfa3) then {
+	cgqc_ifa3_arsenal_1 = [];
+	cgqc_ifa3_arsenal_8 = [];
+	#include "\cgqc\loadouts\ifa3\all_items.sqf";
+	cgqc_ifa3_arsenal_8 = cgqc_ifa3_arsenal_all;
+	cgqc_ifa3_arsenal_init_done = true;
+};
 
 
 // Briefing entry -------------------------------------------------------------------------------------------------
