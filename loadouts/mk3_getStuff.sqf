@@ -93,7 +93,8 @@ do
 		hint "5x Primary mags";
 	};
 	case "mags_secondary": {
-		_sec_mag = (secondaryWeaponMagazine player) select 0;
+		_sec_mags = handgunMagazine player;
+		_sec_mag = _sec_mags select 0;
 		for "_i" from 1 to 2 do { 
 			player addItem _sec_mag;
 		};

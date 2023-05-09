@@ -737,7 +737,6 @@ cgqc_ifa3_arsenal_all = [
 	"LIB_BM37_Tripod",
 	"LIB_M1896",
 	"LIB_FLARE_PISTOL",
-	"hgun_Pistol_01_F",
 	"hgun_Rook40_F",
 	"LIB_M1895",
 	"LIB_P08",

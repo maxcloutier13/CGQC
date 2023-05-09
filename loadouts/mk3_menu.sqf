@@ -277,8 +277,8 @@ if (hasInterface) then {
 				_action = [ "menu_ifa3", "WW2", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasIfa3} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// ifa3 Arsenal Complet 
-				_action = [ "menu_ifa3_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\unsung\load_unsung.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_ifa3_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\ifa3\load_ifa3.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_ifa3" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				
 			};
 			// Scandinavia shit ===============================================================================================
@@ -512,7 +512,7 @@ if (hasInterface) then {
 			// SMG
 			_action = [ "menu_house1_med", "SMG: FIA", "", {[3] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_gendarme", "SMG: Gendarmerie", "", {[7] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_gendarme", "SMG: Gendarmerie", "", {[7] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			// Full Army
 			_action = [ "menu_house1_hard", "Full: Wagner", "", {[4] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       

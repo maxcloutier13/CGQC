@@ -45,7 +45,7 @@ switch (_type) do {
 			} forEach ["NameVillage", "NameCity", "NameCityCapital"];
 			if (count cgqc_orient_targets > 0) then {
 				cgqc_orient_target = selectRandom cgqc_orient_targets;
-				hint format ["Target: %1m", cgqc_orient_target select 3];
+				hint format ["Reach Target: %1m", cgqc_orient_target select 3];
 				cgqc_orient_target_found = true;
 			}else{
 				hint "Location unsuitable";
