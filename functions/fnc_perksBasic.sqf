@@ -7,67 +7,6 @@ waitUntil {cgqc_player_rank_found};
 
 disableUserInput true;
 switch (_type) do {
-    case "click":{
-        [player, "click"] remoteExec ["say3D"];
-    };
-    case "fix":
-    {
-        hint "Sound: Volumes reset";
-        [] call ace_volume_fnc_restoreVolume;
-        [0.7] call acre_api_fnc_setSelectableVoiceCurve;
-        sleep 5;
-        hintSilent "";
-        break;
-    };
-    case "cone":
-    {
-        // Setup trigger
-        y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
-        y_deAct = "[] call ace_volume_fnc_restoreVolume;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false; hint 'Cone of silence: Off';";
-        _int = 2;
-        // Create trigger
-        cgqc_cone_silence = createTrigger ["EmptyDetector",getPos player, true];
-            cgqc_cone_silence triggerAttachVehicle [player];
-        cgqc_cone_silence setTriggerArea [2, 2, 0, false];
-        cgqc_cone_silence setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-        cgqc_cone_silence setTriggerStatements ["this", y_act, y_deAct];
-        cgqc_cone_silence setTriggerInterval _int;
-        cgqc_perks_silence = true;
-        hint "Cone of silence: On";
-        sleep 5;
-        hintSilent "";
-        break;
-    };
-    case "cone_off":
-    {
-        //Delete trigger zone
-        deleteVehicle cgqc_cone_silence;
-        //Restore volume
-        [] call ace_volume_fnc_restoreVolume;
-        cgqc_perks_silence = false;
-        hint "Cone of silence: Off";
-        sleep 5;
-        hintSilent "";
-        break;
-    };
-    case "stash":
-    {
-        cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
-        cgqc_perk_player_stash_on = true;
-        hint "Stash spawned";
-        sleep 5;
-        hintSilent "";
-        break;
-    };
-    case "del_stash":
-    {
-        deleteVehicle cgqc_perk_player_stash;
-        cgqc_perk_player_stash_on = false;
-        hint "Stash Deleted";
-        sleep 5;
-        hintSilent "";
-        break;
-    };
     case "chill":
     {
         if !(cgqc_player_chill) then {
@@ -261,18 +200,83 @@ switch (_type) do {
         cgqc_perks_chem_ir = cgqc_perks_chem_ir - 1;
         _count = cgqc_perks_chem_ir;
         [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
+        break;
     };
     case "chem_green": {
         _chem = "Chemlight_green";
         cgqc_perks_chem_green = cgqc_perks_chem_green - 1;
         _count = cgqc_perks_chem_green;
         [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
+        break;
     };
     case "chem_orange": {
         _chem = "ACE_G_Chemlight_UltraHiOrange";
         cgqc_perks_chem_orange = cgqc_perks_chem_orange - 1;
         _count = cgqc_perks_chem_orange;
         [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
+        break;
+    };
+    case "click":{
+        [player, "click"] remoteExec ["say3D"];
+        break;
+    };
+    case "fix":
+    {
+        hint "Sound: Volumes reset";
+        [] call ace_volume_fnc_restoreVolume;
+        [0.7] call acre_api_fnc_setSelectableVoiceCurve;
+        sleep 5;
+        hintSilent "";
+        break;
+    };
+    case "cone":
+    {
+        // Setup trigger
+        y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
+        y_deAct = "[] call ace_volume_fnc_restoreVolume;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false; hint 'Cone of silence: Off';";
+        _int = 2;
+        // Create trigger
+        cgqc_cone_silence = createTrigger ["EmptyDetector",getPos player, true];
+            cgqc_cone_silence triggerAttachVehicle [player];
+        cgqc_cone_silence setTriggerArea [2, 2, 0, false];
+        cgqc_cone_silence setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+        cgqc_cone_silence setTriggerStatements ["this", y_act, y_deAct];
+        cgqc_cone_silence setTriggerInterval _int;
+        cgqc_perks_silence = true;
+        hint "Cone of silence: On";
+        sleep 5;
+        hintSilent "";
+        break;
+    };
+    case "cone_off":
+    {
+        //Delete trigger zone
+        deleteVehicle cgqc_cone_silence;
+        //Restore volume
+        [] call ace_volume_fnc_restoreVolume;
+        cgqc_perks_silence = false;
+        hint "Cone of silence: Off";
+        sleep 5;
+        hintSilent "";
+        break;
+    };
+    case "stash":
+    {
+        cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
+        cgqc_perk_player_stash_on = true;
+        hint "Stash spawned";
+        sleep 5;
+        hintSilent "";
+        break;
+    };
+    case "del_stash":
+    {
+        deleteVehicle cgqc_perk_player_stash;
+        cgqc_perk_player_stash_on = false;
+        hint "Stash Deleted";
+        sleep 5;
+        hintSilent "";
+        break;
     };
 };
 // Return control to player
