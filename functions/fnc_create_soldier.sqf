@@ -24,8 +24,9 @@ if (_targetRandomDir) then
 };
 
 _group = createGroup east;
-_targetClass createUnit [[_position select 0, _position select 1, 0.0], _group];
-
+_unit = _group createUnit [_targetClass, [_position select 0, _position select 1, 0.0], [], 0, "CAN_COLLIDE"];
+_unit setDir _direction;
+_group setBehaviour "SAFE";
 if (_targetPatrolling) then
 {
 	_group addWaypoint [[(_position select 0) + sin(_direction) * 20, (_position select 1) + cos(_direction) * 20, 0.0], 0];
@@ -34,6 +35,5 @@ if (_targetPatrolling) then
 	[_group, 2] setWaypointType "MOVE";
 	_group addWaypoint [[(_position select 0) + sin(_direction) * 20, (_position select 1) + cos(_direction) * 20, 0.0], 0];
 	[_group, 3] setWaypointType "CYCLE";
-	
 	{[_group, _x] setWaypointSpeed "LIMITED";} forEach [1, 2, 3];
 };

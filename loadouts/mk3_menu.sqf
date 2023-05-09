@@ -35,7 +35,9 @@ if (hasInterface) then {
 		default	{ // Normal mk3 Arsenal
 			// Respawn point in front of Arsenal 
 			cgqc_mk2_arsenal_ctr = cgqc_mk2_arsenal_ctr + 1;
-			[west, _crate, format["Arsenal %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
+			[west, _crate, format["Arsenal West %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
+			[east, _crate, format["Arsenal East %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
+			[independent, _crate, format["Arsenal Independant %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
 			// Zeus lock toggle ===============================================================================================
 			_action = [ "menu_zeus_lock", "Lock Arsenal", "", {hint 'Arsenal lock!'; cgqc_mk2_arsenal_locked = true; publicVariable "cgqc_mk2_arsenal_locked"}, {!cgqc_mk2_arsenal_locked && [player] call CGQC_fnc_checkZeus;} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -286,6 +288,10 @@ if (hasInterface) then {
 				// Main Menu ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_scandinavia", "ww2 Scandinavia", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasScandinavia} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				// Scandinavia Arsenal Complet 
+				_action = [ "menu_scandinavia_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\scandinavia\load_scandinavia.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_scandinavia" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				
 			};
 
 			// 23rd shit if 23rd mod is present===============================================================================================

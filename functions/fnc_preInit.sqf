@@ -167,12 +167,12 @@ if (cgqc_player_hasIfa3) then {
 	cgqc_orient_squad =["LIB_SOV_sergeant", "LIB_SOV_smgunner", "LIB_SOV_mgunner", "LIB_SOV_medic", "LIB_SOV_LAT_Soldier", "LIB_SOV_AT_grenadier", "LIB_SOV_LC_rifleman", "LIB_SOV_rifleman"];
 };
 if (cgqc_player_hasScandinavia) then {
-	cgqc_orient_unit = [];
-	cgqc_orient_tank = [];
-	cgqc_orient_patrol = [];
-	cgqc_orient_hunters = [];
-	cgqc_orient_team = [];
-	cgqc_orient_squad =[];
+	cgqc_orient_unit = ["LIB_GER_Unterofficer_w"];
+	cgqc_orient_tank = ["LIB_PzKpfwVI_E_w"];
+	cgqc_orient_patrol = ["LIB_GER_Unterofficer_w", "LIB_GER_Scout_ober_rifleman_w"];
+	cgqc_orient_hunters = ["LIB_GER_Scout_sniper_2_w", "LIB_GER_Scout_sniper_w"];
+	cgqc_orient_team = ["LIB_GER_Unterofficer_w", "LIB_GER_Scout_ober_rifleman_w", "LIB_GER_Ober_rifleman_w", "LIB_GER_ober_grenadier_w"];
+	cgqc_orient_squad =["LIB_GER_Unterofficer_w", "LIB_GER_Mgunner_w", "LIB_GER_Medic_w", "LIB_GER_Scout_ober_rifleman_w", "LIB_GER_Ober_rifleman_w", "LIB_GER_Rifleman_w", "LIB_GER_ober_grenadier_w", "LIB_GER_LAT_Rifleman_w", "LIB_GER_Scout_rifleman_w"];
 };
 if (cgqc_player_hasUnsung) then {
 	cgqc_orient_unit = ["uns_men_VC_local_off"];
