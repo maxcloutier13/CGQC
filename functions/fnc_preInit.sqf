@@ -144,19 +144,39 @@ cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_
 cgqc_player_hasUnsung =  isClass(configFile >> "cfgPatches" >> "uns_base");
 // Eras
 if (cgqc_player_hasIfa3) then {cgqc_player_isWw2 = true;}; // WW2
+if (cgqc_player_hasScandinavia) then {cgqc_player_isWw2 = true;}; // WW2
 if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam 
 if (cgqc_player_has2023) then {cgqc_player_isModern = true;}; // Modern era
 
 // Patrols 
 if (cgqc_player_has2023) then {
-	cgqc_orient_patrol = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
-	cgqc_orient_hunters = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
+	cgqc_orient_unit = ["I_L_Criminal_SG_F"];
+	cgqc_orient_tank = ["O_MBT_02_cannon_F"];
+	cgqc_orient_patrol = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F"];
+	cgqc_orient_hunters = ["I_L_Criminal_SG_F",  "I_L_Looter_SMG_F"];
+	cgqc_orient_team = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F"];
+	cgqc_orient_squad = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
+
+};
+if (cgqc_player_hasIfa3) then {
+	cgqc_orient_unit = ["LIB_SOV_rifleman"];
+	cgqc_orient_tank = ["LIB_T34_76_w_DLV"];
+	cgqc_orient_patrol = ["LIB_SOV_sergeant", "LIB_SOV_rifleman"];
+	cgqc_orient_hunters = ["LIB_SOV_scout_sniper", "LIB_SOV_scout_sniper"];
+	cgqc_orient_team = ["LIB_SOV_sergeant", "LIB_SOV_smgunner", "LIB_SOV_mgunner", "LIB_SOV_medic"];
+	cgqc_orient_squad =["LIB_SOV_sergeant", "LIB_SOV_smgunner", "LIB_SOV_mgunner", "LIB_SOV_medic", "LIB_SOV_LAT_Soldier", "LIB_SOV_AT_grenadier", "LIB_SOV_LC_rifleman", "LIB_SOV_rifleman"];
 };
 if (cgqc_player_hasScandinavia) then {
+	cgqc_orient_unit = [];
+	cgqc_orient_tank = [];
 	cgqc_orient_patrol = [];
 	cgqc_orient_hunters = [];
+	cgqc_orient_team = [];
+	cgqc_orient_squad =[];
 };
 if (cgqc_player_hasUnsung) then {
+	cgqc_orient_unit = ["uns_men_VC_local_off"];
+	cgqc_orient_tank = ["uns_to55_nva"];
 	cgqc_orient_patrol = ["uns_men_VC_local_off", "uns_men_VC_local_RF7", "uns_men_VC_local_AS5"];
 	cgqc_orient_hunters = ["uns_men_VC_local_MRK", "uns_men_VC_local_MRK2"];
 	cgqc_orient_team = ["uns_men_VC_local_off", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4", "uns_men_VC_local_AS3"];
