@@ -7,6 +7,17 @@ waitUntil {cgqc_player_rank_found};
 
 disableUserInput true;
 switch (_type) do {
+    case "cam":{
+        [] spawn {
+            _cam = "camera" camCreate (player modelToWorld [-2,2, 2]);
+            _cam camSetTarget player;
+            _cam cameraEffect ["EXTERNAL", "back"];
+            _cam camCommit 1;
+            sleep 5;
+            _cam cameraEffect ["TERMINATE", "BACK"];
+            camDestroy _cam;
+         };
+    };
     case "click":{
         [player, "click"] remoteExec ["say3D"];
     };
