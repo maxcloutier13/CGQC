@@ -278,6 +278,18 @@ switch (_type) do {
         hintSilent "";
         break;
     };
+    case "cam":{
+        [] spawn {
+            _cam = "camera" camCreate (player modelToWorld [-2,2, 2]);
+            _cam camSetTarget player;
+            _cam cameraEffect ["EXTERNAL", "back"];
+            _cam camCommit 1;
+            sleep 5;
+            _cam cameraEffect ["TERMINATE", "BACK"];
+            camDestroy _cam;
+         };
+        break;
+    };
 };
 // Return control to player
 disableUserInput false;
