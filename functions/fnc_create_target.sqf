@@ -7,6 +7,10 @@ _targetAnimated = _arguments select 2;
 
 private ["_target", "_angle", "_range", "_position", "_vecToTarget", "_direction"];
 
+if(_targetClass == "tank") then {
+	_targetClass = cgqc_orient_tank select 0;
+};
+
 _position = screenToWorld [0.5, 0.5];
 
 _target = _targetClass createVehicle [0, 0, 0];

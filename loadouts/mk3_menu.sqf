@@ -272,9 +272,14 @@ if (hasInterface) then {
 			};
 			// WW2 shit ===============================================================================================
 			if (cgqc_player_hasIfa3) then {
+				waitUntil {sleep 1; cgqc_ifa3_arsenal_init_done};
 				// Main Menu ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_ifa3", "WW2", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasIfa3} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				// ifa3 Arsenal Complet 
+				_action = [ "menu_ifa3_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\ifa3\load_ifa3.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_ifa3" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				
 			};
 			// Scandinavia shit ===============================================================================================
 			if (cgqc_player_hasScandinavia) then {
@@ -502,41 +507,50 @@ if (hasInterface) then {
 			// Pistols
 			//_action = [ "menu_house1_easy", "Pistols: Won't shoot", "", {[1] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasRHS} ] call ace_interact_menu_fnc_createAction;       
 			//_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_nrml", "Pistols: FIA", "", {[2] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_nrml", "Pistols: FIA", "", {[2] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			// SMG
-			_action = [ "menu_house1_med", "SMG: FIA", "", {[3] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_med", "SMG: FIA", "", {[3] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_gendarme", "SMG: Gendarmerie", "", {[7] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_gendarme", "SMG: Gendarmerie", "", {[7] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			// Full Army
-			_action = [ "menu_house1_hard", "Full: Wagner", "", {[4] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_hard", "Full: Wagner", "", {[4] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_csat", "Full: CSAT", "", {[5] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_csat", "Full: CSAT", "", {[5] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_viper", "Full: CSAT Viper", "", {[6] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_viper", "Full: CSAT Viper", "", {[6] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_spetsnaz", "Full: Spetsnaz", "", {[8] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_spetsnaz", "Full: Spetsnaz", "", {[8] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_ldf", "Full: LDF", "", {[9] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_ldf", "Full: LDF", "", {[9] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_looters", "Full: Looters", "", {[10] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_looters", "Full: Looters", "", {[10] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_syndikat", "Full: Syndikat", "", {[11] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_syndikat", "Full: Syndikat", "", {[11] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_aaf", "Full: AAF", "", {[12] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_aaf", "Full: AAF", "", {[12] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_vdv", "Full: VDV", "", {[13] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_vdv", "Full: VDV", "", {[13] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_dnsk", "Full: Donesk/Luhansk", "", {[14] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_dnsk", "Full: Donesk/Luhansk", "", {[14] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_hamas", "Full: Hamas", "", {[15] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_hamas", "Full: Hamas", "", {[15] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_pmc", "Full: Ion PMC", "", {[16] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_pmc", "Full: Ion PMC", "", {[16] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_isis", "Full: ISIS", "", {[17] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_isis", "Full: ISIS", "", {[17] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_cartel", "Full: Cartel", "", {[18] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_cartel", "Full: Cartel", "", {[18] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_isModern && cgqc_player_hasDrongoFactions} ] call ace_interact_menu_fnc_createAction;       
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			// Vietnam
+			_action = [ "menu_house1_viet", "Full: Vietcongs", "", {[19] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;       
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			// WW2
+			_action = [ "menu_house1_ww2", "Full: Soviets", "", {[20] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasIfa3} ] call ace_interact_menu_fnc_createAction;       
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			// Scandinavia
+			_action = [ "menu_house1_scand", "Full: Nazis", "", {[21] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasScandinavia} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 

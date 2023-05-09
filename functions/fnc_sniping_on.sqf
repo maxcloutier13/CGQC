@@ -53,7 +53,7 @@ range_act14 = player addaction [("<t color=""#CCAA44"">" + "Caméra de tir" + "<
 // player addaction [("<t color=""#AA9977"">" + "King of the hill" + "</t>"), "fnc_king_of_the_hill.sqf", "", 0, false, false];
 range_act6 = player addaction [("<t color=""#995599"">" + "DANGER - Soldat" + "</t>"), "\cgqc\functions\fnc_create_soldier.sqf", ["O_G_Soldier_F", false, false, false], 0, false, false];
 range_act7 = player addaction [("<t color=""#995599"">" + "DANGER - Patrouille" + "</t>"), "\cgqc\functions\fnc_create_soldier.sqf", ["I_G_Soldier_F", false, true, true], 0, false, false];
-range_act15 = player addaction [("<t color=""#559999"">" + "DANGER - Char blindé" + "</t>"), "\cgqc\functions\fnc_create_target.sqf", ["O_MBT_02_cannon_F", true, false], 0, false, false];
+range_act15 = player addaction [("<t color=""#559999"">" + "DANGER - Char blindé" + "</t>"), "\cgqc\functions\fnc_create_target.sqf", ["tank", true, false], 0, false, false];
 // player addaction [("<t color=""#559999"">" + "Tank Targets" + "</t>"), "fnc_generate_targets.sqf", ["O_MBT_02_cannon_F", 50, true, 50, 1500], 0, false, false];
 
 range_event1 = player addEventHandler ["fired", {

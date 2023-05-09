@@ -26,7 +26,9 @@ switch (_type) do {
 		player linkItem "ItemWatch";
 		player addItem "ACE_MapTools";
 		// === Binos
-		player addWeapon "cgqc_item_rangefinder";
+		if (cgqc_player_isModern) then {
+			player addWeapon "cgqc_item_rangefinder";
+		};
 		hint "Basic Items Given";
 		while {!cgqc_orient_target_found} do {
 			_random_pos = [] call BIS_fnc_randomPos;
@@ -43,7 +45,7 @@ switch (_type) do {
 			} forEach ["NameVillage", "NameCity", "NameCityCapital"];
 			if (count cgqc_orient_targets > 0) then {
 				cgqc_orient_target = selectRandom cgqc_orient_targets;
-				hint format ["Target: %1m", cgqc_orient_target select 3];
+				hint format ["Reach Target: %1m", cgqc_orient_target select 3];
 				cgqc_orient_target_found = true;
 			}else{
 				hint "Location unsuitable";
@@ -124,7 +126,7 @@ switch (_type) do {
 		deleteVehicle cgqc_orient_target_crate;
 		player setPos cgqc_orient_pos;
 		if (cgqc_orient_won) then {
-			hint format['Good job Viper! %1mins', cgqc_orienteering_timer/60];)
+			hint format['Good job Viper! %1mins', cgqc_orienteering_timer/60];
 			sleep 15;
 		}else{
 			hint "Orientation off";

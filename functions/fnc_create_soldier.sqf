@@ -6,6 +6,9 @@ _targetAnimated   = _arguments select 1;
 _targetRandomDir  = _arguments select 2;
 _targetPatrolling = _arguments select 3;
 
+//Override with mod unit
+_targetClass = selectRandom cgqc_orient_squad;
+
 private ["_group", "_position", "_vecToTarget", "_direction"];
 
 _position = screenToWorld [0.5, 0.5];

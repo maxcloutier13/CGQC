@@ -20,6 +20,12 @@ switch (_type) do {
 	case 16: {cqb_house1_hostile_class = ["UK3CB_ION_O_Urban_SF_TL", "UK3CB_ION_O_Urban_SF_SPOT", "UK3CB_ION_O_Urban_SF_SL", "UK3CB_ION_O_Urban_SF_RIF_3", "UK3CB_ION_O_Urban_SF_RIF_4", "UK3CB_ION_O_Urban_SF_RIF_2", "UK3CB_ION_O_Urban_SF_ENG", "UK3CB_ION_O_Urban_SF_AR"]};
 	case 17: {cqb_house1_hostile_class = ["DSF_ISIS_AutomaticRifleman", "DSF_ISIS_Medic", "DSF_ISIS_Engineer", "DSF_ISIS_HVT", "DSF_ISIS_MachineGunner", "DSF_ISIS_Marksman", "DSF_ISIS_Officer", "DSF_ISIS_Rifleman", "DSF_ISIS_Rifleman_Lite", "DSF_ISIS_SquadLeader", "DSF_ISIS_TeamLeader"]};
 	case 18: {cqb_house1_hostile_class = ["DSF_CART_TeamLeader", "DSF_CART_SquadLeader", "DSF_CART_Sicario", "DSF_CART_Rifleman_SPAR", "DSF_CART_Rifleman_Lite", "DSF_CART_Rifleman", "DSF_CART_Marksman", "DSF_CART_Officer", "DSF_CART_FalconSMG", "DSF_CART_FalconRifle", "DSF_CART_Medic", "DSF_CART_BodyGuard"]};
+	// Vietnam
+	case 19: {cqb_house1_hostile_class = cgqc_orient_squad};
+	// Scandinavia
+	case 20: {cqb_house1_hostile_class = cgqc_orient_squad};
+	// WW2
+	case 21: {cqb_house1_hostile_class = cgqc_orient_squad};
 	case 40: {cqb_house1_target_nbr = cqb_house1_target_nbr + 5; hint format["Targets:%1",cqb_house1_target_nbr];};
 	case 41: {cqb_house1_target_nbr = cqb_house1_target_nbr - 5; hint format["Targets:%1",cqb_house1_target_nbr];};
 	case 42: {cqb_house1_target_nbr = cqb_house1_target_nbr + 10; hint format["Targets:%1",cqb_house1_target_nbr];};
