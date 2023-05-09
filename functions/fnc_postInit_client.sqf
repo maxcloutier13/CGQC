@@ -134,4 +134,5 @@ switch (_unit) do {
 _items = (items player);
 if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
 if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
+
 cgqc_postInitClient_done = true;

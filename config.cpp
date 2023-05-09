@@ -1,5 +1,6 @@
 // Mod info -----------------------------------------------------------------------------------------
 #include "cfg_patches.hpp"
+
 // Faction
 class cfgFactionClasses {
 	#include "cfg_factions.hpp"

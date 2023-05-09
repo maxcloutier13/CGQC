@@ -78,7 +78,10 @@ cgqc_zeus_mapRestricted_count = 0;
 cgqc_zeus_mapRestricted_txt = "";
 cgqc_zeus_mapRestricted_txt_on = false;
 // Training stuff 
+cgqc_training_mode = false;
 cgqc_sniping = false;
+cgqc_spawn = false;
+cgqc_spawn_vic = "";
 // Orientation
 cgqc_orienteering = false;
 cgqc_orienteering_timer = 0;
@@ -92,21 +95,21 @@ cgqc_defense_mode = false;
 cgqc_defense_done = false;
 cgqc_defense_start = false;
 // CQB house training stuff
-cqb_house1_list = [];
-cqb_house1_list_moving = [];
-cqb_house1_list_static = [];
-cqb_house1_list_civ = [];
-cgqc_house1_on = false;
-cqb_house1_target_nbr = 10;
-cqb_house1_move = 0;
-cqb_house1_timer = 0;
-cqb_house1_timer_random = false; 
-cqb_house1_civ = false;
-cqb_house1_nade = false;
-cqb_house1_tgt_move = 0;
-cqb_house1_tgt_static = 0;
-cqb_house1_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];
-cqb_house1_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
+cgqc_cqb_list = [];
+cgqc_cqb_list_moving = [];
+cgqc_cqb_list_static = [];
+cgqc_cqb_list_civ = [];
+cgqc_cqb_on = false;
+cgqc_cqb_target_nbr = 10;
+cgqc_cqb_move = 0;
+cgqc_cqb_timer = 0;
+cgqc_cqb_timer_random = false; 
+cgqc_cqb_civ = false;
+cgqc_cqb_nade = false;
+cgqc_cqb_tgt_move = 0;
+cgqc_cqb_tgt_static = 0;
+cgqc_cqb_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];
+cgqc_cqb_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
@@ -146,7 +149,9 @@ cgqc_player_hasUnsung =  isClass(configFile >> "cfgPatches" >> "uns_base");
 if (cgqc_player_hasIfa3) then {cgqc_player_isWw2 = true;}; // WW2
 if (cgqc_player_hasScandinavia) then {cgqc_player_isWw2 = true;}; // WW2
 if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam 
-if (cgqc_player_has2023) then {cgqc_player_isModern = true;}; // Modern era
+if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
+	cgqc_player_isModern = true;
+};
 
 // Patrols 
 if (cgqc_player_has2023) then {
@@ -400,6 +405,10 @@ cgqc_unconscious_sounds = [
 	"cgqc\sounds\scream_15.wav",
 	"cgqc\sounds\scream_16.wav"
 ];
+
+// Loading dialogs
+_vehDialog = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_vic_fnc.sqf";
+waitUntil {scriptDone _vehDialog};
 
 // **************************************************************************************************************
 cgqc_preInit_done = true;

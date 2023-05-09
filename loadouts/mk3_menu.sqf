@@ -403,9 +403,10 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject; 
 
 		//Training ==============================================================================================================
-			_action = [ "menu_training", "Training", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_training", "Training Mode", "", {execVM "\cgqc\functions\fnc_trainingMenu.sqf"}, {!cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
-			
+				
+/*
 			// Sniping ---------------------------------------------------------------------------------------------------------
 			_action = [ "menu_training_sniping", "Sniping", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -434,12 +435,12 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			
 			// CQB ---------------------------------------------------------------------------------------------------------
-			_action = [ "menu_training_cqb", "CQB", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_training_cqb", "CQB", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_house1_clear", "Stop CQB", "", {[0] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_clear", "Stop CQB", "", {[0] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
 
-			_action = [ "menu_house1_option", "Options", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_option", "Options", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			
 			_action = [ "menu_house1_nbr", "Target number", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
@@ -463,7 +464,7 @@ if (hasInterface) then {
 			_action = [ "menu_house1_nbrRdm3", "Random Large: 30-50", "", {[47] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_nbr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-			_action = [ "menu_house1_static", "Target movement", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_static", "Target movement", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_house1_nomove", "All static", "", {[50] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_static"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -478,21 +479,21 @@ if (hasInterface) then {
 			_action = [ "menu_house1_mRandom", "Random", "", {[55] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_static"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-			_action = [ "menu_house1_civ", "Civilian presence", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_civ", "Civilian presence", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_house1_civ_on", "On", "", {[60] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_civ"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_house1_civ_off", "Off", "", {[61] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_civ"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-			_action = [ "menu_house1_gren", "Grenades on PAX", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_gren", "Grenades on PAX", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_house1_gren_on", "On", "", {[62] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_gren"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_house1_gren_off", "Off", "", {[63] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_gren"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-			_action = [ "menu_house1_timer", "Timer to release PAX", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_timer", "Timer to release PAX", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_house1_timer0", "No release", "", {[70] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_timer"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -507,7 +508,7 @@ if (hasInterface) then {
 			_action = [ "menu_house1_timermRandom", "Random", "", {[75] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_option", "menu_house1_timer"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			
-			_action = [ "menu_house1_start", "Start CQB", "", {}, {!cgqc_house1_on} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_house1_start", "Start CQB", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			
 			// Pistols
@@ -558,7 +559,7 @@ if (hasInterface) then {
 			// Scandinavia
 			_action = [ "menu_house1_scand", "Full: Nazis", "", {[21] execVM '\cgqc\functions\fnc_cqbHouse.sqf'}, {cgqc_player_hasScandinavia} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_training", "menu_training_cqb", "menu_house1_start"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
+*/
 
 
 
