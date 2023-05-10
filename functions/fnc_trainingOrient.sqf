@@ -60,7 +60,8 @@ switch (_type) do {
 		_nearestCity_name = cgqc_orient_target select 1;
 		_nearestCity_pos = cgqc_orient_target select 2;
 		// Find empty position around target area 
-		cgqc_orient_pos_free = _nearestCity_pos findEmptyPosition [1,100,"B_MBT_01_TUSK_F"];
+		_searchArea = [_nearestCity_pos, 50, 100, 0, 0, 0, 0] call BIS_fnc_findSafePos;
+		cgqc_orient_pos_free = _searchArea findEmptyPosition [1,100,"B_T_VTOL_01_armed_F"];
 		// Crate on spawn location 
 		//cgqc_orient_crate="cgqc_box_mk2_arsenal" createVehicle (position player);
 		cgqc_orient_target_crate="cgqc_box_mk2_arsenal" createVehicle (cgqc_orient_pos_free);
@@ -114,8 +115,8 @@ switch (_type) do {
 		};
 		// Task created
 		waitUntil{sleep 0.5; cgqc_mk3_transition};
-		sleep 12;
-		[side player, "task_orient", [format["Find your position and reach target: %1", cgqc_orient_target select 1], format["Reach Target: %1",cgqc_orient_target select 1], ""], cgqc_orient_target select 2, "ASSIGNED", 1, true, "CT_RECON", false] call BIS_fnc_taskCreate;
+		sleep 10;
+		[side player, "task_orient", [format["Find your position and reach target: %1", cgqc_orient_target select 1], format["Reach Target: %1",cgqc_orient_target select 1], ""],cgqc_orient_pos_free, "ASSIGNED", 1, true, "CT_RECON", false] call BIS_fnc_taskCreate;
 		
 		[] spawn {
 			while {cgqc_orienteering} do {

@@ -1,3 +1,5 @@
+// --- trainingCqb ----------------------------------------------------------
+// Cqb shenanigans
 _type = _this select 0;
 
 switch (_type) do {
@@ -55,7 +57,7 @@ switch (_type) do {
 	case 75: {cgqc_cqb_timer = 10; cgqc_cqb_timer_random = true; hint "Time until release:Random";};
 	
 	default {
-		hint "cqb_house_1 error";
+		hint "trainingCqb error";
 	};
 };
 

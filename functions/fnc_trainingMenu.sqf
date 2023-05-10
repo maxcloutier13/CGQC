@@ -10,12 +10,12 @@ _action = [ "menu_self_training_spawn_del", "Delete Vehicle", "", {deleteVehicle
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Sniping ---------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_training_sniping", "Sniping", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_sniping_on", "Sniping mode->ON", "", {execVM '\cgqc\functions\fnc_sniping_on.sqf'}, {!cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-_action = [ "menu_sniping_off", "Sniping mode->OFF", "", {execVM '\cgqc\functions\fnc_sniping_off.sqf'}, {cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+//_action = [ "menu_self_training_sniping", "Sniping", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+//_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_sniping_on", "Sniping mode->ON", "", {[1]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {!cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+//_action = [ "menu_sniping_off", "Sniping mode->OFF", "", {execVM '\cgqc\functions\fnc_sniping_off.sqf'}, {cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
+//_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 
 // Orienteering ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_training_orient", "Orientation", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       

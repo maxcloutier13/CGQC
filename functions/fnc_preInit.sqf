@@ -159,7 +159,8 @@ cgqc_orient_unit = ["O_G_Soldier_SL_F"];
 cgqc_orient_tank = ["O_T_MBT_04_cannon_F"];
 cgqc_orient_patrol = ["O_G_Soldier_TL_F", "O_G_Soldier_F", "O_G_Soldier_M_F"];
 cgqc_orient_hunters = ["O_G_Sharpshooter_F", "O_G_Soldier_M_F"];
-cgqc_orient_team = ["O_G_Soldier_SL_F", "O_G_Soldier_AR_F", "O_G_Soldier_GL_F", "O_G_Soldier_LAT2_F", "O_G_Soldier_M_F", "O_G_Soldier_F", "O_G_medic_F"];
+cgqc_orient_team = ["O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_M_F", "O_G_Soldier_F"];
+cgqc_orient_squad = ["O_G_Soldier_SL_F", "O_G_Soldier_AR_F", "O_G_Soldier_GL_F", "O_G_Soldier_LAT2_F", "O_G_Soldier_M_F", "O_G_Soldier_F", "O_G_medic_F"];
 
 // Patrols 
 if (cgqc_player_has2023) then {
