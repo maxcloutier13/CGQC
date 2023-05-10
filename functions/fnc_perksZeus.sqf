@@ -150,7 +150,8 @@ switch (_type) do {
 	};
 	case "crate":
 	{
-		zeus_crate="cgqc_box_mk2_arsenal" createVehicle (position player);
+		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
+		zeus_crate = "cgqc_box_mk2_arsenal" createVehicle _pos_free;
 		cgqc_zeus_crate = true;
 	};
 	case "del_crate":
