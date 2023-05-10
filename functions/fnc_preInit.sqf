@@ -13,6 +13,7 @@ cgqc_intro_skipped = false;
 cgqc_welcome_message = "";
 cgqc_welcome_done = false;
 cgqc_welcome_pic = "";
+cgqc_mk3_transition = false;
 // *** Player **********************
 cgqc_player_known = true;
 cgqc_player_face = "";

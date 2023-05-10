@@ -1,4 +1,5 @@
 _type = _this select 0;
+cgqc_mk3_transition = true;
 //hintc format ["TransitionType:%1", _type];sleep 1;
 _text = "";
 _text_insert = "";
@@ -40,5 +41,6 @@ if (cgqc_setting_show_transition) then {
     titleCut ["", "BLACK IN", 4];
     "dynamicBlur" ppEffectAdjust [0.0];
     "dynamicBlur" ppEffectCommit 2;
+    cgqc_mk3_transition = false;
 };
 
