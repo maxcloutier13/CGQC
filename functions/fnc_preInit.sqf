@@ -20,6 +20,7 @@ cgqc_player_face = "";
 cgqc_player_patch = "";
 cgqc_player_patch_found = false;
 cgqc_custom_playername = "";
+cgqc_player_crate = false;
 cgqc_player_rank = 0;
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
@@ -208,6 +209,14 @@ if (!cgqc_player_isModern) then {
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
+
+//Wind changer event 
+["cgqc_change_fucking_wind", {
+	params ["_type"];
+	hint format ["Event wind: %1", _type];
+	[_type] execVM "\cgqc\functions\fnc_training.sqf";
+}] call CBA_fnc_addEventHandler;
+
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
     [_menu_name, "Description et Intro"], true] call CBA_fnc_addSetting;
