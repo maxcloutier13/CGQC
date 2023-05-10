@@ -8,7 +8,7 @@ _targetPatrolling = _arguments select 3;
 
 //Override with mod unit
 _targetClass = selectRandom cgqc_orient_squad;
-
+sleep 0.5;
 private ["_group", "_position", "_vecToTarget", "_direction"];
 
 _position = screenToWorld [0.5, 0.5];
@@ -27,8 +27,10 @@ _group = createGroup east;
 _unit = _group createUnit [_targetClass, [_position select 0, _position select 1, 0.0], [], 0, "CAN_COLLIDE"];
 _unit setDir _direction;
 removeAllWeapons _unit;
-_unit disableAI "PATH"; 
+_unit disableAI "PATH";
+_unit disableAI "AUTOCOMBAT";  
 _group setBehaviour "SAFE";
+TrainingCourse_TargetList pushBack _unit;
 if (_targetPatrolling) then
 {
 	_unit enableAI "PATH"; 

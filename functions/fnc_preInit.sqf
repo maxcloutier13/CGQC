@@ -13,6 +13,7 @@ cgqc_intro_skipped = false;
 cgqc_welcome_message = "";
 cgqc_welcome_done = false;
 cgqc_welcome_pic = "";
+cgqc_mk3_transition = false;
 // *** Player **********************
 cgqc_player_known = true;
 cgqc_player_face = "";
@@ -153,6 +154,14 @@ if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
 
+//Vanila 
+cgqc_orient_unit = ["O_G_Soldier_SL_F"];
+cgqc_orient_tank = ["O_T_MBT_04_cannon_F"];
+cgqc_orient_patrol = ["O_G_Soldier_TL_F", "O_G_Soldier_F", "O_G_Soldier_M_F"];
+cgqc_orient_hunters = ["O_G_Sharpshooter_F", "O_G_Soldier_M_F"];
+cgqc_orient_team = ["O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_M_F", "O_G_Soldier_F"];
+cgqc_orient_squad = ["O_G_Soldier_SL_F", "O_G_Soldier_AR_F", "O_G_Soldier_GL_F", "O_G_Soldier_LAT2_F", "O_G_Soldier_M_F", "O_G_Soldier_F", "O_G_medic_F"];
+
 // Patrols 
 if (cgqc_player_has2023) then {
 	cgqc_orient_unit = ["I_L_Criminal_SG_F"];
@@ -161,7 +170,6 @@ if (cgqc_player_has2023) then {
 	cgqc_orient_hunters = ["I_L_Criminal_SG_F",  "I_L_Looter_SMG_F"];
 	cgqc_orient_team = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F"];
 	cgqc_orient_squad = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
-
 };
 if (cgqc_player_hasIfa3) then { //Independant. Russians are invincible!
 	cgqc_orient_unit = ["LIB_UK_DR_Rifleman"];

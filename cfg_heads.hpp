@@ -12,7 +12,7 @@ class Man_A3 : Default
 		texture = "\CGQC\heads\cloutier\cgqc_cloutier_co.paa";
 		material = "\CGQC\heads\cloutier\cgqc_cloutier.rvmat";
 		head = "GreekHead_A3";
-		identityTypes[] = {"Head_NATO", "Head_Euro"};
+		identityTypes[] = {"Player"};
 		materialWounded1 = "\CGQC\heads\cloutier\cgqc_cloutier_injury.rvmat";
 		materialWounded2 = "\CGQC\heads\cloutier\cgqc_cloutier_injury.rvmat";
 		textureHL = "\CGQC\heads\cloutier\cgqc_cloutier_arms.paa";
@@ -25,7 +25,6 @@ class Man_A3 : Default
 	class CGQCHead_13_camo_01: CGQCHead_13
 		{
 			displayname = "Cloutier camo01";
-			identityTypes[] = {"Head_NATO", "Head_Euro"};
 			material = "\cgqc\heads\cloutier\camo1\m_white_04.rvmat";
 			materialWounded1 = "\cgqc\heads\cloutier\camo1\m_white_04_injury.rvmat";
 			materialWounded2 = "\cgqc\heads\cloutier\camo1\m_white_04_injury.rvmat";
