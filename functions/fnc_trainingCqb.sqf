@@ -1,7 +1,7 @@
 _type = _this select 0;
 
 switch (_type) do {
-	case 0: {cgqc_cqb_on = false;publicVariable "cgqc_cqb_on";hint "CQC Off";};
+	case 0: {cgqc_cqb_on = false;hint "CQC Off";};
 	case 1: {cgqc_cqb_hostile_class = ["rhsgref_tla_warlord"];};
 	case 2: {cgqc_cqb_hostile_class = ["O_G_Soldier_TL_F", "O_G_Soldier_SL_F", "O_G_officer_F"];};
 	case 3: {cgqc_cqb_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];};
@@ -162,7 +162,6 @@ if (_type < 40) then {
 		_txt = parseText format["-- Ready to go --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
 		hint _txt;
 		cgqc_cqb_on = true;
-		publicVariable "cgqc_cqb_on";
 		if (cgqc_cqb_timer > 0) then {
 			while {cgqc_cqb_on} do {
 				if (cgqc_cqb_timer_random) then {
