@@ -27,7 +27,8 @@ _group = createGroup east;
 _unit = _group createUnit [_targetClass, [_position select 0, _position select 1, 0.0], [], 0, "CAN_COLLIDE"];
 _unit setDir _direction;
 removeAllWeapons _unit;
-_unit disableAI "PATH"; 
+_unit disableAI "PATH";
+_unit disableAI "AUTOCOMBAT";  
 _group setBehaviour "SAFE";
 if (_targetPatrolling) then
 {
