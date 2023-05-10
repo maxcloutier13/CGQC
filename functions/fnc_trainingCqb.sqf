@@ -1,7 +1,7 @@
 _type = _this select 0;
 
 switch (_type) do {
-	case 0: {cgqc_cqb_on = false;hint "CQC Off";};
+	case 0: {cgqc_cqb_on = false};
 	case 1: {cgqc_cqb_hostile_class = ["rhsgref_tla_warlord"];};
 	case 2: {cgqc_cqb_hostile_class = ["O_G_Soldier_TL_F", "O_G_Soldier_SL_F", "O_G_officer_F"];};
 	case 3: {cgqc_cqb_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];};
@@ -64,6 +64,7 @@ if (_type < 40) then {
 	{deleteVehicle _x;} forEach cgqc_cqb_list_civ;
 	{deleteVehicle _x;} forEach allDead;
 	{deleteVehicle _x;} forEach nearestObjects [getpos player, ["WeaponHolder", "GroundWeaponHolder"], 100];
+	cgqc_cqb_list = [];
 	cgqc_cqb_list_static = [];
 	cgqc_cqb_list_moving = [];
 	cgqc_cqb_list_civ = [];
@@ -128,15 +129,14 @@ if (_type < 40) then {
 				cgqc_cqb_list_moving = cgqc_cqb_list_moving - [_unit];
 				cgqc_cqb_list_static = cgqc_cqb_list_static - [_unit];
 				_left = count cgqc_cqb_list;
-				systemChat format ["%1 killed by %2. %3 left", typeOf _unit, name _killer, _left];
+				//systemChat format ["%1 killed by %2. %3 left", typeOf _unit, name _killer, _left];
 				//cgqc_cqb_list = cgqc_cqb_list - _unit;
 				if (_left < 1) then {
-					_text = parseText ("Building clear..." + "<br/>" + "Good job Viper!");
-					[_text, 0, 0, 3, 2] spawn BIS_fnc_dynamicText;
+					cgqc_cqb_on = false;
 				};
 			}];
 			cgqc_cqb_list pushBack _unit;
-			sleep 0.2;
+			sleep 0.1;
 		};
 		if (cgqc_cqb_civ) then {
 			_civ_nbr = selectRandom [1,2,3];
@@ -161,23 +161,37 @@ if (_type < 40) then {
 		};
 		_txt = parseText format["-- Ready to go --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
 		hint _txt;
+		[side player, "task_cqb", [format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list], format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""], getPos _building, "ASSIGNED", 1, true, "CT_SECURE", true] call BIS_fnc_taskCreate;
 		cgqc_cqb_on = true;
-		if (cgqc_cqb_timer > 0) then {
-			while {cgqc_cqb_on} do {
-				if (cgqc_cqb_timer_random) then {
-					//cgqc_cqb_timer = selectRandom [5,10,15,20,30];
-					cgqc_cqb_timer = selectRandom [5,10,15,20,30,60,90,120,180,240,300,360];
-				};
-				sleep cgqc_cqb_timer;
-				if (count cgqc_cqb_list_static > 0) then {
-					_random_pax = selectRandom cgqc_cqb_list_static;
-					cgqc_cqb_list_static = cgqc_cqb_list_static - [_random_pax];
-					cgqc_cqb_list_moving pushBack _random_pax;
-					_random_pax enableAI "PATH";
-					systemChat format ["%1 started moving", typeOf _random_pax]; 
-				};
+		while {cgqc_cqb_on} do {
+			if (cgqc_cqb_timer > 0) then {
+					if (cgqc_cqb_timer_random) then {
+						//cgqc_cqb_timer = selectRandom [5,10,15,20,30];
+						cgqc_cqb_timer = selectRandom [5,10,15,20,30,60,90,120,180,240,300,360];
+					};
+					sleep cgqc_cqb_timer;
+					if (count cgqc_cqb_list_static > 0) then {
+						_random_pax = selectRandom cgqc_cqb_list_static;
+						cgqc_cqb_list_static = cgqc_cqb_list_static - [_random_pax];
+						cgqc_cqb_list_moving pushBack _random_pax;
+						_random_pax enableAI "PATH";
+						systemChat format ["%1 started moving", typeOf _random_pax]; 
+					}
+			}else{
+				sleep 10;
 			};
 		};
-		
+		//CQB is off 
+		// Check if succeeded 
+		if (count cgqc_cqb_list < 1) then 
+		{
+			//Win
+			["task_cqb", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+			sleep 10;
+		}else{
+			//Lose
+			["task_cqb", "CANCELED", true] call BIS_fnc_taskSetState;
+		};
+		["task_cqb", true, true] call BIS_fnc_deleteTask;
 	};
 };
