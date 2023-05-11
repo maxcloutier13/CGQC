@@ -8,15 +8,15 @@ class Car_F : Car{
     ace_cargo_space = 8;
     class AcreRacks {
         class Rack_1 {
-            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            displayName = "Rack 1"; // Name is displayed in the interaction menu.
             shortName = "Rack1";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", {"cargo", 0}, "external"};
             mountedRadio = "ACRE_PRC117F";
-            intercom[] = {};
+            intercom[] = {"intercom_1"};
         };
         class Rack_2: Rack_1 {
-            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            displayName = "Rack 2"; // If you have multiple racks a text label helps identify the particular rack.
             shortName = "Rack2";
         };
     };
@@ -46,16 +46,16 @@ class Helicopter : Air
     };
     class AcreRacks {
         class Rack_1 {
-            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            displayName = "Rack 1"; // Name is displayed in the interaction menu.
             shortName = "Rack1";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", "gunner", "copilot", "external"}; // Attack helicopters have "gunner" copilots usually
             mountedRadio = "ACRE_PRC117F";
-            intercom[] = {};
+            intercom[] = {"intercom_1"};
         };
 
         class Rack_2: Rack_1 {
-            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            displayName = "Rack 2"; // If you have multiple racks a text label helps identify the particular rack.
             shortName = "Rack2";
         };
     };
@@ -66,42 +66,46 @@ class Wheeled_APC_F: Car_F {
     ace_cargo_space = 8;
     class AcreRacks {
         class Rack_1 {
-            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            displayName = "Rack 1"; // Name is displayed in the interaction menu.
             shortName = "Rack1";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
             mountedRadio = "ACRE_PRC117F";
-            intercom[] = {};
+            intercom[] = {"intercom_1"};
         };
         class Rack_2 {
-            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            displayName = "Rack 2"; // If you have multiple racks a text label helps identify the particular rack.
             shortName = "Rack2";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
             mountedRadio = "ACRE_PRC117F";
-            intercom[] = {};
+            intercom[] = {"intercom_1"};
         };
      };
+};
+class Plane;
+class Plane_Base_F: Plane {
+
 };
 
 class Tank_F: Tank {
     ace_cargo_space = 8;
     class AcreRacks {
         class Rack_1 {
-            displayName = "Dash Upper"; // Name is displayed in the interaction menu.
+            displayName = "Rack 1"; // Name is displayed in the interaction menu.
             shortName = "Rack1";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
             mountedRadio = "ACRE_PRC117F";
-            intercom[] = {};
+            intercom[] = {"intercom_1"};
         };
         class Rack_2 {
-            displayName = "Dash Lower"; // If you have multiple racks a text label helps identify the particular rack.
+            displayName = "Rack 2"; // If you have multiple racks a text label helps identify the particular rack.
             shortName = "Rack2";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", "commander", "gunner", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
             mountedRadio = "ACRE_PRC117F";
-            intercom[] = {};
+            intercom[] = {"intercom_1"};
         };
     };
     class EventHandlers
