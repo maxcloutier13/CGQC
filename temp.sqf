@@ -509,4 +509,31 @@ player switchCamera "INTERNAL";
 _camera cameraEffect ["TERMINATE", "BACK"];
 
 
-}; 
+class MRAP_01_base_F : Car_F {
+	class AcreRacks {
+		class Rack_1 {
+			displayName = CSTRING(dashUpper); // Name is displayed in the interaction menu.
+			shortName = CSTRING(dashUpperShort);
+			componentName = "ACRE_VRC110";
+			allowedPositions[] = {"driver", {"cargo", 0}}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+			isRadioRemovable = 1;
+			intercom[] = {"intercom_1"};
+		};
+		class Rack_2 {
+			displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
+			shortName = CSTRING(dashLowerShort);
+			componentName = "ACRE_VRC103";
+			allowedPositions[] = {"driver", {"cargo", 0}};
+			mountedRadio = "ACRE_PRC117F";
+			intercom[] = {"intercom_1"};
+		};
+	};
+};
+
+
+
+@CBA_A3;@RHSAFRF;@RHSGREF;@RHSSAF;@RHSUSAF;@ace;@JSRS SOUNDMOD;@3CB Factions;@Canadian_SOF_LITE_mas;@CUP Terrains - Core;@CUP Terrains - Maps;@Tier One Weapons;@ACRE2;@CGQC - Core - mk3;@CGQC - Addons;@CGQC - Addons - 2023;
+
+
+
+@CBA_A3;@ace;@ACRE2;@JSRS SOUNDMOD;@Anrop Unsung JSRS;@Unsung;@Fox Vanam;@KLPQ Vietnam Radio;@CGQC - Core - mk3;@CGQC - Addons;@Gruppe Adler Trenches;
