@@ -20,7 +20,7 @@ if (hasInterface) then {
         };
 
         // ===== Prep and transition ======================================================
-        cgqc_role = "";
+        cgqc_player_role = "";
        
         // Check if player in chill mode
         if (cgqc_player_chill) then {
@@ -32,22 +32,22 @@ if (hasInterface) then {
             // Command ========================================================================
             case "unsung_basic":{ 
                 [] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
-				cgqc_role = "Basic Soldier";
+				cgqc_player_role = "Basic Soldier";
             };
 			case "unsung_10":{ 
 				[] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
                 [] execVM "\CGQC\loadouts\unsung\loadout_1_0.sqf";
-				cgqc_role = "1-0 Team Leader";
+				cgqc_player_role = "1-0 Team Leader";
             };
 			case "unsung_11":{ 
 				[] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
                 [] execVM "\CGQC\loadouts\unsung\loadout_1_1.sqf";
-				cgqc_role = "1-1 Radio 2iC";
+				cgqc_player_role = "1-1 Radio 2iC";
             };
 			case "unsung_12":{ 
 				[] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
                 [] execVM "\CGQC\loadouts\unsung\loadout_1_2.sqf";
-				cgqc_role = "1-2 Medic";
+				cgqc_player_role = "1-2 Medic";
             };
             default	{
                 hintc "mk3_roleSwitch.sqf fail";
