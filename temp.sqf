@@ -529,3 +529,11 @@ class MRAP_01_base_F : Car_F {
 		};
 	};
 };
+
+
+
+@CBA_A3;@RHSAFRF;@RHSGREF;@RHSSAF;@RHSUSAF;@ace;@JSRS SOUNDMOD;@3CB Factions;@Canadian_SOF_LITE_mas;@CUP Terrains - Core;@CUP Terrains - Maps;@Tier One Weapons;@ACRE2;@CGQC - Core - mk3;@CGQC - Addons;@CGQC - Addons - 2023;
+
+
+
+@CBA_A3;@ace;@ACRE2;@JSRS SOUNDMOD;@Anrop Unsung JSRS;@Unsung;@Fox Vanam;@KLPQ Vietnam Radio;@CGQC - Core - mk3;@CGQC - Addons;@Gruppe Adler Trenches;
