@@ -58,9 +58,9 @@ _action = [ "menu_self_training_orient_options_patrols", "Add Patrols", "", {cgq
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_orient_options_patrols_off", "Remove Patrols", "", {cgqc_orient_opt_patrols = true}, {cgqc_orient_opt_patrols} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_training_orient_options_hunters", "Add Hunters", "", {cgqc_orient_opt_hunters = true}, {!cgqc_orient_opt_hunters} ] call ace_interact_menu_fnc_createAction;       
+_action = [ "menu_self_training_orient_options_snipers", "Add Hunters", "", {cgqc_orient_opt_snipers = true}, {!cgqc_orient_opt_snipers} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_training_orient_options_hunters_off", "Remove Hunters", "", {cgqc_orient_opt_hunters = true}, {cgqc_orient_opt_hunters} ] call ace_interact_menu_fnc_createAction;       
+_action = [ "menu_self_training_orient_options_snipers_off", "Remove Hunters", "", {cgqc_orient_opt_snipers = true}, {cgqc_orient_opt_snipers} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // CQB ---------------------------------------------------------------------------------------------------------

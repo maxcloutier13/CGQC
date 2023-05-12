@@ -23,11 +23,11 @@ switch (_type) do {
 	case 17: {cgqc_cqb_hostile_class = ["DSF_ISIS_AutomaticRifleman", "DSF_ISIS_Medic", "DSF_ISIS_Engineer", "DSF_ISIS_HVT", "DSF_ISIS_MachineGunner", "DSF_ISIS_Marksman", "DSF_ISIS_Officer", "DSF_ISIS_Rifleman", "DSF_ISIS_Rifleman_Lite", "DSF_ISIS_SquadLeader", "DSF_ISIS_TeamLeader"]};
 	case 18: {cgqc_cqb_hostile_class = ["DSF_CART_TeamLeader", "DSF_CART_SquadLeader", "DSF_CART_Sicario", "DSF_CART_Rifleman_SPAR", "DSF_CART_Rifleman_Lite", "DSF_CART_Rifleman", "DSF_CART_Marksman", "DSF_CART_Officer", "DSF_CART_FalconSMG", "DSF_CART_FalconRifle", "DSF_CART_Medic", "DSF_CART_BodyGuard"]};
 	// Vietnam
-	case 19: {cgqc_cqb_hostile_class = cgqc_orient_squad};
+	case 19: {cgqc_cqb_hostile_class = cgqc_pax_opfor_squad};
 	// Scandinavia
-	case 20: {cgqc_cqb_hostile_class = cgqc_orient_squad};
+	case 20: {cgqc_cqb_hostile_class = cgqc_pax_opfor_squad};
 	// WW2
-	case 21: {cgqc_cqb_hostile_class = cgqc_orient_squad};
+	case 21: {cgqc_cqb_hostile_class = cgqc_pax_opfor_squad};
 	case 40: {cgqc_cqb_target_nbr = cgqc_cqb_target_nbr + 5; hint format["Targets:%1",cgqc_cqb_target_nbr];};
 	case 41: {cgqc_cqb_target_nbr = cgqc_cqb_target_nbr - 5; hint format["Targets:%1",cgqc_cqb_target_nbr];};
 	case 42: {cgqc_cqb_target_nbr = cgqc_cqb_target_nbr + 10; hint format["Targets:%1",cgqc_cqb_target_nbr];};

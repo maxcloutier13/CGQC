@@ -7,7 +7,7 @@ _targetRandomDir  = _arguments select 2;
 _targetPatrolling = _arguments select 3;
 
 //Override with mod unit
-_targetClass = selectRandom cgqc_orient_squad;
+_targetClass = selectRandom cgqc_pax_opfor_squad;
 sleep 0.5;
 private ["_group", "_position", "_vecToTarget", "_direction"];
 
