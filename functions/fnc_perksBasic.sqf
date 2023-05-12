@@ -73,7 +73,11 @@ switch (_type) do {
             if (cgqc_player_max) then {
                 player unlinkItem "immersion_cigs_cigar0_nv";
                 removeGoggles player;
-                player allowDamage true;
+                while {!isDamageAllowed player} do
+                {
+                    player allowDamage true;
+                    sleep 0.5;
+                };
             };
             player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
             player addGoggles cgqc_player_oldFace;
