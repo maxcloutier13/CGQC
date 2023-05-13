@@ -23,7 +23,7 @@ cgqc_pax_opfor_technical_gl = ["uns_Type55_RR73"];
 cgqc_pax_opfor_aa_light = ["uns_BTR152_ZPU", "uns_Type55_ZU", "uns_nvatruck_type65", "uns_nvatruck_zpu", "uns_nvatruck_zu23", "uns_Type74_NVA", "uns_ZPU2_NVA", "uns_ZPU4_NVA", "uns_ZU23_NVA"];
 cgqc_pax_opfor_aa_heavy = ["uns_ZSU23_NVA", "uns_nvatruck_s60", "uns_KS12_NVA", "uns_KS19_NVA", "uns_S60_NVA"];
 cgqc_pax_opfor_fixed_light = ["uns_m1941_82mm_mortarVC", "uns_dshk_armoured_VC", "uns_dshk_high_VC", "uns_dshk_low_VC", "uns_dshk_twin_VC", "uns_dshk_wheeled_VC", "uns_dshk_bunker_closed_VC", "uns_dshk_bunker_open_VC", "uns_mg42_low_VC", "uns_pk_bunker_closed_VC", "uns_pk_bunker_open_VC", "uns_SPG9_73mm_VC", "uns_spiderhole_VC", "uns_spiderhole_leanto_VC", "uns_dshk_twin_bunker_closed_VC", "uns_Type36_57mm_VC"];
-cgqc_pax_opfor_fixed_heavy = ["uns_M40_106mm_VC", a"uns_SPG9_73mm_VC", "uns_Type36_57mm_VC"];
+cgqc_pax_opfor_fixed_heavy = ["uns_M40_106mm_VC", "uns_SPG9_73mm_VC", "uns_Type36_57mm_VC"];
 cgqc_pax_opfor_mortar = ["uns_m1941_82mm_mortarVC", "uns_m1941_82mm_mortarNVA_arty", "uns_m1941_82mm_mortarNVA"];
 cgqc_pax_opfor_arty = ["Uns_D20_artillery"];
 //Air
@@ -109,4 +109,3 @@ cgqc_pax_ind_ugv = [];
 cgqc_pax_ind_boat_light = [];
 cgqc_pax_ind_boat_heavy = [];
 cgqc_pax_ind_sub = [];
-*/

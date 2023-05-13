@@ -80,6 +80,9 @@ cgqc_zeus_mapRestricted = true;
 cgqc_zeus_mapRestricted_count = 0;
 cgqc_zeus_mapRestricted_txt = "";
 cgqc_zeus_mapRestricted_txt_on = false;
+// PAX System 
+cgqc_pax_prep = false;
+
 // Training stuff 
 cgqc_training_mode = false;
 cgqc_sniping = false;
