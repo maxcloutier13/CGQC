@@ -14,6 +14,7 @@ cgqc_welcome_message = "";
 cgqc_welcome_done = false;
 cgqc_welcome_pic = "";
 cgqc_mk3_transition = false;
+cgqc_player_loadAll = true;
 // *** Player **********************
 cgqc_player_known = true;
 cgqc_player_face = "";
@@ -40,6 +41,7 @@ cgqc_camoSwitch_done = true;
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasContact = false;
+cgqc_player_hasAntiPlus = false;
 cgqc_player_hasRHS = false;
 cgqc_player_hasDrongoFactions = false;
 cgqc_player_has23rd = false;
@@ -143,6 +145,7 @@ jibrm_restrictmarkers_shareDistance = 10;
 
 // Check what DLC the player owns 
 cgqc_player_ownedDLCs = getDLCs 1;
+cgqc_player_hasAntiPlus = isClass(configFile >> "cfgPatches" >> "A3A_Events");
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");
 cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
@@ -158,10 +161,13 @@ if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam
 if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
+//For specific modes of games, skip some options
+if (cgqc_player_hasAntiPlus) then {
+	cgqc_player_loadAll = false;
+};
 
-	
 // Acre default radio 
-if (!cgqc_player_isModern) then {
+if (cgqc_player_hasUnsung) then {
 	// Weird radio for Vietnam use
 	["ACRE_SEM52SL"] call acre_api_fnc_setItemRadioReplacement;
 }else{
