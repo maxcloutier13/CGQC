@@ -12,7 +12,7 @@ class Boat_Armed_01_base_F : Boat_F {
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // If you have multiple racks a text label helps identify the particular rack.
-            shortName = CSTRING(dash);
+            shortName = "Rack1";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver"};
             mountedRadio = "ACRE_PRC117F";
@@ -146,7 +146,7 @@ class Plane_Base_F: Plane {
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // Name is displayed in the interaction menu.
-            shortName = "Rack1"
+            shortName = "Rack1";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", "copilot", "external"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
             mountedRadio = "ACRE_PRC117F";
@@ -163,7 +163,7 @@ class Plane_Civil_01_base_F: Plane_Base_F {
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // Name is displayed in the interaction menu.
-            shortName = "Rack1"
+            shortName = "Rack1";
             componentName = "ACRE_VRC103";
             allowedPositions[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
             mountedRadio = "ACRE_PRC117F";

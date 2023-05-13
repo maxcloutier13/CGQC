@@ -537,3 +537,11 @@ class MRAP_01_base_F : Car_F {
 
 
 @CBA_A3;@ace;@ACRE2;@JSRS SOUNDMOD;@Anrop Unsung JSRS;@Unsung;@Fox Vanam;@KLPQ Vietnam Radio;@CGQC - Core - mk3;@CGQC - Addons;@Gruppe Adler Trenches;
+
+
+
+[[Location NameCity at 12273, 10444],[Location NameCity at 8908, 11116],[Location NameCity at 11173, 8422],[Location NameCity at 8426, 12526],[Location NameCity at 8203, 8274],[Location NameCity at 8374, 5664],[Location NameCity at 5152, 10006],[Location NameCity at 5465, 13309],[Location NameCity at 9866, 4642],[Location NameCity at 6008, 6651],[Location NameCity at 5272, 14638],[Location NameCity at 3007, 13988],[Location NameCity at 10718, 1832],[Location NameCity at 2806, 7015],[Location NameCity at 2348, 7034],[Location NameCity at 1439, 7984],[Location NameCity at 7700, 1210],[Location NameCity at 3571, 3008],[Location NameLocal at 9800, 12470],[Location NameLocal at 10458, 8177],[Location NameLocal at 7691, 14239],[Location NameLocal at 11266, 4929],[Location NameLocal at 7415, 5586],[Location NameLocal at 4643, 7286],[Location NameLocal at 4021, 5365],[Location NameLocal at 1700, 10787],[Location NameLocal at 4950, 3057],[Location NameLocal at 828, 2793],[Location NameMarine at 11130, 13166],[Location NameMarine at 8501, 6977],[Location NameMarine at 13838, 6901],[Location NameMarine at 13552, 5472],[Location NameMarine at 4271, 11687],[Location NameMarine at 12730, 2635],[Location NameMarine at 3250, 6508],[Location NameMarine at 7589, 2509]]
+
+
+
+@CBA_A3;@ace;@ACRE2;;@JSRS SOUNDMOD;@CGQC - Core - mk3;@CGQC - Addons;@Gruppe Adler Trenches;@Unsung;@Antistasi - The Mod;@CGQC - Addons - Unsung;
