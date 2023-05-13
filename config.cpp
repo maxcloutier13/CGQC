@@ -98,6 +98,7 @@ class cfgVehicles {
 	#include "cfg_containers.hpp"
 	#include "cfg_items.hpp"
 	#include "cfg_actions.hpp"
+	#include "cfg_acreVehicules.cpp"
 	#include "cfg_vehicles.hpp"
 };
 

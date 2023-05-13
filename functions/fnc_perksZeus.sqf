@@ -8,6 +8,7 @@ switch (_type) do {
 	case "maprestrict":
 	{
 		jib_restrictmarkers_enabled = true;
+		sleep 0.1;
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = true;
 		hint "Map Sharing Restricted";
@@ -15,6 +16,7 @@ switch (_type) do {
 	case "mapshare":
 	{
 		jib_restrictmarkers_enabled = false;
+		sleep 0.1;
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = false;
 		hint "Map Sharing UN-Restricted";

@@ -94,7 +94,7 @@ switch (_type) do {
 		"cgqc_orient_player" setMarkerColor "ColorBlue";
 		*/
 		if(cgqc_orient_opt_patrols) then {
-			cgqc_orient_patrol_group = [ _nearestCity_pos, east, cgqc_orient_patrol] call BIS_fnc_spawnGroup;
+			cgqc_orient_patrol_group = [ _nearestCity_pos, east, cgqc_pax_opfor_patrol] call BIS_fnc_spawnGroup;
 			[cgqc_orient_patrol_group, _nearestCity_pos, 100] call BIS_fnc_taskPatrol;
 			cgqc_orient_patrol_group setBehaviour "SAFE";
 			// add all units to target list
@@ -103,15 +103,15 @@ switch (_type) do {
 			} forEach units cgqc_orient_patrol_group;
 		};
 		// Hunters 
-		if(cgqc_orient_opt_hunters) then {
+		if(cgqc_orient_opt_snipers) then {
 			_randomPos = [getPos player, 800, 1500, 5, 0, 0, 0, [], []] call BIS_fnc_findSafePos;
-			cgqc_orient_hunters_group = [ _randomPos, east, cgqc_orient_hunters] call BIS_fnc_spawnGroup;
-			cgqc_orient_hunters_group setBehaviour "SAFE";
-			[cgqc_orient_hunters_group, 2000, 15, [], [], true, false, false] spawn lambs_wp_fnc_taskHunt;
+			cgqc_orient_snipers_group = [ _randomPos, east, cgqc_pax_opfor_sniper] call BIS_fnc_spawnGroup;
+			cgqc_orient_snipers_group setBehaviour "SAFE";
+			[cgqc_orient_snipers_group, 2000, 15, [], [], true, false, false] spawn lambs_wp_fnc_taskHunt;
 			// add all units to target list
 			{
 				cgqc_orient_target_list pushBack _x;
-			} forEach units cgqc_orient_hunters_group;
+			} forEach units cgqc_orient_snipers_group;
 		};
 		// Task created
 		waitUntil{sleep 0.5; cgqc_mk3_transition};

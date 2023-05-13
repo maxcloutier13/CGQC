@@ -80,6 +80,9 @@ cgqc_zeus_mapRestricted = true;
 cgqc_zeus_mapRestricted_count = 0;
 cgqc_zeus_mapRestricted_txt = "";
 cgqc_zeus_mapRestricted_txt_on = false;
+// PAX System 
+cgqc_pax_prep = false;
+
 // Training stuff 
 cgqc_training_mode = false;
 cgqc_sniping = false;
@@ -89,7 +92,7 @@ cgqc_spawn_vic = "";
 cgqc_orienteering = false;
 cgqc_orienteering_timer = 0;
 cgqc_orient_opt_patrols = false;
-cgqc_orient_opt_hunters = false;
+cgqc_orient_opt_snipers = false;
 cgqc_orient_won = false;
 cgqc_orient_target_list = [];
 // Defense 
@@ -156,47 +159,6 @@ if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
 
-//Vanila 
-cgqc_orient_unit = ["O_G_Soldier_SL_F"];
-cgqc_orient_tank = ["O_T_MBT_04_cannon_F"];
-cgqc_orient_patrol = ["O_G_Soldier_TL_F", "O_G_Soldier_F", "O_G_Soldier_M_F"];
-cgqc_orient_hunters = ["O_G_Sharpshooter_F", "O_G_Soldier_M_F"];
-cgqc_orient_team = ["O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_M_F", "O_G_Soldier_F"];
-cgqc_orient_squad = ["O_G_Soldier_SL_F", "O_G_Soldier_AR_F", "O_G_Soldier_GL_F", "O_G_Soldier_LAT2_F", "O_G_Soldier_M_F", "O_G_Soldier_F", "O_G_medic_F"];
-
-// Patrols 
-if (cgqc_player_has2023) then {
-	cgqc_orient_unit = ["I_L_Criminal_SG_F"];
-	cgqc_orient_tank = ["O_MBT_02_cannon_F"];
-	cgqc_orient_patrol = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F"];
-	cgqc_orient_hunters = ["I_L_Criminal_SG_F",  "I_L_Looter_SMG_F"];
-	cgqc_orient_team = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F"];
-	cgqc_orient_squad = ["I_L_Criminal_SG_F", "I_L_Criminal_SMG_F", "I_L_Looter_Rifle_F", "I_L_Looter_Pistol_F", "I_L_Looter_SG_F", "I_L_Looter_SMG_F"];
-};
-if (cgqc_player_hasIfa3) then { //Independant. Russians are invincible!
-	cgqc_orient_unit = ["LIB_UK_DR_Rifleman"];
-	cgqc_orient_tank = ["LIB_T34_76_w_DLV"];
-	cgqc_orient_patrol = ["LIB_UK_DR_Sergeant", "LIB_UK_DR_Rifleman"];
-	cgqc_orient_hunters = ["LIB_UK_DR_Sniper", "LIB_UK_DR_Sniper"];
-	cgqc_orient_team = ["LIB_UK_DR_Sergeant", "LIB_UK_DR_LanceCorporal", "LIB_UK_DR_Corporal", "LIB_UK_DR_Grenadier"];
-	cgqc_orient_squad =["LIB_UK_DR_Sergeant", "LIB_UK_DR_LanceCorporal", "LIB_UK_DR_Corporal", "LIB_UK_DR_Grenadier","LIB_UK_DR_Rifleman", "LIB_UK_DR_Medic"];
-};
-if (cgqc_player_hasScandinavia) then {
-	cgqc_orient_unit = ["LIB_GER_Unterofficer_w"];
-	cgqc_orient_tank = ["LIB_PzKpfwVI_E_w"];
-	cgqc_orient_patrol = ["LIB_GER_Unterofficer_w", "LIB_GER_Scout_ober_rifleman_w"];
-	cgqc_orient_hunters = ["LIB_GER_Scout_sniper_2_w", "LIB_GER_Scout_sniper_w"];
-	cgqc_orient_team = ["LIB_GER_Unterofficer_w", "LIB_GER_Scout_ober_rifleman_w", "LIB_GER_Ober_rifleman_w", "LIB_GER_ober_grenadier_w"];
-	cgqc_orient_squad =["LIB_GER_Unterofficer_w", "LIB_GER_Mgunner_w", "LIB_GER_Medic_w", "LIB_GER_Scout_ober_rifleman_w", "LIB_GER_Ober_rifleman_w", "LIB_GER_Rifleman_w", "LIB_GER_ober_grenadier_w", "LIB_GER_LAT_Rifleman_w", "LIB_GER_Scout_rifleman_w"];
-};
-if (cgqc_player_hasUnsung) then {
-	cgqc_orient_unit = ["uns_men_VC_local_off"];
-	cgqc_orient_tank = ["uns_to55_nva"];
-	cgqc_orient_patrol = ["uns_men_VC_local_off", "uns_men_VC_local_RF7", "uns_men_VC_local_AS5"];
-	cgqc_orient_hunters = ["uns_men_VC_local_MRK", "uns_men_VC_local_MRK2"];
-	cgqc_orient_team = ["uns_men_VC_local_off", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4", "uns_men_VC_local_AS3"];
-	cgqc_orient_squad = ["uns_men_VC_local_off", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4", "uns_men_VC_local_AS3", "uns_men_VC_local_RF3", "uns_men_VC_local_RF4"];
-};
 	
 // Acre default radio 
 if (!cgqc_player_isModern) then {
@@ -427,6 +389,9 @@ cgqc_unconscious_sounds = [
 // Loading dialogs
 _vehDialog = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_vic_fnc.sqf";
 waitUntil {scriptDone _vehDialog};
+
+// PAX Units definitions
+#include "\cgqc\cfg_paxUnits.hpp"
 
 // **************************************************************************************************************
 cgqc_preInit_done = true;
