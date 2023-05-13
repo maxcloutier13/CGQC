@@ -10,8 +10,7 @@ class CfgPatches
 		requiredVersion = 1.60;
 		// Required addons, used for setting load order.
 		// When any of the addons is missing, pop-up warning will appear when launching the game.
-		requiredAddons[] = {"ace_medical_treatment",
-							"ace_hearing",
+		requiredAddons[] = {"ace_hearing",
 							"ace_captives",
 							"ace_maptools",
 							"ace_attach",
