@@ -253,6 +253,13 @@ _action = [ "zeus_anim_on", "Animations: Lock", "", {["animation_on"] spawn CGQC
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "zeus_anim_off", "Animations: Unlock", "", {["animation_off"] spawn CGQC_fnc_perksZeus}, {cgqc_mk2_animation_locked }] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// ------ Punch on/off 
+//_action = [ "zeus_punch_on", "Punching: Lock", "", {["punch_on"] spawn CGQC_fnc_perksZeus}, {!cgqc_mk2_punch_locked} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+//_action = [ "zeus_punch_off", "Punching: Unlock", "", {["punch_off"] spawn CGQC_fnc_perksZeus}, {cgqc_mk2_punch_locked }] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
 // ------ Delete all dead
 _action = [ "zeus_delete", "Delete Dead", "", {["delete"] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;

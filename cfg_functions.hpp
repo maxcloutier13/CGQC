@@ -26,6 +26,10 @@ class CGQC {
             file = "\cgqc\functions\fnc_addPerks.sqf";
             description = "Add all perks to player";
         };
+        class addPerksSwitch {
+            file = "\cgqc\functions\fnc_addPerksSwitch.sqf";
+            description = "Add all perks to newly connected unit";
+        };
         class setZeus {
             file = "\cgqc\functions\fnc_setZeus.sqf";
             description = "Set zeus and keeps them there";
