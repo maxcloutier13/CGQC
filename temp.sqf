@@ -560,3 +560,16 @@ class MRAP_01_base_F : Car_F {
 
 _action = [ "menu_self_zeus_1", "Zeus action", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 _adding = [["ACE_ZeusActions"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
+
+
+
+
+class Missions {
+      class Mission1    {
+            template ="Antistasi_vt7.vt7"; //replace with your mission name
+            difficulty = "Custom";
+            class Params {
+				autoLoadLastGame = 1;
+             };
+      };
+};
