@@ -545,3 +545,18 @@ class MRAP_01_base_F : Car_F {
 
 
 @CBA_A3;@ace;@ACRE2;;@JSRS SOUNDMOD;@CGQC - Core - mk3;@CGQC - Addons;@Gruppe Adler Trenches;@Unsung;@Antistasi - The Mod;@CGQC - Addons - Unsung;
+
+
+
+
+["ace_interact_menu_newControllableObject", {
+    params ["_type"]; // string of the object's classname
+    if (!(_type isKindOf "CAManBase")) exitWith {};
+    hint "NEW UNIT YEAH BUDDY";
+    //private _action = ["playRadio","Play Radio","",{playMusic "NeverGonnaGiveYouUp"},{true}] call ace_interact_menu_fnc_createAction;
+    //[_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+}] call CBA_fnc_addEventHandler;
+
+
+_action = [ "menu_self_zeus_1", "Zeus action", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
+_adding = [["ACE_ZeusActions"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
