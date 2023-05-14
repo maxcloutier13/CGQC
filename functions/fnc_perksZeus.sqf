@@ -137,17 +137,17 @@ switch (_type) do {
 	};
 	case "343":
 	{
-		player addItemToBackpack "ACRE_PRC343";
+		player addItem "ACRE_PRC343";
 		hint "Got: 343";
 	};
 	case "152":
 	{
-		player addItemToBackpack "ACRE_PRC152";
+		player addItem "ACRE_PRC152";
 		hint "Got: 152";
 	};
 	case "117":
 	{
-		player addItemToBackpack "ACRE_PRC117F";
+		player addItem "ACRE_PRC117F";
 		hint "Got: 117";
 	};
 	case "crate":
@@ -155,29 +155,61 @@ switch (_type) do {
 		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
 		zeus_crate = "cgqc_box_mk2_arsenal" createVehicle _pos_free;
 		cgqc_zeus_crate = true;
+		hint "Mk3 arsenal";
+		sleep 5;
+		hintSilent "";
 	};
 	case "del_crate":
 	{
 		deleteVehicle zeus_crate;
 		cgqc_zeus_crate = false;
+		hint "Arsenal deleted";
+		sleep 5;
+		hintSilent "";
 	};
 	case "cargo":
 	{
 		zeus_cargo="cgqc_box_mk2_cargo" createVehicle (position player);
 		cgqc_zeus_cargo = true;
+		hint "Mk3 Cargo";
+		sleep 5;
+		hintSilent "";
 	};
 	case "del_cargo":
 	{
 		deleteVehicle zeus_cargo;
 		cgqc_zeus_cargo = false;
+		hint "Cargo deleted";
+		sleep 5;
+		hintSilent "";
 	};
 	case "animation_on": {
 		cgqc_mk2_animation_locked = true; 
 		publicVariable "cgqc_mk2_animation_locked";
+		hint "Animations LOCKED";
+		sleep 5;
+		hintSilent "";
 	};
 	case "animation_off": {
 		cgqc_mk2_animation_locked = false;
 		publicVariable "cgqc_mk2_animation_locked";
+		hint "Animations UNLOCKED";
+		sleep 5;
+		hintSilent "";
+	};
+	case "punch_on": {
+		BRIDGE_KPU_MasterSetting = true; 
+		publicVariable "BRIDGE_KPU_MasterSetting";
+		hint "Punching LOCKED";
+		sleep 5;
+		hintSilent "";
+	};
+	case "punch_off": {
+		BRIDGE_KPU_MasterSetting = false;
+		publicVariable "BRIDGE_KPU_MasterSetting";
+		hint "Punching UNLOCKED";
+		sleep 5;
+		hintSilent "";
 	};
 	case "animation_setting": {
 		publicVariable "cgqc_mk2_animation_locked";

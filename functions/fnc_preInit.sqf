@@ -40,6 +40,7 @@ cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
+cgqc_player_hasAceMedical = false;
 cgqc_player_hasContact = false;
 cgqc_player_hasAntiPlus = false;
 cgqc_player_hasRHS = false;
@@ -122,6 +123,7 @@ cgqc_cqb_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
 cgqc_mk2_animation_locked = false;
+cgqc_mk2_punch_locked = false;
 cgqc_mk2_arsenal_ctr = 0;
 // *** Mk3 **********************
 cgqc_mk3_switching_vest = false;
@@ -145,6 +147,7 @@ jibrm_restrictmarkers_shareDistance = 10;
 
 // Check what DLC the player owns 
 cgqc_player_ownedDLCs = getDLCs 1;
+cgqc_player_hasAceMedical = isClass(configFile >> "cfgPatches" >> "ace_medical_treatment");
 cgqc_player_hasAntiPlus = isClass(configFile >> "cfgPatches" >> "A3A_Events");
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");

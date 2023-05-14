@@ -108,6 +108,37 @@ if (cgqc_player_loadAll) then {
 	if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
 };
 
+// ------ Fortify --------------------------------------------------------------------------------------
+if (cgqc_config_fortify) then {
+	fortify_list = format [
+		"[
+		['%1', 0],
+		['%2', 0], 
+		['%3', 0], 
+		['%4', 0], 
+		['%5', 0], 
+		['%6', 0], 
+		['%7', 0],
+		['%8', 0], 
+		['%9', 0], 
+		['%10', 0]
+		]", 
+		cgqc_config_fortify_1, 
+		cgqc_config_fortify_2, 
+		cgqc_config_fortify_3, 
+		cgqc_config_fortify_4,
+		cgqc_config_fortify_5, 
+		cgqc_config_fortify_6, 
+		cgqc_config_fortify_7, 
+		cgqc_config_fortify_8, 
+		cgqc_config_fortify_9,
+		cgqc_config_fortify_10
+	];
+	cgqc_config_fortify_list = parseSimpleArray fortify_list;
+	[west, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+	[east, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+	[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+};
 
 //Switch beret to ready when getting inside vehicle
 player addEventHandler ["GetInMan", {
@@ -128,6 +159,9 @@ ACE_maxWeightDrag = 3000;
 
 // Ace self interaction perks
 _perks = [] spawn CGQC_fnc_addPerks; 
+
+// Ace auto self interaction perks
+//_perks = [] spawn CGQC_fnc_addPerksSwitch; 
 
 // Zeus shenanigans... MAX - to review
 _zeus = [] spawn CGQC_fnc_setZeus; 
