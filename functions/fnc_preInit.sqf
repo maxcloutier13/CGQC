@@ -74,6 +74,7 @@ cgqc_perks_chem_orange = 10;
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
 cgqc_perk_player_stash_on = false;
+cgqc_player_stash_items = [];
 // Zeus perks
 cgqc_zeus_crate = false;
 cgqc_zeus_cargo = false;
