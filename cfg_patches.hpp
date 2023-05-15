@@ -62,7 +62,13 @@ class CfgPatches
 					"cgqc_refuel_h_short",
 					"cgqc_refuel_h_invis",
 					"cgqc_refuel_h_short_invis",
-					"cgqc_whiteboard_radios"};
+					"cgqc_whiteboard_air",
+					"cgqc_whiteboard_koth",
+					"cgqc_whiteboard_logitstics",
+					"cgqc_whiteboard_med_equip",
+					"cgqc_whiteboard_medfirstaid",
+					"cgqc_whiteboard_parachute",
+					"cgqc_whiteboard_windk"};
 					/*"cgqc_gun_hk417_tremblay",
 					"Weapon_cgqc_gun_spar17_canpat",
 					"Weapon_cgqc_gun_spar17_wood"*/

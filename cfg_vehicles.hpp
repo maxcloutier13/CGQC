@@ -64,12 +64,69 @@ class cgqc_refuel_h_short_invis: cgqc_refuel_h
 };
 // Whiteboards
 class Land_MapBoard_F;
-class cgqc_whiteboard_radios : Land_MapBoard_F
+
+class cgqc_whiteboard_air : Land_MapBoard_F
 {
-    _generalMacro = "MapBoard_altis_F";
+    _generalMacro = "cgqc_whiteboard_air";
     scope = 2;
     scopeCurator = 2;
     editorSubcategory = "EdSubcat_cgqc_logistics";
-    displayName = "Whiteboard - Radios";
-    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard_radio.paa"};
+    displayName = "Whiteboard - Aérien";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_aerien.paa"};
 };
+
+class cgqc_whiteboard_koth : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_koth";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - KOTH";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_koth.paa"};
+};
+class cgqc_whiteboard_logitstics : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_logitstics";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - Logistics";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_logistics.paa"};
+};
+class cgqc_whiteboard_med_equip : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_med_equip";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - Medical Equipment";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_med_equip.paa"};
+};
+class cgqc_whiteboard_medfirstaid : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_medfirstaid";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - Medical Firstaid";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_med_firstaid.paa"};
+};
+class cgqc_whiteboard_parachute : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_parachute";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - Parachute";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_parachute.paa"};
+};
+class cgqc_whiteboard_windk : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_windk";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - WindKnots";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_windk.paa"};
+};
+
