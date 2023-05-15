@@ -267,17 +267,30 @@ switch (_type) do {
     case "stash":
     {
         cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
+        if (count cgqc_player_stash_items >0) then {
+            {
+                cgqc_perk_player_stash addItem _x;
+            }forEach cgqc_player_stash_items;
+            hint "Stash items loaded";
+        }else{
+            hint "Empty stash spawned";
+        };
         cgqc_perk_player_stash_on = true;
-        hint "Stash spawned";
         sleep 5;
         hintSilent "";
         break;
     };
     case "del_stash":
     {
+        if (count cgqc_player_stash_items >0) then {
+            cgqc_player_stash_items = [];
+            cgqc_player_stash_items = getItemCargo cgqc_perk_player_stash;
+            hint format["%1 Stash Items saved", count cgqc_player_stash_items];
+        }else{
+            hint "Empty stash deleted";
+        };
         deleteVehicle cgqc_perk_player_stash;
         cgqc_perk_player_stash_on = false;
-        hint "Stash Deleted";
         sleep 5;
         hintSilent "";
         break;
