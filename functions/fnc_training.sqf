@@ -8,7 +8,7 @@ _wind = 0;
 _change_wind = false;
 switch (_item) do {
 	case "skip": {
-		[[{ skipTime train_option}], "BIS_fnc_call"] call BIS_fnc_MP;
+		['\cgqc\functions\fnc_skipTime.sqf'] remoteExec ['execVM', 2];
 		_text = format ["Tu t'es reposé %1 heures", train_option];
 		titleText [_text, "BLACK IN",7]; 
 		break;
