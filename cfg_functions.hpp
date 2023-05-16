@@ -18,10 +18,10 @@ class CGQC {
             file = "\cgqc\functions\fnc_welcome.sqf";
             description = "Prep un message de bienvenue semi-random";
         }; 
-        class briefing {
+        /*class briefing {
             file = "\cgqc\functions\fnc_briefing.sqf";
             description = "Post group info in default briefing";
-        };  
+        };  */
         class addPerks {
             file = "\cgqc\functions\fnc_addPerks.sqf";
             description = "Add all perks to player";

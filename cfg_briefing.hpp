@@ -1,17 +1,16 @@
 // --- briefing ----------------------------------------------------------
 // Post group info in default briefing
-
-// CGQC Links
+// === CGQC Links ==============================================================================================
 _text = (
-	"<font size='22' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
-	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca/</font>"+"<br/>" +
+	"<font size='22' color='#00CA1B'>Rejoignez-nous!</font>" +"<br/>" +
+	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca</font>"+"<br/>" +
 	"<font size='20' color='#BDBDBD'>Teamspeak: ts.cgqc.ca</font>"
 );
 player createDiaryRecord ["Diary", ["CGQC", _text]];
 
 // Radio reference
 _text = (
-	"<font size='20' color='#f2f2f2'Référence Radios</font>" +"<br/>" +
+	"<font size='20' color='#f2f2f2'>Référence Radios</font>" +"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan/HQ</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 2 - Griffon/HQ</font>"+"<br/>" +

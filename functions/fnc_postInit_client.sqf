@@ -25,9 +25,13 @@ _set = [] spawn CGQC_fnc_setPatch;
 // Dynamic group -------------------------------------------------------------------------------------------------
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
-
 // Briefing entry -------------------------------------------------------------------------------------------------
-_brief = [] call CGQC_fnc_briefing; 
+#include "cfg_briefing.hpp"
+#insert "cfg_features.hpp"
+#insert "cfg_releaseNotes.hpp"
+
+//_brief = [] call CGQC_fnc_briefing; 
+
 
 if (cgqc_player_loadAll) then {
 
