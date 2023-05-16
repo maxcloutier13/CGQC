@@ -11,7 +11,7 @@ jobs:
         run: |
           RELEASE_NOTES=$(curl -H "Authorization: Bearer ${{ secrets.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 }}" \
                              -H "Accept: application/vnd.github.v3+json" \
-                             "https://api.github.com/repos/maxcloutier13/CGQC/releases" | \
+                             "https://api.github.com/repos/maxcloutier13/CGQC/releases/latest" | \
                              jq -r '.body')
       - name: Update wiki page
         run: |
