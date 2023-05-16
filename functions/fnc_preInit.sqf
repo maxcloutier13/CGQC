@@ -343,6 +343,7 @@ private _electronics = [
 	"ACRE_PRC152",
 	"ACRE_PRC343",
 	"ACRE_PRC77",
+	"cgqc_radios_zeus",
 	"ACE_ATragMX",
 	"ACRE_BF888S",
 	"ACE_Cellphone",

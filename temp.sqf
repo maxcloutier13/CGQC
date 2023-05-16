@@ -573,3 +573,79 @@ class Missions {
              };
       };
 };
+
+
+
+if (player canAdd ["ACRE_PRC117F", 3]) then { 
+	// There is enough space, add the items 
+	player addItem "ACRE_PRC117F"; 
+	player addItem "ACRE_PRC117F"; 
+	player addItem "ACRE_PRC117F"; 
+} else { 
+	// There is not enough space 
+	hint "Not enough inventory space!";
+	_items_pack = backpackItems player;
+	removeBackpack player;
+	player addBackpack "cgqc_pack_mk1_magic_zeus";
+	clearAllItemsFromBackpack player;
+	{player addItemToBackpack _x} forEach _items_pack;
+	player addItem "ACRE_PRC117F"; 
+	player addItem "ACRE_PRC117F"; 
+	player addItem "ACRE_PRC117F"; 
+};
+
+
+
+[] spawn {
+
+sleep 0.5; 
+  // 117f's 
+  y_packRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType; 
+  waitUntil {sleep 0.5;!isNil "_packRadios"}; 
+  if (count y_packRadios < 3) then { 
+   hint "Setting Zeus radios"; 
+   //Remove all radios  
+   _radios = call acre_api_fnc_getCurrentRadioList; 
+   { 
+	player removeItem _x; 
+   }forEach _radios; 
+   // Add 3 zeus radios 
+   if (player canAdd ["ACRE_PRC117F", 3]) then {  
+	// There is enough space, add the items  
+	player addItem "ACRE_PRC117F";  
+	player addItem "ACRE_PRC117F";  
+	player addItem "ACRE_PRC117F";  
+   } else {  
+	// There is not enough space  
+	hint "Not enough inventory space!"; 
+	_items_pack = backpackItems player; 
+	removeBackpack player; 
+	player addBackpack "cgqc_pack_mk1_magic_zeus"; 
+	clearAllItemsFromBackpack player; 
+	{player addItemToBackpack _x} forEach _items_pack; 
+	player addItem "ACRE_PRC117F";  
+	player addItem "ACRE_PRC117F";  
+	player addItem "ACRE_PRC117F";  
+   }; 
+  }; 
+	y_packRadio_1 = y_packRadios select 0; 
+   y_packRadio_2 = y_packRadios select 1; 
+   y_packRadio_3 = y_packRadios select 2; 
+   waitUntil {sleep 0.5;!isNil "y_packradio_1"}; 
+   [y_packradio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan 
+   waitUntil {sleep 0.5;!isNil "y_packradio_2"}; 
+   [y_packradio_2, 2] call acre_api_fnc_setRadioChannel; //Air-Net 
+   waitUntil {sleep 0.5;!isNil "y_packradio_3"}; 
+   [y_packradio_3, 3] call acre_api_fnc_setRadioChannel; //Ground-Net 
+   // Set order 
+   _success = [ [ y_packradio_1, y_packradio_2, y_packradio_3] ] call acre_api_fnc_setMultiPushToTalkAssignment; 
+   // Set sides  
+   _success = [y_packradio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial; 
+   _success = [y_packradio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial; 
+   _success = [y_packradio_3, "RIGHT" ] call acre_api_fnc_setRadioSpatial; 
+   hintSilent parseText "<t> 
+   --- Zeus Radios -------------<br/> 
+   Radio1:Gauche/117/Spartan<br/>  
+   Radio2:Droite/117/Griffon<br/>  
+   Radio3:Droite/117/Centaure</t>"; 
+};

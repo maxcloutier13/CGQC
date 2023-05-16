@@ -161,7 +161,7 @@ ACE_maxWeightDrag = 3000;
 _perks = [] spawn CGQC_fnc_addPerks; 
 
 // Ace auto self interaction perks
-//_perks = [] spawn CGQC_fnc_addPerksSwitch; 
+_perks = [] spawn CGQC_fnc_addPerksSwitch; 
 
 // Zeus shenanigans... MAX - to review
 _zeus = [] spawn CGQC_fnc_setZeus; 
