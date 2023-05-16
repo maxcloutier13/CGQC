@@ -9,7 +9,7 @@ jobs:
       - name: Get release notes
         id: release_notes
         run: |
-          RELEASE_NOTES=$(curl -H "Authorization: Bearer ${{ secrets.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 }}" \
+          RELEASE_NOTES=$(curl -H "Authorization: Bearer ${{ secrets.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 }}" \
                              -H "Accept: application/vnd.github.v3+json" \
                              "https://api.github.com/repos/maxcloutier13/CGQC/releases" | \
                              jq -r '.body')
