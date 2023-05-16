@@ -36,7 +36,9 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 				if (_exitLoop) exitWith {};
 			} forEach _curatorList;
 		};
-	sleep 10.0;
+		//sleep 5;
+		//["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
+	sleep 25.0;
 	};
 };
 

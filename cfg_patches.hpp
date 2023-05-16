@@ -22,6 +22,7 @@ class CfgPatches
 		units[] = {	"CGQC_Soldat_Base",
 					"CGQC_Officer_Base",
 					"cgqc_pack_mk1_magic",
+					"cgqc_pack_mk1_magic_zeus",
 					"cgqc_backpack_mk1_diver",					
 					"cgqc_flag_coop_black",
 					"cgqc_flag_coop_white",

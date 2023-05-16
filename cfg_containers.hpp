@@ -314,6 +314,16 @@ class cgqc_pack_mk1_magic : B_AssaultPack_rgr
     };
 };
 
+class cgqc_pack_mk1_magic_zeus : B_AssaultPack_rgr
+{
+    scope = 2;
+    author = "silent1";
+    displayName = "CGQC Backpack Zeus";
+    hiddenSelectionsTextures[] = {""};
+    model = "\A3\weapons_f\empty";
+    maximumLoad = 800;
+};
+
 class B_SCBA_01_F;
 //Diver Rebreather
 class cgqc_backpack_mk1_diver : B_SCBA_01_F

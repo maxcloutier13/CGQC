@@ -201,8 +201,21 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"]
 _action = [ "self_radio_speaker2", "Toggle Speaker 2", "", {["toggle_speaker_2"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+// Cone of silence   ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_cone", "Cone de silence", "CGQC\textures\cgqc_ace_cone", {["cone", false] spawn CGQC_fnc_perksBasic}, {!cgqc_perks_silence} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Cone of silence   ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_cone_off", "Cone de silence: Off", "CGQC\textures\cgqc_ace_cone", {["cone_off", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_silence} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Fix Sound   ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_cone_off", "Fix Sound", "", {["fix", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Show player   ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_cam", "Check player", "", {["cam", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Zeus ---------------------------------------------------------------------------------------------------------------
+
+// Zeus ===================================================================================================
 _action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
@@ -263,7 +276,6 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"],
 //_action = [ "zeus_punch_off", "Punching: Unlock", "", {["punch_off"] spawn CGQC_fnc_perksZeus}, {cgqc_mk2_punch_locked }] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-
 // ------ Delete all dead
 _action = [ "zeus_delete", "Delete Dead", "", {["delete"] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -289,23 +301,11 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], 
 _action = [ "zeus_delcargo", "delete Cargo", "", {["del_cargo"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 
-// Cone of silence   ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_cone", "Cone de silence", "CGQC\textures\cgqc_ace_cone", {["cone", false] spawn CGQC_fnc_perksBasic}, {!cgqc_perks_silence} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Cone of silence   ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_cone_off", "Cone de silence: Off", "CGQC\textures\cgqc_ace_cone", {["cone_off", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_silence} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Fix Sound   ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_cone_off", "Fix Sound", "", {["fix", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Show player   ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_cam", "Check player", "", {["cam", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Other actions ================================================================================
 // Stop Orienteering
 _action = [ "menu_self_orient_basic_off", "Basic Orientation->Off", "", {["basic_off"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {cgqc_orienteering} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-
 
 // Refuel actions ---------------------------------------------------------------------------------
 _action = [ "menu_self_rrr", "Maintenance Véhicule", "CGQC_2022\textures\icon_maintenance", {['normal'] execVM "\cgqc\functions\fnc_refuel.sqf"}, {cgqc_flag_supply && (vehicle player isKindOf "Air") && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
@@ -313,6 +313,19 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 // Fast refuel
 _action = [ "menu_self_rrr_short", "Maintenance Rapide", "CGQC_2022\textures\icon_maintenance", {['short'] execVM "\cgqc\functions\fnc_refuel.sqf"}, {cgqc_flag_supply_rapide && (vehicle player isKindOf "Air") && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Actual Zeus perks ================================================================================
+_action = [ "menu_zeust_trg", "CGQC Triggers", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ ["ACE_ZeusActions"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
+
+_action = [ "menu_zeust_trg_1", "Activate 1", "", {hint "Trigger 1"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ ["ACE_ZeusActions", "menu_zeust_trg"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
+_action = [ "menu_zeust_trg_2", "Activate 2", "", {hint "Trigger 2"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ ["ACE_ZeusActions", "menu_zeust_trg"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
+_action = [ "menu_zeust_trg_3", "Activate 3", "", {hint "Trigger 3"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ ["ACE_ZeusActions", "menu_zeust_trg"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
+_action = [ "menu_zeust_trg_4", "Activate 4", "", {hint "Trigger 4"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ ["ACE_ZeusActions", "menu_zeust_trg"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
 
 // Return true 
 true
