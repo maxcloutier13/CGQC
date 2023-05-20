@@ -78,6 +78,7 @@ try {
 				cgqc_perks_diver = true;
 				cgqc_perks_diver_suit_on = true;
 			};
+			break;
 		};
 		case "para": //Paradrop time
 		{
@@ -123,6 +124,7 @@ try {
 				sleep 1;
 				hint parseText ("Prêt à sauter" + "<br/>" + "Ace Self-Action->Drop Parachute" + "<br/>" + "une fois au sol...");
 			};
+			break;
 		};
 		case "23_moss": 
 		{
@@ -130,7 +132,8 @@ try {
 			_uniform_new = "23rd_logo_U_combatshirt_moss";
 			_vest_new = "23rd_logo_carrier_light_moss";
 			_backpack_new = "23rd_logo_civbag_moss";   
-			_goggles_new = player_goggles_old;  
+			_goggles_new = player_goggles_old; 
+			break; 
 		};
 		case "23_multi":
 		{
@@ -139,6 +142,7 @@ try {
 			_vest_new = "23rd_logo_carrier_light_multi";
 			_backpack_new = "23rd_logo_civbag_multi";   
 			_goggles_new = player_goggles_old;  
+			break;
 		};
 		case "23_frost":
 		{
@@ -147,6 +151,7 @@ try {
 			_vest_new = "23rd_logo_carrier_light_win";
 			_backpack_new = "23rd_logo_civbag_win";  
 			_goggles_new = player_goggles_old; 
+			break;
 		};
 		case "23_tard": 
 		{
@@ -155,6 +160,7 @@ try {
 			_vest_new = "23rd_logo_carrier_light_tard";
 			_backpack_new = "23rd_logo_civbag_tard";  
 			_goggles_new = player_goggles_old; 
+			break;
 		};
 		default // Normal camo switch
 		{

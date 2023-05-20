@@ -57,6 +57,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 				};
 			};
 			hintSilent "Radio Sides: Set";
+       		break;
 		};
 		case "patch": {
 			// Remove patch
@@ -64,6 +65,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			// Set the patch 
 			[ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
 			hintSilent "Patch restored";
+       		break;
 		};
 		case "spartan":	{  //Grunts
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -84,6 +86,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/Listen-Only/Interteam</t>";
+       		break;
 		};
 		case "spartan_1": { //Team Lead
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -110,6 +113,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam <br/> 
 			Radio3:Speaker/152/HQ</t>";
+       		break;
 		};
 		case "spartan_2": { //Spartan 2iC
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -127,6 +131,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam</t>";
+       		break;
 		};
 		case "centaure": {
 			// Emergency 152
@@ -155,6 +160,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/117/Inter-Centaure<br/> 
 			Radio2:Droite/117/Centaure-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
+       		break;
 		};
 		case "griffon":	{
 			// Emergency 152
@@ -180,6 +186,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/117/Inter-Griffon<br/> 
 			Radio2:Droite/117/Griffon-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
+       		break;
 		};
 		case "jtac": {
 			// Radios
@@ -205,6 +212,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/152/Inter-Recon<br/> 
 			Radio2:Droite/117/Spartan-HQ<br/> 
 			Radio3:Droite/117/Griffon-HQ</t>";
+       		break;
 		};
 		case "hq": {
 			// 117f's
@@ -230,6 +238,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			Radio1:Gauche/117/Spartan<br/> 
 			Radio2:Droite/117/Griffon<br/> 
 			Radio3:Droite/117/Centaure</t>";
+       		break;
 		};
 		case "recon": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -249,6 +258,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/152/Inter/Recon<br/> 
 			Radio2:Droite/152/Spartan-HQ</t>";
+       		break;
 		};
 		case "centaure_pieton":	{
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -268,6 +278,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/152/Inter-Centaure<br/> 
 			Radio2:Droite/152/Centaure-HQ</t>";
+       		break;
 		};
 		case "griffon_pieton": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -287,6 +298,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			hintSilent parseText "<t>
 			Radio1:Gauche/117/Inter-Griffon<br/> 
 			Radio2:Droite/117/Griffon-HQ</t>";
+       		break;
 		};
 		case "set_griffon":	{
 			_vic = vehicle player;
@@ -308,6 +320,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			sleep 0.5;
 			// Set radios for centaure use
 			["griffon"] execVM "\cgqc\functions\fnc_setRadios.sqf";
+       		break;
 		};
 		case "set_centaure": {
 			_vic = vehicle player;
@@ -328,6 +341,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
 			// Set radios for centaure use
 			["centaure"] execVM "\cgqc\functions\fnc_setRadios.sqf";
+       		break;
 		};
 		case "toggle_speaker": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -350,6 +364,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 				_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 				hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 			};
+       		break;
 		};
 		case "toggle_speaker_2": {
 			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -372,6 +387,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 				_speaker_check = [_handRadio_2] call acre_api_fnc_isRadioSpeaker;
 				hint format ["%1 Speaker: %2", _handRadio_2, _speaker_check];
 			};
+       		break;
 		};
 		case "training": {	
 			// Set radios left/right 
@@ -384,6 +400,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			waitUntil {sleep 0.5;!isNil "_radio_2"};
 			_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			hint "Training Radio Setup";
+       		break;
 		};
 		default	{
 			hint "fnc_setRadios fucked up. ";

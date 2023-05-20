@@ -113,6 +113,7 @@ switch (_type) do {
 				sleep 1;
 			};
 		};
+		break;
 	};
 	case "basic_done":	{
 		["task_orient", "SUCCEEDED", true] call BIS_fnc_taskSetState;
@@ -120,6 +121,7 @@ switch (_type) do {
 		hint format['Good job Viper! %1mins', _time];
 		sleep 5;
 		['basic_off'] execVM '\cgqc\functions\fnc_trainingOrient.sqf';
+		break;
 	};
 	
 	case "basic_off":	{
@@ -139,5 +141,6 @@ switch (_type) do {
 		deleteVehicle cgqc_orient_target_crate;
 		player setPos cgqc_orient_pos;
 		hintSilent "";
+		break;
 	};
 };
