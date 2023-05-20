@@ -48,56 +48,67 @@ do
 	{
 		player setRank "PRIVATE";
 		hint "Soldat";
+        break;
 	};
 	case "Cpl.":
 	{
 		player setRank "CORPORAL";
 		hint "Caporal";
+        break;
 	};
 	case "CplC":
 	{
 		player setRank "CORPORAL";
 		hint "Caporal-Chef";
+        break;
 	};
 	case "Sgt.":
 	{
 		player setRank "SERGEANT";
 		hint "Sergeant";
+        break;
 	};
 	case "Adju":
 	{
 		player setRank "SERGEANT";
 		hint "Adjudent";
+        break;
 	};
 	case "SLt.":
 	{
 		player setRank "LIEUTENANT";
 		hint "Sous-Lieutenant";
+        break;
 	};
 	case "Lt. ":
 	{
 		player setRank "LIEUTENANT";
 		hint "Lieutenant";
+        break;
 	};
 	case "Capt":
 	{
 		player setRank "CAPTAIN";
 		hint "Capitaine";
+        break;
 	};
 	case "Maj.":
 	{
 		player setRank "MAJOR";
 		hint "Major";
+        break;
 	};
 	case "LCol":
 	{
 		player setRank "COLONEL";
 		hint "Lieutenant-Colonel";
+        break;
 	};
 	case "Col.":
 	{
 		player setRank "COLONEL";
 		hint "Colonel";
+        break;
 	};
 	default
 	{
@@ -648,4 +659,10 @@ sleep 0.5;
    Radio1:Gauche/117/Spartan<br/>  
    Radio2:Droite/117/Griffon<br/>  
    Radio3:Droite/117/Centaure</t>"; 
-};
+};.
+.
+
+
+
+
+

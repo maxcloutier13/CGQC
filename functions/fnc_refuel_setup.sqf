@@ -17,6 +17,7 @@ switch (_type) do {
         _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
         _trg setTriggerStatements [_cond, _act, _deAct];
         _trg setTriggerInterval _int;
+        break;
 	};
     case 1:	{
 		// Setup trigger
@@ -33,6 +34,7 @@ switch (_type) do {
         _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
         _trg setTriggerStatements [_cond, _act, _deAct];
         _trg setTriggerInterval _int;
+        break;
 	};
     default
 	{

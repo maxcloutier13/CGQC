@@ -50,6 +50,7 @@ switch (_type) do {
 		// Remove eventhandlers
 		player removeEventHandler ["fired", range_event1];
 		player removeEventHandler ["fired", range_event2];
+		break;
 	};
 	case 1: { // Sniping on
 		// Here we go. This is some sweet stuff.
@@ -101,6 +102,7 @@ switch (_type) do {
 		}];
 
 		Projectile_Impact_Aux = "Sign_Sphere10cm_F" createVehicle [0, 0, 0];
+		break;
 	};
 	default {
 		hint "trainingSniping error";

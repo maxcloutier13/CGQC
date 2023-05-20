@@ -6,10 +6,12 @@ switch (_type) do {
 	case "normal": {
 		_timeleft = 240;
 		_skip = 0;
+        break;
 	};
     case "short": {
 		_timeleft = 5;
 		_skip = 1;
+        break;
 	};
 	default {
 		hint "woops";
