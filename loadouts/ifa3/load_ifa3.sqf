@@ -17,13 +17,11 @@ _type = _this select 0;
 			hint "Arsenal: Complet";
 			_items = cgqc_ifa3_arsenal_8;
 			_found = true;
-		    break;
 		};
 		case 5: { 
 			hint "Arsenal: Zeus";
 			_zeus = true;
 			[player, player, true] call ace_arsenal_fnc_openBox;
-		    break;
 		};
 		default	{
 			hintc "loadIfa3 fucked up. ";

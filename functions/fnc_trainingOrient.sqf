@@ -11,10 +11,19 @@ switch (_type) do {
 		cgqc_orient_target_found = false;
 		cgqc_orienteering_timer = 0;
 		["basic_orient"] execVM "\CGQC\loadouts\mk3_transition.sqf";
-		// Remove shits
-		removeAllAssignedItems [player, true, true] 
+		// Remove shits 
+		player unlinkItem "ItemGPS";
+		player unlinkItem "I_UavTerminal";
+		player unlinkItem "C_UavTerminal";
+		player unlinkItem "O_UavTerminal";
+		player unlinkItem "I_E_UavTerminal";
+		player unlinkItem "B_UavTerminal";
 		player removeItem "ACE_microDAGR";
 		player removeItem "ItemAndroid";
+		player removeWeapon "Laserdesignator_01_khk_F";
+		player removeWeapon "Laserdesignator_01_khk_F";
+		player removeWeapon "Laserdesignator_03";
+		player removeWeapon "Laserdesignator";
 		hint "Items removed";
 		// Give Items 
 		player linkItem "ItemMap";
@@ -22,7 +31,9 @@ switch (_type) do {
 		player linkItem "ItemWatch";
 		player addItem "ACE_MapTools";
 		// === Binos
-		player addWeapon "Binocular";
+		if (cgqc_player_isModern) then {
+			player addWeapon "cgqc_item_rangefinder";
+		};
 		hint "Basic Items Given";
 		while {!cgqc_orient_target_found} do {
 			_random_pos = [] call BIS_fnc_randomPos;
@@ -113,7 +124,6 @@ switch (_type) do {
 				sleep 1;
 			};
 		};
-		break;
 	};
 	case "basic_done":	{
 		["task_orient", "SUCCEEDED", true] call BIS_fnc_taskSetState;
@@ -121,7 +131,6 @@ switch (_type) do {
 		hint format['Good job Viper! %1mins', _time];
 		sleep 5;
 		['basic_off'] execVM '\cgqc\functions\fnc_trainingOrient.sqf';
-		break;
 	};
 	
 	case "basic_off":	{
@@ -141,6 +150,5 @@ switch (_type) do {
 		deleteVehicle cgqc_orient_target_crate;
 		player setPos cgqc_orient_pos;
 		hintSilent "";
-		break;
 	};
 };

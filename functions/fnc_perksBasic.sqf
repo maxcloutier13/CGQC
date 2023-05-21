@@ -5,7 +5,7 @@ params ["_type", "_fromLoadout"];
 waitUntil {!isNil "cgqc_player_patch_found"};
 waitUntil {cgqc_player_rank_found};
 
-//disableUserInput true;
+disableUserInput true;
 switch (_type) do {
     case "chill":
     {
@@ -193,6 +193,8 @@ switch (_type) do {
                 hint "No Diving Bottle?";
             }; 
         };
+        sleep 1;
+        hintSilent "";
         cgqc_perks_diver_suit_on = false;
         //cgqc_perks_diver = false;
         break;
@@ -227,6 +229,8 @@ switch (_type) do {
         hint "Sound: Volumes reset";
         [] call ace_volume_fnc_restoreVolume;
         [0.7] call acre_api_fnc_setSelectableVoiceCurve;
+        sleep 5;
+        hintSilent "";
         break;
     };
     case "cone":
@@ -244,6 +248,8 @@ switch (_type) do {
         cgqc_cone_silence setTriggerInterval _int;
         cgqc_perks_silence = true;
         hint "Cone of silence: On";
+        sleep 5;
+        hintSilent "";
         break;
     };
     case "cone_off":
@@ -254,39 +260,39 @@ switch (_type) do {
         [] call ace_volume_fnc_restoreVolume;
         cgqc_perks_silence = false;
         hint "Cone of silence: Off";
+        sleep 5;
+        hintSilent "";
         break;
     };
     case "stash":
     {
         cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
-        _ctr = count cgqc_player_stash_items + count cgqc_player_stash_mags;
-        if (_ctr > 0) then {
-            {cgqc_perk_player_stash addItem _x;}forEach cgqc_player_stash_items;
-            hint "Stash items loaded";
+        if (count cgqc_player_stash_items >0) then {
             {
-                _mag = _x select 0;
-                _count = _x select 1;
-                cgqc_perk_player_stash addMagazineCargo [_mag, _count];
-            }forEach cgqc_player_stash_mags;
-            hint format["%1 Stash Items Loaded", _ctr];
+                cgqc_perk_player_stash addItem _x;
+            }forEach cgqc_player_stash_items;
+            hint "Stash items loaded";
         }else{
             hint "Empty stash spawned";
         };
         cgqc_perk_player_stash_on = true;
+        sleep 5;
+        hintSilent "";
         break;
     };
     case "del_stash":
     {
-        cgqc_player_stash_items =  getItemCargo cgqc_perk_player_stash;
-        cgqc_player_stash_mags = getMagazineCargo cgqc_perk_player_stash;
-        _ctr = count cgqc_player_stash_items + count cgqc_player_stash_mags;
-        if (_ctr > 0) then {
-            hint format["%1 Stash Items saved", _ctr];
+        if (count cgqc_player_stash_items >0) then {
+            cgqc_player_stash_items = [];
+            cgqc_player_stash_items = getItemCargo cgqc_perk_player_stash;
+            hint format["%1 Stash Items saved", count cgqc_player_stash_items];
         }else{
             hint "Empty stash deleted";
         };
         deleteVehicle cgqc_perk_player_stash;
         cgqc_perk_player_stash_on = false;
+        sleep 5;
+        hintSilent "";
         break;
     };
     case "cam":{
@@ -303,7 +309,5 @@ switch (_type) do {
     };
 };
 // Return control to player
-//disableUserInput false;
-//if (userInputDisabled) then {disableUserInput false;};
-sleep 5;
-hintSilent "";
+disableUserInput false;
+if (userInputDisabled) then {disableUserInput false;};
