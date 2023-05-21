@@ -210,6 +210,11 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 // Channels =================================================================================================
 //["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
 //   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
+
+// Map Sharing =================================================================================================
+["jib_restrictmarkers_enabled", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"], 
+   [_menu_name, "Map Sharing"], false] call CBA_fnc_addSetting;
+
 // Spares =================================================================================================
 ["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"], 
 [_menu_name, "Spares in Vehicles"], true] call CBA_fnc_addSetting;
@@ -233,7 +238,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_ch8", "EDITBOX", ["Channel 8:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
 ["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Inter/Zeus"] call CBA_fnc_addSetting;
 
 // Briefing  ===============================================================================================
 ["cgqc_setting_briefingCmd_area","SLIDER", ["Commander's Briefing area size", "Square around the Zeus"],
