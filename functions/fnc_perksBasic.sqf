@@ -229,8 +229,6 @@ switch (_type) do {
         hint "Sound: Volumes reset";
         [] call ace_volume_fnc_restoreVolume;
         [0.7] call acre_api_fnc_setSelectableVoiceCurve;
-        sleep 5;
-        hintSilent "";
         break;
     };
     case "cone":
@@ -248,8 +246,6 @@ switch (_type) do {
         cgqc_cone_silence setTriggerInterval _int;
         cgqc_perks_silence = true;
         hint "Cone of silence: On";
-        sleep 5;
-        hintSilent "";
         break;
     };
     case "cone_off":
@@ -260,8 +256,6 @@ switch (_type) do {
         [] call ace_volume_fnc_restoreVolume;
         cgqc_perks_silence = false;
         hint "Cone of silence: Off";
-        sleep 5;
-        hintSilent "";
         break;
     };
     case "stash":
@@ -276,8 +270,6 @@ switch (_type) do {
             hint "Empty stash spawned";
         };
         cgqc_perk_player_stash_on = true;
-        sleep 5;
-        hintSilent "";
         break;
     };
     case "del_stash":
@@ -291,8 +283,6 @@ switch (_type) do {
         };
         deleteVehicle cgqc_perk_player_stash;
         cgqc_perk_player_stash_on = false;
-        sleep 5;
-        hintSilent "";
         break;
     };
     case "cam":{
@@ -311,3 +301,5 @@ switch (_type) do {
 // Return control to player
 disableUserInput false;
 if (userInputDisabled) then {disableUserInput false;};
+sleep 5;
+hintSilent "";
