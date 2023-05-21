@@ -67,9 +67,7 @@ switch (_type) do {
 				sleep 10;
 				hintSilent "";
 			}; 
-		};
-		
-        break; 
+		}; 
 	};
 	case "maprestrict":
 	{
@@ -78,7 +76,6 @@ switch (_type) do {
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = true;
 		hint "Map Sharing Restricted";
-        break;
 	};
 	case "mapshare":
 	{
@@ -87,7 +84,6 @@ switch (_type) do {
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = false;
 		hint "Map Sharing UN-Restricted";
-        break;
 	};
 	case "briefingCmd":
 	{
@@ -113,7 +109,6 @@ switch (_type) do {
 		cgqc_briefingCmd_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		cgqc_briefingCmd_trg setTriggerStatements ["this", _act, _deAct];
 		cgqc_briefingCmd_trg setTriggerInterval _int;
-        break;
 	};
 	case "briefingCmd_stop":
 	{
@@ -132,7 +127,6 @@ switch (_type) do {
 		// Remote reset volumes on everyone
 		{['\cgqc\functions\fnc_briefingCmdStop.sqf'] remoteExec ['execVM',vehicle _x];
 		} forEach allPlayers;
-        break;
 	};
 	case "briefing":
 	{
@@ -180,7 +174,6 @@ switch (_type) do {
 			sleep 10;
 			[""] remoteExec ["hintSilent"];
 		};
-        break;
 	};
 	case "briefing_stop":
 	{
@@ -199,32 +192,27 @@ switch (_type) do {
 		// Remote reset volumes on everyone
 		{['\cgqc\functions\fnc_briefingStop.sqf'] remoteExec ['execVM',vehicle _x];
 		} forEach allPlayers;
-        break;
 	};
 	case "delete": {
 		{
 			deleteVehicle _x
 		} forEach allDead;
 		hint "Dead deleted";
-        break;
 	};
 	case "343":
 	{
 		player addItem "ACRE_PRC343";
 		hint "Got: 343";
-        break;
 	};
 	case "152":
 	{
 		player addItem "ACRE_PRC152";
 		hint "Got: 152";
-        break;
 	};
 	case "117":
 	{
 		player addItem "ACRE_PRC117F";
 		hint "Got: 117";
-        break;
 	};
 	case "crate":
 	{
@@ -234,7 +222,6 @@ switch (_type) do {
 		hint "Mk3 arsenal";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "del_crate":
 	{
@@ -243,7 +230,6 @@ switch (_type) do {
 		hint "Arsenal deleted";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "cargo":
 	{
@@ -252,7 +238,6 @@ switch (_type) do {
 		hint "Mk3 Cargo";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "del_cargo":
 	{
@@ -261,7 +246,6 @@ switch (_type) do {
 		hint "Cargo deleted";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "animation_on": {
 		cgqc_mk2_animation_locked = true; 
@@ -269,7 +253,6 @@ switch (_type) do {
 		hint "Animations LOCKED";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "animation_off": {
 		cgqc_mk2_animation_locked = false;
@@ -277,7 +260,6 @@ switch (_type) do {
 		hint "Animations UNLOCKED";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "punch_on": {
 		BRIDGE_KPU_MasterSetting = true; 
@@ -285,7 +267,6 @@ switch (_type) do {
 		hint "Punching LOCKED";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "punch_off": {
 		BRIDGE_KPU_MasterSetting = false;
@@ -293,11 +274,9 @@ switch (_type) do {
 		hint "Punching UNLOCKED";
 		sleep 5;
 		hintSilent "";
-        break;
 	};
 	case "animation_setting": {
 		publicVariable "cgqc_mk2_animation_locked";
-        break;
 	};
 	default
 	{

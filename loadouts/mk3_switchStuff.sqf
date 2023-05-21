@@ -14,7 +14,6 @@ do
 		{player removeItemFromVest _x} forEach _items_old;
 		{player addItemToVest _x} forEach _items_vest;
 		cgqc_mk3_switching_vest = true;
-		break;
 	};
 	case "backpack":	{
 		_items_pack = backpackItems player;
@@ -23,7 +22,6 @@ do
 		clearAllItemsFromBackpack player;
 		{player addItemToBackpack _x} forEach _items_pack;
 		cgqc_mk3_switching_backpack = true;
-		break;
 	};
 	case "prep":{
 		// Current soldier equipment
@@ -42,7 +40,6 @@ do
 		removeVest player;
 		removeBackpack player;
 		removeGoggles player;
-		break;
 	};
 	default	{
 		hint "switchStuff error";

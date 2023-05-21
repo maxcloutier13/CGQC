@@ -13,20 +13,17 @@ if (hasInterface) then {
 			_pilot_class = "CGQC_units_mk2_Pilot_heli_ai";
 			_gunner_class = "CGQC_units_mk2_crew_heli_ai";
 			_driver_class = "CGQC_units_mk2_Tank_Crew_ai";
-        	break;
 		};
 		case cgqc_player_hasUnsung : {
 			_pilot_class = "uns_pilot3";
 			_gunner_class = "uns_pilot2";
 			_driver_class = "uns_US_2MI_DRV";
-        	break;
 		};
 		default { // If unknown, fill with player class
-			_player_class = typeOf player;
-			_pilot_class = _player_class;
-			_gunner_class = _player_class;
-			_driver_class = _player_class;
-        	break;
+		_player_class = typeOf player;
+		_pilot_class = _player_class;
+		_gunner_class = _player_class;
+		_driver_class = _player_class;
 		};
 	};
 	// find player group
@@ -63,7 +60,6 @@ if (hasInterface) then {
 			};
 			cgqc_perks_pilot_hasCrew = true;
 			hint "Heli crew spawned";
-        	break;
 		};
 		case "delCrew":{
 			{
@@ -71,7 +67,6 @@ if (hasInterface) then {
 			} forEach cgqc_crew_heli;
 			cgqc_perks_pilot_hasCrew = false;
 			hint "Heli crew deleted";
-        	break;
 		};
 		case "getDriver":{
 			// spawn driver  
@@ -81,13 +76,11 @@ if (hasInterface) then {
 			sleep 0.1;
 			cgqc_perks_driver_hasDriver = true;
 			hint "Driver crew spawned";
-        	break;
 		};
 		case "delDriver":{
 			deleteVehicle cgqc_crew_driver;
 			cgqc_perks_driver_hasDriver = false;
 			hint "Driver crew deleted";
-        	break;
 		};
 		default {
 			hintSilent "perksPilot fail";

@@ -14,7 +14,6 @@ if (cgqc_config_hide_channels) then {
 			4 enableChannel false; //Vehicle
 			sleep 3;
 			hintSilent "";
-        	break;
 		};
 		case "high": { //High Command/Comms unit - Vehicle for personal + Side for sharing
 			hint "Locking Global/Command/Group";
@@ -25,7 +24,6 @@ if (cgqc_config_hide_channels) then {
 			4 enableChannel false; //Vehicle
 			sleep 3;
 			hintSilent "";
-        	break;
 		};
 		case "low": {  //Normal units - Vehicle ONLY. 
 			hint "Locking All Channels";
@@ -36,7 +34,6 @@ if (cgqc_config_hide_channels) then {
 			4 enableChannel false; //Vehicle
 			sleep 3;
 			hintSilent "";
-        	break;
 		};
 	};
 } else {

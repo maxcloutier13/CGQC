@@ -4,7 +4,6 @@ _type = _this select 0;
 switch (_type) do {
 	case "prep_map": {
 		cgqc_pax_prep = true;
-		break;
 	};
 	default {
 		hint "trainingSniping error";
