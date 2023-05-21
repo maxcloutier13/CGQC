@@ -4,8 +4,10 @@
 ["ace_interact_menu_newControllableObject", {
     params ["_type"]; // string of the object's classname
     if (!(_type isKindOf "CAManBase")) exitWith {}; // All humans
-	// Add Zeus radios if needed
+	// Add Zeus radios 
 	["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
+	// If killed: remove zeus radios 
+	
 	// Perks du Zeus 
 	// Zeus ===================================================================================================
 	_action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;

@@ -649,3 +649,44 @@ sleep 0.5;
    Radio2:Droite/117/Griffon<br/>  
    Radio3:Droite/117/Centaure</t>"; 
 };
+
+
+
+
+
+
+\cgqc\textures\projector\projector_qmb_whatsnew.paa, \cgqc\textures\projector\projector_qmb_keybinds.paa, \cgqc\textures\projector\projector_qmb_ACE.paa, \cgqc\textures\projector\projector_qmb_radio343.paa, \cgqc\textures\projector\projector_1_cgqc.paa
+
+
+case "zeus_radios":
+	{
+		sleep 0.5;  
+		//Remove all radios 
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{  
+		player removeItem _x;  
+		}forEach _radios; 
+		sleep 0.5;
+		// Add Zeus radios 
+		player addItem "ACRE_PRC152";  
+		player addItem "ACRE_PRC152";
+		sleep 0.5;  
+		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType; 
+		sleep 0.5;
+		//waitUntil {sleep 1;!isNil "_handRadios"}; 
+		_handRadio_1 = _handRadios select 0; 
+		_handRadio_2 = _handRadios select 1; 
+		// Channels 
+		waitUntil {sleep 0.5;!isNil "_handRadio_1"}; 
+		[_handRadio_1, 1] call acre_api_fnc_setRadioChannel;  
+		waitUntil {sleep 0.5;!isNil "_handRadio_2"}; 
+		[_handRadio_2, 9] call acre_api_fnc_setRadioChannel; 
+		// Set sides  
+		_success = [_handRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial; 
+		_success = [_handRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial; 
+		// Set radio orders 
+		_success = [ [ _handRadio_1, _handRadio_2, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment; 
+		hintSilent parseText "<t> 
+		Radio1:Gauche/152/Spartan-HQ<br/>  
+		Radio2:Droite/152/Inter-Zeus</t>";
+	};
