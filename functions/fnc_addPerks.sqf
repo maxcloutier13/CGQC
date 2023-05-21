@@ -240,9 +240,9 @@ _action = [ "zeus_briefing_stop", "Stop Briefing", "", {["briefing_stop", 0] spa
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Map Sharing Restriction
-_action = [ "zeus_mapSharing_on", "MapSharing Restriction: Turn on", "", {["maprestrict", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_mapRestricted} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_mapSharing_on", "MapSharing: Turn off", "", {["maprestrict", 0] spawn CGQC_fnc_perksZeus}, {!jib_restrictmarkers_enabled} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_mapSharing_off", "MapSharing Restriction: Turn off", "", {["mapshare", 0] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_mapRestricted} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_mapSharing_off", "MapSharing: Turn on", "", {["mapshare", 0] spawn CGQC_fnc_perksZeus}, {jib_restrictmarkers_enabled} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 

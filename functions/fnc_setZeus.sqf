@@ -10,6 +10,11 @@ waitUntil {	!isNull (findDisplay 46)};
 if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["zeus", format["%1", player]] call BIS_fnc_inString) then {
 	hint "Zeus!";
 	sleep 1;
+	[] spawn {
+		// Add Zeus radios
+		["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
+	};
+	
 	// Ensure Zeus keeps slot, despite admin logging
 	while { true } do {
 		// Check that Zeus has been assigned to player
