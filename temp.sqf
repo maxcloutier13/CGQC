@@ -690,3 +690,11 @@ case "zeus_radios":
 		Radio1:Gauche/152/Spartan-HQ<br/>  
 		Radio2:Droite/152/Inter-Zeus</t>";
 	};
+
+
+
+["Gatling_30mm_Plane_CAS_01_F",	"Bomb_04_Plane_CAS_01_F", "ace_hellfire_launcher", "ace_hellfire_launcher_N","missiles_SCALPEL","BombCluster_01_F"]
+
+
+
+["weapon_Fighter_Gun20mm_AA","weapon_BIM9xLauncher","weapon_AMRAAMLauncher","weapon_GBU12Launcher","weapon_SDBLauncher","BombCluster_01_F"]	

@@ -89,7 +89,25 @@ class CfgPatches
 					"cgqc_beanie_green",
 					"cgqc_beanie_khaki",
 					"cgqc_beanie_coyote",
+					"cgqc_helmet_mk1_jetpilot",
+					"cgqc_helmet_heli_black_cloutier",
+					"cgqc_helmet_crew_black_cloutier",
+					"cgqc_helmet_heli_black",
+					"cgqc_helmet_crew_black",
+					"cgqc_helmet_heli_green",
+					"cgqc_helmet_crew_green",
+					"cgqc_helmet_heli_wood",
+					"cgqc_helmet_crew_wood",
+					"cgqc_helmet_heli_black_villeneuve",
+					"cgqc_helmet_crew_black_villeneuve",
+					"cgqc_helmet_heli_black_audi",
+					"cgqc_helmet_crew_black_audi",
+					"cgqc_helmet_heli_black_turcotte",
+					"cgqc_helmet_crew_black_turcotte",
+					"cgqc_helmet_heli_black_comeau",
+					"cgqc_helmet_crew_black_comeau",
 					"cgqc_uniform_mk1_diver",
-					"cgqc_gun_p99_wood"};
+					"cgqc_gun_p99_wood"
+					};
 	};
 };
