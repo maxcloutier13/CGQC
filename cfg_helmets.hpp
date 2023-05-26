@@ -157,3 +157,156 @@ class cgqc_beanie_sage: cgqc_beanie_black
 	displayName = "CGQC Beanie Sage";
 	hiddenSelectionsTextures[] = {"\a3\characters_f\common\data\woolhat_blue_co.paa"};
 };
+
+class H_PilotHelmetFighter_B;
+class H_PilotHelmetHeli_B;
+class H_CrewHelmetHeli_B;
+
+// Jet helmets -----------------------------------------------------------------------------------------------
+class cgqc_helmet_mk1_jetpilot : H_PilotHelmetFighter_B
+{
+    author = "silent1";
+    _generalMacro = "cgqc_helmet_mk1_jetpilot";
+    displayName = "CGQC Casque Pilote de jet mk1";
+    grad_slingHelmet_allow = true;
+};
+
+// Helicopter/Crew helmets -----------------------------------------------------------------------------------------------
+// CGQC Airforce black -----------------------------------------------------
+class cgqc_helmet_heli_black : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Noir";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_black.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_black : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Noir full";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_black.paa"};
+	grad_slingHelmet_allow = true;
+};
+// CGQC Airforce Green -----------------------------------------------------
+class cgqc_helmet_heli_green : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Vert";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_green.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_green : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Vert full";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_green.paa"};
+	grad_slingHelmet_allow = true;
+};
+// CGQC Airforce woodland -----------------------------------------------------
+class cgqc_helmet_heli_wood : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Woodland";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_wood.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_wood : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Woodland full";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_wood.paa"};
+	grad_slingHelmet_allow = true;
+};
+
+// Custom helmets -----------------------------------------------------------------------------------------------
+// Cloutier -----------------------------------------------------
+class cgqc_helmet_heli_black_cloutier : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Cloutier";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_cloutier.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_black_cloutier : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Cloutier Full";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_cloutier.paa"};
+	grad_slingHelmet_allow = true;
+};
+// Villeneuve -----------------------------------------------------
+class cgqc_helmet_heli_black_villeneuve : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Villeneuve DickForce";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_villeneuve_dick.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_black_villeneuve : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Villeneuve Full DickForce";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_villeneuve_dick.paa"};
+	grad_slingHelmet_allow = true;
+};
+// Audi -----------------------------------------------------
+class cgqc_helmet_heli_black_audi : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Audi";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_audi.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_black_audi : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Audi Full";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_audi.paa"};
+	grad_slingHelmet_allow = true;
+};
+// Turcotte 
+class cgqc_helmet_heli_black_turcotte : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Turcotte";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_turcotte.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_black_turcotte : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Turcotte Full";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_turcotte.paa"};
+	grad_slingHelmet_allow = true;
+};
+// Comeau 
+class cgqc_helmet_heli_black_comeau : H_PilotHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Comeau";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_comeau.paa"};
+	grad_slingHelmet_allow = true;
+};
+class cgqc_helmet_crew_black_comeau : H_CrewHelmetHeli_B
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Heli Comeau Full";
+	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_comeau.paa"};
+	grad_slingHelmet_allow = true;
+};
