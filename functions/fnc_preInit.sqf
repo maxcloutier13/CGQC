@@ -81,7 +81,7 @@ cgqc_zeus_crate = false;
 cgqc_zeus_cargo = false;
 cgqc_zeus_briefing = false;
 cgqc_zeus_briefingCmd = false;
-cgqc_zeus_mapRestricted = true;
+cgqc_zeus_mapRestricted = false;
 cgqc_zeus_mapRestricted_count = 0;
 cgqc_zeus_mapRestricted_txt = "";
 cgqc_zeus_mapRestricted_txt_on = false;
@@ -212,8 +212,8 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 //   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
 
 // Map Sharing =================================================================================================
-["jib_restrictmarkers_enabled", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"], 
-   [_menu_name, "Map Sharing"], false] call CBA_fnc_addSetting;
+["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"], 
+   [_menu_name, "Map Sharing"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
 
 // Spares =================================================================================================
 ["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"], 
