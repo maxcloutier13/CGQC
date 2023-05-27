@@ -89,3 +89,14 @@ class cgqc_gun_mk1_MAAWS_laforest : launch_MRAWS_green_F
 	{
 	};
 };
+
+class Binocular;
+class ACE_Vector: Binocular {
+	//Laser = 1;
+	//magazines[] = {"Laserbatteries"};
+	visionMode[] = {"Normal","NVG","TI"};
+	thermalMode[] = {0};
+	opticsZoomMin = 0.001;
+	opticsZoomMax = 0.15;
+	opticsZoomInit = 0.03;
+};
