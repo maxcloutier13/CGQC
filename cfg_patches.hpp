@@ -107,6 +107,8 @@ class CfgPatches
 					"cgqc_helmet_heli_black_comeau",
 					"cgqc_helmet_crew_black_comeau",
 					"cgqc_uniform_mk1_diver",
+					"cgqc_item_rangefinder",
+					"cgqc_item_laserdesignator",
 					"cgqc_gun_p99_wood"
 					};
 	};
