@@ -4,7 +4,7 @@
 _type = _this select 0;
 switch (_type) do {
 	case "basic_on":	{
-		cgqc_orienteering = true;
+		cgqc_training_orienteering = true;
 		cgqc_orient_won = false;
 		cgqc_orient_pos = getPosATL player;
 		cgqc_orient_targets = [];
@@ -108,7 +108,7 @@ switch (_type) do {
 		[side player, "task_orient", [format["Find your position and reach target: %1", cgqc_orient_target select 1], format["Reach Target: %1",cgqc_orient_target select 1], ""],cgqc_orient_pos_free, "ASSIGNED", 1, true, "CT_RECON", false] call BIS_fnc_taskCreate;
 		
 		[] spawn {
-			while {cgqc_orienteering} do {
+			while {cgqc_training_orienteering} do {
 				cgqc_orienteering_timer = cgqc_orienteering_timer + 1;
 				sleep 1;
 			};
@@ -123,7 +123,7 @@ switch (_type) do {
 	};
 	
 	case "basic_off":	{
-		cgqc_orienteering = false;
+		cgqc_training_orienteering = false;
 		// Delete trigger
 		if !(isNil "cgqc_orient_trg") then {deleteVehicle cgqc_orient_trg;};
 		// Delete markers

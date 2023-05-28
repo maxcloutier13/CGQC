@@ -306,7 +306,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"],
 
 // Other actions ================================================================================
 // Stop Orienteering
-_action = [ "menu_self_orient_basic_off", "Basic Orientation->Off", "", {["basic_off"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {cgqc_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_self_orient_basic_off", "Basic Orientation->Off", "", {["basic_off"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 
 // Refuel actions ---------------------------------------------------------------------------------

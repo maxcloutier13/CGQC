@@ -94,7 +94,7 @@ cgqc_sniping = false;
 cgqc_spawn = false;
 cgqc_spawn_vic = "";
 // Orientation
-cgqc_orienteering = false;
+cgqc_training_orienteering = false;
 cgqc_orienteering_timer = 0;
 cgqc_orient_opt_patrols = false;
 cgqc_orient_opt_snipers = false;
@@ -102,9 +102,12 @@ cgqc_orient_won = false;
 cgqc_orient_target_list = [];
 // Defense 
 cgqc_defense_timer = 0;
-cgqc_defense_mode = false;
+cgqc_training_defense = false;
 cgqc_defense_done = false;
 cgqc_defense_start = false;
+// Helicopter training
+cgqc_training_heli = false;
+
 // CQB house training stuff
 cgqc_cqb_list = [];
 cgqc_cqb_list_moving = [];

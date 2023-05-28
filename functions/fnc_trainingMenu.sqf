@@ -1,21 +1,25 @@
 // --- trainingMenu ----------------------------------------------------------
 cgqc_training_mode = true;
 // Add the training shit to the player 
+
 // Training actions ---------------------------------------------------------------------------------
 _action = [ "menu_self_training", "Training", "", {}, {cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Utils
+_action = [ "menu_self_utils", "Utils", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Quick Heal
 _action = [ "menu_self_heal", "Quick heal", "", {["heal"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;       
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Get Crate
 _action = [ "menu_self_training_crate", "Spawn: Arsenal mk3", "", {["crate"] execVM '\cgqc\loadouts\mk3_getStuff.sqf'}, {!cgqc_player_crate} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 _action = [ "menu_self_training_delcrate", "Delete Arsenal", "", {["del_crate"] execVM '\cgqc\loadouts\mk3_getStuff.sqf'}, {cgqc_player_crate} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Time/weather 
 _action = [ "menu_self_training_time", "Time/Weather", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Skip time
 /*
@@ -43,16 +47,16 @@ _action = [ "menu_sniping_wind_random", "Random", "", {["cgqc_change_fucking_win
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time", "menu_sniping_wind"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 */
 // Sniping ---------------------------------------------------------------------------------------------------------
-_action = [ "menu_sniping_on", "Sniping On", "", {[1]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {!cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_sniping_on", "Sniping", "", {[1]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {!cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 
 // Orienteering ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_training_orient", "Orientation", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_training_orient_basic", "Basic Orientation->ON", "", {["basic_on"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {!cgqc_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_self_training_orient_basic", "Basic Orientation->ON", "", {["basic_on"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {!cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-_action = [ "menu_self_training_orient_basic_off", "Basic Orientation->Off", "", {["basic_off"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {cgqc_orienteering} ] call ace_interact_menu_fnc_createAction;     
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+_action = [ "menu_self_training_orient_basic_off", "Basic Orientation->Off", "", {["basic_off"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 // Options
 _action = [ "menu_self_training_orient_options", "Options", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -198,7 +202,19 @@ _action = [ "menu_self_training_spawn_del", "Delete Vehicle", "", {deleteVehicle
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Defense mode ---------------------------------------------------------------------------------
-_action = [ "menu_self_training_defense", "Defense Training", "", {[1] execVM '\cgqc\functions\fnc_trainingDefense.sqf'}, {!cgqc_defense_mode} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_training_defense", "Defense Training", "", {}, {!cgqc_training_defense} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_training_defense_off", "Defense Training-> OFF", "", {[0] execVM '\cgqc\functions\fnc_trainingDefense.sqf'}, {cgqc_defense_mode} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_training_defense_on", "Start: Normal", "", {[1] execVM '\cgqc\functions\fnc_trainingDefense.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_defense"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_defense_off", "Defense Training-> OFF", "", {[0] execVM '\cgqc\functions\fnc_trainingDefense.sqf'}, {cgqc_training_defense} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Helicopte mode ---------------------------------------------------------------------------------
+_action = [ "menu_self_training_heli", "Helicopter Training", "", {}, {!cgqc_training_heli} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_heli", "Start: Easy (Invincible)", "", {["easy"] execVM '\cgqc\functions\fnc_trainingHeli.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_heli"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_heli", "Start: Normal", "", {["normal"] execVM '\cgqc\functions\fnc_trainingHeli.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_heli"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_heli_off", "Helicopter Training-> OFF", "", {["stop"] execVM '\cgqc\functions\fnc_trainingHeli.sqf'}, {cgqc_training_heli} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;

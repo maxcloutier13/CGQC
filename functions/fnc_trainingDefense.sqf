@@ -7,7 +7,7 @@ switch (_type) do
 {
 	case 0:
 	{
-		cgqc_defense_mode = false;
+		cgqc_training_defense = false;
 		cgqc_defense_start = false;
 		cgqc_defense_done = false;
 		//Delete all units 
@@ -18,7 +18,7 @@ switch (_type) do
 	case 1:
 	{
 		cgqc_defense_timer = 0;
-		cgqc_defense_mode = false;
+		cgqc_training_defense = false;
 		cgqc_defense_start = false;
 		cgqc_defense_done = false;
 		cgqc_defense_target_list = [];
@@ -36,12 +36,12 @@ switch (_type) do
 			};
 			// Finished!
 			//hint "Allright. The wave is slowing down.";
-			cgqc_defense_mode = false;
+			cgqc_training_defense = false;
 		};
 
 		[] spawn {
-			cgqc_defense_mode = true;
-			while {cgqc_defense_mode} do {
+			cgqc_training_defense = true;
+			while {cgqc_training_defense} do {
 				_random_amount = selectRandom [1,2,3];
 				for "_i" from 1 to _random_amount do { 
 					_random_spawn = selectRandom [cgqc_pax_opfor_hunter, cgqc_pax_opfor_hunter, cgqc_pax_opfor_hunter, cgqc_pax_opfor_team, cgqc_pax_opfor_team, cgqc_pax_opfor_squad];
