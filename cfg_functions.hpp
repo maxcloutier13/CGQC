@@ -1,3 +1,13 @@
+class diwako_lockbackpack {
+	tag="diwako_lockbackpack";
+	class functions {
+		file = "\cgqc\functions\lockbackpack";
+		class init{postInit = 1;};
+		class onOpenInventory{};
+		class checkUnlockBP{};
+	};
+};
+
 class CGQC {
     tag = "CGQC";
     class functions {

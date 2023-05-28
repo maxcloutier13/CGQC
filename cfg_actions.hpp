@@ -1,5 +1,8 @@
 class Man;
 class CAManBase: Man {
+	class diwako_lockbackpack_onOpenInventory {
+    	clientInventoryOpened = "if (_this select 0 == ACE_player) then {_this call diwako_lockbackpack_fnc_onOpenInventory};";
+    };
 	class ACE_SelfActions {
 		class ACE_Animations {
 			displayName = "Animations";
