@@ -172,4 +172,10 @@ player action ['SwitchWeapon', player, player, 250];
 // Build a random welcome and shows it
 _welcome = [] spawn CGQC_fnc_welcome; 
 
+// Training menu if training is on
+if (cgqc_flag_isTraining) then {
+	execVM "\cgqc\functions\fnc_trainingMenu.sqf";
+};
+
+
 cgqc_postInitClient_done = true;

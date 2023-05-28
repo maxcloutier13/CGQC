@@ -403,8 +403,8 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject; 
 
 			//Training ==============================================================================================================
-			_action = [ "menu_training", "Training Mode", "", {hint "Check ton Ace Self-Action";execVM "\cgqc\functions\fnc_trainingMenu.sqf"}, {!cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;       
-			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    	
+			//_action = [ "menu_training", "Training Mode", "", {hint "Check ton Ace Self-Action";execVM "\cgqc\functions\fnc_trainingMenu.sqf"}, {!cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;       
+			//_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    	
 		};
 	};
 };
