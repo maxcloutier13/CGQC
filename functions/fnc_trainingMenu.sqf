@@ -196,3 +196,9 @@ _action = [ "menu_self_training_spawn", "Vehicle spawner", "", {[] call CGQC_fnc
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_spawn_del", "Delete Vehicle", "", {deleteVehicle cgqc_spawn_vic;cgqc_spawn=false;}, {cgqc_spawn} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Defense mode ---------------------------------------------------------------------------------
+_action = [ "menu_self_training_defense", "Defense Training", "", {[1] execVM '\cgqc\functions\fnc_trainingDefense.sqf'}, {!cgqc_defense_mode} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_defense_off", "Defense Training-> OFF", "", {[0] execVM '\cgqc\functions\fnc_trainingDefense.sqf'}, {cgqc_defense_mode} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;

@@ -7,52 +7,43 @@ briefing_time = _this select 1;
 switch (_type) do {
 	case "zeus_radios":
 	{
-		hint "Setting Zeus radios"; 
-		//Remove all radios  
-		_radios = call acre_api_fnc_getCurrentRadioList; 
-		{ 
-			player removeItem _x; 
-		}forEach _radios; 
-		// Add 3 zeus radios 
-		if (player canAdd ["ACRE_PRC117F", 2]) then {  
-			// There is enough space, add the items  
-			player addItem "ACRE_PRC117F";  
-			player addItem "ACRE_PRC117F";  
-		} else {  
-			// There is not enough space  
-			hint "Not enough inventory space!"; 
-			_items_pack = backpackItems player; 
-			removeBackpack player; 
-			player addBackpack "cgqc_pack_mk1_magic_zeus"; 
-			clearAllItemsFromBackpack player; 
-			{player addItemToBackpack _x} forEach _items_pack; 
-			player addItem "ACRE_PRC117F";  
-			player addItem "ACRE_PRC117F";   
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{player removeItem _x;}forEach _radios;  
+		// Add zeus radios  
+		if (player canAdd ["ACRE_PRC117F", 2]) then {   
+		// There is enough space, add the items   
+		player addItem "ACRE_PRC117F";   
+		player addItem "ACRE_PRC117F";   
+		} else {   
+		// There is not enough space   
+		hint "Not enough inventory space!";  
+		_items_pack = backpackItems player;  
+		removeBackpack player;  
+		player addBackpack "cgqc_pack_mk1_magic_zeus";  
+		clearAllItemsFromBackpack player;  
+		{player addItemToBackpack _x} forEach _items_pack;  
+		player addItem "ACRE_PRC117F";   
+		player addItem "ACRE_PRC117F";	
 		}; 
-		sleep 1; 
+		sleep 1;
 		_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType; 
 		waitUntil {sleep 1;!isNil "_zeusRadios"}; 
-		if (count _zeusRadios < 2) then { 
-			hint "What the fuck!"; 
-			sleep 5; 
-			hintSilent ""; 
-		}else { 
-			_packRadio_1 = _zeusRadios select 0; 
-			_packRadio_2 = _zeusRadios select 1; 
-			waitUntil {sleep 0.5;!isNil "_packRadio_1"}; 
-			[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan 
-			waitUntil {sleep 0.5;!isNil "_packRadio_2"}; 
-			[_packRadio_2, 9] call acre_api_fnc_setRadioChannel; //Air-Net 
-			// Set order 
-			_success = [ [ _packRadio_1, _packRadio_2, ""] ] call acre_api_fnc_setMultiPushToTalkAssignment; 
-			// Set sides  
-			_success = [_packRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial; 
-			_success = [_packRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial; 
-			hint parseText "<t> 
-			--- Zeus Radios -------------<br/> 
-			Radio1:Gauche/117/Spartan/HQ<br/>   
-			Radio3:Droite/117/Inter-Zeus</t>";
-		};  
+		y_packRadio_1 = _zeusRadios select 0; 
+		y_packRadio_2 = _zeusRadios select 1; 
+		waitUntil {sleep 0.5;!isNil "_packRadio_1"}; 
+		_success = [_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan 
+		waitUntil {sleep 1;!isNil "_packRadio_2"}; 
+		_success = [_packRadio_2, 9] call acre_api_fnc_setRadioChannel; //Air-Net 
+		// Set order
+		_success = [ [ _packRadio_1, _packRadio_2, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment; 
+		// Set sides  
+		_success = [_packRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial; 
+		_success = [_packRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial; 
+		hint parseText "<t> 
+		--- Zeus Radios -------------<br/> 
+		Radio1:Gauche/117/Spartan/HQ<br/>   
+		Radio2:Droite/117/Inter-Zeus</t>";
+
 	};
 	case "maprestrict":
 	{
