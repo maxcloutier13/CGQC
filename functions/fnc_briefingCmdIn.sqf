@@ -5,4 +5,6 @@ if (!trgBriefCmd_player_lowered) then {
 	[0.7] call acre_api_fnc_setSelectableVoiceCurve;
 };
 trgBriefCmd_player_lowered = true;
+[format["<img size= '1' style='vertical-align:bottom' shadow='false' image='\cgqc\textures\icon_sound_off.paa'/>"]
+		, 1.05, 0.2, 4, 2] spawn BIS_fnc_dynamicText; 
 hintSilent "Commanders Briefing"; 

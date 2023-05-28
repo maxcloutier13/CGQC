@@ -245,6 +245,13 @@ switch (_type) do {
         cgqc_cone_silence setTriggerStatements ["this", y_act, y_deAct];
         cgqc_cone_silence setTriggerInterval _int;
         cgqc_perks_silence = true;
+        [] spawn {
+            while {cgqc_perks_silence} do { 
+                [format["<img size= '1' style='vertical-align:bottom' shadow='false' image='\cgqc\textures\icon_sound_off.paa'/>"]
+                , 1.05, 0.2, 4, 2] spawn BIS_fnc_dynamicText; 
+                sleep 5;
+            };
+        };
         hint "Cone of silence: On";
         break;
     };
