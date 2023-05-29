@@ -107,7 +107,8 @@ cgqc_defense_done = false;
 cgqc_defense_start = false;
 // Helicopter training
 cgqc_training_heli = false;
-
+// Mortar training 
+cgqc_training_mortar = false;
 // CQB house training stuff
 cgqc_cqb_list = [];
 cgqc_cqb_list_moving = [];
