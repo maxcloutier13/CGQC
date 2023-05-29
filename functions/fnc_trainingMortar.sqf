@@ -9,32 +9,37 @@ switch (_type) do
 		cgqc_training_mortar_difficulty = 0;
 		cgqc_training_mortar_min = 250;
 		cgqc_training_mortar_max = 800;
-		["start"] execVM "mortar.sqf";
-		["items_advanced"] execVM "mortar.sqf";
+		["start"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
+		["items_advanced"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
 	};
 	case "normal":	{
 		cgqc_training_mortar_difficulty = 1;
 		cgqc_training_mortar_min = 500;
 		cgqc_training_mortar_max = 1500;
-		["start"] execVM "mortar.sqf";
-		["items_advanced"] execVM "mortar.sqf";
+		["start"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
+		["items_advanced"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
 	};
 	case "hard":	{
 		cgqc_training_mortar_difficulty = 2;
 		cgqc_training_mortar_min = 250;
 		cgqc_training_mortar_max = 3100;
-		["start"] execVM "mortar.sqf";
-		["items_basic"] execVM "mortar.sqf";
+		["start"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
+		["items_basic"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
 	};
 	case "items_basic": {
+		
 		_items = (items player);
 		if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
 		if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
 		if !("ACE_artilleryTable" in _items) then {player addItem "ACE_artilleryTable";};
+		
 	};
 	case "items_advanced": {
-		["items_basic"] execVM "mortar.sqf";
-		// Add cellphone and shits
+		["items_basic"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
+		if (cgqc_player_has2023) then {
+			if !("ItemAndroid" in _items) then {player addItem "ItemAndroid";};
+		};
+		player addWeapon "ACE_Vector";
 	};
 	case "start":	{
 		cgqc_training_mortar = true;
@@ -100,7 +105,7 @@ switch (_type) do
 	};
 	case "stop":	{
 		cgqc_training_mortar = false;
-		["clear"] execVM "mortar.sqf";
+		["clear"] execVM "\cgqc\functions\fnc_trainingMortar.sqf";
 	};
 	case "clear": {
 		// Delete markers
