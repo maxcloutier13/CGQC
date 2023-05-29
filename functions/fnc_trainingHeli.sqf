@@ -1,119 +1,96 @@
-// --- trainingMortar ----------------------------------------------------------
-// Manual mortar training 
+// --- trainingHeli ----------------------------------------------------------
+// Helicopter training 
 
 _type = _this select 0;
 
+cgqc_heli_vic = vehicle player;
 switch (_type) do
 {
-	case "easy":	{
-		cgqc_training_mortar_difficulty = 0;
-		cgqc_training_mortar_min = 250;
-		cgqc_training_mortar_max = 800;
-		["start"] execVM "mortar.sqf";
+	case "easy": {
+		cgqc_heli_vic allowDamage false;
+		["start"] execVM '\cgqc\functions\fnc_trainingHeli.sqf';
 	};
-	case "normal":	{
-		cgqc_training_mortar_difficulty = 1;
-		cgqc_training_mortar_min = 500;
-		cgqc_training_mortar_max = 1500;
-		["start"] execVM "mortar.sqf";
-	};
-	case "hard":	{
-		cgqc_training_mortar_difficulty = 2;
-		cgqc_training_mortar_min = 250;
-		cgqc_training_mortar_max = 3100;
-		["start"] execVM "mortar.sqf";
-	};
-	case "items_basic": {
-		_items = (items player);
-		if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
-		if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
-		if !("ACE_artilleryTable" in _items) then {player addItem "ACE_artilleryTable";};
-	};
-	case "items_advanced": {
-		["items_basic"] execVM "mortar.sqf";
-		// Add cellphone and shits
-	};
-	case "start":	{
-		cgqc_training_mortar = true;
-		cgqc_training_mortar_target = "";
-
-		// Spawnk mk6 mortar  
-		_safepos = (getPosATL player) findEmptyPosition [1,25, "B_G_Mortar_01_F"];
-		cgqc_training_mortar_mortar = "B_G_Mortar_01_F" createVehicle _safepos;
-		// Attach the event handler to the mortar vehicle
-		cgqc_training_mortar_mortar addEventHandler ["Fired", {
-			params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_mags", "_projectile", "_gunner"];
-			hint "Projectile Fired!";
-			_projectile addEventHandler ["Explode", {
-				params ["_projectile", "_pos", "_velocity"];
-				hint "Projectile exploded!";
-				// Get the position of the shell
-				_distance = _pos distance cgqc_training_mortar_target;
-				if (_distance < 25) then {
-					hint format ["Direct hit! Shell fell %1 meters away.", _distance];
-				};
-				if (_distance > 25 && _distance < 50) then {
-					hint format ["Decent shot. Shell fell %1 meters away.", _distance];
-				};
-				if (_distance > 50 && _distance < 100) then {
-					hint format ["Almost... Shell fell %1 meters away.", _distance];
-				};
-				if (_distance > 100) then {
-					hint format ["Meh! Shell fell %1 meters away.", _distance];
-				};
-			}];
-		}];
-
-		//Find good target location
-		y_targetArea = [ player, cgqc_training_mortar_min, cgqc_training_mortar_max, 5, 0, 30, 0] call BIS_fnc_findSafePos;
-		_safepos = y_targetArea findEmptyPosition [1,100, "C_Van_01_fuel_F"];
-		cgqc_training_mortar_target = "C_Van_01_fuel_F" createVehicle _safepos;
-
-		if (cgqc_training_mortar_difficulty < 1) then {
-			//Player marker 
-			y_markerPlayer = createMarker ["cgqc_mortar_player", player];
-			"cgqc_mortar_player" setMarkerType "mil_circle"; 
-			"cgqc_mortar_player" setMarkerText "Player";
-			"cgqc_mortar_player" setMarkerColor "ColorBlue";
-			hint "Easy Mode; Target and player marked on map";
-		};
-		if (cgqc_training_mortar_difficulty <= 1) then {
-			// Target marker
-			y_markerTarget = createMarker ["cgqc_mortar_target", position cgqc_training_mortar_target];
-			"cgqc_mortar_target" setMarkerType "mil_objective"; 
-			"cgqc_mortar_target" setMarkerText "Target";
-			"cgqc_mortar_target" setMarkerColor "ColorRed";
-			["items_advanced"] execVM "mortar.sqf";
-		};
-		if (cgqc_training_mortar_difficulty == 2) then {
-			["items_basic"] execVM "mortar.sqf";
-		};
-		
-		[] spawn {
-			// Detect destruction
-			while {cgqc_training_mortar} do {
-				if (!alive cgqc_training_mortar_target) then {
-					hint "Good job Viper! Target Destroyed";
-				};
-				sleep 5;
-			};
-		};
-		
+	case "normal": {
+		["start"] execVM '\cgqc\functions\fnc_trainingHeli.sqf';
 	};
 	case "stop":	{
-		cgqc_training_mortar = false;
-		["clear"] execVM "mortar.sqf";
+		cgqc_training_heli = false;
+		cgqc_heli_smoking = false;
+		cgqc_heli_done = true;
+		cgqc_heli_vic allowDamage true;
+		["clear"] execVM "\cgqc\functions\fnc_trainingHeli.sqf";
+	};
+	case "start":	{
+		cgqc_training_heli = true;
+		cgqc_heli_smoking = true;
+		while {cgqc_training_heli} do {
+			cgqc_heli_done = false;
+			cgqc_heli_smoking = true;
+			if !(vehicle player isKindOf "Helicopter") then {
+				hint "Get in an helicopter!";
+				waitUntil {sleep 0.1; vehicle player isKindOf "Helicopter" };
+			};
+			
+			
+			// Find suitable area
+			y_randomPos = [] call BIS_fnc_randomPos;
+			y_searchArea = [ y_randomPos, 25, 500, 5, 0, 20, 0] call BIS_fnc_findSafePos;
+			cgqc_heli_position = y_searchArea findEmptyPosition [1,500, typeOf cgqc_heli_vic];
+			//Spawn marker 
+			y_markerPlayer = createMarker ["cgqc_heli_target", cgqc_heli_position];
+			"cgqc_heli_target" setMarkerType "hd_pickup"; 
+			"cgqc_heli_target" setMarkerText "LZ";
+			"cgqc_heli_target" setMarkerColor "ColorBlue";
+			// Spawn heli H 
+			cgqc_heli_h = "cgqc_refuel_h_short" createVehicle (cgqc_heli_position);
+			// Spawn light 
+			cgqc_heli_light = "PortableHelipadLight_01_red_F" createVehicle (cgqc_heli_position);
+			// Spawn smoke 
+			[] spawn {
+				sleep 5;
+				while {!cgqc_heli_done && cgqc_heli_smoking} do {
+					cgqc_heli_smoke = createVehicle ["SmokeShellPurple", cgqc_heli_position, [], 0, "NONE"];
+					waitUntil {isNull cgqc_heli_smoke};
+				};
+			};
+			// Trigger to check that player is on target 
+			_act = "cgqc_heli_done = true; hint 'Good job Viper. Standby for next target';";
+			_deAct = "";
+			_int = 2;
+			cgqc_heli_trg = createTrigger ["EmptyDetector",cgqc_heli_position, false];
+			cgqc_heli_trg setTriggerArea [10, 10, 0, true, 15];
+			cgqc_heli_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+			cgqc_heli_trg setTriggerStatements ["this && isTouchingGround vehicle player", _act, _deAct];
+			cgqc_heli_trg setTriggerInterval _int;
+			// Trigger to check that player is getting close 
+			_act = "hint 'Getting close'; cgqc_heli_smoking = false; if !(isNil 'cgqc_heli_smoke') then {deleteVehicle cgqc_heli_smoke;}";
+			_deAct = "";
+			_int = 2;
+			cgqc_heli_trg_close = createTrigger ["EmptyDetector",cgqc_heli_position, false];
+			cgqc_heli_trg_close setTriggerArea [250, 250, 0, true];
+			cgqc_heli_trg_close setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+			cgqc_heli_trg_close setTriggerStatements ["this", _act, _deAct];
+			cgqc_heli_trg_close setTriggerInterval _int;
+			hint format ["Fly to LZ @ %1!", mapGridPosition cgqc_heli_h];
+			waitUntil {sleep 5; cgqc_heli_done};
+			["clear"] execVM "\cgqc\functions\fnc_trainingHeli.sqf"; // Delete everything and start again
+			sleep 5;
+		};
 	};
 	case "clear": {
+		// Delete trigger
+		if !(isNil "cgqc_heli_trg") then {deleteVehicle cgqc_heli_trg;};
+		if !(isNil "cgqc_heli_trg_close") then {deleteVehicle cgqc_heli_trg_close;};
 		// Delete markers
-		if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_mortar_player";};	
-		if !(isNil "y_markerTarget") then {deleteMarker "cgqc_mortar_target";};	 
+		if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_heli_target";};	 
 		//Delete all things
-		if !(isNil "cgqc_training_mortar_mortar") then {deleteVehicle cgqc_training_mortar_mortar;};
-		if !(isNil "cgqc_training_mortar_target") then {deleteVehicle cgqc_training_mortar_target;}; 
+		if !(isNil "cgqc_heli_h") then {deleteVehicle cgqc_heli_h;};
+		if !(isNil "cgqc_heli_light") then {deleteVehicle cgqc_heli_light;};
+		if !(isNil "cgqc_heli_smoke") then {deleteVehicle cgqc_heli_smoke;};	 
 	};
 	default
 	{
-		hint "Mortar problem";
+		hint "heli problem";
 	};
 };
+
