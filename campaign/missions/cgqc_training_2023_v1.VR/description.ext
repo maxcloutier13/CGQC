@@ -1,14 +1,14 @@
 
 //--  Edit absolument cette information --------------------------------
 author = "Maj. Cloutier";                                             
-onLoadName = "CGQC Training: 2023 Takistan"; 
-briefingName = "CGQC Training: 2023 Takistan";
+onLoadName = "CGQC Training: 2023 VR Hub"; 
+briefingName = "CGQC Training: 2023 VR Hub";
 
 // ----------------------------------------------------------------------
 // Tu peux changer ceci si tu as des screenshots customs
 // Custom images 
-loadScreen = "textures\loading_screen_1.paa";
-overviewPicture = "textures\BG1.paa";
+loadScreen = "\cgqc\textures\loading_screen_1.paa";
+overviewPicture = "\cgqc\textures\BG1.paa";
 
 
 
@@ -161,23 +161,23 @@ class CfgGradFortifications {
         // Engineer required to install
         class Land_BagBunker_Large_F {
             condition = "player getUnitTrait 'engineer'";
-            conditionHint = "T'es pas ingénieur!"
+            conditionHint = "T'es pas ingénieur!";
         };
         class Land_Cargo20_military_green_F {
             condition = "player getUnitTrait 'engineer'";
-            conditionHint = "T'es pas ingénieur!"
+            conditionHint = "T'es pas ingénieur!";
         };
         class Land_Cargo_Patrol_V1_F {
             condition = "player getUnitTrait 'engineer'";
-            conditionHint = "T'es pas ingénieur!"
+            conditionHint = "T'es pas ingénieur!";
         };
         class Land_HBarrierBig_F {
             condition = "player getUnitTrait 'engineer'";
-            conditionHint = "T'es pas ingénieur!"
+            conditionHint = "T'es pas ingénieur!";
         };
         class Land_HBarrier_5_F {
             condition = "player getUnitTrait 'engineer'";
-            conditionHint = "T'es pas ingénieur!"
+            conditionHint = "T'es pas ingénieur!";
         };
         // Simple stuff
         class Land_BagFence_Long_F {

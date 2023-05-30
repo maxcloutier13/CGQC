@@ -4,13 +4,13 @@ class NoEndings
 	endDefault = ;
 
 	// pre-Arma 3
-	end1 = training_malden; 
-    end2 = training_takistan;
-    end3 = training_novogorsk;
-    end4 = training_bozcaada;
-    end5 = ;
-    end6 = ;
-    lost = ;
+	end1 = ;
+	end2 = ;
+	end3 = ;
+	end4 = ;
+	end5 = ;
+	end6 = ;
+	lost = ;
 };
 
 class MissionDefault : NoEndings
@@ -18,11 +18,12 @@ class MissionDefault : NoEndings
 	lives		= -1;	// this sets your "lives" to none - old OFP setting where you would lose a "life" every time you retried the mission, never used
 	noAward		=  1;	// TBD
 	cutscene	= ;		// mandatory definition
+    end1 = training_vr;
 };
 
 // additional parameters go here
-directory = "\CGQC\campaign";
-weaponPool		= 1;
+//directory = "\CGQC\campaign";
+weaponPool		= 0;
 
 class Campaign // this is a reference class, the name cannot be customised
 {
@@ -31,29 +32,20 @@ class Campaign // this is a reference class, the name cannot be customised
 	name			= "CGQC";		// before Arma 3
 	briefingName	= "CGQC";		// since Arma 3 - if undefined, an error popup will appear
 	author			= "Maj. Cloutier";				// since Arma 3 - if undefined, "by unknown community author" will replace author's name
-	overviewPicture	= "overview.paa";
-	overviewText	= "$STR_A3_StageAOverview";
+	overviewPicture	= "\cgqc\textures\BG1.paa";
+	overviewText	= "CGQC Training Maps";
 	disableMP		= 0;						// since Arma 2 - if set to 1, forces the campaign as SinglePlayer
 	enableHub		= 0;						// TBD - has to do with coming back to a "base"
 
-    // Chapter 1
+    // Chapter 1: Bootcamp
 	class Bootcamp : NoEndings 
     {
-        firstMission	= training_malden;				// which mission should be loaded first. MUST be declared!
-        name			= "Training 2023: Malden";	// chapter name. Has no in-game impact
- 
-        class training_malden : MissionDefault
-        {template = cgqc_training_2023_v1.Malden;};
+        firstMission	= training_vr;				// which mission should be loaded first. MUST be declared!
 
-        class training_takistan : MissionDefault
-        {template = cgqc_training_2023_v1.takistan;};
-
-        class training_novogorsk : MissionDefault
-        {template = cgqc_training_2023_v1.swu_public_novogorsk_map;};
-
-        class training_bozcaada : MissionDefault
-        {template = cgqc_training_2023_v1.bozcaada;};
-
+        class training_vr : MissionDefault
+		{
+	        template = cgqc_training_2023_v1.VR;
+    	};
     };
 };
 

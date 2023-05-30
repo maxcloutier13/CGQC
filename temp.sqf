@@ -500,6 +500,8 @@ if (hasInterface) then {
 
 
 
+
+
 [] spawn { 
 player switchCamera "external";
 private _camera = "camera" camCreate getPosATL player;
@@ -698,3 +700,20 @@ case "zeus_radios":
 
 
 ["weapon_Fighter_Gun20mm_AA","weapon_BIM9xLauncher","weapon_AMRAAMLauncher","weapon_GBU12Launcher","weapon_SDBLauncher","BombCluster_01_F"]	
+
+
+
+
+_crate = _this select 0;
+_action = [ "menu_switch", "Change Map", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_vr", "VR Hub", "", {["END1"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_mald", "Malden", "", {["END2"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_tak", "Takistan", "", {["END3"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_novo", "Novogorsk", "", {["END4"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_boz", "Bozcaada", "", {["END5"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;		
