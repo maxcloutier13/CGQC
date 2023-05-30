@@ -122,3 +122,15 @@ class CfgSounds
 // Custom events
 #include "cfg_eventhandlers.hpp"
 #include "functions\lockbackpack\Extended_InventoryOpened_EventHandlers.hpp"
+
+class CfgMissions
+{
+	class Campaigns
+	{
+		class CGQC_campaign
+		{
+			directory = "CGQC\Campaign";
+			overviewPicture = "";
+		};
+	};
+};
