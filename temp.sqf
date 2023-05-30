@@ -717,3 +717,23 @@ _action = [ "menu_switch_novo", "Novogorsk", "", {["END4"] remoteExec ["endMissi
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_switch_boz", "Bozcaada", "", {["END5"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;		
+
+
+end2 = training_malden;
+    end3 = training_takistan;
+    end4 = training_novogorsk;
+    end5 = training_bozcaada;
+
+
+
+        class training_malden : MissionDefault
+        {template = cgqc_training_2023_v1.Malden;};
+
+        class training_takistan : MissionDefault
+        {template = cgqc_training_2023_v1.takistan;};
+
+        class training_novogorsk : MissionDefault
+        {template = cgqc_training_2023_v1.swu_public_novogorsk_map;};
+
+        class training_bozcaada : MissionDefault
+        {template = cgqc_training_2023_v1.bozcaada;};
