@@ -141,7 +141,7 @@ class cgqc_briefing_table : Land_BriefingRoomDesk_01_F
     hiddenSelectionsTextures[] = {"\cgqc\textures\screen\screen_logo.paa"};
     class EventHandlers
     {
-        init = "[_this] execVM '\CGQC\functions\fnc_tableSetup.sqf'";
+       // init = "[_this] execVM '\CGQC\functions\fnc_tableSetup.sqf'";
     };
 };
 
