@@ -500,6 +500,8 @@ if (hasInterface) then {
 
 
 
+
+
 [] spawn { 
 player switchCamera "external";
 private _camera = "camera" camCreate getPosATL player;
@@ -698,3 +700,63 @@ case "zeus_radios":
 
 
 ["weapon_Fighter_Gun20mm_AA","weapon_BIM9xLauncher","weapon_AMRAAMLauncher","weapon_GBU12Launcher","weapon_SDBLauncher","BombCluster_01_F"]	
+
+
+
+
+_crate = _this select 0;
+_action = [ "menu_switch", "Change Map", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_vr", "VR Hub", "", {["END1"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_mald", "Malden", "", {["END2"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_tak", "Takistan", "", {["END3"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_novo", "Novogorsk", "", {["END4"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_switch_boz", "Bozcaada", "", {["END5"] remoteExec ["endMission", 0, true];}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_switch"], _action ] call ace_interact_menu_fnc_addActionToObject;		
+
+
+end2 = training_malden;
+    end3 = training_takistan;
+    end4 = training_novogorsk;
+    end5 = training_bozcaada;
+
+
+
+        class training_malden : MissionDefault
+        {template = cgqc_training_2023_v1.Malden;};
+
+        class training_takistan : MissionDefault
+        {template = cgqc_training_2023_v1.takistan;};
+
+        class training_novogorsk : MissionDefault
+        {template = cgqc_training_2023_v1.swu_public_novogorsk_map;};
+
+        class training_bozcaada : MissionDefault
+        {template = cgqc_training_2023_v1.bozcaada;};
+
+
+
+
+
+this addAction ["End Mission and load map:", { 
+ hint ""; 
+}]; 
+this addAction [ 
+ "VR Hub", {["END1"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Malden", {["END2"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Takistan", {["END3"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Novogorsk", {["END4"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Bozcaada", {["END5"] remoteExec ["endMission", 0, true];} 
+]; 

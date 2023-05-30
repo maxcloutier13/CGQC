@@ -119,7 +119,7 @@ class btnCancel: RscShortcutButton
 	x = 0.26 * safezoneW + safezoneX;
 	y = 0.3225 * safezoneH + safezoneY;
 	w = 0.2325 * safezoneW;
-	h = 0.41 * safezoneH
+	h = 0.41 * safezoneH;
 };
 class vehStatText: RscStructuredText
 {
@@ -131,7 +131,7 @@ class vehStatText: RscStructuredText
 	x = 0.508 * safezoneW + safezoneX;
 	y = 0.365 * safezoneH + safezoneY;
 	w = 0.2325 * safezoneW;
-	h = 0.32 * safezoneH
+	h = 0.32 * safezoneH;
 	onMouseButtonDown = "";
 	onMouseButtonUp = "";
 	onMouseZChanged = "";
