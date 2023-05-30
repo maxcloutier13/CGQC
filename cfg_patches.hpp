@@ -69,7 +69,8 @@ class CfgPatches
 					"cgqc_whiteboard_med_equip",
 					"cgqc_whiteboard_medfirstaid",
 					"cgqc_whiteboard_parachute",
-					"cgqc_whiteboard_windk"};
+					"cgqc_whiteboard_windk",
+					"cgqc_briefing_table"};
 					/*"cgqc_gun_hk417_tremblay",
 					"Weapon_cgqc_gun_spar17_canpat",
 					"Weapon_cgqc_gun_spar17_wood"*/

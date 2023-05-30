@@ -130,3 +130,19 @@ class cgqc_whiteboard_windk : Land_MapBoard_F
     hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_windk.paa"};
 };
 
+class Land_BriefingRoomDesk_01_F;
+class cgqc_briefing_table : Land_BriefingRoomDesk_01_F
+{
+    _generalMacro = "cgqc_briefing_table";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Briefing Table";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\screen\screen_logo.paa"};
+    class EventHandlers
+    {
+        init = "[_this, 'arsenal'] execVM '\CGQC\functions\fnc_tableSetup.sqf'";
+    };
+};
+
+
