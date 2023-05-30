@@ -737,3 +737,26 @@ end2 = training_malden;
 
         class training_bozcaada : MissionDefault
         {template = cgqc_training_2023_v1.bozcaada;};
+
+
+
+
+
+this addAction ["End Mission and load map:", { 
+ hint ""; 
+}]; 
+this addAction [ 
+ "VR Hub", {["END1"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Malden", {["END2"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Takistan", {["END3"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Novogorsk", {["END4"] remoteExec ["endMission", 0, true];} 
+]; 
+this addAction [ 
+ "Bozcaada", {["END5"] remoteExec ["endMission", 0, true];} 
+]; 
