@@ -314,6 +314,9 @@ switch (_type) do {
         break;
     };
     case "cam":{
+        [player, ["ACE_WaterBottle"]] call ace_arsenal_fnc_initBox;
+        [player, player, false] call ace_arsenal_fnc_openBox;
+        /*
         [] spawn {
             _cam = "camera" camCreate (player modelToWorld [-2,2, 2]);
             _cam camSetTarget player;
@@ -323,6 +326,7 @@ switch (_type) do {
             _cam cameraEffect ["TERMINATE", "BACK"];
             camDestroy _cam;
          };
+         */
         break;
     };
 };
