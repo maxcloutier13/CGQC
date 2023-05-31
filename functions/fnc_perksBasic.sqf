@@ -233,17 +233,21 @@ switch (_type) do {
     };
     case "cone":
     {
-        // Setup trigger
-        y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
-        y_deAct = "[] call ace_volume_fnc_restoreVolume;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false; hint 'Cone of silence: Off';";
-        _int = 2;
-        // Create trigger
-        cgqc_cone_silence = createTrigger ["EmptyDetector",getPos player, true];
+       
+        if (vehicle player != player) then // If player in a vehicle, skip the trigger 
+        {
+             // Setup trigger
+            y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
+            y_deAct = "[] call ace_volume_fnc_restoreVolume;deleteVehicle cgqc_cone_silence;cgqc_perks_silence = false; hint 'Cone of silence: Off';";
+            _int = 2;
+            // Create trigger
+            cgqc_cone_silence = createTrigger ["EmptyDetector",getPos player, true];
             cgqc_cone_silence triggerAttachVehicle [player];
-        cgqc_cone_silence setTriggerArea [2, 2, 0, false];
-        cgqc_cone_silence setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-        cgqc_cone_silence setTriggerStatements ["this", y_act, y_deAct];
-        cgqc_cone_silence setTriggerInterval _int;
+            cgqc_cone_silence setTriggerArea [2, 2, 0, false];
+            cgqc_cone_silence setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+            cgqc_cone_silence setTriggerStatements ["this", y_act, y_deAct];
+            cgqc_cone_silence setTriggerInterval _int;
+        };
         cgqc_perks_silence = true;
         [] spawn {
             while {cgqc_perks_silence} do { 
@@ -258,7 +262,7 @@ switch (_type) do {
     case "cone_off":
     {
         //Delete trigger zone
-        deleteVehicle cgqc_cone_silence;
+        if !(isNil "cgqc_cone_silence") then {deleteVehicle cgqc_cone_silence;};
         //Restore volume
         [] call ace_volume_fnc_restoreVolume;
         cgqc_perks_silence = false;
