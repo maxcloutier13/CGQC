@@ -64,6 +64,57 @@ class cgqc_refuel_h_short_invis: cgqc_refuel_h
 };
 // Whiteboards
 class Land_MapBoard_F;
+class Land_MapBoard_01_Wall_F;
+
+class cgqc_wallboard_air: Land_MapBoard_01_Wall_F
+{
+    _generalMacro = "cgqc_wallboard_air";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Wallboard - Aérien";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_aerien.paa"};
+};
+class cgqc_wallboard_koth: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_koth";
+    displayName = "Wallboard - KOTH";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_koth.paa"};
+};
+class cgqc_wallboard_logitstics: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_logitstics";
+    displayName = "Wallboard - Logistics";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_logistics.paa"};
+};
+class cgqc_wallboard_med_equip: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_med_equip";
+    displayName = "Wallboard - Medical Equipment";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_med_equip.paa"};
+};
+class cgqc_wallboard_medfirstaid: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_medfirstaid";
+    displayName = "Wallboard - First Aid";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_med_firstaid.paa"};
+};
+class cgqc_wallboard_parachute: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_parachute";
+    displayName = "Wallboard - Parachute";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_parachute.paa"};
+};
+class cgqc_wallboard_windk: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_windk";
+    displayName = "Wallboard - Wind";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_windk.paa"};
+};
+class cgqc_wallboard_radios: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_radios";
+    displayName = "Wallboard - Radios";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_radios.paa"};
+};
+class cgqc_wallboard_maps: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_maps";
+    displayName = "Wallboard - Map Switching";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_maps.paa"};
+};
 
 class cgqc_whiteboard_air : Land_MapBoard_F
 {
@@ -128,6 +179,24 @@ class cgqc_whiteboard_windk : Land_MapBoard_F
     editorSubcategory = "EdSubcat_cgqc_logistics";
     displayName = "Whiteboard - WindKnots";
     hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_windk.paa"};
+};
+class cgqc_whiteboard_radios : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_radios";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - Radios";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_radios.paa"};
+};
+class cgqc_whiteboard_maps : Land_MapBoard_F
+{
+    _generalMacro = "cgqc_whiteboard_maps";
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_cgqc_logistics";
+    displayName = "Whiteboard - Maps";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_maps.paa"};
 };
 
 class Land_BriefingRoomDesk_01_F;
