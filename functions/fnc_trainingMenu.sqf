@@ -49,18 +49,18 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils
 _action = [ "menu_items_radios", "Radios", "", {""}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 _action = [ "menu_items1", "Radio: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils", "menu_items_radios" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 _action = [ "menu_items2", "Radio: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils", "menu_items_radios" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 _action = [ "menu_items3", "Radio: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils", "menu_items_radios" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 _action = [ "menu_items3", "Radio: 117f", "", {["117"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils", "menu_items_radios" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 //Radios Vietnam 
 _action = [ "menu_items52", "Radio: Short-Range", "", {["52"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils", "menu_items_radios" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 _action = [ "menu_items77", "Radio: Long-Range", "", {["77"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils", "menu_items_radios" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
 //Earplugs
 _action = [ "menu_items3", "Earplugs", "", {["earplugs"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
@@ -93,7 +93,7 @@ _action = [ "menu_self_training_time", "Time/Weather", "", {}, {true} ] call ace
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Skip time
-/*
+
 _action = [ "menu_self_training_skip", "Skip time", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_orient_basic", "Skip 1h", "", {["skip", 1] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
@@ -104,7 +104,7 @@ _action = [ "menu_self_training_orient_basic", "Skip 6h", "", {["skip", 6] execV
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time", "menu_self_training_skip"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 _action = [ "menu_self_training_orient_basic", "Skip 12h", "", {["skip", 12] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time", "menu_self_training_skip"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-*/
+
 //Change wind -----------------------------
 /*_action = [ "menu_sniping_wind", "Change Wind", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -117,6 +117,20 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_trai
 _action = [ "menu_sniping_wind_random", "Random", "", {["cgqc_change_fucking_wind", ["wind_random"]] call CBA_fnc_globalEvent;}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time", "menu_sniping_wind"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 */
+
+// Medical --------------------------------------------------------------------------------------
+_action = [ "menu_medical", "Medical", "", {}, {true} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+
+_action = [ "menu_med_light", "Patient: Blessé Léger", "", {[1] execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ laptop_med, 0, ["ACE_MainActions", "menu_medical"], _action ] call  ace_interact_menu_fnc_addActionToObject; 
+_action = [ "menu_med_med", "Patient: Blessé Moyen", "", {[2] execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ laptop_med, 0, ["ACE_MainActions", "menu_medical"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+_action = [ "menu_med_heavy", "Patient: Blessé Grave", "", {[3] execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ laptop_med, 0, ["ACE_MainActions", "menu_medical"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
+_action = [ "menu_med_del", "Retirer tout les patients", "", {[0] execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ laptop_med, 0, ["ACE_MainActions", "menu_medical"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Sniping ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_sniping_on", "Sniping", "", {[1]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {!cgqc_sniping} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
@@ -139,6 +153,25 @@ _action = [ "menu_self_training_orient_options_snipers", "Add Hunters", "", {cgq
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_orient_options_snipers_off", "Remove Hunters", "", {cgqc_orient_opt_snipers = true}, {cgqc_orient_opt_snipers} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Parachute ---------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_training_para", "Parachute", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Jumping uniform 
+_action = [ "menu_self_training_para_kit", "Kit: Parachutiste", "\CGQC\textures\cgqc_ace_para", {["para", false] execVM "\CGQC\loadouts\mk3_camoSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_para"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+// Jumps
+_action = [ "menu_self_training_para_800", "Jump: 500m", "", {[800] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {!cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_para"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+_action = [ "menu_self_training_para_1500", "Jump: 1 000m", "", {[1000] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {!cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_para"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+_action = [ "menu_self_training_para_800", "Jump: 3 500m", "", {[3500] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {!cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_para"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+_action = [ "menu_self_training_para_800", "Jump: 5 000m", "", {[5000] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {!cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_para"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+_action = [ "menu_self_training_para_800", "Jump: 10 000m", "", {[10000] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {!cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_para"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+
 
 // CQB ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_training_cqb", "CQB", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
