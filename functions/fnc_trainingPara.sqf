@@ -29,8 +29,8 @@ if (backpack player isEqualTo "B_Parachute") then {
 	// Teleport to location  
 	player setPos [y_clickedPos select 0, y_clickedPos select 1, _jumpHeight]; 
 	
-	// Give some velocity  
-	player setVelocity [(vectorDir player select 0)*300, (vectorDir player select 1)*300, (vectorDir player select 2)]; 
+	// Give some velocity  - SKIP FOR NOW - ADD ACTUAL PLANE SOON!
+	// player setVelocity [(vectorDir player select 0)*300, (vectorDir player select 1)*300, (vectorDir player select 2)]; 
 	// max not sure this is needed. 
 	titleFadeOut 2; 
 	// Wake up with blur 
