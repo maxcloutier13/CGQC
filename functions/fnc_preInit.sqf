@@ -109,6 +109,13 @@ cgqc_defense_start = false;
 cgqc_training_heli = false;
 // Mortar training 
 cgqc_training_mortar = false;
+// KOTH training 
+cgqc_training_koth = false; 
+cgqc_training_koth_towers_count = 1;
+cgqc_training_koth_towers = [];
+cgqc_training_koth_difficulty = 1;
+cgqc_training_koth_list = [];
+
 // CQB house training stuff
 cgqc_cqb_list = [];
 cgqc_cqb_list_moving = [];
