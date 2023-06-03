@@ -6,7 +6,7 @@ switch (_type) do {
 		cgqc_pax_prep = true;
 	};
 	default {
-		hint "trainingSniping error";
+		hint "paxInit error";
 	};
 };
 

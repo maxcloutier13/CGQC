@@ -763,3 +763,28 @@ this addAction [
 
 
 
+[] spawn {
+	hint "Click anywhere on the map to select a position."; 
+	// Define the event handler function for MapSingleClick 
+	onMapClick = { 
+		params["_control", "_pos", "_shift", "_alt", "_ctrl"]; 
+			// Store the clicked position 
+		y_clickedPos = _pos;
+		
+		// Remove the MapSingleClick event handler 
+		removeMissionEventHandler ["MapSingleClick", _this]; 
+		openMap [false, false]; 
+	};
+	// Add the MapSingleClick event handler 
+	_check = addMissionEventHandler ["MapSingleClick", onMapClick]; 
+	openMap [true, false];
+	// Wait for the player to click on the map 
+	waitUntil {sleep 0.5; !(isNil "y_clickedPos") }; 
+	// Display the selected position in the hint 
+	hint format ["Selected position: %1", y_clickedPos];
+};
+
+
+[[13799.6,18743.5,5.08387],[13791.4,18744.6,9.16632],[13792.7,18747.2,13.3234],[13790.7,18741.4,13.4792],[13791,18737.7,13.6406],[13796.4,18738.5,16.1597],[13801.8,18741.6,16.0863],[13801.5,18746.4,15.8193],[13789.2,18746.6,16.1553],[13794.5,18741.3,16.0672],[13798,18738.6,18.5225],[13802.1,18741.5,18.3982],[13797,18746.7,18.4145],[13793.6,18747.9,18.3244],[13790.9,18747.9,18.3806],[13790.4,18739.9,18.5583],[13791,18737.2,18.7103],[13793.9,18736.9,18.6137]]
+
+last 7 positions for snipers and statics

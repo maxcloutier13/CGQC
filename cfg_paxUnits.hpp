@@ -28,9 +28,9 @@ cgqc_pax_opfor_arty = [];
 //Air
 cgqc_pax_opfor_radar = [];
 cgqc_pax_opfor_sam = [];
-cgqc_pax_opfor_plane_transport = ["uns_an2_transport"];
-cgqc_pax_opfor_plane_fighter = ["O_Plane_Fighter_02_F", "O_Plane_Fighter_02_Stealth_F"];
-cgqc_pax_opfor_plane_cas = ["O_Plane_CAS_02_dynamicLoadout_F"];
+cgqc_pax_opfor_plane_transport = [];
+cgqc_pax_opfor_plane_fighter = [];
+cgqc_pax_opfor_plane_cas = [];
 cgqc_pax_opfor_heli_cas_light = [];
 cgqc_pax_opfor_heli_cas_heavy = [];
 cgqc_pax_opfor_heli_transport = [];

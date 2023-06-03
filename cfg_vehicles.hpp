@@ -80,10 +80,10 @@ class cgqc_wallboard_koth: cgqc_wallboard_air {
     displayName = "Wallboard - KOTH";
     hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_koth.paa"};
 };
-class cgqc_wallboard_logitstics: cgqc_wallboard_air {
-    _generalMacro = "cgqc_wallboard_logitstics";
-    displayName = "Wallboard - Logistics";
-    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_logistics.paa"};
+class cgqc_wallboard_classroom: cgqc_wallboard_air {
+    _generalMacro = "cgqc_wallboard_classroom";
+    displayName = "Wallboard - Classroom";
+    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_classroom.paa"};
 };
 class cgqc_wallboard_med_equip: cgqc_wallboard_air {
     _generalMacro = "cgqc_wallboard_med_equip";
@@ -135,15 +135,7 @@ class cgqc_whiteboard_koth : Land_MapBoard_F
     displayName = "Whiteboard - KOTH";
     hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_koth.paa"};
 };
-class cgqc_whiteboard_logitstics : Land_MapBoard_F
-{
-    _generalMacro = "cgqc_whiteboard_logitstics";
-    scope = 2;
-    scopeCurator = 2;
-    editorSubcategory = "EdSubcat_cgqc_logistics";
-    displayName = "Whiteboard - Logistics";
-    hiddenSelectionsTextures[] = {"\CGQC\textures\whiteboard\whiteboard_logistics.paa"};
-};
+
 class cgqc_whiteboard_med_equip : Land_MapBoard_F
 {
     _generalMacro = "cgqc_whiteboard_med_equip";

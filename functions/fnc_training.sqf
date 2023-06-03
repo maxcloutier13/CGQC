@@ -3,13 +3,29 @@
 _item = _this select 0;
 train_option = _this select 1;
 
-_skip = 0;
+_skip = train_option;
 _wind = 0;
 _change_wind = false;
 switch (_item) do {
 	case "skip": {
-		['\cgqc\functions\fnc_skipTime.sqf'] remoteExec ['execVM', 2];
-		_text = format ["Tu t'es reposé %1 heures", train_option];
+		switch (_skip) do {
+			case 1: {
+				[[{ skipTime 1; }], "BIS_fnc_call"] call BIS_fnc_MP;
+			};
+			case 3: {
+				[[{ skipTime 3; }], "BIS_fnc_call"] call BIS_fnc_MP;
+			};
+			case 6: {
+				[[{ skipTime 6; }], "BIS_fnc_call"] call BIS_fnc_MP;
+			};
+			case 12: {
+				[[{ skipTime 12; }], "BIS_fnc_call"] call BIS_fnc_MP;
+			};
+			default {
+				hint "skiptime problem";
+			};
+		};
+		_text = format ["Tu t'es reposé %1 heures", _skip];
 		titleText [_text, "BLACK IN",7]; 
 		break;
 	};
