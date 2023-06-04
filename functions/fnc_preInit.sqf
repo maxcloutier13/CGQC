@@ -88,11 +88,20 @@ cgqc_zeus_mapRestricted_txt_on = false;
 // PAX System 
 cgqc_pax_prep = false;
 
-// Training stuff 
+// Sniping stuff 
 cgqc_training_mode = false;
-cgqc_sniping = false;
+cgqc_training_sniping = false;
+cgqc_training_sniping_comp = [];
+cgqc_training_sniping_comp_on = false;
 cgqc_spawn = false;
 cgqc_spawn_vic = "";
+
+// Parachute 
+cgqc_training_jump = false; 
+cgqc_training_jump_target = true;
+cgqc_training_jump_comp_on = false;
+cgqc_training_jump_comp = [];
+
 // Orientation
 cgqc_training_orienteering = false;
 cgqc_orienteering_timer = 0;
