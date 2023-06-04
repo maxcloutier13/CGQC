@@ -1,5 +1,5 @@
 // Orienteering ---------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_training_orient", "Land Navigation", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+_action = [ "menu_self_training_orient", "Land Navigation", "\CGQC\textures\icon_landnav", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_orient_basic", "Basic Orientation->ON", "", {["basic_on"] execVM '\cgqc\functions\fnc_trainingOrient.sqf'}, {!cgqc_training_orienteering} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_orient"], _action ] call  ace_interact_menu_fnc_addActionToObject;   

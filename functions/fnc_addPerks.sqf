@@ -6,7 +6,7 @@ _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""},
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Quick paradrop
-_action = [ "menu_self_para_quick", "QuickJump", "", {[0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {cgqc_player_hasAntiPlus || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_self_para_quick", "QuickJump", "\CGQC\textures\cgqc_ace_para", {[0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {cgqc_player_hasAntiPlus || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
 
 // Repos ---------------------------------------------------------------------------------------------------------------
