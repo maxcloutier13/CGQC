@@ -10,16 +10,16 @@ switch (_item) do {
 	case "skip": {
 		switch (_skip) do {
 			case 1: {
-				[[{ skipTime 1; }], "BIS_fnc_call"] call BIS_fnc_MP;
+				[0,{ skipTime 1}] call CBA_fnc_globalExecute;
 			};
 			case 3: {
-				[[{ skipTime 3; }], "BIS_fnc_call"] call BIS_fnc_MP;
+				[0,{ skipTime 3}] call CBA_fnc_globalExecute;
 			};
 			case 6: {
-				[[{ skipTime 6; }], "BIS_fnc_call"] call BIS_fnc_MP;
+				[0,{ skipTime 6}] call CBA_fnc_globalExecute;
 			};
 			case 12: {
-				[[{ skipTime 12; }], "BIS_fnc_call"] call BIS_fnc_MP;
+				[0,{ skipTime 12}] call CBA_fnc_globalExecute;
 			};
 			default {
 				hint "skiptime problem";
@@ -29,6 +29,17 @@ switch (_item) do {
 		titleText [_text, "BLACK IN",7]; 
 		break;
 	};
+	case "nice":{
+		[0,{ 0 setOvercast 0}] call CBA_fnc_globalExecute;
+		[0,{ 0 setRain 0}] call CBA_fnc_globalExecute;
+		[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
+	};
+	case "rain":{
+		[0,{ 0 setOvercast 1}] call CBA_fnc_globalExecute;
+		[0,{ 0 setRain 1}] call CBA_fnc_globalExecute;
+		[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
+	};
+
 	case "wind_low": {
 		w_east = floor random [0,2,4];
 		w_north = floor random [0,2,4];

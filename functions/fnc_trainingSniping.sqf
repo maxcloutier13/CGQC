@@ -5,7 +5,7 @@ _type = _this select 0;
 switch (_type) do {
 	case 0: { // Sniping off
 		// Turn it all off
-		cgqc_sniping = false;
+		cgqc_training_sniping = false;
 		// Remove all targets 
 		{
 			_x removeAllEventHandlers "HitPart";
@@ -57,7 +57,7 @@ switch (_type) do {
 		waitUntil {
 			!isNull player
 		};
-		cgqc_sniping = true;
+		cgqc_training_sniping = true;
 		TrainingCourse_TargetList = [];
 		TrainingCourse_BulletPathTracing = false;
 		TrainingCourse_BulletCamera = false;
@@ -102,6 +102,16 @@ switch (_type) do {
 		}];
 
 		Projectile_Impact_Aux = "Sign_Sphere10cm_F" createVehicle [0, 0, 0];
+	};
+	case 2: {
+		cgqc_training_sniping_comp_on = true;
+		cgqc_training_sniping_comp = [position player, getDir player, cgqc_position_sniping] call BIS_fnc_ObjectsMapper;
+	};
+	case 3: {
+		{
+			deleteVehicle _x
+		} forEach cgqc_training_sniping_comp;
+		cgqc_training_sniping_comp_on = false;
 	};
 	default {
 		hint "trainingSniping error";
