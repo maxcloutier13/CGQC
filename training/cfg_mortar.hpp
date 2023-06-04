@@ -1,5 +1,5 @@
 // Mortar mode ---------------------------------------------------------------------------------
-_action = [ "menu_self_training_mortar", "Mortar Training", "", {}, {!cgqc_training_mortar} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_training_mortar", "Mortar", "", {}, {!cgqc_training_mortar} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_mortar_on", "Start->Easy", "", {["easy"] execVM '\cgqc\functions\fnc_trainingMortar.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_mortar"], _action ] call  ace_interact_menu_fnc_addActionToObject;

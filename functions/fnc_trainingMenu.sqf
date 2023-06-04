@@ -6,17 +6,17 @@ cgqc_training_mode = true;
 _action = [ "menu_self_training", "Training", "", {}, {cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-#include "training\cfg_utils.hpp"
-#include "training\cfg_cqb.hpp"
-#include "training\cfg_defense.hpp"
-#include "training\cfg_heli.hpp"
-#include "training\cfg_koth.hpp"
-#include "training\cfg_landnav.hpp"
-#include "training\cfg_med.hpp"
-#include "training\cfg_mortar.hpp"
-#include "training\cfg_para.hpp"
-#include "training\cfg_sniping.hpp"
-#include "training\cfg_vic.hpp"
+#include "\cgqc\training\cfg_utils.hpp"
+#include "\cgqc\training\cfg_cqb.hpp"
+#include "\cgqc\training\cfg_defense.hpp"
+#include "\cgqc\training\cfg_heli.hpp"
+#include "\cgqc\training\cfg_koth.hpp"
+#include "\cgqc\training\cfg_landnav.hpp"
+#include "\cgqc\training\cfg_med.hpp"
+#include "\cgqc\training\cfg_mortar.hpp"
+#include "\cgqc\training\cfg_para.hpp"
+#include "\cgqc\training\cfg_sniping.hpp"
+#include "\cgqc\training\cfg_vic.hpp"
 
 
 
