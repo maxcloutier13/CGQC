@@ -102,6 +102,13 @@ if (backpack player isEqualTo "B_Parachute") then {
 	titleCut ["", "BLACK IN", 2]; 
 	"dynamicBlur" ppEffectAdjust [0.0]; 
 	"dynamicBlur" ppEffectCommit 2; 
+	if (cgqc_quickjump) then {
+		//Auto open at 100m 
+		[]spawn {
+			waitUntil {getPosATL player select 2 < 90};  // Wait until the player's altitude is less than 100 meters 
+			player action ["OpenParachute", player];  // Open the parachute for the player 
+		};
+	};
 	waitUntil{isTouchingGround player}; 
 	hint "Good job! Ace Self->Action: Drop ton parachute!"; 
 	cgqc_training_jump = false;
