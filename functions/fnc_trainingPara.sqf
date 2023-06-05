@@ -36,8 +36,12 @@ if (backpack player isEqualTo "B_Parachute") then {
 	y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];  
 	openMap [true, true]; 
 	// Wait for the player to click on the map  
-	waitUntil {sleep 0.5; !(isNil "cgqc_jump_clickPos") };  
-	
+	waitUntil {sleep 0.5; !(isNil "cgqc_jump_clickPos") }; 
+	if (cgqc_quickjump) then { 
+		player setVelocity [0, 0, 50];
+		hint "Hold on to your butt. Parachute will auto-open @ 100m";
+		sleep 3;
+	};
 	// Good to jump
 	if (cgqc_quickjump) then {
 		y_jumpPosition = cgqc_jump_clickPos;
