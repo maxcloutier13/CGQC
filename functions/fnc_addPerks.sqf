@@ -222,6 +222,9 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ac
 // Zeus ===================================================================================================
 _action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Yeet
+_action = [ "menu_self_zeus_yeet", "Yeet target", "", {["yeet", 0] spawn CGQC_fnc_perksZeus;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 
 // Briefing mode
 _action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;

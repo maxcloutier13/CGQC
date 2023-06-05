@@ -63,6 +63,25 @@ switch (_type) do {
 		cgqc_zeus_mapRestricted = false;
 		hint "Map Sharing is ON";
 	};
+	case "yeet":
+	{
+		_target = cursorTarget;
+		_targetID = owner _target;
+		[_target, [0, 0, 200]] remoteExec ["setVelocity", _targetID];
+		sleep 5; 
+		//["Tiens... un parachute ;o)"] remoteExec ["hint", _targetID];
+		_backpack = backpack _target; 
+		_items = backpackItems _target;
+		[_target] remoteExec ["removeBackpack", _targetID];
+		[_target, "B_Parachute"] remoteExec ["addBackpack", _targetID];  
+		waitUntil{sleep 1;isTouchingGround _target}; 
+		[_target] remoteExec ["removeBackpack", _targetID];
+		[_target, _backpack] remoteExec ["addBackpack", _targetID];  
+		{ 
+			[_target, _x] remoteExec ["addItem", _targetID];  
+		}forEach _items; 
+		//["ton backpack is back"] remoteExec ["hint", _targetID];
+	};
 	case "briefingCmd":
 	{
 		// Command briefing started
