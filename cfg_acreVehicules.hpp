@@ -9,6 +9,23 @@ class Car;
 class Tank;
 // Class overrides for spares/Acre settings
 class Boat_Armed_01_base_F : Boat_F {
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            masterPositions[] = {"driver"};
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // If you have multiple racks a text label helps identify the particular rack.
@@ -42,6 +59,25 @@ class Car_F : Car{
     };
 };
 class MRAP_01_base_F : Car_F {
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"commander"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
 	class AcreRacks {
 		class Rack_1 {
 			displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -58,6 +94,25 @@ class MRAP_01_base_F : Car_F {
 	};
 };
 class MRAP_02_base_F: Car_F {
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"commander"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
 	class AcreRacks {
 		class Rack_1 {
 			displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -74,6 +129,25 @@ class MRAP_02_base_F: Car_F {
 	};
 };
 class MRAP_03_base_F: Car_F {
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"commander"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
 	class AcreRacks {
 		class Rack_1 {
 			displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -109,6 +183,25 @@ class Helicopter_Base_F: Helicopter {
 	class EventHandlers {
         init = "[_this select 0, 'air'] execVM '\cgqc\functions\fnc_addSpares.sqf';";
     };
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"driver"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -126,6 +219,26 @@ class Helicopter_Base_F: Helicopter {
     };
 };
 class VTOL_01_unarmed_base_F: VTOL_01_base_F {
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            disabledPositions[] = {{"turret", {1}, {2}}};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"driver", "copilot"};
+            numLimitedPositions = 2;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"},{"turret", "all"},{"ffv", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
 	class AcreRacks {
 		class Rack_1 {
 			displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -143,6 +256,25 @@ class VTOL_01_unarmed_base_F: VTOL_01_base_F {
 	};
 };
 class Plane_Base_F: Plane {
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"driver"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -160,6 +292,25 @@ class Plane_Base_F: Plane {
     };
 };
 class Plane_Civil_01_base_F: Plane_Base_F {
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"driver"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -173,6 +324,29 @@ class Plane_Civil_01_base_F: Plane_Base_F {
 };
 class Wheeled_APC_F: Car_F {
     ace_cargo_space = 8;
+    acre_hasInfantryPhone = 1;
+    acre_infantryPhoneDisableRinging = 1;
+    acre_infantryPhoneIntercom[] = {"all"};
+    acre_infantryPhoneControlActions[] = {"intercom_1"};
+    class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"commander"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // Name is displayed in the interaction menu.
@@ -194,6 +368,25 @@ class Wheeled_APC_F: Car_F {
 };
 class Tank_F: Tank {
     ace_cargo_space = 8;
+     class AcreIntercoms {
+        class Intercom_1 {
+            displayName = "Crew Intercom";
+            shortName = "Crew";
+            allowedPositions[] = {"crew"};
+            limitedPositions[] = {{"cargo", "all"}};
+            masterPositions[] = {"commander"};
+            numLimitedPositions = 1;
+            connectedByDefault = 1;
+        };
+        class Intercom_2: Intercom_1 {
+            displayName = "PAX Intercom";
+            shortName = "PAX";
+            allowedPositions[] = {"crew", {"cargo", "all"}};
+            limitedPositions[] = {};
+            numLimitedPositions = 0;
+            connectedByDefault = 0;
+        };
+    };
     class AcreRacks {
         class Rack_1 {
             displayName = "Rack1"; // Name is displayed in the interaction menu.
