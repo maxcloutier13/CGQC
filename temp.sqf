@@ -788,3 +788,39 @@ this addAction [
 [[13799.6,18743.5,5.08387],[13791.4,18744.6,9.16632],[13792.7,18747.2,13.3234],[13790.7,18741.4,13.4792],[13791,18737.7,13.6406],[13796.4,18738.5,16.1597],[13801.8,18741.6,16.0863],[13801.5,18746.4,15.8193],[13789.2,18746.6,16.1553],[13794.5,18741.3,16.0672],[13798,18738.6,18.5225],[13802.1,18741.5,18.3982],[13797,18746.7,18.4145],[13793.6,18747.9,18.3244],[13790.9,18747.9,18.3806],[13790.4,18739.9,18.5583],[13791,18737.2,18.7103],[13793.9,18736.9,18.6137]]
 
 last 7 positions for snipers and statics
+
+
+
+// Random time between sunset/sunrise noon/midnight
+//Only run once 
+if (isNil "cgqc_randomTime") then {
+	_sun = date call BIS_fnc_sunriseSunsetTime;
+	_sunrise = _sun select 0;
+	_sunset = _sun select 1;
+	_year = date select 0;
+	_month = date select 1;
+	_day = date select 2;
+	_hour = date select 3;
+	_min= date select 4;
+	_pick = selectRandom [1,2,3,4];
+	switch (_pick) do {
+		case 1:	{ // Sunrise
+			setDate [_year, _month, _day, _sunrise, 0];
+		};
+		case 2:	{ // Sunset
+			setDate [_year, _month, _day, _sunset, 0];
+		};
+		case 3:	{ // Noon
+			setDate [_year, _month, _day, 12, 0];
+		};
+		case 4:	{ // Midnight
+			setDate [_year, _month, _day, 0, 0];
+		};
+};
+
+// Random weather
+_over = random 1;
+_rain = random 1;
+[0,{ 0 setOvercast _over}] call CBA_fnc_globalExecute;
+[0,{ 0 setRain _rain}] call CBA_fnc_globalExecute;
+[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
