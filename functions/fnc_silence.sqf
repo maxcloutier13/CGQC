@@ -1,6 +1,7 @@
 trg_test_units = [];
 trg_player_lowered = false;
 trg_test_oldVolume = acex_volume_reduction;
+hintSilent "Salle de classe. Volume extérieur réduit";
 while {triggerActivated trg_training} do {
 	if (player in list trg_training) then {
 		trg_units_in = list trg_training;
@@ -8,7 +9,6 @@ while {triggerActivated trg_training} do {
 			acex_volume_reduction = 9;
 			[] call ace_volume_fnc_lowerVolume;	
 		};
-		hintSilent "Salle de classe. Volume extérieur réduit";
 		trg_player_lowered = true;
 	}else {
 		if (vehicle player == player && trg_player_lowered) then {
@@ -19,7 +19,7 @@ while {triggerActivated trg_training} do {
 			sleep 5;
 		};
 	};
-	sleep 1;
+	sleep 2;
 	hintSilent "";
 };
 if (vehicle player == player && trg_player_lowered) then {

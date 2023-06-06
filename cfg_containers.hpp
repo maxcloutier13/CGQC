@@ -142,9 +142,9 @@ class cgqc_box_mk2_arsenal : B_supplyCrate_F
     editorPreview = "\A3\EditorPreviews_F_Orange\Data\CfgVehicles\C_IDAP_supplyCrate_F.jpg";
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
     ace_cargo_noRename = 1;
-    ace_refuel_fuelCargo = 10000; // Fuel cargo
-    ace_rearm_defaultSupply = 10000;
-    ace_refuel_hooks[] = {{0.38,-3.17,-.7},{-0.41,-3.17,-.7}}; // Nozzle hooks positions
+    //ace_refuel_fuelCargo = 10000; // Fuel cargo
+    //ace_rearm_defaultSupply = 10000;
+    //ace_refuel_hooks[] = {{0.38,-3.17,-.7},{-0.41,-3.17,-.7}}; // Nozzle hooks positions
     
     class EventHandlers
     {

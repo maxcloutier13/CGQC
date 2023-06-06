@@ -29,17 +29,48 @@ switch (_item) do {
 		titleText [_text, "BLACK IN",7]; 
 		break;
 	};
+	case "sunrise":{
+		_sun = date call BIS_fnc_sunriseSunsetTime;
+		_sunrise = _sun select 0;
+		_sunset = _sun select 1;
+		_year = date select 0;
+		_month = date select 1;
+		_day = date select 2;
+		_hour = date select 3;
+		_min= date select 4;
+		switch (train_option) do {
+			case 0: {
+				setDate [_year, _month, _day, _sunrise, 0];
+				_text = "Aaah... sunrise...";
+			};
+			case 1: {
+				setDate [_year, _month, _day, _sunset, 0];
+				_text = "Aaah... sunset...";
+			};
+		};
+		titleText [_text, "BLACK IN",7]; 
+		break;
+	};
 	case "nice":{
 		[0,{ 0 setOvercast 0}] call CBA_fnc_globalExecute;
 		[0,{ 0 setRain 0}] call CBA_fnc_globalExecute;
 		[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
+		hint "Nice weather on the way";
 	};
 	case "rain":{
 		[0,{ 0 setOvercast 1}] call CBA_fnc_globalExecute;
 		[0,{ 0 setRain 1}] call CBA_fnc_globalExecute;
 		[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
+		hint "Rain it is";
 	};
-
+	case "random":{
+		_over = random 1;
+		_rain = random 1;
+		[0,{ 0 setOvercast _over}] call CBA_fnc_globalExecute;
+		[0,{ 0 setRain _rain}] call CBA_fnc_globalExecute;
+		[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
+		hint "Random weather";
+	};
 	case "wind_low": {
 		w_east = floor random [0,2,4];
 		w_north = floor random [0,2,4];

@@ -10,11 +10,14 @@ _type = _this select 0;
 			if (cgqc_config_author find "Cpl. Quelque chose" != 0) then {
 				cgqc_intro_running = true;
 				ace_hearing_disableVolumeUpdate = true;
+				if(!isNil "cgqc_establishing") then {
+					waitUntil { scriptDone cgqc_establishing };
+				};
 				0 fadeSound 0;
 				disableUserInput true;
 				// Start with a silent black screen.
 				titleCut ["", "BLACK FADED", 999];
-				sleep 2;
+				sleep 1;
 				_text = (
 					"<img size= '8' style='vertical-align:middle' shadow='false' image='\cgqc\textures\CGQC.paa'/>" +
 					"<br/>" +
@@ -25,7 +28,7 @@ _type = _this select 0;
 				[_text, 0, 0, 5, 2] spawn BIS_fnc_dynamicText;
 				// Fade from black, to blur, to clear as text types.
 				10 fadeSound 1;
-				sleep 3;
+				sleep 2;
 				disableUserInput false;
 				"dynamicBlur" ppEffectEnable true;   
 				"dynamicBlur" ppEffectAdjust [3];   
