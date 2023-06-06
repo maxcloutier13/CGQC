@@ -425,7 +425,7 @@ cgqc_unconscious_sounds = [
 
 // Loading dialogs
 _vehDialog = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_vic_fnc.sqf";
-waitUntil {scriptDone _vehDialog};
+//waitUntil {scriptDone _vehDialog};
 
 // PAX Units definitions
 #include "\cgqc\cfg_paxUnits.hpp"
