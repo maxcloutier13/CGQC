@@ -87,29 +87,27 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 		};
 		case "spartan_1": { //Team Lead
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-			waitUntil {sleep 0.5;!isNil "_handRadios"};
-			_handRadio_1 = _handRadios select 0;
-			_handRadio_2 = _handRadios select 1;
+			_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
+			_packRadio = ["ACRE_PRC117F"] call acre_api_fnc_getRadioByType;
 			// Channels
 			waitUntil {sleep 0.5;!isNil "_personalRadio"};
 			[_personalRadio, _section] call acre_api_fnc_setRadioChannel; 
 			// Channels
-			waitUntil {sleep 0.5;!isNil "_handRadio_1"};
-			[_handRadio_1, 4] call acre_api_fnc_setRadioChannel; 
-			waitUntil {sleep 0.5;!isNil "_handRadio_2"};
-			[_handRadio_2, 1] call acre_api_fnc_setRadioChannel;
+			waitUntil {sleep 0.5;!isNil "_handRadio"};
+			[_handRadio, 4] call acre_api_fnc_setRadioChannel; 
+			waitUntil {sleep 0.5;!isNil "_packRadio"};
+			[_packRadio, 1] call acre_api_fnc_setRadioChannel;
 			// Set sides 
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-			_success = [_handRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+			_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			// Set radio orders
-			_success = [ [ _personalRadio, _handRadio_1, _handRadio_2 ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+			_success = [ [ _personalRadio, _handRadio, _packRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 			// Set HQ radio to speaker
-			_success = [_handRadio_2, true] call acre_api_fnc_setRadioSpeaker;
+			_success = [_packRadio, true] call acre_api_fnc_setRadioSpeaker;
 			hintSilent parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam <br/> 
-			Radio3:Speaker/152/HQ</t>";
+			Radio3:Both/117f/HQ</t>";
 		};
 		case "spartan_2": { //Spartan 2iC
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
