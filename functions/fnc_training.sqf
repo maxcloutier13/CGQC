@@ -40,11 +40,11 @@ switch (_item) do {
 		_min= date select 4;
 		switch (train_option) do {
 			case 0: {
-				setDate [_year, _month, _day, _sunrise, 0];
+				[0,{setDate [_year, _month, _day, _sunrise, 0]}] call CBA_fnc_globalExecute;
 				_text = "Aaah... sunrise...";
 			};
 			case 1: {
-				setDate [_year, _month, _day, _sunset, 0];
+				[0,{setDate [_year, _month, _day, _sunset, 0]}] call CBA_fnc_globalExecute;
 				_text = "Aaah... sunset...";
 			};
 		};
