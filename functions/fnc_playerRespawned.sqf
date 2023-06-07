@@ -12,7 +12,7 @@ _unit setFace(_unit getVariable["Saved_Face",[]]);
 // Secondary weapon
 cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
 //Re-disable stamina, in-case 
-_unit enableStamina false; 
+//_unit enableStamina false; 
 // Set patch
 _setPatch = [] spawn CGQC_fnc_setPatch; //Set patch again
 // Load Radio priorities
