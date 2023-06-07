@@ -13,11 +13,12 @@ if (_jumpHeight == 0) then { // Quickjump - 500m no targets
 	cgqc_jump_backpack = backpack player;
 	cgqc_jump_backpack_items = backpackItems player;
 	removeBackpack player;
-	player addBackpack "B_Parachute";
+	player addBackpack "rhsusf_eject_Parachute_backpack";
 	cgqc_quickjump = true;
 };
 
-if (backpack player isEqualTo "B_Parachute") then { 
+
+if (backpack player isEqualTo "B_Parachute" || backpack player isEqualTo "rhsusf_eject_Parachute_backpack") then { 
 	cgqc_training_jump = true;
 	// Ask to click on map 
 	hint "Click on map to choose jump point.";  
@@ -109,7 +110,7 @@ if (backpack player isEqualTo "B_Parachute") then {
 	if (cgqc_quickjump) then {
 		//Auto open at 100m 
 		[]spawn {
-			waitUntil {getPosATL player select 2 < 90};  // Wait until the player's altitude is less than 100 meters 
+			waitUntil {getPosATL player select 2 < 100};  // Wait until the player's altitude is less than 100 meters 
 			player action ["OpenParachute", player];  // Open the parachute for the player 
 		};
 	};
@@ -133,9 +134,10 @@ if (backpack player isEqualTo "B_Parachute") then {
 		{
 			player addItemToBackpack _x;
 		}forEach cgqc_jump_backpack_items;
-		player allowDammage true;
 		cgqc_quickjump = false;
 		hint "Good to go bruv!";
+		sleep 5;
+		player allowDammage true;
 	};
 } else { 
  hint "Sans parachute? T'es malade!"; 
