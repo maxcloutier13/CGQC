@@ -141,6 +141,7 @@ if (backpack player isEqualTo "B_Parachute" || backpack player isEqualTo "rhsusf
 		// Remove parachute
 		removeBackpack player;
 		player addBackpack cgqc_jump_backpack;
+		clearAllItemsFromBackpack player;
 		{
 			player addItemToBackpack _x;
 		}forEach cgqc_jump_backpack_items;
