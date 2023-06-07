@@ -2,12 +2,18 @@
 // Code in the event a player respawns
 params ["_unit"];
 
-// Player respawn
+// Save stuff for player respawn
+// Loadout
 _unit setUnitLoadout(_unit getVariable["Saved_Loadout",[]]); //Load loadout saved on death
+// Face/identity
 _unit setFace(_unit getVariable["Saved_Face",[]]);
-//[_unit, cgqc_player_slinged_helmet] call GRAD_slingHelmet_fnc_addSlungHelmet;
-_unit enableStamina false; //Re-disable stamina, in-case 
-//["InitializePlayer", [_unit]] call BIS_fnc_dynamicGroups; //Reinit dynamic groups? Necessary?
+// Slinged helmet
+[_unit, _unit getVariable["Saved_Slinged",[]]] call GRAD_slingHelmet_fnc_addSlungHelmet;
+// Secondary weapon
+cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
+//Re-disable stamina, in-case 
+_unit enableStamina false; 
+// Set patch
 _setPatch = [] spawn CGQC_fnc_setPatch; //Set patch again
 // Load Radio priorities
 y_mpttRadioList1 = _unit getVariable["Radio_Settings",[]];

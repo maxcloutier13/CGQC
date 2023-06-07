@@ -3,7 +3,7 @@
 params ["_unit", "_killer"];
 _unit setVariable["Saved_Loadout",getUnitLoadout _unit];
 _unit setVariable["Saved_Face", face _unit];
-//cgqc_player_slinged_helmet = [player] call GRAD_slingHelmet_fnc_getSlungHelmet;
+_unit setVariable["Saved_Slinged", [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet];
 // Save radio ptt priorities
 y_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
 _unit setVariable["Radio_Settings", y_mpttRadioList];
