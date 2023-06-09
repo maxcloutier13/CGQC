@@ -56,9 +56,9 @@
 	_action = [ "menu_self_utils", "Utils", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call  ace_interact_menu_fnc_addActionToCLass;
 	// ------ Animation on/off 
-	_action = [ "zeus_anim_on", "Animations: Lock", "", {["animation_on"] spawn CGQC_fnc_perksZeus}, {!cgqc_mk2_animation_locked} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "zeus_anim_on", "Animations: Lock", "", {["animation_on", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_mk2_animation_locked} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
-	_action = [ "zeus_anim_off", "Animations: Unlock", "", {["animation_off"] spawn CGQC_fnc_perksZeus}, {cgqc_mk2_animation_locked }] call ace_interact_menu_fnc_createAction;
+	_action = [ "zeus_anim_off", "Animations: Unlock", "", {["animation_off", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_mk2_animation_locked }] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 	// ------ Export Loadout  
 	_action = [ "zeus_export", "Loadout to Clipboard", "", {[] execVM "\cgqc\functions\fnc_getLoadout.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -71,28 +71,28 @@
 	//_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 
 	// ------ Delete all dead
-	_action = [ "zeus_delete", "Delete Dead", "", {["delete"] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "zeus_delete", "Delete Dead", "", {["delete", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 	// ------ Get 343
-	_action = [ "max_343", "get 343", "", {["343"] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "max_343", "get 343", "", {["343", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;		
 	// ------ Get 152
-	_action = [ "max_152", "get 152", "", {["152"] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "max_152", "get 152", "", {["152", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 	// ------ Get 152
-	_action = [ "max_117", "get 117f", "", {["117"] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "max_117", "get 117f", "", {["117", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;		
 	// ------ Get Crate
-	_action = [ "zeus_getcrate", "Spawn: Arsenal mk3", "", {["crate"] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "zeus_getcrate", "Spawn: Arsenal mk3", "", {["crate", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToCLass;	
 	//  ------ Delete Crate 
-	_action = [ "zeus_delcrate", "Delete Arsenal", "", {["del_crate"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "zeus_delcrate", "Delete Arsenal", "", {["del_crate", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 	// ------ Get Cargo
-	_action = [ "zeus_getcargo", "get Cargo", "", {["cargo"] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "zeus_getcargo", "get Cargo", "", {["cargo", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;	
 	//  ------ Delete Cargo 
-	_action = [ "zeus_delcargo", "delete Cargo", "", {["del_cargo"] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "zeus_delcargo", "delete Cargo", "", {["del_cargo", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
 	_adding = [_type, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;	
 
 }] call CBA_fnc_addEventHandler;

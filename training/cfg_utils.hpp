@@ -1,16 +1,14 @@
 // Utils
 _action = [ "menu_self_utils", "Utils", "\CGQC\textures\icon_maintenance", {}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Quick Heal
-_action = [ "menu_self_heal", "Quick heal", "", {["heal"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;       
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
+
+// Quick paradrop
+_action = [ "menu_self_para_quick", "QuickJump", "\CGQC\textures\cgqc_ace_para", {}, {cgqc_player_hasAntiPlus || [player] call CGQC_fnc_checkZeus || cgqc_player_max || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
+_action = [ "menu_self_para_quickMap", "QuickJump to map point", "", {[0, 0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_para_quick"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
 // Teleport to player
-#include "\cgqc\training\cfg_teleportPlayer.hpp"
-// ------ Get Crate
-_action = [ "menu_self_training_crate", "Spawn: Arsenal mk3", "", {["crate"] execVM '\cgqc\loadouts\mk3_getStuff.sqf'}, {!cgqc_player_crate} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils" ], _action ] call ace_interact_menu_fnc_addActionToObject;	
-_action = [ "menu_self_training_delcrate", "Delete Arsenal", "", {["del_crate"] execVM '\cgqc\loadouts\mk3_getStuff.sqf'}, {cgqc_player_crate} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+#include "\cgqc\training\cfg_dropToPlayer.hpp"
 
 // Time/weather 
 _action = [ "menu_self_training_time", "Time/Weather", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       

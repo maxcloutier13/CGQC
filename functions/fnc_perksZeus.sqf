@@ -3,6 +3,7 @@
 
 _type = _this select 0;
 briefing_time = _this select 1;
+_targetPlayer = _this select 2;
 
 switch (_type) do {
 	case "zeus_radios":
@@ -67,18 +68,18 @@ switch (_type) do {
 	};
 	case "yeet":
 	{
-		_targetID = owner yeeting_player;
-		[yeeting_player, [0, 0, 200]] remoteExec ["setVelocity", _targetID];
+		_targetID = owner _targetPlayer;
+		[_targetPlayer, [0, 0, 200]] remoteExec ["setVelocity", _targetID];
 		["Bon... kessé t'as faite encore?"] remoteExec ["hint", _targetID];
 		sleep 5; 
 		["Chill. Voici un parachute. Tu vas retrouver ton backpack une fois au sol ;o)"] remoteExec ["hint", _targetID];
-		_backpack = backpack yeeting_player; 
-		_items = backpackItems yeeting_player;
-		[yeeting_player] remoteExec ["removeBackpack", _targetID];
-		[yeeting_player, "B_Parachute"] remoteExec ["addBackpack", _targetID];  
+		_backpack = backpack _targetPlayer; 
+		_items = backpackItems _targetPlayer;
+		[_targetPlayer] remoteExec ["removeBackpack", _targetID];
+		[_targetPlayer, "B_Parachute"] remoteExec ["addBackpack", _targetID];  
 		[]spawn {
-			waitUntil {getPosATL yeeting_player select 2 < 100};  // Wait until the player's altitude is less than 100 meters 
-			yeeting_player action ["OpenParachute", yeeting_player];  // Open the parachute for the player 
+			waitUntil {getPosATL _targetPlayer select 2 < 100};  // Wait until the player's altitude is less than 100 meters 
+			_targetPlayer action ["OpenParachute", _targetPlayer];  // Open the parachute for the player 
 		};
 		//Make temporarily invincible
 		while {isDamageAllowed player} do
@@ -86,11 +87,11 @@ switch (_type) do {
 			player allowDamage false;
 			sleep 0.5;
 		};
-		waitUntil{sleep 1;isTouchingGround yeeting_player}; 
-		[yeeting_player] remoteExec ["removeBackpack", _targetID];
-		[yeeting_player, _backpack] remoteExec ["addBackpack", _targetID];  
+		waitUntil{sleep 1;isTouchingGround _targetPlayer}; 
+		[_targetPlayer] remoteExec ["removeBackpack", _targetID];
+		[_targetPlayer, _backpack] remoteExec ["addBackpack", _targetID];  
 		{ 
-			[yeeting_player, _x] remoteExec ["addItem", _targetID];  
+			[_targetPlayer, _x] remoteExec ["addItem", _targetID];  
 		}forEach _items; 
 		sleep 1;
 		["Ton backpack is back"] remoteExec ["hint", _targetID];
@@ -309,19 +310,19 @@ switch (_type) do {
 		break;
 	};
 	case "tp": {
-		player setDir getDir tp_player; 
-  		player setPos (getPos tp_player vectorAdd [2, 0, 0]);
+		player setDir getDir _targetPlayer; 
+  		player setPos (getPos _targetPlayer vectorAdd [2, 0, 0]);
 		hint "Teleported";
 		break;
 	};
 	case "blackout": {
 		cgqc_blackout_player_on = true;
-		[blackout_player, true] remoteExec ["setUnconscious", owner blackout_player];
+		[_targetPlayer, true] remoteExec ["setUnconscious", owner _targetPlayer];
 	};
 	case "wakeup":
 	{
 		cgqc_blackout_player_on = false;
-		[blackout_player, false] remoteExec ["setUnconscious", owner blackout_player];
+		[_targetPlayer, false] remoteExec ["setUnconscious", owner _targetPlayer];
 	};
 	case "attach":{
 		zeus_oldPos = getPos player;
@@ -335,7 +336,7 @@ switch (_type) do {
 			sleep 0.5;
 		};
 		cgqc_zeus_god = true;
-		player attachTo [attach_player, [0,-5,1]];
+		player attachTo [_targetPlayer, [0,-5,1]];
 		cgqc_zeus_attached = true;
 		hint "Attached";
 		break;
