@@ -142,6 +142,12 @@ class cgqc_box_mk2_arsenal : B_supplyCrate_F
     editorPreview = "\A3\EditorPreviews_F_Orange\Data\CfgVehicles\C_IDAP_supplyCrate_F.jpg";
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
     ace_cargo_noRename = 1;
+    ace_dragging_canDrag = 1;  // Can be dragged (0-no, 1-yes)
+    ace_dragging_dragPosition[] = {0, 1.5, 0};  // Offset of the model from the body while dragging (same as attachTo) (default: [0, 1.5, 0])
+    ace_dragging_dragDirection = 0;  // Model direction while dragging (same as setDir after attachTo) (default: 0)
+    ace_dragging_canCarry = 1;  // Can be carried (0-no, 1-yes)
+    ace_dragging_carryPosition[] = {0, 1, 1};  // Offset of the model from the body while dragging (same as attachTo) (default: [0, 1, 1])
+    ace_dragging_carryDirection = 0;  // Model direction while dragging (same as setDir after attachTo) (default: 0)
     //ace_refuel_fuelCargo = 10000; // Fuel cargo
     //ace_rearm_defaultSupply = 10000;
     //ace_refuel_hooks[] = {{0.38,-3.17,-.7},{-0.41,-3.17,-.7}}; // Nozzle hooks positions
