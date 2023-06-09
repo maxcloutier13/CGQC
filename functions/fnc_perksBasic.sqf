@@ -18,11 +18,11 @@ switch (_type) do {
             [player] call GRAD_slingHelmet_fnc_actionSling;
             // Send goggles to backpack
             cgqc_player_oldFace = goggles player;
-            player addItemToBackpack cgqc_player_oldFace;
+            //player addItemToBackpack cgqc_player_oldFace;
             removeGoggles player;
             // set hat
             player addHeadgear cgqc_player_beret;
-            // set glasses 
+            // set glasses to nothing
             player addGoggles _new_face;
             // Find nvgs
             if ([player, "JAS_GPNVG18_Full_blk_TI"] call BIS_fnc_hasItem) then {
@@ -31,7 +31,7 @@ switch (_type) do {
             if ([player, "JAS_GPNVG18_blk"] call BIS_fnc_hasItem) then {
                 cgqc_player_oldNvg = "JAS_GPNVG18_blk";
             };
-            player addItemToBackpack cgqc_player_oldNvg;
+            //player addItemToBackpack cgqc_player_oldNvg;
             player unlinkItem cgqc_player_oldNvg;
             // Holster all weapons
             player action ['SwitchWeapon', player, player, 250];
@@ -57,10 +57,10 @@ switch (_type) do {
                 //sleep 1;
                 // Rank and color up top
                 [_txt, [1.25,0,1,1], nil, 4, [2,3], 0] spawn BIS_fnc_textTiles;
-                player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
-                player addGoggles cgqc_player_oldFace;
-                player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
-                player linkItem cgqc_player_oldNvg;
+               // player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
+                //player addGoggles cgqc_player_oldFace;
+                //player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
+               // player linkItem cgqc_player_oldNvg;
             };
         };
         break;
