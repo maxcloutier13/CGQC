@@ -43,7 +43,7 @@ switch (_type) do {
 		--- Zeus Radios -------------<br/> 
 		Radio1:Gauche/117/Spartan/HQ<br/>   
 		Radio2:Droite/117/Inter-Zeus</t>";
-
+		break;
 	};
 	case "maprestrict":
 	{
@@ -53,6 +53,7 @@ switch (_type) do {
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = true;
 		hint "Map Sharing is OFF";
+		break;
 	};
 	case "mapshare":
 	{
@@ -62,25 +63,43 @@ switch (_type) do {
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = false;
 		hint "Map Sharing is ON";
+		break;
 	};
 	case "yeet":
 	{
-		_target = cursorTarget;
-		_targetID = owner _target;
-		[_target, [0, 0, 200]] remoteExec ["setVelocity", _targetID];
+		_targetID = owner yeeting_player;
+		[yeeting_player, [0, 0, 200]] remoteExec ["setVelocity", _targetID];
+		["Bon... kessé t'as faite encore?"] remoteExec ["hint", _targetID];
 		sleep 5; 
-		//["Tiens... un parachute ;o)"] remoteExec ["hint", _targetID];
-		_backpack = backpack _target; 
-		_items = backpackItems _target;
-		[_target] remoteExec ["removeBackpack", _targetID];
-		[_target, "B_Parachute"] remoteExec ["addBackpack", _targetID];  
-		waitUntil{sleep 1;isTouchingGround _target}; 
-		[_target] remoteExec ["removeBackpack", _targetID];
-		[_target, _backpack] remoteExec ["addBackpack", _targetID];  
+		["Chill. Voici un parachute. Tu vas retrouver ton backpack une fois au sol ;o)"] remoteExec ["hint", _targetID];
+		_backpack = backpack yeeting_player; 
+		_items = backpackItems yeeting_player;
+		[yeeting_player] remoteExec ["removeBackpack", _targetID];
+		[yeeting_player, "B_Parachute"] remoteExec ["addBackpack", _targetID];  
+		[]spawn {
+			waitUntil {getPosATL yeeting_player select 2 < 100};  // Wait until the player's altitude is less than 100 meters 
+			yeeting_player action ["OpenParachute", yeeting_player];  // Open the parachute for the player 
+		};
+		//Make temporarily invincible
+		while {isDamageAllowed player} do
+		{
+			player allowDamage false;
+			sleep 0.5;
+		};
+		waitUntil{sleep 1;isTouchingGround yeeting_player}; 
+		[yeeting_player] remoteExec ["removeBackpack", _targetID];
+		[yeeting_player, _backpack] remoteExec ["addBackpack", _targetID];  
 		{ 
-			[_target, _x] remoteExec ["addItem", _targetID];  
+			[yeeting_player, _x] remoteExec ["addItem", _targetID];  
 		}forEach _items; 
-		//["ton backpack is back"] remoteExec ["hint", _targetID];
+		sleep 1;
+		["Ton backpack is back"] remoteExec ["hint", _targetID];
+		while {!isDamageAllowed player} do
+		{
+			player allowDamage true;
+			sleep 0.5;
+		};
+		break;
 	};
 	case "briefingCmd":
 	{
@@ -109,6 +128,7 @@ switch (_type) do {
 		cgqc_briefingCmd_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		cgqc_briefingCmd_trg setTriggerStatements ["this", _act, _deAct];
 		cgqc_briefingCmd_trg setTriggerInterval _int;
+		break;
 	};
 	case "briefingCmd_stop":
 	{
@@ -131,6 +151,7 @@ switch (_type) do {
 		// Remote reset volumes on everyone
 		{['\cgqc\functions\fnc_briefingCmdStop.sqf'] remoteExec ['execVM',vehicle _x];
 		} forEach allPlayers;
+		break;
 	};
 	case "briefing":
 	{
@@ -181,6 +202,7 @@ switch (_type) do {
 			sleep 10;
 			[""] remoteExec ["hintSilent"];
 		};
+		break;
 	};
 	case "briefing_stop":
 	{
@@ -202,94 +224,169 @@ switch (_type) do {
 		// Remote reset volumes on everyone
 		{['\cgqc\functions\fnc_briefingStop.sqf'] remoteExec ['execVM',vehicle _x];
 		} forEach allPlayers;
+		break;
 	};
 	case "delete": {
 		{
 			deleteVehicle _x
 		} forEach allDead;
 		hint "Dead deleted";
+		break;
 	};
 	case "343":
 	{
 		player addItem "ACRE_PRC343";
 		hint "Got: 343";
+		break;
 	};
 	case "152":
 	{
 		player addItem "ACRE_PRC152";
 		hint "Got: 152";
+		break;
 	};
 	case "117":
 	{
 		player addItem "ACRE_PRC117F";
 		hint "Got: 117";
+		break;
 	};
 	case "crate":
 	{
 		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
 		zeus_crate = "cgqc_box_mk2_arsenal" createVehicle _pos_free;
 		cgqc_zeus_crate = true;
-		hint "Mk3 arsenal";
-		sleep 5;
-		hintSilent "";
+		hint "Mk3 arsenal";		
+		break;
 	};
 	case "del_crate":
 	{
 		deleteVehicle zeus_crate;
 		cgqc_zeus_crate = false;
-		hint "Arsenal deleted";
-		sleep 5;
-		hintSilent "";
+		hint "Arsenal deleted";		
+		break;
 	};
 	case "cargo":
 	{
 		zeus_cargo="cgqc_box_mk2_cargo" createVehicle (position player);
 		cgqc_zeus_cargo = true;
-		hint "Mk3 Cargo";
-		sleep 5;
-		hintSilent "";
+		hint "Mk3 Cargo";		
+		break;
 	};
 	case "del_cargo":
 	{
 		deleteVehicle zeus_cargo;
 		cgqc_zeus_cargo = false;
-		hint "Cargo deleted";
-		sleep 5;
-		hintSilent "";
+		hint "Cargo deleted";		
+		break;
 	};
 	case "animation_on": {
 		cgqc_mk2_animation_locked = true; 
 		publicVariable "cgqc_mk2_animation_locked";
-		hint "Animations LOCKED";
-		sleep 5;
-		hintSilent "";
+		hint "Animations LOCKED";		
+		break;
 	};
 	case "animation_off": {
 		cgqc_mk2_animation_locked = false;
 		publicVariable "cgqc_mk2_animation_locked";
 		hint "Animations UNLOCKED";
-		sleep 5;
-		hintSilent "";
+		break;
 	};
 	case "punch_on": {
 		BRIDGE_KPU_MasterSetting = true; 
 		publicVariable "BRIDGE_KPU_MasterSetting";
-		hint "Punching LOCKED";
-		sleep 5;
-		hintSilent "";
+		hint "Punching Unlocked";
+		break;
 	};
 	case "punch_off": {
 		BRIDGE_KPU_MasterSetting = false;
 		publicVariable "BRIDGE_KPU_MasterSetting";
-		hint "Punching UNLOCKED";
-		sleep 5;
-		hintSilent "";
+		hint "Punching Locked";
+		break;
 	};
 	case "animation_setting": {
 		publicVariable "cgqc_mk2_animation_locked";
+		break;
+	};
+	case "tp": {
+		player setDir getDir tp_player; 
+  		player setPos (getPos tp_player vectorAdd [2, 0, 0]);
+		hint "Teleported";
+		break;
+	};
+	case "blackout": {
+		cgqc_blackout_player_on = true;
+		[blackout_player, true] remoteExec ["setUnconscious", owner blackout_player];
+	};
+	case "wakeup":
+	{
+		cgqc_blackout_player_on = false;
+		[blackout_player, false] remoteExec ["setUnconscious", owner blackout_player];
+	};
+	case "attach":{
+		zeus_oldPos = getPos player;
+		// Read to rock to hide the slinged helmet if there
+		["ready", true] spawn CGQC_fnc_perksBasic;
+		player hideObjectGlobal true;
+		cgqc_zeus_ghost = true;
+		while {isDamageAllowed player} do
+		{
+			player allowDamage false;
+			sleep 0.5;
+		};
+		cgqc_zeus_god = true;
+		player attachTo [attach_player, [0,-5,1]];
+		cgqc_zeus_attached = true;
+		hint "Attached";
+		break;
+	};
+	case "detach":{
+		detach Player;
+		player setPos zeus_oldPos;
+		player hideObjectGlobal false;
+		cgqc_zeus_ghost = false;
+		cgqc_zeus_attached = false;
+		hint "Detached and back to position";
+		break;
+	};
+	case "god": {
+		while {isDamageAllowed player} do
+		{
+			player allowDamage false;
+			sleep 0.5;
+		};
+		cgqc_zeus_god = true;
+		hint "God mode";
+		break;
+	};
+	case "mortal": {
+		while {!isDamageAllowed player} do
+		{
+			player allowDamage true;
+			sleep 0.5;
+		};
+		cgqc_zeus_god = false;
+		hint "Mortal mode";
+		break;
+	};
+	case "ghost": {
+		// Read to rock to hide the slinged helmet if there
+		["ready", true] spawn CGQC_fnc_perksBasic;
+		player hideObjectGlobal true;
+		hint "Ghost mode";
+		cgqc_zeus_ghost = true;
+		break;
+	};
+	case "visible": {
+		player hideObjectGlobal false;
+		hint "Visible mode";
+		cgqc_zeus_ghost = false;
+		break;
 	};
 	default
 	{
 		hint "fnc_perksZeus fucked up";
 	};
 };
+sleep 5;
+hintSilent "";
