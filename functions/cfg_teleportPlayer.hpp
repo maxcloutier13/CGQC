@@ -19,7 +19,7 @@ _insertChildren = {
 		if (_x != player) then {
 			tp_playerName = name _x;
 			tp_player = _x;
-			private _childStatement = {hint format ["TP to %1", tp_playerName];["tp", 0] spawn CGQC_fnc_perksZeus;};
+			private _childStatement = {hint format ["TP to %1", tp_playerName];["tp", 0, tp_player] spawn CGQC_fnc_perksZeus;};
 			private _action = [format ["%1",tp_playerName], tp_playerName, "", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
 			_actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
 		};

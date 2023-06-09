@@ -1,5 +1,5 @@
 // CQB ---------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_training_cqb", "CQB", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
+_action = [ "menu_self_training_cqb", "CQB", "CGQC\textures\cgqc_ace_cqb", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_cqb_clear", "Stop CQB", "", {[0] execVM '\cgqc\functions\fnc_trainingCqb.sqf'}, {cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    

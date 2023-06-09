@@ -278,7 +278,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
     [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
 ["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"], 
-    [_menu_name, "Limitations"], false, 1, {["animation_setting"] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Limitations"], false, 1, {["animation_setting", 0, ""] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
 // Training ===============================================================================================
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
     [_menu_name, "Training"], false] call CBA_fnc_addSetting;

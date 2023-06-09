@@ -1,9 +1,13 @@
 // --- trainingParachute ----------------------------------------------------------
 // Paradrop shenanigans
 _jumpHeight = _this select 0;
+_tpVersion = _this select 1;
+y_playerTarget = _this select 2;
+
 cgqc_jump_backpack = "";
 cgqc_jump_backpack_items = [];
 cgqc_quickjump = false;
+cgqc_jump_clickPos = nil;
 
 if (_jumpHeight == 0) then { // Quickjump - 500m no targets
 	player allowDammage false;
@@ -12,37 +16,45 @@ if (_jumpHeight == 0) then { // Quickjump - 500m no targets
 	// Quickset parachute 
 	cgqc_jump_backpack = backpack player;
 	cgqc_jump_backpack_items = backpackItems player;
+	sleep 0.1;
 	removeBackpack player;
-	player addBackpack "rhsusf_eject_Parachute_backpack";
+	player addBackpack "B_Parachute";
+	sleep 0.1;
 	cgqc_quickjump = true;
 };
 
 
-if (backpack player isEqualTo "B_Parachute" || backpack player isEqualTo "rhsusf_eject_Parachute_backpack") then { 
+if (backpack player isEqualTo "B_Parachute" || backpack player isEqualTo "rhsusf_eject_Parachute_backpack" || backpack player isEqualTo "ACE_NonSteerableParachute") then { 
 	cgqc_training_jump = true;
-	// Ask to click on map 
-	hint "Click on map to choose jump point.";  
-	cgqc_jump_clickPos = nil;
-	// Define the event handler function for MapSingleClick  
-	onMapClick = {  
-		params["_control", "_pos", "_shift", "_alt", "_ctrl"];  
-		// Store the clicked position  
-		cgqc_jump_clickPos = _pos; 
-		// Remove the MapSingleClick event handler  
-		removeMissionEventHandler ["MapSingleClick", y_clickEvent];  
-		openMap [false, false];  
-		hintSilent "";
-	}; 
-	// Add the MapSingleClick event handler  
-	y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];  
-	openMap [true, true]; 
-	// Wait for the player to click on the map  
-	waitUntil {sleep 0.5; !(isNil "cgqc_jump_clickPos") }; 
+	if (_tpVersion > 0) then {
+		// Position is target player
+		cgqc_jump_clickPos = getPos y_playerTarget;
+	}else{
+		// Ask to click on map 
+		hint "Click on map to choose jump point.";  
+		cgqc_jump_clickPos = nil;
+		// Define the event handler function for MapSingleClick  
+		onMapClick = {  
+			params["_control", "_pos", "_shift", "_alt", "_ctrl"];  
+			// Store the clicked position  
+			cgqc_jump_clickPos = _pos; 
+			// Remove the MapSingleClick event handler  
+			removeMissionEventHandler ["MapSingleClick", y_clickEvent];  
+			openMap [false, false];  
+			hintSilent "";
+		}; 
+		// Add the MapSingleClick event handler  
+		y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];  
+		openMap [true, true]; 
+		// Wait for the player to click on the map  
+		waitUntil {sleep 0.5; !(isNil "cgqc_jump_clickPos") }; 
+	};
+	
 	if (cgqc_quickjump) then { 
 		player setVelocity [0, 0, 50];
 		playSound3D ["a3\data_f_curator\sound\cfgsounds\wind3.wss", player];
 		//playSound3D ["a3\sounds_f\weapons\launcher\nlaw_final_2.wss", player];
-		hint "Hold on to your butt. Parachute will auto-open @ 100m";
+		hint "Hold on to your butt. Parachute WILL auto-open";
 		sleep 3;
 	};
 	// Good to jump
@@ -117,7 +129,7 @@ if (backpack player isEqualTo "B_Parachute" || backpack player isEqualTo "rhsusf
 	if (cgqc_quickjump) then {
 		//Auto open at 100m 
 		[]spawn {
-			waitUntil {getPosATL player select 2 < 80};  // Wait until the player's altitude is less than 100 meters 
+			waitUntil {getPosATL player select 2 < 75};  // Wait until the player's altitude is less than 100 meters 
 			player action ["OpenParachute", player];  // Open the parachute for the player 
 		};
 	};
