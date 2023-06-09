@@ -19,7 +19,7 @@ _insertChildren = {
 		if (_x != player) then {
 			attach_playerName = name _x;
 			attach_player = _x;
-			private _childStatement = {["attach", 0] spawn CGQC_fnc_perksZeus;};
+			private _childStatement = {["attach", 0, attach_player] spawn CGQC_fnc_perksZeus;};
 			private _action = [format ["Player: %1",attach_playerName], attach_playerName, "", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
 			_actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
 		};
