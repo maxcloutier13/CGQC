@@ -15,16 +15,16 @@ _insertChildren = {
 
     // Add children to this action
     private _actions = [];
-    {
-		if (_x != player) then {
-			yeet_playerName = name _x;
-			yeeting_player = _x;
-			private _childStatement = {hint format ["Yeeting %1", yeet_playerName];["yeet", 0, yeeting_player] spawn CGQC_fnc_perksZeus;};
-			private _action = [format ["%1",yeet_playerName], yeet_playerName, "", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
-			_actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
-		};
+    //{
+		//if (_x != player) then {
+    yeet_playerName = name _x;
+    yeeting_player = _x;
+    private _childStatement = {hint format ["Yeeting %1", yeet_playerName];["yeet", 0, _x] spawn CGQC_fnc_perksZeus;};
+    private _action = [format ["%1",yeet_playerName], yeet_playerName, "", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
+		//};
 		
-    } forEach allPlayers;
+    //} forEach allPlayers;
 
     _actions
 };

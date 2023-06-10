@@ -236,26 +236,24 @@ _action = [ "zeus_players", "Players", "", {""}, {count AllPlayers > 1} ] call a
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Yeet
-#include "\cgqc\functions\cfg_yeetPlayer.hpp"
+//#include "\cgqc\functions\cfg_yeetPlayer.hpp"
 
 // Teleport to player
-#include "\cgqc\functions\cfg_teleportPlayer.hpp"
+//#include "\cgqc\functions\cfg_teleportPlayer.hpp"
 
 // AttachTo player
-#include "\cgqc\functions\cfg_attachPlayer.hpp"
+//#include "\cgqc\functions\cfg_attachPlayer.hpp"
 
 // Blackout player
-#include "\cgqc\functions\cfg_blackoutPlayer.hpp"
+//#include "\cgqc\functions\cfg_blackoutPlayer.hpp"
 
 // Wakeup player 
-_action = [ "zeus_wakeup", "Wakeup player", "", {["wakeup", 0] spawn CGQC_fnc_perksZeus}, {cgqc_blackout_player_on} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
-// Blackout all players
+//_action = [ "zeus_wakeup", "Wakeup player", "", {["wakeup", 0] spawn CGQC_fnc_perksZeus}, {cgqc_blackout_player_on} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Detach from player
-_action = [ "zeus_detach", "Detach from player", "", {["detach", 0] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_attached} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+//_action = [ "zeus_detach", "Detach from player", "", {["detach", 0] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_attached} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Briefing mode
 _action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;

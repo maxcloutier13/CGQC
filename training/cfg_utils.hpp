@@ -8,7 +8,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call 
 _action = [ "menu_self_para_quickMap", "QuickJump to map point", "", {[0, 0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_para_quick"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
 // Teleport to player
-#include "\cgqc\training\cfg_dropToPlayer.hpp"
+//#include "\cgqc\training\cfg_dropToPlayer.hpp"
 
 // Time/weather 
 _action = [ "menu_self_training_time", "Time/Weather", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
