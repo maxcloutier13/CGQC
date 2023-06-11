@@ -73,7 +73,7 @@ if (cgqc_player_loadAll) then {
 	["ace_unconscious", {
 		params ["_unit", "_isUnconscious"];
 	if (_isUnconscious) then {
-			if (isServer) then {playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30]};
+			playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
 		};
 	}] call CBA_fnc_addEventHandler;
 
