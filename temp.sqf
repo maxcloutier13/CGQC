@@ -793,7 +793,7 @@ last 7 positions for snipers and statics
 
 // Random time between sunset/sunrise noon/midnight
 //Only run once 
-if (isNil "cgqc_randomTime") then {
+if (isNil "cgqc_setInitialTime") then {
 	_sun = date call BIS_fnc_sunriseSunsetTime;
 	_sunrise = _sun select 0;
 	_sunset = _sun select 1;

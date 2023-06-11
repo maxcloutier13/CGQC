@@ -62,7 +62,6 @@ switch (_type) do {
 		if !(isNil "y_markerTarget") then {deleteMarker "cgqc_orient_target";};	 
 		if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_orient_player";};
 		
-		
 		// Trigger
 		cgqc_orient_trg = createTrigger ["EmptyDetector",_nearestCity_pos, false];
 		cgqc_orient_trg setTriggerArea [10, 10, getDir player, true];
@@ -105,8 +104,10 @@ switch (_type) do {
 		// Task created
 		waitUntil{sleep 0.5; cgqc_mk3_transition};
 		sleep 10;
-		[side player, "task_orient", [format["Find your position and reach target: %1", cgqc_orient_target select 1], format["Reach Target: %1",cgqc_orient_target select 1], ""],cgqc_orient_pos_free, "ASSIGNED", 1, true, "CT_RECON", false] call BIS_fnc_taskCreate;
-		
+		[side player, "task_orient", [
+			format["Find your position and reach target: %1", cgqc_orient_target select 1], 
+			format["Reach Target: %1",cgqc_orient_target select 1], ""],
+			cgqc_orient_pos_free, "ASSIGNED", 1, true, "backpack", false] call BIS_fnc_taskCreate;
 		[] spawn {
 			while {cgqc_training_orienteering} do {
 				cgqc_orienteering_timer = cgqc_orienteering_timer + 1;

@@ -5,17 +5,7 @@ _type = _this select 0;
 
 switch (_type) do
 {
-	case 0:
-	{
-		cgqc_training_defense = false;
-		cgqc_defense_start = false;
-		cgqc_defense_done = false;
-		//Delete all units 
-		{deleteVehicle _x;} forEach cgqc_defense_target_list;
-		{deleteVehicle _x;} forEach allDead;
-		{deleteVehicle _x;} forEach nearestObjects [getpos player, ["Weapon", "WeaponHolder", "GroundWeaponHolder"], 1000];
-	};
-	case 1:
+	case "start":
 	{
 		cgqc_defense_timer = 0;
 		cgqc_training_defense = false;
@@ -41,6 +31,11 @@ switch (_type) do
 
 		[] spawn {
 			cgqc_training_defense = true;
+			[side player, "task_defend", 
+			["Defend your position!",
+			"Defend", ""],
+			getPos player, "ASSIGNED", 1, true, "defend", false] call BIS_fnc_taskCreate;
+
 			while {cgqc_training_defense} do {
 				_random_amount = selectRandom [1,2,3];
 				for "_i" from 1 to _random_amount do { 
@@ -66,21 +61,41 @@ switch (_type) do
 							//systemChat format ["%1 killed by %2. %3 left", typeOf _unit, name _killer, _left];
 							//cgqc_cqb_list = cgqc_cqb_list - _unit;
 							if (count cgqc_defense_list < 1) then {
-								cgqc_defense_done = true;
+								['done'] execVM '\cgqc\functions\fnc_trainingDefense.sqf';
 							};
 						}];
 					} forEach units cgqc_defense_group;
 				};
 				//hint format ["%1 new groups", _random_amount];
 				sleep 120;
-			};
-
-			// Finished!
-			//hint "Allright. The wave is slowing down.";
-			waitUntil {sleep 1;cgqc_defense_done};
-			hint "Good job viper. They're all dead";
-			[0] execVM "defense.sqf";
+			};		
 		};
+		break;
+	};
+	case "stop": {
+		cgqc_defense_done = true;
+		hint "Defense canceled";
+		["task_defend", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+		["clear"] execVM '\cgqc\functions\fnc_trainingDefense.sqf';
+		break;
+	};
+	case "clear":
+	{
+		cgqc_training_defense = false;
+		cgqc_defense_start = false;
+		cgqc_defense_done = false;
+		//Delete all units 
+		{deleteVehicle _x;} forEach cgqc_defense_target_list;
+		{deleteVehicle _x;} forEach allDead;
+		{deleteVehicle _x;} forEach nearestObjects [getpos player, ["Weapon", "WeaponHolder", "GroundWeaponHolder"], 1000];
+		break;
+	};
+	case "done": {
+		cgqc_defense_done = true;
+		hint "Good job viper. They're all dead";
+		["task_defend", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+		["clear"] execVM '\cgqc\functions\fnc_trainingDefense.sqf';
+		break;
 	};
 	default
 	{
