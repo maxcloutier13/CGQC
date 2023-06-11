@@ -2,31 +2,43 @@
 // Training shenanigans
 _item = _this select 0;
 train_option = _this select 1;
-
+y_timeText = "";
 _skip = train_option;
 _wind = 0;
 _change_wind = false;
 switch (_item) do {
+	case "random_all": {
+		["skip", 100] execVM '\cgqc\functions\fnc_training.sqf';
+		["random", 0] execVM '\cgqc\functions\fnc_training.sqf';
+	};
 	case "skip": {
 		switch (_skip) do {
 			case 1: {
 				[0,{ skipTime 1}] call CBA_fnc_globalExecute;
+				y_timeText = format ["Tu t'es reposé %1 heures", _skip];
 			};
 			case 3: {
 				[0,{ skipTime 3}] call CBA_fnc_globalExecute;
+				y_timeText = format ["Tu t'es reposé %1 heures", _skip];
 			};
 			case 6: {
 				[0,{ skipTime 6}] call CBA_fnc_globalExecute;
+				y_timeText = format ["Tu t'es reposé %1 heures", _skip];
 			};
 			case 12: {
 				[0,{ skipTime 12}] call CBA_fnc_globalExecute;
+				y_timeText = format ["Tu t'es reposé %1 heures", _skip];
+			};
+			case 100: {
+				y_random_time = round(random 24 * 10) / 10;
+				[0,{skipTime y_random_time}] call CBA_fnc_globalExecute;
+				y_timeText = format ["Tu t'es reposé %1 heures", y_random_time];
 			};
 			default {
 				hint "skiptime problem";
 			};
 		};
-		_text = format ["Tu t'es reposé %1 heures", _skip];
-		titleText [_text, "BLACK IN",7]; 
+		titleText [y_timeText, "BLACK IN",7]; 
 		break;
 	};
 	case "sunrise":{
@@ -64,10 +76,10 @@ switch (_item) do {
 		hint "Rain it is";
 	};
 	case "random":{
-		_over = random 1;
-		_rain = random 1;
-		[0,{ 0 setOvercast _over}] call CBA_fnc_globalExecute;
-		[0,{ 0 setRain _rain}] call CBA_fnc_globalExecute;
+		y_over = round(random 1 * 10) / 10;
+		y_rain = round(random 1 * 10) / 10;
+		[0,{ 0 setOvercast y_over}] call CBA_fnc_globalExecute;
+		[0,{ 0 setRain y_rain}] call CBA_fnc_globalExecute;
 		[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
 		hint "Random weather";
 	};
