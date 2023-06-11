@@ -1,7 +1,7 @@
 // --- trainingTime ----------------------------------------------------------
 // Sets time to current day but sunrise and with nice clear weather
 //Only run once 
-if (isNil "cgqc_randomTime") then {
+if (isNil "cgqc_setInitialTime") then {
 	// Set current day/month/year
 	_year = systemTime select 0;
 	_month = systemTime select 1;
@@ -18,6 +18,6 @@ if (isNil "cgqc_randomTime") then {
 	[0,{ 0 setOvercast 0.4}] call CBA_fnc_globalExecute;
 	[0,{ 0 setRain 0}] call CBA_fnc_globalExecute;
 	[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
-	cgqc_randomTime = true;
+	cgqc_setInitialTime = true;
 };
 

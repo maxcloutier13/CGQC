@@ -163,7 +163,10 @@ if (_type < 40) then {
 		};
 		_txt = parseText format["-- Ready to go --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
 		hint _txt;
-		[side player, "task_cqb", [format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list], format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""], getPos _building, "ASSIGNED", 1, true, "CT_SECURE", true] call BIS_fnc_taskCreate;
+		[side player, "task_cqb", [
+			format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list], 
+			format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""],
+			 getPos _building, "ASSIGNED", 1, true, "attack", true] call BIS_fnc_taskCreate;
 		cgqc_cqb_on = true;
 		while {cgqc_cqb_on} do {
 			if (cgqc_cqb_timer > 0) then {
@@ -193,6 +196,7 @@ if (_type < 40) then {
 		}else{
 			//Lose
 			["task_cqb", "CANCELED", true] call BIS_fnc_taskSetState;
+			sleep 10;
 		};
 		["task_cqb", true, true] call BIS_fnc_deleteTask;
 	};

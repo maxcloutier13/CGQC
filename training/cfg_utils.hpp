@@ -2,7 +2,7 @@
 _action = [ "menu_self_utils", "Utils", "\CGQC\textures\icon_maintenance", {}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Quick paradrop
+// Quick paradrop ========================================================================================================
 _action = [ "menu_self_para_quick", "QuickJump", "\CGQC\textures\cgqc_ace_para", {}, {cgqc_player_hasAntiPlus || [player] call CGQC_fnc_checkZeus || cgqc_player_max || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
 _action = [ "menu_self_para_quickMap", "QuickJump to map point", "", {[0, 0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
@@ -10,13 +10,12 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_para_
 // Teleport to player
 //#include "\cgqc\training\cfg_dropToPlayer.hpp"
 
-// Time/weather 
+// Time/weather ========================================================================================================
 _action = [ "menu_self_training_time", "Time/Weather", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// ------ Skip time
-
-_action = [ "menu_self_training_skip", "Skip time", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+//  Skip time ========================================================================================================
+_action = [ "menu_self_training_skip", "Skip Time", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils", "menu_self_training_time"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_skip_sunrise", "Skip to Sunrise", "", {["sunrise", 0] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training",  "menu_self_utils", "menu_self_training_time", "menu_self_training_skip"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
@@ -30,9 +29,11 @@ _action = [ "menu_self_training_skip_6", "Skip 6h", "", {["skip", 6] execVM '\cg
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time", "menu_self_training_skip"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 _action = [ "menu_self_training_skip_12", "Skip 12h", "", {["skip", 12] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training",  "menu_self_utils", "menu_self_training_time", "menu_self_training_skip"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+_action = [ "menu_self_training_skip_100", "Skip Random", "", {["skip", 100] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training",  "menu_self_utils", "menu_self_training_time", "menu_self_training_skip"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 
-
-_action = [ "menu_self_training_weather", "Change weather", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
+// Weather ========================================================================================================
+_action = [ "menu_self_training_weather", "Change Weather", "", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils", "menu_self_training_time"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_training_weather_sun", "Sunny", "", {["nice", 0] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils", "menu_self_training_time", "menu_self_training_weather"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
@@ -40,6 +41,10 @@ _action = [ "menu_self_training_weather_rain", "Rain", "", {["rain", 0] execVM '
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils", "menu_self_training_time", "menu_self_training_weather"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 _action = [ "menu_self_training_weather_random", "Random", "", {["random", 0] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils", "menu_self_training_time", "menu_self_training_weather"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
+
+// Skip random time/weather 
+_action = [ "menu_self_training_skip_random", "Randomize Time+Weather", "", {["random_all", 0] execVM '\cgqc\functions\fnc_training.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;       
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_utils", "menu_self_training_time"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 
 // Skill switcher ========================================================================================================
