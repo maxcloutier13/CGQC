@@ -14,6 +14,7 @@ switch (_type) do {
 		} forEach y_allAIs; 
 		hint "All units PAUSED!";
 		cgqc_zeus_paused = true;
+		publicVariable "cgqc_zeus_paused";
 	};
 	case "unpause": {
 		y_allAIs = allUnits - allPlayers;
@@ -23,6 +24,7 @@ switch (_type) do {
 		} forEach y_allAIs; 
 		hint "All units Unpaused.";
 		cgqc_zeus_paused = false;
+		publicVariable "cgqc_zeus_paused";
 	};
 	case "zeus_radios":
 	{
@@ -371,7 +373,7 @@ switch (_type) do {
 	case "god": {
 		while {isDamageAllowed player} do
 		{
-			player allowDamage false;
+			[-2,{player allowDamage false}] call CBA_fnc_globalExecute;
 			sleep 0.5;
 		};
 		cgqc_zeus_god = true;
@@ -381,7 +383,7 @@ switch (_type) do {
 	case "mortal": {
 		while {!isDamageAllowed player} do
 		{
-			player allowDamage true;
+			[-2,{player allowDamage true}] call CBA_fnc_globalExecute;
 			sleep 0.5;
 		};
 		cgqc_zeus_god = false;
@@ -391,13 +393,13 @@ switch (_type) do {
 	case "ghost": {
 		// Read to rock to hide the slinged helmet if there
 		["ready", true] spawn CGQC_fnc_perksBasic;
-		player hideObjectGlobal true;
+		[0,{player hideObjectGlobal true}] call CBA_fnc_globalExecute;
 		hint "Ghost mode";
 		cgqc_zeus_ghost = true;
 		break;
 	};
 	case "visible": {
-		player hideObjectGlobal false;
+		[0,{player hideObjectGlobal false}] call CBA_fnc_globalExecute;
 		hint "Visible mode";
 		cgqc_zeus_ghost = false;
 		break;
