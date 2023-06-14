@@ -6,6 +6,24 @@ briefing_time = _this select 1;
 _targetPlayer = _this select 2;
 
 switch (_type) do {
+	case "pause": {
+		y_allAIs = allUnits - allPlayers;
+		{
+			_x enableSimulationGlobal false;
+			_x disableAI "all";
+		} forEach y_allAIs; 
+		hint "All units PAUSED!";
+		cgqc_zeus_paused = true;
+	};
+	case "unpause": {
+		y_allAIs = allUnits - allPlayers;
+		{
+			_x enableSimulationGlobal true;
+			_x enableAI "all";
+		} forEach y_allAIs; 
+		hint "All units Unpaused.";
+		cgqc_zeus_paused = false;
+	};
 	case "zeus_radios":
 	{
 		_radios = call acre_api_fnc_getCurrentRadioList;  
