@@ -89,6 +89,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "CGQC";
 	};
+	class EdSubcat_CGQCSigns
+	{
+		displayName = "CGQC Graphics";
+	};
 };
 
 // Units, backpacks, flags

@@ -231,3 +231,130 @@ class cgqc_banner_logo_white : cgqc_banner_coop_black
     editorPreview = "cgqc\pics\cgqc_banner_logo_white.jpg";
     hiddenSelectionsTextures[] = {"CGQC\flags\cgqc_flag_logo_white.paa"};
 };
+
+// Posters
+class UserTexture1m_F;
+class UserTexture_1x2_F;
+class UserTexture10m_F;
+class cgqc_texture_1m: UserTexture1m_F
+{
+    _generalMacro = "cgqc_texture_1m";
+    scope = 0;
+    displayName = "CGQC texture 1m";
+    editorCategory = "EdCat_Signs";
+    editorSubcategory = "EdSubcat_CGQCSigns";
+};
+class cgqc_texture_1x2m: UserTexture1m_F
+{
+    _generalMacro = "cgqc_texture_1x2m";
+    scope = 0;
+    displayName = "CGQC texture 1x2m";
+    editorCategory = "EdCat_Signs";
+    editorSubcategory = "EdSubcat_CGQCSigns";
+};
+class cgqc_texture_10m: UserTexture10m_F
+{
+    _generalMacro = "cgqc_texture_10m";
+    scope = 0;
+    displayName = "CGQC texture 10m";
+    editorCategory = "EdCat_Signs";
+    editorSubcategory = "EdSubcat_CGQCSigns";
+};
+
+class cgqc_poster_qrcode: cgqc_texture_1m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_title_arsenal: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_title_classroom: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_title_medical: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_info_arsenal: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_info_training: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_info_training_utils: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_info_perks1: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_info_perks2: cgqc_texture_1x2m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_airforce: cgqc_texture_10m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_cgqc_black: cgqc_texture_10m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_quiet: cgqc_texture_10m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_bros: cgqc_texture_10m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
+
+class cgqc_poster_coop: cgqc_texture_10m
+{
+    scope = 2;
+    displayName = "CGQC Documentation QRcode";
+    hiddenSelectionsTextures[] = {"CGQC\textures\poster_training_qr.paa"};
+};
