@@ -56,6 +56,26 @@ switch (_type) do {
 	case 74: {cgqc_cqb_timer = cgqc_cqb_timer - 60; hint format["Time until release:%1secs",cgqc_cqb_timer];};
 	case 75: {cgqc_cqb_timer = 10; cgqc_cqb_timer_random = true; hint "Time until release:Random";};
 	
+	case 500: {
+		{
+			_x enableSimulationGlobal false;
+			_x disableAI "all";
+		} forEach cgqc_cqb_list;
+		cgqc_cqb_paused = true; 
+		hint "CQB Paused";
+	};
+	case 501: {
+		{
+			_x enableSimulationGlobal true;
+			_x enableAI "all";
+		} forEach cgqc_cqb_list;
+		{
+			_x disableAI "PATH";
+		} forEach cgqc_cqb_list_static;
+		
+		cgqc_cqb_paused = false; 
+		hint "CQB Resumed";
+	};
 	default {
 		hint "trainingCqb error";
 	};
@@ -137,6 +157,9 @@ if (_type < 40) then {
 					cgqc_cqb_on = false;
 				};
 			}];
+			// Disable unit
+			_unit enableSimulationGlobal false;
+			_unit disableAI "all";
 			cgqc_cqb_list pushBack _unit;
 			sleep 0.1;
 		};
@@ -161,13 +184,21 @@ if (_type < 40) then {
 				cgqc_cqb_list_civ pushBack _unit;
 			};
 		};
-		_txt = parseText format["-- Ready to go --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
+		_txt = parseText format["-- Ready to go in 10s --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
 		hint _txt;
 		[side player, "task_cqb", [
 			format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list], 
 			format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""],
 			 getPos _building, "ASSIGNED", 1, true, "attack", true] call BIS_fnc_taskCreate;
 		cgqc_cqb_on = true;
+
+		sleep 10;
+		hint "GO!!!!!";
+		{
+			_x enableSimulationGlobal true;
+			_x enableAI "all";
+		} forEach cgqc_cqb_list; 
+
 		while {cgqc_cqb_on} do {
 			if (cgqc_cqb_timer > 0) then {
 					if (cgqc_cqb_timer_random) then {
