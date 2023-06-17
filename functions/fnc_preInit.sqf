@@ -121,6 +121,7 @@ cgqc_defense_done = false;
 cgqc_defense_start = false;
 // Helicopter training
 cgqc_training_heli = false;
+cgqc_heli_difficulty = 0;
 // Mortar training 
 cgqc_training_mortar = false;
 // KOTH training 
@@ -144,6 +145,7 @@ cgqc_cqb_civ = false;
 cgqc_cqb_nade = false;
 cgqc_cqb_tgt_move = 0;
 cgqc_cqb_tgt_static = 0;
+cgqc_cqb_paused = false;
 cgqc_cqb_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];
 cgqc_cqb_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
 // *** Mk2 **********************
@@ -263,7 +265,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_ch8", "EDITBOX", ["Channel 8:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
 ["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], "Inter/Zeus"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Zeus"] call CBA_fnc_addSetting;
 
 // Briefing  ===============================================================================================
 ["cgqc_setting_briefingCmd_area","SLIDER", ["Commander's Briefing area size", "Square around the Zeus"],

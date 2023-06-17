@@ -1,4 +1,5 @@
-
+// --- roleSwitch ----------------------------------------------------------
+// Switch roles
 waitUntil {!isNull (findDisplay 46)};
 waitUntil {cgqc_postInitClient_done};
 cgqc_roleSwitch_done = false;
