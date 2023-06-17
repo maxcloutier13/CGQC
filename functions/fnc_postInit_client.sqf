@@ -153,6 +153,7 @@ player addEventHandler ["GetInMan", {
 
 //Sets radio channel names 
 [0] spawn CGQC_fnc_nameRadios;
+["radio_init"] execVM "\cgqc\functions\fnc_setRadios.sqf";
 
 // Boost dragging maximum 
 ACE_maxWeightDrag = 3000;
