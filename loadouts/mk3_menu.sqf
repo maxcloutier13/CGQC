@@ -86,59 +86,51 @@ if (hasInterface) then {
 					
 					// Spartan ------------------------------------------------------------------------------------------------------------
 					// **********************************************************************************************************************
-					_action = [ "menu_mk2_s1", "Spartan", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					//_action = [ "menu_mk2_s1", "Spartan", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+					//_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Infanterie ---------------------------------------------------------------------------------------------------------
 					_action = [ "menu_mk2_inf", "Infanterie", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Rifleman mk18 
 					_action = [ "menu_mk2_inf_RFCQB", "Rifleman CQB mk18", "", {["rifle_cqb", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Rifleman M4
 					_action = [ "menu_mk2_inf_RF", "Rifleman Carbine M4blk2", "", {["rifle_carb", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Rifleman M16
 					_action = [ "menu_mk2_inf_RF_m16", "Rifleman Rifle M16a4", "", {["rifle_m16", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Grenadier 
 					_action = [ "menu_mk2_inf_Grenadier", "Grenadier", "", {["rifle_grenade", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Specialists ---------------------------------------------------------------------------------------------------------
 					_action = [ "menu_mk2_spec", "Spécialistes", "", {""}, {cgqc_player_rank > 1 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Medic 
 					_action = [ "menu_mk2_inf_medic", "Medic", "", {["med", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Engineer
 					_action = [ "menu_mk2_inf_eng", "Engineer", "", {["eng", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// MG (Light) 
 					_action = [ "menu_mk2_inf_LMG", "Light machinegun", "", {["lmg", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					//  MG (Heavy) 
 					_action = [ "menu_mk2_inf_HMG", "Heavy machinegun", "", {["hmg", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Marksman 
 					_action = [ "menu_mk2_inf_marks", "Marksman", "", {["mrksm", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Anti-Tank (MAAWS)
 					_action = [ "menu_mk2_inf_maaws", "Anti-Tank (MAAWS)", "", {["at_maaws", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Anti-Tank (Javelin) 
 					_action = [ "menu_mk2_inf_jav", "Anti-Tank (Javelin)", "", {["at_jav", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Mortier léger 
 					_action = [ "menu_mk2_inf_mortar", "Mortier Léger", "", {["mortar", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-					// Lead ---------------------------------------------------------------------------------------------------------
-					_action = [ "menu_mk2_lead", "Commandement", "", {""}, {cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-					// Team Leader 
-					_action = [ "menu_mk2_inf_TL", "Team Leader", "", {["tl_carb", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-					// Team Leader CQB
-					_action = [ "menu_mk2_inf_TLcqb", "Team Leader CQB", "", {["tl_cqb", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_s1", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					
 					// Recon ------------------------------------------------------------------------------------------------------------
 					_action = [ "menu_mk2_recon", "Recon", "", {""}, {cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -181,19 +173,30 @@ if (hasInterface) then {
 					_action = [ "menu_mk2_crew", "Tank Crew", "", {["tank_crew", 0, false, player] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_driver"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					
+					// Lead ---------------------------------------------------------------------------------------------------------
+					_action = [ "menu_mk2_lead", "Commandement", "", {""}, {cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					// Team Leader 
+					_action = [ "menu_mk2_inf_TL", "Team Leader", "", {["tl_carb", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					// Team Leader CQB
+					_action = [ "menu_mk2_inf_TLcqb", "Team Leader CQB", "", {["tl_cqb", 1, false] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					
 					// High Command ------------------------------------------------------------------------------------------------------------
-					_action = [ "menu_mk2_highCommand", "High Command", "", {}, {cgqc_player_rank > 5 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					//_action = [ "menu_mk2_highCommand", "High Command", "", {}, {cgqc_player_rank > 5 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+					//_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					// SL 
+					_action = [ "menu_mk2_inf_sl", "Squad Leader", "", {["sl", 0, false, player] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// HQ 
 					_action = [ "menu_mk2_inf_hq", "HQ", "", {["hq", 0, false, player] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_highCommand"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-					// HQ 
-					_action = [ "menu_mk2_inf_sl", "Squad Leader", "", {["sl", 0, false, player] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_highCommand"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					
+
 					
 					// Mk1 Camo Switcher ---------------------------------------------------------------------------------------------------------
-					_action = [ "menu_mk2_camo", "Camo/Uniformes", "CGQC\textures\icon_camo", {""}, {!cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_camo", "Switch: Camo", "CGQC\textures\icon_camo", {""}, {!cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 					// Base/Training uniform 
 					_action = [ "menu_mk2_camo_base", "Training - Vert", "", {["tan", false] execVM "\CGQC\loadouts\mk3_camoSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -220,7 +223,53 @@ if (hasInterface) then {
 					_action = [ "menu_mk2_camo_diver_std", "Kit: Plongeur", "\CGQC\textures\cgqc_ace_dive", {["diver", false] execVM "\CGQC\loadouts\mk3_camoSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_camo"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				
-
+					// Alternative Primaries ---------------------------------------------------------------------------------------------------------
+					_action = [ "menu_mk2_alt", "Switch: Primary", "", {""}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call ace_interact_menu_fnc_addActionToObject;
+					// Categories
+					_action = [ "menu_mk2_alt_556", "5.56", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_GL", "GL", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_dmr", "DMR/Sniper", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_mg", "MG", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_others", "Others", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				
+					// 5.56
+					_action = [ "menu_mk2_alt_mk18", '10in Mk18 Dot', "", {["mk18_dot"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_m4dot", '14in M4blkII Dot+', "", {["m4_dotplus"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_m4lpvo", '14in M4blkII LPVO', "", {["m4_lpvo"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_mk12", '18in Mk12 LPVO', "", {["mk12_lpvo"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_m16lpvo", '20in M16a4 LPVO', "", {["m16_shortdot"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					
+					// GL
+					_action = [ "menu_mk2_alt_mk18gl", '10in Mk18', "", {["mk18_gl"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_GL"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_m320", '14in M4blkII', "", {["m4_gl_m320"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_GL"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					// DMR/Sniper 
+					_action = [ "menu_mk2_alt_417", 'HK417 7.62mm', "", {["417"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_m14ebr", 'M14EBR 7.62mm', "", {["m14ebr"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_m200", 'm200 .408', "", {["m200"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					// MG
+					_action = [ "menu_mk2_alt_mk46", 'mk46 5.56mm', "", {["mk46"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_mk48", 'mk48 7.62mm', "", {["mk48"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					// Others 
+					_action = [ "menu_mk2_alt_p90", 'P90 9mm', "", {["p90"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 					// 2023 arsenal ---------------------------------------------------------------------------------------------------
 
@@ -333,13 +382,15 @@ if (hasInterface) then {
 			//Radios 
 			_action = [ "menu_items_radios", "Radios", "", {""}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items1", "Radio: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+		
+			// Individual radios 
+			_action = [ "menu_items1", "Get: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items2", "Radio: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items2", "Get: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Radio: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Radio: 117f", "", {["117"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 117f", "", {["117"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Radios Vietnam 
 			_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
@@ -375,7 +426,7 @@ if (hasInterface) then {
 			};
 
 			// Skill switcher ========================================================================================================
-			_action = [ "menu_skill", "Skills", "CGQC\textures\icon_skills", {""}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_skill", "Switch: Skills", "CGQC\textures\icon_skills", {""}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			// Medic
 			_action = [ "skill_medic", "Medic", "", {["medic"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -401,6 +452,17 @@ if (hasInterface) then {
 				{(cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining) && (isNil "cgqc_perk_ghillie") && cgqc_player_isModern} 
 			] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject; 
+
+			// Radio setups
+			_action = [ "menu_radios", "Switch: Radios", "CGQC\textures\radio.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			_action = [ "menu_items_tl", "Setup:Infantry 343+148", "", {["inf"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject; 
+			_action = [ "menu_items_tl", "Setup:2iC 343+152", "", {["2ic"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject; 
+			_action = [ "menu_items_tl", "Setup:TL 343+152+117", "", {["tl"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			
 
 			//Training ==============================================================================================================
 			//_action = [ "menu_training", "Training Mode", "", {hint "Check ton Ace Self-Action";execVM "\cgqc\functions\fnc_trainingMenu.sqf"}, {!cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;       
