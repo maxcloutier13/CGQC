@@ -4,6 +4,48 @@
 _item = _this select 0;
 _skip = 0;
 switch (_item) do {
+	case "inf":
+	{
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{player removeItem _x;}forEach _radios; 
+		sleep 0.5;
+		player addItem "ACRE_PRC343";
+		player addItem "ACRE_PRC148"; 
+		sleep 0.5;
+		["spartan", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+	};
+	case "2ic":
+	{
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{player removeItem _x;}forEach _radios;  
+		sleep 0.5;
+		player addItem "ACRE_PRC343";
+		player addItem "ACRE_PRC152"; 
+		sleep 0.5;
+		["spartan_2", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+	};
+	case "tl":
+	{
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{player removeItem _x;}forEach _radios;  
+		sleep 0.5;
+		player addItem "ACRE_PRC343";
+		player addItem "ACRE_PRC152"; 
+		player addItem "ACRE_PRC117F"; 
+		sleep 0.5;
+		["spartan_1", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+	};
+	case "recon":
+	{
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{player removeItem _x;}forEach _radios;  
+		sleep 0.5;
+		player addItem "ACRE_PRC152"; 
+		player addItem "ACRE_PRC152"; 
+		sleep 0.5;
+		["recon", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+	};
+	
 	case "crate":
 	{
 		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
