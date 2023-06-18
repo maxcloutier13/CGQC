@@ -35,13 +35,25 @@ switch (_item) do {
 		sleep 0.5;
 		["spartan_1", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
 	};
+	case "sl":
+	{
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{player removeItem _x;}forEach _radios;  
+		sleep 0.5;
+		player addItem "ACRE_PRC117F";
+		player addItem "ACRE_PRC117F"; 
+		player addItem "ACRE_PRC117F"; 
+		sleep 0.5;
+		["hq", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+	};
 	case "recon":
 	{
 		_radios = call acre_api_fnc_getCurrentRadioList;  
 		{player removeItem _x;}forEach _radios;  
 		sleep 0.5;
+		player addItem "ACRE_PRC343"; 
 		player addItem "ACRE_PRC152"; 
-		player addItem "ACRE_PRC152"; 
+		player addItem "ACRE_PRC117F"; 
 		sleep 0.5;
 		["recon", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
 	};
