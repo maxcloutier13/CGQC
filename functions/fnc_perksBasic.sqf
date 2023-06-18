@@ -4,6 +4,7 @@ params ["_type", "_fromLoadout"];
 //Make sure the call is local
 waitUntil {!isNil "cgqc_player_patch_found"};
 waitUntil {cgqc_player_rank_found};
+_time = 5;
 
 disableUserInput true;
 switch (_type) do {
@@ -329,9 +330,93 @@ switch (_type) do {
          */
         break;
     };
+    case "check":{
+        _allItems = items player;
+        _allMags = magazines player;
+        _allRadios = call acre_api_fnc_getCurrentRadioList;
+        _allAssigned = assignedItems player;
+        _primaryMag = (primaryWeaponMagazine player) select 0;
+        _secondaryMag = (handgunMagazine player) select 0;
+        _txt_bandage = "";
+        _txt_earplugs = "";
+        _txt_epi = "";
+        _txt_morphine = "";
+        _txt_painkill = "";
+        _txt_splint = "";
+        _txt_tourniquet = "";
+        _txt_liquids = "";
+        _txt_earplugs = "";
+        _txt_map = "";
+        _txt_compass = "";
+        _txt_gps = "";
+        _txt_notepad = "";
+        _txt_maptools = "";
+        _txt_primaryMags = "";
+        _txt_secondaryMags = "";
+        // Count meds
+        _bandage = {_x isEqualTo "ACE_fieldDressing" } count _allItems;
+        _earplugs = {_x isEqualTo "ACE_EarPlugs" } count _allItems;
+        _epi ={_x isEqualTo "ACE_epinephrine" } count _allItems;
+        _morphine = {_x isEqualTo "ACE_morphine" } count _allItems;
+        _painkill = {_x isEqualTo "FF_Painkiller" } count _allItems;
+        _splint = {_x isEqualTo "ACE_splint" } count _allItems;
+        _tourniquet = {_x isEqualTo "ACE_tourniquet" } count _allItems;
+        _blood = ["ACE_salineIV", "ACE_salineIV_500", "ACE_salineIV_250"] apply {toLower _x};
+        _liquids = {(toLower _x) in _blood} count _allItems;
+        // Count Essentials
+        _map = {_x isEqualTo "ItemMap" } count _allAssigned;
+        _compass = {_x isEqualTo "ItemCompass" } count _allAssigned;
+        _gps = {_x isEqualTo "ItemGPS" } count _allAssigned;
+        _notepad = {_x isEqualTo "acex_intelitems_notepad" } count _allMags;
+        _maptools = {_x isEqualTo "ACE_MapTools" } count _allItems;
+        // Count Mags
+        _primaryMags = {_x isEqualTo _primaryMag } count _allMags;
+        _secondaryMags = {_x isEqualTo _secondaryMag } count _allMags;
+
+        if (_bandage > 10) then {_txt_bandage = "ok"} else {_txt_bandage = "<t color='#ff0000'>LOW</t>"};
+        if (_epi > 0) then {_txt_epi = "ok"} else {_txt_epi = "<t color='#ff0000'>LOW</t>"};
+        if (_morphine > 0) then {_txt_morphine = "ok"} else {_txt_morphine = "<t color='#ff0000'>LOW</t>"};
+        if (_painkill > 4) then {_txt_painkill = "ok"} else {_txt_painkill = "<t color='#ff0000'>LOW</t>"};
+        if (_splint > 0) then {_txt_splint = "ok"} else {_txt_splint = "<t color='#ff0000'>LOW</t>"};
+        if (_tourniquet > 0) then {_txt_tourniquet = "ok"} else {_txt_tourniquet = "<t color='#ff0000'>LOW</t>"};
+        if (_liquids > 0) then {_txt_liquids = "ok"} else {_txt_liquids = "<t color='#ff0000'>MISSING</t>"};
+
+        if (_earplugs > 0) then {_txt_earplugs = "ok"} else {_txt_earplugs = "<t color='#ff0000'>MISSING</t>"};
+        if (_map > 0) then {_txt_map = "ok"} else {_txt_map = "<t color='#ff0000'>MISSING</t>"};
+        if (_compass > 0) then {_txt_compass = "ok"} else {_txt_compass = "<t color='#ff0000'>MISSING</t>"};
+        if (_gps > 0) then {_txt_gps = "ok"} else {_txt_gps = "<t color='#ff0000'>MISSING</t>"};
+        if (_notepad > 0) then {_txt_notepad = "ok"} else {_txt_notepad = "<t color='#ff0000'>MISSING</t>"};
+        if (_maptools > 0) then {_txt_maptools = "ok"} else {_txt_maptools = "<t color='#ff0000'>MISSING</t>"};
+        if (_primaryMags > 4) then {_txt_primaryMags = "ok"} else {_txt_primaryMags = "<t color='#ff0000'>LOW</t>"};
+        if (_secondaryMags > 1) then {_txt_secondaryMags = "ok"} else {_txt_secondaryMags = "<t color='#ff0000'>LOW</t>"};
+
+        Hint parseText format [ 
+            "------- Medical --- <br/>" + 
+            "- Bandage: %1 <br/>" + 
+            "- Epinephrine: %3 <br/>" + 
+            "- Morphine: %4 <br/>" + 
+            "- Painkiller: %5 <br/>" +
+            "- Splint: %6 <br/>" +
+            "- Tourniquet: %7 <br/>" +
+            "- Blood: %8 <br/>" +
+            "<br/>------- Essentials --- <br/>" +
+            "- Earplugs: %9 <br/>" +
+            "- Map: %10 <br/>" + 
+            "- Compass: %11 <br/>" + 
+            "- GPS: %12 <br/>" + 
+            "- Notepad: %13 <br/>" + 
+            "- Maptools: %14 <br/>" + 
+            "<br/>------- Magazines --- <br/>" +
+            "- Primary: %15 <br/>" +  
+            "- Secondary: %16 <br/>"   
+            ,_txt_bandage, _txt_earplugs, _txt_epi, _txt_morphine, _txt_painkill, _txt_splint, _txt_tourniquet, _txt_liquids,
+            _txt_earplugs, _txt_map, _txt_compass, _txt_gps, _txt_notepad, _txt_maptools, _txt_primaryMags, _txt_secondaryMags
+        ];
+        _time = 30;
+    };
 };
 // Return control to player
 disableUserInput false;
 if (userInputDisabled) then {disableUserInput false;};
-sleep 5;
+sleep _time;
 hintSilent "";
