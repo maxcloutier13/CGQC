@@ -158,6 +158,8 @@ try {
 		};
 		default // Normal camo switch
 		{
+			["prep"] execVM "\cgqc\loadouts\mk3_switchStuff.sqf";
+			sleep 1;
 			// Backpack type first
 			_backpack_new = "cgqc_pack_mk1";
 			// goggles
