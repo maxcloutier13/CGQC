@@ -96,20 +96,18 @@ switch (_type) do {
 		["arifle_TRG21_F"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
 		player addPrimaryWeaponItem "rhsusf_acc_nt4_tan";
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
-		player addPrimaryWeaponItem "Tier1_EXPS3_0_Black";
+		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
 		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
 	};
 	case "TAR21GL":{
 		["arifle_TRG21_GL_F"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
 		player addPrimaryWeaponItem "rhsusf_acc_nt4_tan";
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
-		player addPrimaryWeaponItem "Tier1_EXPS3_0_Black";
+		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
 		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
 		player addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
 		_needGL = true;
 	};
-
-
 	case "m4_dotplus":{
 		["cgqc_gun_mk1_m4a1blkII"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
