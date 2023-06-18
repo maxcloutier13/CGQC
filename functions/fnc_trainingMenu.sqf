@@ -3,7 +3,7 @@ cgqc_training_mode = true;
 // Add the training shit to the player 
 
 // Training actions ---------------------------------------------------------------------------------
-_action = [ "menu_self_training", "Training", "", {}, {cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_training", "Training", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa", {}, {cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Quick Heal
