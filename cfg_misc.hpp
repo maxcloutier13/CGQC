@@ -33,7 +33,7 @@ class cgqc_bandolier_primary: CBA_MiscItem
 {
 	author = "silent1";
 	scope = 2;
-	displayName = "Bandolier: Primary";
+	displayName = "Bandolier: Ammo";
 	model = "\A3\Weapons_F\ammo\mag_univ.p3d";
 	picture = "\cgqc\textures\cgqc_bandolier.paa";
 	class ItemInfo: CBA_MiscItem_ItemInfo
