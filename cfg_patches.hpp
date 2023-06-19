@@ -120,7 +120,10 @@ class CfgPatches
 					"cgqc_uniform_mk1_diver",
 					"cgqc_item_rangefinder",
 					"cgqc_item_laserdesignator",
-					"cgqc_gun_p99_wood"
+					"cgqc_gun_p99_wood",
+					"cgqc_items_ifak",
+					"cgqc_items_medkit",
+					"cgqc_bandolier_primary"
 					};
 	};
 };
