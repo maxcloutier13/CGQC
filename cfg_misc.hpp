@@ -29,7 +29,7 @@ class cgqc_items_medkit: CBA_MiscItem
     };
 };
 
-class cgqc_bandolier_primary: CBA_MiscItem
+class cgqc_bandolier_ammo: CBA_MiscItem
 {
 	author = "silent1";
 	scope = 2;

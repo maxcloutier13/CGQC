@@ -123,7 +123,7 @@ class CfgPatches
 					"cgqc_gun_p99_wood",
 					"cgqc_items_ifak",
 					"cgqc_items_medkit",
-					"cgqc_bandolier_primary"
+					"cgqc_bandolier_ammo"
 					};
 	};
 };

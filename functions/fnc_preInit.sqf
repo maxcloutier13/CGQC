@@ -410,7 +410,7 @@ private _electronics = [
 private _logistics = [
 	"cgqc_items_medkit",
 	"cgqc_items_ifak",
-	"cgqc_bandolier_primary"
+	"cgqc_bandolier_ammo"
 ];
 [_logistics, "Logistics", "cgqc\textures\rearm.paa"] call ace_arsenal_fnc_addRightPanelButton;
 [_medical, "Medical", "cgqc\textures\medical.paa"] call ace_arsenal_fnc_addRightPanelButton;

@@ -79,7 +79,7 @@ switch (_type) do {
 		hint "Medkit unpacked";
 	};
 	case "primary": { 
-		player removeItem "cgqc_bandolier_primary";
+		player removeItem "cgqc_bandolier_ammo";
 		// Throwables
 		for "_i" from _nade to 1 do {player addItem "HandGrenade"};
 		for "_i" from _nadeFlash to 1 do {player addItem "ACE_CTS9"};
