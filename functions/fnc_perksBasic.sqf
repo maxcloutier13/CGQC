@@ -353,6 +353,21 @@ switch (_type) do {
         _txt_maptools = "";
         _txt_primaryMags = "";
         _txt_secondaryMags = "";
+        _bandage = 0;
+        _earplugs = 0;
+        _epi = 0;
+        _morphine = 0;
+        _painkill = 0;
+        _splint = 0;
+        _tourniquet = 0;
+        _liquids = 0;
+        _map = 0;
+        _compass = 0;
+        _gps = 0;
+        _notepad = 0;
+        _maptools = 0;
+        _primaryMags = 0;
+        _secondaryMags = 0;
         // Count meds
         _bandage = {_x isEqualTo "ACE_fieldDressing" } count _allItems;
         _earplugs = {_x isEqualTo "ACE_EarPlugs" } count _allItems;
@@ -370,9 +385,16 @@ switch (_type) do {
         _notepad = {_x isEqualTo "acex_intelitems_notepad" } count _allMags;
         _maptools = {_x isEqualTo "ACE_MapTools" } count _allItems;
         // Count Mags
-        _primaryMags = {_x isEqualTo _primaryMag } count _allMags;
-        _secondaryMags = {_x isEqualTo _secondaryMag } count _allMags;
-
+        if !(isNil "_primaryMag") then {
+            _primaryMags = {_x isEqualTo _primaryMag } count _allMags;
+        }else{
+            _primaryMags = 0;
+        };
+         if !(isNil "_secondaryMag") then {
+            _secondaryMags = {_x isEqualTo _secondaryMag } count _allMags;
+        }else{
+            _secondaryMags = 0;
+        };
         if (_bandage > 10) then {_txt_bandage = "ok"} else {_txt_bandage = "<t color='#ff0000'>LOW</t>"};
         if (_epi > 0) then {_txt_epi = "ok"} else {_txt_epi = "<t color='#ff0000'>LOW</t>"};
         if (_morphine > 0) then {_txt_morphine = "ok"} else {_txt_morphine = "<t color='#ff0000'>LOW</t>"};
@@ -391,7 +413,7 @@ switch (_type) do {
         if (_secondaryMags > 1) then {_txt_secondaryMags = "ok"} else {_txt_secondaryMags = "<t color='#ff0000'>LOW</t>"};
 
         Hint parseText format [ 
-            "------- Medical --- <br/>" + 
+            "------- Medical ------- <br/>" + 
             "- Bandage: %1 <br/>" + 
             "- Epinephrine: %3 <br/>" + 
             "- Morphine: %4 <br/>" + 
@@ -399,14 +421,15 @@ switch (_type) do {
             "- Splint: %6 <br/>" +
             "- Tourniquet: %7 <br/>" +
             "- Blood: %8 <br/>" +
-            "<br/>------- Essentials --- <br/>" +
+            "<br/>------- Essentials ------- <br/>" +
             "- Earplugs: %9 <br/>" +
             "- Map: %10 <br/>" + 
             "- Compass: %11 <br/>" + 
+            "<br/>------- Nice to haves ------- <br/>" +
             "- GPS: %12 <br/>" + 
             "- Notepad: %13 <br/>" + 
             "- Maptools: %14 <br/>" + 
-            "<br/>------- Magazines --- <br/>" +
+            "<br/>------- Magazines ------- <br/>" +
             "- Primary: %15 <br/>" +  
             "- Secondary: %16 <br/>"   
             ,_txt_bandage, _txt_earplugs, _txt_epi, _txt_morphine, _txt_painkill, _txt_splint, _txt_tourniquet, _txt_liquids,
