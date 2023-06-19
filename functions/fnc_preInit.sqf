@@ -286,7 +286,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
     [_menu_name, "Training"], false] call CBA_fnc_addSetting;
 
-// Fortify twavle
+// Fortify tool
 ["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"], 
     [_menu_name, "Fortify"], true
 ] call CBA_fnc_addSetting;
@@ -407,8 +407,14 @@ private _electronics = [
 	"ItemcTab",
 	"WBK_HeadLampItem"
 ];
-[_medical, "Medical", "cgqc\textures\medical.paa", 0] call ace_arsenal_fnc_addRightPanelButton;
-[_electronics, "Electronics", "cgqc\textures\electronics.paa", 1] call ace_arsenal_fnc_addRightPanelButton;
+private _logistics = [
+	"cgqc_items_medkit",
+	"cgqc_items_ifak",
+	"cgqc_bandolier_primary"
+];
+[_logistics, "Logistics", "cgqc\textures\rearm.paa"] call ace_arsenal_fnc_addRightPanelButton;
+[_medical, "Medical", "cgqc\textures\medical.paa"] call ace_arsenal_fnc_addRightPanelButton;
+[_electronics, "Electronics", "cgqc\textures\electronics.paa"] call ace_arsenal_fnc_addRightPanelButton;
 
 // === Sounds ===============================================================================
 cgqc_unconscious_sounds = [

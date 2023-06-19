@@ -219,6 +219,16 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ac
 _action = [ "menu_self_cam", "Player Mirror", "CGQC\textures\cgqc_ace_mirror", {["cam", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Open IFAK 
+_action = [ "menu_self_ifak", "Unpack: IFAK", "\CGQC\textures\icon_med", {["ifak"] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_items_ifak'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_medkit", "Unpack: MediKit", "\CGQC\textures\icon_med", {["medkit"] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_items_medkit'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_bandolier", "Unpack: Ammo Bandolier", "\CGQC\textures\rearm.paa", {["primary"] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_bandolier_primary'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+//_action = [ "menu_target_ifak", "Unpack Patient IFAK", "\CGQC\textures\icon_med", {[cursorTarget, "ifak"] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[cursorObject, 'cgqc_items_ifak'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ cursorTarget, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Zeus ===================================================================================================
 _action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
