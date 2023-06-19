@@ -206,7 +206,7 @@ _action = [ "menu_self_cone", "Cone de silence", "CGQC\textures\cgqc_ace_cone", 
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Cone of silence   ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_check", "Confirm Loadout", "", {["check", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_check", "Confirm Loadout", "CGQC\textures\search.paa", {["check", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Cone of silence   ---------------------------------------------------------------------------------------------------------------
