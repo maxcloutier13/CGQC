@@ -104,8 +104,9 @@ if (cgqc_player_loadAll) then {
 	// Give basic items to unit in case it's missing 
 	// Admin stuff 
 	_items = (items player);
+	_mags = magazines player;
 	if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
-	if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
+	if !("acex_intelitems_notepad" in _mags) then {player addItem "acex_intelitems_notepad";};
 };
 
 // ------ Fortify --------------------------------------------------------------------------------------

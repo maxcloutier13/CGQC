@@ -29,8 +29,9 @@ switch (_type) do
 	case "items_basic": {
 		
 		_items = (items player);
+		_mags = magazines player;
 		if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
-		if !("acex_intelitems_notepad" in _items) then {player addItem "acex_intelitems_notepad";};
+		if !("acex_intelitems_notepad" in _mags) then {player addItem "acex_intelitems_notepad";};
 		if !("ACE_artilleryTable" in _items) then {player addItem "ACE_artilleryTable";};
 		
 	};
