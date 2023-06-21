@@ -28,6 +28,7 @@ switch (_type) do {
 	};
 	case "zeus_radios":
 	{
+		sleep 1;
 		_radios = call acre_api_fnc_getCurrentRadioList;
 		sleep 0.5;  
 		{player removeItem _x;}forEach _radios;
