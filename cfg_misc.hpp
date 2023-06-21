@@ -2,6 +2,7 @@ class ACRE_BaseRadio;
 class ACE_ItemCore;
 class CBA_MiscItem;
 class CBA_MiscItem_ItemInfo;
+class InventoryItem_Base_F;
 
 class cgqc_items_ifak: CBA_MiscItem
 {
@@ -39,6 +40,22 @@ class cgqc_bandolier_ammo: CBA_MiscItem
 	class ItemInfo: CBA_MiscItem_ItemInfo
 	{
 		mass = 20;
+	};
+};
+
+// === Lighter Headlamps ==========================================================================================
+class WBK_HeadLampItem: ItemCore {
+	class ItemInfo: InventoryItem_Base_F
+	{
+		mass = 1;
+	};
+};
+
+// === Lighter Flashlight ==========================================================================================
+class ACE_Flashlight_XL50: ItemCore {
+	class ItemInfo: InventoryItem_Base_F
+	{
+		mass = 1;
 	};
 };
 

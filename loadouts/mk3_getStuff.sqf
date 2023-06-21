@@ -12,7 +12,22 @@ switch (_item) do {
 		player addItem "ACRE_PRC343";
 		player addItem "ACRE_PRC148"; 
 		sleep 0.5;
+		// Event with notifications if they try to communicate on ch:1
+		cgqc_event_148 = ["acre_startedSpeaking", {	
+			params ["_unit", "_onRadio", "_radioId", "_speakingType"];	
+			if (_onRadio) then {   
+				if(_radioId find "148" > -1) then { 
+					y_channel = [] call acre_api_fnc_getCurrentRadioChannelNumber; 
+					if(y_channel == 1) then { 
+						_channel_txt = parseText( "148:Ch1 = Listen Only!!!" + "<br/>" + "En cas d'urgence: Ch2 pour HQ"); 
+						[ _channel_txt, 0, 1, 3, 1 ] spawn BIS_fnc_dynamicText; 
+					};  
+				};   
+			};   
+		}] call CBA_fnc_addEventHandler;
+		hint "Radio 148:Ch1-ListenOnly";
 		["spartan", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+		
 	};
 	case "2ic":
 	{
@@ -22,6 +37,10 @@ switch (_item) do {
 		player addItem "ACRE_PRC343";
 		player addItem "ACRE_PRC152"; 
 		sleep 0.5;
+		// Delete event in case it exists
+		if(!isNil "cgqc_event_148") then {
+			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
+		};
 		["spartan_2", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
 	};
 	case "tl":
@@ -33,6 +52,10 @@ switch (_item) do {
 		player addItem "ACRE_PRC152"; 
 		player addItem "ACRE_PRC117F"; 
 		sleep 0.5;
+		// Delete event in case it exists
+		if(!isNil "cgqc_event_148") then {
+			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
+		};
 		["spartan_1", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
 	};
 	case "sl":
@@ -44,6 +67,10 @@ switch (_item) do {
 		player addItem "ACRE_PRC117F"; 
 		player addItem "ACRE_PRC117F"; 
 		sleep 0.5;
+		// Delete event in case it exists
+		if(!isNil "cgqc_event_148") then {
+			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
+		};
 		["hq", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
 	};
 	case "recon":
@@ -55,6 +82,10 @@ switch (_item) do {
 		player addItem "ACRE_PRC152"; 
 		player addItem "ACRE_PRC117F"; 
 		sleep 0.5;
+		// Delete event in case it exists
+		if(!isNil "cgqc_event_148") then {
+			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
+		};
 		["recon", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
 	};
 	

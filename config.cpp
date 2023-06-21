@@ -31,11 +31,15 @@ class cfgUnitInsignia {
 class CfgEditorSubcategories
 {
 	class EdSubcat_cgqc_Training {
-		displayName = "Men (Training)";
+		displayName = "Men (Vanilla)";
 	};
 	class EdSubcat_cgqc_mk1
 	{
-		displayName = "Men (Mk2)";
+		displayName = "Men (2023)";
+	};
+	class EdSubcat_cgqc_vanilla
+	{
+		displayName = "Men (Vanilla)";
 	};
 	class EdSubcat_cgqc_mk1_divers
 	{

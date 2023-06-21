@@ -12,7 +12,7 @@ player setUnitTrait ["Medic", false];
 player setUnitTrait ["engineer", false];
 player setUnitTrait ["explosiveSpecialist", false];
 
-// === Remote Hat ==========================================================================================================
+// === Random Hat ==========================================================================================================
 _hat = selectRandom [
     "UNS_M1_1V1N",
 	"UNS_Headband_BK",
