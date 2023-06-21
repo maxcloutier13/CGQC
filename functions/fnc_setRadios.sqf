@@ -69,14 +69,14 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 					};
 				};
 			};
-			hintSilent "Radio Sides: Set";
+			hint "Radio Sides: Set";
 		};
 		case "patch": {
 			// Remove patch
 			player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
 			// Set the patch 
 			[ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
-			hintSilent "Patch restored";
+			hint "Patch restored";
 		};
 		case "spartan":	{  //Grunts
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -94,7 +94,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			// Set radio PTT: 152 is listen-only
 			_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 			// Fuck up the sending frequency of ch1 to make listen only
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/Listen-Only/Interteam</t>";
 		};
@@ -117,7 +117,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [ [ _personalRadio, _handRadio, _packRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 			// Set HQ radio to speaker
 			_success = [_packRadio, true] call acre_api_fnc_setRadioSpeaker;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam <br/> 
 			Radio3:Both/117f/HQ</t>";
@@ -135,7 +135,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			// Set radio orders
 			_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/343/Spartan<br/> 
 			Radio2:Droite/152/Interteam</t>";
 		};
@@ -162,7 +162,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			[_handRadio,0.5] call acre_api_fnc_setRadioVolume;
 			// Set radio orders
 			_success = [ [ _rack1, _rack2, _handRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/117/Inter-Centaure<br/> 
 			Radio2:Droite/117/Centaure-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
@@ -187,7 +187,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			// Set sides 
 			_success = [_rack1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 			_success = [_rack2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/117/Inter-Griffon<br/> 
 			Radio2:Droite/117/Griffon-HQ<br/> 
 			Radio3:Droite/152/Urgence</t>";
@@ -212,7 +212,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [_handRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 			_success = [_packRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			_success = [_packRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/152/Inter-Recon<br/> 
 			Radio2:Droite/117/Spartan-HQ<br/> 
 			Radio3:Droite/117/Griffon-HQ</t>";
@@ -237,10 +237,32 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [_packRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 			_success = [_packRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			_success = [_packRadio_3, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/117/Spartan<br/> 
 			Radio2:Droite/117/Griffon<br/> 
 			Radio3:Droite/117/Centaure</t>";
+		};
+		case "clout":{
+			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
+			_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
+			waitUntil {sleep 0.5;!isNil "_handRadios"};
+			_handRadio_1 = _handRadios select 0;
+			_handRadio_2 = _handRadios select 1;
+			// Channels
+			waitUntil {sleep 0.5;!isNil "_handRadio_1"};
+			[_handRadio_1, 4] call acre_api_fnc_setRadioChannel; 
+			waitUntil {sleep 0.5;!isNil "_handRadio_2"};
+			[_handRadio_2, 1] call acre_api_fnc_setRadioChannel;
+			// Set sides 
+			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+			_success = [_handRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+			_success = [_handRadio_2, "BOTH" ] call acre_api_fnc_setRadioSpatial;
+			// Set radio orders
+			_success = [ [_personalRadio, _handRadio_1, _handRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+			hint parseText "<t>
+			Radio1:Gauche/343/Team<br/> 
+			Radio2:Droite/152/Inter-Spartan<br/>
+			Radio3:Both/152/Spartan-HQ</t>";
 		};
 		case "recon": {
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -257,7 +279,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [_packradio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			// Set radio orders
 			_success = [ [ _handradio, _packradio, _personalRadio] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/152/Inter/Recon<br/> 
 			Radio2:Droite/117/Spartan-HQ<br/>
 			Radio3:Gauche/343/Spartan1</t>";
@@ -277,7 +299,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [_handRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			// Set radio orders
 			_success = [ [ _handRadio_1, _handRadio_2, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/152/Inter-Centaure<br/> 
 			Radio2:Droite/152/Centaure-HQ</t>";
 		};
@@ -296,7 +318,7 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [_handRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			// Set radio orders
 			_success = [ [ _handRadio_1, _handRadio_2, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-			hintSilent parseText "<t>
+			hint parseText "<t>
 			Radio1:Gauche/117/Inter-Griffon<br/> 
 			Radio2:Droite/117/Griffon-HQ</t>";
 		};
@@ -404,4 +426,3 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 
 sleep 10;
 hintSilent "";
-
