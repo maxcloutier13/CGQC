@@ -6,6 +6,7 @@ _skip = 0;
 switch (_item) do {
 	case "inf":
 	{
+		hint "Switching radios... Inf";
 		_radios = call acre_api_fnc_getCurrentRadioList;  
 		{player removeItem _x;}forEach _radios; 
 		sleep 0.5;
@@ -27,10 +28,11 @@ switch (_item) do {
 		}] call CBA_fnc_addEventHandler;
 		hint "Radio 148:Ch1-ListenOnly";
 		["spartan", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
-		
+		break;
 	};
 	case "2ic":
 	{
+		hint "Switching radios... 2iC";
 		_radios = call acre_api_fnc_getCurrentRadioList;  
 		{player removeItem _x;}forEach _radios;  
 		sleep 0.5;
@@ -42,9 +44,11 @@ switch (_item) do {
 			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
 		};
 		["spartan_2", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+		break;
 	};
 	case "tl":
 	{
+		hint "Switching radios... TL";
 		_radios = call acre_api_fnc_getCurrentRadioList;  
 		{player removeItem _x;}forEach _radios;  
 		sleep 0.5;
@@ -57,9 +61,11 @@ switch (_item) do {
 			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
 		};
 		["spartan_1", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+		break;
 	};
 	case "sl":
 	{
+		hint "Switching radios... SL";
 		_radios = call acre_api_fnc_getCurrentRadioList;  
 		{player removeItem _x;}forEach _radios;  
 		sleep 0.5;
@@ -72,9 +78,11 @@ switch (_item) do {
 			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
 		};
 		["hq", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+		break;
 	};
 	case "recon":
 	{
+		hint "Switching radios... Recon";
 		_radios = call acre_api_fnc_getCurrentRadioList;  
 		{player removeItem _x;}forEach _radios;  
 		sleep 0.5;
@@ -87,8 +95,25 @@ switch (_item) do {
 			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
 		};
 		["recon", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+		break;
 	};
-	
+	case "clout":
+	{
+		hint "Switching radios... Cloutier";
+		_radios = call acre_api_fnc_getCurrentRadioList;  
+		{player removeItem _x;}forEach _radios;  
+		sleep 0.5;
+		player addItem "ACRE_PRC343"; 
+		player addItem "ACRE_PRC152"; 
+		player addItem "ACRE_PRC152"; 
+		sleep 0.5;
+		// Delete event in case it exists
+		if(!isNil "cgqc_event_148") then {
+			["acre_startedSpeaking", cgqc_event_148] call CBA_fnc_removeEventHandler;
+		};
+		["clout", 1] execVM "\cgqc\functions\fnc_setRadios.sqf";
+		break;
+	};
 	case "crate":
 	{
 		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
