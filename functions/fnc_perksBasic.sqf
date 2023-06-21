@@ -200,27 +200,6 @@ switch (_type) do {
         //cgqc_perks_diver = false;
         break;
     };
-    case "chem_ir": {
-        _chem = "ACE_G_Chemlight_IR";
-        cgqc_perks_chem_ir = cgqc_perks_chem_ir - 1;
-        _count = cgqc_perks_chem_ir;
-        [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
-        break;
-    };
-    case "chem_green": {
-        _chem = "Chemlight_green";
-        cgqc_perks_chem_green = cgqc_perks_chem_green - 1;
-        _count = cgqc_perks_chem_green;
-        [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
-        break;
-    };
-    case "chem_orange": {
-        _chem = "ACE_G_Chemlight_UltraHiOrange";
-        cgqc_perks_chem_orange = cgqc_perks_chem_orange - 1;
-        _count = cgqc_perks_chem_orange;
-        [_chem, _count] execVM "cgqc\functions\fnc_dropChem.sqf";
-        break;
-    };
     case "click":{
         [player, "click"] remoteExec ["say3D"];
         break;
