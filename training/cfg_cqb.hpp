@@ -1,8 +1,15 @@
 // CQB ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_training_cqb", "CQB", "CGQC\textures\cgqc_ace_cqb", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Pause/Unpause
+_action = [ "menu_cqb_pause", "Pause CQB", "", {[500] execVM '\cgqc\functions\fnc_trainingCqb.sqf'}, {cgqc_cqb_on && !cgqc_cqb_paused} ] call ace_interact_menu_fnc_createAction;       
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
+_action = [ "menu_cqb_unpause", "Unpause CQB", "", {[501] execVM '\cgqc\functions\fnc_trainingCqb.sqf'}, {cgqc_cqb_on && cgqc_cqb_paused} ] call ace_interact_menu_fnc_createAction;       
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
+// Stop
 _action = [ "menu_cqb_clear", "Stop CQB", "", {[0] execVM '\cgqc\functions\fnc_trainingCqb.sqf'}, {cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
+
 
 _action = [ "menu_cqb_option", "Options", "", {}, {!cgqc_cqb_on} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_cqb"], _action ] call  ace_interact_menu_fnc_addActionToObject;
