@@ -67,9 +67,7 @@ cgqc_perks_eng = false;
 cgqc_perks_medic = false;
 cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
-cgqc_perks_chem_green = 10;
-cgqc_perks_chem_ir = 10;
-cgqc_perks_chem_orange = 10;
+cgqc_perks_chems = 10;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -277,7 +275,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
     [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Limitations"], [6, 18, 6, 0]] call CBA_fnc_addSetting;
+    [_menu_name, "Limitations"], [6, 18, 8, 0]] call CBA_fnc_addSetting;
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
     [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
 ["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"], 
