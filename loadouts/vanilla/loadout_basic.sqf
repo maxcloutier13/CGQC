@@ -40,7 +40,7 @@ player addWeapon "cgqc_item_rangefinder";
 // === Vest ================================================================================================================
 // Throwables
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade"};
-for "_i" from 1 to 2 do {player addItemToVest "ACE_M84"};
+for "_i" from 1 to 2 do {player addItemToVest "ACE_CTS9"};
 for "_i" from 1 to 1 do {player addItemToVest "SmokeShell"};
 for "_i" from 1 to 1 do {player addItemToVest "SmokeShellBlue"};
 for "_i" from 1 to 1 do {player addItemToVest "SmokeShellRed"};
@@ -76,8 +76,6 @@ player addItemToBackpack "ACE_microDAGR";
 player addItemToBackpack "ACE_EntrenchingTool";
 // === Grenades 
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell";};
-for "_i" from 1 to 1 do {player addItemToBackpack "SmokeShellBlue";};
-for "_i" from 1 to 1 do {player addItemToBackpack "SmokeShellRed";};
 for "_i" from 1 to 1 do {player addItemToBackpack "MS_Strobe_Mag_2"};
 // === Meds
 for "_i" from 1 to 10 do {player addItemToBackpack "ACE_fieldDressing";};
