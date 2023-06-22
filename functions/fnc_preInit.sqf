@@ -1,5 +1,9 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
+_version = "3.3.5";
+
+// Client-side code
+player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 // CGQC Variables ===================================================================================================
 // *** Init **********************
@@ -329,7 +333,7 @@ _menu_name = "CGQC Player settings";
 	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"], 
 		[_menu_name, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"], 
-		[_menu_name, "Sidearm Perso (Vanilla)"], "30Rnd_9x21_Mag"] call CBA_fnc_addSetting;
+		[_menu_name, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"], 

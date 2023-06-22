@@ -180,4 +180,20 @@ if (cgqc_flag_isTraining) then {
 };
 
 
+// Version check 
+[] spawn {
+	sleep 10;
+	// Get the player's mod version
+	_clientModVersion = player getVariable "cgqc_current_version";
+	_serverModVersion = serverNamespace getVariable "current_version_server";
+	// Compare the client's mod version with the server's mod version
+	if (_clientModVersion != _serverModVersion) then {
+		// Versions do not match, take appropriate action
+		hintC "Your mod version does not match the server's version!";
+		// ... additional actions (e.g., kick player, display error message, etc.)
+	} else {
+		hintC "Mods match!";
+	};
+};
+
 cgqc_postInitClient_done = true;
