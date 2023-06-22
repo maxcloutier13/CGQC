@@ -212,6 +212,14 @@ switch (_type) do {
 		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
 		player addPrimaryWeaponItem "Tier1_Harris_Bipod_Black";
 	};
+	case "m27_lpvo":{
+		["rhs_weap_m27iar_grip2"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
+		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+		player addPrimaryWeaponItem "Tier1_SCAR_NGAL_M300C_Black_FL";
+		player addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black";
+		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
+		player addPrimaryWeaponItem "rhsusf_acc_grip2";
+	};
 	case "417":{
 		["cgqc_gun_mk1_hk417"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
 		player addPrimaryWeaponItem "Tier1_SandmanS_Black";
@@ -220,6 +228,15 @@ switch (_type) do {
 		player addPrimaryWeaponItem "ACE_20Rnd_762x51_M118LR_Mag";
 		player addPrimaryWeaponItem "bipod_01_F_blk";
 		_mag_count = 8;
+	};
+	case "m27": {
+		["rhs_weap_m27iar_grip2"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
+		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
+		player addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
+		player addPrimaryWeaponItem "rhs_mag_100Rnd_556x45_Mk262_cmag";
+		player addPrimaryWeaponItem "bipod_01_F_blk";
+		_mag_count = 6;
 	};
 	case "mk46":{
 		["cgqc_gun_mk1_mk46"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
