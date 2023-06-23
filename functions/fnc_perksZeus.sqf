@@ -13,12 +13,15 @@ switch (_type) do {
 		// Initial values
 		_version = "--- Versions des mods --- <br/>";
 		_ref_version_core = player getVariable "cgqc_version_core";
+		_ref_version_core = format["<t color='#00ff00'>%1</t>", _ref_version_core]; 
 		_ref_version_addons = player getVariable "cgqc_version_addons";
+		_ref_version_addons = format["<t color='#00ff00'>%1</t>", _ref_version_addons];
 		if (cgqc_player_has2023) then {
 			_ref_version_2023 = player getVariable "cgqc_version_2023";
-			_version = _version + format ["Réf- Core:%1 Addons:%2 2023:%3<br/>", _ref_version_core, _ref_version_addons, _ref_version_2023];
+			_ref_version_2023 = format["<t color='#00ff00'>%1</t>", _ref_version_2023];
+			_version = _version + format ["-Core:%1 Addons:%2 2023:%3-<br/>", _ref_version_core, _ref_version_addons, _ref_version_2023];
 		}else{
-			_version = _version + format ["Réf- Core:%1 Addons:%2<br/>", _ref_version_core, _ref_version_addons];
+			_version = _version + format ["-Core:%1 Addons:%2-<br/>", _ref_version_core, _ref_version_addons];
 		};
 		_version = _version + "--------------------------- <br/>";
 		{
@@ -105,7 +108,7 @@ switch (_type) do {
 		};
 		waitUntil {sleep 0.5;count (call acre_api_fnc_getCurrentRadioList) > 0}; 
 		y_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getAllRadiosByType;
+		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		waitUntil {sleep 1;!isNil "y_zeusRadios"}; 
 		y_packRadio_1 = y_zeusRadios select 0; 
 		y_packRadio_2 = y_zeusRadios select 1; 
