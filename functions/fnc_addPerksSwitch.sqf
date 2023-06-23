@@ -1,12 +1,10 @@
 // --- addPerksSwitch ----------------------------------------------------------
 // Event that adds perks when player uses unit the first time 
-hint "newControllable event setup";
 ["ace_interact_menu_newControllableObject", {
     params ["_type"]; // string of the object's classname
     if (!(_type isKindOf "CAManBase")) exitWith {}; // All humans
 	[_type] spawn {
 		params ["_type"];
-		sleep 1;
 		hint "Unit compatible, adding radios and perks";
 		// Add Zeus radios 
 		["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
