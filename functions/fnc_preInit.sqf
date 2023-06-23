@@ -1,6 +1,6 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
-
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
 // CGQC Variables ===================================================================================================
 // *** Init **********************
 cgqc_preInit_done = false;
@@ -206,6 +206,17 @@ if (cgqc_player_hasUnsung) then {
 	["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
 };
 
+
+// Key-fucking-binds ===================================================================================
+// -- Repos --
+["CGQC", "cgqc_kb_repos", "Au Repos", 
+	{ ["flip_chill", false] spawn CGQC_fnc_perksBasic;}, {""}, []
+] call cba_fnc_addKeybind;
+
+// -- Crickets --
+["CGQC", "cgqc_kb_criquet", "Criquet", 
+	{ ["click", false] spawn CGQC_fnc_perksBasic;}, {""}, []
+] call cba_fnc_addKeybind;
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
