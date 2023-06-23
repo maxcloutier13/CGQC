@@ -60,40 +60,40 @@ switch (_type) do {
 		for "_i" from _painkill to 4 do {player addItem "FF_Painkiller"};
 		for "_i" from _splint to 0 do {player addItem "ACE_splint"};
 		for "_i" from _tourniquet to 1 do {player addItem "ACE_tourniquet"};
-		for "_i" from _liquids to 1 do {player addItem "ACE_salineIV_500"};
+		for "_i" from _liquids to 1 do {player addItemToBackpack "ACE_salineIV_500"};
 		hint "IFAK unpacked";
 	};
 	case "medkit": { 
 		player removeItem "cgqc_items_medkit";
-		for "_i" from _bandage to 49 do {player addItem "ACE_fieldDressing"};
-		for "_i" from _epi to 9 do {player addItem "ACE_epinephrine"};
-		for "_i" from _morphine to 9 do {player addItem "ACE_morphine"};
-		for "_i" from _painkill to 14 do {player addItem "FF_Painkiller"};
-		for "_i" from _splint to 1 do {player addItem "ACE_splint"};
-		for "_i" from _tourniquet to 3 do {player addItem "ACE_tourniquet"};
-		for "_i" from _1000ml to 4 do {player addItem "ACE_salineIV"};
-		for "_i" from _500ml to 7 do {player addItem "ACE_salineIV_500"};
-		for "_i" from _pak to 0 do {player addItem "ACE_personalAidKit"};
-		for "_i" from _smoke_purple to 1 do {player addItem "SmokeShellPurple"};
-		for "_i" from _medbag to 0 do {player addItem "FSGm_ItemMedicBag"};
+		for "_i" from _bandage to 49 do {player addItemToBackpack "ACE_fieldDressing"};
+		for "_i" from _epi to 9 do {player addItemToBackpack "ACE_epinephrine"};
+		for "_i" from _morphine to 9 do {player addItemToBackpack "ACE_morphine"};
+		for "_i" from _painkill to 14 do {player addItemToBackpack "FF_Painkiller"};
+		for "_i" from _splint to 1 do {player addItemToBackpack "ACE_splint"};
+		for "_i" from _tourniquet to 3 do {player addItemToBackpack "ACE_tourniquet"};
+		for "_i" from _1000ml to 4 do {player addItemToBackpack "ACE_salineIV"};
+		for "_i" from _500ml to 7 do {player addItemToBackpack "ACE_salineIV_500"};
+		for "_i" from _pak to 0 do {player addItemToBackpack "ACE_personalAidKit"};
+		for "_i" from _smoke_purple to 1 do {player addItemToBackpack "SmokeShellPurple"};
+		for "_i" from _medbag to 0 do {player addItemToBackpack "FSGm_ItemMedicBag"};
 		hint "Medkit unpacked";
 	};
 	case "primary": { 
 		player removeItem "cgqc_bandolier_ammo";
 		// Throwables
-		for "_i" from _nade to 1 do {player addItem "HandGrenade"};
-		for "_i" from _nadeFlash to 1 do {player addItem "ACE_CTS9"};
-		for "_i" from _smoke to 1 do {player addItem "SmokeShell"};
-		for "_i" from _smoke_blue to 0 do {player addItem "SmokeShellBlue"};
-		for "_i" from _smoke_red to 0 do {player addItem "SmokeShellRed"};
-		for "_i" from _ir to 0 do {player addItem "B_IR_Grenade"};
+		for "_i" from _nade to 1 do {player addItemToVest "HandGrenade"};
+		for "_i" from _nadeFlash to 1 do {player addItemToVest "ACE_CTS9"};
+		for "_i" from _smoke to 1 do {player addItemToVest "SmokeShell"};
+		for "_i" from _smoke_blue to 0 do {player adaddItemToVestdItem "SmokeShellBlue"};
+		for "_i" from _smoke_red to 0 do {player addIaddItemToVesttem "SmokeShellRed"};
+		for "_i" from _ir to 0 do {player addItemToVest "B_IR_Grenade"};
 		if !(isNil "_handgunMag") then {
 			hint format ["HandgunMag: %1", _handgunMag];
-			for "_i" from _handgunMags to (cgqc_config_sidearm_mag_nbr - 1) do {player addItem _handgunMag};
+			for "_i" from _handgunMags to (cgqc_config_sidearm_mag_nbr - 1) do {player addItemToVest _handgunMag};
 		}else{hint "No Secondary weapon!";sleep 1;};
 		if !(isNil "_primaryMag") then {
 			hint format ["Mag: %1", _primaryMag];
-			for "_i" from _primaryMags to (cgqc_setting_limitMags_max - 1) do {player addItem _primaryMag};
+			for "_i" from _primaryMags to (cgqc_setting_limitMags_max - 1) do {player addItemToVest _primaryMag};
 		}else{hint "No primary weapon!";sleep 1;};
 		hint "Ammo Bandolier unpacked";
 	};
