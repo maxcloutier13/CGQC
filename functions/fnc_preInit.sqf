@@ -1,9 +1,5 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
-_version = "3.3.5";
-
-// Client-side code
-player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 // CGQC Variables ===================================================================================================
 // *** Init **********************
@@ -72,6 +68,7 @@ cgqc_perks_medic = false;
 cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
+cgqc_options_zeus_radios = true;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -274,6 +271,10 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 [_menu_name, "Briefing"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_setting_briefing_area","SLIDER", ["General Briefing area size", "Square around the Zeus"],
 [_menu_name, "Briefing"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
+
+// Zeus radios ===============================================================================================
+["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"], 
+[_menu_name, "Zeus Stuff"], true] call CBA_fnc_addSetting;
 
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
