@@ -8,6 +8,14 @@ _time = 5;
 
 disableUserInput true;
 switch (_type) do {
+    case "flip_chill":{
+        if (cgqc_player_chill) then {
+            ["ready", false] spawn CGQC_fnc_perksBasic;
+        } else {
+            ["chill", false] spawn CGQC_fnc_perksBasic;
+        };
+        break;
+    };    
     case "chill":
     {
         if !(cgqc_player_chill) then {
@@ -89,6 +97,7 @@ switch (_type) do {
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Prêt au combat</t><br/>");
                 [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
             };
+            player action ["SwitchWeapon", player, player, 0];
         };
         break;
     };             
