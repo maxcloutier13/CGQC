@@ -11,8 +11,18 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 	hint "Zeus!";
 	sleep 1;
 	[] spawn {
-		// Add Zeus radios
-		["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
+		while {true} do {
+			// Make sure radios are on 
+			if (cgqc_config_zeusRadios) then {
+				_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
+				waitUntil {sleep 0.5;!isNil "_zeusRadios"};
+				if (count _zeusRadios < 2) then {
+					hint "Loading Zeus Radios"
+					["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
+				};
+			};
+			sleep 10;
+		};
 	};
 	
 	// Ensure Zeus keeps slot, despite admin logging
@@ -41,8 +51,6 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 				if (_exitLoop) exitWith {};
 			} forEach _curatorList;
 		};
-		//sleep 5;
-		//["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
 	sleep 25.0;
 	};
 };
