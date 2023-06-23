@@ -5,6 +5,10 @@
 0 fadeSound 0;
 titleCut ["", "BLACK FADED", 999];
 
+_version = "3.3.5";
+// Client-side code
+player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
+
 // Player identification --------------------------------------------------------------------------------------------
 //Get some player info
 cgqc_player_name = name player;
@@ -179,21 +183,5 @@ if (cgqc_flag_isTraining) then {
 	execVM "\cgqc\functions\fnc_trainingMenu.sqf";
 };
 
-
-// Version check 
-[] spawn {
-	sleep 10;
-	// Get the player's mod version
-	_clientModVersion = player getVariable "cgqc_current_version";
-	_serverModVersion = serverNamespace getVariable "current_version_server";
-	// Compare the client's mod version with the server's mod version
-	if (_clientModVersion != _serverModVersion) then {
-		// Versions do not match, take appropriate action
-		hintC "Your mod version does not match the server's version!";
-		// ... additional actions (e.g., kick player, display error message, etc.)
-	} else {
-		hintC "Mods match!";
-	};
-};
 
 cgqc_postInitClient_done = true;
