@@ -29,7 +29,7 @@ _action = [ "menu_self_chemlights", "Throw Chem/Flare", "CGQC\textures\cgqc_ace_
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_chem_green", "Chem Green", "", {["Chemlight_green"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_chem_ir", "Chem IR", "", {["ACE_G_Chemlight_IR"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_chem_ir", "Chem IR", "", {["ACE_Chemlight_IR"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_flare_green", "Flare Green", "", {["ACE_HandFlare_Green"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_chemlights"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -424,6 +424,74 @@ _action = [ "zeus_punch_on", "Punching: Turn On", "", {["punch_on", 0, ""] spawn
 _adding = [ ["ACE_ZeusActions", "zeus_options"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
 _action = [ "zeus_punch_off", "Punching: Turn Off", "", {["punch_off", 0, ""] spawn CGQC_fnc_perksZeus}, {BRIDGE_KPU_MasterSetting }] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_ZeusActions", "zeus_options"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
+
+// Grenade selector
+private _childrenStatements = {
+	private _actions = [];
+
+	private _loadout  = getUnitLoadout player;
+	private _allItems = [];
+	for "_i" from 3 to 5 do
+	{
+		_slotLoadout = _loadout select _i;
+		if ( count _slotLoadout > 1  ) then
+		{
+		_allItems append (_slotLoadout select 1);
+		}
+	};
+
+	// Get player's throwables
+	private _seenThrowables = [];
+	private _allThrowables  = [];
+	{
+		_itemClassName = _x select 0;
+		if (!(_itemClassName in _seenThrowables) && (_itemClassName call BIS_fnc_isThrowable)) then
+		{
+		_seenThrowables pushBack _itemClassName;
+		_picture	 = (getText (configFile >> 'CfgMagazines' >> _itemClassName >> 'picture'));
+		_displayName = (getText (configFile >> 'CfgMagazines' >> _itemClassName >> 'displayName'));
+		_allThrowables append [[_itemClassName, _picture, _displayName]]; // use pushBack
+		}
+	} forEach _allItems;
+	_allThrowables sort true;
+
+
+	// Add children actions
+	{
+		private _action = [format ["NFST_GSW_%1", _x select 0], _x select 2, _x select 1, {
+		_selectedGrenade = _this select 2;
+		// Get all player grenades
+		private _uniformGrenades  = uniformItems  player select {_x call BIS_fnc_isThrowable && _x != _selectedGrenade};
+		private _vestGrenades	 = vestItems	 player select {_x call BIS_fnc_isThrowable && _x != _selectedGrenade};
+		private _backpackGrenades = backpackItems player select {_x call BIS_fnc_isThrowable && _x != _selectedGrenade};
+		
+		// Remove all grenades not of the desired type
+		{player removeItemFromUniform  _x; false} count _uniformGrenades ;
+		{player removeItemFromVest	 _x; false} count _vestGrenades	;
+		{player removeItemFromBackpack _x; false} count _backpackGrenades;
+		
+		// Put them all back
+		{player addItemToUniform  _x; false} count _uniformGrenades ;
+		{player addItemToVest	 _x; false} count _vestGrenades	;
+		{player addItemToBackpack _x; false} count _backpackGrenades; 
+		
+		// Pull out grenade? 
+		
+		}, {true}, {}, _x select 0] call ace_interact_menu_fnc_createAction;
+		_actions pushBack [_action, [], objNull];
+	} forEach _allThrowables;
+
+	_actions
+};
+
+private _action = ["cgqc_menu_grenades", "Grenades", "\cgqc\textures\cgqc_ace_grenade", {}, {true}, _childrenStatements] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
+
+
 
 // Return true 
 true
