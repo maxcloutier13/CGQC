@@ -419,7 +419,7 @@ switch (_type) do {
             "- Maptools: %14 <br/>" + 
             "<br/>------- Magazines ------- <br/>" +
             "- Primary: %15 <br/>" +  
-            "- Secondary: %16 <br/>"   
+            "- Handgun: %16 <br/>"   
             ,_txt_bandage, _txt_earplugs, _txt_epi, _txt_morphine, _txt_painkill, _txt_splint, _txt_tourniquet, _txt_liquids,
             _txt_earplugs, _txt_map, _txt_compass, _txt_gps, _txt_notepad, _txt_maptools, _txt_primaryMags, _txt_secondaryMags
         ];

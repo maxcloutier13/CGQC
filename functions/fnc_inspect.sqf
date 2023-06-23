@@ -107,7 +107,7 @@ if !(inspect_target_uniform isEqualTo "") then {
 	inspect_target_uniform_gunMags = [];
 	inspect_target_uniform_throwables = [];
 
-	[inspect_target_uniform_allMags, inspect_target_uniform_gunMags, inspect_target_uniform_throwables, inspect_target_uniform_txt] execVM "\cgqc\functions\fnc_inspect_sort.sqf";
+	[inspect_target_uniform_allMags, inspect_target_uniform_gunMags, inspect_target_uniform_throwables, inspect_target_uniform_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
 
 }else{
 	inspect_target_uniform_txt = inspect_target_uniform_txt + "-- None --<br/>";
@@ -141,7 +141,7 @@ if !(inspect_target_vest isEqualTo "") then {
 	inspect_target_vest_allMags = vestMagazines inspect_target; 
 	inspect_target_vest_gunMags = [];
 	inspect_target_vest_throwables = [];
-	[inspect_target_vest_allMags, inspect_target_vest_gunMags, inspect_target_vest_throwables, inspect_target_vest_txt] execVM "\cgqc\functions\fnc_inspect_sort.sqf";
+	[inspect_target_vest_allMags, inspect_target_vest_gunMags, inspect_target_vest_throwables, inspect_target_vest_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
 } else {
 	inspect_target_vest_txt = inspect_target_vest_txt + "-- None --<br/>";
 };
@@ -174,7 +174,7 @@ if !(inspect_target_backpack isEqualTo "") then {
 	inspect_target_backpack_allMags = backpackMagazines inspect_target; 
 	inspect_target_backpack_gunMags = [];
 	inspect_target_backpack_throwables = [];
-	[inspect_target_backpack_allMags, inspect_target_backpack_gunMags, inspect_target_backpack_throwables, inspect_target_backpack_txt] execVM "\cgqc\functions\fnc_inspect_sort.sqf";
+	[inspect_target_backpack_allMags, inspect_target_backpack_gunMags, inspect_target_backpack_throwables, inspect_target_backpack_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
 } else {
 	inspect_target_backpack_txt = inspect_target_backpack_txt + "-- None --<br/>";
 };
