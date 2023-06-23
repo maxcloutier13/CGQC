@@ -6,6 +6,36 @@ briefing_time = _this select 1;
 _targetPlayer = _this select 2;
 
 switch (_type) do {
+	case "check_mods": {
+		//Find all valid player except current
+		_players = allPlayers - entities "HeadlessClient_F";
+		_players = _players - [player];
+		// Initial values
+		_version = "--- Versions des mods --- <br/>";
+		_ref_version_core = player getVariable "cgqc_version_core";
+		_ref_version_addons = player getVariable "cgqc_version_addons";
+		_version = _version + format ["Référence - Core: %1 - Addons: %2 <br/>", _ref_version_core, _ref_version_addons];
+		_version = _version + "--------------------------- <br/>";
+		{
+			_name = name _x;
+			_version_core = _x getVariable "cgqc_version_core";
+			_version_addons = _x getVariable "cgqc_version_addons";
+			if (isNil "_version_core") then {_version_core = 0};
+			if (isNil "_version_addons") then {_version_addons = 0};
+			if !(_version_core isEqualTo _ref_version_core) then { // Bad core version
+				_version_core = format["<t color='#ff0000'>%1</t>", _version_core];
+				_name = format["<t color='#ff0000'>%1</t>",_name];
+			};
+			if !(_version_addons isEqualTo _ref_version_addons) then { // Bad addons version
+				_version_addons = format["<t color='#ff0000'>%1</t>", _version_addons];
+				_name = format["<t color='#ff0000'>%1</t>",_name];
+			};
+			_version = _version + format ["%1 - Core: %2 - Addons: %3 <br/>", _name, _version_core, _version_addons] 
+		}forEach _players;
+		hint parseText format ["%1",_version];
+		sleep 20;
+		break;
+	};
 	case "pause": {
 		y_allAIs = allUnits - allPlayers;
 		{
@@ -15,6 +45,7 @@ switch (_type) do {
 		hint "All units PAUSED!";
 		cgqc_zeus_paused = true;
 		publicVariable "cgqc_zeus_paused";
+		break;
 	};
 	case "unpause": {
 		y_allAIs = allUnits - allPlayers;
@@ -25,23 +56,27 @@ switch (_type) do {
 		hint "All units Unpaused.";
 		cgqc_zeus_paused = false;
 		publicVariable "cgqc_zeus_paused";
+		break;
 	};
 	case "zeus_radios":
 	{
 		sleep 1;
 		_radios = call acre_api_fnc_getCurrentRadioList;
 		sleep 0.5;  
-		{player removeItem _x;}forEach _radios;
-		sleep 0.5;  
+		while {count (call acre_api_fnc_getCurrentRadioList) > 0} do { 
+			_radios = call acre_api_fnc_getCurrentRadioList; 
+			{player removeItem _x;} forEach _radios; 
+			sleep 1;  
+		};
 		// Add zeus radios  
 		if (player canAdd ["ACRE_PRC117F", 2]) then {   
 			// There is enough space, add the items 
-			hint "Enough space. Adding radios";  
+			//hint "Enough space. Adding radios";  
 			player addItem "ACRE_PRC117F";   
 			player addItem "ACRE_PRC117F";   
 		} else {   
 			// There is not enough space   
-			hint "Not enough inventory space! Zeus backpack on";  
+			//hint "Not enough inventory space! Zeus backpack on";  
 			_items_pack = backpackItems player;  
 			removeBackpack player;  
 			player addBackpack "cgqc_pack_mk1_magic_zeus";  
@@ -49,8 +84,8 @@ switch (_type) do {
 			{player addItemToBackpack _x} forEach _items_pack;  
 			player addItem "ACRE_PRC117F";   
 			player addItem "ACRE_PRC117F";	
-		}; 
-		sleep 1;
+		};
+		waitUntil {sleep 0.5;count (call acre_api_fnc_getCurrentRadioList) > 0}; 
 		y_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType; 
 		waitUntil {sleep 1;!isNil "y_zeusRadios"}; 
 		y_packRadio_1 = y_zeusRadios select 0; 
