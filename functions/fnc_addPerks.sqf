@@ -40,6 +40,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace
 // Add Delete stash option
 _action = [ "cgqc_perk_stash_delete", " Delete Stash", "", {["del_stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 // ------ Ghillie up --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_ghillie", " Ghillie up", "", {}, {cgqc_perks_recon && !cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -89,6 +90,8 @@ if (cgqc_config_fortify) then {
 	[east, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
 	[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
 };
+
+
 // ------ Heli pilot --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_heli_pilot_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_pilot && 
@@ -108,10 +111,6 @@ _action = [ "cgqc_perk_driver_getDriver", "Spawn Driver", "", {["getDriver"] spa
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "cgqc_perk_driver_delDriver", "Delete Driver", "", {["delDriver"] spawn CGQC_fnc_perksPilot}, {cgqc_perks_driver && cgqc_perks_driver_hasDriver} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Set patch ---------------------------------------------------------------------------------------------------------------
-//_action = [ "menu_self_patch", "Remettre ta patch personelle", "", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
-//_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Camo Faces ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_camo", " Camo Faces", "", {""}, {cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
@@ -211,6 +210,9 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 // Fix Sound   ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cone_off", "Fix Sound", "", {["fix", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Set patch ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_patch", "Remettre ta patch personelle", "\cgqc\textures\cgqc_ace_defend.paa", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Show player   ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cam", "Player Mirror", "CGQC\textures\cgqc_ace_mirror", {["cam", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
