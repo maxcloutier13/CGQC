@@ -13,7 +13,7 @@ class cgqc_items_ifak: CBA_MiscItem
     picture = "\cgqc\textures\first_aidkit.paa";
     class ItemInfo: CBA_MiscItem_ItemInfo
     {
-        mass = 10;
+        mass = 23; // Bonus 2 free 500ml in backpack
     };
 };
 
@@ -23,10 +23,10 @@ class cgqc_items_medkit: CBA_MiscItem
     scope = 2;
     displayName = "Kit: Medic Supply";
     model = "\A3\Weapons_F\ammo\mag_univ.p3d";
-    picture = "\cgqc\textures\first_aidkit.paa";
+    picture = "\cgqc\textures\medikit.paa";
     class ItemInfo: CBA_MiscItem_ItemInfo
     {
-        mass = 20;
+        mass = 120;
     };
 };
 
@@ -38,8 +38,8 @@ class cgqc_bandolier_ammo: CBA_MiscItem
 	model = "\A3\Weapons_F\ammo\mag_univ.p3d";
 	picture = "\cgqc\textures\cgqc_bandolier.paa";
 	class ItemInfo: CBA_MiscItem_ItemInfo
-	{
-		mass = 20;
+	{ 
+		mass = 80;
 	};
 };
 
