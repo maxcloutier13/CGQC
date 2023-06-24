@@ -303,7 +303,24 @@ switch (_type) do {
         break;
     };
     case "cam":{
-        [player, ["ACE_WaterBottle"]] call ace_arsenal_fnc_initBox;
+        [player, [
+            "G_mas_can_gasmask",
+            "G_mas_can_gog",
+            "G_mas_can_wrap_gog_T",
+            "G_mas_can_wrap_gog_B",
+            "G_mas_can_shemag_gog_l",
+            "G_mas_can_shemag_gog",
+            "G_mas_can_mask_b",
+            "G_mas_can_mask",
+            "G_mas_can_balaM_b",
+            "G_mas_can_balaM_T",
+            "G_mas_can_shemag_mask",
+            "rhs_goggles_black",
+            "rhusf_oakley_goggles_blk",
+            "rhsusf_shemagh_gogg_tan",
+            "rhsusf_shemagh2_gogg_tan",
+            "G_Lowprofile"
+        ]] call ace_arsenal_fnc_initBox;
         [player, player, false] call ace_arsenal_fnc_openBox;
         /*
         [] spawn {
