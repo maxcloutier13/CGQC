@@ -2,13 +2,29 @@ class Man;
 class CAManBase: Man {
 	class ACE_Actions {
 		class ACE_MainActions {
-			class cgqc_inspect {
-				displayName = "Inspect Loadout";
+			class cgqc_inspect_detail {
+				displayName = "Rapid Inspection";
 				condition = "true";
-				statement = "[] execVM '\cgqc\functions\fnc_inspect.sqf'";
+				statement = "[0] execVM '\cgqc\functions\fnc_inspect.sqf'";
 				exceptions[] = {"isNotInside","isNotSitting"};
-				icon = "";
+				icon = "CGQC\textures\search.paa";
+				runOnHover = "hint 'Quick check of the essentials'";
+			};
+			class cgqc_inspect {
+				displayName = "Full Inspection";
+				condition = "true";
+				statement = "[1] execVM '\cgqc\functions\fnc_inspect.sqf'";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Inspect the soldiers gear'";
+			};
+			class cgqc_openIfak {
+				displayName = "Open target's IFAK";
+				condition = "[cursorTarget, 'cgqc_items_ifak'] call BIS_fnc_hasItem";
+				statement = "['ifak', cursorTarget] execVM '\cgqc\functions\fnc_openItem.sqf'";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_med";
+				runOnHover = "hint 'Open the target soldiers IFAK'";
 			};
 		};
 	};
