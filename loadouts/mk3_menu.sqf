@@ -51,12 +51,12 @@ if (hasInterface) then {
 					// Vanilla ---------------------------------------------------------------------------------------------------------
 					_action = [ "menu_vanilla", "Vanilla", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					//  Arsenal Complet 
-					_action = [ "menu_vanilla_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\vanilla\load_vanilla.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					//  Loadout switcher 
 					_action = [ "menu_loadouts", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					//  Arsenal Complet 
+					_action = [ "menu_vanilla_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\vanilla\load_vanilla.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					
 					// Infanterie ---------------------------------------------------------------------------------------------------------
 					_action = [ "menu_loadout_inf", "Infanterie", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -480,10 +480,19 @@ if (hasInterface) then {
 			//Painkillers
 			_action = [ "menu_items5", "Painkillers x5", "", {["painkillers"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			//IFAK
+			_action = [ "menu_items_ifak", "Kit: Individual First-AId", "", {["ifak"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			//Medikit
+			_action = [ "menu_items_medkit", "Kit: Medic Supply", "", {["medkit"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Kidnapping Kit
 			_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Ammo
+			//Medikit
+			_action = [ "menu_items_bandolier", "Bandolier: Ammo", "", {["bandolier"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_items10", "5x Primary mags", "", {["mags_primary"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_items11", "2x Secondary mags", "", {["mags_secondary"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;       

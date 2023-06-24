@@ -74,12 +74,13 @@ player addItemToUniform "murshun_cigs_cigpack";
 player addItemToUniform "murshun_cigs_lighter";
 player addItemToUniform "acex_intelitems_notepad";
 player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads"; 
-for "_i" from 1 to 5 do {player addItemToUniform "FF_Painkiller";}; // === Meds
-for "_i" from 1 to 5 do {player addItemToUniform "ACE_fieldDressing";};
-for "_i" from 1 to 2 do {player addItemToUniform "ACE_epinephrine";};
-for "_i" from 1 to 2 do {player addItemToUniform "ACE_morphine";};
-for "_i" from 1 to 2 do {player addItemToUniform "ACE_tourniquet";};
-player addItemToUniform "ACE_splint";
+player addItemToUniform "cgqc_items_ifak";
+//for "_i" from 1 to 5 do {player addItemToUniform "FF_Painkiller";}; // === Meds
+//for "_i" from 1 to 5 do {player addItemToUniform "ACE_fieldDressing";};
+//for "_i" from 1 to 2 do {player addItemToUniform "ACE_epinephrine";};
+//for "_i" from 1 to 2 do {player addItemToUniform "ACE_morphine";};
+//for "_i" from 1 to 2 do {player addItemToUniform "ACE_tourniquet";};
+//player addItemToUniform "ACE_splint";
 
 // === Vest ================================================================================================================
 player addVest "uns_sas_web_3";
@@ -96,7 +97,7 @@ for "_i" from 1 to 4 do {player addItemToVest "uns_m67gren";};
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell";};
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShellBlue";};
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShellPurple";};
-for "_i" from 1 to 5 do {player addItemToBackpack "FF_Painkiller";}; // === Meds
-for "_i" from 1 to 10 do {player addItemToBackpack "ACE_fieldDressing";};
-for "_i" from 1 to 2 do {player addItemToBackpack "ACE_salineIV_500";}; 
+//for "_i" from 1 to 5 do {player addItemToBackpack "FF_Painkiller";}; // === Meds
+//for "_i" from 1 to 10 do {player addItemToBackpack "ACE_fieldDressing";};
+//for "_i" from 1 to 2 do {player addItemToBackpack "ACE_salineIV_500";}; 
 sleep 0.5;

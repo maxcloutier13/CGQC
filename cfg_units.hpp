@@ -13,16 +13,10 @@ class CGQC_Soldat_Base : B_Soldier_f
 	weapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	respawnWeapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	items[] = {
-		"ACRE_PRC343", "ACRE_PRC152", "acex_intelitems_notepad", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_epinephrine", "ACE_epinephrine", "ACE_EarPlugs", "ACE_morphine", "ACE_morphine",
-		"ACE_splint", "ACE_tourniquet", "ACE_tourniquet", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
+		"ACRE_PRC343", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
 		"ACE_IR_Strobe_Item", "ACE_microDAGR"};
 	respawnItems[] = {
-		"ACRE_PRC343", "ACRE_PRC152", "acex_intelitems_notepad", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_epinephrine", "ACE_epinephrine", "ACE_EarPlugs", "ACE_morphine", "ACE_morphine",
-		"ACE_splint", "ACE_tourniquet", "ACE_tourniquet", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
+		"ACRE_PRC343", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
 		"ACE_IR_Strobe_Item", "ACE_microDAGR"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	respawnMagazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
@@ -51,17 +45,9 @@ class CGQC_Officer_Base : B_Soldier_f
 	weapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	respawnWeapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	items[] = {
-		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_epinephrine", "ACE_epinephrine", "ACE_EarPlugs", "ACE_morphine", "ACE_morphine",
-		"ACE_splint", "ACE_tourniquet", "ACE_tourniquet", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
-		"ACE_IR_Strobe_Item", "ACE_microDAGR"};
+		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_IR_Strobe_Item", "ACE_microDAGR"};
 	respawnItems[] = {
-		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing",
-		"ACE_fieldDressing", "ACE_epinephrine", "ACE_epinephrine", "ACE_EarPlugs", "ACE_morphine", "ACE_morphine",
-		"ACE_splint", "ACE_tourniquet", "ACE_tourniquet", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
-		"ACE_IR_Strobe_Item", "ACE_microDAGR"};
+		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_IR_Strobe_Item", "ACE_microDAGR"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	respawnMagazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	linkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "cgqc_item_laserdesignator", "cgqc_cap_green", "V_Rangemaster_belt", "None"};
@@ -85,11 +71,11 @@ class CGQC_units_vanilla_rifleman : CGQC_Soldat_Base
 	backpack = "B_AssaultPack_rgr";
 	weapons[] = {"arifle_SPAR_02_blk_F", "cgqc_gun_p99_wood", "cgqc_item_laserdesignator", "Throw", "Put"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "SmokeShell", "SmokeShell", "SmokeShell", "SmokeShellBlue", "SmokeShellBlue", "SmokeShellBlue", "SmokeShellRed", "SmokeShellRed", "SmokeShellRed", "B_IR_Grenade", "ACE_30Rnd_556x45_Stanag_Mk262_mag", "16Rnd_9x21_Mag", "Laserbatteries"};
-	items[] = {"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_epinephrine", "ACE_epinephrine", "ACE_EarPlugs", "ACE_morphine", "ACE_morphine", "ACE_splint", "ACE_tourniquet", "ACE_tourniquet", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_IR_Strobe_Item", "ACE_microDAGR", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_fieldDressing", "ACE_salineIV_500", "ACE_salineIV_500", "ACE_EntrenchingTool"};
+	items[] = {"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "cgqc_items_ifak" "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_IR_Strobe_Item", "ACE_microDAGR", "ACE_EntrenchingTool"};
 	linkedItems[] = {"V_PlateCarrier1_rgr", "H_HelmetSpecB", "None", "ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "ACE_NVG_Gen4_Black", "muzzle_snds_M", "ACE_acc_pointer_green", "optic_Hamr"};
 
     class EventHandlers
     {
-        //init = "['hq', 1, true] execVM '\CGQC_2022\functions\fnc_initRoleSwitch.sqf'";
+		//init = ["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf";
     };
 };

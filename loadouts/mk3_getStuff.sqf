@@ -127,6 +127,21 @@ switch (_item) do {
 		cgqc_player_crate = false;
 		break;
 	};
+	case "bandolier": {
+		player addItem "cgqc_bandolier_ammo";
+		hintSilent "Bandolier ajouté";
+		break;
+	};
+	case "ifak": {
+		player addItem "cgqc_items_ifak";
+		hintSilent "IFAK ajouté";
+		break;
+	};
+	case "medkit": {
+		player addItem "cgqc_items_medkit";
+		hintSilent "Medkit ajouté";
+		break;
+	};
 	case "343":	{
 		player addItem "ACRE_PRC343";
 		hintSilent "343 ajoutée";
