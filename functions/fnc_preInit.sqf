@@ -70,6 +70,7 @@ cgqc_perks_medic = false;
 cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
+cgqc_perks_panel = false;
 cgqc_options_zeus_radios = true;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
@@ -230,6 +231,28 @@ _menu_name = "CGQC";
 	[_type] execVM "\cgqc\functions\fnc_training.sqf";
 }] call CBA_fnc_addEventHandler;
 
+// Medical menu / IFAK eventhandler 
+["ace_medicalMenuOpened", {
+    params ["_acePlayer", "_targetPlayer", "_display"];
+	_work = "";
+	_fail = "";
+	if (_acePlayer isEqualTo _targetPlayer) then {
+		_work = "Opening your IFAK";
+		_fail = "You have no IFAK...";
+	} else {
+		_work = "Opening victims IFAK";
+		_fail = "Victim has no IFAK";
+	};
+	// Check if target has an IFAK 
+	if([_targetPlayer, 'cgqc_items_ifak'] call BIS_fnc_hasItem) then {
+		hint _work;
+		['ifak', _targetPlayer] execVM '\cgqc\functions\fnc_openItem.sqf';
+	}else{
+		hint _fail;
+	};
+    //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
+}] call CBA_fnc_addEventHandler;
+
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
     [_menu_name, "Description et Intro"], true] call CBA_fnc_addSetting;
@@ -287,7 +310,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Zeus radios ===============================================================================================
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"], 
-[_menu_name, "Zeus Stuff"], true] call CBA_fnc_addSetting;
+[_menu_name, "Zeus Stuff"], false] call CBA_fnc_addSetting;
 
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
