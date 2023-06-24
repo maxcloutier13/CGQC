@@ -21,10 +21,9 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 					["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
 				};
 			};
-			sleep 10;
+			sleep 30;
 		};
 	};
-	
 	// Ensure Zeus keeps slot, despite admin logging
 	while { true } do {
 		// Check that Zeus has been assigned to player
