@@ -38,6 +38,8 @@ cgqc_player_max = false;
 cgqc_player_23rd = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
+// *** Mission stuff *******************
+cgqc_mission_daytime = true;
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasAceMedical = false;
