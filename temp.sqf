@@ -874,3 +874,64 @@ _action = [ "cgqc_perk_sun_shemagh_d", "Mask+Shemagh Down", "", {["rhsusf_shemag
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "cgqc_perk_sun_low", "Low Profile Goggles", "", {["G_Lowprofile"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+
+
+// Build the text
+	_inspect_txt = format [
+		"------- Inspection: %1 ------- <br/>" +
+		"Load:%2%3 - Max:%4 <br/>" +
+		"Uniform:%5%6 -Vest:%7%8 -Pack:%9%10<br/>" +
+		"Traits: %11<br/>" +
+		"------------------------<br/>" +
+		"Helmet: %12<br/>" +
+		"Goggles: %13<br/>" + 
+		"Uniform: %14<br/>" +
+		"Vest: %15<br/>" + 
+		"Pack: %16<br/>" + 
+		"%17" +
+		"%18" +
+		"%19" +
+		"---------- Primary ----------<br/>" +
+		"Gun: %20<br/>" +
+		"TotalMags: %21<br/>" +
+		"---------- Handgun ----------<br/>" +
+		"Pistol: %22<br/>" +
+		"TotalMags: %23<br/>" +
+		"---------- Launcher ----------<br/>" +
+		"Launcher: %24<br/>" +
+		"TotalMags: %25<br/>" +
+		"<t color='#ff0000'>---------- MISSING/LOW ----------<br/></t>" +
+		"%26"
+		, 
+		inspect_target_name, //1
+		inspect_target_currentLoad, //2
+		_percent, //3
+		inspect_target_maxLoad, //4
+		inspect_target_uniform_load, //5
+		_percent, //6
+		inspect_target_vest_load, //7
+		_percent, //8
+		inspect_target_backpack_load, //9
+		_percent, //10
+		inspect_target_traits,  
+		inspect_target_helmet, 
+		inspect_target_goggles,
+		inspect_target_uniform, 
+		inspect_target_vest, 
+		inspect_target_backpack, 
+		inspect_target_uniform_txt, 
+		inspect_target_vest_txt, 
+		inspect_target_backpack_txt,
+		inspect_target_primary,
+		inspect_target_primary_mag_total,
+		inspect_target_handgun,
+		inspect_target_handgun_mag_total,
+		inspect_target_launcher,
+		inspect_target_launcher_mag_total,
+		inspect_target_alerts
+	];
+
+
+
+	

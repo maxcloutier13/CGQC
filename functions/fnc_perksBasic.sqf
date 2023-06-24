@@ -342,6 +342,7 @@ switch (_type) do {
         _allAssigned = assignedItems player;
         _primaryMag = (primaryWeaponMagazine player) select 0;
         _secondaryMag = (handgunMagazine player) select 0;
+        _txt_ifak = "";
         _txt_bandage = "";
         _txt_earplugs = "";
         _txt_epi = "";
@@ -358,6 +359,7 @@ switch (_type) do {
         _txt_maptools = "";
         _txt_primaryMags = "";
         _txt_secondaryMags = "";
+        _ifak = 0;
         _bandage = 0;
         _earplugs = 0;
         _epi = 0;
@@ -374,6 +376,7 @@ switch (_type) do {
         _primaryMags = 0;
         _secondaryMags = 0;
         // Count meds
+        _ifak = {_x isEqualTo "cgqc_items_ifak" } count _allItems;
         _bandage = {_x isEqualTo "ACE_fieldDressing" } count _allItems;
         _earplugs = {_x isEqualTo "ACE_EarPlugs" } count _allItems;
         _epi ={_x isEqualTo "ACE_epinephrine" } count _allItems;
@@ -400,14 +403,26 @@ switch (_type) do {
         }else{
             _secondaryMags = 0;
         };
-        if (_bandage > 10) then {_txt_bandage = "ok"} else {_txt_bandage = "<t color='#ff0000'>LOW</t>"};
-        if (_epi > 0) then {_txt_epi = "ok"} else {_txt_epi = "<t color='#ff0000'>LOW</t>"};
-        if (_morphine > 0) then {_txt_morphine = "ok"} else {_txt_morphine = "<t color='#ff0000'>LOW</t>"};
-        if (_painkill > 4) then {_txt_painkill = "ok"} else {_txt_painkill = "<t color='#ff0000'>LOW</t>"};
-        if (_splint > 0) then {_txt_splint = "ok"} else {_txt_splint = "<t color='#ff0000'>LOW</t>"};
-        if (_tourniquet > 0) then {_txt_tourniquet = "ok"} else {_txt_tourniquet = "<t color='#ff0000'>LOW</t>"};
-        if (_liquids > 0) then {_txt_liquids = "ok"} else {_txt_liquids = "<t color='#ff0000'>MISSING</t>"};
-
+        if (_ifak > 0) then {
+            _txt_ifak = "ok";
+            if (_bandage > 10) then {_txt_bandage = "ok"} else {_txt_bandage = "low"};
+            if (_epi > 0) then {_txt_epi = "ok"} else {_txt_epi = "low"};
+            if (_morphine > 0) then {_txt_morphine = "ok"} else {_txt_morphine = "low"};
+            if (_painkill > 4) then {_txt_painkill = "ok"} else {_txt_painkill = "low"};
+            if (_splint > 0) then {_txt_splint = "ok"} else {_txt_splint = "low"};
+            if (_tourniquet > 0) then {_txt_tourniquet = "ok"} else {_txt_tourniquet = "low"};
+            if (_liquids > 0) then {_txt_liquids = "ok"} else {_txt_liquids = "none"};
+        } else {
+            _txt_ifak = "<t color='#ff0000'>MISSING</t>";
+            if (_bandage > 10) then {_txt_bandage = "ok"} else {_txt_bandage = "<t color='#ff0000'>LOW</t>"};
+            if (_epi > 0) then {_txt_epi = "ok"} else {_txt_epi = "<t color='#ff0000'>LOW</t>"};
+            if (_morphine > 0) then {_txt_morphine = "ok"} else {_txt_morphine = "<t color='#ff0000'>LOW</t>"};
+            if (_painkill > 4) then {_txt_painkill = "ok"} else {_txt_painkill = "<t color='#ff0000'>LOW</t>"};
+            if (_splint > 0) then {_txt_splint = "ok"} else {_txt_splint = "<t color='#ff0000'>LOW</t>"};
+            if (_tourniquet > 0) then {_txt_tourniquet = "ok"} else {_txt_tourniquet = "<t color='#ff0000'>LOW</t>"};
+            if (_liquids > 0) then {_txt_liquids = "ok"} else {_txt_liquids = "<t color='#ff0000'>MISSING</t>"};
+        };
+       
         if (_earplugs > 0) then {_txt_earplugs = "ok"} else {_txt_earplugs = "<t color='#ff0000'>MISSING</t>"};
         if (_map > 0) then {_txt_map = "ok"} else {_txt_map = "<t color='#ff0000'>MISSING</t>"};
         if (_compass > 0) then {_txt_compass = "ok"} else {_txt_compass = "<t color='#ff0000'>MISSING</t>"};
@@ -417,28 +432,112 @@ switch (_type) do {
         if (_primaryMags > 4) then {_txt_primaryMags = "ok"} else {_txt_primaryMags = "<t color='#ff0000'>LOW</t>"};
         if (_secondaryMags > 1) then {_txt_secondaryMags = "ok"} else {_txt_secondaryMags = "<t color='#ff0000'>LOW</t>"};
 
+        _check_trait_medic = ["Medic", player getUnitTrait "Medic"];
+        _check_trait_eng = ["Engineer", player getUnitTrait "Engineer"];
+        _check_trait_eod = ["EOD", player getUnitTrait "ExplosiveSpecialist"];
+        _check_trait_hacker = ["Hacker", player getUnitTrait "UavHacker"];
+        _found_traits = [];
+        _check_traits = "";
+        _list_traits = [_check_trait_medic,_check_trait_eng,_check_trait_eod,_check_trait_hacker];
+        {
+            if(_x select 1) then {
+                _found_traits pushBack (_x select 0);
+            };
+        } forEach _list_traits;
+
+        if (count _found_traits >0) then {
+            {
+                _check_traits = _check_traits + "/" + _x;
+            } forEach _found_traits;
+        }else{
+            _check_traits = "NONE";
+        };
+
+        // Weight and load stuff ----------------------------------------------------------------------
+        _maxLoad = ((maxLoad player)*0.1)/2.2;
+        _check_maxLoad = parseNumber (_maxLoad toFixed 1);
+        _currentLoad = ((loadAbs player)*0.1)/2.2;
+        _currentLoadKg = parseNumber (_currentLoad toFixed 1);
+        _check_currentLoad_percent = load player; // between 0-1 .. Percentage of fullness
+        _check_currentLoad = "";
+
+        if (_check_currentLoad_percent > 0.8) then { // Heavy
+            _check_currentLoad = format["<t color='#ff0000'>%1</t>", _currentLoadKg];
+        }else{
+            _check_currentLoad = format ["%1", _currentLoadKg];
+        };
+
+        // Uniform load
+        _check_uniform_load = floor (loadUniform player * 100);
+        if (_check_uniform_load > 80) then { // Heavy
+            _check_uniform_load = format["<t color='#ff8000'>%1</t>", _check_uniform_load];
+        };
+        // Vest Load
+        _check_vest_load = floor (loadVest player * 100);
+        if (_check_vest_load > 80) then { // Heavy
+            _check_vest_load = format["<t color='#ff8000'>%1</t>", _check_vest_load];
+        };
+        // Backpack Load
+        _check_backpack_load = floor (loadBackpack player * 100);
+        if (_check_backpack_load > 80) then { // Heavy
+            _check_backpack_load = format["<t color='#ff8000'>%1</t>", _check_backpack_load];
+        };
+
+        _percent = "%";
+	    _kg = "kg";
+
         Hint parseText format [ 
+            "------ QuickCheck -------<br/>" +
+            "Load: %1%2/%3kg <br/>" +
+            "Uniform:%4%5 -Vest:%6%7 -Pack:%8%9<br/>" +
+            "Traits: %10<br/>" +
             "------- Medical ------- <br/>" + 
-            "- Bandage: %1 <br/>" + 
-            "- Epinephrine: %3 <br/>" + 
-            "- Morphine: %4 <br/>" + 
-            "- Painkiller: %5 <br/>" +
-            "- Splint: %6 <br/>" +
-            "- Tourniquet: %7 <br/>" +
-            "- Blood: %8 <br/>" +
+            " -IFAK: %11 <br/>" +
+            "- Bandage: %12 <br/>" + 
+            "- Epinephrine: %13 <br/>" + 
+            "- Morphine: %14 <br/>" + 
+            "- Painkiller: %15 <br/>" +
+            "- Splint: %16 <br/>" +
+            "- Tourniquet: %17 <br/>" +
+            "- Blood: %18 <br/>" +
             "<br/>------- Essentials ------- <br/>" +
-            "- Earplugs: %9 <br/>" +
-            "- Map: %10 <br/>" + 
-            "- Compass: %11 <br/>" + 
+            "- Earplugs: %19 <br/>" +
+            "- Map: %20 <br/>" + 
+            "- Compass: %21 <br/>" + 
             "<br/>------- Nice to haves ------- <br/>" +
-            "- GPS: %12 <br/>" + 
-            "- Notepad: %13 <br/>" + 
-            "- Maptools: %14 <br/>" + 
+            "- GPS: %22 <br/>" + 
+            "- Notepad: %23 <br/>" + 
+            "- Maptools: %24 <br/>" + 
             "<br/>------- Magazines ------- <br/>" +
-            "- Primary: %15 <br/>" +  
-            "- Handgun: %16 <br/>"   
-            ,_txt_bandage, _txt_earplugs, _txt_epi, _txt_morphine, _txt_painkill, _txt_splint, _txt_tourniquet, _txt_liquids,
-            _txt_earplugs, _txt_map, _txt_compass, _txt_gps, _txt_notepad, _txt_maptools, _txt_primaryMags, _txt_secondaryMags
+            "- Primary: %25 <br/>" +  
+            "- Handgun: %26 <br/>"   
+            ,
+            _check_currentLoad, 
+            _kg, 
+            _check_maxLoad, 
+            _check_uniform_load, 
+            _percent, 
+            _check_vest_load, 
+            _percent, 
+            _check_backpack_load, 
+            _percent, 
+            _check_traits, 
+            _ifak, 
+            _txt_bandage,
+            _txt_epi,
+            _txt_morphine,
+            _txt_painkill,
+            _txt_splint,
+            _txt_tourniquet,
+            _txt_liquids,
+            _txt_earplugs,
+            _txt_map,
+            _txt_compass,
+            _txt_gps,
+            _txt_notepad,
+            _txt_maptools,
+            _txt_primaryMags,
+            _txt_secondaryMags
         ];
         _time = 30;
     };
