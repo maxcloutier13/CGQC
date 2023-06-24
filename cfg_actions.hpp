@@ -1,5 +1,17 @@
 class Man;
 class CAManBase: Man {
+	class ACE_Actions {
+		class ACE_MainActions {
+			class cgqc_inspect {
+				displayName = "Inspect Loadout";
+				condition = "true";
+				statement = "[] execVM '\cgqc\functions\fnc_inspect.sqf'";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "";
+				runOnHover = "hint 'Inspect the soldiers gear'";
+			};
+		};
+	};
 	class ACE_SelfActions {
 		class ACE_Animations {
 			displayName = "Animations";
