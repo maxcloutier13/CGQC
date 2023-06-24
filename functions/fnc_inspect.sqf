@@ -1,5 +1,6 @@
 // --- inspect ----------------------------------------------------------
 // Inspect target laodout and reports problems 
+_type = _this select 0;
 
 inspect_target = cursorTarget;
 _inspect_txt = "";
@@ -31,12 +32,19 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	};
 
 	// Weight and load stuff ----------------------------------------------------------------------
-	inspect_target_maxLoad = maxLoad inspect_target;
-	// Max Load
-	inspect_target_currentLoad = floor (load inspect_target * 100); // between 0-1 .. Percentage of fullness
-	if (inspect_target_currentLoad > 80) then { // Heavy
-		inspect_target_currentLoad = format["<t color='#ff0000'>%1</t>", inspect_target_currentLoad];
+	_maxLoad = ((maxLoad inspect_target)*0.1)/2.2;
+	inspect_target_maxLoad = parseNumber (_maxLoad toFixed 1);
+	_currentLoad = ((loadAbs inspect_target)*0.1)/2.2;
+	_currentLoadKg = parseNumber (_currentLoad toFixed 1);
+	inspect_target_currentLoad_percent = load inspect_target; // between 0-1 .. Percentage of fullness
+	inspect_target_currentLoad = "";
+
+	if (inspect_target_currentLoad_percent > 0.8) then { // Heavy
+		inspect_target_currentLoad = format["<t color='#ff0000'>%1</t>", _currentLoadKg];
+	}else{
+		inspect_target_currentLoad = format ["%1", _currentLoadKg];
 	};
+
 	// Uniform load
 	inspect_target_uniform_load = floor (loadUniform inspect_target * 100);
 	if (inspect_target_uniform_load > 80) then { // Heavy
@@ -104,6 +112,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 			{
 				_item = _x;
 				_count = {_x isEqualTo _item } count inspect_target_uniform_items;
+				//_itemName = (getText (configFile >> 'CfgWeapons' >> _item >> 'displayName'));
 				inspect_target_uniform_txt = inspect_target_uniform_txt + format ["%1 - %2<br/>", _item, _count];
 			} forEach inspect_target_uniform_items_list;
 		}else{
@@ -139,6 +148,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 			{
 				_item = _x;
 				_count = {_x isEqualTo _item } count inspect_target_vest_items;
+				//_itemName = (getText (configFile >> 'CfgWeapons' >> _item >> 'displayName'));
 				inspect_target_vest_txt = inspect_target_vest_txt + format ["%1 - %2<br/>", _item, _count];
 			} forEach inspect_target_vest_items_list;
 		}else{
@@ -172,6 +182,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 			{
 				_item = _x;
 				_count = {_x isEqualTo _item } count inspect_target_backpack_items;
+				//_itemName = (getText (configFile >> 'CfgWeapons' >> _item >> 'displayName'));
 				inspect_target_backpack_txt = inspect_target_backpack_txt + format ["%1 - %2<br/>", _item, _count];
 			} forEach inspect_target_backpack_items_list;
 		}else{
@@ -212,6 +223,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 
 	// Specific alerts  - Low ammo/meds/radios/essentials
 	inspect_target_alerts = "";
+	_ifak = 0;
 	_bandage = 0;
 	_earplugs = 0;
 	_epi = 0;
@@ -226,6 +238,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	_notepad = 0;
 	_maptools = 0;
 	// Count meds
+	_ifak = {_x isEqualTo "ace_items_ifak" } count inspect_target_allItems;
 	_bandage = {_x isEqualTo "ACE_fieldDressing" } count inspect_target_allItems;
 	_earplugs = {_x isEqualTo "ACE_EarPlugs" } count inspect_target_allItems;
 	_epi ={_x isEqualTo "ACE_epinephrine" } count inspect_target_allItems;
@@ -246,13 +259,16 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	if (inspect_target_primary_mag_total < 4) then {inspect_target_alerts = inspect_target_alerts + "-Low Primary Ammo<br/>"};
 	if (inspect_target_handgun isEqualTo "") then {inspect_target_alerts = inspect_target_alerts + "-No Handgun<br/>"};
 	if (inspect_target_handgun_mag_total < 2) then {inspect_target_alerts = inspect_target_alerts + "-Low Handgun Ammo<br/>"};
-	if (_bandage < 10) then {inspect_target_alerts = inspect_target_alerts + "-Bandages<br/>"};
-	if (_epi < 1) then {inspect_target_alerts = inspect_target_alerts + "-Epinephrine<br/>"};
-	if (_morphine < 1) then {inspect_target_alerts = inspect_target_alerts + "-Morphine<br/>"};
-	if (_painkill < 5)  then {inspect_target_alerts = inspect_target_alerts + "-Painkillers<br/>"};
-	if (_splint < 1) then {inspect_target_alerts = inspect_target_alerts + "-Splint<br/>"};
-	if (_tourniquet < 2) then {inspect_target_alerts = inspect_target_alerts + "-Tourniquet<br/>"};
-	if (_liquids < 2)  then {inspect_target_alerts = inspect_target_alerts + "-Saline<br/>"};
+	if (_ifak < 1) then {
+		inspect_target_alerts = inspect_target_alerts + "-IFAK<br/>";
+		if (_bandage < 10) then {inspect_target_alerts = inspect_target_alerts + "-Bandages<br/>"};
+		if (_epi < 1) then {inspect_target_alerts = inspect_target_alerts + "-Epinephrine<br/>"};
+		if (_morphine < 1) then {inspect_target_alerts = inspect_target_alerts + "-Morphine<br/>"};
+		if (_painkill < 5)  then {inspect_target_alerts = inspect_target_alerts + "-Painkillers<br/>"};
+		if (_splint < 1) then {inspect_target_alerts = inspect_target_alerts + "-Splint<br/>"};
+		if (_tourniquet < 2) then {inspect_target_alerts = inspect_target_alerts + "-Tourniquet<br/>"};
+		if (_liquids < 2)  then {inspect_target_alerts = inspect_target_alerts + "-Saline<br/>"};
+	};
 	// Essentials
 	if (count inspect_target_allRadios < 1) then {inspect_target_alerts = inspect_target_alerts + "-No Radio<br/>"};
 	if (_earplugs < 1) then {inspect_target_alerts = inspect_target_alerts + "-Earplugs<br/>"};
@@ -262,62 +278,121 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	if (_notepad < 1)  then {inspect_target_alerts = inspect_target_alerts + "-Notepad<br/>"};
 	if (_maptools< 1)  then {inspect_target_alerts = inspect_target_alerts + "-MapTools<br/>"};
 
+	// Prep text
 	_percent = "%";
-	// Build the text
-	_inspect_txt = format [
-		"------- Inspection: %1 ------- <br/>" +
-		"Load:%2%3 - Max:%4 <br/>" +
-		"Uniform:%5%6 -Vest:%7%8 -Pack:%9%10<br/>" +
-		"Traits: %11<br/>" +
-		"------------------------<br/>" +
-		"Helmet: %12<br/>" +
-		"Goggles: %13<br/>" + 
-		"Uniform: %14<br/>" +
-		"Vest: %15<br/>" + 
-		"Pack: %16<br/>" + 
-		"%17" +
-		"%18" +
-		"%19" +
-		"---------- Primary ----------<br/>" +
-		"Gun: %20<br/>" +
-		"TotalMags: %21<br/>" +
-		"---------- Handgun ----------<br/>" +
-		"Pistol: %22<br/>" +
-		"TotalMags: %23<br/>" +
-		"---------- Launcher ----------<br/>" +
-		"Launcher: %24<br/>" +
-		"TotalMags: %25<br/>" +
-		"<t color='#ff0000'>---------- MISSING/LOW ----------<br/></t>" +
-		"%26"
-		, 
-		inspect_target_name, //1
-		inspect_target_currentLoad, //2
-		_percent, //3
-		inspect_target_maxLoad, //4
-		inspect_target_uniform_load, //5
-		_percent, //6
-		inspect_target_vest_load, //7
-		_percent, //8
-		inspect_target_backpack_load, //9
-		_percent, //10
-		inspect_target_traits,  
-		inspect_target_helmet, 
-		inspect_target_goggles,
-		inspect_target_uniform, 
-		inspect_target_vest, 
-		inspect_target_backpack, 
-		inspect_target_uniform_txt, 
-		inspect_target_vest_txt, 
-		inspect_target_backpack_txt,
-		inspect_target_primary,
-		inspect_target_primary_mag_total,
-		inspect_target_handgun,
-		inspect_target_handgun_mag_total,
-		inspect_target_launcher,
-		inspect_target_launcher_mag_total,
-		inspect_target_alerts
-	];
+	_kg = "kg";
+	if (inspect_target_primary isEqualTo "") then {
+		inspect_target_primary = "-None-"
+	}else{
+		inspect_target_primary = (getText (configFile >> 'CfgWeapons' >> inspect_target_primary >> 'displayName'));
+	};
+	if (inspect_target_handgun isEqualTo "") then {
+		inspect_target_handgun = "-None-"
+	}else{
+		inspect_target_handgun = (getText (configFile >> 'CfgWeapons' >> inspect_target_handgun >> 'displayName'));
+	};
+	if (inspect_target_launcher isEqualTo "") then {
+		inspect_target_launcher = "-None-"
+	}else{
+		inspect_target_launcher = (getText (configFile >> 'CfgWeapons' >> inspect_target_launcher >> 'displayName'));
+	};
+	
+	switch (_type) do {
+		case 0: { 
+			// Build the text
+			_inspect_txt = format [
+				"------- QuickCheck: %1 ------- <br/>" +
+				"Load: %2%3/%4kg <br/>" +
+				"Uniform:%5%6 -Vest:%7%8 -Pack:%9%10<br/>" +
+				"Traits: %11<br/>" +
+				"---------- Weapons ----------<br/>" +
+				"Primary: %12<br/>" +
+				"--Mags: %13<br/>" +
+				"Handgun: %14<br/>" +
+				"--Mags: %15<br/>" +
+				"Launcher: %16<br/>" +
+				"--Mags%17<br/>" +
+				"<t color='#ff0000'>---------- MISSING/LOW ----------<br/></t>" +
+				"%18"
+				, 
+				inspect_target_name, //1
+				inspect_target_currentLoad, //2
+				_kg, //3
+				inspect_target_maxLoad, //4
+				inspect_target_uniform_load, //5
+				_percent, //6
+				inspect_target_vest_load, //7
+				_percent, //8
+				inspect_target_backpack_load, //9
+				_percent, //10
+				inspect_target_traits, //11 
+				inspect_target_primary, //12
+				inspect_target_primary_mag_total, //13
+				inspect_target_handgun, //14
+				inspect_target_handgun_mag_total, //15
+				inspect_target_launcher, //16
+				inspect_target_launcher_mag_total, //17
+				inspect_target_alerts //18
+			];
+		};
+		case 1: {  // Full inspection 
+			// Build the text
+			_inspect_txt = format [
+				"------- Inspection: %1 ------- <br/>" +
+				"Load: %2%3/%4kg <br/>" +
+				"Uniform:%5%6 -Vest:%7%8 -Pack:%9%10<br/>" +
+				"Traits: %11<br/>" +
+				"------------------------<br/>" +
+				"Helmet: %12<br/>" +
+				"Goggles: %13<br/>" + 
+				"Uniform: %14<br/>" +
+				"Vest: %15<br/>" + 
+				"Pack: %16<br/>" + 
+				"%17" +
+				"%18" +
+				"%19" +
+				"---------- Weapons ----------<br/>" +
+				"Primary: %20<br/>" +
+				"--Mags: %21<br/>" +
+				"Handgun: %22<br/>" +
+				"--Mags: %23<br/>" +
+				"Launcher: %24<br/>" +
+				"--Mags%25<br/>" +
+				"<t color='#ff0000'>---------- MISSING/LOW ----------<br/></t>" +
+				"%26"
+				, 
+				inspect_target_name, //1
+				inspect_target_currentLoad, //2
+				_percent, //3
+				inspect_target_maxLoad, //4
+				inspect_target_uniform_load, //5
+				_percent, //6
+				inspect_target_vest_load, //7
+				_percent, //8
+				inspect_target_backpack_load, //9
+				_percent, //10
+				inspect_target_traits,  
+				inspect_target_helmet, 
+				inspect_target_goggles,
+				inspect_target_uniform, 
+				inspect_target_vest, 
+				inspect_target_backpack, 
+				inspect_target_uniform_txt, 
+				inspect_target_vest_txt, 
+				inspect_target_backpack_txt,
+				inspect_target_primary,
+				inspect_target_primary_mag_total,
+				inspect_target_handgun,
+				inspect_target_handgun_mag_total,
+				inspect_target_launcher,
+				inspect_target_launcher_mag_total,
+				inspect_target_alerts
+			];
 
+
+		};
+		default {hint "Error: Inspect"};
+	};
 };
 
 Hint parseText format ["%1", _inspect_txt];

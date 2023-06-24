@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class perkGoggles{
+            file = "\cgqc\functions\fnc_perksGoggles.sqf";
+            description = "Change goggles";
+        };
         class isDaytime {
             file = "\cgqc\functions\fnc_isDaytime.sqf";
             description = "Check if Daytime Operation";
