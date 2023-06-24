@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class isDaytime {
+            file = "\cgqc\functions\fnc_isDaytime.sqf";
+            description = "Check if Daytime Operation";
+        };
         class setPatch {
             file = "\cgqc\functions\fnc_setPatch.sqf";
             description = "Set and keep player patch on";
