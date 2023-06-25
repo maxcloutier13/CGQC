@@ -38,6 +38,9 @@ cgqc_player_max = false;
 cgqc_player_23rd = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
+cgqc_reloaded_empty = false;
+cgqc_prevent_reload = false;
+cgqc_reload_new = [];
 // *** Mission stuff *******************
 cgqc_mission_daytime = true;
 // *** DLC stuff *******************
@@ -224,6 +227,24 @@ if (cgqc_player_hasUnsung) then {
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
 
+// Reloaded event 
+player addEventHandler ["Reloaded", {
+	params ["_unit", "_weapon", "_muzzle", "_newMagazine", "_oldMagazine"];
+	if (cgqc_prevent_reload) then {
+		if !(cgqc_reloaded_empty) then {
+			cgqc_reloaded_empty = true;
+			hint "Last mag in your vest!";
+		} else {
+			_newMag = _newMagazine select 0;
+			player removePrimaryWeaponItem _newMag;
+			player addItemToBackpack _newMag;
+			hint 'Cannot reload from backpack. Transfer mags to vest!';
+		};
+	}else{
+		hint 'Reloading from vest';
+	};
+}];
+
 //Wind changer event 
 ["cgqc_change_fucking_wind", {
 	params ["_type"];
@@ -273,9 +294,13 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 //["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
 //   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
 
-// Map Sharing =================================================================================================
+// Restrictions =================================================================================================
+// Map Sharing ---
 ["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"], 
-   [_menu_name, "Map Sharing"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
+   [_menu_name, "Restrictions"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
+// Backpack reloading 
+["cgqc_zeus_packRestricted", "CHECKBOX",["No reload from Backpack", "Empêche de reloader avec un mag directement du backpack"], 
+   [_menu_name, "Restrictions"], false, 1, {publicVariable "cgqc_zeus_mapRestricted"}, true] call CBA_fnc_addSetting;
 
 // Spares =================================================================================================
 ["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"], 

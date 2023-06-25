@@ -1,3 +1,35 @@
+// --- cfgGuns ----------------------------------------------------------
+// Description of all the gun sheeit
+
+// Prevent backpack reloading of primary weapons
+class RifleCore;
+class Rifle: RifleCore
+{
+	class EventHandlers
+	{
+		reload = "_vestMags = (getMagazineCargo vestContainer player) select 0;_validMags = compatibleMagazines (primaryWeapon player);if(cgqc_reloaded_empty)then{if(count (_vestMags intersect _validMags) > 0) then{cgqc_reloaded_empty = false;};};cgqc_reload_new = (_this select 3) select 0;if !(cgqc_reload_new in _vestMags) then {cgqc_prevent_reload = true;} else {cgqc_prevent_reload = false;};";
+	};
+};
+
+
+/*
+//reload = "_vestMags = vestMagazines player; cgqc_reload_new = _this select 3;if !(cgqc_reload_new in _vestMags) then {cgqc_prevent_reload = true} else {cgqc_prevent_reload = false};";
+	
+class RifleCore;
+class Rifle: RifleCore
+{
+	class EventHandlers
+	{
+		fired		= "systemchat format['fired EH output: %1 [time: %2]', _this, time]";
+		reload		= "systemchat format['reload EH output: %1 [time: %2]', _this, time]";
+		reloaded	= "systemchat format['reloaded EH output: %1 [time: %2]', _this, time]";
+	};
+};
+//reload = "[0, _this] execVM '\cgqc\functions\fnc_reloading.sqf'"; //List all vest/pack mags
+//reloaded = "[1, _this] execVM '\cgqc\functions\fnc_reloading.sqf'"; //Check where reload is from
+
+*/
+
 // Pistol for default soldier
 class hgun_P07_F;
 class cgqc_gun_p99_wood : hgun_P07_F

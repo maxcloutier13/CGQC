@@ -934,4 +934,14 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles",
 
 
 
-	
+	class RifleCore;
+class Rifle: RifleCore
+{
+	class EventHandlers
+	{
+		reload = "_allMags = getMagazineCargo vestContainer player;_counts = _allMags select 1;cgqc_player_vest_primaryMags = 0;{cgqc_player_vest_primaryMags = cgqc_player_vest_primaryMags + _x;}forEach _counts;";
+		reloaded = "_allMags = getMagazineCargo vestContainer player;_counts = _allMags select 1;cgqc_player_vest_currentMags = 0;{cgqc_player_vest_currentMags = cgqc_player_vest_currentMags + _x;}forEach _counts;hint format['%1/%2', cgqc_player_vest_primaryMags, cgqc_player_vest_currentMags];if (cgqc_player_vest_currentMags < cgqc_player_vest_primaryMags) then {_mag = (_this select 3) select 0; player removePrimaryWeaponItem _mag;player addItemToBackpack _mag;hint 'Cannot reload from backpack. Transfer mags to vest!';};";
+		//reload = "[0, _this] execVM '\cgqc\functions\fnc_reloading.sqf'"; //List all vest/pack mags
+		//reloaded = "[1, _this] execVM '\cgqc\functions\fnc_reloading.sqf'"; //Check where reload is from
+	};
+};
