@@ -935,3 +935,6 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles",
 
 
 	
+
+
+
