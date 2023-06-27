@@ -519,7 +519,7 @@ _adding = [ ["ACE_ZeusActions", "zeus_options"], _action ] call  ace_interact_me
 _action = [ "zeus_punch_off", "Punching: Turn Off", "", {["punch_off", 0, ""] spawn CGQC_fnc_perksZeus}, {BRIDGE_KPU_MasterSetting }] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_ZeusActions", "zeus_options"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
 
-// Grenade selector
+// Grenade selector -------------------------------------------------------------------------------------------------
 private _childrenStatements = {
 	private _actions = [];
 
@@ -580,6 +580,59 @@ private _childrenStatements = {
 
 private _action = ["cgqc_menu_grenades", "Grenades", "\cgqc\textures\cgqc_ace_grenade", {}, {true}, _childrenStatements] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+// Grenade in hatch -----------------------------------------------------------------------------------
+
+Grenade_Drop_Types = cgqc_setting_grenade_types splitString ",";
+compatibleGrenades = [];
+compatibleGrenades = Grenade_Drop_Types;
+
+_condition = {
+  (player distance _target < 5 && count (compatibleGrenades arrayIntersect magazines _player) > 0) && (side _target != side _player);
+};
+
+_statement = {
+  //playSound3D ["A3\Sounds_F\weapons\Grenades\handgrenade_drops\handg_drop_Metal_2.wss", _target];
+
+	[1, _target, {
+		params ["_target"];
+		[_target] spawn {
+			params ["_target"];
+			_player = player;
+			_player removeItem ((compatibleGrenades arrayIntersect magazines _player) select 0);
+			sleep 4;
+			bomb = "APERSTripMine_Wire_Ammo" createVehicle (getPos _target);
+			bomb attachTo [_target, [0,0,-1]];
+			bomb setDamage 1;
+			_randomEngine = selectRandom [0.2, 0.5, 0.7, 1];
+			_randomHull = selectRandom [0.2, 0.5, 0.7];
+			_randomTurret = selectRandom [0.2, 0.5, 0.7, 1];
+			_target setHitPointDamage ["hitEngine", _randomEngine];
+			_target setHitPointDamage ["hitHull", _randomHull];
+			_target setHitPointDamage ["hitTurret", _randomTurret];
+			_randomCrew = [0.85,0.9,1,1,1];
+			{ _x setDamage (selectRandom _randomCrew);} forEach crew _target;
+			_randomTime = [1,2];
+			sleep 1;
+			{if (alive _x) then{
+				_x allowFleeing 1;
+				_x setSkill ["aimingAccuracy", 0.1];
+				_x setSkill ["aimingSpeed", 0.1];
+				_x setSkill ["spotTime", 0.1];
+				_x setSkill ["aimingShake", 0.1];
+				_x setSkill ["courage", 0.1];
+				_x leaveVehicle _target;
+				_x moveOut _target;
+				sleep selectRandom _randomTime;
+			};} forEach crew _target;
+
+		};
+	}, {}, "Dropping Grenade", {true}] call ace_common_fnc_progressBar ;
+};
+
+_action = ["Drop Grenade", "Drop Grenade in", "",_statement,_condition] call ace_interact_menu_fnc_createAction;
+["Tank", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+
 
 // Return true 
 true
