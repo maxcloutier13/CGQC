@@ -312,6 +312,17 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"], 
 [_menu_name, "Zeus Stuff"], false, 1, {["zeus_radios", 0] spawn CGQC_fnc_perksZeus;}, false] call CBA_fnc_addSetting;
 
+// Grenade in Hatch 
+["cgqc_setting_grenade_types","EDITBOX", ["Compatible Grenades", "Classnames usable to drop in tank hatches"],
+	[_menu_name, "Grenade in tank Hatch"], 
+	"gm_handgrenade_conc_dm51,gm_handgrenade_conc_dm51a1,gm_handgrenade_frag_dm51,gm_handgrenade_frag_dm51a1,
+	gm_handgrenade_frag_rgd5,vn_chicom_grenade_mag,vn_f1_grenade_mag,vn_m34_grenade_mag,vn_m61_grenade_mag,
+	vn_m67_grenade_mag,vn_rg42_grenade_mag,vn_rgd33_grenade_mag,vn_rgd5_grenade_mag,vn_rkg3_grenade_mag,
+	vn_t67_grenade_mag,vn_v40_grenade_mag,CUP_HandGrenade_L109A1_HE,CUP_HandGrenade_L109A2_HE,CUP_HandGrenade_M67,
+	HandGrenade,CUP_HandGrenade_RGD5,CUP_HandGrenade_RGO,MiniGrenade, rhs_mag_rgd5, rhs_mag_m67, rhs_mag_an_m14",
+	true
+] call CBA_fnc_addSetting;
+
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
     [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
