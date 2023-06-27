@@ -310,7 +310,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Zeus radios ===============================================================================================
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"], 
-[_menu_name, "Zeus Stuff"], false, 1, {sleep 1;["zeus_radios", 0] spawn CGQC_fnc_perksZeus;}, false] call CBA_fnc_addSetting;
+[_menu_name, "Zeus Stuff"], false, 1, {["zeus_radios", 0] spawn CGQC_fnc_perksZeus;}, false] call CBA_fnc_addSetting;
 
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
