@@ -4,6 +4,8 @@ class CBA_MiscItem;
 class CBA_MiscItem_ItemInfo;
 class InventoryItem_Base_F;
 
+
+// Logistics stuff
 class cgqc_items_ifak: CBA_MiscItem
 {
     author = "silent1";
@@ -40,6 +42,16 @@ class cgqc_bandolier_ammo: CBA_MiscItem
 	class ItemInfo: CBA_MiscItem_ItemInfo
 	{ 
 		mass = 80;
+	};
+};
+
+// === Lighter Tookit
+class ToolKitItem;
+class ToolKit: ItemCore
+{
+	class ItemInfo: ToolKitItem
+	{
+		mass = 50;
 	};
 };
 
