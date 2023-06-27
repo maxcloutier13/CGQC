@@ -47,9 +47,7 @@ player addWeapon "cgqc_item_rangefinder";
 // Throwables
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade"};
 for "_i" from 1 to 2 do {player addItemToVest "ACE_CTS9"};
-for "_i" from 1 to 1 do {player addItemToVest "SmokeShell"};
-for "_i" from 1 to 1 do {player addItemToVest "SmokeShellBlue"};
-for "_i" from 1 to 1 do {player addItemToVest "SmokeShellRed"};
+for "_i" from 1 to 3 do {player addItemToVest "SmokeShell"};
 
 // === Uniform ================================================================================================================
 // Handgun mags

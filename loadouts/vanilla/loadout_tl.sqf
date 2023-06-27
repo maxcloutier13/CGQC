@@ -23,13 +23,7 @@ player addPrimaryWeaponItem "ACE_acc_pointer_green";
 player addPrimaryWeaponItem "optic_Arco_AK_blk_F";
 player addPrimaryWeaponItem "ACE_30Rnd_556x45_Stanag_Mk262_mag";
 // Mags 
-_count = 0;
-for "_i" from 1 to 6 do {player addItemToVest "ACE_30Rnd_556x45_Stanag_Mk262_mag"; _count = _count + 1};
-if (_count < cgqc_setting_limitMags_max) then { //Add overflow to backpack
-	_count = _count + 1;
-	for "_i" from _count to cgqc_setting_limitMags_max do {player addItemToBackpack "ACE_30Rnd_556x45_Stanag_Mk262_mag"};
-};
-for "_i" from 1 to 10 do {player addItemToVest "1Rnd_HE_Grenade_shell"};
+[] execVM "cgqc\functions\fnc_addMags.sqf";
 
 // === Role Items ==========================================================================================================
 player addItemToBackpack "KNB_PanelYellow";
