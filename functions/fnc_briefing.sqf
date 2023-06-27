@@ -20,6 +20,8 @@ _text = (
 	"<font size='16' color='#BDBDBD'>Channel 5 - Inter/Griffon</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 6 - Inter/Centaure</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 7 - Inter/Recon</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 8 - Libre</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 9 - Zeus</font>"+"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"
 );
 player createDiaryRecord ["Diary", ["Référence Radios", _text]];
