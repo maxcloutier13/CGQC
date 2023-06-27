@@ -272,37 +272,17 @@ class cgqc_pack_mk1_magic : B_AssaultPack_rgr
     {
         class _xx_SmokeShell
         {
-            count = 3;
+            count = 2;
             magazine = "SmokeShell";
         };
-        class _xx_SmokeShellBlue
-        {
-            count = 3;
-            magazine = "SmokeShellBlue";
-        };
-        class _xx_SmokeShellRed
-        {
-            count = 3;
-            magazine = "SmokeShellRed";
-        };
-        class _xx_B_IR_Grenade
+        class _xx_MS_Strobe_Mag_2
         {
             count = 1;
-            magazine = "B_IR_Grenade";
+            magazine = "MS_Strobe_Mag_2";
         };
     };
     class TransportItems
     {
-        class _xx_ACE_fieldDressing
-        {
-            count = 10;
-            name = "ACE_fieldDressing";
-        };
-        class _xx_ACE_salineIV_500
-        {
-            count = 2;
-            name = "ACE_salineIV_500";
-        };
         class _xx_ACE_EntrenchingTool
         {
             count = 1;
