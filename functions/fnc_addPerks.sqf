@@ -21,33 +21,8 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 _action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_dive", {["diver", false] execVM "\CGQC\loadouts\mk3_camoSwitch.sqf"}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Signals ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {}, {cgqc_perks_chems > 0} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Types 
-_action = ["menu_self_criquet", "Criquet", "CGQC\textures\cgqc_ace_cricket", {["click", false] spawn CGQC_fnc_perksBasic;}, {true}] call ace_interact_menu_fnc_createAction;
-_adding = [player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_chem_green", "Chem Green", "", {["throw", "Chemlight_green"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_chem_ir", "Chem IR", "", {["throw", "ACE_Chemlight_IR"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_flare_green", "Flare Green", "", {["throw", "ACE_HandFlare_Green"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_panel_r", "Panel: Red", "", {["panel", "KNB_PanelRed"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {!cgqc_perks_panel} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_panel_y", "Panel: Yellow", "", {["panel", "KNB_PanelYellow"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {!cgqc_perks_panel} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-
-// ------ Personal stash --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_stash", " Personal Stash", "CGQC\textures\cgqc_ace_stash", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
-// Add Delete stash option
-_action = [ "cgqc_perk_stash_delete", " Delete Stash", "", {["del_stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
 // ------ Change Goggles --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {cgqc_player_has2023}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // ---- Types
 _action = [ "cgqc_perk_goggles_clr", "Clear Glasses", "cgqc\textures\cgqc_ace_glasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -258,29 +233,89 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ac
 // Cone of silence   ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cone_off", "Cone de silence: Off", "CGQC\textures\cgqc_ace_cone", {["cone_off", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_silence} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Fixes
+_action = [ "menu_self_fixes", "Fixes", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Fix Sound   ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cone_off", "Fix Sound", "", {["fix", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set patch ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "\cgqc\textures\cgqc_ace_defend.paa", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// inspect   ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_inspect", "Inspect", "CGQC\textures\search.paa", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Show player   ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cam", "Player Mirror", "CGQC\textures\cgqc_ace_mirror", {["cam", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Confirm self-loadout  ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_check", "Confirm Self Loadout", "CGQC\textures\search.paa", {["check", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Signals ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {}, {cgqc_perks_chems > 0} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Criquet 
+_action = ["menu_self_criquet", "Criquet", "CGQC\textures\cgqc_ace_cricket", {["click", false] spawn CGQC_fnc_perksBasic;}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action] call ace_interact_menu_fnc_addActionToObject;
+// Smokes
+_action = [ "menu_self_smoke_blue", "Smoke: Blue", "", {["throw", "SmokeShellBlue"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_smoke_red", "Smoke: Red", "", {["throw", "SmokeShellRed"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_smoke_purple", "Smoke: Purple", "", {["throw", "SmokeShellPurple"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_smoke_yellow", "Smoke: Yellow", "", {["throw", "SmokeShellYellow"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Chemlights
+_action = [ "menu_self_chem_green", "Chem Green", "", {["throw", "Chemlight_green"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_chem_ir", "Chem IR", "", {["throw", "ACE_Chemlight_IR"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Flares
+_action = [ "menu_self_flare_green", "Flare: Green", "", {["throw", "ACE_HandFlare_Green"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_flare_red", "Flare: Red", "", {["throw", "ACE_HandFlare_Red"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_flare_white", "Flare: White", "", {["throw", "ACE_HandFlare_White"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Panels
+_action = [ "menu_self_panel_r", "Panel: Red", "", {["panel", "RED"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {!cgqc_perks_panel} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_panel_y", "Panel: Yellow", "", {["panel", "YELLOW"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {!cgqc_perks_panel} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_panel_g", "Panel: Green", "", {["panel", "GREEN"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {!cgqc_perks_panel} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_panel_b", "Panel: Black", "", {["panel", "BLACK"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {!cgqc_perks_panel} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+
+
+// ------ Personal stash --------------------------------------------------------------------------------------
+_action = [ "cgqc_perk_stash", " Personal Stash", "CGQC\textures\cgqc_ace_stash", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+// Add Delete stash option
+_action = [ "cgqc_perk_stash_delete", " Delete Stash", "", {["del_stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
 // Open IFAK 
 _action = [ "menu_self_ifak", "Unpack: IFAK", "\CGQC\textures\icon_med", {["ifak", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_items_ifak'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_medkit", "Unpack: MediKit", "\CGQC\textures\icon_med", {["medkit", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_items_medkit'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_bandolier", "Unpack: Ammo Bandolier", "\CGQC\textures\rearm.paa", {["primary", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-//_action = [ "menu_target_ifak", "Unpack Patient IFAK", "\CGQC\textures\icon_med", {[cursorTarget, "ifak"] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[cursorObject, 'cgqc_items_ifak'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
-//_adding = [ cursorTarget, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Bandoliers 
+_action = [ "menu_self_bandolier", "Unpack: Ammo Bandolier", "\CGQC\textures\rearm.paa", {["refill", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+/*
+// Variants 
+_action = [ "menu_self_bandolier_refill", "Refill All", "", {["refill", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_bandolier"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_bandolier_mags", "Only Mags", "", {["mags", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_bandolier"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+*/
 // Zeus ===================================================================================================
 _action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;

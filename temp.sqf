@@ -934,7 +934,63 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles",
 
 
 
-	
+
+
+// Intel Laptop
+
+if (hasInterface) then 
+{ 
+ this addAction [ 
+  "Pick up laptop", // custom addAction title 
+  { [_this, "action"] spawn BIS_fnc_initIntelObject }, 
+  [], 
+  10, 
+  true, 
+  true, 
+  "", 
+  "isPlayer _this && { _this distance _target < 2 } && 
+  { (side group _this) in (_target getVariable ['RscAttributeOwners', [west, east, resistance, civilian]]) }" 
+ ]; 
+};
 
 
 
+
+
+[] spawn { sleep 1;
+[laptop_intel] call BIS_fnc_initIntelObject;
+if (isServer) then 
+{ 
+ // Diary picture: 
+ laptop_intel setVariable [ 
+  "RscAttributeDiaryRecord_texture", 
+  "secret.paa", // Path to picture 
+  true 
+ ]; 
+ 
+ // Diary Title and Description: 
+ [ 
+  laptop_intel, 
+  "RscAttributeDiaryRecord", 
+  ["OMFG Guys", "J'en ai ma claque, tabarnak ! Tu vois-tu pas c'qui s'passe icitte ? Y sont en train de détruire notre beau pays, d'manipuler nos propres gens, d'diviser les frères. C'est un ostie d'jeu malsain auquel y jouent, là, en essayant de nous contrôler, d'nos dire comment on doit vivre nos vies. Ben non, mon esti ! Y veulent nous arracher nos armes, étouffer nos voix pis écraser notre liberté. Mais j'les laisserai pas faire, criss ! On a versé notre sang pour c'te maudite terre, on s'est battus pour nos convictions. Y pensent qu'y peuvent nous écraser comme ça ? Pas question, sacrament ! C'est l'heure d'se lever, d'leur montrer qu'on reculera pas. Y veulent nous pousser ? Ben on va riposter en sacrament ! Y vont pas détruire tout c'qu'on a bâti, câlice. Soyez à mes côtés, mes chums patriotes, pis faisons-les regretter le jour où y nous ont cherchés. C'est l'moment du Boogaloo, tabarnak !"] // Array in format [Title, Description] 
+ ] call BIS_fnc_setServerVariable; 
+ 
+ // Diary entry shared with (follows BIS_fnc_MP target rules): 
+ laptop_intel setVariable ["recipients", west, true]; 
+ 
+ // Sides that can interact with the intel object: 
+ laptop_intel setVariable ["RscAttributeOwners", [west], true]; 
+};
+};
+
+
+
+if (isServer) then {[this,[0,"images\home1.jpg"]] remoteExec ["setObjectTexture", 0, true]};                                       this addAction ["<t color='#ff9900'>HALO C130</t>",{params ["_target", "_caller"]; [_caller, C130] execVM "ROS_GroupHalo\scripts\ROS_GroupHalo.sqf"},[],1.5,false,false,"","player distance _target <3 && count (((position C130) nearObjects ['CAManBase', 10]) select {alive _x}) ==0"];                                            this addAction ["<t color='#b2ff66'>Move C130</t>",{[C130] execVM "ROS_GroupHalo\scripts\ROS_MoveHaloPlane.sqf"},[],1.4,false,false,"","player distance _target <3 && count (((position C130) nearObjects ['CAManBase', 10]) select {alive _x}) ==0"]; 
+ 
+                                                                                                                                                                                                                                                                                                        _light = "#lightpoint" createVehicleLocal position this; 
+_light setLightAmbient [0.02,0.1,0.06]; 
+_light setLightColor [0.1,0.5,0.3];                                     _light setLightBrightness 0.15;                                                                                                                     this addAction ["<t color='#3399ff'>Weather Report</t>", "ROS_GroupHalo\scripts\ROS_weatherReport.sqf",[], 1.3, false, false,"","_this distance _target < 4"]; 
+
+
+
+gm_handgrenade_conc_dm51,gm_handgrenade_conc_dm51a1,gm_handgrenade_frag_dm51,gm_handgrenade_frag_dm51a1,gm_handgrenade_frag_rgd5,vn_chicom_grenade_mag,vn_f1_grenade_mag,vn_m34_grenade_mag,vn_m61_grenade_mag,vn_m67_grenade_mag,vn_rg42_grenade_mag,vn_rgd33_grenade_mag,vn_rgd5_grenade_mag,vn_rkg3_grenade_mag,vn_t67_grenade_mag,vn_v40_grenade_mag,CUP_HandGrenade_L109A1_HE,CUP_HandGrenade_L109A2_HE,CUP_HandGrenade_M67,HandGrenade,CUP_HandGrenade_RGD5,CUP_HandGrenade_RGO,MiniGrenade
