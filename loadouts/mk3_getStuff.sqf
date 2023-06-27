@@ -246,12 +246,9 @@ switch (_item) do {
 		hint "Patched up";
 		break;
 	};
-	case "mags_primary": {
-		_primary_mag = (primaryWeaponMagazine player) select 0;
-		for "_i" from 1 to 5 do { 
-			player addItem _primary_mag;
-		};
-		hint "5x Primary mags";
+	case "mags_primary": {		
+		[] execVM "cgqc\functions\fnc_addMags.sqf";
+		hint "Refilled Primary mags";
 		break;
 	};
 	case "mags_secondary": {

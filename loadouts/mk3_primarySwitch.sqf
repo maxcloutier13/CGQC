@@ -2,7 +2,7 @@
 // Switch primary weapons
 _type = _this select 0;
 _needGL = false;
-_mag_count = 6; 
+_mag_count = cgqc_setting_limitMags_max; 
 
 //Remove main weapon and mags 
 _gun = primaryWeapon player;
@@ -311,10 +311,7 @@ switch (_type) do {
 
 sleep 1;
 // Add mags to vest 
-_mainMag = primaryWeaponMagazine player select 0;
-for "_i" from 1 to _mag_count do {
-	player addItem _mainMag;
-};
+[] execVM "cgqc\functions\fnc_addMags.sqf";
 
 if (_needGL) then {
 	player addItem "1Rnd_HE_Grenade_shell";
