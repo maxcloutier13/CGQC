@@ -13,18 +13,14 @@ switch (_type) do {
 		// Initial values
 		_version = "--- Versions des mods --- <br/>";
 		_ref_version_core = player getVariable "cgqc_version_core";
-		_ref_version_core = format["<t color='#00ff00'>%1</t>", _ref_version_core]; 
 		_ref_version_addons = player getVariable "cgqc_version_addons";
-		_ref_version_addons = format["<t color='#00ff00'>%1</t>", _ref_version_addons];
+		_ref_version_2023 = "";
 		if (cgqc_player_has2023) then {
 			_ref_version_2023 = player getVariable "cgqc_version_2023";
-			_ref_version_2023 = format["<t color='#00ff00'>%1</t>", _ref_version_2023];
-			_version = _version + format ["-Core:%1 Addons:%2 2023:%3-<br/>", _ref_version_core, _ref_version_addons, _ref_version_2023];
-		}else{
-			_version = _version + format ["-Core:%1 Addons:%2-<br/>", _ref_version_core, _ref_version_addons];
 		};
 		_version = _version + "--------------------------- <br/>";
-		{
+		_refVersion_txt = "----- Current Player -----<br/>";
+		{			
 			_name = name _x;
 			_version_core = _x getVariable "cgqc_version_core";
 			_version_addons = _x getVariable "cgqc_version_addons";
@@ -51,6 +47,17 @@ switch (_type) do {
 			};
 
 		}forEach _players;
+		// Turn player versions green for clarity
+		_ref_version_addons = format["<t color='#00ff00'>%1</t>", _ref_version_addons];
+		_ref_version_core = format["<t color='#00ff00'>%1</t>", _ref_version_core]; 
+		if (cgqc_player_has2023) then {
+			_ref_version_2023 = format["<t color='#00ff00'>%1</t>", _ref_version_2023];
+			_refVersion_txt = _refVersion_txt + format ["-Core:%1 Addons:%2 2023:%3-<br/>", _ref_version_core, _ref_version_addons, _ref_version_2023];
+		}else{
+			_refVersion_txt = _refVersion_txt + format ["-Core:%1 Addons:%2-<br/>", _ref_version_core, _ref_version_addons];
+		};
+		
+		_version = _refVersion_txt + _version;
 		hint parseText format ["%1",_version];
 		sleep 20;
 		break;
