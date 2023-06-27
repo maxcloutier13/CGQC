@@ -92,7 +92,27 @@ switch (_type) do {
 		hint "Medkit unpacked";
 		break;
 	};
-	case "primary": { 
+	case "mags": {
+		_target removeItem "cgqc_bandolier_ammo";
+		player playMove "AinvPknlMstpSnonWnonDnon_medic4";
+		hint "Standby 10s - Reloading from Bandolier.";
+		sleep 5;
+		if !(isNil "_primaryMag") then {
+			_countVest = 0;
+			_countPack = 0;
+			for "_i" from 1 to 8 do {
+				if (player canAddItemToVest _primaryMag) then {
+					player addItemToVest _primaryMag;
+					_countVest = _countVest + 1;
+				} else { // No space, adding to pack
+					player addItemToBackpack _primaryMag;
+					_countPack = _countPack + 1;
+				};
+				hint format ["Vest: +%1 - Pack: +%2", _countVest, _countPack];
+			};
+		};
+	};
+	case "refill": { 
 		_target removeItem "cgqc_bandolier_ammo";
 		player playMove "AinvPknlMstpSnonWnonDnon_medic4";
 		hint "Standby 15s - Reloading from Bandolier.";
@@ -109,19 +129,19 @@ switch (_type) do {
 		_flash = ["ACE_M84", "ACE_CTS9"]  apply {toLower _x};
 		_nadeFlash = {(toLower _x) in _flash} count _allMags;
 		_smoke = {_x isEqualTo "SmokeShell" } count _allMags;
-		_smoke_blue = {_x isEqualTo "SmokeShellBlue" } count _allMags;
-		_smoke_red = {_x isEqualTo "SmokeShellRed" } count _allMags;
+		//_smoke_blue = {_x isEqualTo "SmokeShellBlue" } count _allMags;
+		//_smoke_red = {_x isEqualTo "SmokeShellRed" } count _allMags;
 		// Throwables
 		_nadeCount = 0;
 		_nadeFlashCount = 0;
 		_smokeCount = 0;
-		_smoke_blueCount = 0;
-		_smoke_redCount = 0;
+		//_smoke_blueCount = 0;
+		//_smoke_redCount = 0;
 		for "_i" from _nade to 1 do {_target addItemToVest "HandGrenade";_nadeCount = _nadeCount + 1};
 		for "_i" from _nadeFlash to 1 do {_target addItemToVest "ACE_CTS9"; _nadeFlashCount = _nadeFlashCount +1};
-		for "_i" from _smoke to 1 do {_target addItemToVest "SmokeShell"; _smokeCount = _smokeCount + 1};
-		for "_i" from _smoke_blue to 0 do {_target addItemToVest "SmokeShellBlue";_smoke_blueCount = _smoke_blueCount +1};
-		for "_i" from _smoke_red to 0 do {_target addItemToVest "SmokeShellRed";_smoke_redCount = _smoke_redCount + 1};
+		for "_i" from _smoke to 2 do {_target addItemToVest "SmokeShell"; _smokeCount = _smokeCount + 1};
+		//for "_i" from _smoke_blue to 0 do {_target addItemToVest "SmokeShellBlue";_smoke_blueCount = _smoke_blueCount +1};
+		//for "_i" from _smoke_red to 0 do {_target addItemToVest "SmokeShellRed";_smoke_redCount = _smoke_redCount + 1};
 		player playMove "AinvPknlMstpSnonWnonDnon_medic4";
 		hint "Standby 10s - Getting there..";
 		_magCount = 0;
@@ -146,11 +166,11 @@ switch (_type) do {
 
 		// Prep throwables text 
 		_throwables = "";
-		if (_nadeCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 grenades", _nadeCount]};
-		if (_nadeFlashCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 flashbangs", _nadeCount]};
-		if (_smokeCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 white smokes", _nadeCount]};
-		if (_smoke_blueCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 blue smokes", _nadeCount]};
-		if (_smoke_redCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 red smokes", _nadeCount]};
+		if (_nadeCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 grenades<br/>", _nadeCount]};
+		if (_nadeFlashCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 flashbangs<br/>", _nadeCount]};
+		if (_smokeCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 white smokes<br/>", _nadeCount]};
+		//if (_smoke_blueCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 blue smokes<br/>", _nadeCount]};
+		//if (_smoke_redCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 red smokes<br/>", _nadeCount]};
 
 		hint parseText format [
 			"-- Ammo Bandolier unpacked --<br/>" +
