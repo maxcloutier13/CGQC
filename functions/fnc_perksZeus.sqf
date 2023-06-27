@@ -87,13 +87,11 @@ switch (_type) do {
 	case "zeus_radios":
 	{
 		if (cgqc_config_zeusRadios) then {
-			sleep 1;
 			_radios = call acre_api_fnc_getCurrentRadioList;
-			sleep 0.5;  
+			waitUntil {sleep 0.5;!isNil "_radios"}; 
 			while {count (call acre_api_fnc_getCurrentRadioList) > 0} do { 
 				_radios = call acre_api_fnc_getCurrentRadioList; 
-				{player removeItem _x;} forEach _radios; 
-				sleep 1;  
+				{player removeItem _x;} forEach _radios;  
 			};
 			// Add 343
 			player addItem "ACRE_PRC343";
