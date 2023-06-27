@@ -1,47 +1,45 @@
 // --- maxMags ----------------------------------------------------------
 // Limit maximum mags
+	[] spawn {
+	if (cgqc_setting_limitMags) then {
+		_primary_mag = (primaryWeaponMagazine player) select 0;
+		_compatibleMags = compatibleMagazines primaryWeapon player;
+		_addMags = cgqc_setting_limitMags_max;
+		_allMags = magazines player;
 
-if (cgqc_setting_limitMags) then {
-	_primary_mag = (primaryWeaponMagazine player) select 0;
-	if(!isNil "_primary_mag") then {
-		_all_primary = (magazines player) select {_x == _primary_mag}; 
-		_primary_count = count _all_primary;
-		// Find type of mags
-		_magname = toLower _primary_mag;
-		_ratio = 0;
-		if ((_magname find["30rnd", 0]) > 0) then {
-			_ratio = 1;
+		// Find all compatible mags on player
+		y_foundMags = [];
+		{
+			if(_x in _compatibleMags) then {
+				y_foundMags pushBack _x;
+			};
+		}forEach _allMags;
+
+		// Extract the magazine size from the class name
+		_magSize = getNumber(configFile >> "CfgMagazines" >> _primary_mag >> "count");
+
+		// Compare the magazine size
+		switch (true) do {
+			case (_magSize < 20): {_addMags = _addMags * 2; break;};
+			case (_magSize == 20): {_addMags = _addMags * 1.5; break;};
+			case (_magSize > 30): {_addMags = _addMags * 0.6; break;};
 		};
-		if ((_magname find["20rnd", 0]) > 0) then {
-			_ratio = 1.5
-		};
-		if ((_magname find["7rnd", 0]) > 0) then {
-			_ratio = 3
-		};
-		if (_ratio > 0) then {
-			_mag_delta = _primary_count - (cgqc_setting_limitMags_max * _ratio);
-			if (_mag_delta > 0) then  //Check if too much 
-			{
-				hint format["Too many mags mofo!! Max:%1!", cgqc_setting_limitMags_max];
-				for "_i" from 1 to _mag_delta do { 
-					player removeMagazine _primary_mag; //Remove excess
-				};
-				sleep 5;
-				hintSilent "";
-			}else{
-				hint "Mags: good";
-				sleep 3;
-				hintSilent "";
-			};	
-		}else{
-			hint "Mags: unknown";
+			// Compare compatible mags to current mags
+		_delta = cgqc_setting_limitMags_max - count y_foundMags;
+		if (_delta < 0) then { //Too many mags mofo!
+			hint format["Too many mags mofo!! Max: %1!", cgqc_setting_limitMags_max];
+			_remove = (_delta * -1) - 1;
+			for "_i" from 0 to _remove do { 
+				player removeMagazine (y_foundMags select _i); //Remove excess
+			};
 			sleep 3;
-			hintSilent "";
-		};	
+			hint format ["Removed: %1 mags",_remove];
+		} else {
+			hint "Mags: good";
+		};
 	};
 };
-// Does not account for "other" variants of magazines, only the ones loaded by default in the gun when exiting arsenal
-// Also does not prevent unit from pickup up more mags outside of arsenal. 
+	// does not prevent unit from pickup up more mags outside of arsenal. 
 
 
 
