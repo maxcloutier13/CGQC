@@ -186,4 +186,22 @@ if (cgqc_flag_isTraining) then {
 };
 
 
+// Load loadouts if known unit  
+_unit = typeOf player;
+switch (_unit) do {
+	// == Training ================================================================
+	case "CGQC_Soldat_Base";
+	case "CGQC_Officer_Base": {
+		[] spawn CGQC_fnc_initTraining;
+	};
+	// == Command ================================================================
+	//case "CGQC_units_mk1_0_HQ":{
+	//	["hq", 1, true] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf";
+	//};
+	// == Infantry ================================================================
+	case "CGQC_units_vanilla_rifleman":{
+		["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf";
+	};
+};
+
 cgqc_postInitClient_done = true;
