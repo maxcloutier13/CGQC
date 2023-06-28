@@ -182,7 +182,7 @@ switch (_type) do {
             // Holster all weapons
             player action ['SwitchWeapon', player, player, 250];
             if (cgqc_player_max) then {
-                player linkItem "immersion_cigs_cigar0_nv";
+                //player linkItem "immersion_cigs_cigar0_nv";
                 player addGoggles "G_Aviator";
                 player allowDamage false;
                 hint "NoDamage";
