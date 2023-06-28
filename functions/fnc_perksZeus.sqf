@@ -84,9 +84,8 @@ switch (_type) do {
 	case "zeus_radios":
 	{
 		if (cgqc_config_zeusRadios) then {
-			sleep 1;
 			_radios = call acre_api_fnc_getCurrentRadioList;
-			waitUntil {sleep 1;!isNil "_radios"}; 
+			waitUntil {sleep 0.5;!isNil "_radios"}; 
 			while {count (call acre_api_fnc_getCurrentRadioList) > 0} do { 
 				_radios = call acre_api_fnc_getCurrentRadioList; 
 				{_targetPlayer removeItem _x;} forEach _radios;  
@@ -113,12 +112,12 @@ switch (_type) do {
 			waitUntil {sleep 0.5;count (call acre_api_fnc_getCurrentRadioList) > 0}; 
 			y_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-			waitUntil {sleep 1;!isNil "y_zeusRadios"}; 
+			waitUntil {sleep 0.5;!isNil "y_zeusRadios"}; 
 			y_packRadio_1 = y_zeusRadios select 0; 
 			y_packRadio_2 = y_zeusRadios select 1; 
 			waitUntil {sleep 0.5;!isNil "y_packRadio_1"}; 
 			_success = [y_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan 
-			waitUntil {sleep 1;!isNil "y_packRadio_2"}; 
+			waitUntil {sleep 0.5;!isNil "y_packRadio_2"}; 
 			_success = [y_packRadio_2, 9] call acre_api_fnc_setRadioChannel; //Air-Net 
 			// Set order
 			_success = [ [_personalRadio, y_packRadio_1, y_packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment; 

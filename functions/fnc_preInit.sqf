@@ -84,6 +84,7 @@ cgqc_perk_player_stash_on = false;
 cgqc_player_stash_items = [];
 cgqc_player_stash_mags = [];
 // Zeus perks
+cgqc_zeus_event = false;
 cgqc_zeus_crate = false;
 cgqc_zeus_cargo = false;
 cgqc_zeus_briefing = false;
@@ -260,7 +261,7 @@ _menu_name = "CGQC";
 
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
-    [_menu_name, "Description et Intro"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 cgqc_config_author = getMissionConfigValue "author";
 cgqc_config_mission_name = getMissionConfigValue "onLoadName"; 
 /*
@@ -271,20 +272,20 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 */
 // Options skippables ===================================================================================================
 ["cgqc_setting_show_transition", "CHECKBOX", ["Show Transition", "Transition lors d'un loadout swtich "], 
-    [_menu_name, "Skip"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_show_welcome", "CHECKBOX", ["Show Msg de Bienvenue", "Message de bienvenue avec la patch si dispo"], 
-    [_menu_name, "Skip"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 // Channels =================================================================================================
 //["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
 //   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
 
 // Map Sharing =================================================================================================
 ["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"], 
-   [_menu_name, "Map Sharing"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
+   [_menu_name, "Option Toggles"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
 
 // Spares =================================================================================================
 ["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"], 
-[_menu_name, "Spares in Vehicles"], true] call CBA_fnc_addSetting;
+[_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 // Radio stuff ==============================================================================================
 ["cgqc_config_DefaultRadios", "CHECKBOX", ["Radios CGQC", "Utilise les noms de channels CGQC par défaut"], 
     [_menu_name, "Radios"], true] call CBA_fnc_addSetting;
@@ -315,7 +316,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Zeus radios ===============================================================================================
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"], 
-[_menu_name, "Zeus Stuff"], false, 1, {["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;}, false] call CBA_fnc_addSetting;
+[_menu_name, "Option Toggles"], false, 1, {}, false] call CBA_fnc_addSetting;
 
 // Grenade in Hatch
 // Distance
@@ -334,16 +335,16 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
-    [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Limitations"], [6, 18, 8, 0]] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], [6, 18, 8, 0]] call CBA_fnc_addSetting;
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
-    [_menu_name, "Limitations"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"], 
-    [_menu_name, "Limitations"], false, 1, {["animation_setting", 0, ""] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], false, 1, {["animation_setting", 0, ""] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
 // Training ===============================================================================================
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
-    [_menu_name, "Training"], false] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
 
 // Fortify tool
 ["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"], 
