@@ -7,7 +7,13 @@
 		params ["_type"];
 		hint "Unit compatible, adding radios and perks";
 		// Add Zeus radios 
-		["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
+		{
+			_unit = _x;
+			if (typeOf _unit == _type) then {
+				["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
+			}
+		} forEach allUnits;
+
 		// If killed: remove zeus radios ?
 
 		// Zeus ===================================================================================================
