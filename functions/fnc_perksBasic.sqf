@@ -233,8 +233,6 @@ switch (_type) do {
                 player linkItem cgqc_player_oldNvg;
             };
 
-            
-           
             cgqc_player_chill = false; // All done
             if !(_fromLoadout) then {
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Prêt au combat</t><br/>");
