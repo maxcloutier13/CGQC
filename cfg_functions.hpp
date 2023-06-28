@@ -105,5 +105,9 @@ class CGQC {
             file = "\cgqc\functions\fnc_initTraining.sqf";
             description = "Init for training units";
         };
+        class zeusUnit {
+            file = "\cgqc\functions\fnc_zeusUnit.sqf";
+            description = "Unit double-clicked by Zeus";
+        };
     };
 };

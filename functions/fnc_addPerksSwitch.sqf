@@ -5,15 +5,16 @@
     if (!(_type isKindOf "CAManBase")) exitWith {}; // All humans
 	[_type] spawn {
 		params ["_type"];
-		hint "Unit compatible, adding radios and perks";
+		hint "Unit compatible, Zeus perks";
 		// Add Zeus radios 
+		/*
 		{
 			_unit = _x;
 			if (typeOf _unit == _type) then {
 				["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
 			}
 		} forEach allUnits;
-
+		*/
 		// If killed: remove zeus radios ?
 
 		// Zeus ===================================================================================================

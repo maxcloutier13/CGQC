@@ -10,18 +10,21 @@ waitUntil {	!isNull (findDisplay 46)};
 if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["zeus", format["%1", player]] call BIS_fnc_inString) then {
 	hint "Zeus!";
 	sleep 1;
+	waitUntil {!isNil "cgqc_postInitClient_done"};
+	waitUntil {cgqc_postInitClient_done};
+
 	[] spawn {
 		while {true} do {
 			// Make sure radios are on 
 			if (cgqc_config_zeusRadios) then {
+				[player] spawn CGQC_fnc_zeusUnit;
 				_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
 				waitUntil {sleep 0.5;!isNil "_zeusRadios"};
 				if (count _zeusRadios < 2) then {
-					hint "Loading Zeus Radios";
 					["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;
 				};
 			};
-			sleep 30;
+			sleep 10;
 		};
 	};
 	// Ensure Zeus keeps slot, despite admin logging
