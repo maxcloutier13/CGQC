@@ -22,7 +22,7 @@ _action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_d
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Change Goggles --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {cgqc_player_has2023}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {}, {cgqc_player_has2023} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // ---- Types
 _action = [ "cgqc_perk_goggles_clr", "Clear Glasses", "cgqc\textures\cgqc_ace_glasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -588,7 +588,7 @@ compatibleGrenades = [];
 compatibleGrenades = Grenade_Drop_Types;
 
 _condition = {
-  (player distance _target < cgqc_config_grenade_distance && count (compatibleGrenades arrayIntersect magazines _player) > 0) && (side _target != side _player);
+  (player distance _target < cgqc_config_grenade_distance && count (compatibleGrenades arrayIntersect magazines _player) > 0);
 };
 
 _statement = {
