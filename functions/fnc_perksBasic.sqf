@@ -227,8 +227,14 @@ switch (_type) do {
             };
             player removeItemFromBackpack cgqc_player_oldFace; // Get back facestuff to backpack
             player addGoggles cgqc_player_oldFace;
-            player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
-            player linkItem cgqc_player_oldNvg;
+            [] call CGQC_fnc_isDaytime;
+            if !(cgqc_mission_daytime) then {
+                player removeItemFromBackpack cgqc_player_oldNvg; // Get back nvg's from backpack
+                player linkItem cgqc_player_oldNvg;
+            };
+
+            
+           
             cgqc_player_chill = false; // All done
             if !(_fromLoadout) then {
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Prêt au combat</t><br/>");
