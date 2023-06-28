@@ -18,7 +18,7 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 				waitUntil {sleep 0.5;!isNil "_zeusRadios"};
 				if (count _zeusRadios < 2) then {
 					hint "Loading Zeus Radios";
-					["zeus_radios", 0] spawn CGQC_fnc_perksZeus;
+					["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;
 				};
 			};
 			sleep 30;

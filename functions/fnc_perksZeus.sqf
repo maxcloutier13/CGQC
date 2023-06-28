@@ -1,9 +1,6 @@
 // --- perksZeus ----------------------------------------------------------
 // Perks for the gods
-
-_type = _this select 0;
-briefing_time = _this select 1;
-_targetPlayer = _this select 2;
+params ["_type", "_briefing_time", "_targetPlayer"];
 
 switch (_type) do {
 	case "check_mods": {
@@ -87,30 +84,31 @@ switch (_type) do {
 	case "zeus_radios":
 	{
 		if (cgqc_config_zeusRadios) then {
+			sleep 1;
 			_radios = call acre_api_fnc_getCurrentRadioList;
-			waitUntil {sleep 0.5;!isNil "_radios"}; 
+			waitUntil {sleep 1;!isNil "_radios"}; 
 			while {count (call acre_api_fnc_getCurrentRadioList) > 0} do { 
 				_radios = call acre_api_fnc_getCurrentRadioList; 
-				{player removeItem _x;} forEach _radios;  
+				{_targetPlayer removeItem _x;} forEach _radios;  
 			};
 			// Add 343
-			player addItem "ACRE_PRC343";
+			_targetPlayer addItem "ACRE_PRC343";
 			// Add zeus radios  
-			if (player canAdd ["ACRE_PRC117F", 2]) then {   
+			if (_targetPlayer canAdd ["ACRE_PRC117F", 2]) then {   
 				// There is enough space, add the items 
 				//hint "Enough space. Adding radios";  
-				player addItem "ACRE_PRC117F";   
-				player addItem "ACRE_PRC117F";
+				_targetPlayer addItem "ACRE_PRC117F";   
+				_targetPlayer addItem "ACRE_PRC117F";
 			} else {   
 				// There is not enough space   
 				//hint "Not enough inventory space! Zeus backpack on";  
-				_items_pack = backpackItems player;  
-				removeBackpack player;  
-				player addBackpack "cgqc_pack_mk1_magic_zeus";  
-				clearAllItemsFromBackpack player;  
-				{player addItemToBackpack _x} forEach _items_pack;  
-				player addItem "ACRE_PRC117F";   
-				player addItem "ACRE_PRC117F";	
+				_items_pack = backpackItems _targetPlayer;  
+				removeBackpack _targetPlayer;  
+				_targetPlayer addBackpack "cgqc_pack_mk1_magic_zeus";  
+				clearAllItemsFromBackpack _targetPlayer;  
+				{_targetPlayer addItemToBackpack _x} forEach _items_pack;  
+				_targetPlayer addItem "ACRE_PRC117F";   
+				_targetPlayer addItem "ACRE_PRC117F";	
 			};
 			waitUntil {sleep 0.5;count (call acre_api_fnc_getCurrentRadioList) > 0}; 
 			y_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
@@ -128,14 +126,6 @@ switch (_type) do {
 			_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial; 
 			_success = [y_packRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial; 
 			_success = [y_packRadio_2, "BOTH" ] call acre_api_fnc_setRadioSpatial; 
-			hint parseText "<t> 
-			--- Zeus Radios -------------<br/> 
-			Radio1:Gauche/343/Spartan<br/>   
-			Radio2:Droite/117/Spartan/HQ</t><br/> 
-			Radio3:Both/117/Zeus</t>";
-
-		}else{
-			hint "Zeus Radios: Deactivated";
 		};
 		break;
 	};
@@ -258,14 +248,14 @@ switch (_type) do {
 		"cgqcBriefing" setMarkerText "Briefing";
 		"cgqcBriefing" setMarkerColor "colorBLUFOR";
 		//Timer before briefing start 
-		while {briefing_time > 0 && cgqc_zeus_briefing} do { 
-			_min = floor (briefing_time / 60);
-			_sec =  briefing_time - (_min * 60); 
+		while {_briefing_time > 0 && cgqc_zeus_briefing} do { 
+			_min = floor (_briefing_time / 60);
+			_sec =  _briefing_time - (_min * 60); 
 			_min_sec = format["%1:%2", _min, _sec];
 			_msg = format["General Briefing in: \n %1", _min_sec];
 			[_msg] remoteExec ["hintSilent"];
 			"cgqcBriefing" setMarkerText format["General Briefing in %1", _min_sec];
-			briefing_time = briefing_time - 1;   
+			_briefing_time = _briefing_time - 1;   
 			sleep 1; 
 		};
 		if(cgqc_zeus_briefing) then {

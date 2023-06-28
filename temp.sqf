@@ -1008,3 +1008,6 @@ _tempUnit addItem "HandGrenade";
 [_tempUnit, "HandGrenadeMuzzle"] call BIS_fnc_fire;
 sleep 0.5;
 deleteVehicle _tempUnit;
+
+
+y_this = curstorTarget getVariable ["cgqc_version_core"];
