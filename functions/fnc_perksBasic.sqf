@@ -6,8 +6,145 @@ waitUntil {!isNil "cgqc_player_patch_found"};
 waitUntil {cgqc_player_rank_found};
 _time = 5;
 
-disableUserInput true;
+//disableUserInput true;
 switch (_type) do {
+
+    case "stealth":{ 
+        cgqc_player_state = 0;
+        [] spawn {
+            while {cgqc_player_state == 0} do {
+                // Lower voice 
+                [0.1] call acre_api_fnc_setSelectableVoiceCurve;
+                sleep 10;
+            };
+        };
+        // Install Silencer if found
+        _currentWeapon = currentWeapon player;
+        _compatible = _currentWeapon call bis_fnc_compatibleItems;
+        _compatibleSilencers = [];
+        _hasSilencer = false;
+        _actualSilencer = "";
+        _itemClassName = "";
+        _addedSilencer = false;
+        _speakerOff = false;
+        {
+            _type = (_x call bis_fnc_itemType) select 1;
+            if (_type isEqualTo "AccessoryMuzzle") then {
+                _compatibleSilencers pushBack _x;
+            };
+        } forEach _compatible;
+        // Check inventory 
+        if (count _compatibleSilencers > 0) then {
+            {
+                _silencerClassName = _x;
+                {
+                    _itemClassName = _x;
+                    if (_itemClassName == _silencerClassName) then {
+                        _hasSilencer = true;
+                        _actualSilencer = _itemClassName;
+                        break;
+                    }
+                } forEach (items player);
+            } forEach _compatibleSilencers;
+        };
+
+        if (_hasSilencer) then { // Silencer found!
+            player removeItem _actualSilencer;
+            player addWeaponItem [_currentWeapon, _actualSilencer];
+            _addedSilencer = true;
+        };
+
+        // Turn off speakers
+        _radios = call acre_api_fnc_getCurrentRadioList;
+        waitUntil {sleep 0.5;!isNil "_radios"};
+        if (count _radios > 0) then {
+             _handRadio_1 = _radios select 0;
+        };
+        if (count _radios > 1) then {
+             _handRadio_2 = _radios select 1;
+        };
+        if (count _radios > 2) then {
+             _handRadio_3 = _radios select 2;
+        };
+        sleep 1;
+        if (!isNil "_handRadio_1") then {
+            _isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
+			waitUntil {sleep 0.5;!isNil "_isSpeaker"};
+            if (_isSpeaker) then {
+                _speakerOff = true;
+                _success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
+            };     
+        };
+        if (!isNil "_handRadio_2") then {
+            _success = [_handRadio_2, false] call acre_api_fnc_setRadioSpeaker;
+        };
+        if (!isNil "_handRadio_3") then {
+            _success = [_handRadio_3, false] call acre_api_fnc_setRadioSpeaker;
+        };
+        _txt = "-- Stealth --<br/>";
+        if (_addedSilencer) then {
+            _txt = _txt + "Silencer: On<br/>";
+        } else {
+            _txt = _txt + "No silencer found...<br/>";
+        };
+        if (_speakerOff) then {
+            _txt = _txt + "Radio Speaker: Off<br/>";
+        };
+        hint parseText _txt;
+        break;
+    };
+    case "normal":{
+        cgqc_player_state = 1;
+        // Normal voice 
+        [0.7] call acre_api_fnc_setSelectableVoiceCurve;
+        hint "Normal: Default voice level";        
+        break;
+    };
+    case "battle":{
+        cgqc_player_state = 2;         
+        [] spawn {
+            while {cgqc_player_state == 2} do {
+                // Max voice
+                [1.3] call acre_api_fnc_setSelectableVoiceCurve;
+                sleep 10;
+            };
+        };
+        // Remove silencer
+        _currentWeapon = currentWeapon player;
+        _compatible = _currentWeapon call bis_fnc_compatibleItems;
+        _compatibleSilencers = [];
+        _silencerRemoved = false;
+        _actualSilencer = "";
+        {
+            _type = (_x call bis_fnc_itemType) select 1;
+            if (_type isEqualTo "AccessoryMuzzle") then {
+                _compatibleSilencers pushBack _x;
+            };
+        } forEach _compatible;
+        _player = player;
+        _currentWeapon = primaryWeapon _player;
+        _items = primaryWeaponItems player;
+
+        {
+            _silencerClassName = _x;
+            if (_silencerClassName in _items) then {
+                // Remove the silencer from the current weapon
+                player removePrimaryWeaponItem _silencerClassName;
+                // Add the silencer to the player's backpack
+                player addItemToBackpack _silencerClassName;
+                _silencerRemoved = true;
+                //hint format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
+            }
+        } forEach _compatibleSilencers;
+        _txt = "-- Battle --<br/>";
+        _txt = _txt + "Shouting<br/>";
+        if (_silencerRemoved) then {
+            _txt = _txt + "Silencer: Off<br/>";
+        };
+        hint parseText _txt;
+        break;
+    };
+ 
     case "flip_chill":{
         if (cgqc_player_chill) then {
             ["ready", false] spawn CGQC_fnc_perksBasic;

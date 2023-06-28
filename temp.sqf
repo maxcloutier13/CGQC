@@ -1023,3 +1023,70 @@ y_this = curstorTarget getVariable ["cgqc_version_core"];
 [[["cgqc_gun_mk1_mk12","Tier1_KAC_556_QDC_CQB_Black","Tier1_M4BII_NGAL_M600V_Black","Tier1_Razor_Gen3_110_Geissele_Docter",["grcb_mag_30Rnd_556x45_Mk262_PMAG_mix",30],[],"Tier1_Harris_Bipod_Black"],[],["cgqc_gun_p99_wood","","","",["16Rnd_9x21_Mag",17],[],""],["cgqc_uniform_mk1",[]],["V_Rangemaster_belt",[]],["cgqc_pack_mk1_magic",[[
 	,,
 	"cgqc_beret_red","G_mas_can_gog",["Rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","immersion_cigs_cigar0_nv"]],[["ace_arsenal_insignia","cgqc_patch_cloutier"],["grad_slingHelmet","cgqc_cap_green"]]]
+
+
+
+
+_currentWeapon = currentWeapon player;
+_compatible = _currentWeapon call bis_fnc_compatibleItems;
+_compatibleSilencers = [];
+_hasSilencer = false;
+_actualSilencer = "";
+{
+	_type = (_x call bis_fnc_itemType) select 1;
+	if (_type isEqualTo "AccessoryMuzzle") then {
+		_compatibleSilencers pushBack _x;
+	};
+} forEach _compatible;
+// Check inventory 
+if (count _compatibleSilencers > 0) then  {
+	{
+		_silencerClassName = _x;
+		{
+			_itemClassName = configName _x;
+			if (_itemClassName == _silencerClassName) then {
+				_hasSilencer = true;
+				_actualSilencer = _itemClassName;
+				break;
+			}
+		} forEach (items _player);
+	} forEach _compatibleSilencers;
+};
+
+if (_hasSilencer) then { // Silencer found!
+	player removeItem _actualSilencer;
+	player addWeaponItem [_currentWeapon, _actualSilencer select 0];
+};
+hint "pouet";
+
+
+_currentWeapon = currentWeapon player;
+_compatible = _currentWeapon call bis_fnc_compatibleItems;
+_compatibleSilencers = [];
+_hasSilencer = false;
+_actualSilencer = "";
+{
+	_type = (_x call bis_fnc_itemType) select 1;
+	if (_type isEqualTo "AccessoryMuzzle") then {
+		_compatibleSilencers pushBack _x;
+	};
+} forEach _compatible;
+_player = player;
+_currentWeapon = primaryWeapon _player;
+_items = _currentWeapon call BIS_fnc_weaponComponents;
+
+{
+	_silencerClassName = _x;
+	
+	if (_silencerClassName in _items) then {
+		// Remove the silencer from the current weapon
+		player removePrimaryWeaponItem _silencerClassName;
+		
+		// Add the silencer to the player's backpack
+		_player addBackpackItem _silencerClassName;
+		
+		hint format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
+		
+		// Break the loop after finding and processing the first compatible silencer
+	}
+} forEach _compatibleSilencers;
