@@ -38,6 +38,11 @@ cgqc_player_max = false;
 cgqc_player_23rd = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
+cgqc_subskills = [
+	"aimingAccuracy", "aimingShake", "aimingSpeed", "spotDistance", "spotTime", 
+	"courage", "reloadSpeed", "commanding", "general"
+];
+      
 // *** Mission stuff *******************
 cgqc_mission_daytime = true;
 // *** DLC stuff *******************
@@ -312,8 +317,12 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"], 
 [_menu_name, "Zeus Stuff"], false, 1, {["zeus_radios", 0] spawn CGQC_fnc_perksZeus;}, false] call CBA_fnc_addSetting;
 
-// Grenade in Hatch 
-["cgqc_setting_grenade_types","EDITBOX", ["Compatible Grenades", "Classnames usable to drop in tank hatches"],
+// Grenade in Hatch
+// Distance
+["cgqc_config_grenade_distance", "SLIDER",["Distance", "Minimal distance for option to be visible"], 
+[_menu_name, "Grenade in tank Hatch"], [2, 20, 5, 0], 1, {["zeus_radios", 0] spawn CGQC_fnc_perksZeus;}, false] call CBA_fnc_addSetting;
+// Types 
+["cgqc_config_grenade_types","EDITBOX", ["Compatible Grenades", "Classnames usable to drop in tank hatches"],
 	[_menu_name, "Grenade in tank Hatch"], 
 	"gm_handgrenade_conc_dm51,gm_handgrenade_conc_dm51a1,gm_handgrenade_frag_dm51,gm_handgrenade_frag_dm51a1,
 	gm_handgrenade_frag_rgd5,vn_chicom_grenade_mag,vn_f1_grenade_mag,vn_m34_grenade_mag,vn_m61_grenade_mag,

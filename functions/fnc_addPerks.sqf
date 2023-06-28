@@ -583,12 +583,12 @@ private _action = ["cgqc_menu_grenades", "Grenades", "\cgqc\textures\cgqc_ace_gr
 
 // Grenade in hatch -----------------------------------------------------------------------------------
 
-Grenade_Drop_Types = cgqc_setting_grenade_types splitString ",";
+Grenade_Drop_Types = cgqc_config_grenade_types splitString ",";
 compatibleGrenades = [];
 compatibleGrenades = Grenade_Drop_Types;
 
 _condition = {
-  (player distance _target < 5 && count (compatibleGrenades arrayIntersect magazines _player) > 0) && (side _target != side _player);
+  (player distance _target < cgqc_config_grenade_distance && count (compatibleGrenades arrayIntersect magazines _player) > 0) && (side _target != side _player);
 };
 
 _statement = {
@@ -599,33 +599,62 @@ _statement = {
 		[_target] spawn {
 			params ["_target"];
 			_player = player;
-			_player removeItem ((compatibleGrenades arrayIntersect magazines _player) select 0);
-			sleep 4;
-			bomb = "APERSTripMine_Wire_Ammo" createVehicle (getPos _target);
-			bomb attachTo [_target, [0,0,-1]];
-			bomb setDamage 1;
-			_randomEngine = selectRandom [0.2, 0.5, 0.7, 1];
-			_randomHull = selectRandom [0.2, 0.5, 0.7];
-			_randomTurret = selectRandom [0.2, 0.5, 0.7, 1];
-			_target setHitPointDamage ["hitEngine", _randomEngine];
-			_target setHitPointDamage ["hitHull", _randomHull];
-			_target setHitPointDamage ["hitTurret", _randomTurret];
-			_randomCrew = [0.85,0.9,1,1,1];
-			{ _x setDamage (selectRandom _randomCrew);} forEach crew _target;
-			_randomTime = [1,2];
-			sleep 1;
-			{if (alive _x) then{
-				_x allowFleeing 1;
-				_x setSkill ["aimingAccuracy", 0.1];
-				_x setSkill ["aimingSpeed", 0.1];
-				_x setSkill ["spotTime", 0.1];
-				_x setSkill ["aimingShake", 0.1];
-				_x setSkill ["courage", 0.1];
-				_x leaveVehicle _target;
-				_x moveOut _target;
-				sleep selectRandom _randomTime;
-			};} forEach crew _target;
-
+			_nade = (compatibleGrenades arrayIntersect magazines _player) select 0;
+			_nadeAmmo = getText (configFile >> "CfgMagazines" >> "HandGrenade" >> "ammo");
+			_fuse = getNumber (configFile >> "CfgAmmo" >> _nadeAmmo >> "explosionTime");
+			_player removeItem (_nade);
+			// Check if anyone is alive
+			y_aliveCrew = false;
+			{if (alive _x) exitWith { y_aliveCrew = true; };} forEach (crew _target); 
+			_crewThrowBack = selectRandom [false, false, false, false, false, true];
+			if (y_aliveCrew && _crewThrowBack) then {
+				hint "They're throwing it back!";
+				// Need a panicking but glorious yell
+				_targetPos = getPos _target;
+				_offsetDir = random 360;
+				_offsetDistance = selectRandom[3,4,5,6];
+				_offsetX = _offsetDistance * sin(_offsetDir);
+				_offsetY = _offsetDistance * cos(_offsetDir);
+				_offsetPos = [_offsetX, _offsetY, 0] vectorAdd _targetPos;
+				bomb = _nadeAmmo createVehicle _offsetPos;
+				//bomb attachTo [_target, [0,0,-1]];
+				sleep _fuse;
+			} else {
+				hint "Good nade!";
+				// Need a panicking yell
+				bomb = _nadeAmmo createVehicle (getPos _target);
+				bomb attachTo [_target, [0,0,-1]];
+				sleep _fuse;
+				//bomb setDamage 1;
+				_randomEngine = selectRandom [0.4, 0.5,  0.6, 0.7, 0.8, 0.9, 1];
+				_randomHull = selectRandom [0.4, 0.5,  0.6, 0.7, 0.8, 0.9, 1];
+				_randomTurret = selectRandom [0.4, 0.5,  0.6, 0.7, 0.8, 0.9, 1];
+				_engine = _randomEngine + (_target gethitPointDamage  "hitEngine"); 
+				_hull = _randomHull + (_target gethitPointDamage  "hitHull"); 
+				_turret = _randomTurret + (_target gethitPointDamage  "hitTurret"); 
+				_target setHitPointDamage ["hitEngine", _engine];
+				_target setHitPointDamage ["hitHull", _hull];
+				_target setHitPointDamage ["hitTurret", _turret];
+				_randomCrew = [0.9,1,1,1,1,1];
+				{ _x setDamage (selectRandom _randomCrew);} forEach crew _target;
+				_randomTime = [1,2];
+				sleep 1;
+				{if (alive _x) then{
+					_survivor = _x;
+					_x allowFleeing 1;
+					{
+						_survivor setSkill [_x, (_survivor skill _x) / 50];
+					} forEach cgqc_subskills;
+					_x setSkill ["aimingAccuracy", 0.1];
+					_x setSkill ["aimingSpeed", 0.1];
+					_x setSkill ["spotTime", 0.1];
+					_x setSkill ["aimingShake", 0.1];
+					_x setSkill ["courage", 0.1];
+					_x leaveVehicle _target;
+					_x moveOut _target;
+					sleep selectRandom _randomTime;
+				};} forEach crew _target;
+			};
 		};
 	}, {}, "Dropping Grenade", {true}] call ace_common_fnc_progressBar ;
 };

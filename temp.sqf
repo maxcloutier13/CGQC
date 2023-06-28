@@ -994,3 +994,17 @@ _light setLightColor [0.1,0.5,0.3];                                     _light s
 
 
 gm_handgrenade_conc_dm51,gm_handgrenade_conc_dm51a1,gm_handgrenade_frag_dm51,gm_handgrenade_frag_dm51a1,gm_handgrenade_frag_rgd5,vn_chicom_grenade_mag,vn_f1_grenade_mag,vn_m34_grenade_mag,vn_m61_grenade_mag,vn_m67_grenade_mag,vn_rg42_grenade_mag,vn_rgd33_grenade_mag,vn_rgd5_grenade_mag,vn_rkg3_grenade_mag,vn_t67_grenade_mag,vn_v40_grenade_mag,CUP_HandGrenade_L109A1_HE,CUP_HandGrenade_L109A2_HE,CUP_HandGrenade_M67,HandGrenade,CUP_HandGrenade_RGD5,CUP_HandGrenade_RGO,MiniGrenade
+
+
+
+_tempGroup = createGroup WEST;
+_tempUnit = _tempGroup createUnit ["B_Soldier_F", [0, 0, 0], [], 0, "NONE"];
+removeAllItems _tempUnit;
+removeAllAssignedItems _tempUnit;
+removeAllWeapons _tempUnit;
+_tempUnit setPosASL (getPosASL tank_test);
+_tempUnit setDir (random 360);
+_tempUnit addItem "HandGrenade"; 
+[_tempUnit, "HandGrenadeMuzzle"] call BIS_fnc_fire;
+sleep 0.5;
+deleteVehicle _tempUnit;
