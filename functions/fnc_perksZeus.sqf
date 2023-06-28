@@ -65,7 +65,7 @@ switch (_type) do {
 			_x enableSimulationGlobal false;
 			_x disableAI "all";
 		} forEach y_allAIs; 
-		hint "All units PAUSED!";
+		["All AI units PAUSED!"] remoteExec [hint, 0];
 		cgqc_zeus_paused = true;
 		publicVariable "cgqc_zeus_paused";
 		break;
@@ -76,7 +76,7 @@ switch (_type) do {
 			_x enableSimulationGlobal true;
 			_x enableAI "all";
 		} forEach y_allAIs; 
-		hint "All units Unpaused.";
+		["All AI units unpaused!"] remoteExec [hint, 0];
 		cgqc_zeus_paused = false;
 		publicVariable "cgqc_zeus_paused";
 		break;
