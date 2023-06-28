@@ -1011,3 +1011,7 @@ deleteVehicle _tempUnit;
 
 
 y_this = curstorTarget getVariable ["cgqc_version_core"];
+
+
+
+[[["cgqc_gun_mk1_mk12","Tier1_KAC_556_QDC_CQB_Black","Tier1_M4BII_NGAL_M600V_Black","Tier1_Razor_Gen3_110_Geissele_Docter",["rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull",0],[],"Tier1_Harris_Bipod_Black"],[],["cgqc_gun_p99_wood","","","",["16Rnd_9x21_Mag",17],[],""],["cgqc_uniform_mk1",[["cgqc_items_ifak",1],["ACE_CableTie",2],["ACE_MapTools",1],["ACE_microDAGR",1],["WBK_HeadLampItem",1],["ACRE_PRC343",1],["immersion_cigs_cigar0_nv",1],["grad_paceCountBeads_functions_paceCountBeads",1],["G_Aviator",1],["G_mas_can_balaM_b",1],["ACE_Canteen_Half",1],["16Rnd_9x21_Mag",2,17],["acex_intelitems_notepad",1,1],["murshun_cigs_lighter",1,100],["murshun_cigs_cigpack",1,20]]],["V_Rangemaster_belt",[]],["cgqc_pack_mk1_magic",[["ACE_EntrenchingTool",1],["ACRE_PRC117F",1],["ACRE_PRC117F",1],["SmokeShell",2,1],["MS_Strobe_Mag_2",1,1]]],"cgqc_beret_red","",["Rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","immersion_cigs_cigar0_nv"]],[["ace_arsenal_insignia","cgqc_patch_cloutier"],["grad_slingHelmet","cgqc_cap_green"]]]

@@ -315,8 +315,8 @@ switch (_type) do {
             "G_mas_can_balaM_b",
             "G_mas_can_balaM_T",
             "G_mas_can_shemag_mask",
-            "rhs_goggles_black",
-            "rhusf_oakley_goggles_blk",
+            "rhs_googles_black",
+            "rhsusf_oakley_goggles_blk",
             "rhsusf_shemagh_gogg_tan",
             "rhsusf_shemagh2_gogg_tan",
             "G_Lowprofile"
