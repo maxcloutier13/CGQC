@@ -82,6 +82,22 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_ghillie"]
 // Uniform
 _action = [ "cgqc_perk_ghillie_uniform", "Ghillie-> Uniforme", "", {_ct = ["uniform"] spawn CGQC_fnc_perksRecon}, {cgqc_perks_recon && cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Quick State
+_action = [ "cgqc_perk_state", "Quick State", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Stealth 
+_action = [ "cgqc_perk_state_stealth", "Stealth", "", {["stealth", false] spawn CGQC_fnc_perksBasic}, {cgqc_player_state > 0} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_state"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Overt 
+_action = [ "cgqc_perk_state_normal", "Normal", "", {["normal", false] spawn CGQC_fnc_perksBasic}, {cgqc_player_state != 1} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_state"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Battle 
+_action = [ "cgqc_perk_state_battle", "Battle", "", {["battle", false] spawn CGQC_fnc_perksBasic}, {cgqc_player_state < 2} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_state"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+
+
 // ------ Cut Grass --------------------------------------------------------------------------------------
 _action = [ "cgqc_perk_cutgrass", "Coupe l'herbe", "CGQC\textures\cgqc_ace_grass", {_ct = ["cut_grass"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -588,7 +604,7 @@ compatibleGrenades = [];
 compatibleGrenades = Grenade_Drop_Types;
 
 _condition = {
-  (player distance _target < cgqc_config_grenade_distance && count (compatibleGrenades arrayIntersect magazines _player) > 0);
+  (player distance _target < cgqc_config_grenade_distance  && count (compatibleGrenades arrayIntersect magazines _player) > 0) && (side _target != side _player);
 };
 
 _statement = {
@@ -608,7 +624,7 @@ _statement = {
 			{if (alive _x) exitWith { y_aliveCrew = true; };} forEach (crew _target); 
 			_crewThrowBack = selectRandom [false, false, false, false, false, true];
 			if (y_aliveCrew && _crewThrowBack) then {
-				hint "They're throwing it back!";
+				//hint "They're throwing it back!";
 				// Need a panicking but glorious yell
 				_targetPos = getPos _target;
 				_offsetDir = random 360;
@@ -620,7 +636,7 @@ _statement = {
 				//bomb attachTo [_target, [0,0,-1]];
 				sleep _fuse;
 			} else {
-				hint "Good nade!";
+				//hint "Good nade!";
 				// Need a panicking yell
 				bomb = _nadeAmmo createVehicle (getPos _target);
 				bomb attachTo [_target, [0,0,-1]];
@@ -659,7 +675,7 @@ _statement = {
 	}, {}, "Dropping Grenade", {true}] call ace_common_fnc_progressBar ;
 };
 
-_action = ["Drop Grenade", "Drop Grenade in", "",_statement,_condition] call ace_interact_menu_fnc_createAction;
+_action = ["Drop Grenade", "Drop Grenade in Hatch", "",_statement,_condition] call ace_interact_menu_fnc_createAction;
 ["Tank", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
 

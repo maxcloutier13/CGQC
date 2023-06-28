@@ -77,13 +77,13 @@ player addItemToUniform "cgqc_items_ifak";
 _items_pack = backpackItems player;
 {player removeItemFromBackpack _x} forEach _items_pack; //Flush possible magic items from backpack
 // === Essentials 
-
+player addItemToBackpack "ACE_Canteen";
 player addItemToBackpack "ACE_microDAGR";
 player addItemToBackpack "ACE_EntrenchingTool";
 // === Grenades 
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell";};
 for "_i" from 1 to 1 do {player addItemToBackpack "MS_Strobe_Mag_2"};
 // === Meds
-for "_i" from 1 to 10 do {player addItemToBackpack "ACE_fieldDressing";};
+//for "_i" from 1 to 10 do {player addItemToBackpack "ACE_fieldDressing";};
 //for "_i" from 1 to 2 do {player addItemToBackpack "ACE_salineIV_500";}; 
 sleep 0.5;
