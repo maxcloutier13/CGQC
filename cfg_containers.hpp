@@ -288,6 +288,11 @@ class cgqc_pack_mk1_magic : B_AssaultPack_rgr
             count = 1;
             name = "ACE_EntrenchingTool";
         };
+         class _xx_ACE_Canteen
+        {
+            count = 1;
+            name = "ACE_Canteen";
+        };
     };
     class TransportWeapons
     {
