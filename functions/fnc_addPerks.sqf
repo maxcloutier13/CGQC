@@ -290,6 +290,11 @@ _action = [ "menu_self_chem_green", "Chem Green", "", {["throw", "Chemlight_gree
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_chem_ir", "Chem IR", "", {["throw", "ACE_Chemlight_IR"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Strobes 
+_action = [ "menu_self_strobe1", "Strobe 1", "", {["throw", "MS_Strobe_Mag_1"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_strobe2", "Strobe 2", "", {["throw", "MS_Strobe_Mag_2"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Flares
 _action = [ "menu_self_flare_green", "Flare: Green", "", {["throw", "ACE_HandFlare_Green"] execVM "cgqc\functions\fnc_dropChem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;

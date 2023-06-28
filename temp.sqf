@@ -1090,3 +1090,12 @@ _items = _currentWeapon call BIS_fnc_weaponComponents;
 		// Break the loop after finding and processing the first compatible silencer
 	}
 } forEach _compatibleSilencers;
+
+
+
+gm_handgrenade_conc_dm51,gm_handgrenade_conc_dm51a1,gm_handgrenade_frag_dm51,gm_handgrenade_frag_dm51a1,gm_handgrenade_frag_rgd5,vn_chicom_grenade_mag,vn_f1_grenade_mag,vn_m34_grenade_mag,vn_m61_grenade_mag,vn_m67_grenade_mag,vn_rg42_grenade_mag,vn_rgd33_grenade_mag,vn_rgd5_grenade_mag,vn_rkg3_grenade_mag,vn_t67_grenade_mag,vn_v40_grenade_mag,CUP_HandGrenade_L109A1_HE,CUP_HandGrenade_L109A2_HE,CUP_HandGrenade_M67,HandGrenade,CUP_HandGrenade_RGD5,CUP_HandGrenade_RGO,MiniGrenade, rhs_mag_rgd5, rhs_mag_m67, rhs_mag_an_m14
+
+
+
+
+[[["rhs_weap_m4a1_blockII_grip2","Tier1_KAC_556_QDC_CQB_Black","Tier1_M4BII_NGAL_M600V_Black","Tier1_Razor_Gen2_16_Geissele_Docter_PIP",["rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull",30],[],"rhsusf_acc_grip2"],[],["cgqc_gun_glock19_wood","Tier1_TiRant9S","Tier1_DBALPL","Tier1_SIG_Romeo1",["Tier1_20Rnd_9x19_JHP",20],[],""],["cgqc_uniform_mk1",[["ACE_EarPlugs",1],["ACE_MapTools",1],["ACE_CableTie",2],["ACE_RangeCard",1],["WBK_HeadLampItem",1],["ACE_microDAGR",1],["cgqc_items_ifak",1],["MS_Strobe_Mag_1",1,1],["acex_intelitems_notepad",1,1],["rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull",1,30]]],["cgqc_vest_mk1_tan",[["Tier1_15Rnd_9x19_JHP",2,15],["rhs_mag_m67",2,1],["ACE_CTS9",3,1],["SmokeShell",3,1],["rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull",7,30]]],["cgqc_pack_mk1_Radiobag",[["ACE_EntrenchingTool",1],["Rev_darter_item",1],["ACE_UAVBattery",1],["ItemcTab",1],["JAS_GPNVG18_Full_blk_TI",1],["ACRE_PRC117F",1],["ACRE_PRC117F",1],["ACRE_PRC117F",1],["ACRE_VHF30108SPIKE",1],["SmokeShell",1,1],["MS_Strobe_Mag_2",1,1],["rhs_mag_m67",2,1]]],"cgqc_helmet_mk1","G_mas_can_shemag_gog_l",["Laserdesignator_01_khk_F","","","",["Laserbatteries",1],[],""],["ItemMap","B_UavTerminal","","ItemCompass","ItemWatch",""]],[["ace_arsenal_insignia","cgqc_patch_logo"]]]
