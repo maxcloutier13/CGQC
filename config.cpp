@@ -93,6 +93,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "CGQC";
 	};
+	class EdSubcat_cgqc_intel
+	{
+		displayName = "CGQC";
+	};
 };
 
 // Units, backpacks, flags
@@ -126,3 +130,9 @@ class CfgSounds
 // Custom events
 #include "cfg_eventhandlers.hpp"
 #include "functions\lockbackpack\Extended_InventoryOpened_EventHandlers.hpp"
+
+// Magazines
+class CfgMagazines
+{
+	#include "cfg_magazines.hpp"
+};

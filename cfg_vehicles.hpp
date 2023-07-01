@@ -1,6 +1,18 @@
 // --- cfgVehicles ----------------------------------------------------------
 // Vehicles definition. Yeah I know. 
 
+class acex_intelitems_notepad;
+class cgqc_intel_laptop : acex_intelitems_notepad {
+    author = "silent1";
+    editorSubcategory = "EdSubcat_cgqc_intel";
+    displayName = "Intel Laptop";
+    model = "\a3\Props_F_Enoch\Military\Equipment\Laptop_03_F.p3d";
+    editorPreview = "\A3\EditorPreviews_F_Enoch\Data\CfgVehicles\Land_Laptop_03_black_F.jpg";
+    scope = 2;
+    scopeCurator = 2;
+    acex_intelitems_magazine = cgqc_intel_laptop; 
+};
+
 class B_T_Truck_01_box_F;
 class cgqc_vic_construction : B_T_Truck_01_box_F
 {
