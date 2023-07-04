@@ -248,7 +248,7 @@ _menu_name = "CGQC";
 		_fail = "";
 	} else {
 		_work = "Opening victims IFAK";
-		_fail = "Victim has no IFAK";
+		_fail = "";
 	};
 	// Check if target has an IFAK 
 	if([_targetPlayer, 'cgqc_items_ifak'] call BIS_fnc_hasItem) then {
