@@ -329,7 +329,7 @@ _action = [ "menu_self_medkit", "Unpack: MediKit", "\CGQC\textures\icon_med", {[
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Bandoliers 
 _action = [ "menu_self_bandolier", "Unpack: Ammo Bandolier", "\CGQC\textures\rearm.paa", {["refill", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 /*
 // Variants 
 _action = [ "menu_self_bandolier_refill", "Refill All", "", {["refill", player] execVM "\cgqc\functions\fnc_openItem.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
