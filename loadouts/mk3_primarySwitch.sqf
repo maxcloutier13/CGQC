@@ -2,7 +2,7 @@
 // Switch primary weapons
 _type = _this select 0;
 _needGL = false;
-_mag_count = cgqc_setting_limitMags_max; 
+
 
 //Remove main weapon and mags 
 _gun = primaryWeapon player;
@@ -227,7 +227,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_Razor_Gen3_110_Geissele_Docter";
 		player addPrimaryWeaponItem "ACE_20Rnd_762x51_M118LR_Mag";
 		player addPrimaryWeaponItem "bipod_01_F_blk";
-		_mag_count = 8;
 	};
 	case "m27": {
 		["rhs_weap_m27iar_grip2"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -236,7 +235,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
 		player addPrimaryWeaponItem "rhs_mag_100Rnd_556x45_Mk262_cmag";
 		player addPrimaryWeaponItem "bipod_01_F_blk";
-		_mag_count = 6;
 	};
 	case "mk46":{
 		["cgqc_gun_mk1_mk46"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -245,7 +243,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
 		player addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote";
 		player addPrimaryWeaponItem "Tier1_SAW_Bipod_DD";
-		_mag_count = 4;
 	};
 	case "mk48":{
 		["cgqc_gun_mk1_mk48"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -254,7 +251,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
 		player addPrimaryWeaponItem "Tier1_100Rnd_762x51_Belt_M993_AP";
 		player addPrimaryWeaponItem "Tier1_SAW_Bipod_2_KAC";
-		_mag_count = 5;
 	};
 	case "p90":{
 		["cgqc_gun_mk1_p90"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -262,7 +258,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
 		player addPrimaryWeaponItem "optic_ACO_grn";
 		player addPrimaryWeaponItem "50Rnd_570x28_SMG_03";
-		_mag_count = 4;
 	};
 	case "socom16":{
 		["rhs_weap_m14_socom_rail"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -271,7 +266,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_M600V_Black";
 		player addPrimaryWeaponItem "rhsusf_acc_m14_bipod";
 		player addPrimaryWeaponItem "ACE_20Rnd_762x51_M118LR_Mag";
-		_mag_count = 9;
 	};
 	case "m14ebr":{
 		["rhs_weap_m14ebrri"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -280,7 +274,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "rhsusf_acc_anpeq15side_bk";
 		player addPrimaryWeaponItem "rhs_acc_harris_swivel";
 		player addPrimaryWeaponItem "ACE_20Rnd_762x51_M118LR_Mag";
-		_mag_count = 9;
 	};
 	case "sig556":{
 		["srifle_DMR_03_F"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -289,7 +282,6 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
 		player addPrimaryWeaponItem "bipod_02_F_blk";
 		player addPrimaryWeaponItem "ACE_20Rnd_762x51_M118LR_Mag";
-		_mag_count = 9;
 	};
 	case "noreen":{
 		["srifle_DMR_02_F"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
@@ -298,14 +290,12 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
 		player addPrimaryWeaponItem "bipod_02_F_blk";
 		player addPrimaryWeaponItem "ACE_10Rnd_338_300gr_HPBT_Mag";
-		_mag_count = 10;
 	};
 	case "m200":{
 		["cgqc_gun_mk1_m200"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
 		player addPrimaryWeaponItem "optic_lrps";
 		player addPrimaryWeaponItem "ace_acc_pointer_green";
 		player addPrimaryWeaponItem "7Rnd_mas_can_408_Mag";
-		_mag_count = 10;
 	};
 };
 
