@@ -371,14 +371,16 @@ if (hasInterface) then {
 					_action = [ "menu_mk2_alt_m200", "29in M200 .408", "", {["m200"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					// MG
-					_action = [ "menu_mk2_alt_m27", "m27 5.56mm", "", {["m27"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m27", "AutoRifle - m27", "", {["m27"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_mk46", "mk46 5.56mm", "", {["mk46"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_mk46", "LightMG - mk46", "", {["mk46"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_mk48", "mk48 7.62mm", "", {["mk48"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_mk48", "HeavyMG - mk48", "", {["mk48"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					// Others 
-					_action = [ "menu_mk2_alt_p90", "P90 9mm", "", {["p90"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_p90", "P90 - 9mm", "", {["p90"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_blck", "MCX - 300BLK", "", {["mcx_t2"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 					// 2023 arsenal ---------------------------------------------------------------------------------------------------
