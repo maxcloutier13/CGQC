@@ -1,7 +1,7 @@
 // --- maxMags ----------------------------------------------------------
 // Limit maximum mags
 	[] spawn {
-	if (cgqc_setting_limitMags) then {
+	if (cgqc_setting_limitMags && !cgqc_flag_isTraining) then {
 		_primary_mag = (primaryWeaponMagazine player) select 0;
 		_compatibleMags = compatibleMagazines primaryWeapon player;
 		_addMags = cgqc_setting_limitMags_max;
