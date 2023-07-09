@@ -5,7 +5,7 @@
 0 fadeSound 0;
 titleCut ["", "BLACK FADED", 999];
 
-_version = "3.4.4";
+_version = "3.4.5";
 // Client-side code
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
