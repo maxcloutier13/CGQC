@@ -69,14 +69,15 @@ switch (_type) do {
 		player addPrimaryWeaponItem "tier1_exps3_0_black";
 		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 	};
-	case "virtus_dot":{
-		["Tier1_SIG_MCX_115_Virtus_Black"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
-		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-		player addPrimaryWeaponItem "Tier1_MCX_NGAL_M300C_Black_FL";
-		player addPrimaryWeaponItem "Tier1_EXPS3_0_Black";
-		player addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
-		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+	case "mcx_t2":{
+		["Tier1_SIG_MCX_115_Virtus_300BLK_FDE"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
+		player addPrimaryWeaponItem "Tier1_Gemtech_Halo_DE";
+		player addPrimaryWeaponItem "Tier1_MCX_NGAL_M603V";
+		player addPrimaryWeaponItem "Tier1_MicroT2_Tan";
+		player addPrimaryWeaponItem "Tier1_AFG_MLOK_FDE";
+		player addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
 	};
+
 	case "sr16_dot":{
 		["Tier1_SR16_CQB_Mod2_MFT_Black"] execVM "\CGQC_2022\functions\getCustomGun.sqf";sleep 0.5;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";

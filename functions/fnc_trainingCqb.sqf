@@ -94,141 +94,150 @@ if (_type < 40) then {
 	cgqc_cqb_tgt_move = 0;
 	cgqc_cqb_tgt_civ = 0;
 	if (_type >0) then {
-		_building = nearestBuilding player; // Replace player with the unit you want to search for buildings near
-		//Close all doors
-		for "_i" from 1 to 22 do { 
-			[_building, _i, 0] call BIS_fnc_door;
-		};
-		_positions = [_building] call BIS_fnc_buildingPositions;
-		// Create Group for unit & set behavior
-		_unit_group = createGroup [east, true];
-		_unit_group setBehaviour "SAFE";
-		_civ_group = createGroup [civilian, true];
-		cgqc_cqb_list = [];
-		for "_i" from 1 to cgqc_cqb_target_nbr do { 
-			// Pick random position
-			_random_pos = selectRandom _positions;
-			_positions = _positions - _random_pos;
-			_spawn_class = selectRandom cgqc_cqb_hostile_class;
-			_unit = _unit_group createUnit [_spawn_class, _random_pos, [], 0, "CAN_COLLIDE"];
-			if (_type == 2) then {
-				_unit removeWeapon (primaryWeapon _unit);
+		_building = cursorTarget;
+		//_building = nearestBuilding player; // Replace player with the unit you want to search for buildings near
+		if([_building] call BIS_fnc_isBuildingEnterable) then {
+			//Close all doors
+			for "_i" from 1 to 22 do { 
+				[_building, _i, 0] call BIS_fnc_door;
 			};
-			doStop _unit;
-			_move = 0;
-			if (cgqc_cqb_move == 5) then {
-				cgqc_cqb_move = selectRandom [1,2,3,4];
-			};
-			switch (cgqc_cqb_move) do {
-				case 0: {_move = 0};
-				case 1: {_move = selectRandom [0,0,0,0,0,0,0,0,0,1];};
-				case 2: {_move = selectRandom [0,0,0,1];};
-				case 3: {_move = selectRandom [0,1];};
-				case 4: {_move = selectRandom [0,1,1];};
-				default {
-					hint "cgqc_cqb_move error";
-				};
-			};
-			// Sets unit as moving or not
-			if (_move == 0) then {
-				_unit disableAI "PATH";
-				cgqc_cqb_tgt_static = cgqc_cqb_tgt_static + 1;
-				cgqc_cqb_list_static pushBack _unit;
-			}else{
-				cgqc_cqb_tgt_move = cgqc_cqb_tgt_move + 1;
-				cgqc_cqb_list_moving pushBack _unit;
-			};
-			if !(cgqc_cqb_nade) then {
-				// Remove grenades
-				_unit removeMagazines "HandGrenade";
-				_unit removeMagazines "MiniGrenade";
-				_unit removeMagazines "rhs_mag_m67";
-			};
-			// Killed EventHandler 
-			_unit addEventHandler ["Killed", {
-				params ["_unit", "_killer"];
-				cgqc_cqb_list = cgqc_cqb_list - [_unit];
-				cgqc_cqb_list_moving = cgqc_cqb_list_moving - [_unit];
-				cgqc_cqb_list_static = cgqc_cqb_list_static - [_unit];
-				_left = count cgqc_cqb_list;
-				//systemChat format ["%1 killed by %2. %3 left", typeOf _unit, name _killer, _left];
-				//cgqc_cqb_list = cgqc_cqb_list - _unit;
-				if (_left < 1) then {
-					cgqc_cqb_on = false;
-				};
-			}];
-			// Disable unit
-			_unit enableSimulationGlobal false;
-			_unit disableAI "all";
-			cgqc_cqb_list pushBack _unit;
-			sleep 0.1;
-		};
-		if (cgqc_cqb_civ) then {
-			_civ_nbr = selectRandom [1,2,3];
-			for "_i" from 1 to _civ_nbr do {
+			_positions = [_building] call BIS_fnc_buildingPositions;
+			// Create Group for unit & set behavior
+			_unit_group = createGroup [east, true];
+			_unit_group setBehaviour "SAFE";
+			_civ_group = createGroup [civilian, true];
+			cgqc_cqb_list = [];
+			for "_i" from 1 to cgqc_cqb_target_nbr do { 
 				// Pick random position
 				_random_pos = selectRandom _positions;
 				_positions = _positions - _random_pos;
-				_spawn_class = selectRandom cgqc_cqb_civ_class;
-				_unit = _civ_group createUnit [_spawn_class, _random_pos, [], 0, "CAN_COLLIDE"];
-				_unit disableAI "PATH";
-				_unit setUnitPos "UP";
-				cgqc_cqb_tgt_civ = cgqc_cqb_tgt_civ + 1;
+				_spawn_class = selectRandom cgqc_cqb_hostile_class;
+				_unit = _unit_group createUnit [_spawn_class, _random_pos, [], 0, "CAN_COLLIDE"];
+				if (_type == 2) then {
+					_unit removeWeapon (primaryWeapon _unit);
+				};
+				doStop _unit;
+				_move = 0;
+				if (cgqc_cqb_move == 5) then {
+					cgqc_cqb_move = selectRandom [1,2,3,4];
+				};
+				switch (cgqc_cqb_move) do {
+					case 0: {_move = 0};
+					case 1: {_move = selectRandom [0,0,0,0,0,0,0,0,0,1];};
+					case 2: {_move = selectRandom [0,0,0,1];};
+					case 3: {_move = selectRandom [0,1];};
+					case 4: {_move = selectRandom [0,1,1];};
+					default {
+						hint "cgqc_cqb_move error";
+					};
+				};
+				// Sets unit as moving or not
+				if (_move == 0) then {
+					_unit disableAI "PATH";
+					cgqc_cqb_tgt_static = cgqc_cqb_tgt_static + 1;
+					cgqc_cqb_list_static pushBack _unit;
+				}else{
+					cgqc_cqb_tgt_move = cgqc_cqb_tgt_move + 1;
+					cgqc_cqb_list_moving pushBack _unit;
+				};
+				if !(cgqc_cqb_nade) then {
+					// Remove grenades
+					_unit removeMagazines "HandGrenade";
+					_unit removeMagazines "MiniGrenade";
+					_unit removeMagazines "rhs_mag_m67";
+				};
 				// Killed EventHandler 
 				_unit addEventHandler ["Killed", {
 					params ["_unit", "_killer"];
-					cgqc_cqb_list_civ = cgqc_cqb_list_civ - [_unit];
-					_txt = format["Civilian DOWN! killed by %1!!!!!!!!", name _killer];
-					systemChat _txt;
-				}];
-				cgqc_cqb_list_civ pushBack _unit;
-			};
-		};
-		_txt = parseText format["-- Ready to go in 10s --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
-		hint _txt;
-		[side player, "task_cqb", [
-			format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list], 
-			format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""],
-			 getPos _building, "ASSIGNED", 1, true, "attack", true] call BIS_fnc_taskCreate;
-		cgqc_cqb_on = true;
-
-		sleep 10;
-		hint "GO!!!!!";
-		{
-			_x enableSimulationGlobal true;
-			_x enableAI "all";
-		} forEach cgqc_cqb_list; 
-
-		while {cgqc_cqb_on} do {
-			if (cgqc_cqb_timer > 0) then {
-					if (cgqc_cqb_timer_random) then {
-						//cgqc_cqb_timer = selectRandom [5,10,15,20,30];
-						cgqc_cqb_timer = selectRandom [5,10,15,20,30,60,90,120,180,240,300,360];
+					cgqc_cqb_list = cgqc_cqb_list - [_unit];
+					cgqc_cqb_list_moving = cgqc_cqb_list_moving - [_unit];
+					cgqc_cqb_list_static = cgqc_cqb_list_static - [_unit];
+					_left = count cgqc_cqb_list;
+					//systemChat format ["%1 killed by %2. %3 left", typeOf _unit, name _killer, _left];
+					//cgqc_cqb_list = cgqc_cqb_list - _unit;
+					if (_left < 1) then {
+						cgqc_cqb_on = false;
 					};
-					sleep cgqc_cqb_timer;
-					if (count cgqc_cqb_list_static > 0) then {
-						_random_pax = selectRandom cgqc_cqb_list_static;
-						cgqc_cqb_list_static = cgqc_cqb_list_static - [_random_pax];
-						cgqc_cqb_list_moving pushBack _random_pax;
-						_random_pax enableAI "PATH";
-						systemChat format ["%1 started moving", typeOf _random_pax]; 
-					}
+				}];
+				// Disable unit
+				_unit enableSimulationGlobal false;
+				_unit disableAI "all";
+				cgqc_cqb_list pushBack _unit;
+				sleep 0.1;
+			};
+			if (cgqc_cqb_civ) then {
+				_civ_nbr = selectRandom [1,2,3];
+				for "_i" from 1 to _civ_nbr do {
+					// Pick random position
+					_random_pos = selectRandom _positions;
+					_positions = _positions - _random_pos;
+					_spawn_class = selectRandom cgqc_cqb_civ_class;
+					_unit = _civ_group createUnit [_spawn_class, _random_pos, [], 0, "CAN_COLLIDE"];
+					_unit disableAI "PATH";
+					_unit setUnitPos "UP";
+					cgqc_cqb_tgt_civ = cgqc_cqb_tgt_civ + 1;
+					// Killed EventHandler 
+					_unit addEventHandler ["Killed", {
+						params ["_unit", "_killer"];
+						cgqc_cqb_list_civ = cgqc_cqb_list_civ - [_unit];
+						_txt = format["Civilian DOWN! killed by %1!!!!!!!!", name _killer];
+						systemChat _txt;
+					}];
+					cgqc_cqb_list_civ pushBack _unit;
+				};
+			};
+			_txt = parseText format["-- Ready to go in 10s --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
+			hint _txt;
+			[side player, "task_cqb", [
+				format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list], 
+				format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""],
+				getPos _building, "ASSIGNED", 1, true, "attack", true] call BIS_fnc_taskCreate;
+			cgqc_cqb_on = true;
+
+			sleep 10;
+			hint "GO!!!!!";
+			{
+				_x enableSimulationGlobal true;
+				_x enableAI "all";
+			} forEach cgqc_cqb_list; 
+
+			while {cgqc_cqb_on} do {
+				if (cgqc_cqb_timer > 0) then {
+						if (cgqc_cqb_timer_random) then {
+							//cgqc_cqb_timer = selectRandom [5,10,15,20,30];
+							cgqc_cqb_timer = selectRandom [5,10,15,20,30,60,90,120,180,240,300,360];
+						};
+						sleep cgqc_cqb_timer;
+						if (count cgqc_cqb_list_static > 0) then {
+							_random_pax = selectRandom cgqc_cqb_list_static;
+							cgqc_cqb_list_static = cgqc_cqb_list_static - [_random_pax];
+							cgqc_cqb_list_moving pushBack _random_pax;
+							_random_pax enableAI "PATH";
+							systemChat format ["%1 started moving", typeOf _random_pax]; 
+						}
+				}else{
+					sleep 10;
+				};
+			};
+			//CQB is off 
+			// Check if succeeded 
+			if (count cgqc_cqb_list < 1) then 
+			{
+				//Win
+				["task_cqb", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+				sleep 10;
 			}else{
+				//Lose
+				["task_cqb", "CANCELED", true] call BIS_fnc_taskSetState;
 				sleep 10;
 			};
+			["task_cqb", true, true] call BIS_fnc_deleteTask;
+
+
+
+
+		} else{
+			hint "Not a good building";
 		};
-		//CQB is off 
-		// Check if succeeded 
-		if (count cgqc_cqb_list < 1) then 
-		{
-			//Win
-			["task_cqb", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-			sleep 10;
-		}else{
-			//Lose
-			["task_cqb", "CANCELED", true] call BIS_fnc_taskSetState;
-			sleep 10;
-		};
-		["task_cqb", true, true] call BIS_fnc_deleteTask;
 	};
 };
