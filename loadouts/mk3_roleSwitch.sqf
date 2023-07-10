@@ -66,6 +66,31 @@ if (hasInterface) then {
 				cgqc_player_role = "1-2 Medic";
                 break;
             };
+            case "swat_assaulter":{
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_assaulter.sqf";
+				cgqc_player_role = "Swat - Assaulter";
+                break;
+            };
+            case "swat_breacher":{
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_breacher.sqf";
+				cgqc_player_role = "Swat - Breacher";
+                break;
+            };
+            case "swat_sniper":{
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_sniper.sqf";
+				cgqc_player_role = "Swat - Sniper";
+                break;
+            };
+            case "swat_tl":{
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+                [] execVM "\CGQC\loadouts\2023\loadout_swat_tl.sqf";
+				cgqc_player_role = "Swat - Team Leader";
+                break;
+            };
+
             default	{
                 hintc "mk3_roleSwitch.sqf fail";
             };

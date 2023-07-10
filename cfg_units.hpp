@@ -14,10 +14,10 @@ class CGQC_Soldat_Base : B_Soldier_f
 	respawnWeapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	items[] = {
 		"ACRE_PRC343", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
-		"MS_Strobe_Mag_1", "ACE_microDAGR", "WBK_HeadLampItem"};
+		, "ACE_microDAGR", "WBK_HeadLampItem"};
 	respawnItems[] = {
 		"ACRE_PRC343", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools",
-		"MS_Strobe_Mag_1", "ACE_microDAGR", "WBK_HeadLampItem"};
+		, "ACE_microDAGR", "WBK_HeadLampItem"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	respawnMagazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	linkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "cgqc_item_rangefinder", "cgqc_cap_green", "V_Rangemaster_belt", "None"};
@@ -45,9 +45,9 @@ class CGQC_Officer_Base : B_Soldier_f
 	weapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	respawnWeapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	items[] = {
-		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "MS_Strobe_Mag_1", "ACE_microDAGR", "WBK_HeadLampItem"};
+		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
 	respawnItems[] = {
-		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "MS_Strobe_Mag_1", "ACE_microDAGR", "WBK_HeadLampItem"};
+		"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	respawnMagazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	linkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "cgqc_item_laserdesignator", "cgqc_cap_green", "V_Rangemaster_belt", "None"};

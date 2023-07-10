@@ -37,6 +37,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Men (2023)";
 	};
+	class EdSubcat_cgqc_swat
+	{
+		displayName = "Men (SWAT)";
+	};
 	class EdSubcat_cgqc_vanilla
 	{
 		displayName = "Men (Vanilla)";

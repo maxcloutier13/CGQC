@@ -238,7 +238,7 @@ switch (_type) do {
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Prêt au combat</t><br/>");
                 [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
             };
-            player action ["SwitchWeapon", player, player, 0];
+            player action ["SwitchWeapon", player, player, 250];
         };
         break;
     };             
