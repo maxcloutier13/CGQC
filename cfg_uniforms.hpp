@@ -23,7 +23,7 @@ class cgqc_uniform_mk1 : U_B_CombatUniform_mcam
     {
         uniformModel = "-";
         uniformClass = "CGQC_Soldat_Base";
-        containerClass = "Supply60";
+        containerClass = "Supply80";
         mass = 20;
     };
 };
@@ -39,7 +39,7 @@ class cgqc_uniform_mk1_rolled : U_B_CombatUniform_mcam_vest
     {
         uniformModel = "-";
         uniformClass = "CGQC_Officer_Base";
-        containerClass = "Supply60";
+        containerClass = "Supply80";
         mass = 20;
     };
 };

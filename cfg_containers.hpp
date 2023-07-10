@@ -275,11 +275,6 @@ class cgqc_pack_mk1_magic : B_AssaultPack_rgr
             count = 2;
             magazine = "SmokeShell";
         };
-        class _xx_MS_Strobe_Mag_2
-        {
-            count = 1;
-            magazine = "MS_Strobe_Mag_2";
-        };
     };
     class TransportItems
     {

@@ -1099,3 +1099,30 @@ gm_handgrenade_conc_dm51,gm_handgrenade_conc_dm51a1,gm_handgrenade_frag_dm51,gm_
 
 
 [[["rhs_weap_m4a1_blockII_grip2","Tier1_KAC_556_QDC_CQB_Black","Tier1_M4BII_NGAL_M600V_Black","Tier1_Razor_Gen2_16_Geissele_Docter_PIP",["rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull",30],[],"rhsusf_acc_grip2"],[],["cgqc_gun_glock19_wood","Tier1_TiRant9S","Tier1_DBALPL","Tier1_SIG_Romeo1",["Tier1_20Rnd_9x19_JHP",20],[],""],["cgqc_uniform_mk1",[["ACE_EarPlugs",1],["ACE_MapTools",1],["ACE_CableTie",2],["ACE_RangeCard",1],["WBK_HeadLampItem",1],["ACE_microDAGR",1],["cgqc_items_ifak",1],["MS_Strobe_Mag_1",1,1],["acex_intelitems_notepad",1,1],["rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull",1,30]]],["cgqc_vest_mk1_tan",[["Tier1_15Rnd_9x19_JHP",2,15],["rhs_mag_m67",2,1],["ACE_CTS9",3,1],["SmokeShell",3,1],["rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull",7,30]]],["cgqc_pack_mk1_Radiobag",[["ACE_EntrenchingTool",1],["Rev_darter_item",1],["ACE_UAVBattery",1],["ItemcTab",1],["JAS_GPNVG18_Full_blk_TI",1],["ACRE_PRC117F",1],["ACRE_PRC117F",1],["ACRE_PRC117F",1],["ACRE_VHF30108SPIKE",1],["SmokeShell",1,1],["MS_Strobe_Mag_2",1,1],["rhs_mag_m67",2,1]]],"cgqc_helmet_mk1","G_mas_can_shemag_gog_l",["Laserdesignator_01_khk_F","","","",["Laserbatteries",1],[],""],["ItemMap","B_UavTerminal","","ItemCompass","ItemWatch",""]],[["ace_arsenal_insignia","cgqc_patch_logo"]]]
+
+
+
+
+
+Swat  
+[[["Tier1_SIG_MCX_115_Virtus_300BLK_Black","Tier1_Gemtech_Halo","Tier1_MCX_NGAL_M600V_Black","Tier1_MicroT2_Black",["Tier1_30Rnd_762x35_300BLK_SMK_PMAG",30],[],"Tier1_AFG_MLOK_FDE"],[],["hgun_mas_can_p226_F","","","",["30Rnd_9x21_Mag",30],[],""],["cgqc_uniform_mk1_black",[["cgqc_items_ifak",1],["ACE_CableTie",2],["ACE_MapTools",1],["ACE_microDAGR",1],["WBK_HeadLampItem",1],["immersion_cigs_cigar0_nv",1],["grad_paceCountBeads_functions_paceCountBeads",1],["ACRE_PRC343",1],["ACRE_PRC152",1],["acex_intelitems_notepad",1,1],["murshun_cigs_lighter",1,100],["murshun_cigs_cigpack",1,20],["16Rnd_9x21_Mag",2,17]]],["UK3CB_GAF_B_MBAV_MEDIC_BLK_01",[["30Rnd_9x21_Mag",2,30],["ACE_M84",10,1],["rhs_mag_m7a3_cs",2,1],["Tier1_30Rnd_762x35_300BLK_SMK_PMAG",8,30]]],["B_ViperLightHarness_blk_F",[["ACE_EntrenchingTool",1],["ACE_Canteen",1],["SmokeShell",2,1],["MS_Strobe_Mag_2",1,1],["rhs_mag_m7a3_cs",10,1]]],"cgqc_helmet_mk1_f_black","G_mas_can_gasmask",["Rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","JAS_GPNVG18_Full_blk_TI"]],[["ace_arsenal_insignia","cgqc_patch_cloutier"]]]
+
+
+Tier1_SIG_MCX_115_Virtus_300BLK_Black
+
+
+SWAT - Blackout 
+[[["Tier1_SIG_MCX_115_Virtus_300BLK_Black","Tier1_KAC_556_QDC_CQB_Black","Tier1_MCX_NGAL_M300C_Black","Tier1_MicroT2_Leap_Black",["Tier1_30Rnd_762x35_300BLK_SMK_PMAG",30],[],"Tier1_AFG_MLOK_Black"],[],["cgqc_gun_glock19_wood","Tier1_TiRant9S","Tier1_DBALPL","Tier1_SIG_Romeo1",["Tier1_20Rnd_9x19_JHP",20],[],""],["cgqc_uniform_mk1_black",[["ACE_EarPlugs",1],["ItemAndroid",1],["ACE_MapTools",1],["ACE_CableTie",2],["ACE_RangeCard",1],["WBK_HeadLampItem",1],["ACE_microDAGR",1],["cgqc_items_ifak",1],["tsp_lockpick",1],["ACRE_PRC343",1],["ACRE_PRC148",1],["acex_intelitems_notepad",1,1],["Tier1_15Rnd_9x19_JHP",2,15]]],["cgqc_vest_mk1_black",[["rhs_mag_m67",4,1],["ACE_CTS9",3,1],["SmokeShell",3,1],["Tier1_30Rnd_762x35_300BLK_SMK_PMAG",8,30]]],["cgqc_pack_mk1_assault_black",[["ACE_EntrenchingTool",1],["ACE_Canteen",1],["ACE_wirecutter",1],["JAS_GPNVG18_blk",1],["rhs_mag_m67",4,1]]],"cgqc_helmet_mk1_f_black","G_mas_can_gasmask",["cgqc_item_rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]],[["ace_arsenal_insignia","cgqc_patch_logo"]]]
+
+SWAT - MP7 
+[[["rhsusf_weap_MP7A2_grip2","rhsusf_acc_rotex_mp7","Tier1_MP7_NGAL_M300C_Black_FL","rhsusf_acc_T1_low",["rhsusf_mag_40Rnd_46x30_AP",40],[],"rhsusf_acc_grip2"],[],["cgqc_gun_glock19_wood","Tier1_TiRant9S","Tier1_DBALPL","Tier1_SIG_Romeo1",["Tier1_20Rnd_9x19_JHP",20],[],""],["cgqc_uniform_mk1_black",[["ACE_EarPlugs",1],["ItemAndroid",1],["ACE_MapTools",1],["ACE_CableTie",2],["ACE_RangeCard",1],["WBK_HeadLampItem",1],["ACE_microDAGR",1],["cgqc_items_ifak",1],["tsp_lockpick",1],["ACRE_PRC343",1],["ACRE_PRC148",1],["acex_intelitems_notepad",1,1],["Tier1_15Rnd_9x19_JHP",2,15]]],["cgqc_vest_mk1_black",[["rhs_mag_m67",4,1],["ACE_CTS9",3,1],["SmokeShell",3,1]]],["cgqc_pack_mk1_assault_black",[["ACE_EntrenchingTool",1],["ACE_Canteen",1],["ACE_wirecutter",1],["JAS_GPNVG18_blk",1],["rhs_mag_m67",4,1]]],"cgqc_helmet_mk1_f_black","G_mas_can_gasmask",["cgqc_item_rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]],[["ace_arsenal_insignia","cgqc_patch_logo"]]]
+
+MP5SD6
+[[["UK3CB_MP5SD6","","","Tier1_MicroT2_Leap_Black",["30Rnd_9x21_Mag_SMG_02",27],[],""],[],["cgqc_gun_glock19_wood","Tier1_TiRant9S","Tier1_DBALPL","Tier1_SIG_Romeo1",["Tier1_20Rnd_9x19_JHP",20],[],""],["cgqc_uniform_mk1_black",[["ACE_EarPlugs",1],["ItemAndroid",1],["ACE_MapTools",1],["ACE_CableTie",2],["ACE_RangeCard",1],["WBK_HeadLampItem",1],["ACE_microDAGR",1],["cgqc_items_ifak",1],["tsp_lockpick",1],["ACRE_PRC343",1],["ACRE_PRC148",1],["acex_intelitems_notepad",1,1],["Tier1_15Rnd_9x19_JHP",2,15]]],["cgqc_vest_mk1_black",[["rhs_mag_m67",4,1],["ACE_CTS9",3,1],["SmokeShell",3,1],["30Rnd_9x21_Mag_SMG_02",8,30]]],["cgqc_pack_mk1_assault_black",[["ACE_EntrenchingTool",1],["ACE_Canteen",1],["ACE_wirecutter",1],["JAS_GPNVG18_blk",1],["rhs_mag_m67",4,1],["rhs_mag_m7a3_cs",1,1]]],"cgqc_helmet_mk1_f_black","G_mas_can_gasmask",["cgqc_item_rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]],[["ace_arsenal_insignia","cgqc_patch_logo"]]]
+
+
+Backpack setup 
+for "_i" from 1 to 3 do {player addItemToVest ""};
+ACE_M84 // bangs
+DIGI_M7A3 // CS 
+tsp_popperCharge_auto_mag // Lock poppers
