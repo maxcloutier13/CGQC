@@ -9,4 +9,3 @@ if !(player hasWeapon _customGun) then {
 }else{
     hint format ["Custom Gun :%1", _customGun];
 };
-sleep 0.5;
