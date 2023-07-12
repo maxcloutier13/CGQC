@@ -313,5 +313,4 @@ class cgqc_backpack_mk1_diver : B_SCBA_01_F
     displayName = "CGQC Tank Plongeur";
 	maximumLoad = 365;
     mass = 60;
-    //hiddenSelectionsTextures[] = {"\cgqc_2022\vests\cgqc_vest_tank_green.paa"};
 };
