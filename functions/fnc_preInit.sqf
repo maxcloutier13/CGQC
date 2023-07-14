@@ -46,6 +46,8 @@ cgqc_subskills = [
       
 // *** Mission stuff *******************
 cgqc_mission_daytime = true;
+cgqc_mission_dro = false;
+cgqc_mission_dro_ready = false;
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasAceMedical = false;
@@ -227,6 +229,12 @@ if (cgqc_player_hasUnsung) then {
 ["CGQC", "cgqc_kb_criquet", "Criquet", 
 	{ ["click", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
+
+["CGQC", "cgqc_kb_nvg", "Fake NVG on", 
+	{ player action ["nvGoggles", player];}, {""}, []
+] call cba_fnc_addKeybind;
+
+
 
 // Addon Options ===================================================================================================
 _menu_name = "CGQC";
