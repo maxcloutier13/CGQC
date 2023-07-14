@@ -1,6 +1,16 @@
 // --- cfgVehicles ----------------------------------------------------------
 // Vehicles definition. Yeah I know. 
 
+class B_W_MBT_01_TUSK_F;
+class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_vic_mbt";
+    displayName = "Merkava (3+6)";
+    crew = "CGQC_Soldat_Base";
+};
 class B_T_Truck_01_box_F;
 class cgqc_vic_construction : B_T_Truck_01_box_F
 {

@@ -81,6 +81,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Vehicles (IFV)";
 	};
+	class EdSubcat_cgqc_vic_mbt
+	{
+		displayName = "Vehicles (MBT)";
+	};
 	class EdSubcat_cgqc_cmd
 	{
 		displayName = "Vehicles (Command)";

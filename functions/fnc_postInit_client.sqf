@@ -1,13 +1,27 @@
 // --- postInit_client ----------------------------------------------------------
 // Start everything player related
 
-// Start with a silent black screen. 
-0 fadeSound 0;
-titleCut ["", "BLACK FADED", 999];
-
 _version = "3.4.7";
 // Client-side code
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
+
+if !(cgqc_mission_dro) then {
+	// Start with a silent black screen. 
+	0 fadeSound 0;
+	titleCut ["", "BLACK FADED", 999];
+
+	//Respawn handler 
+	player addMPEventHandler ["MPRespawn", {
+		params ["_unit", "_corpse"];
+		[_unit] spawn CGQC_fnc_playerRespawned;
+	}];
+
+	//Death handler 
+	player addMPEventHandler ["MPKilled", {	
+		params ["_unit", "_killer", "_instigator", "_useEffects"];
+		[_unit, _killer] spawn CGQC_fnc_playerKilled;
+	}];
+};
 
 // Player identification --------------------------------------------------------------------------------------------
 //Get some player info
@@ -56,18 +70,6 @@ if (cgqc_player_loadAll) then {
 	// Event Handers ----------------
 	//On map click (_pos, _units,_shift,_alt)
 	onMapSingleClick "execVM '\cgqc\functions\fnc_mapShare_list.sqf';false;";
-
-	//Respawn handler 
-	player addMPEventHandler ["MPRespawn", {
-		params ["_unit", "_corpse"];
-		[_unit] spawn CGQC_fnc_playerRespawned;
-	}];
-
-	//Death handler 
-	player addMPEventHandler ["MPKilled", {	
-		params ["_unit", "_killer", "_instigator", "_useEffects"];
-		[_unit, _killer] spawn CGQC_fnc_playerKilled;
-	}];
 
 	//Maximum mags event handler 
 	["ace_arsenal_displayClosed", {
@@ -153,11 +155,6 @@ player addEventHandler ["GetInMan", {
 	["ready", false] spawn CGQC_fnc_perksBasic;
 }];
 
-// Shows intro screen with logo and stuff
-[ "CBA_loadingScreenDone", {
-	[] spawn CGQC_fnc_showIntro;
-} ] call CBA_fnc_addEventHandler;
-
 //Sets radio channel names 
 [0] spawn CGQC_fnc_nameRadios;
 ["radio_init"] execVM "\cgqc\functions\fnc_setRadios.sqf";
@@ -177,14 +174,15 @@ _zeus = [] spawn CGQC_fnc_setZeus;
 // Lower gun 
 player action ['SwitchWeapon', player, player, 250];
 
-// Build a random welcome and shows it
-_welcome = [] spawn CGQC_fnc_welcome; 
+if !(cgqc_mission_dro) then {
+	// Shows intro screen with logo and stuff
+	[ "CBA_loadingScreenDone", {
+		[] spawn CGQC_fnc_showIntro;
+	} ] call CBA_fnc_addEventHandler;
 
-// Training menu if training is on
-if (cgqc_flag_isTraining) then {
-	execVM "\cgqc\functions\fnc_trainingMenu.sqf";
+	// Build a random welcome and shows it
+	_welcome = [] spawn CGQC_fnc_welcome; 
 };
-
 
 // Load loadouts if known unit  
 _unit = typeOf player;
@@ -203,5 +201,13 @@ switch (_unit) do {
 		["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf";
 	};
 };
+
+// Training menu if training is on
+if (cgqc_flag_isTraining) then {
+	execVM "\cgqc\functions\fnc_trainingMenu.sqf";
+};
+
+
+
 
 cgqc_postInitClient_done = true;
