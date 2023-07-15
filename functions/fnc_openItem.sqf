@@ -69,9 +69,9 @@ switch (_type) do {
 		if (_target isEqualTo player) then {
 			hint "Unpacked your IFAK";
 		} else {
-			_targetID = owner _target;
-			_txt = format ["%1 unpacked your IFAK", name player];
-			[_txt] remoteExec ["hint", _targetID];
+			//_targetID = owner _target;
+			//_txt = format ["%1 unpacked your IFAK", name player];
+			//[_txt] remoteExec ["hint", _targetID];
 			hint "Unpacked the soldiers IFAK";
 		};
 		break;
