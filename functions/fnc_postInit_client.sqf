@@ -71,6 +71,18 @@ if (cgqc_player_loadAll) then {
 	//On map click (_pos, _units,_shift,_alt)
 	onMapSingleClick "execVM '\cgqc\functions\fnc_mapShare_list.sqf';false;";
 
+	// Whisper/Yelling event 
+	cgqc_event_talk = ["acre_startedSpeaking", {	
+		params ["_unit", "_onRadio", "_radioId", "_speakingType"];	
+		//If volume is low and player is not talking on radio
+		_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
+		//hint format ["Speaking %1", _vol];
+		if (!_onRadio && _vol < 0.4) then {   
+			_txt = parseText( "Whispering..."); 
+			[ _txt, 0, 1, 2, 1 ] spawn BIS_fnc_dynamicText; 
+		};   
+	}] call CBA_fnc_addEventHandler;
+
 	//Maximum mags event handler 
 	["ace_arsenal_displayClosed", {
 		[] spawn CGQC_fnc_maxMags;
