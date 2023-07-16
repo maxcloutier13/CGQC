@@ -317,6 +317,16 @@ switch (_type) do {
 		player addPrimaryWeaponItem "50Rnd_570x28_SMG_03";
 		break;
 	};
+	case "m110k5":{
+		["Tier1_M110k5"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
+		waitUntil {primaryWeapon player isNotEqualTo ""};		
+		player addPrimaryWeaponItem "Tier1_KAC_762_DSR";
+		player addPrimaryWeaponItem "Tier1_URX4_NGAL_M603V_FL";
+		player addPrimaryWeaponItem "Tier1_ATACR18_Geissele_Docter_Desert_PIP";
+		player addPrimaryWeaponItem "Tier1_20Rnd_762x51_M118_Special_SR25_Mag";
+		player addPrimaryWeaponItem "Tier1_Harris_Bipod_MLOK_Tan";
+		break;
+	};
 	case "socom16":{
 		["rhs_weap_m14_socom_rail"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
 		waitUntil {primaryWeapon player isNotEqualTo ""};		
@@ -325,6 +335,16 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_M600V_Black";
 		player addPrimaryWeaponItem "rhsusf_acc_m14_bipod";
 		player addPrimaryWeaponItem "ACE_20Rnd_762x51_M118LR_Mag";
+		break;
+	};
+	case "m110_leupold":{
+		["Tier1_M110k1"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
+		waitUntil {primaryWeapon player isNotEqualTo ""};		
+		player addPrimaryWeaponItem "Tier1_KAC_762_DSR";
+		player addPrimaryWeaponItem "Tier1_LeupoldM3A_Geissele_Docter_Tan";
+		player addPrimaryWeaponItem "Tier1_20Rnd_762x51_M118_Special_SR25_Mag";
+		player addPrimaryWeaponItem "Tier1_M110_LA5_Side";
+		player addPrimaryWeaponItem "bipod_02_F_hex";
 		break;
 	};
 	case "m14ebr":{
