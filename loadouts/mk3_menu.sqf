@@ -389,7 +389,11 @@ if (hasInterface) then {
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					
 					// DMR 7.62
+					_action = [ "menu_mk2_alt_m110k5", "14.5in M110k5", "", {["m110k5"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					_action = [ "menu_mk2_alt_socom", "16in SOCOM16", "", {["socom16"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
+					_action = [ "menu_mk2_alt_m110", "20in M110", "", {["m110_leupold"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					_action = [ "menu_mk2_alt_417", "20in HK417", "", {["417"] execVM "\CGQC\loadouts\mk3_primarySwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;

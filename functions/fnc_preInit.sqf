@@ -101,6 +101,7 @@ cgqc_zeus_ghost = false;
 cgqc_zeus_attached = false;
 cgqc_zeus_paused = false;
 cgqc_blackout_player_on = false;
+cgqc_convoy = false;
 // PAX System 
 cgqc_pax_prep = false;
 
