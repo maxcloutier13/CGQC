@@ -409,6 +409,16 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _
 _action = [ "zeus_briefing_stop", "Stop Briefing", "", {["briefing_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_zeus_briefing} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+// Convoy
+_action = [ "zeus_convoy", "Convoy", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// ------ Zeus Convoy on/off 
+_action = [ "zeus_convoy_start", "Create Convoy", "", {["start", 70] execVM "cgqc\functions\fnc_convoy.sqf"}, {!cgqc_convoy} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_convoy"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_convoy_stop", "Delete Convoy", "", {["stop", 70] execVM "cgqc\functions\fnc_convoy.sqf"}, {!cgqc_convoy} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_convoy"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
 // Options
 _action = [ "zeus_options", "Options", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
