@@ -52,7 +52,7 @@ cgqc_mission_dro_ready = false;
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasAceMedical = false;
 cgqc_player_hasContact = false;
-cgqc_player_hasAntiPlus = false;
+cgqc_player_hasAnti = false;
 cgqc_player_hasRHS = false;
 cgqc_player_hasDrongoFactions = false;
 cgqc_player_has23rd = false;
@@ -189,7 +189,7 @@ jibrm_restrictmarkers_shareDistance = 10;
 // Check what DLC the player owns 
 cgqc_player_ownedDLCs = getDLCs 1;
 cgqc_player_hasAceMedical = isClass(configFile >> "cfgPatches" >> "ace_medical_treatment");
-cgqc_player_hasAntiPlus = isClass(configFile >> "cfgPatches" >> "A3A_Events");
+cgqc_player_hasAnti = isClass(configFile >> "cfgPatches" >> "A3A_Events");
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");
 cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
@@ -206,7 +206,7 @@ if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
 //For specific modes of games, skip some options
-if (cgqc_player_hasAntiPlus) then {
+if (cgqc_player_hasAnti) then {
 	cgqc_player_loadAll = false;
 };
 
