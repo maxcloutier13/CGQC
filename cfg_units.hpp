@@ -39,7 +39,7 @@ class CGQC_Officer_Base : B_Soldier_f
 	canDeactivateMines = 1;
 	engineer = 1;
 	detectSkill = 31;
-	uniformClass = "cgqc_uniform_mk1_rolled";
+	uniformClass = "cgqc_uniform_mk1";
 	hiddenSelections[] = {"Camo","insignia"};
 	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_green.paa"};
 	weapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};

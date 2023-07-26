@@ -30,6 +30,7 @@ class cgqc_uniform_mk1 : U_B_CombatUniform_mcam
 
 class cgqc_uniform_mk1_rolled : U_B_CombatUniform_mcam_vest
 {
+    scope = 0;
     author = "silent1";
     _generalMacro = "cgqc_uniform_mk1";
     displayName = "CGQC Uniforme mk1 - Rolled";
