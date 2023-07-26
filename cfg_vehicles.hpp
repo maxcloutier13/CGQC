@@ -10,7 +10,45 @@ class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
     editorSubcategory = "EdSubcat_cgqc_vic_mbt";
     displayName = "Merkava (3+6)";
     crew = "CGQC_Soldat_Base";
+    // Heavy ADS
+    class EventHandlers {
+        init = "['heavy', _this] execVM 'cgqc\vehicles\fnc_addADS.sqf'";
+    };
 };
+
+// 
+class I_MRAP_03_F;
+class cgqc_vic_fennec : I_MRAP_03_F{
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_vic_unarmed";
+    displayName = "Fennek (2+2)";
+    crew = "CGQC_Soldat_Base";
+    hiddenSelections[] = {"Camo1","Camo2"};
+	hiddenSelectionsTextures[] = {
+        "\a3\soft_f_beta\mrap_03\data\mrap_03_ext_indp_co.paa",
+        "\a3\data_f\vehicles\turret_indp_co.paa"};
+    // Light ADS
+    class EventHandlers {init = "['light', _this] execVM 'cgqc\vehicles\fnc_addADS.sqf'";};
+};
+    
+class I_MRAP_03_hmg_F;
+class cgqc_vic_fennec_hmg : I_MRAP_03_hmg_F{
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_vic_armed";
+    displayName = "Fennek HMG (3+1)";
+    crew = "CGQC_Soldat_Base";
+    hiddenSelections[] = {"Camo1","Camo2"};
+	hiddenSelectionsTextures[] = {"\a3\soft_f_beta\mrap_03\data\mrap_03_ext_indp_co.paa","\a3\data_f\vehicles\turret_indp_co.paa"};
+    // Light ADS
+    class EventHandlers {init = "['light', _this] execVM 'cgqc\vehicles\fnc_addADS.sqf'";};
+};
+
 class B_T_Truck_01_box_F;
 class cgqc_vic_construction : B_T_Truck_01_box_F
 {
@@ -22,12 +60,12 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     displayName = "HEMTT de Construction - Outpost (2)";
     crew = "CGQC_Soldat_Base";
 	textureList[] = {"Olive",1};
-		hiddenSelectionsTextures[] = {
-			"\a3\soft_f_Exp\truck_01\data\truck_01_ext_01_olive_co.paa",
-			"\a3\soft_f_Exp\truck_01\data\truck_01_ext_02_olive_co.paa",
-			"\A3\Soft_F_Exp\Truck_01\Data\truck_01_ammo_olive_CO.paa",
-			"\CGQC\vehicles\cgqc_vic_construction_container.paa"
-		};
+    hiddenSelectionsTextures[] = {
+        "\a3\soft_f_Exp\truck_01\data\truck_01_ext_01_olive_co.paa",
+        "\a3\soft_f_Exp\truck_01\data\truck_01_ext_02_olive_co.paa",
+        "\A3\Soft_F_Exp\Truck_01\Data\truck_01_ammo_olive_CO.paa",
+        "\CGQC\vehicles\cgqc_vic_construction_container.paa"
+    };
 	class EventHandlers
     {
     	init = "[_this] execVM '\cgqc\vehicles\loadout_construction.sqf';[_this select 0, 'car'] execVM '\cgqc\functions\fnc_addSpares.sqf'"; 
