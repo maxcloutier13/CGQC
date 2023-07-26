@@ -361,6 +361,12 @@ switch (_type) do {
         [0.7] call acre_api_fnc_setSelectableVoiceCurve;
         break;
     };
+    case "fix_blackout":
+    {
+        titleCut ["", "BLACK IN", 1];
+        hint "Black screen should be fixed"
+        break;
+    };
     case "cone":
     {
        
