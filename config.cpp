@@ -134,3 +134,6 @@ class CfgSounds
 // Custom events
 #include "cfg_eventhandlers.hpp"
 #include "functions\lockbackpack\Extended_InventoryOpened_EventHandlers.hpp"
+
+// ACEAX Compats ---------------------------------------------
+#include "cfg_aceaxCompats.hpp"

@@ -15,7 +15,7 @@ class H_Beret_blk : HelmetBase
 class H_Beret_02;
 class cgqc_beret_vanilla : H_Beret_blk {
 	author = "silent1";
-	displayName = "CGQC Beret Vanilla";
+	displayName = "CGQC Beret";
 	_generalMacro = "cgqc_beret_vanilla";
 	picture = "\A3\characters_f\Data\UI\icon_H_Beret_blk_CA.paa";
 	model = "\CGQC\helmets\cgqc_beret_1.p3d";
@@ -114,7 +114,7 @@ class cgqc_beanie_black: H_Watchcap_blk
 	author = "silent1";
 	_generalMacro = "cgqc_beanie_black";
 	scope = 2;
-	displayName = "CGQC Beanie Black";
+	displayName = "CGQC Beanie";
 	allowedFacewear[] = {"",6,"G_Aviator",1,"G_Bandanna_aviator",1,"G_Bandanna_beast",1,"G_Bandanna_blk",1,"G_Bandanna_khk",1,"G_Bandanna_oli",1,"G_Bandanna_shades",1,"G_Bandanna_sport",1,"G_Shades_Black",1,"G_Shades_Blue",1,"G_Shades_Red",1,"G_Shades_Green",1};
 	ace_hearing_protection = 0.75;
 	ace_hearing_lowerVolume = 0;
