@@ -11,13 +11,11 @@ switch (_type) do {
 
     case "stealth":{ 
         cgqc_player_state = 0;
-        [] spawn {
-            while {cgqc_player_state == 0} do {
-                // Lower voice 
-                [0.1] call acre_api_fnc_setSelectableVoiceCurve;
-                sleep 10;
-            };
-        };
+        FW_Acre_Volume_Value = 0; 
+        [{call acre_api_fnc_isInitialized}, {
+            [0.1] call acre_api_fnc_setSelectableVoiceCurve; 
+            acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
+        }, player] call CBA_fnc_waitUntilAndExecute;
         // Install Silencer if found
         _currentWeapon = currentWeapon player;
         _compatible = _currentWeapon call bis_fnc_compatibleItems;
@@ -96,19 +94,21 @@ switch (_type) do {
     case "normal":{
         cgqc_player_state = 1;
         // Normal voice 
-        [0.7] call acre_api_fnc_setSelectableVoiceCurve;
+        FW_Acre_Volume_Value = 0.5; 
+        [{call acre_api_fnc_isInitialized}, {
+            [0.7] call acre_api_fnc_setSelectableVoiceCurve; 
+            acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
+        }, player] call CBA_fnc_waitUntilAndExecute;
         hint "Normal: Default voice level";        
         break;
     };
     case "battle":{
         cgqc_player_state = 2;         
-        [] spawn {
-            while {cgqc_player_state == 2} do {
-                // Max voice
-                [1.3] call acre_api_fnc_setSelectableVoiceCurve;
-                sleep 10;
-            };
-        };
+        FW_Acre_Volume_Value = 0.75; 
+        [{call acre_api_fnc_isInitialized}, {
+            [1.3] call acre_api_fnc_setSelectableVoiceCurve; 
+            acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
+        }, player] call CBA_fnc_waitUntilAndExecute;
         // Remove silencer
         _currentWeapon = currentWeapon player;
         _compatible = _currentWeapon call bis_fnc_compatibleItems;
@@ -358,7 +358,11 @@ switch (_type) do {
     {
         hint "Sound: Volumes reset";
         [] call ace_volume_fnc_restoreVolume;
-        [0.7] call acre_api_fnc_setSelectableVoiceCurve;
+        FW_Acre_Volume_Value = 0.5; 
+        [{call acre_api_fnc_isInitialized}, {
+            [0.7] call acre_api_fnc_setSelectableVoiceCurve; 
+            acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
+        }, player] call CBA_fnc_waitUntilAndExecute;
         break;
     };
     case "fix_blackout":
