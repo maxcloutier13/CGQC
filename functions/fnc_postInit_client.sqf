@@ -219,7 +219,4 @@ if (cgqc_flag_isTraining) then {
 	execVM "\cgqc\functions\fnc_trainingMenu.sqf";
 };
 
-
-
-
 cgqc_postInitClient_done = true;
