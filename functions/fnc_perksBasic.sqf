@@ -364,7 +364,7 @@ switch (_type) do {
     case "fix_blackout":
     {
         titleCut ["", "BLACK IN", 1];
-        hint "Black screen should be fixed"
+        hint "Black screen should be fixed";
         break;
     };
     case "cone":
