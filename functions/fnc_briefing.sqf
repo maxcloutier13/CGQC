@@ -27,6 +27,7 @@ _text = (
 player createDiaryRecord ["Diary", ["Référence Radios", _text]];
 
 // Training map
+/*
 _mis = player createDiaryRecord ["Diary", ["Training Map","
 	<font size='20'>Changer de Map</font><br/>
 	<font size='16'>Tout les joueurs peuvent changer de map de façon random en retournant dans le lobby. Quand tout les joueurs sont dans le lobby une nouvelle map sera sélectionnée.</font><br/>
@@ -43,5 +44,5 @@ _mis = player createDiaryRecord ["Diary", ["Training Map","
 	- training_2023.swv_public_novogorsk_map<br/>
 	- training_2023.takistan<br/>
 	- training_2023.Tanoa<br/></font>
-"]];
+"]];*/
 true
