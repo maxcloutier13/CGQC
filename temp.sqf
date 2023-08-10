@@ -1126,3 +1126,244 @@ for "_i" from 1 to 3 do {player addItemToVest ""};
 ACE_M84 // bangs
 DIGI_M7A3 // CS 
 tsp_popperCharge_auto_mag // Lock poppers
+
+
+this addAction [ 
+ "Check Target", {
+	[cgqc_range_tgt_1,getpos tgt_1_far,getPos tgt_1_close,1,0.001] execVM "move_object.sqf";
+	} 
+]; 
+
+
+
+_laptop = _this select 0;
+_action = [ "menu_target_check", "Check Target", "", {
+	[lane_1_check] call BIS_fnc_timeline_play;
+}, {!lane_1_end} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;		
+_action = [ "menu_target_check_off", "Done Checking", "", {[lane_1_check, reverse] call BIS_fnc_timeline_setReverse; [lane_1_check] call BIS_fnc_timeline_play;}, {lane_1_end} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;		
+
+_action = [ "menu_target_check_off", "Done Checking", "", {
+	[lane_1_check, true] call BIS_fnc_timeline_setReverse;
+	[lane_1_check] call BIS_fnc_timeline_play;
+}, {lane_1_end} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+
+_laptop = lane_laptop_1;
+_action = [ "menu_target_check", "Check Target", "", {
+	[lane_check_1, false] call BIS_fnc_timeline_setReverse; 
+	[lane_check_1] call BIS_fnc_timeline_play;
+}, {!cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_target_check_off", "Done Checking", "", {
+	[lane_check_1, true] call BIS_fnc_timeline_setReverse; 
+	[lane_check_1] call BIS_fnc_timeline_play; 
+}, {cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction;  
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+
+
+
+
+_laptop = lane_laptop_1;
+_lane = lane_check_1; 
+_check = cgqc_range_lane_1_check;
+_on = cgqc_range_lane_1_on;
+
+
+
+// Check target
+_action = [ "menu_target_check", "Check Target", "", { 
+ [_lane, false] call BIS_fnc_timeline_setReverse;  
+ [_lane] call BIS_fnc_timeline_play; 
+}, {!_check} ] call ace_interact_menu_fnc_createAction;  
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject; 
+// Stop checking
+_action = [ "menu_target_check_off", "Stop checking", "", { 
+ [_lane, true] call BIS_fnc_timeline_setReverse;  
+ [_lane] call BIS_fnc_timeline_play;  
+}, {_check} ] call ace_interact_menu_fnc_createAction;   
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+
+
+
+
+// Setup target
+_action = [ "menu_target", "Setup Target", "", {
+	cgqc_range_tgt_1 hideObjectGlobal false;
+}, {!_on} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+// on target 
+tgt_ary_1=[];
+this addEventHandler ["HitPart", {
+	_mkr = "Land_PencilRed_F" createVehicle [0,0,0];
+	_mkr setDir 90;
+	_mkr enableSimulation false; 
+	_mkr setPosASL (_this select 0 select 3); 
+	lane_check_1 synchronizeObjectsAdd [_mkr];
+	tgt_ary_1 = tgt_ary_1+[_mkr]
+}];
+
+
+// Reset 
+this addAction ["remove hits",{{deletevehicle  _x} foreach ary;ary=[]}]; 
+this addAction ["Activate Screen",{ 
+_target=(_this select 0); 
+_caller=(_this select 1); 
+_id=(_this select 2); 
+ 
+null=[] execvm "target.sqf"; 
+ 
+},[],2,false,true,"",""];
+
+
+// The good stuff
+_laptop = lane_laptop_1;
+
+_action = [ "menu_target_check", "Check Target", "", {
+	[lane_check_1, false] call BIS_fnc_timeline_setReverse; 
+	[lane_check_1] call BIS_fnc_timeline_play;
+}, {!cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_target_reset", "Reset Target", "", {
+	{deletevehicle  _x} foreach tgt_ary_1;
+	tgt_ary_1=[]
+}, {!cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_target_check_off", "Done Checking", "", {
+	[lane_check_1, true] call BIS_fnc_timeline_setReverse; 
+	[lane_check_1] call BIS_fnc_timeline_play; 
+}, {cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction;  
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;  
+
+
+
+
+this addAction ["Activate Screen",{ 
+_target=(_this select 0); 
+_caller=(_this select 1); 
+_id=(_this select 2); 
+ 
+null=[] execvm "target.sqf"; 
+ 
+},[],2,false,true,"",""];
+
+
+// Without the moving panel
+_laptop = lane_laptop_1;
+
+_action = [ "menu_target_check", "Check Target", "", {
+	_pipcam = "camera" camCreate [0,0,0];
+	_pipcam setVectorDirAndUp [[0,-0.66,0],[0,0.33,0.66]];
+	_pipcam cameraEffect ["Internal", "Back", "piprendertg"];
+	_pipcam camSetFov 0.5;
+	_campos = getposatl cam_1;
+	_campos set [2,1];
+	_pipcam setpos _campos;
+}, {!cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_target_reset", "Reset Target", "", {
+	{deletevehicle  _x} foreach tgt_ary_1;
+	tgt_ary_1=[]
+}, {!cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+this addAction ["Reset target",{
+	{deletevehicle  _x} foreach tgt_ary_1;
+	tgt_ary_1=[]
+}]; 
+this addAction ["Activate Screen",{ 
+_target=(_this select 0); 
+_caller=(_this select 1); 
+_id=(_this select 2); 
+null=[] execvm "target.sqf";
+},[],2,false,true,"",""];
+
+
+
+// Avec check cam
+_laptop = lane_laptop_1;
+
+_action = [ "menu_target_check", "Check Target", "", {
+	[] spawn {
+		_position = getPosATL cgqc_range_tgt_1;
+		_offsetVector = _position vectorFromTo getPosATL player;
+		_offsetVector set [2, 0.0];
+		_offsetVector = _offsetVector vectorMultiply 2;
+		_offsetVector set [2, 1.0];
+
+		_position = _position vectorAdd _offsetVector;
+
+		_camera = "Camera" CamCreate _position;
+		_camera CameraEffect ["INTERNAL", "BACK"];
+		_camera CamSetFOV 0.6;
+		ShowCinemaBorder False;
+		_camera CamSetTarget cgqc_range_tgt_1;
+		_camera CamCommit 0;
+		Sleep 5.0;
+		_camera CameraEffect ["TERMINATE", "BACK"];
+		CamDestroy _camera;
+	};
+}, {!cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_target_reset", "Reset Target", "", {
+	{deletevehicle  _x} foreach tgt_ary_1;
+	tgt_ary_1=[]
+}, {!cgqc_range_lane1_check} ] call ace_interact_menu_fnc_createAction; 
+_adding = [ _laptop, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Original settings 
+class CfgMovesFatigue
+{
+	staminaDuration = 90; //total amount of stamina
+	staminaRestoration = 45; //time required for your current stamina pool (total stamina - inventory load) to restore
+	staminaCooldown = 0.1;  //when you run out of stamina the sprinting is disabled for this duration
+	terrainDrainSprint = -0.2; //when terrain gradient disable sprint, this stamina value is added to every animation state (do not stack with following terrain threshold)
+	terrainDrainRun = -0.8; //when terrain gradient enable force walk, this stamina value is added to every animation state (do not stack with previous terrain threshold)
+	terrainSpeedCoef = 0.9; //when terrain gradient disable sprint, animation speed is multiplied by this value
+};
+class CfgInventoryGlobalVariable
+{
+	maxSoldierLoad = 1800;
+};
+
+
+// Vanilla settings 
+class CfgMovesFatigue
+{
+	staminaDuration = 60;
+	staminaCooldown = 10;
+	staminaRestoration = 30;
+	aimPrecisionSpeedCoef = 5;
+	terrainDrainSprint = -1;
+	terrainDrainRun = -1;
+	terrainSpeedCoef = 0.9;
+};
+
+// Vanilla slope specs
+class CfgSlopeLimits
+{
+	maxRun = "0.436332f";
+	maxRunAI = "0.6f";
+	maxSprint = "0.174533f";
+	maxSprintAI = "0.4f";
+	minRun = "-0.8f";
+	minRunAI = "-0.8f";
+	minSprint = "-0.349066f";
+	minSprintAI = "-0.5f";
+	class Duty
+	{
+		maxDuty = 1;
+		maxSlope = 0.839;
+		minDuty = 0.15;
+		minSlope = -1;
+		optimalSlope = -0.268;
+	};
+};
