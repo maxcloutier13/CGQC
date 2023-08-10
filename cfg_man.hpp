@@ -1,5 +1,6 @@
 class Man;
 class CAManBase: Man {
+	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
 			class cgqc_inspect_detail {
@@ -18,6 +19,7 @@ class CAManBase: Man {
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Inspect the soldiers gear'";
 			};
+			/*
 			class cgqc_openIfak {
 				displayName = "Open target's IFAK";
 				condition = "[cursorTarget, 'cgqc_items_ifak'] call BIS_fnc_hasItem";
@@ -25,7 +27,7 @@ class CAManBase: Man {
 				exceptions[] = {};
 				icon = "\CGQC\textures\icon_med";
 				runOnHover = "hint 'Open the target soldiers IFAK'";
-			};
+			};*/
 		};
 	};
 	class ACE_SelfActions {
