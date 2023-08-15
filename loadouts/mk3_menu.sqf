@@ -288,7 +288,7 @@ if (hasInterface) then {
 
 					
 					// Mk1 Camo Switcher ---------------------------------------------------------------------------------------------------------
-					_action = [ "menu_mk2_camo", "Switch: Camo", "CGQC\textures\icon_camo", {""}, {!cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_camo", "Switch: Uniforme", "CGQC\textures\icon_camo", {""}, {!cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 					// Base/Training uniform 
 					_action = [ "menu_mk2_camo_base", "Training - Vert", "", {["tan", false] execVM "\CGQC\loadouts\mk3_camoSwitch.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;

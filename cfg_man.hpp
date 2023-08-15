@@ -4,7 +4,7 @@ class CAManBase: Man {
 	class ACE_Actions {
 		class ACE_MainActions {
 			class cgqc_inspect_detail {
-				displayName = "Rapid Inspection";
+				displayName = "Rapid Gear Inspection";
 				condition = "true";
 				statement = "[0] execVM '\cgqc\functions\fnc_inspect.sqf'";
 				exceptions[] = {"isNotInside","isNotSitting"};
@@ -12,7 +12,7 @@ class CAManBase: Man {
 				runOnHover = "hint 'Quick check of the essentials'";
 			};
 			class cgqc_inspect {
-				displayName = "Full Inspection";
+				displayName = "Full Gear Inspection";
 				condition = "true";
 				statement = "[1] execVM '\cgqc\functions\fnc_inspect.sqf'";
 				exceptions[] = {"isNotInside","isNotSitting"};
