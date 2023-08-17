@@ -26,9 +26,6 @@ player addPrimaryWeaponItem "ACE_30Rnd_556x45_Stanag_Mk262_mag";
 [] execVM "cgqc\functions\fnc_addMags.sqf";
 
 // === Role Items ==========================================================================================================
-player addItemToBackpack "KNB_PanelYellow";
-player addItemToBackpack "tsp_lockpick";
-player addItemToBackpack "tsp_stickCharge_auto_mag";
 player addItemToBackpack "tsp_stickCharge_auto_mag";
 player addItemToBackpack "tsp_popperCharge_auto_mag";
 player addItemToBackpack "tsp_popperCharge_auto_mag";

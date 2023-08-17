@@ -11,7 +11,7 @@ try {
 	// Transition/text
 	if !(_fromLoadout) then {
 		// Fade to black transition with text
-		 [_camo] execVM "\CGQC\loadouts\mk3_transition.sqf";
+		 [_camo, true] execVM "\CGQC\loadouts\mk3_transition.sqf";
 	};
 	// Check if player in chill mode
 	if (cgqc_player_chill) then {
