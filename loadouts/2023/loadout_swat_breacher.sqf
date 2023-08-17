@@ -6,7 +6,7 @@ player addVest "cgqc_vest_mk1_black_ar";
 ["backpack", "cgqc_pack_mk1_kitbag_black"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
 
 // === Radios ==========================================================================================================
-["2ic"] execVM "\CGQC\loadouts\mk3_getStuff.sqf";
+["tl"] execVM "\CGQC\loadouts\mk3_getRadios.sqf";
 
 // === Primary ==========================================================================================================
 ["sgun_mas_can_benelli_F"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";

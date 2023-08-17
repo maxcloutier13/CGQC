@@ -53,32 +53,23 @@ switch (_type) do {
         };
 
         // Turn off speakers
-        _radios = call acre_api_fnc_getCurrentRadioList;
-        waitUntil {sleep 0.5;!isNil "_radios"};
-        if (count _radios > 0) then {
-             _handRadio_1 = _radios select 0;
+        _handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
+        waitUntil {sleep 0.5;!isNil "_handRadios"};
+        _handRadio_1 = _handRadios select 0;
+        waitUntil {sleep 0.5;!isNil "_handRadio_1"};
+        // Check speaker state
+        _isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
+        waitUntil {sleep 0.5;!isNil "_isSpeaker"};
+        if(_isSpeaker) then {
+            // Turn speaker off 
+            _speakerOff = true;
+            cgqc_reset_speaker = true;
+            _success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
+            sleep 0.5;
+            _speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
+            hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
         };
-        if (count _radios > 1) then {
-             _handRadio_2 = _radios select 1;
-        };
-        if (count _radios > 2) then {
-             _handRadio_3 = _radios select 2;
-        };
-        sleep 1;
-        if (!isNil "_handRadio_1") then {
-            _isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-			waitUntil {sleep 0.5;!isNil "_isSpeaker"};
-            if (_isSpeaker) then {
-                _speakerOff = true;
-                _success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
-            };     
-        };
-        if (!isNil "_handRadio_2") then {
-            _success = [_handRadio_2, false] call acre_api_fnc_setRadioSpeaker;
-        };
-        if (!isNil "_handRadio_3") then {
-            _success = [_handRadio_3, false] call acre_api_fnc_setRadioSpeaker;
-        };
+        
         _txt = "-- Stealth --<br/>";
         if (_addedSilencer) then {
             _txt = _txt + "Silencer: On<br/>";
@@ -99,7 +90,17 @@ switch (_type) do {
             [0.7] call acre_api_fnc_setSelectableVoiceCurve; 
             acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
         }, player] call CBA_fnc_waitUntilAndExecute;
-        hint "Normal: Default voice level";        
+        
+        _txt = "Normal:<br/> Default voice level<br/>"; 
+
+        //Turn speaker back on
+        if(cgqc_reset_speaker) then {
+            cgqc_reset_speaker = false;
+            ["speaker_on"] execVM "cgqc\functions\fnc_setRadios.sqf";
+            _txt = _txt + "Radio Speaker: On<br/>";
+        };
+            
+        hint parseText _txt;   
         break;
     };
     case "battle":{
@@ -114,6 +115,7 @@ switch (_type) do {
         _compatible = _currentWeapon call bis_fnc_compatibleItems;
         _compatibleSilencers = [];
         _silencerRemoved = false;
+        _speakerOff = false;
         _actualSilencer = "";
         {
             _type = (_x call bis_fnc_itemType) select 1;
@@ -136,10 +138,21 @@ switch (_type) do {
                 //hint format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
             }
         } forEach _compatibleSilencers;
+
+        //Turn speaker back on
+        if(cgqc_reset_speaker) then {
+            cgqc_reset_speaker = false;
+            _speakerOff = true;
+            ["speaker_on"] execVM "cgqc\functions\fnc_setRadios.sqf";
+        };
+
         _txt = "-- Battle --<br/>";
         _txt = _txt + "Shouting<br/>";
         if (_silencerRemoved) then {
             _txt = _txt + "Silencer: Off<br/>";
+        };
+        if (_speakerOff) then {
+            _txt = _txt + "Radio Speaker: On<br/>";
         };
         hint parseText _txt;
         break;

@@ -103,6 +103,7 @@ cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
 cgqc_options_zeus_radios = true;
+cgqc_reset_speaker = false;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -320,17 +321,17 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_ch1", "EDITBOX", ["Channel 1:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Spartan/HQ"] call CBA_fnc_addSetting;
 ["cgqc_config_ch2", "EDITBOX", ["Channel 2:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], "Griffon/HQ"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Support/HQ"] call CBA_fnc_addSetting;
 ["cgqc_config_ch3", "EDITBOX", ["Channel 3:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], "Centaure/HQ"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Griffon"] call CBA_fnc_addSetting;
 ["cgqc_config_ch4", "EDITBOX", ["Channel 4:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"],  "Inter/Spartan"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"],  "Centaure"] call CBA_fnc_addSetting;
 ["cgqc_config_ch5", "EDITBOX", ["Channel 5:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], "Inter/Griffon"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Recon"] call CBA_fnc_addSetting;
 ["cgqc_config_ch6", "EDITBOX", ["Channel 6:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], "Inter/Centaure"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Convoy 1"] call CBA_fnc_addSetting;
 ["cgqc_config_ch7", "EDITBOX", ["Channel 7:", "Nom affiché dans le jeux"], 
-    [_menu_name, "Radios"], "Inter/Recon"] call CBA_fnc_addSetting;
+    [_menu_name, "Radios"], "Convoy 2"] call CBA_fnc_addSetting;
 ["cgqc_config_ch8", "EDITBOX", ["Channel 8:", "Nom affiché dans le jeux"], 
     [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
 ["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"], 
@@ -421,7 +422,7 @@ _menu_name = "CGQC Player settings";
 	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"], 
 		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"], 
-		[_menu_name, "Sidearm Perso (Vanilla)"], "muzzle_snds_l"] call CBA_fnc_addSetting;
+		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"], 
 		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 };

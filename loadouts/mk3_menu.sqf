@@ -609,18 +609,18 @@ if (hasInterface) then {
 			// Radio setups
 			_action = [ "menu_radios", "Switch: Radios", "CGQC\textures\radio.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_radios_1", "Infantry - 343+148", "", {["inf"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_radios_1", "Infantry - 343", "", {["inf"] execVM "\CGQC\loadouts\mk3_getRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject; 
-			_action = [ "menu_radios_2", "Medic/2iC - 343+152", "", {["2ic"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_radios_3", "TL - 343+152", "", {["tl"] execVM "\CGQC\loadouts\mk3_getRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			_action = [ "menu_radios_2", "Medic - 343+152", "", {["medic"] execVM "\CGQC\loadouts\mk3_getRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject; 
-			_action = [ "menu_radios_3", "TL - 343+152+117", "", {["tl"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_radios_4", "SL/HQ - 343+117+117", "", {["sl"] execVM "\CGQC\loadouts\mk3_getRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_radios_4", "SL - 117+117+117", "", {["sl"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_radios_5", "Recon - 343+152+117", "", {["recon"] execVM "\CGQC\loadouts\mk3_getRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_radios_5", "Recon - 152+117+343", "", {["recon"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_radios_7", "LeCloutier - 343+152+152", "", {["clout"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			//_action = [ "menu_radios_7", "LeCloutier - 343+152+152", "", {["clout"] execVM "\CGQC\loadouts\mk3_getRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			//_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_radios_6", "Zeus - 343+117+117", "", {["zeus_radios", 0] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			
