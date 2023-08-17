@@ -42,6 +42,9 @@ _beret = [] spawn CGQC_fnc_getRankedBeret;
 // Set and keep patch 
 _set = [] spawn CGQC_fnc_setPatch;
 
+// Add player name to dropped items 
+player addEventHandler ["InventoryClosed", {[_this] execVM "cgqc\functions\fnc_markGear.sqf"}];
+
 // Dynamic group -------------------------------------------------------------------------------------------------
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
@@ -218,5 +221,40 @@ switch (_unit) do {
 if (cgqc_flag_isTraining) then {
 	execVM "\cgqc\functions\fnc_trainingMenu.sqf";
 };
+
+// Fix for RHS chatter
+if (profileNamespace getVariable ['cgqc_rhs_default', 0] == 0) then {
+	profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
+	profileNamespace setVariable ['cgqc_rhs_default', 1];
+	saveProfileNamespace;
+};
+
+// Show names on mouseOver 
+addMissionEventHandler ["EachFrame", { // EachFrame... probably not the greatest?
+	_target = cursorTarget; 
+	_maxdist = 5;
+	// Checks and exceptions
+	if (isNull _target) exitWith {};
+	if (!alive(player)) exitWith {false};
+	_target_name = _target getVariable ["CGQC_Name","Unknown"];
+	// If target exists 
+	if (_target distance player < _maxdist) then {
+		// Find type
+		_target_type = typeOf _target;
+		// Looks like dropped gear
+		if (_target_type == "GroundWeaponHolder") then 
+		{
+			_target_side = _target getVariable ["CGQC_Side",str (side group _target)];
+			_msg = _target_name + "'s gear";
+		};
+		// Looks like a vehicle 
+		if (_target isKindOf "AllVehicles" && !(_target isKindOf "Man")) then {
+			_target_side = _target getVariable ["CGQC_Side",str (side group _target)];
+			_msg = _target_name;
+		};
+		// Show msg to player
+		hint format ["%1", _msg];
+	};
+}];
 
 cgqc_postInitClient_done = true;

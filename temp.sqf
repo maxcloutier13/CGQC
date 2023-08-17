@@ -1367,3 +1367,96 @@ class CfgSlopeLimits
 		optimalSlope = -0.268;
 	};
 };
+
+
+// Walking speed modification (Raised gun faster)
+
+class CfgMovesMaleSdr
+{
+	class States
+	{	
+		// WALK - RIFLE RAISED
+		class AmovPercMstpSrasWrflDnon;
+		class AmovPercMwlkSrasWrflDf: AmovPercMstpSrasWrflDnon
+		{
+			speed = 1.3;//0.85
+		};
+		class AmovPercMwlkSrasWrflDb : AmovPercMwlkSrasWrflDf
+		{
+			speed = 1;//0.85
+		};
+		class AmovPercMwlkSrasWrflDl : AmovPercMwlkSrasWrflDf
+		{
+			speed = 0.8;//0.85
+		};
+		class AmovPercMwlkSrasWrflDr : AmovPercMwlkSrasWrflDf
+		{
+			speed = 0.7;//0.85
+		};
+		
+		// WALK - PISTOL RAISED
+		class AmovPercMstpSrasWpstDnon;
+		class AmovPercMwlkSrasWpstDf : AmovPercMstpSrasWpstDnon
+		{
+			speed = 0.7
+		}
+				
+		class AmovPercMwlkSrasWpstDb : AmovPercMwlkSrasWpstDf
+		{
+			speed = 1.7;//0.85
+		};
+		class AmovPercMwlkSrasWpstDl : AmovPercMwlkSrasWpstDf
+		{
+			speed = 0.8;//0.85
+		};
+		class AmovPercMwlkSrasWpstDr : AmovPercMwlkSrasWpstDf
+		{
+			speed = 0.8;//0.85
+		};
+	
+	};
+};
+
+
+// Copy clacker codes 
+
+// Explosives clacker code copying, called via config
+
+STMF_ACE_Explosives_CanCopyClackerCodes =
+{
+    params ["_player", "_target"];
+
+    if (isNull _target) exitWith {false};
+
+    // target must have clacker codes to copy
+    private _tClackers = _target getVariable ["ace_explosives_Clackers", []];
+    if (_tClackers isEqualTo []) exitWith {false};
+
+    // player must have a clacker to copy codes to
+    private _pClackers = [_player] call ace_explosives_fnc_getDetonators;
+    if (_pClackers isEqualTo []) exitWith {false};
+
+    true
+};
+
+
+// Allows a player to copy another player's clacker codes
+STMF_ACE_Explosives_CopyClackerCodes =
+{
+    params ["_player", "_target"];
+
+    // Support copying codes from non-player objects
+    if (isPlayer _target) then {
+        private _displayText = format ["%1 has copied your clacker codes", [_player] call ace_common_fnc_getName];
+        ["ace_common_displayTextStructured", [_displayText, 3, _target], [_target]] call CBA_fnc_targetEvent;
+    };
+
+    // target must have clacker codes to copy
+    private _clackers = _target getVariable ["ace_explosives_Clackers", []];
+
+    // apply target's clacker codes to player
+    _player setVariable ["ace_explosives_Clackers", _clackers, true];
+
+    private _displayText = ["You have copied the clacker codes", "You have copied their clacker codes"] select (_target isKindOf "CAManBase");
+    ["ace_common_displayTextStructured", [_displayText, 3, _player]] call CBA_fnc_localEvent;
+};
