@@ -48,6 +48,29 @@ cgqc_subskills = [
 cgqc_mission_daytime = true;
 cgqc_mission_dro = false;
 cgqc_mission_dro_ready = false;
+
+// *** Magic range stuff *******************
+cgqc_range_on = false;
+cgqc_range_player_pos = [];
+cgqc_range_lane_1_on = false;
+cgqc_range_lane_1_check = false;
+cgqc_range_lane_2_on = false;
+cgqc_range_lane_2_check = false;
+cgqc_range_lane_3_on = false;
+cgqc_range_lane_3_check = false;
+cgqc_range_lane_4_on = false;
+cgqc_range_lane_4_check = false;
+cgqc_range_lane_5_on = false;
+cgqc_range_lane_5_check = false;
+cgqc_range_lane_6_on = false;
+cgqc_range_lane_6_check = false;
+cgqc_range_lane_7_on = false;
+cgqc_range_lane_7_check = false;
+cgqc_range_lane_8_on = false;
+cgqc_range_lane_8_check = false;
+cgqc_range_lane_9_on = false;
+cgqc_range_lane_9_check = false;
+
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasAceMedical = false;
@@ -90,6 +113,7 @@ cgqc_player_stash_mags = [];
 cgqc_zeus_event = false;
 cgqc_zeus_crate = false;
 cgqc_zeus_cargo = false;
+cgqc_zeus_game_started = false;
 cgqc_zeus_briefing = false;
 cgqc_zeus_briefingCmd = false;
 cgqc_zeus_mapRestricted = false;
@@ -231,15 +255,6 @@ if (cgqc_player_hasUnsung) then {
 	{ ["click", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
-["CGQC", "cgqc_kb_nvg", "Fake NVG on", 
-	{ player action ["nvGoggles", player];}, {""}, []
-] call cba_fnc_addKeybind;
-
-
-
-// Addon Options ===================================================================================================
-_menu_name = "CGQC";
-
 //Wind changer event 
 ["cgqc_change_fucking_wind", {
 	params ["_type"];
@@ -268,6 +283,9 @@ _menu_name = "CGQC";
 	};
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
 }] call CBA_fnc_addEventHandler;
+
+// Addon Options ===================================================================================================
+_menu_name = "CGQC";
 
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
@@ -343,7 +361,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Option Toggles"], [6, 18, 8, 0]] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], [6, 18, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"], 
