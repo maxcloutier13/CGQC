@@ -371,9 +371,22 @@ switch (_type) do {
         hint "Black screen should be fixed";
         break;
     };
+    case "spawn_range":
+    {
+        // Take player position to return later 
+        cgqc_range_player_pos = getPosATL player;
+        // Check if range already exists
+        if (!cgqc_range_on) then {
+            [ "cgqc_range", [0,0, 10000] , [0,0,0], 0 ] call LARs_fnc_spawnComp;
+            sleep 2;
+            cgqc_range_on = true;
+        };
+        // TP to range
+        player setPos (getPos cgqc_range_tp);
+        hint "Welcome to the range";
+    };
     case "cone":
     {
-       
         if (vehicle player != player) then // If player in a vehicle, skip the trigger 
         {
              // Setup trigger
