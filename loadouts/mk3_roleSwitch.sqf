@@ -11,10 +11,10 @@ if (hasInterface) then {
         disableUserInput true;
         _type = _this select 0;
         _section = _this select 1;
-        _auRepos = _this select 2;
+        _showTransition = _this select 2;
         //hintc "mk2_role_switch wtf";sleep 0.5;
 
-        if (cgqc_setting_show_transition) then {
+        if (cgqc_setting_show_transition && _showTransition) then {
         // Fade to black  
             cutText ["", "BLACK FADED", 999];
             titleText ["", "PLAIN"];
@@ -95,9 +95,10 @@ if (hasInterface) then {
                 hintc "mk3_roleSwitch.sqf fail";
             };
         };
+        sleep 0.5;
 		// Start transition
-        if (!cgqc_intro_running) then {
-            ["role"] execVM "\CGQC\loadouts\mk3_transition.sqf";
+        if (!cgqc_intro_running && _showTransition) then {
+            ["role", true] execVM "\CGQC\loadouts\mk3_transition.sqf";
         };
 
         //Set patch back

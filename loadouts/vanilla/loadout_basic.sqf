@@ -62,6 +62,7 @@ player addItemToUniform "ACE_CableTie";
 player addItemToUniform "ACE_CableTie";
 player addItemToUniform "acex_intelitems_notepad";
 player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads"; 
+player addItemToUniform "tsp_lockpick";
 player addItemToUniform "ACE_microDAGR";
 // === Meds
 player addItemToUniform "cgqc_items_ifak";

@@ -10,7 +10,7 @@ switch (_type) do {
 		cgqc_orient_targets = [];
 		cgqc_orient_target_found = false;
 		cgqc_orienteering_timer = 0;
-		["basic_orient"] execVM "\CGQC\loadouts\mk3_transition.sqf";
+		["basic_orient", true] execVM "\CGQC\loadouts\mk3_transition.sqf";
 		// Remove shits
 		removeAllAssignedItems player; 
 		player removeItem "ACE_microDAGR";
