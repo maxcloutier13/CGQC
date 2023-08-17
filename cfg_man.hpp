@@ -31,6 +31,16 @@ class CAManBase: Man {
 		};
 	};
 	class ACE_SelfActions {
+		class aceax_ingame_gear
+		{
+			//displayName = "$STR_aceax_ingame_Gear";
+			condition = "false";
+			//icon = "\z\aceax\addons\ingame\data\gear.paa";
+			//exceptions[] = {"isNotInside","isNotSitting"};
+			//statement = "";
+			//insertChildren = "_this call aceax_ingame_fnc_aceSelfActions";
+			//priority = 0.1;
+		};
 		class ACE_Animations {
 			displayName = "Animations";
 			//icon = "\z\ace\addons\gestures\UI\gestures_ca.paa";
