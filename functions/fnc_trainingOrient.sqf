@@ -63,8 +63,8 @@ switch (_type) do {
 		if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_orient_player";};
 		
 		// Trigger
-		cgqc_orient_trg = createTrigger ["EmptyDetector",_nearestCity_pos, false];
-		cgqc_orient_trg setTriggerArea [10, 10, getDir player, true];
+		cgqc_orient_trg = createTrigger ["EmptyDetector",getPos cgqc_orient_target_flag, false];
+		cgqc_orient_trg setTriggerArea [20, 20, getDir player, true];
 		cgqc_orient_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		cgqc_orient_trg setTriggerStatements ["this", _act, _deAct];
 		cgqc_orient_trg setTriggerInterval _int;
