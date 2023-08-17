@@ -5,6 +5,16 @@ class CBA_MiscItem_ItemInfo;
 class InventoryItem_Base_F;
 
 
+//Lockpicks
+class tsp_paperclip;
+class tsp_lockpick: tsp_paperclip
+{
+	class ItemInfo: ItemInfo
+	{
+		mass = 1;
+	};
+};
+
 // Logistics stuff
 class cgqc_items_ifak: CBA_MiscItem
 {
