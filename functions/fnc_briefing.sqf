@@ -7,19 +7,27 @@ _text = (
 	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca/</font>"+"<br/>" +
 	"<font size='20' color='#BDBDBD'>Teamspeak: ts.cgqc.ca</font>"
 );
-player createDiaryRecord ["Diary", ["CGQC", _text]];
+player createDiaryRecord ["Diary", ["CGQC Info", _text]];
 
 // Radio reference
 _text = (
-	"<font size='20' color='#f2f2f2'Référence Radios</font>" +"<br/>" +
+	"<font size='20' color='#f2f2f2'>Référence Radios</font>" +"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
+	"<font size='18' color='#f2f2f2'>Short-Range - 343</font>" +"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan 1</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 2 - Spartan 2</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 3 - Spartan 3</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 4 - HQ</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 5+ - Libres</font>"+"<br/>" +
+	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
+	"<font size='18' color='#f2f2f2'>Long-Range - 152</font>" +"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan/HQ</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 2 - Griffon/HQ</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 3 - Centaure/HQ</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 4 - Inter/Spartan</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 5 - Inter/Griffon</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 6 - Inter/Centaure</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 7 - Inter/Recon</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 2 - Support/HQ</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 3 - Griffon</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 4 - Centaure</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 5 - Recon</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 6 - Convoy 1</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 7 - Convoy 2</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 8 - Libre</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 9 - Zeus</font>"+"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"
