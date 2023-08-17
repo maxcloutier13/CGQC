@@ -22,6 +22,12 @@ class cfgWeapons {
 	#include "cfg_uniforms.hpp"
 };
 
+// Mags and stuff
+class CfgMagazines
+{
+	#include "cfg_mags.hpp"
+};
+
 // Patches
 class cfgUnitInsignia {
 	#include "cfg_insignas.hpp"

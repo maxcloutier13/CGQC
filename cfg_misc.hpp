@@ -5,7 +5,7 @@ class CBA_MiscItem_ItemInfo;
 class InventoryItem_Base_F;
 
 
-//Lockpicks
+//Lockpicks - Breaching stuff
 class tsp_paperclip;
 class tsp_lockpick: tsp_paperclip
 {
