@@ -141,27 +141,18 @@ class CfgSounds
 // Stamina stuff
 class CfgMovesFatigue
 {
-	staminaDuration = 90; //total amount of stamina
+	staminaDuration = 75; //total amount of stamina
 	staminaRestoration = 45; //time required for your current stamina pool (total stamina - inventory load) to restore
 	staminaCooldown = 0.1;  //when you run out of stamina the sprinting is disabled for this duration
-	aimPrecisionSpeedCoef = 5; //aimPrecision adjusting rate coefficient between two animation states with different aimPrecision parameter value
+	//aimPrecisionSpeedCoef = 5; //aimPrecision adjusting rate coefficient between two animation states with different aimPrecision parameter value
 	terrainDrainSprint = -1; //when terrain gradient disable sprint, this stamina value is added to every animation state (do not stack with following terrain threshold)
-	terrainDrainRun = -1; //when terrain gradient enable force walk, this stamina value is added to every animation state (do not stack with previous terrain threshold)
+	terrainDrainRun = -1.5; //when terrain gradient enable force walk, this stamina value is added to every animation state (do not stack with previous terrain threshold)
 	terrainSpeedCoef = 0.9; //when terrain gradient disable sprint, animation speed is multiplied by this value
-
-	staminaDuration = 60;
-	staminaCooldown = 10;
-	staminaRestoration = 30;
-	aimPrecisionSpeedCoef = 5;
-	terrainDrainSprint = -1;
-	terrainDrainRun = -1;
-	terrainSpeedCoef = 0.9;
-
 };
 // Maximum individual weight
 class CfgInventoryGlobalVariable
 {
-	maxSoldierLoad = 1800;
+	maxSoldierLoad = 1250; //De-fault: 1000 Modded:1800
 };
 
 // Slope speed penalties 
