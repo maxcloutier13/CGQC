@@ -6,7 +6,7 @@ _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""},
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Anti quick-jump
-_action = [ "menu_self_para_quickMap", "QuickJump to map point", "\CGQC\textures\cgqc_ace_para", {[0, 0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {cgqc_player_hasAnti} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_self_para_quickMap", "QuickJump to map point", "\CGQC\textures\cgqc_ace_para", {[0, 0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {cgqc_player_hasAnti || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
 
 // Repos ---------------------------------------------------------------------------------------------------------------
@@ -616,11 +616,16 @@ private _childrenStatements = {
 	_actions
 };
 
-private _action = ["cgqc_menu_grenades", "Grenades", "\cgqc\textures\cgqc_ace_grenade", {}, {true}, _childrenStatements] call ace_interact_menu_fnc_createAction;
-[player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["cgqc_menu_grenades", "Grenade selector", "\cgqc\textures\cgqc_ace_grenade", {}, {true}, _childrenStatements] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+// Shooting range 
+_action = [ "menu_self_range", "Shooting Range WIP", "", {
+	["spawn_range", true] spawn CGQC_fnc_perksBasic
+	}, {!cgqc_zeus_game_started || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
 
 // Grenade in hatch -----------------------------------------------------------------------------------
-
 Grenade_Drop_Types = cgqc_config_grenade_types splitString ",";
 compatibleGrenades = [];
 compatibleGrenades = Grenade_Drop_Types;
