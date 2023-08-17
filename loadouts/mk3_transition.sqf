@@ -5,6 +5,7 @@ cgqc_mk3_transition = true;
 _text = "";
 _text_insert = "";
 if (cgqc_setting_show_transition && _show) then {
+    waitUntil {sleep 0.5;cgqc_intro_done;};
     // Fade to black  
     cutText ["", "BLACK FADED", 999];
     titleText ["", "PLAIN"];
@@ -41,30 +42,45 @@ if (cgqc_setting_show_transition && _show) then {
             _currentLoadKg = parseNumber (_currentLoad toFixed 1);
             _check_currentLoad_percent = load player; // between 0-1 .. Percentage of fullness
             _check_currentLoad = "";
+            _load_desc = "";
 
             switch (true) do {
-                case (_check_currentLoad_percent > 0.8) : { 
+                case (_currentLoadKg > 40) : { 
                     _check_currentLoad = format["<t color='#ff0000'>%1</t>", _currentLoadKg];
+                    _load_desc = "heavy";
                     break;
                 };
-                case (_check_currentLoad_percent > 0.7) : {
+                case (_currentLoadKg > 35) : {
                     _check_currentLoad = format["<t color='#FF5700'>%1</t>", _currentLoadKg];
+                    _load_desc = "medium+++";
                     break;
                 };
-                case (_check_currentLoad_percent > 0.6) : {
+                case (_currentLoadKg > 32) : {
+                    _check_currentLoad = format["<t color='#FF8300'>%1</t>", _currentLoadKg];
+                    _load_desc = "medium+";
+                    break;
+                };
+                case (_currentLoadKg > 30) : {
                     _check_currentLoad = format["<t color='#F8FF00'>%1</t>", _currentLoadKg];
+                    _load_desc = "medium";
                     break;
                 };
-                case (_check_currentLoad_percent > 0) : {
-					_check_currentLoad = format["%1", _currentLoadKg];
+                case (_currentLoadKg > 27) : {
+                    _check_currentLoad = format["<t color='#CCFF00'>%1</t>", _currentLoadKg];
+                    _load_desc = "light+";
+                    break;
+                };
+                case (_currentLoadKg > 0) : {
+                    _check_currentLoad = format["<t color='#00FF0F'>%1</t>", _currentLoadKg];
+                    _load_desc = "light";
 					break;
 				};
             };
 
             // Show traits 
-            _text = _text + format ["Traits: %1<br/>", _check_traits];
+            _text = _text + format ["%1<br/>", _check_traits];
             // Show weight
-            _text = _text + format ["Loadout weight: %1kg<br/>", _check_currentLoad];
+            _text = _text + format ["Loadout weight: %1kg (%2)<br/>", _check_currentLoad, _load_desc];
             break;
         };
         case "camo":{ 
@@ -102,4 +118,3 @@ if (cgqc_setting_show_transition && _show) then {
     "dynamicBlur" ppEffectCommit 2;
     cgqc_mk3_transition = false;
 };
-
