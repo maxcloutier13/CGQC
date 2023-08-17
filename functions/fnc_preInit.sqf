@@ -256,6 +256,18 @@ if (cgqc_player_hasUnsung) then {
 	{ ["click", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
+// -- QuickStates --
+["CGQC", "cgqc_kb_stealth", "Quick States: Stealth", 
+	{ ["stealth", false] spawn CGQC_fnc_perksBasic}, {""}, []
+] call cba_fnc_addKeybind;
+["CGQC", "cgqc_kb_normal", "Quick States: Normal", 
+	{ ["normal", false] spawn CGQC_fnc_perksBasic}, {""}, []
+] call cba_fnc_addKeybind;
+["CGQC", "cgqc_kb_battle", "Quick States: Battle", 
+	{ ["battle", false] spawn CGQC_fnc_perksBasic}, {""}, []
+] call cba_fnc_addKeybind;
+
+
 //Wind changer event 
 ["cgqc_change_fucking_wind", {
 	params ["_type"];
