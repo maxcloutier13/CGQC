@@ -100,7 +100,7 @@ if (cgqc_setting_show_transition && _show) then {
         };
         case "basic_orient":{
             _text_insert = "Orientation";
-            _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>");
+            _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>" + "Find the Flag!");
             break;
         };
     };
