@@ -1,7 +1,7 @@
 // --- postInit_client ----------------------------------------------------------
 // Start everything player related
 
-_version = "3.5";
+_version = "3.6";
 // Client-side code
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
