@@ -20,6 +20,7 @@ switch (_type) do {
 				deleteVehicle _x
 			};
 		} forEach allUnits;
+		cgqc_training_medical = false;
 	};
 	case 1: { //Léger
 		_ll = [0, 0.3, 0.5];
@@ -54,6 +55,7 @@ switch (_type) do {
 };
 
 if (_create) then {
+	cgqc_training_medical = true;
 	if (!isNil ("pat1")) then {deleteVehicle pat1;};
 	_group1=createGroup west;
 	'b_g_survivor_F' createUnit [position player, _group1, 'pat1=this; dostop pat1;'];
@@ -73,7 +75,7 @@ if (_create) then {
 		};
 		sleep 5.0;
 	};
-	if (!alive pat1) then {
+	if (!alive pat1 && cgqc_training_medical) then {
 		titleText ["<t size='5' shadow='1' shadowOffset='0.05' color='#FF2200'>Le patient est mort...</t>", "PLAIN", 0, true, true];
 	};
 };
