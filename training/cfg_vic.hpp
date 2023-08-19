@@ -56,4 +56,6 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_trai
     if (unitIsUAV _newvehicle) then {
         createVehicleCrew _newvehicle;
     };
+	// Open pylon editor? 
+	[_newvehicle] call ace_pylons_fnc_showDialog;
 }] call BIS_fnc_addScriptedEventHandler;
