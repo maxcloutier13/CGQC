@@ -38,8 +38,11 @@ CGQC_fnc_training_landnav_done = {
 		["task_orient", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 		_current_time = time;
 		_time = floor((_current_time - cgqc_training_landnav_start_time) /60);
-		_text = ("<br/>" + "<br/>" + "<br/>" + "<t size='2' >Good job Viper!</t><br/>" + "<t size='1' >%1mins</t><br/>");
-		_text = format [_text, _time];
+		_text = ("<br/>" + "<br/>" + "<br/>" + 
+			"<t size='2' >Good job Viper!</t><br/>" + 
+			"<t size='1' >%1kms in %2mins</t><br/>"
+		);
+		_text = format [_text, _time, cgqc_training_landnav_distance];
 		[_text, 0, 0, 5, 2] spawn BIS_fnc_dynamicText;
 		sleep 5;
 		[] call CGQC_fnc_training_landnav_off;
@@ -66,6 +69,7 @@ CGQC_fnc_training_landnav_off = {
 		cgqc_training_landnav = false;
 		cgqc_training_landnav_start_time = 0;
 		cgqc_training_landnav_targetlist = [];
+		cgqc_training_landnav_distance = 0;
 		// Landnav default options 
 		cgqc_training_landnav_objective = "city";
 		cgqc_training_landnav_difficulty = 1;
@@ -143,6 +147,7 @@ CGQC_fnc_training_landnav_start = {
 		_playerPos = _playerArea findEmptyPosition [1,100,"B_T_VTOL_01_armed_F"];
 		// Teleport player to starting area
 		player setPos _playerPos;
+		cgqc_training_landnav_distance = _playerPos distance _nearestLocation_pos;
 
 		// Crate and flag on target location 
 		_searchArea = [_nearestLocation_pos, 50, 100, 0, 0, 0, 0] call BIS_fnc_findSafePos;
@@ -213,10 +218,10 @@ CGQC_fnc_training_landnav_start = {
 		};
 
 		// startup message to player 
-		_text = ("
-		<br/>" + "<br/>" + "<br/>" +"<t size='2' >Land Navigation</t><br/>" +
-		"<t size='1' >Find your way to the Flag</t><br/><br/>");
-		[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
+		_text = ("<br/>" + "<br/>" + "<br/>" + 
+		"<t size='2' >Land Navigation Training</t><br/>" +
+		"<t size='1' >Find your way to the Flag at the Objective</t><br/>");
+		[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
 
 		// Player wakeup 
 		titleFadeOut 4;
@@ -229,12 +234,27 @@ CGQC_fnc_training_landnav_start = {
 		"dynamicBlur" ppEffectCommit 2;
 
 		// Wait a bit and create task
-		sleep 10;
+		sleep 8;
 		[side player, "task_orient", [
 			format["Find your position and reach target: %1", cgqc_training_landnav_target select 1], 
 			format["Reach Target: %1",cgqc_training_landnav_target select 1], ""],
 		cgqc_landnav_pos_free, "ASSIGNED", 1, true, "backpack", false] call BIS_fnc_taskCreate;
 		cgqc_training_landnav_start_time = time;
 		cgqc_training_landnav = true;
+
+		sleep 2;
+		if(cgqc_training_landnav_hunters > 0) then {
+			_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Watch out: %1 teams hunting you down</t><br/>";
+			_text = format [_text, cgqc_training_landnav_hunters];
+			[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
+			sleep 6;
+		};
+
+		if(cgqc_training_landnav_patrols > 0) then {
+			_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Watch out: %1 patrols around your objective</t><br/>";
+			_text = format [_text, cgqc_training_landnav_patrols];
+			[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
+			sleep 6;
+		};
 	};
 };

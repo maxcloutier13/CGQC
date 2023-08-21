@@ -7,16 +7,13 @@
 #define IDC_LANDNAV_cbo_patrols	4354
 #define IDC_LANDNAV_cbo_hunters	4355
 
-class RscCGQCLandnav
-{
+class RscCGQCLandnav {
 	idd = 1323001;
 	//onLoad = "[] call cgqc_fnc_training_landnav_reset;";
 	//onUnload = "[] call cgqc_fnc_training_landnav_start;";
 	
-	class controlsBackground
-	{
-		class frm_background: RscFrame
-		{
+	class controlsBackground {
+		class frm_background: RscFrame {
 			idc = 1800;
 			x = 6.5 * GUI_GRID_W + GUI_GRID_X;
 			y = 0 * GUI_GRID_H + GUI_GRID_Y;
@@ -24,10 +21,8 @@ class RscCGQCLandnav
 			h = 25 * GUI_GRID_H;
 		};
 	};
-	class Controls
-	{
-		class btn_ok: RscButtonMenuOK
-		{
+	class Controls {
+		class btn_ok: RscButtonMenuOK {
 			text = "Start"; //--- ToDo: Localize;
 			onButtonClick = "[] call CGQC_fnc_training_landnav_start;closeDialog IDC_LANDNAV;";
 			x = 29 * GUI_GRID_W + GUI_GRID_X;
@@ -36,8 +31,7 @@ class RscCGQCLandnav
 			h = 2 * GUI_GRID_H;
 			tooltip = "Start training session with current options"; //--- ToDo: Localize;
 		};
-		class cbo_objective: RscCombo_cgqc
-		{
+		class cbo_objective: RscCombo_cgqc {
 			idc = 4350;
 			text = "Type of Objective"; //--- ToDo: Localize;
 			x = 20.5 * GUI_GRID_W + GUI_GRID_X;
@@ -47,22 +41,19 @@ class RscCGQCLandnav
 			sizeEx = 2 * GUI_GRID_H;
 			class Items
 			{
-				class random
-				{
+				class random {
 					text = "Random";
 					default = 0;
 					value = 0;
 					data = "random";
 				};
-				class city
-				{
+				class city {
 					text = "City";
 					default = 1;
 					value = 1;
 					data = "city";
 				};
-				class viewpoints
-				{
+				class viewpoints {
 					text = "Viewpoints";
 					default = 0;
 					value = 2;
@@ -71,8 +62,7 @@ class RscCGQCLandnav
 			};
 			onLBSelChanged = "cgqc_training_landnav_objective = (_this select 0) lbData (_this select 1);";
 		};
-		class cbo_min: RscCombo_cgqc
-		{
+		class cbo_min: RscCombo_cgqc {
 			idc = 4352;
 			text = "Minimum"; //--- ToDo: Localize;
 			x = 24.92 * GUI_GRID_W + GUI_GRID_X;
@@ -83,44 +73,37 @@ class RscCGQCLandnav
 			sizeEx = 2 * GUI_GRID_H;
 			class Items
 			{
-				class random
-				{
+				class random{
 					text = "Random";
 					default = 0;
 					value = 0;
 				};
-				class dist_500
-				{
+				class dist_500{
 					text = "500m";
 					default = 0;
 					value = 500;
 				};
-				class dist_1
-				{
+				class dist_1{
 					text = "1km";
 					default = 1;
 					value = 1000;
 				};
-				class dist_2
-				{
+				class dist_2{
 					text = "2km";
 					default = 0;
 					value = 2000;
 				};
-				class dist_3
-				{
+				class dist_3{
 					text = "3km";
 					default = 0;
 					value = 3000;
 				};
-				class dist_4
-				{
+				class dist_4{
 					text = "4km";
 					default = 0;
 					value = 4000;
 				};
-				class dist_5
-				{
+				class dist_5{
 					text = "5km";
 					default = 0;
 					value = 5000;
@@ -128,8 +111,7 @@ class RscCGQCLandnav
 			};
 			onLBSelChanged = "cgqc_training_landnav_min = (_this select 0) lbValue (_this select 1);";
 		};
-		class cbo_max: RscCombo_cgqc
-		{
+		class cbo_max: RscCombo_cgqc {
 			idc = 4353;
 			text = "Maximum"; //--- ToDo: Localize;
 			x = 25 * GUI_GRID_W + GUI_GRID_X;
@@ -155,7 +137,7 @@ class RscCGQCLandnav
 				class dist_2
 				{
 					text = "2km";
-					default = 0;
+					default = 1;
 					value = 2000;
 				};
 				class dist_3
@@ -167,7 +149,7 @@ class RscCGQCLandnav
 				class dist_4
 				{
 					text = "4km";
-					default = 1;
+					default = 0;
 					value = 4000;
 				};
 				class dist_5
@@ -227,8 +209,7 @@ class RscCGQCLandnav
 			};
 			onLBSelChanged = "cgqc_training_landnav_max = (_this select 0) lbValue (_this select 1);";
 		};
-		class cbo_patrols: RscCombo_cgqc
-		{
+		class cbo_patrols: RscCombo_cgqc {
 			idc = 4354;
 			text = "Patrols"; //--- ToDo: Localize;
 			x = 25 * GUI_GRID_W + GUI_GRID_X;
@@ -284,8 +265,7 @@ class RscCGQCLandnav
 			};
 			onLBSelChanged = "cgqc_training_landnav_patrols = (_this select 0) lbValue (_this select 1);";
 		};
-		class cbo_hunters: RscCombo_cgqc
-		{
+		class cbo_hunters: RscCombo_cgqc{
 			idc = 4355;
 			text = "Hunter Teams"; //--- ToDo: Localize;
 			x = 25 * GUI_GRID_W + GUI_GRID_X;
@@ -340,6 +320,53 @@ class RscCGQCLandnav
 				};
 			};
 			onLBSelChanged = "cgqc_training_landnav_hunters = (_this select 0) lbValue (_this select 1);";
+		};
+
+		class cbo_difficulty: RscCombo_cgqc {
+			idc = 4351;
+			text = "Difficulty"; //--- ToDo: Localize;
+			x = 20.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 14 * GUI_GRID_H + GUI_GRID_Y;
+			w = 12.9167 * GUI_GRID_W;
+			h = 1.5 * GUI_GRID_H;
+			tooltip = "Affects the items available to you during the mission"; //--- ToDo: Localize;
+			sizeEx = 2 * GUI_GRID_H;
+			class Items
+			{
+				class easy
+				{
+					text = "Easy";
+					default = 0;
+					value = 0;
+					data = "easy";
+					tooltip = "Easy peasy. All basic items + GPS";
+				};
+				class normal
+				{
+					text = "Normal";
+					default = 1;
+					value = 1;
+					data = "normal";
+					tooltip = "Map + Compass + Binoculars";
+				};
+				class hard
+				{
+					text = "Hard";
+					default = 0;
+					value = 2;
+					data = "hard";
+					tooltip = "Map + Binoculars";
+				};
+				class harder
+				{
+					text = "Harder";
+					default = 0;
+					value = 3;
+					data = "harder";
+					tooltip = "Map Only";
+				};
+			};
+			onLBSelChanged = "cgqc_training_landnav_difficulty = (_this select 0) lbValue (_this select 1);";
 		};
 
 		class btn_cancel: RscButtonMenuCancel
@@ -409,53 +436,6 @@ class RscCGQCLandnav
 			w = 7.5 * GUI_GRID_W;
 			h = 1.5 * GUI_GRID_H;
 			sizeEx = 2 * GUI_GRID_H;
-		};
-		class cbo_difficulty: RscCombo_cgqc
-		{
-			idc = 4351;
-			text = "Difficulty"; //--- ToDo: Localize;
-			x = 20.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14 * GUI_GRID_H + GUI_GRID_Y;
-			w = 12.9167 * GUI_GRID_W;
-			h = 1.5 * GUI_GRID_H;
-			tooltip = "Affects the items available to you during the mission"; //--- ToDo: Localize;
-			sizeEx = 2 * GUI_GRID_H;
-			class Items
-			{
-				class easy
-				{
-					text = "Easy";
-					default = 0;
-					value = 0;
-					data = "easy";
-					tooltip = "Easy peasy. All basic items + GPS";
-				};
-				class normal
-				{
-					text = "Normal";
-					default = 1;
-					value = 1;
-					data = "normal";
-					tooltip = "Map + Compass + Binoculars";
-				};
-				class hard
-				{
-					text = "Hard";
-					default = 0;
-					value = 2;
-					data = "hard";
-					tooltip = "Map + Binoculars";
-				};
-				class harder
-				{
-					text = "Harder";
-					default = 0;
-					value = 3;
-					data = "harder";
-					tooltip = "Map Only";
-				};
-			};
-			onLBSelChanged = "cgqc_training_landnav_difficulty = (_this select 0) lbValue (_this select 1);";
 		};
 		class RscText_1006: RscText_cgqc
 		{

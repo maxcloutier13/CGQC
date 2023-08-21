@@ -151,11 +151,12 @@ cgqc_training_jump_comp = [];
 cgqc_training_landnav = false;
 cgqc_training_landnav_start_time = 0;
 cgqc_training_landnav_targetlist = [];
+cgqc_training_landnav_distance = 0;
 // Landnav default options 
 cgqc_training_landnav_objective = "city";
 cgqc_training_landnav_difficulty = 1;
 cgqc_training_landnav_min = 1000;
-cgqc_training_landnav_max = 4000;
+cgqc_training_landnav_max = 2000;
 cgqc_training_landnav_patrols = 0;
 cgqc_training_landnav_hunters = 0;
 cgqc_training_landnav_playerAssigned = [];
@@ -546,5 +547,8 @@ cgqc_unconscious_sounds = [
 // PAX Units definitions
 #include "\cgqc\cfg_paxUnits.hpp"
 
+// Loading functions 
+_landnav = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_training_landnav_fnc.sqf";
+waitUntil {scriptDone _landnav};
 // **************************************************************************************************************
 cgqc_preInit_done = true;
