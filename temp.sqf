@@ -1367,3 +1367,24 @@ class CfgSlopeLimits
 		optimalSlope = -0.268;
 	};
 };
+
+
+
+if (_attemps > 5) exitWith {};
+// Should do opposite... pick a random location then spawn player >min<max ..
+
+// Try a random position
+_random_pos = [] call BIS_fnc_randomPos;
+player setPos _random_pos;
+_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >Finding a suitable destination...</t><br/>");
+[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
+hint "Teleported! Checking location suitability...";
+{ 
+	{ 
+		_pos = locationPosition _x;
+		_nearest = nearestObject _pos;
+		if (_nearest distance player > cgqc_training_landnav_min && _nearest distance player < cgqc_training_landnav_max) then {
+			cgqc_training_landnav_objectives pushBack [_x, text _x, _pos, _nearest distance player];
+		};
+	} forEach nearestLocations [getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"), [_x], worldSize];  
+} forEach _targets;

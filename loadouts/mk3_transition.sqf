@@ -98,7 +98,7 @@ if (cgqc_setting_show_transition && _show) then {
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Kit: %1</t><br/>");
             break;
         };
-        case "basic_orient":{
+        case "landnav":{
             _text_insert = "Orientation";
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>" + "Find the Flag!");
             break;
