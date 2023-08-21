@@ -543,11 +543,6 @@ cgqc_unconscious_sounds = [
 	"cgqc\sounds\scream_16.wav"
 ];
 
-// Loading dialogs
-_vehDialog = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_vic_fnc.sqf";
-_landnavDialog = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_training_landnav_fnc.sqf";
-//waitUntil {scriptDone _vehDialog};
-
 // PAX Units definitions
 #include "\cgqc\cfg_paxUnits.hpp"
 
