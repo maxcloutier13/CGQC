@@ -138,19 +138,29 @@ cgqc_training_sniping_comp_on = false;
 cgqc_spawn = false;
 cgqc_spawn_vic = "";
 
+// Medical stuff 
+cgqc_training_medical = false;
+
 // Parachute 
 cgqc_training_jump = false; 
 cgqc_training_jump_target = true;
 cgqc_training_jump_comp_on = false;
 cgqc_training_jump_comp = [];
 
-// Orientation
-cgqc_training_orienteering = false;
-cgqc_orienteering_timer = 0;
-cgqc_orient_opt_patrols = false;
-cgqc_orient_opt_snipers = false;
-cgqc_orient_won = false;
-cgqc_orient_target_list = [];
+// Landnav
+cgqc_training_landnav = false;
+cgqc_training_landnav_start_time = 0;
+cgqc_training_landnav_targetlist = [];
+// Landnav default options 
+cgqc_training_landnav_objective = "city";
+cgqc_training_landnav_difficulty = 1;
+cgqc_training_landnav_min = 1000;
+cgqc_training_landnav_max = 4000;
+cgqc_training_landnav_patrols = 0;
+cgqc_training_landnav_hunters = 0;
+cgqc_training_landnav_playerAssigned = [];
+cgqc_training_landnav_playerItems = [];
+cgqc_training_landnav_playerBinos = "";
 // Defense 
 cgqc_defense_timer = 0;
 cgqc_training_defense = false;
@@ -535,6 +545,7 @@ cgqc_unconscious_sounds = [
 
 // Loading dialogs
 _vehDialog = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_vic_fnc.sqf";
+_landnavDialog = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_training_landnav_fnc.sqf";
 //waitUntil {scriptDone _vehDialog};
 
 // PAX Units definitions

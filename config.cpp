@@ -174,3 +174,5 @@ class CfgSlopeLimits
 	minSprintAI = "-0.5f";
 };
 
+// Dialog stuff
+#include "cfg_dialogs.hpp"
