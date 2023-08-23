@@ -107,15 +107,19 @@ switch (_type) do {
 				} else { // No space, adding to pack
 					player addItemToBackpack _primaryMag;
 					_countPack = _countPack + 1;
-				};
-				hint format ["Vest: +%1 - Pack: +%2", _countVest, _countPack];
+				};				
 			};
+			hint format ["Vest: +%1 - Pack: +%2", _countVest, _countPack];
 		};
 	};
 	case "refill": { 
+		if !("cgqc_bandolier_ammo" in items player) exitWith{};
 		_target removeItem "cgqc_bandolier_ammo";
 		player playMove "AinvPknlMstpSnonWnonDnon_medic4";
-		hint "Standby 15s - Reloading from Bandolier.";
+
+		// Message to player
+		_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Standby 15s - Unpacking Bandolier</t><br/>";
+		[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
 		sleep 5;
 		// Count Mag
 		if !(isNil "_primaryMag") then {
@@ -137,53 +141,93 @@ switch (_type) do {
 		_smokeCount = 0;
 		//_smoke_blueCount = 0;
 		//_smoke_redCount = 0;
-		for "_i" from _nade to 1 do {_target addItemToVest "HandGrenade";_nadeCount = _nadeCount + 1};
+		for "_i" from _nade to 3 do {_target addItemToVest "HandGrenade";_nadeCount = _nadeCount + 1};
 		for "_i" from _nadeFlash to 1 do {_target addItemToVest "ACE_CTS9"; _nadeFlashCount = _nadeFlashCount +1};
 		for "_i" from _smoke to 2 do {_target addItemToVest "SmokeShell"; _smokeCount = _smokeCount + 1};
 		//for "_i" from _smoke_blue to 0 do {_target addItemToVest "SmokeShellBlue";_smoke_blueCount = _smoke_blueCount +1};
 		//for "_i" from _smoke_red to 0 do {_target addItemToVest "SmokeShellRed";_smoke_redCount = _smoke_redCount + 1};
 		player playMove "AinvPknlMstpSnonWnonDnon_medic4";
-		hint "Standby 10s - Getting there..";
+		// Message to player
+		_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Standby 10s - Getting there..</t><br/>";
+		[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
 		_magCount = 0;
 		_handMagCount = 0;
 		sleep 5;
 		if !(isNil "_handgunMag") then {
-			hint format ["HandgunMag: %1", _handgunMag];
+			//hint format ["HandgunMag: %1", _handgunMag];
 			for "_i" from _handgunMags to (cgqc_config_sidearm_mag_nbr - 1) do {
 				_target addItemToVest _handgunMag;
 				_handMagCount = _handMagCount + 1;
 				};
 		}else{hint "No Secondary weapon!";sleep 1;};
 		if !(isNil "_primaryMag") then {
-			hint format ["Mag: %1", _primaryMag];
-			for "_i" from _primaryMags to (cgqc_setting_limitMags_max - 1) do {
-				_target addItemToVest _primaryMag;
+			//hint format ["Mag: %1", _primaryMag];
+
+			// Extract the magazine size from the class name
+			_magSize = getNumber(configFile >> "CfgMagazines" >> _primaryMag >> "count");
+			// Compare the magazine size
+			_addMags = 6;
+			switch (true) do {
+				case (_magSize > 50): {_addMags = 3; break;};
+				case (_magSize > 30): {_addMags = 4; break;};
+			};
+
+			for "_i" from 1 to _addMags do {
+				if (player canAddItemToVest _primaryMag) then {
+					player addItemToVest _primaryMag;
+				} else { 
+					if (player canAddItemToBackpack _primaryMag) then {// No space, adding to pack
+						player addItemToBackpack _primaryMag;
+					}else{
+						hint "Not enough space for mags... Dropping on ground";
+						_itemPos = getPos player; // Get player's position
+						_itemPos set [2, 0];      // Set the height to 0 to place the item on the ground
+
+						_groundItem = "GroundWeaponHolder" createVehicle _itemPos; // Create a ground weapon holder
+						_groundItem addItemCargoGlobal [_primaryMag, 1]; // Add the magazine to the holder
+
+						// Optional: Set the direction of the weapon holder based on the player's orientation
+						_playerDir = direction player;
+						_groundItem setDir _playerDir;
+
+						// Optional: Name the weapon holder (you can replace "MyMagazineHolder" with your desired name)
+						_name = format ["%1's mag overflow", cgqc_custom_playername];
+						_groundItem setVariable ["BIS_displayName", _name];
+					};
+				};
 				_magCount = _magCount + 1;
 			};
+			/*for "_i" from _primaryMags to (cgqc_setting_limitMags_max - 1) do {
+				_target addItemToVest _primaryMag;
+				_magCount = _magCount + 1;
+			};*/
 		}else{hint "No primary weapon!";sleep 1;};
-		hint "Standby 5s - Almost done...";
+		// Message to player
+		_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Standby 5s - almost done</t><br/>";
+		[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
 		sleep 5;
 
 		// Prep throwables text 
 		_throwables = "";
-		if (_nadeCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 grenades<br/>", _nadeCount]};
-		if (_nadeFlashCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 flashbangs<br/>", _nadeCount]};
-		if (_smokeCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 white smokes<br/>", _nadeCount]};
+		_added = false;
+		if (_nadeCount > 0) then {_throwables = _throwables + format ["%1 nades", _nadeCount]; _added = true;};
+		if (_nadeFlashCount > 0) then {_throwables = _throwables + format ["/%1 bangs", _nadeFlashCount]; _added = true;};
+		if (_smokeCount > 0) then {_throwables = _throwables + format ["/%1 smokes", _smokeCount]; _added = true;};
 		//if (_smoke_blueCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 blue smokes<br/>", _nadeCount]};
 		//if (_smoke_redCount > 0) then {_throwables = _throwables + format ["Grabbed: %1 red smokes<br/>", _nadeCount]};
-
-		hint parseText format [
-			"-- Ammo Bandolier unpacked --<br/>" +
-			"- %1 primary mags refilled<br/>" +
+		if(_added)then {
+			_throwables = "Grabbed: " + _throwables;
+		};
+		_text = parseText format [
+			"<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-- Ammo Bandolier unpacked --<br/>" +
+			"- %1 primary mags added<br/>" +
 			"- %2 handgun mags refilled<br/>" +
 			"%3"
 			, _magCount, _handMagCount, _throwables
 			];
+		[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
 		break;
 	};
 	default {hint "Erreur openItem" };
 };
 
-// Turn off msg
-sleep 5;
-hintSilent "";
