@@ -82,8 +82,8 @@ switch (_type) do {
 		for "_i" from _epi to 9 do {_target addItemToBackpack "ACE_epinephrine"};
 		for "_i" from _morphine to 9 do {_target addItemToBackpack "ACE_morphine"};
 		for "_i" from _painkill to 14 do {_target addItemToBackpack "FF_Painkiller"};
-		for "_i" from _splint to 1 do {_target addItemToBackpack "ACE_splint"};
-		for "_i" from _tourniquet to 3 do {_target addItemToBackpack "ACE_tourniquet"};
+		for "_i" from _splint to 5 do {_target addItemToBackpack "ACE_splint"};
+		for "_i" from _tourniquet to 5 do {_target addItemToBackpack "ACE_tourniquet"};
 		for "_i" from _1000ml to 4 do {_target addItemToBackpack "ACE_salineIV"};
 		for "_i" from _500ml to 7 do {_target addItemToBackpack "ACE_salineIV_500"};
 		for "_i" from _pak to 0 do {_target addItemToBackpack "ACE_personalAidKit"};
