@@ -1,6 +1,7 @@
 // --- trainingMenu ----------------------------------------------------------
+// Add the training shit to the player
 cgqc_training_mode = true;
-// Add the training shit to the player 
+ 
 
 // Training actions ---------------------------------------------------------------------------------
 _action = [ "menu_self_training", "Training", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa", {}, {cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;
@@ -11,7 +12,17 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 #include "\cgqc\training\cfg_defense.hpp"
 #include "\cgqc\training\cfg_heli.hpp"
 #include "\cgqc\training\cfg_koth.hpp"
-#include "\cgqc\training\cfg_landnav.hpp"
+// LandNav ---------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_training_orient", "Land Navigation", "\CGQC\textures\icon_landnav", {[] call CGQC_fnc_landNav_openUI}, {!cgqc_training_landnav} ] call ace_interact_menu_fnc_createAction;       
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_orient_basic_off", "Stop Land Navigation Training", "", {[] call CGQC_fnc_landnav_off;}, {cgqc_training_landnav} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Convoy ---------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_training_convoy", "Convoy Ambush", "", {[] call CGQC_fnc_convoy_start}, {!cgqc_training_convoy} ] call ace_interact_menu_fnc_createAction;       
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_convoy_off", "Stop Convoy Ambush", "", {[] call CGQC_fnc_convoy_off;}, {cgqc_training_convoy} ] call ace_interact_menu_fnc_createAction;     
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;      
+
 #include "\cgqc\training\cfg_med.hpp"
 #include "\cgqc\training\cfg_mortar.hpp"
 #include "\cgqc\training\cfg_para.hpp"
