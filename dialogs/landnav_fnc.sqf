@@ -1,10 +1,13 @@
+// --- landNav ----------------------------------------------------------
+// Land Navigation training
+
 CGQC_fnc_landNav_openUI = {	
 	disableSerialization;
 	player action ["WeaponOnBack", player];
 	createDialog "RscCGQCLandnav";
 };
 
-CGQC_fnc_training_landnav_cleanInventory = {
+cgqc_fnc_landnav_cleanInventory = {
 	// Save player's original linked items
 	cgqc_training_landnav_playerAssigned = assignedItems player;
 	// Binocs 
@@ -23,7 +26,7 @@ CGQC_fnc_training_landnav_cleanInventory = {
 	};
 };
 
-CGQC_fnc_training_landnav_error = {
+CGQC_fnc_landnav_error = {
 	_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >Could not find location. Try other settings.</t><br/>");
 	[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
 	[] call CGQC_fnc_training_landnav_off; //There was an error. Quitting
@@ -33,7 +36,7 @@ CGQC_fnc_training_landnav_error = {
 	titleCut ["", "BLACK IN", 2];
 };
 
-CGQC_fnc_training_landnav_done = {
+CGQC_fnc_landnav_done = {
 	[] spawn {
 		["task_orient", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 		_current_time = time;
@@ -49,7 +52,7 @@ CGQC_fnc_training_landnav_done = {
 	};
 };
 
-CGQC_fnc_training_landnav_off = {
+CGQC_fnc_landnav_off = {
 	[] spawn {
 		// Delete trigger
 		if !(isNil "cgqc_landnav_trg") then {deleteVehicle cgqc_landnav_trg;};
@@ -86,7 +89,7 @@ CGQC_fnc_training_landnav_off = {
 	};
 };
 
-CGQC_fnc_training_landnav_start = {
+CGQC_fnc_landnav_start = {
 	[] spawn {
 		   // Fade to black  
 		cutText ["", "BLACK FADED", 999];
@@ -124,7 +127,7 @@ CGQC_fnc_training_landnav_start = {
 		} forEach _targets;
 
 		// Quit if no objectives found
-		if (count cgqc_training_landnav_objectives < 1) exitWith {[] call CGQC_fnc_training_landnav_error;};
+		if (count cgqc_training_landnav_objectives < 1) exitWith {[] call CGQC_fnc_landnav_error;};
 			
 		// Selecting random location and finding position
 		_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >Finding a suitable destination...</t><br/>");
@@ -157,7 +160,7 @@ CGQC_fnc_training_landnav_start = {
 		
 		// -- Items -------------------------------------------------------------------------------
 		// Remove orientation items 
-		[] call cgqc_fnc_training_landnav_cleanInventory;
+		[] call cgqc_fnc_landnav_cleanInventory;
 		// Items difficulty 
 		_diffulty_txt = "Items: Map/Watch";
 		// Just the basics
@@ -182,7 +185,7 @@ CGQC_fnc_training_landnav_start = {
 		hint format ["%1", _diffulty_txt];
 			
 		// -- Create trigger -------------------------------------------------------------------------------
-		_act = "call CGQC_fnc_training_landnav_done;";
+		_act = "call CGQC_fnc_landnav_done;";
 		_deAct = "";
 		_int = 2;
 		cgqc_landnav_trg = createTrigger ["EmptyDetector",getPos cgqc_landnav_target_flag, false];

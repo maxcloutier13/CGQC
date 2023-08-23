@@ -12,13 +12,16 @@ cgqc_pax_opfor_sniper = ["uns_men_VC_local_MRK2", "uns_men_VC_local_MRK"];
 cgqc_pax_opfor_soldier = ["uns_men_VC_local_SAP", "uns_men_VC_local_RF6", "uns_men_VC_local_RF2", "uns_men_VC_local_RF1", "uns_men_VC_local_RF5", "uns_men_VC_local_RF4", "uns_men_VC_local_MED", "uns_men_VC_local_MGS", "uns_men_VC_local_LMG", "uns_men_VC_local_AS8", "uns_men_VC_local_AS7", "uns_men_VC_local_AS4", "uns_men_VC_local_AS3", "uns_men_VC_local_AS5", "uns_men_VC_local_AS2", "uns_men_VC_local_AS6", "uns_men_VC_local_AS1"];
 
 //Vics
-cgqc_pax_opfor_tank = ["uns_t34_76_vc", "uns_t34_85_nva", "uns_t54_nva", "uns_t55_nva", "uns_Type63_mg"];
-cgqc_pax_opfor_apc = ["uns_Type63_mg", "uns_BTR152_DSHK", "uns_Type55_MG", "uns_Type55_LMG"];
-cgqc_pax_opfor_squad_transport = ["uns_zil157", "uns_nvatruck", "uns_nvatruck_camo", "uns_nvatruck_open"];
-cgqc_pax_opfor_team_transport = ["uns_Type55"];
-cgqc_pax_opfor_recon_transport = ["uns_Type55"];
-cgqc_pax_opfor_technical_mg = ["uns_nvatruck_mg"];
-cgqc_pax_opfor_technical_gl = ["uns_Type55_RR73"];
+cgqc_pax_opfor_vic_tank = ["uns_t34_76_vc", "uns_t34_85_nva", "uns_t54_nva", "uns_t55_nva", "uns_Type63_mg"];
+cgqc_pax_opfor_vic_apc = ["uns_Type63_mg", "uns_BTR152_DSHK", "uns_Type55_MG", "uns_Type55_LMG"];
+cgqc_pax_opfor_vic_transport_squad = ["uns_zil157", "uns_nvatruck", "uns_nvatruck_camo", "uns_nvatruck_open"];
+cgqc_pax_opfor_vic_transport_team = ["uns_Type55"];
+cgqc_pax_opfor_vic_transport_recon = ["uns_Type55"];
+cgqc_pax_opfor_vic_transport_fuel = [];
+cgqc_pax_opfor_vic_transport_ammo = [];
+cgqc_pax_opfor_vic_transport_repair = [];
+cgqc_pax_opfor_vic_technical_mg = ["uns_nvatruck_mg"];
+cgqc_pax_opfor_vic_technical_gl = ["uns_Type55_RR73"];
 //Statics
 cgqc_pax_opfor_aa_light = ["uns_BTR152_ZPU", "uns_Type55_ZU", "uns_nvatruck_type65", "uns_nvatruck_zpu", "uns_nvatruck_zu23", "uns_Type74_NVA", "uns_ZPU2_NVA", "uns_ZPU4_NVA", "uns_ZU23_NVA"];
 cgqc_pax_opfor_aa_heavy = ["uns_ZSU23_NVA", "uns_nvatruck_s60", "uns_KS12_NVA", "uns_KS19_NVA", "uns_S60_NVA"];

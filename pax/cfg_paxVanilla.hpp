@@ -11,13 +11,16 @@ cgqc_pax_opfor_lead = ["O_Soldier_TL_F", "O_Soldier_SL_F", "O_officer_F"];
 cgqc_pax_opfor_sniper = ["O_Sharpshooter_F", "O_soldier_M_F", "O_sniper_F", "O_A_soldier_M_F"];
 cgqc_pax_opfor_soldier = ["O_Soldier_AR_F", "O_medic_F", "O_engineer_F", "O_Soldier_GL_F", "O_soldier_M_F", "O_Soldier_F", "O_Soldier_LAT_F", "O_soldier_UAV_F"];
 //Vics
-cgqc_pax_opfor_tank = ["O_MBT_04_cannon_F", "O_MBT_04_command_F", "O_MBT_02_cannon_F"];
-cgqc_pax_opfor_apc = ["O_APC_Tracked_02_cannon_F", "O_APC_Wheeled_02_rcws_v2_F"];
-cgqc_pax_opfor_squad_transport = ["O_Truck_02_transport_F", "O_Truck_02_covered_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F"];
-cgqc_pax_opfor_team_transport = ["O_MRAP_02_F", "O_LSV_02_unarmed_F"];
-cgqc_pax_opfor_recon_transport = ["O_Quadbike_01_F"];
-cgqc_pax_opfor_technical_mg = ["O_MRAP_02_hmg_F", "O_LSV_02_armed_F"];
-cgqc_pax_opfor_technical_gl = ["O_MRAP_02_gmg_F", "O_Soldier_F", "O_LSV_02_AT_F"];
+cgqc_pax_opfor_vic_tank = ["O_MBT_04_cannon_F", "O_MBT_04_command_F", "O_MBT_02_cannon_F"];
+cgqc_pax_opfor_vic_apc = ["O_APC_Tracked_02_cannon_F", "O_APC_Wheeled_02_rcws_v2_F"];
+cgqc_pax_opfor_vic_transport_squad = ["O_Truck_02_transport_F", "O_Truck_02_covered_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F"];
+cgqc_pax_opfor_vic_transport_team = ["O_MRAP_02_F", "O_LSV_02_unarmed_F"];
+cgqc_pax_opfor_vic_transport_recon = ["O_Quadbike_01_F"];
+cgqc_pax_opfor_vic_transport_fuel = ["O_Truck_02_fuel_F", "O_Truck_03_fuel_F"];
+cgqc_pax_opfor_vic_transport_ammo = ["O_Truck_02_Ammo_F", "O_Truck_03_ammo_F"];
+cgqc_pax_opfor_vic_transport_repair = ["O_Truck_02_box_F", "O_Truck_03_repair_F"];
+cgqc_pax_opfor_vic_technical_mg = ["O_MRAP_02_hmg_F", "O_LSV_02_armed_F"];
+cgqc_pax_opfor_vic_technical_gl = ["O_MRAP_02_gmg_F", "O_Soldier_F", "O_LSV_02_AT_F"];
 //Statics
 cgqc_pax_opfor_aa_light = ["O_static_AA_F"];
 cgqc_pax_opfor_aa_heavy = ["O_APC_Tracked_02_AA_F"];

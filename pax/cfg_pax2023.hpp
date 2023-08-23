@@ -7,13 +7,16 @@ cgqc_pax_opfor_lead = ["rhs_vdv_recon_officer_armored", "rhs_vdv_flora_efreitor"
 cgqc_pax_opfor_sniper = ["rhs_vdv_recon_marksman_vss", "rhs_vdv_recon_marksman_asval", "rhs_vdv_recon_marksman", "rhs_vdv_marksman", "rhs_vdv_marksman_asval"];
 cgqc_pax_opfor_soldier = ["rhs_vdv_recon_arifleman_rpk", "rhs_vdv_recon_arifleman", "rhs_vdv_recon_medic", "rhs_vdv_recon_rifleman", "rhs_vdv_recon_rifleman_ak103", "rhs_vdv_recon_rifleman_akms", "rhs_vdv_recon_rifleman_asval", "rhs_vdv_recon_grenadier", "rhs_vdv_recon_rifleman_l", "rhs_vdv_recon_rifleman_lat", "rhs_vdv_recon_rifleman_scout_akm", "rhs_vdv_recon_rifleman_scout", "rhs_vdv_recon_grenadier_scout", "rhs_vdv_recon_arifleman_scout", "rhs_vdv_recon_arifleman_rpk_scout", "rhs_vdv_aa", "rhs_vdv_at", "rhs_vdv_arifleman_rpk", "rhs_vdv_arifleman", "rhs_vdv_engineer", "rhs_vdv_machinegunner", "rhs_vdv_rifleman", "rhs_vdv_grenadier", "rhs_vdv_grenadier_alt", "rhs_vdv_rifleman_lite", "rhs_vdv_LAT", "rhs_vdv_RShG2", "rhs_vdv_rifleman_alt"];
 //Vics
-cgqc_pax_opfor_tank = ["rhs_sprut_vdv", "rhs_t72ba_tv", "rhs_t72bb_tv", "rhs_t72bc_tv", "rhs_t72bd_tv", "rhs_t72be_tv"];
-cgqc_pax_opfor_apc = ["rhs_btr60_vdv", "rhs_btr70_vdv", "rhs_btr80_vdv", "rhs_btr80a_vdv", "rhs_bmd1", "rhs_bmd1k", "rhs_bmd1p", "rhs_bmd1pk", "rhs_bmp1_vdv", "rhs_bmp2_vdv", "rhs_bmp2k_vdv", "rhs_brm1k_vdv", "rhs_prp3_vdv", "rhs_bmd2k", "rhs_bmp1p_vdv"];
-cgqc_pax_opfor_squad_transport = ["rhs_tigr_vdv", "rhs_tigr_3camo_vdv", "rhs_tigr_m_vdv", "rhs_tigr_m_3camo_vdv"];
-cgqc_pax_opfor_team_transport = ["rhs_zil131_vdv", "RHS_Ural_Open_VDV_01", "RHS_Ural_VDV_01", "rhs_kraz255b1_cargo_open_vdv", "rhs_kamaz5350_vdv", "rhs_kamaz5350_open_vdv"];
-cgqc_pax_opfor_recon_transport = ["rhs_uaz_vdv", "rhs_uaz_open_vdv"];
-cgqc_pax_opfor_technical_mg = ["rhsgref_BRDM2_HQ_vdv"];
-cgqc_pax_opfor_technical_gl = ["rhs_tigr_sts_vdv", "rhs_tigr_sts_3camo_vdv"];
+cgqc_pax_opfor_vic_tank = ["rhs_sprut_vdv", "rhs_t72ba_tv", "rhs_t72bb_tv", "rhs_t72bc_tv", "rhs_t72bd_tv", "rhs_t72be_tv"];
+cgqc_pax_opfor_vic_apc = ["rhs_btr60_vdv", "rhs_btr70_vdv", "rhs_btr80_vdv", "rhs_btr80a_vdv", "rhs_bmd1", "rhs_bmd1k", "rhs_bmd1p", "rhs_bmd1pk", "rhs_bmp1_vdv", "rhs_bmp2_vdv", "rhs_bmp2k_vdv", "rhs_brm1k_vdv", "rhs_prp3_vdv", "rhs_bmd2k", "rhs_bmp1p_vdv"];
+cgqc_pax_opfor_vic_transport_squad = ["rhs_tigr_vdv", "rhs_tigr_3camo_vdv", "rhs_tigr_m_vdv", "rhs_tigr_m_3camo_vdv"];
+cgqc_pax_opfor_vic_transport_team = ["rhs_zil131_vdv", "RHS_Ural_Open_VDV_01", "RHS_Ural_VDV_01", "rhs_kraz255b1_cargo_open_vdv", "rhs_kamaz5350_vdv", "rhs_kamaz5350_open_vdv"];
+cgqc_pax_opfor_vic_transport_recon = ["rhs_uaz_vdv", "rhs_uaz_open_vdv"];
+cgqc_pax_opfor_vic_transport_fuel = [];
+cgqc_pax_opfor_vic_transport_ammo = [];
+cgqc_pax_opfor_vic_transport_repair = [];
+cgqc_pax_opfor_vic_technical_mg = ["rhsgref_BRDM2_HQ_vdv"];
+cgqc_pax_opfor_vic_technical_gl = ["rhs_tigr_sts_vdv", "rhs_tigr_sts_3camo_vdv"];
 //Statics
 cgqc_pax_opfor_aa_light = ["rhs_Igla_AA_pod_vdv", "RHS_ZU23_VDV"];
 cgqc_pax_opfor_aa_heavy = ["rhs_zsu234_aa", "UK3CB_O_2S6M_Tunguska_VPV"];

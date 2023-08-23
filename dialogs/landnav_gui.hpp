@@ -10,7 +10,7 @@
 class RscCGQCLandnav {
 	idd = 1323001;
 	//onLoad = "[] call cgqc_fnc_training_landnav_reset;";
-	//onUnload = "[] call cgqc_fnc_training_landnav_start;";
+	//onUnload = "[] call CGQC_fnc_landnav_start;";
 	
 	class controlsBackground {
 		class frm_background: RscFrame {
@@ -24,7 +24,7 @@ class RscCGQCLandnav {
 	class Controls {
 		class btn_ok: RscButtonMenuOK {
 			text = "Start"; //--- ToDo: Localize;
-			onButtonClick = "[] call CGQC_fnc_training_landnav_start;closeDialog IDC_LANDNAV;";
+			onButtonClick = "[] call CGQC_fnc_landnav_start;closeDialog IDC_LANDNAV;";
 			x = 29 * GUI_GRID_W + GUI_GRID_X;
 			y = 22.5 * GUI_GRID_H + GUI_GRID_Y;
 			w = 4 * GUI_GRID_W;

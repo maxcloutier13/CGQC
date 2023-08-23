@@ -126,7 +126,7 @@ cgqc_zeus_ghost = false;
 cgqc_zeus_attached = false;
 cgqc_zeus_paused = false;
 cgqc_blackout_player_on = false;
-cgqc_convoy = false;
+
 // PAX System 
 cgqc_pax_prep = false;
 
@@ -162,6 +162,17 @@ cgqc_training_landnav_hunters = 0;
 cgqc_training_landnav_playerAssigned = [];
 cgqc_training_landnav_playerItems = [];
 cgqc_training_landnav_playerBinos = "";
+
+// Convoy 
+cgqc_training_convoy = false;
+cgqc_training_convoy_speed = 60;
+cgqc_training_convoy_distance = 15;
+cgqc_training_convoy_behavior = 0; // other is "AWARE"
+cgqc_training_convoy_vics = ["random", "random", "random", "random", "nothing", "nothing" ];
+cgqc_training_convoy_debug = 0;
+cgqc_training_convoy_allUnits = [];
+cgqc_training_convoy_allVics = [];
+ 
 // Defense 
 cgqc_defense_timer = 0;
 cgqc_training_defense = false;
@@ -548,7 +559,9 @@ cgqc_unconscious_sounds = [
 #include "\cgqc\cfg_paxUnits.hpp"
 
 // Loading functions 
-_landnav = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\dia_training_landnav_fnc.sqf";
+_landnav = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\landnav_fnc.sqf";
 waitUntil {scriptDone _landnav};
+_convoy = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\convoy_fnc.sqf";
+waitUntil {scriptDone _convoy};
 // **************************************************************************************************************
 cgqc_preInit_done = true;
