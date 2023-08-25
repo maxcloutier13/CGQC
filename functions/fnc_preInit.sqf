@@ -111,7 +111,6 @@ cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
-cgqc_options_zeus_radios = true;
 cgqc_reset_speaker = false;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;

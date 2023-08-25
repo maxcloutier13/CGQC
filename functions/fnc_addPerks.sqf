@@ -22,7 +22,7 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 _action = [ "menu_self_dropDiver", "Drop Habit de Plongée", "CGQC\textures\cgqc_ace_dive", {["diver", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_diver_suit_on && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Diver suit back on ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_dive", {["diver", false] execVM "\CGQC\loadouts\mk3_camoSwitch.sqf"}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_dive", {["diver", false] execVM "\CGQC\loadouts\mk3_switch_uniform.sqf"}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Change Goggles --------------------------------------------------------------------------------------
@@ -139,13 +139,13 @@ if (cgqc_config_fortify) then {
 
 
 // ------ Heli pilot --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_heli_pilot_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
+_action = [ "cgqc_perk_heli_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_pilot && 
 	!cgqc_perks_pilot_hasCrew &&
 	(vehicle player isKindOf "Helicopter")
 } ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_heli_pilot_delCrew", "Delete Crew", "", {["delCrew"] spawn CGQC_fnc_perksPilot}, {cgqc_perks_pilot && cgqc_perks_pilot_hasCrew} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_heli_delCrew", "Delete Crew", "", {["delCrew"] spawn CGQC_fnc_perksPilot}, {cgqc_perks_pilot && cgqc_perks_pilot_hasCrew} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // ------ Tank driver --------------------------------------------------------------------------------------

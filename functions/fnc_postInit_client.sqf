@@ -210,7 +210,7 @@ switch (_unit) do {
 	//};
 	// == Infantry ================================================================
 	case "CGQC_units_vanilla_rifleman":{
-		["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf";
+		["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_switch_role.sqf";
 	};
 };
 
