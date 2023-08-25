@@ -76,6 +76,6 @@ class CGQC_units_vanilla_rifleman : CGQC_Soldat_Base
 
     class EventHandlers
     {
-		//init = ["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_roleSwitch.sqf";
+		//init = ["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_switch_role.sqf";
     };
 };
