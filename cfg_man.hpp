@@ -19,15 +19,7 @@ class CAManBase: Man {
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Inspect the soldiers gear'";
 			};
-			/*
-			class cgqc_openIfak {
-				displayName = "Open target's IFAK";
-				condition = "[cursorTarget, 'cgqc_items_ifak'] call BIS_fnc_hasItem";
-				statement = "['ifak', cursorTarget] execVM '\cgqc\functions\fnc_openItem.sqf'";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_med";
-				runOnHover = "hint 'Open the target soldiers IFAK'";
-			};*/
+	
 		};
 	};
 	class ACE_SelfActions {
