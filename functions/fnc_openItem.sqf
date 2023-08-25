@@ -2,6 +2,15 @@
 // Open item and put content on target
 _type = _this select 0;
 _target = _this select 1;
+_forceOpen = _this select 2;
+
+_work = "";
+if (player isEqualTo _target) then {
+	_work = "Opening your ";
+} else {
+	_work = "Opening target's ";
+};
+
 
 _check = [];
 _content = [];
@@ -58,38 +67,39 @@ _smoke_purple = {_x isEqualTo "SmokeShellPurple" } count _allMags;
 
 switch (_type) do {
 	case "ifak": { 
-		_target removeItem "cgqc_items_ifak";
-		for "_i" from _bandage to 9 do {_target addItem "ACE_fieldDressing"};
-		for "_i" from _epi to 1 do {_target addItem "ACE_epinephrine"};
-		for "_i" from _morphine to 1 do {_target addItem "ACE_morphine"};
-		for "_i" from _painkill to 4 do {_target addItem "FF_Painkiller"};
-		for "_i" from _splint to 0 do {_target addItem "ACE_splint"};
-		for "_i" from _tourniquet to 1 do {_target addItem "ACE_tourniquet"};
-		for "_i" from _liquids to 1 do {_target addItemToBackpack "ACE_salineIV_500"};
-		if (_target isEqualTo player) then {
-			hint "Unpacked your IFAK";
-		} else {
-			//_targetID = owner _target;
-			//_txt = format ["%1 unpacked your IFAK", name player];
-			//[_txt] remoteExec ["hint", _targetID];
-			hint "Unpacked the soldiers IFAK";
+		if (_forceOpen || _bandage < 2) then {
+			_work = _work + "IFAK";
+			_target removeItem "cgqc_items_ifak";
+			for "_i" from _bandage to 9 do {_target addItem "ACE_fieldDressing"};
+			for "_i" from _epi to 1 do {_target addItem "ACE_epinephrine"};
+			for "_i" from _morphine to 1 do {_target addItem "ACE_morphine"};
+			for "_i" from _painkill to 4 do {_target addItem "FF_Painkiller"};
+			for "_i" from _splint to 0 do {_target addItem "ACE_splint"};
+			for "_i" from _tourniquet to 1 do {_target addItem "ACE_tourniquet"};
+			for "_i" from _liquids to 1 do {_target addItemToBackpack "ACE_salineIV_500"};
+			hint _work;
 		};
 		break;
 	};
 	case "medkit": { 
-		_target removeItem "cgqc_items_medkit";
-		for "_i" from _bandage to 49 do {_target addItemToBackpack "ACE_fieldDressing"};
-		for "_i" from _epi to 9 do {_target addItemToBackpack "ACE_epinephrine"};
-		for "_i" from _morphine to 9 do {_target addItemToBackpack "ACE_morphine"};
-		for "_i" from _painkill to 14 do {_target addItemToBackpack "FF_Painkiller"};
-		for "_i" from _splint to 5 do {_target addItemToBackpack "ACE_splint"};
-		for "_i" from _tourniquet to 5 do {_target addItemToBackpack "ACE_tourniquet"};
-		for "_i" from _1000ml to 4 do {_target addItemToBackpack "ACE_salineIV"};
-		for "_i" from _500ml to 7 do {_target addItemToBackpack "ACE_salineIV_500"};
-		for "_i" from _pak to 0 do {_target addItemToBackpack "ACE_personalAidKit"};
-		for "_i" from _smoke_purple to 1 do {_target addItemToBackpack "SmokeShellPurple"};
-		for "_i" from _medbag to 0 do {_target addItemToBackpack "FSGm_ItemMedicBag"};
-		hint "Medkit unpacked";
+		if (player isEqualTo _target) then {
+			if (_forceOpen || _liquids < 3) then {
+				_work = _work + "Medkit";
+				_target removeItem "cgqc_items_medkit";
+				for "_i" from _bandage to 49 do {_target addItemToBackpack "ACE_fieldDressing"};
+				for "_i" from _epi to 9 do {_target addItemToBackpack "ACE_epinephrine"};
+				for "_i" from _morphine to 9 do {_target addItemToBackpack "ACE_morphine"};
+				for "_i" from _painkill to 14 do {_target addItemToBackpack "FF_Painkiller"};
+				for "_i" from _splint to 5 do {_target addItemToBackpack "ACE_splint"};
+				for "_i" from _tourniquet to 5 do {_target addItemToBackpack "ACE_tourniquet"};
+				for "_i" from _1000ml to 4 do {_target addItemToBackpack "ACE_salineIV"};
+				for "_i" from _500ml to 7 do {_target addItemToBackpack "ACE_salineIV_500"};
+				for "_i" from _pak to 0 do {_target addItemToBackpack "ACE_personalAidKit"};
+				for "_i" from _smoke_purple to 1 do {_target addItemToBackpack "SmokeShellPurple"};
+				for "_i" from _medbag to 0 do {_target addItemToBackpack "FSGm_ItemMedicBag"};
+				hint _work;
+			};
+		};
 		break;
 	};
 	case "mags": {

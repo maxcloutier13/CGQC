@@ -300,21 +300,13 @@ if (cgqc_player_hasUnsung) then {
 // Medical menu / IFAK eventhandler 
 ["ace_medicalMenuOpened", {
     params ["_acePlayer", "_targetPlayer", "_display"];
-	_work = "";
-	_fail = "";
-	if (_acePlayer isEqualTo _targetPlayer) then {
-		_work = "Opening your IFAK";
-		_fail = "";
-	} else {
-		_work = "Opening victims IFAK";
-		_fail = "";
-	};
 	// Check if target has an IFAK 
 	if([_targetPlayer, 'cgqc_items_ifak'] call BIS_fnc_hasItem) then {
-		hint _work;
-		['ifak', _targetPlayer] execVM '\cgqc\functions\fnc_openItem.sqf';
-	}else{
-		hint _fail;
+		['ifak', _targetPlayer, false] execVM '\cgqc\functions\fnc_openItem.sqf';
+	};
+	// Check if player 
+	if([player, 'cgqc_items_medkit'] call BIS_fnc_hasItem) then {
+		['medkit', _targetPlayer, false] execVM '\cgqc\functions\fnc_openItem.sqf';
 	};
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
 }] call CBA_fnc_addEventHandler;
