@@ -1,3 +1,6 @@
+// --- cfgContainers ----------------------------------------------------------
+// Anything that contains shits
+
 class Land_Ammobox_rounds_F;
 class Land_CanisterFuel_F;
 class Box_NATO_Equip_F;
@@ -96,6 +99,34 @@ class cgqc_box_mk1_ammocan :  NATO_Box_Base
 
 
     ace_rearm_defaultSupply = 10;
+    ace_cargo_size = 1;  // Cargo space the object takes
+    ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
+    ace_cargo_noRename = 0;  // Blocks renaming object (1-blocked, 0-allowed)
+    
+    ace_dragging_canDrag = 1;  // Can be dragged (0-no, 1-yes)
+    ace_dragging_dragPosition[] = {0, 1.5, 0};  // Offset of the model from the body while dragging (same as attachTo) (default: [0, 1.5, 0])
+    ace_dragging_dragDirection = 0;  // Model direction while dragging (same as setDir after attachTo) (default: 0)
+    ace_dragging_canCarry = 1;  // Can be carried (0-no, 1-yes)
+    ace_dragging_carryPosition[] = {0, 1, 1};  // Offset of the model from the body while dragging (same as attachTo) (default: [0, 1, 1])
+    ace_dragging_carryDirection = 0;  // Model direction while dragging (same as setDir after attachTo) (default: 0)
+};
+// Mk1 Ressuply box
+class Box_NATO_Wps_F;
+class cgqc_box_mk1_supplies : Box_NATO_Wps_F
+{
+    scope = 2;
+    author = "silent1";
+    _generalMacro = "cgqc_box_mk1_supplies";
+    displayName = "CGQC Infantry Supply box";
+    maximumLoad = 3000; 
+    hiddenSelectionsTextures[] = {
+        "\CGQC\containers\cgqc_box_mk1_supplies.paa", 
+        "\CGQC\containers\cgqc_box_mk1_ammobox.paa"
+    };
+    class EventHandlers
+    {
+        init = "[_this] execVM '\cgqc\containers\cgqc_box_mk1_supplies.sqf'";
+    };
     ace_cargo_size = 1;  // Cargo space the object takes
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
     ace_cargo_noRename = 0;  // Blocks renaming object (1-blocked, 0-allowed)
