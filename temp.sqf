@@ -1388,3 +1388,11 @@ hint "Teleported! Checking location suitability...";
 		};
 	} forEach nearestLocations [getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"), [_x], worldSize];  
 } forEach _targets;
+
+
+
+
+
+
+
+
