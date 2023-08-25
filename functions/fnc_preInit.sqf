@@ -49,6 +49,15 @@ cgqc_mission_daytime = true;
 cgqc_mission_dro = false;
 cgqc_mission_dro_ready = false;
 
+// *** GameState stuff *********************
+cgqc_state_pregame = true;
+cgqc_state_started = false;
+cgqc_state_briefing = false;
+cgqc_state_briefing_full = false;
+cgqc_state_briefing_leaders = false;
+cgqc_state_debrief = false;
+cgqc_state_end = false;
+
 // *** Magic range stuff *******************
 cgqc_range_on = false;
 cgqc_range_player_pos = [];
@@ -114,9 +123,6 @@ cgqc_player_stash_mags = [];
 cgqc_zeus_event = false;
 cgqc_zeus_crate = false;
 cgqc_zeus_cargo = false;
-cgqc_zeus_game_started = false;
-cgqc_zeus_briefing = false;
-cgqc_zeus_briefingCmd = false;
 cgqc_zeus_mapRestricted = false;
 cgqc_zeus_mapRestricted_count = 0;
 cgqc_zeus_mapRestricted_txt = "";
@@ -235,16 +241,17 @@ jibrm_restrictmarkers_shareDistance = 10;
 
 // Check what DLC the player owns 
 cgqc_player_ownedDLCs = getDLCs 1;
-cgqc_player_hasAceMedical = isClass(configFile >> "cfgPatches" >> "ace_medical_treatment");
-cgqc_player_hasAnti = isClass(configFile >> "cfgPatches" >> "A3A_Events");
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
-cgqc_player_has23rd = isClass(configFile >> "cfgPatches" >> "23rd_Logo_core");
-cgqc_player_hasRHS = isClass(configFile >> "cfgPatches" >> "rhsusf_weapons"); 
-cgqc_player_hasDrongoFactions = isClass(configFile >> "cfgPatches" >> "DSF_ABUS");
-cgqc_player_has2023 = isClass(configFile >> "cfgPatches" >> "CGQC_2022"); // Returns true if 2023 is enabled
-cgqc_player_hasScandinavia = isClass(configFile >> "cfgPatches" >> "NORTH_Main"); 
-cgqc_player_hasIfa3 = isClass(configFile >> "cfgPatches" >> "WW2_Core_c_IF_Data_c");
-cgqc_player_hasUnsung =  isClass(configFile >> "cfgPatches" >> "uns_base");
+
+cgqc_player_hasAceMedical = ["ace_medical_treatment"] call ace_common_fnc_isModLoaded;
+cgqc_player_hasAnti = ["A3A_Events"] call ace_common_fnc_isModLoaded;
+cgqc_player_has23rd = ["23rd_Logo_core"] call ace_common_fnc_isModLoaded;
+cgqc_player_hasRHS = ["rhsusf_weapons"] call ace_common_fnc_isModLoaded;
+cgqc_player_hasDrongoFactions = ["DSF_ABUS"] call ace_common_fnc_isModLoaded;
+cgqc_player_has2023 = ["CGQC_2022"] call ace_common_fnc_isModLoaded;
+cgqc_player_hasScandinavia = ["NORTH_Main"] call ace_common_fnc_isModLoaded;
+cgqc_player_hasIfa3 = ["WW2_Core_c_IF_Data_c"] call ace_common_fnc_isModLoaded;
+cgqc_player_hasUnsung = ["uns_base"] call ace_common_fnc_isModLoaded;
 // Eras
 if (cgqc_player_hasIfa3) then {cgqc_player_isWw2 = true;}; // WW2
 if (cgqc_player_hasScandinavia) then {cgqc_player_isWw2 = true;}; // WW2
