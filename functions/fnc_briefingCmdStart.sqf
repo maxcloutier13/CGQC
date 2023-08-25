@@ -3,7 +3,7 @@
 trgBriefCmd_units = [];
 trgBriefCmd_player_lowered = false;
 publicVariable "trgBriefCmd_player_lowered";
-while {cgqc_zeus_briefingCmd} do {
+while {cgqc_state_briefing_leaders} do {
 	{ 
 		if (_x in list cgqc_briefingCmd_trg) then {
 			trgBriefCmd_current = _x;

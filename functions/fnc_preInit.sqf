@@ -309,11 +309,11 @@ if (cgqc_player_hasUnsung) then {
     params ["_acePlayer", "_targetPlayer", "_display"];
 	// Check if target has an IFAK 
 	if([_targetPlayer, 'cgqc_items_ifak'] call BIS_fnc_hasItem) then {
-		['ifak', _targetPlayer, false] execVM '\cgqc\functions\fnc_openItem.sqf';
+		['ifak', _targetPlayer, false] execVM '\cgqc\functions\fnc_openMedical.sqf';
 	};
 	// Check if player 
 	if([player, 'cgqc_items_medkit'] call BIS_fnc_hasItem) then {
-		['medkit', _targetPlayer, false] execVM '\cgqc\functions\fnc_openItem.sqf';
+		['medkit', _targetPlayer, false] execVM '\cgqc\functions\fnc_openMedical.sqf';
 	};
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
 }] call CBA_fnc_addEventHandler;
@@ -371,9 +371,9 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
     [_menu_name, "Radios"], "Zeus"] call CBA_fnc_addSetting;
 
 // Briefing  ===============================================================================================
-["cgqc_setting_briefingCmd_area","SLIDER", ["Commander's Briefing area size", "Square around the Zeus"],
+["cgqc_setting_briefingCmd_area","SLIDER", ["Leaders's Briefing area size", "Square around the Zeus"],
 [_menu_name, "Briefing"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
-["cgqc_setting_briefing_area","SLIDER", ["General Briefing area size", "Square around the Zeus"],
+["cgqc_setting_briefing_area","SLIDER", ["Full Briefing area size", "Square around the Zeus"],
 [_menu_name, "Briefing"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
 
 // Zeus radios ===============================================================================================
@@ -439,6 +439,99 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_fortify_10", "EDITBOX", ["Item 10:", "Item 10"], 
     [_menu_name, "Fortify"],""
 ] call CBA_fnc_addSetting;
+
+// IFAK/Medkit/Bandolier content ===================================================================================================
+
+// IFAK
+["cgqc_config_ifak_bandages", "SLIDER",["Bandages", "Number in IFAK"], 
+    [_menu_name, "Content: IFAK"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_ifak_bandages"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_epi", "SLIDER",["Epinephrine", "Number in IFAK"], 
+    [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_epi"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_morphine", "SLIDER",["Morphine", "Number in IFAK"], 
+    [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_morphine"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_painkill", "SLIDER",["Painkillers", "Number in IFAK"], 
+    [_menu_name, "Content: IFAK"], [0, 30, 5, 0], 1, {publicVariable "cgqc_config_ifak_painkill"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_splint", "SLIDER",["Splint", "Number in IFAK"], 
+    [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_splint"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_tourniquet", "SLIDER",["Tourniquets", "Number in IFAK"], 
+    [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_tourniquet"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_liquids", "SLIDER",["Saline", "Number in IFAK"], 
+    [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_liquids"}, false] call CBA_fnc_addSetting;
+
+// Medic Supplies
+["cgqc_config_medkit_bandages", "SLIDER",["Bandages", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 100, 50, 0], 1, {publicVariable "cgqc_config_medkit_bandages"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_epi", "SLIDER",["Epinephrine", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_epi"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_morphine", "SLIDER",["Morphine", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_morphine"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_painkill", "SLIDER",["Painkillers", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_medkit_painkill"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_splint", "SLIDER",["Splint", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_splint"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_tourniquet", "SLIDER",["Tourniquets", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_tourniquet"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_1000", "SLIDER",["Saline 1000ml", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 5, 0], 1, {publicVariable "cgqc_config_medkit_1000"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_500", "SLIDER",["Saline 500ml", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 8, 0], 1, {publicVariable "cgqc_config_medkit_500"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_pak", "SLIDER",["PAK", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 5, 8, 0], 1, {publicVariable "cgqc_config_medkit_pak"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_smoke", "SLIDER",["Smoke (Purple)", "Number in medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 5, 8, 0], 1, {publicVariable "cgqc_config_medkit_smoke"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_medbag", "SLIDER",["Medbag", "Numberin medkit"], 
+    [_menu_name, "Content: Medic Supplies"], [0, 1, 1, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
+
+// Ammo Bandoliers
+["cgqc_config_ammo_primary", "SLIDER",["Primary mags", "Number in bandolier"], 
+	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 6, 0], 1, {publicVariable "cgqc_config_ammo_primary"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_ammo_refill", "CHECKBOX", ["Refill", "Refill handgun/throwables instead of adding more"],
+	[_menu_name, "Content: Ammo Bandolier"], true] call CBA_fnc_addSetting;
+["cgqc_config_ammo_handgun", "SLIDER",["Handgun mags", "Number in bandolier"], 
+	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_handgun"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_ammo_nade", "SLIDER",["Grenades", "Number in bandolier"], 
+    [_menu_name, "Content: Ammo Bandolier"], [0, 25, 4, 0], 1, {publicVariable "cgqc_config_ammo_nade"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ammo_nade_type", "EDITBOX", ["Grenade Type", "Type of grenade"], 
+    [_menu_name, "Content: Ammo Bandolier"], "HandGrenade"] call CBA_fnc_addSetting;
+
+["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"], 
+    [_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"], 
+    [_menu_name, "Content: Ammo Bandolier"], "ACE_CTS9"] call CBA_fnc_addSetting;
+
+["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"], 
+    [_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ammo_smoke_type", "EDITBOX", ["Smoke Grenade Type", "Type of smoke"], 
+    [_menu_name, "Content: Ammo Bandolier"], "SmokeShell"] call CBA_fnc_addSetting;
+
+// Supply box 
+["cgqc_config_supply_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ammo"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_ifak", "SLIDER",["Kit: Individual First-Aid", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ifak"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_medkit", "SLIDER",["Kit: Medic Supply", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 50, 2, 0], 1, {publicVariable "cgqc_config_supply_medkit"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_supply_launcher", "SLIDER",["Launchers", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_supply_launcher"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_nlaw", "SLIDER",["NLAW", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_nlaw"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_supply_explosives", "SLIDER",["Explosive charges", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_mine_large", "SLIDER",["Large mines", "AT mines"], 
+    [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_large"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_mine_medium", "SLIDER",["Medium mines", "Anti vehicles mines"], 
+    [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_mine_small", "SLIDER",["Small mines", "Anti-personel mines"], 
+    [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_supply_batteries", "SLIDER",["Batteries", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_batteries"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_radios", "SLIDER",["Radios", "Number in supply box"], 
+    [_menu_name, "Content: Supply Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
 
 // Player custom Options ===================================================================================================
 // Check that 2023 is not present 
