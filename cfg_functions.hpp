@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class loadTrainingMenu{
+            file = "\cgqc\functions\fnc_trainingMenu.sqf";
+            description = "Load training ace-interaction menu";
+        };
+         
         class removeRadios{
             file = "\cgqc\functions\fnc_removeRadios.sqf";
             description = "Remove all radios on player";
