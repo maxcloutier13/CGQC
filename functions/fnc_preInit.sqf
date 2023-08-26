@@ -318,7 +318,7 @@ if (cgqc_player_hasUnsung) then {
 }] call CBA_fnc_addEventHandler;
 
 // Addon Options ===================================================================================================
-_menu_name = "CGQC";
+_menu_name = "CGQC Zeus";
 
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
