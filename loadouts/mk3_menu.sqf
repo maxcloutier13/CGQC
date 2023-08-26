@@ -149,19 +149,19 @@ if (hasInterface) then {
 					// Alternative Primaries ---------------------------------------------------------------------------------------------------------
 					_action = [ "menu_swat_alt", "Switch: Primary", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa", {""}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" ], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_swat_alt_p90", "p90", "", {["swat_p90"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_alt_p90", "p90", "", {["swat_p90"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_swat_alt_mp5", "MP5sd6", "", {["swat_mp5sd6"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_alt_mp5", "MP5sd6", "", {["swat_mp5sd6"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_swat_alt_blk", ".300 Blackout", "", {["swat_blk"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_alt_blk", ".300 Blackout", "", {["swat_blk"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_swat_alt_mp7", "MP7 AP", "", {["swat_mp7"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_alt_mp7", "MP7 AP", "", {["swat_mp7"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_swat_alt_socom", "Socom 16", "", {["swat_socom"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_alt_socom", "Socom 16", "", {["swat_socom"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_swat_alt_m14", "M14 DMR", "", {["swat_m14"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_alt_m14", "M14 DMR", "", {["swat_m14"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_swat_alt_m24", "M24", "", {["swat_m24"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_alt_m24", "M24", "", {["swat_m24"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 					// 2023 ***********************************************************************************
@@ -333,89 +333,89 @@ if (hasInterface) then {
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				
 					// CQB
-					_action = [ "menu_mk2_alt_mk18", "10in Mk18", "", {["mk18_dot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_mk18", "10in Mk18", "", {["mk18_dot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_mk18gl", "10in Mk18 GL", "", {["mk18_gl"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_mk18gl", "10in Mk18 GL", "", {["mk18_gl"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_GL"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_416", "10in HK416", "", {["416_dot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_416", "10in HK416", "", {["416_dot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_acr", "10.5in ACR-E", "", {["ACR_dot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_acr", "10.5in ACR-E", "", {["ACR_dot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_virtus", "11.5in Virtus", "", {["virtus_dot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_virtus", "11.5in Virtus", "", {["virtus_dot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_sr16", "11.5in SR16", "", {["sr16_dot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_sr16", "11.5in SR16", "", {["sr16_dot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_g36v", "12.5in G36v", "", {["g36_dot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_g36v", "12.5in G36v", "", {["g36_dot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_ctar21", "15in CTAR-21", "", {["CTAR21"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_ctar21", "15in CTAR-21", "", {["CTAR21"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					
 					// Carbines
-					_action = [ "menu_mk2_alt_m4dot", "14in M4blkII Dot+", "", {["m4_dotplus"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m4dot", "14in M4blkII Dot+", "", {["m4_dotplus"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_m4lpvo", "14in M4blkII LPVO", "", {["m4_lpvo"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m4lpvo", "14in M4blkII LPVO", "", {["m4_lpvo"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_m320", "14in M4blkII GL", "", {["m4_gl_m320"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m320", "14in M4blkII GL", "", {["m4_gl_m320"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_GL"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_sr16dot", "14.5in SR16 Dot+", "", {["sr16_dotplus"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_sr16dot", "14.5in SR16 Dot+", "", {["sr16_dotplus"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_sr16lpvo", "14.5in SR16 LPVO", "", {["sr16_lpvo"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_sr16lpvo", "14.5in SR16 LPVO", "", {["sr16_lpvo"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_acredot", "14.5in ACR-E Dot+", "", {["acre_dotplus"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_acredot", "14.5in ACR-E Dot+", "", {["acre_dotplus"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_acrelpvo", "14.5in ACR-E LPVO", "", {["acre_lpvo"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_acrelpvo", "14.5in ACR-E LPVO", "", {["acre_lpvo"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_acregl", "14.5in ACR-E GL", "", {["acre_gl"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_acregl", "14.5in ACR-E GL", "", {["acre_gl"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_416dot+", "14.5in HK416 Dot+", "", {["sr16_dotplus"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_416dot+", "14.5in HK416 Dot+", "", {["sr16_dotplus"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_416lpvo", "14.5in HK416 LPVO", "", {["sr16_lpvo"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_416lpvo", "14.5in HK416 LPVO", "", {["sr16_lpvo"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_ctar21", "18in CTAR-21 ", "", {["TAR21"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_ctar21", "18in CTAR-21 ", "", {["TAR21"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_ctar21gl", "18in GTAR-21 GL", "", {["TAR21GL"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_ctar21gl", "18in GTAR-21 GL", "", {["TAR21GL"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 					// Rifles
-					_action = [ "menu_mk2_alt_m27", "16.5in M27 LPVO", "", {["m27_lpvo"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m27", "16.5in M27 LPVO", "", {["m27_lpvo"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_mk12", "18in Mk12 LPVO", "", {["mk12_lpvo"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_mk12", "18in Mk12 LPVO", "", {["mk12_lpvo"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_m16lpvo", "20in M16a4 ShortDot", "", {["m16_shortdot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m16lpvo", "20in M16a4 ShortDot", "", {["m16_shortdot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_acrelpvo", "20in ACR-E ShortDot", "", {["acre_shortdot"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_acrelpvo", "20in ACR-E ShortDot", "", {["acre_shortdot"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					
 					// DMR 7.62
-					_action = [ "menu_mk2_alt_m110k5", "14.5in M110k5", "", {["m110k5"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m110k5", "14.5in M110k5", "", {["m110k5"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_socom", "16in SOCOM16", "", {["socom16"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_socom", "16in SOCOM16", "", {["socom16"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_m110", "20in M110", "", {["m110_leupold"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m110", "20in M110", "", {["m110_leupold"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_417", "20in HK417", "", {["417"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_417", "20in HK417", "", {["417"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_sig556", "20in SIG 556", "", {["sig556"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_sig556", "20in SIG 556", "", {["sig556"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_m14ebr", "22in M14EBR", "", {["m14ebr"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m14ebr", "22in M14EBR", "", {["m14ebr"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_dmr"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					
 					//Sniper
-					_action = [ "menu_mk2_alt_noreen", "20in Noreen .338", "", {["noreen"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_noreen", "20in Noreen .338", "", {["noreen"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_m200", "29in M200 .408", "", {["m200"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m200", "29in M200 .408", "", {["m200"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					// MG
-					_action = [ "menu_mk2_alt_m27", "AutoRifle - m27", "", {["m27"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_m27", "AutoRifle - m27", "", {["m27"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_mk46", "LightMG - mk46", "", {["mk46"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_mk46", "LightMG - mk46", "", {["mk46"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_mk48", "HeavyMG - mk48", "", {["mk48"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_mk48", "HeavyMG - mk48", "", {["mk48"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_mg"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					// Others 
-					_action = [ "menu_mk2_alt_p90", "P90 - 9mm", "", {["p90"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_p90", "P90 - 9mm", "", {["p90"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					_action = [ "menu_mk2_alt_blck", "MCX - 300BLK", "", {["mcx_t2"] execVM "\CGQC\loadouts\mk3_switch_primary.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_mk2_alt_blck", "MCX - 300BLK", "", {["mcx_t2"] call cgqc_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 					// 2023 arsenal ---------------------------------------------------------------------------------------------------
