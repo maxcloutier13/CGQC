@@ -216,7 +216,7 @@ switch (_unit) do {
 
 // Training menu if training is on
 if (cgqc_flag_isTraining) then {
-	execVM "\cgqc\functions\fnc_trainingMenu.sqf";
+	call cgqc_fnc_loadTrainingMenu;
 };
 
 cgqc_postInitClient_done = true;

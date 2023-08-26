@@ -622,14 +622,9 @@ if (hasInterface) then {
 			_action = [ "menu_radios_6", "Zeus - 343+117+117", "", {["zeus_radios", 0] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			
-
 			// Zeus Arsenal ========================================================================================================
 			_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[] execVM "\CGQC\loadouts\mk3_zeusArsenal.sqf"}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-			//Training ==============================================================================================================
-			//_action = [ "menu_training", "Training Mode", "", {hint "Check ton Ace Self-Action";execVM "\cgqc\functions\fnc_trainingMenu.sqf"}, {!cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;       
-			//_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;    	
 		};
 	};
 };

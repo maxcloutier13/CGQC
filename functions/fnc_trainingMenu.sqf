@@ -1,7 +1,6 @@
 // --- trainingMenu ----------------------------------------------------------
 // Add the training shit to the player
 cgqc_training_mode = true;
- 
 
 // Training actions ---------------------------------------------------------------------------------
 _action = [ "menu_self_training", "Training", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa", {}, {cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;
