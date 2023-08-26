@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class switchPerks{
+            file = "\cgqc\functions\fnc_switchPerks.sqf";
+            description = "Switch role perks";
+        };
+
         class loadTrainingMenu{
             file = "\cgqc\functions\fnc_trainingMenu.sqf";
             description = "Load training ace-interaction menu";

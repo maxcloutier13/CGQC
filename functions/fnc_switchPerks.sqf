@@ -1,7 +1,7 @@
 // --- perkSwitch ----------------------------------------------------------
 // Switch perks
 
-_type = _this select 0;
+params ["_type"];
 
 // Set all traits to default
 player setUnitTrait ["Medic", false];
@@ -71,6 +71,6 @@ switch (_type) do {
 	case "inf":{
 	};
 	default	{
-		hintc "mk3_switch_perks.sqf fail";
+		hintc "mk3_switch_perk fail";
 	};
 };
