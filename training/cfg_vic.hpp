@@ -46,6 +46,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_trai
     _textures = getObjectTextures BIS_fnc_garage_center;
     deleteVehicle BIS_fnc_garage_center;
     _newvehicle = createVehicle [typeOf BIS_fnc_garage_center, (player getPos [17, getDir player]), [], 0, "NONE"];
+	if(!isNil "cgqc_spawnvic_h") then {deleteVehicle cgqc_spawnvic_h}; 
 	cgqc_spawnvic_h = "cgqc_refuel_h_short" createVehicle (getPos _newvehicle);
 	_count = 0;
     {
