@@ -111,7 +111,6 @@ cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
-cgqc_options_zeus_radios = true;
 cgqc_reset_speaker = false;
 // Advanced perks 
 cgqc_perks_ghillie_isOn = false;
@@ -319,7 +318,7 @@ if (cgqc_player_hasUnsung) then {
 }] call CBA_fnc_addEventHandler;
 
 // Addon Options ===================================================================================================
-_menu_name = "CGQC";
+_menu_name = "CGQC Zeus";
 
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 

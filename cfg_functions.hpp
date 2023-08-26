@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class removeRadios{
+            file = "\cgqc\functions\fnc_removeRadios.sqf";
+            description = "Remove all radios on player";
+        };
         class perkGoggles{
             file = "\cgqc\functions\fnc_perksGoggles.sqf";
             description = "Change goggles";

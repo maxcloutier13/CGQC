@@ -1,12 +1,12 @@
 // --- mk3GetRadios ----------------------------------------------------------
 // Get radios and set everything
 
+[ACE_player, "all"] call CGQC_fnc_removeRadios;
+
+// Handle training radios
 if (cgqc_flag_isTraining) then { 
 	// Training setup 
 	hint "Switching radios... Training";
-	_radios = call acre_api_fnc_getCurrentRadioList;  
-	{player removeItem _x;}forEach _radios;  
-	sleep 0.5;
 	player addItem "ACRE_PRC343";
 	player addItem "ACRE_PRC152"; 
 	sleep 0.5;
@@ -24,9 +24,7 @@ if (cgqc_flag_isTraining) then {
 		case "inf":
 		{
 			hint "Switching radios... Inf";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios; 
-			sleep 0.5;
+			[ACE_player, "all"] call CGQC_fnc_removeRadios;
 			player addItem "ACRE_PRC343";
 			
 			/*
@@ -52,9 +50,7 @@ if (cgqc_flag_isTraining) then {
 		case "training":
 		{
 			hint "Switching radios... Training";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC343";
 			player addItem "ACRE_PRC152"; 
 			sleep 0.5;
@@ -68,9 +64,7 @@ if (cgqc_flag_isTraining) then {
 		case "medic":
 		{
 			hint "Switching radios... Medic";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC343";
 			player addItem "ACRE_PRC152"; 
 			sleep 0.5;
@@ -84,9 +78,7 @@ if (cgqc_flag_isTraining) then {
 		case "tl":
 		{
 			hint "Switching radios... TL";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC343";
 			player addItem "ACRE_PRC152"; 
 			//player addItem "ACRE_PRC117F"; 
@@ -101,9 +93,7 @@ if (cgqc_flag_isTraining) then {
 		case "sl":
 		{
 			hint "Switching radios... SL";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC343";
 			player addItem "ACRE_PRC117F"; 
 			player addItem "ACRE_PRC117F"; 
@@ -118,9 +108,7 @@ if (cgqc_flag_isTraining) then {
 		case "recon":
 		{
 			hint "Switching radios... Recon";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC343"; 
 			player addItem "ACRE_PRC152"; 
 			player addItem "ACRE_PRC152"; 
@@ -135,9 +123,7 @@ if (cgqc_flag_isTraining) then {
 		case "pilot":
 		{
 			hint "Switching radios... Pilot";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC152"; 
 			player addItem "ACRE_PRC152"; 
 			sleep 0.5;
@@ -151,9 +137,7 @@ if (cgqc_flag_isTraining) then {
 		case "driver":
 		{
 			hint "Switching radios... Driver";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC152"; 
 			player addItem "ACRE_PRC152"; 
 			sleep 0.5;
@@ -168,9 +152,7 @@ if (cgqc_flag_isTraining) then {
 		case "clout":
 		{
 			hint "Switching radios... Cloutier";
-			_radios = call acre_api_fnc_getCurrentRadioList;  
-			{player removeItem _x;}forEach _radios;  
-			sleep 0.5;
+			
 			player addItem "ACRE_PRC343"; 
 			player addItem "ACRE_PRC152"; 
 			player addItem "ACRE_PRC152"; 
