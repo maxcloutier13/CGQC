@@ -1,6 +1,6 @@
 // --- primarySwitch ----------------------------------------------------------
 // Switch primary weapons
-_type = _this select 0;
+params ["_type"];
 _needGL = false;
 
 

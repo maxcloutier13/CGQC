@@ -1,6 +1,5 @@
 // --- perkSwitch ----------------------------------------------------------
 // Switch perks
-
 params ["_type"];
 
 // Set all traits to default
