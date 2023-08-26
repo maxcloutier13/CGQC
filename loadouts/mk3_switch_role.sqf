@@ -30,77 +30,10 @@ if (hasInterface) then {
         };
 
 		switch (_type) do {
-            // Command ========================================================================
-            case "vanilla_rifleman":{ 
-                [] execVM "\CGQC\loadouts\vanilla\loadout_basic.sqf";
-                [] execVM "\CGQC\loadouts\vanilla\loadout_rifleman.sqf";
-                ["inf"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "Vanilla Rifleman";
-                break;
-            };
-            case "vanilla_tl":{ 
-                [] execVM "\CGQC\loadouts\vanilla\loadout_basic.sqf";
-                [] execVM "\CGQC\loadouts\vanilla\loadout_tl.sqf";
-                ["tl"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "Vanilla TeamLeader";
-                break;
-            };
-            case "unsung_basic":{ 
-                [] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
-                ["inf"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "Basic Soldier";
-                break;
-            };
-			case "unsung_10":{ 
-				[] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
-                [] execVM "\CGQC\loadouts\unsung\loadout_1_0.sqf";
-                ["tl"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "1-0 Team Leader";
-                break;
-            };
-			case "unsung_11":{ 
-				[] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
-                [] execVM "\CGQC\loadouts\unsung\loadout_1_1.sqf";
-                ["inf"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "1-1 Radio 2iC";
-                break;
-            };
-			case "unsung_12":{ 
-				[] execVM "\CGQC\loadouts\unsung\loadout_basic.sqf";
-                [] execVM "\CGQC\loadouts\unsung\loadout_1_2.sqf";
-                ["medic"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "1-2 Medic";
-                break;
-            };
-            case "swat_assaulter":{
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_assaulter.sqf";
-                ["inf"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "Swat - Assaulter";
-                break;
-            };
-            case "swat_breacher":{
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_breacher.sqf";
-                ["eng"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "Swat - Breacher";
-                break;
-            };
-            case "swat_sniper":{
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_sniper.sqf";
-                ["recon"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "Swat - Sniper";
-                break;
-            };
-            case "swat_tl":{
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-                [] execVM "\CGQC\loadouts\2023\loadout_swat_tl.sqf";
-                ["tl"] call cgqc_fnc_switchPerks;
-				cgqc_player_role = "Swat - Team Leader";
-                break;
-            };
-
+            // Vanilla
+            #include "\cgqc\loadouts\vanilla\roles.hpp"
+            #include "\cgqc\loadouts\unsung\roles.hpp"
+            #include "\cgqc\loadouts\2023\roles.hpp"
             default	{
                 hintc "mk3_switch_role.sqf fail";
             };
