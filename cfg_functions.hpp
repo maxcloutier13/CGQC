@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class canBandage{
+            file = "\cgqc\functions\fnc_canBandage.sqf";
+            description = "Check if bandages are needed";
+        };        
         class switchPrimary{
             file = "\cgqc\functions\fnc_switchPrimary.sqf";
             description = "Switch primary weapon";

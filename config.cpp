@@ -152,3 +152,6 @@ class CfgSounds
 
 // Interface / UI modifications
 #include "cfg_interface.hpp"
+
+// Medical
+#include "cfg_medical.hpp"
