@@ -5,7 +5,7 @@
 player addVest "cgqc_vest_mk1_black_lr";
 
 // === Radios ==========================================================================================================
-["tl"] execVM "\CGQC\loadouts\mk3_getRadios.sqf";
+["tl"]call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
 ["UK3CB_MP5SD6"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";

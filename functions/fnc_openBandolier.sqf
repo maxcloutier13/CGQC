@@ -1,5 +1,6 @@
 // --- openBandolier ----------------------------------------------------------
 // Open ammo bandoliers and deal with them 
+diag_log "[CGQC_FNC] openBandolier  started";
 
 cgqc_fnc_addItemWithOverflow = {
 	params ["_unit", "_target", "_item", "_overflow"];

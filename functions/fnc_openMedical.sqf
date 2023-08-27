@@ -1,5 +1,7 @@
 // --- openMedical ----------------------------------------------------------
 // Open medical items
+diag_log "[CGQC_FNC] openMedical  started";
+
 _type = _this select 0;
 _target = _this select 1;
 _forceOpen = _this select 2;

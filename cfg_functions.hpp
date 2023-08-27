@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class getRadioPresets{
+            file = "\cgqc\functions\fnc_getRadioPresets.sqf";
+            description = "Get and set radios ";
+        };
         class setRadios{
             file = "\cgqc\functions\fnc_setRadios.sqf";
             description = "Setup radios according to preset";

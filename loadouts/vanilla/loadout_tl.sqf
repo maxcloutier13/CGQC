@@ -6,7 +6,7 @@
 ["vest", "V_PlateCarrier2_rgr"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
 
 // === Radios ==========================================================================================================
-["tl"] execVM "\CGQC\loadouts\mk3_getRadios.sqf";
+["tl"]call CGQC_fnc_getRadioPresets;
 
 // === Adjust Items ====================================================================================================
 player unlinkItem "cgqc_item_rangefinder";

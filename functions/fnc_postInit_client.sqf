@@ -1,5 +1,6 @@
 // --- postInit_client ----------------------------------------------------------
 // Start everything player related
+diag_log "[CGQC_INIT] postInit_client started";
 
 _version = "3.7.2";
 // Client-side code
@@ -169,7 +170,7 @@ player addEventHandler ["GetInMan", {
 
 //Sets radio channel names 
 [0] spawn CGQC_fnc_nameRadios;
-["radio_init"] execVM "\cgqc\functions\fnc_setRadios.sqf";
+["defaultLR"] call CGQC_fnc_setRadios;
 
 // Boost dragging maximum 
 ACE_maxWeightDrag = 3000;
@@ -219,4 +220,4 @@ if (cgqc_flag_isTraining) then {
 	call cgqc_fnc_loadTrainingMenu;
 };
 
-cgqc_postInitClient_done = true;
+cgqc_start_postInitClient_done = true;

@@ -4,7 +4,7 @@
 // === Adjust Uniform ====================================================================================================
 player addVest "cgqc_vest_mk1_black_rf";
 // === Radios ==========================================================================================================
-["tl"] execVM "\CGQC\loadouts\mk3_getRadios.sqf";
+["tl"]call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
 ["rhs_weap_m24sws"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";

@@ -13,8 +13,8 @@ switch (_type) do {
 		// Remove all radios
 		_radios = call acre_api_fnc_getCurrentRadioList;
 		{
-			player unassignItem _x;
-			player removeItem _x;
+			_target unassignItem _x;
+			_target removeItem _x;
 		} forEach _radios;
 
 		// Sanity check 

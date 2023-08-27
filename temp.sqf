@@ -332,7 +332,7 @@ player action ['SwitchWeapon', player, player, 100];
 
 sleep 3;
 // Set default left/right radios
-["radio_sides"] execVM "\cgqc\factions\stuff_player.sqf";
+["flipSides"] execVM "\cgqc\factions\stuff_player.sqf";
 
 // Welcome screen avec la patch et le message random
 if (cgqc_setting_show_welcome) then {

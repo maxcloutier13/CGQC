@@ -1,5 +1,7 @@
 // --- perksBasic ----------------------------------------------------------
 // Perks for the everyman
+diag_log "[CGQC_FNC] perksBasic  started";
+
 params ["_type", "_fromLoadout"];
 //Make sure the call is local
 waitUntil {!isNil "cgqc_player_patch_found"};

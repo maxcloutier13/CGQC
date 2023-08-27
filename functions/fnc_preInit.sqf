@@ -1,12 +1,16 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
+diag_log "[CGQC_INIT] preInit started";
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 // CGQC Variables ===================================================================================================
 // *** Init **********************
-cgqc_preInit_done = false;
-cgqc_postInitClient_done = false;
-cgqc_postInitServer_done = false;
-cgqc_2023_preInit_done = false;
+cgqc_start_preInit_done = false;
+cgqc_start_postInitClient_done = false;
+cgqc_start_postInitServer_done = false;
+cgqc_start_2023_preInit_done = false;
+
+// Intro/Welcome stuff
+cgqc_intro_running = false;
 cgqc_intro_running = false;
 cgqc_intro_done = false;
 cgqc_intro_skipped = false;
@@ -655,4 +659,4 @@ waitUntil {scriptDone _landnav};
 _convoy = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\convoy_fnc.sqf";
 waitUntil {scriptDone _convoy};
 // **************************************************************************************************************
-cgqc_preInit_done = true;
+cgqc_start_preInit_done = true;

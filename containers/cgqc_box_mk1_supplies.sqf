@@ -1,7 +1,7 @@
 // --- cgqc_box_mk1_supplies ----------------------------------------------------------
 // Dynamic supply box 
-waitUntil {!isNil "cgqc_postInitClient_done"};
-waitUntil {cgqc_postInitClient_done};
+waitUntil {!isNil "cgqc_start_postInitClient_done"};
+waitUntil {cgqc_start_postInitClient_done};
 if (isServer) then {
 	_crate = (_this select 0) select 0;
 	clearItemCargoGlobal _crate;

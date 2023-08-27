@@ -1,5 +1,6 @@
 // --- addPerks ----------------------------------------------------------
 // Add all perks to player and set defaults
+diag_log "[CGQC_INIT] addPerks started";
 
 // --- Perks Menu  ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -200,7 +201,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _
 _action = [ "menu_self_radios", " Radio Presets", "CGQC\textures\radio.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Set radios sides
-_action = [ "self_radio1", "Flip radios Gauche/Droite", "", {["radio_sides"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio1", "Flip radios Gauche/Droite", "", {["flipSides"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Set radio roles 
@@ -208,53 +209,53 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"]
 _action = [ "menu_self_spartan1", "Spartan 1", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "self_radio_spartan1", "343", "", {_ct = ["spartan", 1] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan1", "343", "", {_ct = ["spartan", 1] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan1_2", "343+152", "", {_ct = ["spartan_2", 1] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan1_2", "343+152", "", {_ct = ["spartan_2", 1] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan1_1", "Team Leader", "", {_ct = ["spartan_1", 1] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan1_1", "Team Leader", "", {_ct = ["spartan_1", 1] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan1"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Spartan 2
 _action = [ "menu_self_spartan2", "Spartan 2", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "self_radio_spartan2", "343", "", {_ct = ["spartan", 2] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan2", "343", "", {_ct = ["spartan", 2] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan2_2", "343+152", "", {_ct = ["spartan2", 2] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan2_2", "343+152", "", {_ct = ["spartan2", 2] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan2_1", "Team Leader", "", {_ct = ["spartan1", 2] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan2_1", "Team Leader", "", {_ct = ["spartan1", 2] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Spartan 2
 _action = [ "menu_self_spartan3", "Spartan 3", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "self_radio_spartan3", "343", "", {_ct = ["spartan", 3] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan3", "343", "", {_ct = ["spartan", 3] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan3_2", "343+152", "", {_ct = ["spartan2", 3] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan3_2", "343+152", "", {_ct = ["spartan2", 3] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "self_radio_spartan3_1", "Team Leader", "", {_ct = ["spartan1", 3] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_spartan3_1", "Team Leader", "", {_ct = ["spartan1", 3] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios", "menu_self_spartan2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Centaure
-_action = [ "self_radio_centaure", "Centaure/Blindés", "", {_ct = ["centaure"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_centaure", "Centaure/Blindés", "", {_ct = ["centaure"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Griffon
-_action = [ "self_radio_griffon", "Griffon/Heli", "", {_ct = ["griffon"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_griffon", "Griffon/Heli", "", {_ct = ["griffon"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // JTAC
-_action = [ "self_radio_jtac", "JTAC", "", {_ct = ["jtac"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_jtac", "JTAC", "", {_ct = ["jtac"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // HQ
-_action = [ "self_radio_hq", "HQ", "", {_ct = ["hq"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_hq", "HQ", "", {_ct = ["hq"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Toggle Speaker 1
-_action = [ "self_radio_speaker1", "Toggle Speaker 1", "", {["toggle_speaker"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_speaker1", "Toggle Speaker 1", "", {["toggle_speaker"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Toggle Speaker 2
-_action = [ "self_radio_speaker2", "Toggle Speaker 2", "", {["toggle_speaker_2"] execVM "\cgqc\functions\fnc_setRadios.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "self_radio_speaker2", "Toggle Speaker 2", "", {["toggle_speaker_2"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Cone of silence   ---------------------------------------------------------------------------------------------------------------
@@ -697,6 +698,4 @@ _statement = {
 _action = ["Drop Grenade", "Drop Grenade in Hatch", "",_statement,_condition] call ace_interact_menu_fnc_createAction;
 ["Tank", 0, ["ACE_MainActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
-
-// Return true 
-true
+diag_log "[CGQC_INIT] --- addPerks done";

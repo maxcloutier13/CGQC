@@ -1,6 +1,6 @@
 // --- Loadout Construction () ----------------------------------------------------------
 // Adds items to the construction truck's inventory
-waitUntil {sleep 1;cgqc_postInitClient_done};
+waitUntil {sleep 1;cgqc_start_postInitClient_done};
 const_unit = _this select 0;
 const_unit = const_unit select 0;
 

@@ -4,7 +4,7 @@
 /* MAX Fix needed
 
 if (isServer) then {
-	waitUntil {sleep 1;cgqc_postInitClient_done};
+	waitUntil {sleep 1;cgqc_start_postInitClient_done};
 	_type  = _this select 0;
 	y_vic = _this select 1;
 	y_vic = y_vic select 0;

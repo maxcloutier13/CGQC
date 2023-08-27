@@ -1,7 +1,7 @@
 // --- roleSwitch ----------------------------------------------------------
 // Switch roles
 waitUntil {!isNull (findDisplay 46)};
-waitUntil {cgqc_postInitClient_done};
+waitUntil {cgqc_start_postInitClient_done};
 cgqc_roleSwitch_done = false;
 cgqc_mk3_switching_vest = false;
 cgqc_mk3_switching_backpack = false;

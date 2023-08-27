@@ -1,8 +1,8 @@
-// --- mk3GetRadios ----------------------------------------------------------
+// --- getRadiosPresets ----------------------------------------------------------
 // Get radios and set everything
+params ["_type"];
+diag_log format ["[CGQC_FNC] getRadioPresets %1 started", _type];
 
-// Proceed
-_item = _this select 0;
 _radios = [];
 _preset = "";
 _team = "";
@@ -19,7 +19,7 @@ if (cgqc_flag_isTraining) then {
 	_preset = "training";
 	_team = 1;
 } else {
-	switch (_item) do {
+	switch (_type) do {
 		case "inf":	{_radios = ["ACRE_PRC343"];_preset = "spartan";_team = 1};
 		case "medic": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "medic";_team = 1};
 		case "tl": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "spartan_1";_team = 1};
@@ -34,3 +34,4 @@ if (cgqc_flag_isTraining) then {
 // Do the deed
 [_radios] call CGQC_fnc_addRadios;
 [_preset, _team] call CGQC_fnc_setRadios;
+diag_log "[CGQC_FNC] getRadioPresets done";
