@@ -1,8 +1,7 @@
 // --- postInit_client ----------------------------------------------------------
 // Set radio setups depending on role
 
-_type = _this select 0;
-_section = _this select 1;
+params ["_type", "_section"];
 _handRadios = [];
 _racks = [];
 _accessibleRacks = [];
@@ -19,7 +18,7 @@ _packRadio_1 = "";
 _packRadio_2 = "";
 _packRadio_3 = "";
 
-waitUntil {sleep 1;cgqc_postInitClient_done};
+waitUntil {sleep 0.5;cgqc_postInitClient_done};
 
 //disableUserInput = true;
 	switch (_type) do {
@@ -471,7 +470,9 @@ waitUntil {sleep 1;cgqc_postInitClient_done};
 			_success = [_radio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 			waitUntil {sleep 0.5;!isNil "_radio_2"};
 			_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-			hint "Training Radio Setup";
+			hint parseText "<t>
+			Radio1:Gauche/343/Team<br/> 
+			Radio2:Droite/152/Spartan/HQ</t>";
 		};
 		default	{
 			hint "fnc_setRadios fucked up. ";

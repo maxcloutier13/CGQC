@@ -12,6 +12,22 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class setRadios{
+            file = "\cgqc\functions\fnc_setRadios.sqf";
+            description = "Setup radios according to preset";
+        };
+        class addRadios{
+            file = "\cgqc\functions\fnc_addRadios.sqf";
+            description = "Add some specific radios to player";
+        };
+        class removeRadios{
+            file = "\cgqc\functions\fnc_removeRadios.sqf";
+            description = "Remove all radios on player";
+        };
+        class nameRadios {
+            file = "\cgqc\functions\fnc_nameRadios.sqf";
+            description = "Set radio channel names";
+        };      
         class switchPrimary{
             file = "\cgqc\functions\fnc_switchPrimary.sqf";
             description = "Switch primary weapon";
@@ -23,11 +39,6 @@ class CGQC {
         class loadTrainingMenu{
             file = "\cgqc\functions\fnc_trainingMenu.sqf";
             description = "Load training ace-interaction menu";
-        };
-         
-        class removeRadios{
-            file = "\cgqc\functions\fnc_removeRadios.sqf";
-            description = "Remove all radios on player";
         };
         class perkGoggles{
             file = "\cgqc\functions\fnc_perksGoggles.sqf";
@@ -64,20 +75,7 @@ class CGQC {
         class setZeus {
             file = "\cgqc\functions\fnc_setZeus.sqf";
             description = "Set zeus and keeps them there";
-        };
-        /*  
-        class setRadios {
-            file = "\cgqc\functions\fnc_setRadios.sqf";
-            description = "Set radio setups depending on role";
-        };*/
-       /* class lockChannels {
-            file = "\cgqc\functions\fnc_lockChannels.sqf";
-            description = "Lock some of the comms channels";
-        };  */
-        class nameRadios {
-            file = "\cgqc\functions\fnc_nameRadios.sqf";
-            description = "Set radio channel names";
-        };      
+        };        
         class maxMags {
             file = "\cgqc\functions\fnc_maxMags.sqf";
             description = "Limit maximum mags on player";
