@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class training{
+            file = "\cgqc\functions\fnc_training.sqf";
+            description = "Various training related shenanigans";
+        };
         class checkLoadout{
             file = "\cgqc\functions\fnc_checkLoadout.sqf";
             description = "Check if a loadout exist for that unit type";

@@ -35,5 +35,5 @@ if (isNil "_mag") then {
 		};
 		
 	};
-	hint format ["Vest: +%1 - Pack: +%2", _countVest, _countPack];
+	//hint format ["Vest: +%1 - Pack: +%2", _countVest, _countPack];
 };

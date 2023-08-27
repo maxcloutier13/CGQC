@@ -1,15 +1,16 @@
 // --- training ----------------------------------------------------------
 // Training shenanigans
-_item = _this select 0;
-train_option = _this select 1;
+params ["_type", "_option"];
+diag_log format ["[CGQC_FNC] training %1/%2 started", _type, _option];
+
 y_timeText = "";
-_skip = train_option;
+_skip = _option;
 _wind = 0;
 _change_wind = false;
-switch (_item) do {
+switch (_type) do {
 	case "random_all": {
-		["skip", 100] execVM '\cgqc\functions\fnc_training.sqf';
-		["random", 0] execVM '\cgqc\functions\fnc_training.sqf';
+		["skip", 100] call CGQC_fnc_training;
+		["random", 0] call CGQC_fnc_training;
 	};
 	case "skip": {
 		switch (_skip) do {
@@ -50,7 +51,7 @@ switch (_item) do {
 		_day = date select 2;
 		_hour = date select 3;
 		_min= date select 4;
-		switch (train_option) do {
+		switch (_option) do {
 			case 0: {
 				[0,{setDate [_year, _month, _day, _sunrise, 0]}] call CBA_fnc_globalExecute;
 				_text = "Aaah... sunrise...";
@@ -88,7 +89,6 @@ switch (_item) do {
 		w_north = floor random [0,2,4];
 		_change_wind = true;
 		hint "Low wind.";
-		sleep 3;
 		break;
 	};
 	case "wind_med": {
@@ -96,7 +96,6 @@ switch (_item) do {
 		w_north = floor random [5,7.5,10];
 		_change_wind = true;
 		hint "Medium wind.";
-		sleep 3;
 		break;
 	};
 	case "wind_hi": {
@@ -104,7 +103,6 @@ switch (_item) do {
 		w_north = floor random [10,15,20];
 		_change_wind = true;
 		hint "High wind.";
-		sleep 3;
 		break;
 	};
 	case "wind_random": {
@@ -112,7 +110,6 @@ switch (_item) do {
 		w_north = floor (random [0,20,35]);
 		_change_wind = true;
 		hint "Random wind.";
-		sleep 3;
 		break;
 	};
 };
@@ -121,6 +118,5 @@ if(_change_wind) then {
 	_n_side = selectRandom [-1,1];
 	setWind [w_east * _e_side, w_north * _n_side, true];
 	hint "Wind applied";
-	sleep 10;
-	hintSilent "";
 };
+diag_log format ["[CGQC_FNC] training done"];

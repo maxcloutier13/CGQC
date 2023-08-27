@@ -36,7 +36,8 @@ switch (_type) do {
 	case "training": {	
 		["defaultLR"] call CGQC_fnc_setRadios;
 		hint parseText "
-		<t>Radio1 - 343|L|1 - Spartan-1<br/>
+		--- Training radio setup --- <br/>
+		Radio1 - 343|L|1 - Spartan-1<br/>
 		Radio2 - 152|R|1 - Spartan/HQ<br/>";
 	};
 	case "flipSides":	{

@@ -306,7 +306,7 @@ if (cgqc_player_hasUnsung) then {
 ["cgqc_change_fucking_wind", {
 	params ["_type"];
 	hint format ["Event wind: %1", _type];
-	[_type] execVM "\cgqc\functions\fnc_training.sqf";
+	[_type] call CGQC_fnc_training;
 }] call CBA_fnc_addEventHandler;
 
 // Medical menu / IFAK eventhandler 
