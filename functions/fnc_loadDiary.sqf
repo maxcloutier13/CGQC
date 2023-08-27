@@ -1,5 +1,6 @@
-// --- briefing ----------------------------------------------------------
+// --- loadDiary ----------------------------------------------------------
 // Post group info in default briefing
+diag_log "[CGQC_FNC] loadDiary started";
 
 // CGQC Links
 _text = (
@@ -53,4 +54,6 @@ _mis = player createDiaryRecord ["Diary", ["Training Map","
 	- training_2023.takistan<br/>
 	- training_2023.Tanoa<br/></font>
 "]];*/
+
+diag_log "[CGQC_FNC] loadDiary done";
 true

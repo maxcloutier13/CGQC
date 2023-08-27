@@ -1,6 +1,6 @@
 // --- setRadios ----------------------------------------------------------
 // Set radio setups depending on role
-params ["_type", "_section"];
+params ["_type", ["_section", 1]];
 diag_log format ["[CGQC_FNC] setRadios %1/%2 started", _type, _section];
 
 _handRadios = [];

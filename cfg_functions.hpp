@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class checkLoadout{
+            file = "\cgqc\functions\fnc_checkLoadout.sqf";
+            description = "Check if a loadout exist for that unit type";
+        };
+        class switchRole{
+            file = "\cgqc\functions\fnc_switchRole.sqf";
+            description = "Switch player role";
+        };
         class getStuff{
             file = "\cgqc\functions\fnc_getStuff.sqf";
             description = "Get various items and things";
@@ -44,7 +52,7 @@ class CGQC {
             file = "\cgqc\functions\fnc_switchPerks.sqf";
             description = "Switch role perks";
         };
-        class loadTrainingMenu{
+        class trainingMenu{
             file = "\cgqc\functions\fnc_trainingMenu.sqf";
             description = "Load training ace-interaction menu";
         };
@@ -55,6 +63,10 @@ class CGQC {
         class isDaytime {
             file = "\cgqc\functions\fnc_isDaytime.sqf";
             description = "Check if Daytime Operation";
+        };
+        class keepPatch {
+            file = "\cgqc\functions\fnc_keepPatch.sqf";
+            description = "Make sure the player patch stays";
         };
         class setPatch {
             file = "\cgqc\functions\fnc_setPatch.sqf";
@@ -72,8 +84,8 @@ class CGQC {
             file = "\cgqc\functions\fnc_welcome.sqf";
             description = "Prep un message de bienvenue semi-random";
         }; 
-        class briefing {
-            file = "\cgqc\functions\fnc_briefing.sqf";
+        class loadDiary {
+            file = "\cgqc\functions\fnc_loadDiary.sqf";
             description = "Post group info in default briefing";
         };  
         class addPerks {

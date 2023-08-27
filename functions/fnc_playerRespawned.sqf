@@ -11,10 +11,9 @@ _unit setFace(_unit getVariable["Saved_Face",[]]);
 [_unit, _unit getVariable["Saved_Slinged",[]]] call GRAD_slingHelmet_fnc_addSlungHelmet;
 // Secondary weapon
 cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
-//Re-disable stamina, in-case 
-//_unit enableStamina false; 
+
 // Set patch
-_setPatch = [] spawn CGQC_fnc_setPatch; //Set patch again
+[] call CGQC_fnc_keepPatch;
 // Load Radio priorities
 y_mpttRadioList1 = _unit getVariable["Radio_Settings",[]];
 _success = [y_mpttRadioList1] call acre_api_fnc_setMultiPushToTalkAssignment;

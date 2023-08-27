@@ -1,7 +1,8 @@
-// --- roleSwitch ----------------------------------------------------------
-// Switch roles
-waitUntil {!isNull (findDisplay 46)};
-waitUntil {cgqc_start_postInitClient_done};
+// --- switchRole ----------------------------------------------------------
+// Switch roles. Haha yeah. 
+params ["_type", ["_section", 1], ["_showTransition", true]];
+diag_log format ["[CGQC_FNC] switchRole %1/%2/%3 started", _type, _section,_showTransition];
+
 cgqc_roleSwitch_done = false;
 cgqc_mk3_switching_vest = false;
 cgqc_mk3_switching_backpack = false;
@@ -9,11 +10,6 @@ cgqc_mk3_switching_backpack = false;
 if (hasInterface) then {
     try {
         disableUserInput true;
-        _type = _this select 0;
-        _section = _this select 1;
-        _showTransition = _this select 2;
-        //hintc "mk2_role_switch wtf";sleep 0.5;
-
         if (cgqc_setting_show_transition && _showTransition) then {
         // Fade to black  
             cutText ["", "BLACK FADED", 999];
@@ -26,7 +22,6 @@ if (hasInterface) then {
         // Check if player in chill mode
         if (cgqc_player_chill) then {
             ["ready", true] call CGQC_fnc_perksBasic;
-            waitUntil {!cgqc_player_chill};
         };
 
 		switch (_type) do {
@@ -35,7 +30,7 @@ if (hasInterface) then {
             #include "\cgqc\loadouts\unsung\roles.hpp"
             #include "\cgqc\loadouts\2023\roles.hpp"
             default	{
-                hintc "mk3_switch_role.sqf fail";
+                diag_log "[CGQC_ERROR] switchRole fail";
             };
         };
         sleep 0.5;
@@ -56,6 +51,8 @@ if (hasInterface) then {
     } catch{ // In case of error: Return control to player
 		disableUserInput false;
         cgqc_roleSwitch_done = true;
-        hintc "Erreur: mk2_role_switch";
+        diag_log "[CGQC_ERROR] switchRole fail";
 	};
 };
+
+diag_log "[CGQC_FNC] switchRole done";

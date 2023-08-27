@@ -1,6 +1,7 @@
 // --- findPatch ----------------------------------------------------------
 // Match steamID with known players 
-waitUntil {cgqc_player_rank_found};
+diag_log "[CGQC_FNC] findPatch started";
+
 //Check if player had a rank prefix 
 if (!cgqc_player_known) then {
 	// If player unknown: patch de baby yoda
@@ -58,5 +59,4 @@ cgqc_custom_playername = cgqc_player_patch select[11, 22];
 
 //Set variable
 cgqc_player_patch_found = true;
-
-
+diag_log "[CGQC_FNC] findPatch done";

@@ -1,5 +1,6 @@
 // --- findRank ----------------------------------------------------------
 // Match name with ranks
+diag_log "[CGQC_FNC] findRank started";
 
 // Find rank prefix
 _prefix = toLower (cgqc_player_name select[0, 4]);
@@ -122,3 +123,5 @@ switch (true) do {
 cgqc_player_rank_found = true;
 cgqc_player_rank = _player_rank;
 cgqc_player_rank_name = _player_rank_name;
+
+diag_log "[CGQC_FNC] findRank done";

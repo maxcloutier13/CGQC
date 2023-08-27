@@ -33,16 +33,16 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 		};
 		default	{ // Normal mk3 Arsenal
-			// Respawn point in front of Arsenal 
-			cgqc_mk2_arsenal_ctr = cgqc_mk2_arsenal_ctr + 1;
-			[west, getPosATL _crate, format["Arsenal West %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
-			[east, getPosATL _crate, format["Arsenal East %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
-			[independent, getPosATL _crate, format["Arsenal Independant %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
-
+			if (cgqc_flag_isTraining) then {
+				// Respawn point in front of Arsenal
+				cgqc_mk2_arsenal_ctr = cgqc_mk2_arsenal_ctr + 1;
+				[west, getPosATL _crate, format["Arsenal West %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
+				[east, getPosATL _crate, format["Arsenal East %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
+				[independent, getPosATL _crate, format["Arsenal Independant %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
+			};
 			// Zeus Options
 			_action = [ "menu_zeus_options", "Zeus Options", "", {hint 'Arsenal Options';}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
-			
 			// Zeus lock toggle ===============================================================================================
 			_action = [ "menu_zeus_lock", "Lock Arsenal by Rank", "", {hint 'Arsenal lock!'; cgqc_mk2_arsenal_locked = true; publicVariable "cgqc_mk2_arsenal_locked"}, {!cgqc_mk2_arsenal_locked && [player] call CGQC_fnc_checkZeus && !cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_zeus_options" ], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -86,14 +86,14 @@ if (hasInterface) then {
 					_action = [ "menu_loadout_inf", "Infanterie", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla", "menu_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Rifleman Carbine hk416 
-					_action = [ "menu_inf_RFcarbine", "Rifleman Carbine 416", "", {["vanilla_rifleman", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_inf_RFcarbine", "Rifleman Carbine 416", "", {["vanilla_rifleman", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla", "menu_loadouts", "menu_loadout_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					
 					// Lead ---------------------------------------------------------------------------------------------------------
 					_action = [ "menu_loadout_lead", "Commandement", "", {""}, {cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla", "menu_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Team Leader 
-					_action = [ "menu_loadout_inf_TL", "Team Leader", "", {["vanilla_tl", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_loadout_inf_TL", "Team Leader", "", {["vanilla_tl", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla", "menu_loadouts", "menu_loadout_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				};	
 			};
@@ -113,13 +113,13 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Basic soldier 
 				// 1-0 - TL 
-				_action = [ "menu_unsung_10", "1-0 -Team Leader", "", {["unsung_10", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_unsung_10", "1-0 -Team Leader", "", {["unsung_10", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// 1-1 - Radio man
-				_action = [ "menu_unsung_11", "1-1 -Radio guy", "", {["unsung_11", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_unsung_11", "1-1 -Radio guy", "", {["unsung_11", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// 1-2 - Medic
-				_action = [ "menu_unsung_12", "1-2 -Medic", "", {["unsung_12", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_unsung_12", "1-2 -Medic", "", {["unsung_12", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;		
 			};
 			// Mk2 Arsenal if 2023 mod is present  ===============================================================================================
@@ -134,16 +134,16 @@ if (hasInterface) then {
 					_action = [ "menu_swat_roles", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					// Assaulter 
-					_action = [ "menu_swat_roles_mp5sd6", "Assaulter", "", {["swat_assaulter", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_roles_mp5sd6", "Assaulter", "", {["swat_assaulter", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat", "menu_swat_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Breacher Shotgun 
-					_action = [ "menu_swat_roles_breach", "Breacher", "", {["swat_breacher", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_roles_breach", "Breacher", "", {["swat_breacher", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat", "menu_swat_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Sniper
-					_action = [ "menu_swat_roles_sniper", "Sniper", "", {["swat_sniper", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_roles_sniper", "Sniper", "", {["swat_sniper", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat", "menu_swat_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Team leader
-					_action = [ "menu_swat_roles_tl", "Team Leader", "", {["swat_tl", 1, true] execVM "\CGQC\loadouts\mk3_switch_role.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_swat_roles_tl", "Team Leader", "", {["swat_tl", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat", "menu_swat_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					
 					// Alternative Primaries ---------------------------------------------------------------------------------------------------------

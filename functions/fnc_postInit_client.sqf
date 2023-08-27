@@ -1,6 +1,6 @@
 // --- postInit_client ----------------------------------------------------------
 // Start everything player related
-diag_log "[CGQC_INIT] postInit_client started";
+diag_log "[CGQC_INIT] === postInit_client started =====================================";
 
 _version = "3.7.2";
 // Client-side code
@@ -14,13 +14,13 @@ if !(cgqc_mission_dro) then {
 	//Respawn handler 
 	player addMPEventHandler ["MPRespawn", {
 		params ["_unit", "_corpse"];
-		[_unit] spawn CGQC_fnc_playerRespawned;
+		[_unit] call CGQC_fnc_playerRespawned;
 	}];
 
 	//Death handler 
 	player addMPEventHandler ["MPKilled", {	
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
-		[_unit, _killer] spawn CGQC_fnc_playerKilled;
+		[_unit, _killer] call CGQC_fnc_playerKilled;
 	}];
 };
 
@@ -36,19 +36,19 @@ cgqc_player_face = face player;
 [] call CGQC_fnc_isDaytime;
 
 //ID player and find patch
-_rank = [] spawn CGQC_fnc_findRank;
-_patch = [] spawn CGQC_fnc_findPatch;
-_beret = [] spawn CGQC_fnc_getRankedBeret;
+_rank = [] call CGQC_fnc_findRank;
+_patch = [] call CGQC_fnc_findPatch;
+_beret = [] call CGQC_fnc_getRankedBeret;
 
 // Set and keep patch 
-_set = [] spawn CGQC_fnc_setPatch;
+_set = [] call CGQC_fnc_setPatch;
 
 // Dynamic group -------------------------------------------------------------------------------------------------
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 
 // Briefing entry -------------------------------------------------------------------------------------------------
-_brief = [] call CGQC_fnc_briefing; 
+_brief = [] call CGQC_fnc_loadDiary; 
 
 if (cgqc_player_loadAll) then {
 
@@ -86,7 +86,7 @@ if (cgqc_player_loadAll) then {
 
 	//Maximum mags event handler 
 	["ace_arsenal_displayClosed", {
-		[] spawn CGQC_fnc_maxMags;
+		[] call CGQC_fnc_maxMags;
 		[player, true] call ace_arsenal_fnc_removeBox;
 	}] call CBA_fnc_addEventHandler;
 
@@ -114,20 +114,6 @@ if (cgqc_player_loadAll) then {
 			_return
 		}
 	];
-	_unit = typeOf player;
-	switch (_unit) do {
-		case "CGQC_Soldat_Base";
-		case "CGQC_Officer_Base": {
-			[] spawn CGQC_fnc_initTraining;
-		};
-	};
-
-	// Give basic items to unit in case it's missing 
-	// Admin stuff 
-	_items = (items player);
-	_mags = magazines player;
-	if !("ACE_MapTools" in _items) then {player addItem "ACE_MapTools";};
-	if !("acex_intelitems_notepad" in _mags) then {player addItem "acex_intelitems_notepad";};
 };
 
 // ------ Fortify --------------------------------------------------------------------------------------
@@ -165,60 +151,49 @@ if (cgqc_config_fortify) then {
 //Switch beret to ready when getting inside vehicle
 player addEventHandler ["GetInMan", {
 	params ["_unit", "_role", "_vehicle", "_turret"];
-	["ready", false] spawn CGQC_fnc_perksBasic;
+	["ready", false] call CGQC_fnc_perksBasic;
 }];
 
 //Sets radio channel names 
-[0] spawn CGQC_fnc_nameRadios;
+[0] call CGQC_fnc_nameRadios;
 ["defaultLR"] call CGQC_fnc_setRadios;
 
 // Boost dragging maximum 
 ACE_maxWeightDrag = 3000;
 
 // Ace self interaction perks
-_perks = [] spawn CGQC_fnc_addPerks; 
+_perks = [] call CGQC_fnc_addPerks; 
 
 // Ace auto self interaction perks
 _perks = [] execVM "\cgqc\functions\fnc_addPerksSwitch.sqf"; 
 
 // Zeus shenanigans... MAX - to review
-_zeus = [] spawn CGQC_fnc_setZeus; 
+_zeus = [] call CGQC_fnc_setZeus; 
 
 // Lower gun 
+diag_log "[CGQC_INIT] gun lowered";
 player action ['SwitchWeapon', player, player, 250];
 
+diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
 if !(cgqc_mission_dro) then {
-	// Shows intro screen with logo and stuff
-	[ "CBA_loadingScreenDone", {
-		[] spawn CGQC_fnc_showIntro;
-	} ] call CBA_fnc_addEventHandler;
-
+	diag_log "[CGQC_INIT] showing intro/welcome";
+	// Show intro 
+	_intro = [] spawn CGQC_fnc_showIntro;
 	// Build a random welcome and shows it
 	_welcome = [] spawn CGQC_fnc_welcome; 
 };
 
-// Load loadouts if known unit  
-_unit = typeOf player;
-switch (_unit) do {
-	// == Training ================================================================
-	case "CGQC_Soldat_Base";
-	case "CGQC_Officer_Base": {
-		[] spawn CGQC_fnc_initTraining;
-	};
-	// == Command ================================================================
-	//case "CGQC_units_mk1_0_HQ":{
-	//	["hq", 1, true] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf";
-	//};
-	// == Infantry ================================================================
-	case "CGQC_units_vanilla_rifleman":{
-		["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_switch_role.sqf";
-	};
-};
-
 // Training menu if training is on
 if (cgqc_flag_isTraining) then {
-	call cgqc_fnc_loadTrainingMenu;
+	diag_log "[CGQC_INIT] cgqc_flag_isTraining is true. Loading training menu";
+	call cgqc_fnc_trainingMenu;
 };
 
+// Load loadouts if known unit  
+_unit = typeOf player;
+diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
+[_unit] call CGQC_fnc_checkLoadout;
+
+// All done
 cgqc_start_postInitClient_done = true;
-diag_log "[CGQC_INIT] postInit_client done";
+diag_log "[CGQC_INIT] === postInit_client done =====================================";
