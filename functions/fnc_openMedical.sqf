@@ -1,10 +1,7 @@
 // --- openMedical ----------------------------------------------------------
 // Open medical items
-diag_log "[CGQC_FNC] openMedical  started";
-
-_type = _this select 0;
-_target = _this select 1;
-_forceOpen = _this select 2;
+params ["_type", ["_target", ACE_player], ["_forceOpen", true]];
+diag_log format ["[CGQC_FNC] openMedical %1/%2/%3 started"];
 
 _work = "";
 if (player isEqualTo _target) then {
@@ -31,6 +28,7 @@ _medbag = 0;
 _pak = 0;
 _smoke_purple = 0;
 
+// Checking player inventory
 _bandage = {_x isEqualTo "ACE_fieldDressing" } count _allItems;
 _epi ={_x isEqualTo "ACE_epinephrine" } count _allItems;
 _morphine = {_x isEqualTo "ACE_morphine" } count _allItems;
@@ -54,6 +52,7 @@ switch (_type) do {
 		if (_forceOpen || _bandage < 2) then {
 			_work = _work + "IFAK";
 			_target removeItem "cgqc_items_ifak";
+			diag_log format ["[CGQC_FNC] openMedical - unpacking ifak"];
 			for "_i" from _bandage to 9 do {_target addItem "ACE_fieldDressing"};
 			for "_i" from _epi to 1 do {_target addItem "ACE_epinephrine"};
 			for "_i" from _morphine to 1 do {_target addItem "ACE_morphine"};
@@ -67,9 +66,10 @@ switch (_type) do {
 	};
 	case "medkit": { 
 		if (player isEqualTo _target) then {
-			if (_forceOpen || _liquids < 3) then {
+			if (_forceOpen || _liquids < 3) then {				
 				_work = _work + "Medkit";
 				_target removeItem "cgqc_items_medkit";
+				diag_log format ["[CGQC_FNC] openMedical - unpacking medkit"];
 				for "_i" from _bandage to 49 do {_target addItemToBackpack "ACE_fieldDressing"};
 				for "_i" from _epi to 9 do {_target addItemToBackpack "ACE_epinephrine"};
 				for "_i" from _morphine to 9 do {_target addItemToBackpack "ACE_morphine"};
@@ -86,6 +86,7 @@ switch (_type) do {
 		};
 		break;
 	};
-	default {hint "Erreur openMedical" };
+	default {diag_log format ["[CGQC_ERROR] openMedical didn't match _type"];};
 };
 
+diag_log format ["[CGQC_FNC] openMedical done"];

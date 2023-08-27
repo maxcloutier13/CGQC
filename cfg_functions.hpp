@@ -12,6 +12,18 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class addItemWithOverflow{
+            file = "\cgqc\functions\fnc_addItemWithOverflow.sqf";
+            description = "Add items to uniform/vest/backpack/ground";
+        };
+        class openBandolier{
+            file = "\cgqc\functions\fnc_openBandolier.sqf";
+            description = "Open ammo bandoliers";
+        };
+        class openMedical{
+            file = "\cgqc\functions\fnc_openMedical.sqf";
+            description = "Open the medical pouches";
+        };
         class training{
             file = "\cgqc\functions\fnc_training.sqf";
             description = "Various training related shenanigans";
