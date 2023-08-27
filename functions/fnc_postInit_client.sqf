@@ -221,3 +221,4 @@ if (cgqc_flag_isTraining) then {
 };
 
 cgqc_start_postInitClient_done = true;
+diag_log "[CGQC_INIT] postInit_client done";

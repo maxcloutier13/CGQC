@@ -1,6 +1,7 @@
 // --- perkSwitch ----------------------------------------------------------
 // Switch perks
 params ["_type"];
+diag_log format ["[CGQC_FNC] switchPerks %1 started", _type];
 
 // Set all traits to default
 player setUnitTrait ["Medic", false];
@@ -70,6 +71,8 @@ switch (_type) do {
 	case "inf":{
 	};
 	default	{
-		hintc "mk3_switch_perk fail";
+		diag_log "[CGQC_ERROR] switchPerks fail";
 	};
 };
+
+diag_log "[CGQC_FNC] switchPerks done";

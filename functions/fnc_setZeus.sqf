@@ -1,5 +1,7 @@
 // --- setZeus ----------------------------------------------------------
 // Set zeus and keeps them there
+diag_log format ["[CGQC_FNC] setZeus started"];
+
 
 // Delay until the server time has sync'd
 waitUntil {	time > 5};
@@ -56,4 +58,4 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 	sleep 25.0;
 	};
 };
-
+diag_log "[CGQC_FNC] setZeus done";

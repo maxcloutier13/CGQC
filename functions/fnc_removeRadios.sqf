@@ -1,7 +1,7 @@
 // --- removeRadios ----------------------------------------------------------
 // Remove all radios from target
-
 params ["_target", "_type"];
+diag_log format ["[CGQC_FNC] removeRadios %1/%2 started", _target, _type];
 
 // Delete 148 event in case it exists
 if(!isNil "cgqc_event_148") then {
@@ -25,3 +25,5 @@ switch (_type) do {
 	};
 	default {diag_log "[CGQC_ERROR] removeRadios issue";};
 };
+
+diag_log "[CGQC_FNC] removeRadios done";

@@ -1,5 +1,7 @@
 // --- setPatch ----------------------------------------------------------
 // Set player patch and keeps it set
+diag_log "[CGQC_FNC] setPach started";
+
 waitUntil {cgqc_player_patch_found};
 //Set patch initially
 player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
@@ -18,3 +20,4 @@ while { true } do {
 		_sleep = 300; // Set patch every 5mins
 	};
 };
+diag_log "[CGQC_FNC] setPatch done";

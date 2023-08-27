@@ -1,3 +1,7 @@
+// --- silence ----------------------------------------------------------
+// Creates a cone of silence around the player 
+diag_log format ["[CGQC_FNC] silence started"];
+
 trg_test_units = [];
 trg_player_lowered = false;
 trg_test_oldVolume = acex_volume_reduction;
@@ -29,3 +33,5 @@ if (vehicle player == player && trg_player_lowered) then {
 	trg_player_lowered = false;
 	sleep 5;
 };
+
+diag_log "[CGQC_FNC] silence done";

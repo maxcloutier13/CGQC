@@ -1,6 +1,6 @@
 // --- showIntro ----------------------------------------------------------
 // Show intro on load
-_type = _this select 0;
+diag_log format ["[CGQC_FNC] showIntro started"];
 
 // Show intro info ------------------------------------------------------------------------------------
 [] spawn {
@@ -51,3 +51,4 @@ _type = _this select 0;
 		cgqc_intro_done = true;
 	};
 };
+diag_log "[CGQC_FNC] showIntro done";
