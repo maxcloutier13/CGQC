@@ -519,7 +519,7 @@ if (hasInterface) then {
 			_action = [ "menu_items", "Items Rapides", "CGQC\textures\icon_items", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 			// Quick Heal
-			_action = [ "menu_items9", "Quick heal", "", {["heal"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_items9", "Quick heal", "", {["heal"] call CGQC_fnc_getStuff}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_items10", "Refill Mags", "", {[] execVM "cgqc\functions\fnc_addMags.sqf"; [] call CGQC_fnc_maxMags;}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -528,42 +528,42 @@ if (hasInterface) then {
 			_action = [ "menu_items_radios", "Radios", "", {""}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			// Individual radios 
-			_action = [ "menu_items1", "Get: 343", "", {["343"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items1", "Get: 343", "", {["343"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items2", "Get: 152", "", {["152"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items2", "Get: 152", "", {["152"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 148", "", {["148"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 148", "", {["148"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 117f", "", {["117"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 117f", "", {["117"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Radios Vietnam 
-			_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] call CGQC_fnc_getStuff}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items77", "Radio: Long-Range", "", {["77"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {!cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items77", "Radio: Long-Range", "", {["77"] call CGQC_fnc_getStuff}, {!cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Earplugs
-			_action = [ "menu_items3", "Earplugs", "", {["earplugs"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Earplugs", "", {["earplugs"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Bandages
-			_action = [ "menu_items4", "Bandages x10", "", {["bandages"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items4", "Bandages x10", "", {["bandages"] call CGQC_fnc_getStuff}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Painkillers
-			_action = [ "menu_items5", "Painkillers x5", "", {["painkillers"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items5", "Painkillers x5", "", {["painkillers"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//IFAK
-			_action = [ "menu_items_ifak", "Kit: Individual First-AId", "", {["ifak"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items_ifak", "Kit: Individual First-AId", "", {["ifak"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Medikit
-			_action = [ "menu_items_medkit", "Kit: Medic Supply", "", {["medkit"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items_medkit", "Kit: Medic Supply", "", {["medkit"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Kidnapping Kit
-			_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] call CGQC_fnc_getStuff}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Ammo
 			//Medikit
-			_action = [ "menu_items_bandolier", "Bandolier: Ammo", "", {["bandolier"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items_bandolier", "Bandolier: Ammo", "", {["bandolier"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items11", "2x Secondary mags", "", {["mags_secondary"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;       
+			_action = [ "menu_items11", "2x Secondary mags", "", {["mags_secondary"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;       
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;    
 
 			if (cgqc_player_has2023) then {
@@ -580,26 +580,26 @@ if (hasInterface) then {
 			_action = [ "menu_skill", "Switch: Skills", "CGQC\textures\icon_skills", {""}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			// Medic
-			_action = [ "skill_medic", "Medic", "", {["medic"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "skill_medic", "Medic", "", {["medic"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			// Engineer
-			_action = [ "skill_eng", "Ingénieur", "", {["engineer"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "skill_eng", "Ingénieur", "", {["engineer"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			// EOD
-			_action = [ "skill_eod", "EOD", "", {["eod"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "skill_eod", "EOD", "", {["eod"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			// Driver
-			_action = [ "skill_driver", "Driver", "", {["driver"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "skill_driver", "Driver", "", {["driver"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			// Pilot
-			_action = [ "skill_pilot", "Pilot", "", {["pilot"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "skill_pilot", "Pilot", "", {["pilot"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;			
 			// Sniper
 			_action = [
 				"skill_sniper", 
 				"Sniper", 
 				"", 
-				{["recon"] execVM "\CGQC\loadouts\mk3_getStuff.sqf"},
+				{["recon"] call CGQC_fnc_getStuff},
 				{(cgqc_player_rank > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining) && (isNil "cgqc_perk_ghillie") && cgqc_player_isModern} 
 			] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject; 

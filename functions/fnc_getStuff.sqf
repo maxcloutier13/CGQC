@@ -1,9 +1,9 @@
-// --- mk3GetStuff ----------------------------------------------------------
+// --- getStuff ----------------------------------------------------------
 // Mk3 spawn some shits
+params ["_type"];
+diag_log format ["[CGQC_FNC] getStuff %1 started", _type];
 
-_item = _this select 0;
-_skip = 0;
-switch (_item) do {
+switch (_type) do {
 	case "crate":
 	{
 		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
@@ -183,7 +183,8 @@ switch (_item) do {
 		break;
 	};
 	default	{
-		hint "mk3_getStuff error";
-		sleep 3;
+		diag_log "[CGQC_ERROR] getStuff fail";
 	};
 };
+
+diag_log "[CGQC_FNC] getStuff done";
