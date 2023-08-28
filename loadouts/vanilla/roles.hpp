@@ -1,14 +1,20 @@
 case "vanilla_rifleman":{ 
-	[] execVM "\CGQC\loadouts\vanilla\loadout_basic.sqf";
-	[] execVM "\CGQC\loadouts\vanilla\loadout_rifleman.sqf";
-	["inf"] call cgqc_fnc_switchPerks;
+	_loadoutBasic = [] execVM "\CGQC\loadouts\vanilla\loadout_basic.sqf";
+	waitUntil {scriptDone _loadoutBasic};
+	_loadoutRole = [] execVM "\CGQC\loadouts\vanilla\loadout_rifleman.sqf";
+	waitUntil {scriptDone _loadoutRole};
+	
+	["inf"] spawn cgqc_fnc_switchPerks;
 	cgqc_player_role = "Vanilla Rifleman";
 	break;
 };
 case "vanilla_tl":{ 
-	[] execVM "\CGQC\loadouts\vanilla\loadout_basic.sqf";
-	[] execVM "\CGQC\loadouts\vanilla\loadout_tl.sqf";
-	["tl"] call cgqc_fnc_switchPerks;
+	_loadoutBasic = [] execVM "\CGQC\loadouts\vanilla\loadout_basic.sqf";
+	waitUntil {scriptDone _loadoutBasic};
+	_loadoutRole = [] execVM "\CGQC\loadouts\vanilla\loadout_tl.sqf";
+	waitUntil {scriptDone _loadoutRole};
+
+	["tl"] spawn cgqc_fnc_switchPerks;
 	cgqc_player_role = "Vanilla TeamLeader";
 	break;
 };

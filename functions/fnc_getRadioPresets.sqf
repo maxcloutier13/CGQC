@@ -14,7 +14,6 @@ _team = "";
 // Training radio override
 if (cgqc_flag_isTraining) then { 
 	// Training setup 
-	hint "Switching radios... Training";
 	_radios = ["ACRE_PRC343", "ACRE_PRC152"];
 	_preset = "training";
 	_team = 1;

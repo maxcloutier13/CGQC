@@ -9,7 +9,7 @@ cgqc_position_jump =
 _action = [ "menu_self_training_para", "Parachute", "\CGQC\textures\cgqc_ace_para", {}, {true} ] call ace_interact_menu_fnc_createAction;       
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Jumping uniform 
-_action = [ "menu_self_training_para_kit", "Kit: Parachutiste", "", {["para", false] execVM "\CGQC\loadouts\mk3_switch_uniform.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_training_para_kit", "Kit: Parachutiste", "", {["para", false] call CGQC_fnc_switchUniform}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_para"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
 // Jumping target 
 _action = [ "menu_self_training_para_target_on", "Jump Target: Turn On", "", {cgqc_training_jump_target = true}, {!cgqc_training_jump_target} ] call ace_interact_menu_fnc_createAction;

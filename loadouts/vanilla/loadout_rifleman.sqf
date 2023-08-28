@@ -4,10 +4,10 @@
 // === Adjust Uniform ====================================================================================================
 
 // === Radios ==========================================================================================================
-["inf"]call CGQC_fnc_getRadioPresets;
+["inf"] call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
-["arifle_SPAR_02_blk_F"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
+["arifle_SPAR_02_blk_F"] call CGQC_fnc_getCustomGun;
 sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "muzzle_snds_M";

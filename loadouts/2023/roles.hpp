@@ -1,27 +1,39 @@
  case "swat_assaulter":{
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_assaulter.sqf";
+	_loadoutBasic = [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+	waitUntil {scriptDone _loadoutBasic};
+	_loadoutRole = [] execVM "\CGQC\loadouts\2023\loadout_swat_assaulter.sqf";
+	waitUntil {scriptDone _loadoutRole};
+
 	["inf"] call cgqc_fnc_switchPerks;
 	cgqc_player_role = "Swat - Assaulter";
 	break;
 };
 case "swat_breacher":{
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_breacher.sqf";
+	_loadoutBasic = [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+	waitUntil {scriptDone _loadoutBasic};
+	_loadoutRole = [] execVM "\CGQC\loadouts\2023\loadout_swat_breacher.sqf";
+	waitUntil {scriptDone _loadoutRole};
+
 	["eng"] call cgqc_fnc_switchPerks;
 	cgqc_player_role = "Swat - Breacher";
 	break;
 };
 case "swat_sniper":{
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_sniper.sqf";
+	_loadoutBasic = [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+	waitUntil {scriptDone _loadoutBasic};
+	_loadoutRole = [] execVM "\CGQC\loadouts\2023\loadout_swat_sniper.sqf";
+	waitUntil {scriptDone _loadoutRole};
+
 	["recon"] call cgqc_fnc_switchPerks;
 	cgqc_player_role = "Swat - Sniper";
 	break;
 };
 case "swat_tl":{
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
-	[] execVM "\CGQC\loadouts\2023\loadout_swat_tl.sqf";
+	_loadoutBasic = [] execVM "\CGQC\loadouts\2023\loadout_swat_basic.sqf";
+	waitUntil {scriptDone _loadoutBasic};
+	_loadoutRole = [] execVM "\CGQC\loadouts\2023\loadout_swat_tl.sqf";
+	waitUntil {scriptDone _loadoutRole};
+
 	["tl"] call cgqc_fnc_switchPerks;
 	cgqc_player_role = "Swat - Team Leader";
 	break;

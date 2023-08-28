@@ -7,7 +7,7 @@ player addVest "cgqc_vest_mk1_black_rf";
 ["tl"]call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
-["rhs_weap_m24sws"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
+["rhs_weap_m24sws"] call CGQC_fnc_getCustomGun;
 sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "rhsusf_acc_m24_silencer_black";

@@ -9,7 +9,7 @@ player addVest "cgqc_vest_mk1_black_ar";
 ["tl"]call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
-["sgun_mas_can_benelli_F"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
+["sgun_mas_can_benelli_F"] call CGQC_fnc_getCustomGun;
 sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "7Rnd_mas_can_12Gauge_Slug";

@@ -21,8 +21,11 @@ switch (_type) do {
 	// == Infantry ================================================================
 	case "CGQC_units_vanilla_rifleman":{
 		_found = true;
-		_switchRole = "vanilla_rifleman";
-		
+		_switchRole = "vanilla_rifleman";	
+	};
+	case "CGQC_units_vanilla_tl":{
+		_found = true;
+		_switchRole = "vanilla_tl";	
 	};
 };
 

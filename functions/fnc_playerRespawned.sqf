@@ -1,6 +1,7 @@
 // --- playerRespawned ----------------------------------------------------------
 // Code in the event a player respawns
 params ["_unit"];
+diag_log "[CGQC_EVENT] playerRespawned started";
 
 // Save stuff for player respawn
 // Loadout
@@ -19,6 +20,7 @@ y_mpttRadioList1 = _unit getVariable["Radio_Settings",[]];
 _success = [y_mpttRadioList1] call acre_api_fnc_setMultiPushToTalkAssignment;
 //hint "Check tes radios! Ça inverse parfois au respawn.";
 // Lower gun 
-player action ['SwitchWeapon', player, player, 250];
+_holster = [] spawn CGQC_fnc_holsterWeapons;
 sleep 5;
-hintSilent "";
+hintSilent ""; 
+diag_log "[CGQC_EVENT] playerRespawned done";

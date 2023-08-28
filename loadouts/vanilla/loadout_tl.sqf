@@ -15,7 +15,7 @@ player unlinkItem "ItemGPS";
 player linkItem "B_UavTerminal";
 
 // === Primary ==========================================================================================================
-["arifle_SPAR_01_GL_blk_F"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
+["arifle_SPAR_01_GL_blk_F"] call CGQC_fnc_getCustomGun;
 sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "muzzle_snds_M";

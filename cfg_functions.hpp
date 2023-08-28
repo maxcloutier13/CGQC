@@ -12,6 +12,18 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class holsterWeapons{
+            file = "\cgqc\functions\fnc_holsterWeapons.sqf";
+            description = "Holster all weapons";
+        };
+        class getCustomGun{
+            file = "\cgqc\functions\fnc_getCustomGun.sqf";
+            description = "Get custom gun if it exists";
+        };
+        class switchUniform{
+            file = "\cgqc\functions\fnc_switchUniform.sqf";
+            description = "Switch player uniform";
+        };
         class addSpares{
             file = "\cgqc\functions\fnc_addSpares.sqf";
             description = "Add spare tires/tracks to vehicles";

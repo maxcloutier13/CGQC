@@ -172,7 +172,7 @@ _zeus = [] call CGQC_fnc_setZeus;
 
 // Lower gun 
 diag_log "[CGQC_INIT] gun lowered";
-player action ['SwitchWeapon', player, player, 250];
+_holster = [] spawn CGQC_fnc_holsterWeapons;
 
 diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
 if !(cgqc_mission_dro) then {
