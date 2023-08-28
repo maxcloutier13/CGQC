@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class addPerksSwitch{
+            file = "\cgqc\functions\fnc_addPerksSwitch.sqf";
+            description = "Add perks to zeus-controlled units";
+        };
+        class mapShareList{
+            file = "\cgqc\functions\fnc_mapShareList.sqf";
+            description = "Show list of players that are sharing map right now";
+        };
         class addItemWithOverflow{
             file = "\cgqc\functions\fnc_addItemWithOverflow.sqf";
             description = "Add items to uniform/vest/backpack/ground";
