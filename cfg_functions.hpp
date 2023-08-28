@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class dropChem{
+            file = "\cgqc\functions\fnc_dropChem.sqf";
+            description = "Drop various signals, not just chems";
+        };
         class addMags{
             file = "\cgqc\functions\fnc_addMags.sqf";
             description = "Fill player with maximum mags according to settings";

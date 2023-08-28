@@ -1,7 +1,7 @@
 // --- dropChem ----------------------------------------------------------
 // Drop chemlight
-_type = _this select 0;
-_item = _this select 1;
+params ["_type", "_item"];
+diag_log format ["[CGQC_FNC] dropChem %1/%2 started", _type, _item];
 
 switch (_type) do {
 	case "panel": { 
@@ -27,6 +27,4 @@ switch (_type) do {
 	};
 	default { };
 };
-
-
-
+diag_log "[CGQC_FNC] dropChem done";
