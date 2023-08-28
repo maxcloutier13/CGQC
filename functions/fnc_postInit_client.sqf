@@ -56,21 +56,21 @@ if (cgqc_player_loadAll) then {
 	if(cgqc_player_hasUnsung) then {
 		cgqc_unsung_arsenal_1 = [];
 		cgqc_unsung_arsenal_8 = [];
-		#include "\cgqc\loadouts\unsung\all_items.sqf";
+		#include "\cgqc\loadouts\unsung\all_items.hpp";
 		cgqc_unsung_arsenal_8 = cgqc_unsung_arsenal_all;
 		cgqc_unsung_arsenal_init_done = true;
 	};
 	if(cgqc_player_hasIfa3) then {
 		cgqc_ifa3_arsenal_1 = [];
 		cgqc_ifa3_arsenal_8 = [];
-		#include "\cgqc\loadouts\ifa3\all_items.sqf";
+		#include "\cgqc\loadouts\ifa3\all_items.hpp";
 		cgqc_ifa3_arsenal_8 = cgqc_ifa3_arsenal_all;
 		cgqc_ifa3_arsenal_init_done = true;
 	};
 
 	// Event Handers ----------------
 	//On map click (_pos, _units,_shift,_alt)
-	onMapSingleClick "execVM '\cgqc\functions\fnc_mapShare_list.sqf';false;";
+	onMapSingleClick "call CGQC_fnc_mapShareList;false;";
 
 	// Whisper/Yelling event 
 	cgqc_event_talk = ["acre_startedSpeaking", {	
@@ -165,7 +165,7 @@ ACE_maxWeightDrag = 3000;
 _perks = [] call CGQC_fnc_addPerks; 
 
 // Ace auto self interaction perks
-_perks = [] execVM "\cgqc\functions\fnc_addPerksSwitch.sqf"; 
+_perks = call CGQC_fnc_addPerksSwitch; 
 
 // Zeus shenanigans... MAX - to review
 _zeus = [] call CGQC_fnc_setZeus; 

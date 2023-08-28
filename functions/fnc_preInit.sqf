@@ -314,11 +314,11 @@ if (cgqc_player_hasUnsung) then {
     params ["_acePlayer", "_targetPlayer", "_display"];
 	// Check if target has an IFAK 
 	if([_targetPlayer, 'cgqc_items_ifak'] call BIS_fnc_hasItem) then {
-		['ifak', _targetPlayer, false] execVM '\cgqc\functions\fnc_openMedical.sqf';
+		['ifak', _targetPlayer, false] call CGQC_fnc_openMedical;
 	};
 	// Check if player 
 	if([player, 'cgqc_items_medkit'] call BIS_fnc_hasItem) then {
-		['medkit', _targetPlayer, false] execVM '\cgqc\functions\fnc_openMedical.sqf';
+		['medkit', _targetPlayer, false] call CGQC_fnc_openMedical;
 	};
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
 }] call CBA_fnc_addEventHandler;
@@ -655,7 +655,7 @@ cgqc_unconscious_sounds = [
 // PAX Units definitions
 #include "\cgqc\cfg_paxUnits.hpp"
 
-// Loading functions 
+// Loading UI functions 
 _landnav = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\landnav_fnc.sqf";
 waitUntil {scriptDone _landnav};
 _convoy = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\convoy_fnc.sqf";
