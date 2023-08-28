@@ -16,6 +16,10 @@ class CGQC {
             file = "\cgqc\functions\fnc_addPerksSwitch.sqf";
             description = "Add zeus perks on unit when Zeus takes control";
         };
+        class mapShareList{
+            file = "\cgqc\functions\fnc_mapShareList.sqf";
+            description = "Show list of players that see your markers";
+        };        
         class addItemWithOverflow{
             file = "\cgqc\functions\fnc_addItemWithOverflow.sqf";
             description = "Add items to uniform/vest/backpack/ground";
