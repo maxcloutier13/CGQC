@@ -23,7 +23,7 @@ player addPrimaryWeaponItem "ACE_acc_pointer_green";
 player addPrimaryWeaponItem "optic_Arco_AK_blk_F";
 player addPrimaryWeaponItem "ACE_30Rnd_556x45_Stanag_Mk262_mag";
 // Mags 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 
 // === Role Items ==========================================================================================================
 player addItemToBackpack "tsp_stickCharge_auto_mag";

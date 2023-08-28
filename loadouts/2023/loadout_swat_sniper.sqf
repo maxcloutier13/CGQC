@@ -16,7 +16,7 @@ player addPrimaryWeaponItem "rhsusf_5Rnd_762x51_m118_special_Mag";
 player addPrimaryWeaponItem "rhsusf_acc_harris_swivel";
 
 // Mags 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 // More secondary mags 
 for "_i" from 1 to 4 do {player addItemToVest cgqc_config_sidearm_mag};
 // === Role Items ==========================================================================================================

@@ -90,7 +90,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             //Turn speaker back on
             if(cgqc_reset_speaker) then {
                 cgqc_reset_speaker = false;
-                ["speaker_on"] execVM "cgqc\functions\fnc_setRadios.sqf";
+                ["speaker_on"] call CGQC_fnc_setRadios;
                 _txt = _txt + "Radio Speaker: On<br/>";
             };
                 
@@ -137,7 +137,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             if(cgqc_reset_speaker) then {
                 cgqc_reset_speaker = false;
                 _speakerOff = true;
-                ["speaker_on"] execVM "cgqc\functions\fnc_setRadios.sqf";
+                ["speaker_on"] call CGQC_fnc_setRadios;
             };
 
             _txt = "-- Battle --<br/>";

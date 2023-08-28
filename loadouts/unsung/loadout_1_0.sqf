@@ -11,7 +11,7 @@ waitUntil {cgqc_mk3_switching_backpack};
 player addWeapon "uns_xm177e2_m203";
 player addPrimaryWeaponItem "uns_30Rnd_556x45_Stanag_xm177";
 // Primary ammo 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 for "_i" from 1 to 2 do {player addItemToVest "uns_m406vest";};
 // Items 
 player addItemToBackpack "UNS_TrapKit";

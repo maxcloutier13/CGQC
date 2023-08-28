@@ -15,7 +15,7 @@ player addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
 player addPrimaryWeaponItem "Tier1_MicroT2_Low_Black";
 player addPrimaryWeaponItem "50Rnd_570x28_SMG_03";
 // Mags 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 // === Role Items ==========================================================================================================
 player removeItem "ItemAndroid"; //Switch cellphone for tablet
 player addItem "ItemcTab";

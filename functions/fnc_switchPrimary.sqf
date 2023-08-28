@@ -464,7 +464,7 @@ switch (_type) do {
 };
 sleep 1;
 // Add mags to vest 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 
 if (_needGL) then {
 	player addItem "1Rnd_HE_Grenade_shell";

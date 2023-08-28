@@ -11,7 +11,7 @@ waitUntil {cgqc_mk3_switching_backpack};
 player addWeapon "uns_xm177e2";
 player addPrimaryWeaponItem "uns_30Rnd_556x45_Stanag_xm177";
 // Primary ammo 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 // Items 
 for "_i" from 1 to 5 do {player addItemToBackpack "uns_30Rnd_556x45_Stanag_xm177";};
 for "_i" from 1 to 20 do {player addItemToBackpack "FF_Painkiller";}; // === Meds

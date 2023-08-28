@@ -15,6 +15,6 @@ player addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
 player addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";
 
 // Mags 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 // === Role Items ==========================================================================================================
 player addItemToBackpack "ACE_wirecutter";

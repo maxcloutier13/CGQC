@@ -15,6 +15,6 @@ player addPrimaryWeaponItem "ACE_acc_pointer_green";
 player addPrimaryWeaponItem "optic_Hamr";
 player addPrimaryWeaponItem "ACE_30Rnd_556x45_Stanag_Mk262_mag";
 // Mags 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+[] call CGQC_fnc_addMags;
 // === Role Items ==========================================================================================================
 for "_i" from 1 to 2 do {player addItemToBackpack "HandGrenade"};

@@ -137,7 +137,7 @@ switch (_type) do {
 		break;
 	};
 	case "mags_primary": {		
-		[] execVM "cgqc\functions\fnc_addMags.sqf";
+		[] call CGQC_fnc_addMags;
 		hint "Refilled Primary mags";
 		break;
 	};
