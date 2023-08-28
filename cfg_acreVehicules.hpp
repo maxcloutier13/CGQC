@@ -55,7 +55,7 @@ class Car_F : Car{
     };
     class EventHandlers
     {
-         init = "[_this select 0, 'car'] execVM '\cgqc\functions\fnc_addSpares.sqf'";
+         init = "[_this select 0, 'car'] call CGQC_fnc_addSpares";
     };
 };
 class MRAP_01_base_F : Car_F {
@@ -181,7 +181,7 @@ class Helicopter : Air
 };
 class Helicopter_Base_F: Helicopter {
 	class EventHandlers {
-        init = "[_this select 0, 'air'] execVM '\cgqc\functions\fnc_addSpares.sqf';";
+        init = "[_this select 0, 'air'] call CGQC_fnc_addSpares;";
     };
     class AcreIntercoms {
         class Intercom_1 {
@@ -403,6 +403,6 @@ class Tank_F: Tank {
     };
     class EventHandlers
     {
-         init = "[_this select 0, 'tank'] execVM '\cgqc\functions\fnc_addSpares.sqf'";
+         init = "[_this select 0, 'tank'] call CGQC_fnc_addSpares";
     };
 };

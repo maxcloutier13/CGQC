@@ -68,7 +68,7 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     };
 	class EventHandlers
     {
-    	init = "[_this] execVM '\cgqc\vehicles\loadout_construction.sqf';[_this select 0, 'car'] execVM '\cgqc\functions\fnc_addSpares.sqf'"; 
+    	init = "[_this] execVM '\cgqc\vehicles\loadout_construction.sqf';[_this select 0, 'car'] call CGQC_fnc_addSpares"; 
     };
     //#include "vehicles\cgqc_vic_loadout_construction.sqf"
 };

@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class addSpares{
+            file = "\cgqc\functions\fnc_addSpares.sqf";
+            description = "Add spare tires/tracks to vehicles";
+        };
         class addPerksSwitch{
             file = "\cgqc\functions\fnc_addPerksSwitch.sqf";
             description = "Add zeus perks on unit when Zeus takes control";

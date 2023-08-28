@@ -1,6 +1,6 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
-diag_log "[CGQC_INIT] preInit started";
+diag_log "[CGQC_¨PREINIT] === preInit started =====================================";
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 // CGQC Variables ===================================================================================================
 // *** Init **********************
@@ -662,3 +662,4 @@ _convoy = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\convoy_fnc.s
 waitUntil {scriptDone _convoy};
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
+diag_log "[CGQC_¨PREINIT] === preInit done =====================================";
