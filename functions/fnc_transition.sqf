@@ -1,12 +1,11 @@
 // --- transition ----------------------------------------------------------
 // Black fadout/in with some information in some cases  
 params ["_type", ["_show", true]];
-diag_log "[CGQC_FNC] transition started";
 
 [_type, _show] spawn {
     params ["_type", ["_show", true]];
+    diag_log format ["[CGQC_FNC] transition %1/%2 started", _type, _show];
     cgqc_mk3_transition = true;
-    //hintc format ["TransitionType:%1", _type];sleep 1;
     _text = "";
     _text_insert = "";
     if (cgqc_setting_show_transition && _show) then {
