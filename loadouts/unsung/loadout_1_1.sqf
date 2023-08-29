@@ -1,6 +1,5 @@
 // --- loadout_11 ----------------------------------------------------------
 // Loadout for 1-1 RadioGuy
-sleep 0.5;
 // Vest 
 ["vest", "UNS_M1956_S1"] call CGQC_fnc_switchStuff;
 // Backpack 

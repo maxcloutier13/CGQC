@@ -23,7 +23,7 @@ switch (_type) do {
 		{player addItemToUniform  _x; false} count _uniformGrenades ;
 		{player addItemToVest     _x; false} count _vestGrenades    ;
 		{player addItemToBackpack _x; false} count _backpackGrenades;
-		call ace_advanced_throwing_fnc_drawThrowable;
+		[] call ace_advanced_throwing_fnc_drawThrowable;
 	};
 	default { };
 };

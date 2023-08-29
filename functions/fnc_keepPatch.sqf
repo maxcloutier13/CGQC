@@ -4,11 +4,11 @@ diag_log "[CGQC_FNC] keepPatch started";
 [] spawn {
 	_count = 0;
 	_sleep = 60;
-	_previous = [player ]call BIS_fnc_getUnitInsignia;
+	_previous = [player ] call BIS_fnc_getUnitInsignia;
 	while {alive player} do {
 		sleep _sleep;
 		_count = _count + 1;
-		_current = [player ]call BIS_fnc_getUnitInsignia;
+		_current = [player ] call BIS_fnc_getUnitInsignia;
 		if (_previous isNotEqualTo _current) then {
 			// Delete patch
 			player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch

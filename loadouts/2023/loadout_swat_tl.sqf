@@ -4,11 +4,10 @@
 // === Adjust Uniform ====================================================================================================
 
 // === Radios ==========================================================================================================
-["tl"]call CGQC_fnc_getRadioPresets;
+["tl"] call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
 ["UK3CB_P90C_TR_black"] call CGQC_fnc_getCustomGun;
-sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "muzzle_snds_570";
 player addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";

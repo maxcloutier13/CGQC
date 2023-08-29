@@ -6,11 +6,10 @@ player addVest "cgqc_vest_mk1_black_ar";
 ["backpack", "cgqc_pack_mk1_kitbag_black"] call CGQC_fnc_switchStuff;
 
 // === Radios ==========================================================================================================
-["tl"]call CGQC_fnc_getRadioPresets;
+["tl"] call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
 ["sgun_mas_can_benelli_F"] call CGQC_fnc_getCustomGun;
-sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "7Rnd_mas_can_12Gauge_Slug";
 

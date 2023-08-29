@@ -1,6 +1,6 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
-diag_log "[CGQC_¨PREINIT] === preInit started =====================================";
+diag_log "[CGQC_PREINIT] === preInit started =====================================";
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 // CGQC Variables ===================================================================================================
 // *** Init **********************
@@ -541,7 +541,8 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 // Player custom Options ===================================================================================================
 // Check that 2023 is not present 
 if (!cgqc_player_has2023) then {
-_menu_name = "CGQC Player settings";
+	// Custom pistol 2023 version
+	_menu_name = "CGQC Player settings";
 	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"], 
 		[_menu_name, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"], 
@@ -660,6 +661,13 @@ _landnav = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\landnav_fnc
 waitUntil {scriptDone _landnav};
 _convoy = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\convoy_fnc.sqf";
 waitUntil {scriptDone _convoy};
+
+// Loadout functions
+#include "\CGQC\loadouts\vanilla\loadouts.hpp"
+#include "\CGQC\loadouts\2023\loadouts.hpp"
+#include "\CGQC\loadouts\unsung\loadouts.hpp"
+#include "\CGQC\loadouts\ifa3\loadouts.hpp"
+
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
-diag_log "[CGQC_¨PREINIT] === preInit done =====================================";
+diag_log "[CGQC_PREINIT] === preInit done =====================================";

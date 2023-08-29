@@ -8,7 +8,6 @@
 
 // === Primary ==========================================================================================================
 ["arifle_SPAR_02_blk_F"] call CGQC_fnc_getCustomGun;
-sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "muzzle_snds_M";
 player addPrimaryWeaponItem "ACE_acc_pointer_green";

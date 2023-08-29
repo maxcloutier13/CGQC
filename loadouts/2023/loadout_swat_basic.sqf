@@ -108,4 +108,3 @@ player addItemToBackpack "ACE_EntrenchingTool";
 for "_i" from 1 to 4 do {player addItemToBackpack "ACE_M84";};
 for "_i" from 1 to 4 do {player addItemToBackpack "DIGI_M7A3";};
 for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
-sleep 0.5;

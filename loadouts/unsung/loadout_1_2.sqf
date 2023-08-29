@@ -1,6 +1,5 @@
 // --- loadout_12 ----------------------------------------------------------
 // Loadout for 1-2 Medic
-sleep 0.5;
 // Vest 
 ["vest", "UNS_m1956_S4"] call CGQC_fnc_switchStuff;
 // Backpack 

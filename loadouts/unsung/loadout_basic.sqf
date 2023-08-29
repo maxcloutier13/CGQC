@@ -89,5 +89,3 @@ player addItemToBackpack "ACE_EntrenchingTool";
 for "_i" from 1 to 4 do {player addItemToVest "uns_v40gren";};
 for "_i" from 1 to 4 do {player addItemToVest "uns_m67gren";};
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell";};
-sleep 0.5;
-

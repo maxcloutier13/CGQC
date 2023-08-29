@@ -5,11 +5,10 @@
 player addVest "cgqc_vest_mk1_black_lr";
 
 // === Radios ==========================================================================================================
-["tl"]call CGQC_fnc_getRadioPresets;
+["tl"] call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
 ["UK3CB_MP5SD6"] call CGQC_fnc_getCustomGun;
-sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
 player addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";

@@ -6,7 +6,7 @@
 ["vest", "V_PlateCarrier2_rgr"] call CGQC_fnc_switchStuff;
 
 // === Radios ==========================================================================================================
-["tl"]call CGQC_fnc_getRadioPresets;
+["tl"] call CGQC_fnc_getRadioPresets;
 
 // === Adjust Items ====================================================================================================
 player unlinkItem "cgqc_item_rangefinder";
@@ -16,7 +16,6 @@ player linkItem "B_UavTerminal";
 
 // === Primary ==========================================================================================================
 ["arifle_SPAR_01_GL_blk_F"] call CGQC_fnc_getCustomGun;
-sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "muzzle_snds_M";
 player addPrimaryWeaponItem "ACE_acc_pointer_green";

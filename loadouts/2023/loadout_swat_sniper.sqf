@@ -4,11 +4,10 @@
 // === Adjust Uniform ====================================================================================================
 player addVest "cgqc_vest_mk1_black_rf";
 // === Radios ==========================================================================================================
-["tl"]call CGQC_fnc_getRadioPresets;
+["tl"] call CGQC_fnc_getRadioPresets;
 
 // === Primary ==========================================================================================================
 ["rhs_weap_m24sws"] call CGQC_fnc_getCustomGun;
-sleep 0.5;
 removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "rhsusf_acc_m24_silencer_black";
 player addPrimaryWeaponItem "Tier1_LeupoldM3A_Geissele_Docter_Black";
