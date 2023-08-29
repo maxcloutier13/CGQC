@@ -2,9 +2,9 @@
 // Loadout for 1-2 Medic
 sleep 0.5;
 // Vest 
-["vest", "UNS_m1956_S4"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["vest", "UNS_m1956_S4"] call CGQC_fnc_switchStuff;
 // Backpack 
-["backpack", "uns_simc_pack_frem_med5"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["backpack", "uns_simc_pack_frem_med5"] call CGQC_fnc_switchStuff;
 waitUntil {cgqc_mk3_switching_vest};
 waitUntil {cgqc_mk3_switching_backpack};
 // primaryWeapon 

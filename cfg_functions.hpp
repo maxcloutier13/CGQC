@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class switchStuff{
+            file = "\cgqc\functions\fnc_switchStuff.sqf";
+            description = "Switch vest/backpack for another version";
+        };
         class dropChem{
             file = "\cgqc\functions\fnc_dropChem.sqf";
             description = "Drop various signals, not just chems";

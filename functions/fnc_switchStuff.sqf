@@ -1,12 +1,10 @@
 // --- switchStuff ----------------------------------------------------------
 // Change one thing for another
-_type = _this select 0;
-_arg = _this select 1;
+params ["_type", ["_arg", ""]];
+diag_log format ["[CGQC_FNC] switchStuff %1/%2 started", _type, _arg];
 
-switch (_type)
-do
-{
-	case "vest":	{
+switch (_type) do {
+	case "vest": {
 		_items_vest = vestItems player;
 		removeVest player;
 		player addVest _arg;
@@ -15,7 +13,7 @@ do
 		{player addItemToVest _x} forEach _items_vest;
 		cgqc_mk3_switching_vest = true;
 	};
-	case "backpack":	{
+	case "backpack": {
 		_items_pack = backpackItems player;
 		removeBackpack player;
 		player addBackpack _arg;
@@ -23,7 +21,7 @@ do
 		{player addItemToBackpack _x} forEach _items_pack;
 		cgqc_mk3_switching_backpack = true;
 	};
-	case "prep":{
+	case "prep": {
 		// Current soldier equipment
 		player_helmet_old = headgear player;
 		player_uniform_old = uniform player;
@@ -41,14 +39,6 @@ do
 		removeBackpack player;
 		removeGoggles player;
 	};
-	default	{
-		hint "switchStuff error";
-		sleep 3;
-	};
+	default	{diag_log "[CGQC_ERROR] switchStuff not matched";};
 };
-
-
-
-
-
-	
+diag_log "[CGQC_FNC] switchStuff done";

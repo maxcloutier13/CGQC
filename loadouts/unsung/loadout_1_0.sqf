@@ -2,9 +2,9 @@
 // Loadout for 1-0 Team leader
 sleep 0.5;
 // Vest 
-["vest", "UNS_M1956_S3"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["vest", "UNS_M1956_S3"] call CGQC_fnc_switchStuff;
 // Backpack 
-["backpack", "UNS_Alice_1"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["backpack", "UNS_Alice_1"] call CGQC_fnc_switchStuff;
 waitUntil {cgqc_mk3_switching_vest};
 waitUntil {cgqc_mk3_switching_backpack};
 // primaryWeapon 

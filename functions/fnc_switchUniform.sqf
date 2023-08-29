@@ -49,7 +49,7 @@ diag_log "[CGQC_FNC] switchUniform started";
 					sleep 0.5;
 					[_skip_msg, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
 				}else{//Keep proceeding
-					["prep"] execVM "\cgqc\loadouts\mk3_switchStuff.sqf";
+					["prep"] call CGQC_fnc_switchStuff;
 					sleep 1;
 					// Diving suit
 					_uniform_new = "cgqc_uniform_mk1_diver";
@@ -98,7 +98,7 @@ diag_log "[CGQC_FNC] switchUniform started";
 				if(_skip) then { 
 					[_skip_msg, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
 				}else{//Keep proceeding
-					["prep"] execVM "\cgqc\loadouts\mk3_switchStuff.sqf";
+					["prep"] call CGQC_fnc_switchStuff;
 					sleep 0.5;
 					// Keep uniform
 					_uniform_new = player_uniform_old;
@@ -163,7 +163,7 @@ diag_log "[CGQC_FNC] switchUniform started";
 			};
 			default // Normal camo switch
 			{
-				["prep"] execVM "\cgqc\loadouts\mk3_switchStuff.sqf";
+				["prep"] call CGQC_fnc_switchStuff;
 				sleep 1;
 				// Backpack type first
 				_backpack_new = "cgqc_pack_mk1";

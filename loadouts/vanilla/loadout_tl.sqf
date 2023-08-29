@@ -2,8 +2,8 @@
 // TL loadout for Vanilla
 
 // === Adjust Uniform ====================================================================================================
-["backpack", "B_Kitbag_rgr"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
-["vest", "V_PlateCarrier2_rgr"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["backpack", "B_Kitbag_rgr"] call CGQC_fnc_switchStuff;
+["vest", "V_PlateCarrier2_rgr"] call CGQC_fnc_switchStuff;
 
 // === Radios ==========================================================================================================
 ["tl"]call CGQC_fnc_getRadioPresets;

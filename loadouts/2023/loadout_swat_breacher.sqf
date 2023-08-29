@@ -3,7 +3,7 @@
 
 // === Adjust Uniform ====================================================================================================
 player addVest "cgqc_vest_mk1_black_ar";
-["backpack", "cgqc_pack_mk1_kitbag_black"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["backpack", "cgqc_pack_mk1_kitbag_black"] call CGQC_fnc_switchStuff;
 
 // === Radios ==========================================================================================================
 ["tl"]call CGQC_fnc_getRadioPresets;

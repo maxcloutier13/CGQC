@@ -2,9 +2,9 @@
 // Loadout for 1-1 RadioGuy
 sleep 0.5;
 // Vest 
-["vest", "UNS_M1956_S1"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["vest", "UNS_M1956_S1"] call CGQC_fnc_switchStuff;
 // Backpack 
-["backpack", "UNS_SF_RTO"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
+["backpack", "UNS_SF_RTO"] call CGQC_fnc_switchStuff;
 waitUntil {cgqc_mk3_switching_vest};
 waitUntil {cgqc_mk3_switching_backpack};
 // primaryWeapon 
