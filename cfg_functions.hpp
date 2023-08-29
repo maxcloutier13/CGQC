@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        
+        class loadMk3Menu{
+            file = "\cgqc\functions\fnc_loadMk3Menu.sqf";
+            description = " Ace menu for mk3 sheeits";
+        };
         class transition{
             file = "\cgqc\functions\fnc_transition.sqf";
             description = "Black fadout/in with some information in some cases";
