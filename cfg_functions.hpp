@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-        
+        class loadSupplyBox{
+            file = "\cgqc\functions\fnc_loadSupplyBox.sqf";
+            description = "Fill up dynamic supply box";
+        };
         class loadMk3Menu{
             file = "\cgqc\functions\fnc_loadMk3Menu.sqf";
             description = " Ace menu for mk3 sheeits";

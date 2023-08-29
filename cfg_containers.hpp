@@ -125,7 +125,7 @@ class cgqc_box_mk1_supplies : Box_NATO_Wps_F
     };
     class EventHandlers
     {
-        init = "[_this] execVM '\cgqc\containers\cgqc_box_mk1_supplies.sqf'";
+        init = "[_this] call CGQC_fnc_loadSupplyBox";
     };
     ace_cargo_size = 1;  // Cargo space the object takes
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
