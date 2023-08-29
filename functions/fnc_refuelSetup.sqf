@@ -1,3 +1,5 @@
+// --- refuelSetup ----------------------------------------------------------
+// Sets up for Refuel/Repair/Ressupply
 params ["_object", "_type"];
 diag_log format ["[CGQC_FNC] refuelSetup %1/%2 started", _object, _type];
 

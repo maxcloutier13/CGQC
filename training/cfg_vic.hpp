@@ -31,7 +31,7 @@ _action = [ "menu_self_training_vic", "Vehicles", "CGQC\textures\cgqc_ace_vic", 
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 
-_action = [ "menu_self_training_spawn", "Spawn Vehicle", "", {
+_action = [ "menu_self_training_spawn", "Spawn Vehicle on cursor", "", {
 	_spawn = [] call cgqc_fnc_spawnVic;
 }, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_vic"], _action ] call  ace_interact_menu_fnc_addActionToObject;
