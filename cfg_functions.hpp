@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        
+        class loadoutToClipboard{
+            file = "\cgqc\functions\fnc_loadoutToClipboard.sqf";
+            description = "Send cursorTarget's loadout to clipboard with everything to create new role";
+        };
         class refuelSetup{
             file = "\cgqc\functions\fnc_refuelSetup.sqf";
             description = "Set up dynamic ressuply";

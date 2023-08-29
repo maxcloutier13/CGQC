@@ -1,5 +1,7 @@
-//Get target 
-_target = cursorTarget;
+// --- loadoutToClipboard ----------------------------------------------------------
+// Copy target loadout to clipboard for making new roles
+params ["_target"];
+diag_log format ["[CGQC_FNC] loadoutToClipboard %1 started", _target];
 
 // Equipment
 _loadout_player_helmet = headgear _target;
@@ -152,3 +154,5 @@ _loadout_string = remove_txt + str uniform_txt + items_txt;
 
 //Copy result to clipboard
 copyToClipboard _loadout_string;
+hint "Loadout sent to clipboard";
+diag_log "[CGQC_FNC] loadoutToClipboard done";

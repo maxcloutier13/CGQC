@@ -9,8 +9,3 @@ _table addAction ["Takistan", {["END3"] remoteExec ["endMission", 0, true]}];
 _table addAction ["Novogorsk", {["END4"] remoteExec ["endMission", 0, true]}]; 
 _table addAction ["Bozcaada", {["END5"] remoteExec ["endMission", 0, true]}]; 
 _table addAction ["Tanoa", {["END6"] remoteExec ["endMission", 0, true]}]; 
-
-
-
- 
-    
