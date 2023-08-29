@@ -12,9 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        
         class trainingCqb{
             file = "\cgqc\functions\fnc_trainingCqb.sqf";
             description = "Cqb shenanigans";
+        };
+        class trainingDefense{
+            file = "\cgqc\functions\fnc_trainingDefense.sqf";
+            description = "Wave defense mission";
         };
         class loadoutToClipboard{
             file = "\cgqc\functions\fnc_loadoutToClipboard.sqf";
