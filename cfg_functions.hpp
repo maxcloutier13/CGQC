@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-        
+        class trainingCqb{
+            file = "\cgqc\functions\fnc_trainingCqb.sqf";
+            description = "Cqb shenanigans";
+        };
         class loadoutToClipboard{
             file = "\cgqc\functions\fnc_loadoutToClipboard.sqf";
             description = "Send cursorTarget's loadout to clipboard with everything to create new role";
