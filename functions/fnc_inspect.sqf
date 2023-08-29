@@ -126,7 +126,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		inspect_target_uniform_gunMags = [];
 		inspect_target_uniform_throwables = [];
 
-		[inspect_target_uniform_allMags, inspect_target_uniform_gunMags, inspect_target_uniform_throwables, inspect_target_uniform_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
+		[inspect_target_uniform_allMags, inspect_target_uniform_gunMags, inspect_target_uniform_throwables, inspect_target_uniform_txt] call CGQC_fnc_inspectSort;
 
 	}else{
 		inspect_target_uniform_txt = inspect_target_uniform_txt + "-- None --<br/>";
@@ -161,7 +161,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		inspect_target_vest_allMags = vestMagazines inspect_target; 
 		inspect_target_vest_gunMags = [];
 		inspect_target_vest_throwables = [];
-		[inspect_target_vest_allMags, inspect_target_vest_gunMags, inspect_target_vest_throwables, inspect_target_vest_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
+		[inspect_target_vest_allMags, inspect_target_vest_gunMags, inspect_target_vest_throwables, inspect_target_vest_txt] call CGQC_fnc_inspectSort;
 	} else {
 		inspect_target_vest_txt = inspect_target_vest_txt + "-- None --<br/>";
 	};
@@ -195,7 +195,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		inspect_target_backpack_allMags = backpackMagazines inspect_target; 
 		inspect_target_backpack_gunMags = [];
 		inspect_target_backpack_throwables = [];
-		[inspect_target_backpack_allMags, inspect_target_backpack_gunMags, inspect_target_backpack_throwables, inspect_target_backpack_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
+		[inspect_target_backpack_allMags, inspect_target_backpack_gunMags, inspect_target_backpack_throwables, inspect_target_backpack_txt] call CGQC_fnc_inspectSort;
 	} else {
 		inspect_target_backpack_txt = inspect_target_backpack_txt + "-- None --<br/>";
 	};
@@ -404,4 +404,4 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	hintSilent "";
 };
 
-diag_log "[CGQC_FNC] loadSupplyBox done";
+diag_log "[CGQC_FNC] inspect done";

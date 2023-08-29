@@ -1,10 +1,7 @@
 // --- inspectSort ----------------------------------------------------------
 // Sort mags and throwables
-
-_allMags = _this select 0;
-_gunMags = _this select 1;
-_throwables = _this select 2;
-_txt = _this select 3; 
+params ["_allMags", "_gunMags", "_throwables", "_txt"];
+diag_log format ["[CGQC_FNC] inspectSort %1/%2/%3/%4 started", _allMags, _gunMags, _throwables, _txt];
 
 _seen = [];
 {
@@ -46,3 +43,5 @@ if (count _throwables > 0) then {
 	// No items?
 	_txt = _txt + "- No Throwables - <br/>";
 };
+
+diag_log "[CGQC_FNC] inspectSort done";
