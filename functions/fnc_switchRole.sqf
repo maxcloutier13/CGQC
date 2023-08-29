@@ -41,7 +41,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     // Start transition
     if (!cgqc_intro_running && _showTransition) then {
         diag_log "[CGQC_FNC] switchRole - running transition";
-        ["role", true] execVM "\CGQC\loadouts\mk3_transition.sqf";
+        ["role", true] call CGQC_fnc_transition;
     };
 
     //Set patch back

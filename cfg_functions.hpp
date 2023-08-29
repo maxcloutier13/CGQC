@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class transition{
+            file = "\cgqc\functions\fnc_transition.sqf";
+            description = "Black fadout/in with some information in some cases";
+        };
         class switchStuff{
             file = "\cgqc\functions\fnc_switchStuff.sqf";
             description = "Switch vest/backpack for another version";
