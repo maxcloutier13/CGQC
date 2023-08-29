@@ -41,7 +41,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     // Start transition
     if (!cgqc_intro_running && _showTransition) then {
         diag_log "[CGQC_FNC] switchRole - running transition";
-        ["role", true] call CGQC_fnc_transition;
+        ["role", true] call CGQC_showTransition;
     };
 
     //Set patch back

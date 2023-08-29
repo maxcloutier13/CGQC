@@ -16,7 +16,7 @@ diag_log "[CGQC_FNC] switchUniform started";
 		// Transition/text
 		if !(_fromLoadout) then {
 			// Fade to black transition with text
-			[_camo, true] call CGQC_fnc_transition;
+			[_camo, true] call CGQC_showTransition;
 		};
 		// Check if player in chill mode
 		if (cgqc_player_chill) then {

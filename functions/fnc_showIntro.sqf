@@ -15,10 +15,8 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 					waitUntil { scriptDone cgqc_establishing };
 				};
 				0 fadeSound 0;
-				disableUserInput true;
 				// Start with a silent black screen.
 				titleCut ["", "BLACK FADED", 999];
-				sleep 1;
 				_text = (
 					"<img size= '8' style='vertical-align:middle' shadow='false' image='\cgqc\textures\CGQC.paa'/>" +
 					"<br/>" +
@@ -30,14 +28,14 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 				// Fade from black, to blur, to clear as text types.
 				10 fadeSound 1;
 				sleep 2;
-				disableUserInput false;
 				"dynamicBlur" ppEffectEnable true;   
 				"dynamicBlur" ppEffectAdjust [3];   
 				"dynamicBlur" ppEffectCommit 0;     
 				"dynamicBlur" ppEffectAdjust [0.0];  
 				"dynamicBlur" ppEffectCommit 5;  
 				titleCut ["", "BLACK IN", 8];
-				sleep 10;
+				sleep 5;
+				sleep 5;
 				cgqc_intro_running = false;
 				cgqc_intro_done = true;
 				ace_hearing_disableVolumeUpdate = false;

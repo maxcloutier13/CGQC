@@ -37,7 +37,14 @@ class CGQC {
             file = "\cgqc\functions\fnc_trainingPara.sqf";
             description = "Paradrop shenanigans";
         };
-        
+        class trainingSniping{
+            file = "\cgqc\functions\fnc_trainingSniping.sqf";
+            description = "Sniping shenanigans";
+        };
+        class trainingTime{
+            file = "\cgqc\functions\fnc_trainingTime.sqf";
+            description = "Sets time to current real-life date but sunrise and with nice clear weather";
+        };
         class loadoutToClipboard{
             file = "\cgqc\functions\fnc_loadoutToClipboard.sqf";
             description = "Send cursorTarget's loadout to clipboard with everything to create new role";
@@ -70,8 +77,8 @@ class CGQC {
             file = "\cgqc\functions\fnc_loadMk3Menu.sqf";
             description = " Ace menu for mk3 sheeits";
         };
-        class transition{
-            file = "\cgqc\functions\fnc_transition.sqf";
+        class showTransition{
+            file = "\cgqc\functions\fnc_showTransition.sqf";
             description = "Black fadout/in with some information in some cases";
         };
         class switchStuff{
@@ -198,8 +205,8 @@ class CGQC {
             file = "\cgqc\functions\fnc_findRank.sqf";
             description = "Match name prefix with rank";
         };
-        class welcome {
-            file = "\cgqc\functions\fnc_welcome.sqf";
+        class showWelcome {
+            file = "\cgqc\functions\fnc_showWelcome.sqf";
             description = "Prep un message de bienvenue semi-random";
         }; 
         class loadDiary {

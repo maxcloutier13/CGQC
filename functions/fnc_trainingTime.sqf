@@ -1,5 +1,5 @@
 // --- trainingTime ----------------------------------------------------------
-// Sets time to current day but sunrise and with nice clear weather
+// Sets time to current real-life date but sunrise and with nice clear weather
 //Only run once 
 if (isNil "cgqc_setInitialTime") then {
 	// Set current day/month/year
@@ -20,4 +20,3 @@ if (isNil "cgqc_setInitialTime") then {
 	[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
 	cgqc_setInitialTime = true;
 };
-

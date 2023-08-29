@@ -1,15 +1,27 @@
 // --- postInit_client ----------------------------------------------------------
 // Start everything player related
 diag_log "[CGQC_INIT] === postInit_client started =====================================";
+// Start with a silent black screen.
+0 fadeSound 0;
+titleCut ["", "BLACK FADED", 999];
 
 _version = "3.7.2";
-// Client-side code
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
+
+// Client-side code
 
 if !(cgqc_mission_dro) then {
 	// Start with a silent black screen. 
 	0 fadeSound 0;
-	titleCut ["", "BLACK FADED", 999];
+	
+	diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
+	if !(cgqc_mission_dro) then {
+		diag_log "[CGQC_INIT] showing intro/welcome";
+		// Show intro 
+		_intro = [] spawn CGQC_fnc_showIntro;
+		// Build a random welcome and shows it
+		_welcome = [] spawn CGQC_fnc_showWelcome; 
+	};
 
 	//Respawn handler 
 	player addMPEventHandler ["MPRespawn", {
@@ -173,15 +185,6 @@ _zeus = [] call CGQC_fnc_setZeus;
 // Lower gun 
 diag_log "[CGQC_INIT] gun lowered";
 _holster = [] spawn CGQC_fnc_holsterWeapons;
-
-diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
-if !(cgqc_mission_dro) then {
-	diag_log "[CGQC_INIT] showing intro/welcome";
-	// Show intro 
-	_intro = [] spawn CGQC_fnc_showIntro;
-	// Build a random welcome and shows it
-	_welcome = [] spawn CGQC_fnc_welcome; 
-};
 
 // Training menu if training is on
 if (cgqc_flag_isTraining) then {
