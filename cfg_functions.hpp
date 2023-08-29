@@ -33,6 +33,11 @@ class CGQC {
             file = "\cgqc\functions\fnc_trainingMedical.sqf";
             description = "Medical training";
         };
+        class trainingPara{
+            file = "\cgqc\functions\fnc_trainingPara.sqf";
+            description = "Paradrop shenanigans";
+        };
+        
         class loadoutToClipboard{
             file = "\cgqc\functions\fnc_loadoutToClipboard.sqf";
             description = "Send cursorTarget's loadout to clipboard with everything to create new role";
@@ -164,6 +169,10 @@ class CGQC {
         class trainingLoadMenu{
             file = "\cgqc\functions\fnc_trainingLoadMenu.sqf";
             description = "Load training ace-interaction menu";
+        };
+        class trainingMortar{
+            file = "\cgqc\functions\fnc_trainingMortar.sqf";
+            description = "Manual mortar training ";
         };
         class perkGoggles{
             file = "\cgqc\functions\fnc_perksGoggles.sqf";

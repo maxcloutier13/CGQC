@@ -19,7 +19,7 @@ _insertChildren = {
 		if (_x != player) then {
 			drop_playerName = name _x;
             drop_player = _x;
-			private _childStatement = {[0, 1, drop_player] execVM '\cgqc\functions\fnc_trainingPara.sqf'};
+			private _childStatement = {[0, 1, drop_player] call CGQC_fnc_trainingPara};
 			private _action = [format ["Drop:%1",drop_playerName], drop_playerName, "", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
 			_actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
 		};

@@ -84,3 +84,4 @@ params ["_type"];
 		};
 	};
 };
+diag_log "[CGQC_FNC] trainingMedical done";

@@ -10,7 +10,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils
 // Quick paradrop ========================================================================================================
 //_action = [ "menu_self_para_quick", "QuickJump", "\CGQC\textures\cgqc_ace_para", {}, {[player] call CGQC_fnc_checkZeus || cgqc_player_max || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;     
 //_adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
-_action = [ "menu_self_para_quickMap", "QuickJump", "\CGQC\textures\cgqc_ace_para", {[0, 0] execVM '\cgqc\functions\fnc_trainingPara.sqf'}, {true} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_self_para_quickMap", "QuickJump", "\CGQC\textures\cgqc_ace_para", {[0, 0] call CGQC_fnc_trainingPara}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_training", "menu_self_utils"], _action ] call  ace_interact_menu_fnc_addActionToObject;  
 
 // Teleport to player

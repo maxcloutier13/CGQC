@@ -156,6 +156,7 @@ cgqc_training_medical = false;
 cgqc_training_jump = false; 
 cgqc_training_jump_target = true;
 cgqc_training_jump_comp_on = false;
+cgqc_training_jump_autoOpen = true;
 cgqc_training_jump_comp = [];
 
 // Landnav
