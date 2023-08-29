@@ -1,4 +1,4 @@
-// --- postInit_server ----------------------------------------------------------
+// --- postInitServer ----------------------------------------------------------
 // Start everything server-side
 
 // Check if dynamic group is initialized

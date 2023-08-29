@@ -15,9 +15,9 @@ class Extended_PostInit_EventHandlers
     {
         // This will be executed once for each mission, once the mission has started
         init = "[] spawn CGQC_fnc_postInit";
-        serverInit = "execVM '\cgqc\functions\fnc_postInit_server.sqf'";
+        serverInit = "execVM '\cgqc\functions\fnc_postInitServer.sqf'";
         clientInit = "[] spawn CGQC_fnc_postInitClient";
-        //serverInit = "call CGQC_fnc_postInit_server";
+        //serverInit = "call CGQC_fnc_postInitServer";
         //clientInit = "call CGQC_fnc_postInit_client";
         //init = "call CGQC_fnc_postInit";
     };

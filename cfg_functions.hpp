@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        
+        class postInitServer{
+            file = "\cgqc\functions\fnc_postInitServer.sqf";
+            description = "Set everything that needs to be there before editor/menu/briefing";
+        };
         class preInit{
             file = "\cgqc\functions\fnc_preInit.sqf";
             description = "Set everything that needs to be there before editor/menu/briefing";
