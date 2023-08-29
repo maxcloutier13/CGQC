@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-        
+        class refuelSetup{
+            file = "\cgqc\functions\fnc_refuelSetup.sqf";
+            description = "Set up dynamic ressuply";
+        };
         class loadoutConstructionVic{
             file = "\cgqc\functions\fnc_loadoutConstructionVic.sqf";
             description = "Add ADS to cgqc vehicles";

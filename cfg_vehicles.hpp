@@ -84,7 +84,7 @@ class cgqc_refuel_h : Land_HelipadSquare_F
     displayName = "CGQC Helipad - Standard";
     class EventHandlers
     {
-        init = "[_this, 0] execVM '\cgqc\functions\fnc_refuel_setup.sqf'"; 
+        init = "[_this, 0] call CGQC_fnc_refuelSetup"; 
     };
 };
 class cgqc_refuel_h_short : Land_HelipadSquare_F
@@ -96,7 +96,7 @@ class cgqc_refuel_h_short : Land_HelipadSquare_F
     displayName = "CGQC Helipad - Rapide";
     class EventHandlers
     {
-        init = "[_this, 1] execVM '\cgqc\functions\fnc_refuel_setup.sqf'";  
+        init = "[_this, 1] call CGQC_fnc_refuelSetup";  
     };
 };
 class cgqc_refuel_h_invis: cgqc_refuel_h

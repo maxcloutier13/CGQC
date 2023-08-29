@@ -1,5 +1,5 @@
-_object = _this select 0;
-_type = _this select 1;
+params ["_object", "_type"];
+diag_log format ["[CGQC_FNC] refuelSetup %1/%2 started", _object, _type];
 
 switch (_type) do {
 	case 0:	{
@@ -34,8 +34,7 @@ switch (_type) do {
         _trg setTriggerStatements [_cond, _act, _deAct];
         _trg setTriggerInterval _int;
 	};
-    default
-	{
-		hintc "cgqc_refuel_setup fail";
-	};
+    default{diag_log "[CGQC_ERROR] refuelSetup fail";};
 };
+
+diag_log "[CGQC_FNC] refuelSetup done";
