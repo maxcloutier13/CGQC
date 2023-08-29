@@ -22,20 +22,22 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 					"<br/>" +
 					"<t size='2' >%1</t><br /><t size = '1'>par %2</t>"
 				);
+				waitUntil {cgqc_roleSwitch_done};
 				//Pop le logo et le texte
 				_text = format [_text, cgqc_config_mission_name, cgqc_config_author];
 				[_text, 0, 0, 5, 2] spawn BIS_fnc_dynamicText;
 				// Fade from black, to blur, to clear as text types.
 				10 fadeSound 1;
-				sleep 2;
+				sleep 6;
 				"dynamicBlur" ppEffectEnable true;   
 				"dynamicBlur" ppEffectAdjust [3];   
 				"dynamicBlur" ppEffectCommit 0;     
 				"dynamicBlur" ppEffectAdjust [0.0];  
 				"dynamicBlur" ppEffectCommit 5;  
 				titleCut ["", "BLACK IN", 8];
-				sleep 5;
-				sleep 5;
+				disableUserInput false;
+				sleep 1;
+				if (userInputDisabled) then {disableUserInput false;};
 				cgqc_intro_running = false;
 				cgqc_intro_done = true;
 				ace_hearing_disableVolumeUpdate = false;
@@ -47,6 +49,8 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 		1 fadeSound 1;
 		cgqc_intro_skipped = true;
 		cgqc_intro_done = true;
+		disableUserInput false;
+		if (userInputDisabled) then {disableUserInput false;};
 	};
 };
 diag_log "[CGQC_FNC] showIntro done";

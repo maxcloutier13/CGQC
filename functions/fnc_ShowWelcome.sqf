@@ -47,9 +47,9 @@ if (cgqc_setting_show_welcome) then {
 	waitUntil {cgqc_intro_done};
 	diag_log "[CGQC_FNC] welcome - intro finished";
 	if (cgqc_intro_skipped) then {
-		sleep 10;
+		sleep 15;
 	} else{
-		sleep 5;
+		sleep 10;
 	};
 	
 	if (cgqc_player_known) then {

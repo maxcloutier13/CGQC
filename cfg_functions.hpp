@@ -12,7 +12,18 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-        
+        class preInit{
+            file = "\cgqc\functions\fnc_preInit.sqf";
+            description = "Set everything that needs to be there before editor/menu/briefing";
+        };
+        class postInitClient{
+            file = "\cgqc\functions\fnc_postInitClient.sqf";
+            description = "Start everything player related";
+        };
+        class postInit{
+            file = "\cgqc\functions\fnc_postInit.sqf";
+            description = "Start everything before everything";
+        };
         class trainingCqb{
             file = "\cgqc\functions\fnc_trainingCqb.sqf";
             description = "Cqb shenanigans";

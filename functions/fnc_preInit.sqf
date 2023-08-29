@@ -2,6 +2,7 @@
 // Set everything that needs to be there before editor/menu/briefing
 diag_log "[CGQC_PREINIT] === preInit started =====================================";
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
 // CGQC Variables ===================================================================================================
 // *** Init **********************
 cgqc_start_preInit_done = false;

@@ -1,28 +1,22 @@
-// --- postInit_client ----------------------------------------------------------
+// --- postInitClient ----------------------------------------------------------
 // Start everything player related
 diag_log "[CGQC_INIT] === postInit_client started =====================================";
-// Start with a silent black screen.
-0 fadeSound 0;
-titleCut ["", "BLACK FADED", 999];
 
 _version = "3.7.2";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
+
 // Client-side code
-
+diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
 if !(cgqc_mission_dro) then {
-	// Start with a silent black screen. 
-	0 fadeSound 0;
 	
-	diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
-	if !(cgqc_mission_dro) then {
-		diag_log "[CGQC_INIT] showing intro/welcome";
-		// Show intro 
-		_intro = [] spawn CGQC_fnc_showIntro;
-		// Build a random welcome and shows it
-		_welcome = [] spawn CGQC_fnc_showWelcome; 
-	};
+	diag_log "[CGQC_INIT] showing intro/welcome";
+	// Show intro 
+	_intro = [] spawn CGQC_fnc_showIntro;
+	// Build a random welcome and shows it
+	_welcome = [] spawn CGQC_fnc_showWelcome; 
 
+	diag_log "[CGQC_INIT] loading custom death/respawn";
 	//Respawn handler 
 	player addMPEventHandler ["MPRespawn", {
 		params ["_unit", "_corpse"];
@@ -34,6 +28,11 @@ if !(cgqc_mission_dro) then {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		[_unit, _killer] call CGQC_fnc_playerKilled;
 	}];
+} else {
+	1 fadeSound 1;
+	titleCut ["", "BLACK IN", 1];
+	disableUserInput false;
+	if (userInputDisabled) then {disableUserInput false;};
 };
 
 // Player identification --------------------------------------------------------------------------------------------
