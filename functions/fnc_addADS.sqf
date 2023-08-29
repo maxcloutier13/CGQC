@@ -1,13 +1,13 @@
 // --- addADS ----------------------------------------------------------
 // Add active defenses to vehicle
+params ["_type", "_vic_array"];
+_vic = _vic_array select 0;
+diag_log format ["[CGQC_FNC] addADS %1/%2 started", _type, _vic];
 
 /* MAX Fix needed
 
 if (isServer) then {
 	waitUntil {sleep 1;cgqc_start_postInitClient_done};
-	_type  = _this select 0;
-	y_vic = _this select 1;
-	y_vic = y_vic select 0;
 	y_vic setVariable["dapsCanSmoke",1,TRUE];
 	switch (_type) do {
 		case "light": { 
@@ -29,3 +29,4 @@ if (isServer) then {
 };
 
 */
+diag_log "[CGQC_FNC] addADS done";

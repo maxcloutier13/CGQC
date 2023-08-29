@@ -1,6 +1,6 @@
 // --- loadSupplyBox ----------------------------------------------------------
 // Dynamic supply box 
- params ["_crate_array"];
+params ["_crate_array"];
 _crate = _crate_array select 0;
 diag_log format ["[CGQC_FNC] loadSupplyBox %1 started", _crate];
 

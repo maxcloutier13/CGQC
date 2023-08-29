@@ -12,6 +12,15 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        
+        class loadoutConstructionVic{
+            file = "\cgqc\functions\fnc_loadoutConstructionVic.sqf";
+            description = "Add ADS to cgqc vehicles";
+        };
+        class addADS{
+            file = "\cgqc\functions\fnc_addADS.sqf";
+            description = "Add ADS to cgqc vehicles";
+        };
         class inspect{
             file = "\cgqc\functions\fnc_inspect.sqf";
             description = "Inspect loadout of self or others";
