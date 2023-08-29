@@ -186,7 +186,7 @@ if !(cgqc_mission_dro) then {
 // Training menu if training is on
 if (cgqc_flag_isTraining) then {
 	diag_log "[CGQC_INIT] cgqc_flag_isTraining is true. Loading training menu";
-	call cgqc_fnc_trainingMenu;
+	[] call CGQC_fnc_trainingLoadMenu;
 };
 
 // Load loadouts if known unit  

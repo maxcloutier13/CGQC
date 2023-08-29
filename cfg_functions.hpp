@@ -20,6 +20,18 @@ class CGQC {
         class trainingDefense{
             file = "\cgqc\functions\fnc_trainingDefense.sqf";
             description = "Wave defense mission";
+        };        
+        class trainingHeli{
+            file = "\cgqc\functions\fnc_trainingHeli.sqf";
+            description = "Helicopter training";
+        };
+        class trainingKOTH{
+            file = "\cgqc\functions\fnc_trainingKOTH.sqf";
+            description = "King of the hill stuff";
+        };
+        class trainingMedical{
+            file = "\cgqc\functions\fnc_trainingMedical.sqf";
+            description = "Medical training";
         };
         class loadoutToClipboard{
             file = "\cgqc\functions\fnc_loadoutToClipboard.sqf";
@@ -149,8 +161,8 @@ class CGQC {
             file = "\cgqc\functions\fnc_switchPerks.sqf";
             description = "Switch role perks";
         };
-        class trainingMenu{
-            file = "\cgqc\functions\fnc_trainingMenu.sqf";
+        class trainingLoadMenu{
+            file = "\cgqc\functions\fnc_trainingLoadMenu.sqf";
             description = "Load training ace-interaction menu";
         };
         class perkGoggles{
