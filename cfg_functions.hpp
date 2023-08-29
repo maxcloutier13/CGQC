@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class inspect{
+            file = "\cgqc\functions\fnc_inspect.sqf";
+            description = "Inspect loadout of self or others";
+        };
         class loadSupplyBox{
             file = "\cgqc\functions\fnc_loadSupplyBox.sqf";
             description = "Fill up dynamic supply box";

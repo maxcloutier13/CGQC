@@ -1,6 +1,7 @@
 // --- inspect ----------------------------------------------------------
 // Inspect target laodout and reports problems 
-_type = _this select 0;
+params ["_type"];
+diag_log format ["[CGQC_FNC] inspect %1 started", _type];
 
 inspect_target = cursorTarget;
 _inspect_txt = "";
@@ -395,4 +396,12 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	};
 };
 
-Hint parseText format ["%1", _inspect_txt];
+// Show inspection message
+[_inspect_txt] spawn {
+	params ["_txt"];
+	Hint parseText format ["%1", _txt];
+	sleep 20;
+	hintSilent "";
+};
+
+diag_log "[CGQC_FNC] loadSupplyBox done";
