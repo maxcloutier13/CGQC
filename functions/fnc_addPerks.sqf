@@ -494,10 +494,10 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"],
 // Other actions ================================================================================
 
 // Refuel actions ---------------------------------------------------------------------------------
-_action = [ "menu_self_rrr", "Maintenance Véhicule", "CGQC\textures\icon_maintenance", {['normal'] execVM "\cgqc\functions\fnc_refuel.sqf"}, {cgqc_flag_supply && (vehicle player != player) && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_rrr", "Maintenance Véhicule", "CGQC\textures\icon_maintenance", {['normal'] call CGQC_fnc_refuel}, {cgqc_flag_supply && (vehicle player != player) && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Fast refuel
-_action = [ "menu_self_rrr_short", "Maintenance Rapide", "CGQC\textures\icon_maintenance", {['short'] execVM "\cgqc\functions\fnc_refuel.sqf"}, {cgqc_flag_supply_rapide && (vehicle player != player) && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_rrr_short", "Maintenance Rapide", "CGQC\textures\icon_maintenance", {['short'] call CGQC_fnc_refuel}, {cgqc_flag_supply_rapide && (vehicle player != player) && (driver vehicle player isEqualTo player)} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Actual Zeus perks ================================================================================

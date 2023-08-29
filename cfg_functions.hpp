@@ -17,6 +17,10 @@ class CGQC {
             file = "\cgqc\functions\fnc_loadoutToClipboard.sqf";
             description = "Send cursorTarget's loadout to clipboard with everything to create new role";
         };
+        class refuel{
+            file = "\cgqc\functions\fnc_refuel.sqf";
+            description = "Refuel/Repair/Ressupply";
+        };
         class refuelSetup{
             file = "\cgqc\functions\fnc_refuelSetup.sqf";
             description = "Set up dynamic ressuply";
