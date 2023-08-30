@@ -24,11 +24,25 @@ class CGQC_Soldat_Base : B_Soldier_f
 	respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "cgqc_item_rangefinder", "cgqc_cap_green", "V_Rangemaster_belt", "None"};
 	backpack = "cgqc_pack_mk1_magic";
 	editorPreview = "cgqc\pics\cgqc_soldat_base.jpg";
-	class EventHandlers {
-        //init = "[] spawn CGQC_fnc_initTraining";
-    };
+	class Attributes {
+		class SubCategory
+		{
+			data = "AttributeSystemSubcategory"; // This is needed for the attribute to work
+			control = "SubCategory";
+			displayName = "CGQC"; // Visible text. Despite the attribute code saying the property should be title, displayName is correct
+		};
+		class skipLoadout {
+			displayName = "Switch loadout on init";
+			tooltip = "Skip loadout switch";
+			property = "cgqc_var_skipLoadoutSwitch";
+			control = "Checkbox";
+			defaultValue = "true";
+			expression = "_this setVariable ['cgqc_var_skipLoadoutSwitch',_value];";
+			condition = "objectBrain";
+		};
+	};
 };
-class CGQC_Officer_Base : B_Soldier_f
+class CGQC_Officer_Base : CGQC_Soldat_Base
 {
 	author = "silent1";
 	faction = "CGQC";
