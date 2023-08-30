@@ -8,8 +8,8 @@ params ["_type", ["_show", true]];
     cgqc_mk3_transition = true;
     _text = "";
     _text_insert = "";
+    _sleep = 5;
     if (cgqc_setting_show_transition && _show) then {
-        waitUntil {sleep 0.5;cgqc_intro_done;};
         // Fade to black  
         cutText ["", "BLACK FADED", 999];
         titleText ["", "PLAIN"];
@@ -52,32 +52,32 @@ params ["_type", ["_show", true]];
                     case (_currentLoadKg > 40) : { 
                         _check_currentLoad = format["<t color='#ff0000'>%1</t>", _currentLoadKg];
                         _load_desc = "heavy";
-                        break;
+                        
                     };
                     case (_currentLoadKg > 35) : {
                         _check_currentLoad = format["<t color='#FF5700'>%1</t>", _currentLoadKg];
                         _load_desc = "medium+++";
-                        break;
+                        
                     };
                     case (_currentLoadKg > 32) : {
                         _check_currentLoad = format["<t color='#FF8300'>%1</t>", _currentLoadKg];
                         _load_desc = "medium+";
-                        break;
+                        
                     };
                     case (_currentLoadKg > 30) : {
                         _check_currentLoad = format["<t color='#F8FF00'>%1</t>", _currentLoadKg];
                         _load_desc = "medium";
-                        break;
+                        
                     };
                     case (_currentLoadKg > 27) : {
                         _check_currentLoad = format["<t color='#CCFF00'>%1</t>", _currentLoadKg];
                         _load_desc = "light+";
-                        break;
+                        
                     };
                     case (_currentLoadKg > 0) : {
                         _check_currentLoad = format["<t color='#00FF0F'>%1</t>", _currentLoadKg];
                         _load_desc = "light";
-                        break;
+                        
                     };
                 };
 
@@ -85,34 +85,34 @@ params ["_type", ["_show", true]];
                 _text = _text + format ["%1<br/>", _check_traits];
                 // Show weight
                 _text = _text + format ["Loadout weight: %1kg (%2)<br/>", _check_currentLoad, _load_desc];
-                break;
+                
             };
             case "camo":{ 
                 _text_insert = format ["camo %1", _type];
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Changement de %1</t><br/>");
-                break;
+                _sleep = 2;
             };
             case "diver":{
                 _text_insert = "Plongeur";
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Kit: %1</t><br/>");
-                break;
+                
             };
             case "para":{
                 _text_insert = "Parachutiste";
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Kit: %1</t><br/>");
-                break;
+                
             };
             case "landnav":{
                 _text_insert = "Orientation";
                 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>" + "Find the Flag!");
-                break;
+                
             };
         };
         //Pop le texte
         _text = format [_text, _text_insert];
         [_text, 0, 0, 3, 2] spawn BIS_fnc_dynamicText;
-        sleep 5;
-        titleFadeOut 4;
+        sleep _sleep;
+        //titleFadeOut 4;
         // Wake up with blur
         "dynamicBlur" ppEffectEnable true;
         "dynamicBlur" ppEffectAdjust [6];

@@ -3,6 +3,12 @@
 params ["_camo", "_fromLoadout"];
 diag_log "[CGQC_FNC] switchUniform started";
 
+// Transition/text
+if !(_fromLoadout) then {
+	// Fade to black transition with text
+	[_camo, true] call CGQC_fnc_showTransition;
+};
+
 [_camo, _fromLoadout] spawn {
 	params ["_camo", "_fromLoadout"];
 	cgqc_camoSwitch_done = false;
@@ -11,15 +17,8 @@ diag_log "[CGQC_FNC] switchUniform started";
 	_skip_msg = "";
 
 	disableUserInput true;
-	// Transition/text
-	if !(_fromLoadout) then {
-		// Fade to black transition with text
-		[_camo, true] call CGQC_showTransition;
-	};
 	// Check if player in chill mode
-	if (cgqc_player_chill) then {
-		["ready", true] call CGQC_fnc_perksBasic;
-	};
+	if (cgqc_player_chill) then {["ready", true] call CGQC_fnc_perksBasic;};
 	// Init new variables
 	_helmet_new = "";
 	_uniform_new = "";
@@ -215,21 +214,11 @@ diag_log "[CGQC_FNC] switchUniform started";
 		check_vest = vest player;
 		check_backpack = backpack player;
 		check_goggles = goggles player;
-		if (check_helmet == "") then {
-			player addHeadgear player_helmet_old;
-		};
-		if (check_uniform == "") then {
-			player forceAddUniform player_uniform_old;
-		};
-		if (check_vest == "") then {
-			player addVest player_vest_old;
-		};
-		if (check_backpack == "") then {
-			player addBackpack player_backpack_old;
-		};
-		if (check_goggles == "") then {
-			player addGoggles player_goggles_old;
-		};
+		if (check_helmet == "") then {player addHeadgear player_helmet_old;};
+		if (check_uniform == "") then {player forceAddUniform player_uniform_old;};
+		if (check_vest == "") then {player addVest player_vest_old;};
+		if (check_backpack == "") then {player addBackpack player_backpack_old;};
+		if (check_goggles == "") then {player addGoggles player_goggles_old;};
 
 		// Flush potential leftovers 
 		clearAllItemsFromBackpack player;
