@@ -9,11 +9,9 @@ player addVest "cgqc_vest_mk1_black_lr";
 
 // === Primary ==========================================================================================================
 ["UK3CB_MP5SD6"] call CGQC_fnc_getCustomGun;
-removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
 player addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";
 
 // Mags 
 [] call CGQC_fnc_addMags;
 // === Role Items ==========================================================================================================
-player addItemToBackpack "ACE_wirecutter";

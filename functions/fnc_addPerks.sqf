@@ -487,8 +487,11 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], 
 _action = [ "zeus_delcargo", "delete Cargo", "", {["del_cargo", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;	
 // ------ Export Loadout  
-_action = [ "zeus_export", "Loadout to Clipboard", "", {[cursorTarget] call CGQC_fnc_loadoutToClipboard}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_export", "Tartget loadout to Clipboard", "", {[cursorTarget] call CGQC_fnc_loadoutToClipboard}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_export", "Self loadout to Clipboard", "", {[player] call CGQC_fnc_loadoutToClipboard}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 
 
 // Other actions ================================================================================

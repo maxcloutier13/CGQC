@@ -4,26 +4,7 @@ params ["_type"];
 diag_log format ["[CGQC_FNC] switchPerks %1 started", _type];
 
 // Set all traits to default
-player setUnitTrait ["Medic", false];
-player setUnitTrait ["engineer", false];
-player setUnitTrait ["explosiveSpecialist", false];
-
-// Remove ghillie up and other perks
-cgqc_perks_basic = true;
-cgqc_perks_recon = false;
-cgqc_perks_pilot = false;
-cgqc_perks_driver = false;
-cgqc_perks_eng = false;
-cgqc_perks_medic = false;
-cgqc_perks_doctor = false;
-
-// Every CplC is a medic
-/* 
-if (cgqc_player_rank > 2) then 
-{
-	player setUnitTrait ["Medic", true];
-	cgqc_perks_medic = true;
-};*/
+[player] call CGQC_fnc_resetTraits;
 
 switch (_type) do {
 	case "zeus":{

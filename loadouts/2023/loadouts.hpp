@@ -2,6 +2,10 @@
 // Gets all 2023 loadout functions ready
 diag_log "[CGQC_FNC] 2023Loadouts started";
 if (cgqc_player_has2023) then {
+
+	// 2023 CGQC Stuff 
+	
+
 	// Swat stuff 
 	["\CGQC\loadouts\2023\loadout_swat_basic.sqf", "CGQC_loadout_2023Swatbasic"] call CBA_fnc_compileFunction;
 	["\CGQC\loadouts\2023\loadout_swat_assaulter.sqf", "CGQC_loadout_2023SwatAssault"] call CBA_fnc_compileFunction;

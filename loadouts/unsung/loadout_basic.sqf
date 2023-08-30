@@ -1,19 +1,11 @@
 // --- loadout_basic ----------------------------------------------------------
 // Basic loadout for Unsung
 
-// === Remove all =======================================================================================================
-removeAllItems player;
-removeAllAssignedItems player;
-removeAllWeapons player;
-removeAllContainers player;
-removeGoggles player;
-// === Reset traits
-player setUnitTrait ["Medic", false];
-player setUnitTrait ["engineer", false];
-player setUnitTrait ["explosiveSpecialist", false];
+// Prep for switch
+[player] call CGQC_fnc_loadoutPrep;
 
 // === Random Hat ==========================================================================================================
-_hat = selectRandom [
+_hats = [
     "UNS_M1_1V1N",
 	"UNS_Headband_BK",
 	"UNS_Headband_ED",
@@ -50,21 +42,23 @@ _hat = selectRandom [
 	"uns_h_simc_hat_trop_cib_med",
 	"uns_h_simc_hat_trop_med"
 ];
-player addHeadgear _hat;
+_goggles = [""];
+_vests = ["uns_sas_web_3"];
+_uniforms = ["UNS_SOG_BDU_OP"];
+_rucks = ["cgqc_pack_mk1_magic"];
+_loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
+[_loadout] call CGQC_fnc_loadLoadout;
 
 // === Secondary weapon  ====================================================================================================
 player addWeapon "uns_m1911";
 player addHandgunItem "uns_m1911mag";
 
 // === Items ==================================================================================================================
-player linkItem "ItemMap";
-player linkItem "ItemCompass";
-player linkItem "ItemWatch";
+["noGPS"] call CGQC_fnc_getLinkedItems;
 // === Binos
 player addWeapon "uns_binocular_army";
 
 // === Uniform ================================================================================================================
-player forceAddUniform "UNS_SOG_BDU_OP";
 player addItemToUniform "ACRE_SEM52SL"; // === Essentials 
 player addItemToUniform "ACE_EarPlugs"; 
 player addItemToUniform "ACE_MapTools";
@@ -77,13 +71,9 @@ player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";
 player addItemToUniform "cgqc_items_ifak";
 
 // === Vest ================================================================================================================
-player addVest "uns_sas_web_3";
 for "_i" from 1 to 4 do {player addItemToVest "uns_m1911mag";};
 
 // === Backpack ================================================================================================================
-player addBackpack "cgqc_pack_mk1_magic";
-_items_pack = backpackItems player;
-{player removeItemFromBackpack _x} forEach _items_pack;
 player addItemToBackpack "ACE_EntrenchingTool";
 // Grenades 
 for "_i" from 1 to 4 do {player addItemToVest "uns_v40gren";};

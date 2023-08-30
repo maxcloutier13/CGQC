@@ -1,6 +1,7 @@
 // --- addItemWithOverflow ----------------------------------------------------------
 // Add item to player, handling overflow all the way to the ground if needed 
-params ["_unit", "_target", "_item", "_overflow"];
+// example: [player, "uniform", "medkit", true] call CGQC_fnc_addItemWithOverflow;
+params ["_unit", "_target", "_item", ["_overflow", true]];
 diag_log format ["[CGQC_FNC] addItemWithOverflow %1/%2/%3/%4 started", _unit, _target, _item, _overflow];
 
 switch (_target) do {

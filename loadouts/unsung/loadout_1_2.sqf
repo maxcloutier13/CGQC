@@ -4,8 +4,6 @@
 ["vest", "UNS_m1956_S4"] call CGQC_fnc_switchStuff;
 // Backpack 
 ["backpack", "uns_simc_pack_frem_med5"] call CGQC_fnc_switchStuff;
-waitUntil {cgqc_mk3_switching_vest};
-waitUntil {cgqc_mk3_switching_backpack};
 // primaryWeapon 
 player addWeapon "uns_xm177e2";
 player addPrimaryWeaponItem "uns_30Rnd_556x45_Stanag_xm177";

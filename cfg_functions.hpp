@@ -12,10 +12,33 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-        
+        class loadLoadout{
+            file = "\cgqc\functions\fnc_loadLoadout.sqf";
+            description = "Load selected uniform items ";
+        };
+        class loadoutPrep{
+            file = "\cgqc\functions\fnc_loadoutPrep.sqf";
+            description = "Prep the player for loadout switch";
+        };
+        class getLinkedItems{
+            file = "\cgqc\functions\fnc_getLinkedItems.sqf";
+            description = "Get basic linked items and NVG's";
+        };
+        class getCustomHandgun{
+            file = "\cgqc\functions\fnc_getCustomHandgun.sqf";
+            description = "Get player custom handgun from config";
+        };
+        class resetTraits{
+            file = "\cgqc\functions\fnc_resetTraits.sqf";
+            description = "Remove all traits from target";
+        };
+        class loadoutRemoveAll{
+            file = "\cgqc\functions\fnc_loadoutRemoveAll.sqf";
+            description = "Remove everything from unit";
+        };
         class postInitServer{
             file = "\cgqc\functions\fnc_postInitServer.sqf";
-            description = "Set everything that needs to be there before editor/menu/briefing";
+            description = "Start everything server related";
         };
         class preInit{
             file = "\cgqc\functions\fnc_preInit.sqf";
@@ -116,6 +139,10 @@ class CGQC {
         class getCustomGun{
             file = "\cgqc\functions\fnc_getCustomGun.sqf";
             description = "Get custom gun if it exists";
+        };
+        class getCustomHelmet{
+            file = "\cgqc\functions\fnc_getCustomHelmet.sqf";
+            description = "Get custom helmet if it exists";
         };
         class switchUniform{
             file = "\cgqc\functions\fnc_switchUniform.sqf";

@@ -8,7 +8,6 @@
 
 // === Primary ==========================================================================================================
 ["UK3CB_P90C_TR_black"] call CGQC_fnc_getCustomGun;
-removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "muzzle_snds_570";
 player addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
 player addPrimaryWeaponItem "Tier1_MicroT2_Low_Black";

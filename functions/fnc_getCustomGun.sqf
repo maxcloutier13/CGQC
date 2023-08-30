@@ -12,4 +12,8 @@ if !(player hasWeapon _customGun) then {
     diag_log format ["[CGQC_FNC] getCustomGun %1 custom gun found", _customGun];
     hint format ["Custom Gun :%1", _customGun];
 };
+
+// Remove potential default attachments  
+removeAllPrimaryWeaponItems player;
+
 diag_log "[CGQC_FNC] getCustomGun done";

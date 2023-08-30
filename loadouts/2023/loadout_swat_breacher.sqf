@@ -10,7 +10,6 @@ player addVest "cgqc_vest_mk1_black_ar";
 
 // === Primary ==========================================================================================================
 ["sgun_mas_can_benelli_F"] call CGQC_fnc_getCustomGun;
-removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "7Rnd_mas_can_12Gauge_Slug";
 
 // Mags 
