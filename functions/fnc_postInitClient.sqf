@@ -1,6 +1,6 @@
 // --- postInitClient ----------------------------------------------------------
 // Start everything player related
-diag_log "[CGQC_INIT] === postInit_client started =====================================";
+diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
 _version = "3.7.2";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
@@ -191,11 +191,17 @@ if (cgqc_flag_isTraining) then {
 	[] call CGQC_fnc_trainingLoadMenu;
 };
 
-// Load loadouts if known unit  
-_unit = typeOf player;
-diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
-[_unit] call CGQC_fnc_checkLoadout;
+// Load loadouts if known unit
+_switch = player getVariable "cgqc_var_skipLoadoutSwitch";
+if !(isNil "_switch") then {
+	if (_switch) then {
+		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts"; 
+		_unit = typeOf player;
+		diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
+		[_unit] call CGQC_fnc_checkLoadout;
+	};  
+};
 
 // All done
 cgqc_start_postInitClient_done = true;
-diag_log "[CGQC_INIT] === postInit_client done =====================================";
+diag_log "[CGQC_INIT] === postInitClient done =====================================";
