@@ -32,11 +32,11 @@ class CGQC_Soldat_Base : B_Soldier_f
 			displayName = "CGQC"; // Visible text. Despite the attribute code saying the property should be title, displayName is correct
 		};
 		class skipLoadout {
-			displayName = "Switch loadout on init";
-			tooltip = "Skip loadout switch";
+			displayName = "Don't switch loadout";
+			tooltip = "Skip loadout switch on init";
 			property = "cgqc_var_skipLoadoutSwitch";
 			control = "Checkbox";
-			defaultValue = "true";
+			defaultValue = "false";
 			expression = "_this setVariable ['cgqc_var_skipLoadoutSwitch',_value];";
 			condition = "objectBrain";
 		};

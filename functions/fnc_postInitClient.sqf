@@ -193,13 +193,18 @@ if (cgqc_flag_isTraining) then {
 
 // Load loadouts if known unit
 _switch = player getVariable "cgqc_var_skipLoadoutSwitch";
-if !(isNil "_switch") then {
-	if (_switch) then {
+if (isNil "_switch") then {
+	diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts"; 
+	_unit = typeOf player;
+	diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
+	[_unit] call CGQC_fnc_checkLoadout;
+} else {
+	if !(_switch) then {
 		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts"; 
 		_unit = typeOf player;
 		diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
 		[_unit] call CGQC_fnc_checkLoadout;
-	};  
+	};
 };
 
 // All done
