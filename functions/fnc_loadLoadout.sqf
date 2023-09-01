@@ -17,7 +17,7 @@ _uniform = selectRandom _uniforms;
 _ruck = selectRandom _rucks;
 
 // Load selected items
-if (_hat isNotEqualTo "") then {player addHeadgear _hat;};
+if (_hat isNotEqualTo "") then {[_hat] call CGQC_fnc_getCustomHelmet};
 if (_goggle isNotEqualTo "") then {player addGoggles _goggle;};
 if (_vest isNotEqualTo "") then {player addVest _vest;};
 if (_uniform isNotEqualTo "") then {player forceAddUniform _uniform;};
