@@ -26,4 +26,18 @@ if (cgqc_config_sidearm) then {
 	{player addHandgunItem _x;} forEach _gunArray;
 };
 
+// Handgun ======================================================================
+_magHandgun = (handgunMagazine player) select 0;
+_nbr = 2;
+if (isNil "_magHandgun") then {
+		diag_log "[CGQC_ERROR] addMags - can't ID mags";
+} else {
+	// Make sure there is at least one mag...
+	if (count _magHandgun > 0) then {
+		// Check if custom sidearm is set. If it is use the mag nbr setting
+		if (cgqc_config_sidearm) then {_nbr = cgqc_config_sidearm_mag_nbr};
+		for "_i" from 1 to _nbr do {player addItem _magHandgun};
+	};
+};
+
 diag_log "[CGQC_FNC] getCustomHandgun done";
