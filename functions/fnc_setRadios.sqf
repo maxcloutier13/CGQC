@@ -95,7 +95,7 @@ switch (_type) do {
 		// Channels
 		[_personalRadio, _section] call acre_api_fnc_setRadioChannel; 
 		// Channels
-		[_handRadio, 4] call acre_api_fnc_setRadioChannel; 
+		[_handRadio, 1] call acre_api_fnc_setRadioChannel; 
 		// Set sides 
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
