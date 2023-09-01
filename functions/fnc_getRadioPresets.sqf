@@ -10,8 +10,8 @@ _preset = "";
 [ACE_player, "all"] call CGQC_fnc_removeRadios;
 
 // Training radio override
-if (cgqc_flag_isTraining) then { 
-	// Training setup 
+if (cgqc_flag_isTraining) then {
+	// Training setup
 	_radios = ["ACRE_PRC343", "ACRE_PRC152"];
 	_preset = "training";
 	_team = 1;
@@ -21,10 +21,11 @@ if (cgqc_flag_isTraining) then {
 		case "medic": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "medic"};
 		case "tl": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "spartan_1"};
 		case "sl": {_radios = ["ACRE_PRC343", "ACRE_PRC117F", "ACRE_PRC117F"];_preset = "hq"};
+		case "hq": {_radios = ["ACRE_PRC343", "ACRE_PRC117F", "ACRE_PRC117F"];_preset = "hq"};
 		case "recon": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "recon"};
 		case "jtac": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "jtac"};
 		case "pilot": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "griffon_pieton"};
-		case "driver": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "centaure_pieton"};		
+		case "driver": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "centaure_pieton"};
 		default	{default {diag_log "[CGQC_ERROR] mk3_getRadios issue";}};
 	};
 };

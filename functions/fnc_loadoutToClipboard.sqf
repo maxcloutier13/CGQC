@@ -3,6 +3,9 @@
 params ["_target"];
 diag_log format ["[CGQC_FNC] loadoutToClipboard %1 started", _target];
 
+_loadout_string = "";
+
+// Get all the needed info 
 // Equipment
 _loadout_player_helmet = headgear _target;
 _loadout_player_goggles = goggles _target;
@@ -12,9 +15,9 @@ _loadout_player_backpack = backpack _target;
 _loadout_player_primary = primaryWeapon  _target;
 _loadout_player_primary_acc = primaryWeaponItems _target;
 _loadout_player_primary_mag = primaryWeaponMagazine _target;
-_loadout_player_secondary = handgunWeapon  _target;
-_loadout_player_secondary_acc = handgunItems _target;
-_loadout_player_secondary_mag = handgunMagazine _target;
+_loadout_player_handgun = handgunWeapon  _target;
+_loadout_player_handgun_acc = handgunItems _target;
+_loadout_player_handgun_mag = handgunMagazine _target;
 _loadout_player_launcher = secondaryWeapon  _target;
 _loadout_player_launcher_acc = secondaryWeaponItems _target;
 _loadout_player_launcher_mag = secondaryWeaponMagazine _target;
@@ -28,131 +31,169 @@ _loadout_player_items_pack = backpackItems _target;
 _loadout_player_mags_pack = backpackMagazines _target; 
 _loadout_player_items_assigned = assignedItems _target;
 
-remove_txt = "
-	//Remove stuff;
-	removeAllWeapons player;
-	removeAllItems player;
-	removeAllAssignedItems player;
-	removeUniform player;
-	removeVest player;
-	removeBackpack player;
-	removeHeadgear player;
-	removeGoggles player;
+//Export text format
+// === Intro =================================================================================================================
+_txt_intro = "
+// --- role_type ---------------------------------------------------------- 
+// Description
 ";
 
-//Export text format
-uniform_txt = "";
-uniform_txt = parseText format["
-	// --- Loadout ----------------------------------------------------------;
-	// Loadout switcher for unit;
-	//Uniform;
-	player addHeadgear ""%1"";
-	player addGoggles ""%2"";
-	player forceAddUniform ""%3"";
-	player addVest ""%4"";
-	player addBackpack ""%5"";"
+_txt_loadout = "";
+_txt_loadout = format["
+// === Clothing ==========================================================================================================
+_hats = [ ""%1""];
+_goggles = [""%2""];
+_vests = [""%3""];
+_uniforms = [""%4""];
+_rucks = [""%5""];
+_loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
+[_loadout] call CGQC_fnc_loadLoadout;"
 , _loadout_player_helmet,
 _loadout_player_goggles,
-_loadout_player_uniform,
 _loadout_player_vest,
+_loadout_player_uniform,
 _loadout_player_backpack
 ];
 
-// Uniform items
-uniform_items_txt = "//Uniform Items;";
-{_str = format ["player addItemToUniform ""%1"";", _x];
-	uniform_items_txt = uniform_items_txt + _str;
-}forEach _loadout_player_items_uniform;
-{_str = format ["player addItemToUniform ""%1"";", _x];
-	uniform_items_txt = uniform_items_txt + _str;
-}forEach _loadout_player_mags_uniform;
-
-// Vest items
-vest_items_txt = "//Vest Items;";
-{_str = format ["player addItemToVest ""%1"";", _x];
-	vest_items_txt = vest_items_txt + _str;
-}forEach _loadout_player_items_vest;
-{_str = format ["player addItemToVest ""%1"";", _x];
-	vest_items_txt = vest_items_txt + _str;
-}forEach _loadout_player_mags_vest;
-
-//Backpack items
-pack_items_txt = "//Backpack Items;";
-{_str = format ["player addItemToBackpack ""%1"";", _x];
-	pack_items_txt = pack_items_txt + _str;
-}forEach _loadout_player_items_pack;
-{_str = format ["player addItemToBackpack ""%1"";", _x];
-	pack_items_txt = pack_items_txt + _str;
-}forEach _loadout_player_mags_pack;
-
-//Assigned items
-assigned_items_txt = "//Assigned Items;";
-{_str = format ["player assignItem ""%1"";", _x];
-	assigned_items_txt = assigned_items_txt + _str;
-}forEach _loadout_player_items_assigned;
-
-//Guns
-weapons_txt = "//Weapons;";
+// === Primary =================================================================================================================
+_txt_primary = "";
 //Primary
 if (_loadout_player_primary != "") then {
-	_str = format ["
-		player addWeapon ""%1"";
-	", 
-		_loadout_player_primary
-	];
-	weapons_txt = weapons_txt + _str;
-};
-// Accessories
-{_str = format ["player addPrimaryWeaponItem ""%1"";", _x];
-	weapons_txt = weapons_txt + _str;
-}forEach _loadout_player_primary_acc;
-// Magazines
-{_str = format ["player addPrimaryWeaponItem ""%1"";", _x];
-	weapons_txt = weapons_txt + _str;
-}forEach _loadout_player_primary_mag;
+	// We have a handgun
+	_txt_primary = format["
 
+// === Primary   ====================================================================================================
+[""%1""] call CGQC_fnc_getCustomGun;", _loadout_player_primary]; 
+
+	// Magazines
+	{
+		if (_x isNotEqualTo "") then {
+			_str = format ["
+player addPrimaryWeaponItem ""%1"";", _x];
+			_txt_primary = _txt_primary + _str;
+		};
+	}forEach _loadout_player_primary_mag;
+	// Accessories
+	{
+		if (_x isNotEqualTo "") then {
+			_str = format ["
+player addPrimaryWeaponItem ""%1"";", _x];
+			_txt_primary = _txt_primary + _str;
+		};
+	}forEach _loadout_player_primary_acc;
+};
+
+// === Handgun =================================================================================================================
+_txt_handgun = "
+";
 //Handgun
-if (_loadout_player_secondary != "") then {
-	_str = format ["
-		player addWeapon ""%1"";
-	", 
-		_loadout_player_secondary
-	];
-	weapons_txt = weapons_txt + _str;
-};
-// Accessories
-{_str = format ["player addHandgunItem ""%1"";", _x];
-	weapons_txt = weapons_txt + _str;
-}forEach _loadout_player_secondary_acc;
-// Magazines
-{_str = format ["player addHandgunItem ""%1"";", _x];
-	weapons_txt = weapons_txt + _str;
-}forEach _loadout_player_secondary_mag;
+if (_loadout_player_handgun != "") then {
+	// We have a handgun
+	_txt_handgun = format["
 
-//Launcher
-if (_loadout_player_launcher != "") then {
-	_str = format ["
-		player addWeapon ""%1"";
-	", 
-		_loadout_player_launcher
-	];
-	weapons_txt = weapons_txt + _str;
+// === Handgun   ====================================================================================================
+_handgun = [""%1""", _loadout_player_handgun]; 
+	// Magazine
+	{
+		if (_x isNotEqualTo "") then {
+			_str = format [", ""%1""", _x];
+			_txt_handgun = _txt_handgun + _str;
+		};
+	}forEach _loadout_player_handgun_mag;
+	
+	// Accessories
+	{
+		if (_x isNotEqualTo "") then {
+			_str = format [", ""%1""", _x];
+			_txt_handgun = _txt_handgun + _str;
+		};
+	}forEach _loadout_player_handgun_acc;
+	// Suffix and function call 
+	_txt_handgun = _txt_handgun + "];
+[_handgun] call CGQC_fnc_getCustomHandgun;";
 };
-// Accessories
-{_str = format ["player addSecondaryWeaponItem ""%1"";", _x];
-	weapons_txt = weapons_txt + _str;
-}forEach _loadout_player_launcher_acc;
-// Magazines
-{_str = format ["player addSecondaryWeaponItem ""%1"";", _x];
-	weapons_txt = weapons_txt + _str;
-}forEach _loadout_player_launcher_mag;
+
+// === Launcher =================================================================================================================
+_txt_launcher = "";
+//Primary
+if (_loadout_player_launcher != "") then {
+	// We have a handgun
+	_txt_launcher = format["
+
+// === Launcher   ====================================================================================================
+[""%1""] call CGQC_fnc_getCustomGun;", _loadout_player_launcher]; 
+
+	// Magazines
+	{
+		if (_x isNotEqualTo "") then {
+			_str = format ["
+player addSecondaryWeaponItem ""%1"";", _x];
+			_txt_launcher = _txt_launcher + _str;
+		};
+	}forEach _loadout_player_launcher_mag;
+	// Accessories
+	{
+		if (_x isNotEqualTo "") then {
+			_str = format ["
+player addSecondaryWeaponItem ""%1"";", _x];
+			_txt_launcher = _txt_launcher + _str;
+		};
+	}forEach _loadout_player_launcher_acc;
+};
+
+// === Assigned items =================================================================================================================
+_txt_assigned = "
+
+// === Assigned Items ====================================================================================================";
+{
+	if (_x isNotEqualTo "ItemRadioAcreFlagged") then {
+		_str = format ["
+player assignItem ""%1"";", _x];
+		_txt_assigned = _txt_assigned + _str;
+	};
+}forEach _loadout_player_items_assigned;
+
+// === Uniform items =================================================================================================================
+_txt_uniformItems = "
+
+// === Uniform Items ====================================================================================================";
+{
+	_str = format ["
+player addItemToUniform ""%1"";", _x];
+	_txt_uniformItems = _txt_uniformItems + _str;
+}forEach _loadout_player_items_uniform;
+
+// Vest items
+_txt_vestItems = "
+
+// === Vest Items ====================================================================================================";
+{
+	_str = format ["
+player addItemToVest ""%1"";", _x];
+	_txt_vestItems = _txt_vestItems + _str;
+}forEach _loadout_player_items_vest;
+
+//Backpack items
+_txt_packItems = "
+
+// === Backpack Items ====================================================================================================";
+{
+	_str = format ["
+player addItemToBackpack ""%1"";", _x];
+	_txt_packItems = _txt_packItems + _str;
+}forEach _loadout_player_items_pack;
+
+_txt_finale = "
+
+// === Mags ====================================================================================================;
+[] call CGQC_fnc_addMags;
+";
 
 
 // String prep
-items_txt = uniform_items_txt + vest_items_txt + pack_items_txt + assigned_items_txt + weapons_txt;
-_loadout_string = remove_txt + str uniform_txt + items_txt;
+_loadout_string = _txt_intro + _txt_loadout + _txt_radios + _txt_primary + _txt_handgun + _txt_launcher + _txt_assigned + _txt_uniformItems + _txt_vestItems + _txt_packItems + _txt_finale;
 
 //Copy result to clipboard
 copyToClipboard _loadout_string;
-hint "Loadout sent to clipboard";
+hint format ["Loadout %1 sent to clipboard", _target];
 diag_log "[CGQC_FNC] loadoutToClipboard done";

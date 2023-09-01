@@ -29,19 +29,19 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 				// Fade from black, to blur, to clear as text types.
 				10 fadeSound 1;
 				sleep 6;
-				"dynamicBlur" ppEffectEnable true;   
-				"dynamicBlur" ppEffectAdjust [3];   
-				"dynamicBlur" ppEffectCommit 0;     
-				"dynamicBlur" ppEffectAdjust [0.0];  
-				"dynamicBlur" ppEffectCommit 5;  
-				titleCut ["", "BLACK IN", 8];
+				"dynamicBlur" ppEffectEnable true;
+				"dynamicBlur" ppEffectAdjust [3];
+				"dynamicBlur" ppEffectCommit 0;
+				"dynamicBlur" ppEffectAdjust [0.0];
+				"dynamicBlur" ppEffectCommit 5;
+				titleCut ["", "BLACK IN", 6];
 				disableUserInput false;
 				sleep 1;
 				if (userInputDisabled) then {disableUserInput false;};
 				cgqc_intro_running = false;
 				cgqc_intro_done = true;
 				ace_hearing_disableVolumeUpdate = false;
-			};	
+			};
 		};
 	};
 	if (!cgqc_intro_done) then {

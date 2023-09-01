@@ -11,6 +11,8 @@ switch (_type) do {
 	};
 	case "hq":{
 	};
+	case "sl":{
+	};
 	case "tl":{
 	};
 	case "heli":{

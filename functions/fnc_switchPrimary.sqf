@@ -4,14 +4,14 @@ params ["_type"];
 _needGL = false;
 
 
-//Remove main weapon and mags 
+//Remove main weapon and mags
 _gun = primaryWeapon player;
 player action ['SwitchWeapon', player, player, 250];
 
 if (_gun != "") then {
 	_mags = primaryWeaponMagazine player;
 	_mainMag = _mags select 0;
-	
+
 	if (!isNil "_mainMag") then {
 		player removeMagazines _mainMag;
 	};
@@ -35,6 +35,15 @@ switch (_type) do {
 		player addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
 		player addPrimaryWeaponItem "tier1_exps3_0_black";
 		player addPrimaryWeaponItem "rhsusf_acc_grip2";
+		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+		break;
+	};
+	case "mk18_tl":{
+		["cgqc_gun_mk1_mk18"] call CGQC_fnc_getCustomGun;
+		player addPrimaryWeaponItem "Tier1_Gemtech_Halo_DE";
+		player addPrimaryWeaponItem "Tier1_M4BII_NGAL_M300C_FL";
+		player addPrimaryWeaponItem "Tier1_EXPS3_0_Tano";
+		player addPrimaryWeaponItem "Tier1_DD_VFG_DE";
 		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 		break;
 	};
@@ -109,7 +118,7 @@ switch (_type) do {
 		break;
 	};
 	case "TAR21GL":{
-		["arifle_TRG21_GL_F"] call CGQC_fnc_getCustomGun;	
+		["arifle_TRG21_GL_F"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "rhsusf_acc_nt4_tan";
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
@@ -119,7 +128,7 @@ switch (_type) do {
 		break;
 	};
 	case "m4_dotplus":{
-		["cgqc_gun_mk1_m4a1blkII"] call CGQC_fnc_getCustomGun;	
+		["cgqc_gun_mk1_m4a1blkII"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_M4BII_NGAL_M300C_Black";
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
@@ -127,8 +136,8 @@ switch (_type) do {
 		player addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 		break;
 	};
-	case "m4_lpvo":{ 
-		["cgqc_gun_mk1_m4a1blkII"] call CGQC_fnc_getCustomGun;	
+	case "m4_lpvo":{
+		["cgqc_gun_mk1_m4a1blkII"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen2_16_Geissele_Docter";
@@ -137,7 +146,7 @@ switch (_type) do {
 		break;
 	};
 	case "m4_gl_m320":{
-		["rhs_weap_m4_m320"] call CGQC_fnc_getCustomGun;	
+		["rhs_weap_m4_m320"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black_FL";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen2_16_Geissele_Docter";
@@ -147,7 +156,7 @@ switch (_type) do {
 		break;
 	};
 	case "acre_dotplus":{
-		["UK3CB_ACR_Carbine"] call CGQC_fnc_getCustomGun;	
+		["UK3CB_ACR_Carbine"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
@@ -155,7 +164,7 @@ switch (_type) do {
 		break;
 	};
 	case "acre_lpvo":{
-		["UK3CB_ACR_Carbine"] call CGQC_fnc_getCustomGun;		
+		["UK3CB_ACR_Carbine"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen2_16_Geissele_Docter";
@@ -163,7 +172,7 @@ switch (_type) do {
 		break;
 	};
 	case "acre_gl":{
-		["UK3CB_ACR_Carbine_UGL"] call CGQC_fnc_getCustomGun;		
+		["UK3CB_ACR_Carbine_UGL"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
 		player addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black";
@@ -173,7 +182,7 @@ switch (_type) do {
 		break;
 	};
 	case "sr16_dotplus":{
-		["Tier1_SR16_Carbine_Mod2_MFT_Black"] call CGQC_fnc_getCustomGun;		
+		["Tier1_SR16_Carbine_Mod2_MFT_Black"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Down";
@@ -182,7 +191,7 @@ switch (_type) do {
 		break;
 	};
 	case "sr16_lpvo":{
-		["Tier1_SR16_Carbine_Mod2_MFT_Black"] call CGQC_fnc_getCustomGun;		
+		["Tier1_SR16_Carbine_Mod2_MFT_Black"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen2_16_Geissele_Docter";
@@ -191,7 +200,7 @@ switch (_type) do {
 		break;
 	};
 	case "hk416_dotplus":{
-		["Tier1_HK416D145_SMR_MFT"] call CGQC_fnc_getCustomGun;		
+		["Tier1_HK416D145_SMR_MFT"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Tan";
 		player addPrimaryWeaponItem "Tier1_145_NGAL_M600V_alt";
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Desert_Up";
@@ -200,7 +209,7 @@ switch (_type) do {
 		break;
 	};
 	case "hk416_lpvo":{
-		["Tier1_HK416D145_SMR_MFT"] call CGQC_fnc_getCustomGun;		
+		["Tier1_HK416D145_SMR_MFT"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Tan";
 		player addPrimaryWeaponItem "Tier1_145_NGAL_M600V_alt";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen2_16_Geissele_Docter";
@@ -209,7 +218,7 @@ switch (_type) do {
 		break;
 	};
 	case "m16_shortdot":{
-		["rhs_weap_m16a4_imod_grip2"] call CGQC_fnc_getCustomGun;		
+		["rhs_weap_m16a4_imod_grip2"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
 		player addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black_PIP";
@@ -218,7 +227,7 @@ switch (_type) do {
 		break;
 	};
 	case "acre_shortdot":{
-		["UK3CB_ACR_Rifle_Long"] call CGQC_fnc_getCustomGun;		
+		["UK3CB_ACR_Rifle_Long"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
 		player addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black";
@@ -227,7 +236,7 @@ switch (_type) do {
 		break;
 	};
 	case "mk12_lpvo":{
-		["cgqc_gun_mk1_mk12"] call CGQC_fnc_getCustomGun;		
+		["cgqc_gun_mk1_mk12"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen3_110_Geissele_Docter";
@@ -236,7 +245,7 @@ switch (_type) do {
 		break;
 	};
 	case "m27_lpvo":{
-		["rhs_weap_m27iar_grip2"] call CGQC_fnc_getCustomGun;		
+		["rhs_weap_m27iar_grip2"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_SCAR_NGAL_M300C_Black_FL";
 		player addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black";
@@ -245,7 +254,7 @@ switch (_type) do {
 		break;
 	};
 	case "417":{
-		["cgqc_gun_mk1_hk417"] call CGQC_fnc_getCustomGun;		
+		["cgqc_gun_mk1_hk417"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_SandmanS_Black";
 		player addPrimaryWeaponItem "rhsusf_acc_anpeq15_bk_light";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen3_110_Geissele_Docter";
@@ -254,7 +263,7 @@ switch (_type) do {
 		break;
 	};
 	case "m27": {
-		["rhs_weap_m27iar_grip2"] call CGQC_fnc_getCustomGun;		
+		["rhs_weap_m27iar_grip2"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
 		player addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
@@ -263,7 +272,7 @@ switch (_type) do {
 		break;
 	};
 	case "mk46":{
-		["cgqc_gun_mk1_mk46"] call CGQC_fnc_getCustomGun;		
+		["cgqc_gun_mk1_mk46"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_Mk46Mod1_LA5_M600V_Black";
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
@@ -272,7 +281,7 @@ switch (_type) do {
 		break;
 	};
 	case "mk48":{
-		["cgqc_gun_mk1_mk48"] call CGQC_fnc_getCustomGun;		
+		["cgqc_gun_mk1_mk48"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_SOCOM762MG_Black";
 		player addPrimaryWeaponItem "Tier1_Mk48Mod0_LA5_M600V_Black";
 		player addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
@@ -281,7 +290,7 @@ switch (_type) do {
 		break;
 	};
 	case "p90":{
-		["cgqc_gun_mk1_p90"] call CGQC_fnc_getCustomGun;		
+		["cgqc_gun_mk1_p90"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "muzzle_snds_570";
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
 		player addPrimaryWeaponItem "optic_ACO_grn";
@@ -289,7 +298,7 @@ switch (_type) do {
 		break;
 	};
 	case "m110k5":{
-		["Tier1_M110k5"] call CGQC_fnc_getCustomGun;		
+		["Tier1_M110k5"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_762_DSR";
 		player addPrimaryWeaponItem "Tier1_URX4_NGAL_M603V_FL";
 		player addPrimaryWeaponItem "Tier1_ATACR18_Geissele_Docter_Desert_PIP";
@@ -298,7 +307,7 @@ switch (_type) do {
 		break;
 	};
 	case "socom16":{
-		["rhs_weap_m14_socom_rail"] call CGQC_fnc_getCustomGun;		
+		["rhs_weap_m14_socom_rail"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "rhsusf_acc_aac_762sdn6_silencer";
 		player addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black";
 		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_M600V_Black";
@@ -307,7 +316,7 @@ switch (_type) do {
 		break;
 	};
 	case "m110_leupold":{
-		["Tier1_M110k1"] call CGQC_fnc_getCustomGun;		
+		["Tier1_M110k1"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "Tier1_KAC_762_DSR";
 		player addPrimaryWeaponItem "Tier1_LeupoldM3A_Geissele_Docter_Tan";
 		player addPrimaryWeaponItem "Tier1_20Rnd_762x51_M118_Special_SR25_Mag";
@@ -316,7 +325,7 @@ switch (_type) do {
 		break;
 	};
 	case "m14ebr":{
-		["rhs_weap_m14ebrri"] call CGQC_fnc_getCustomGun;		
+		["rhs_weap_m14ebrri"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "rhsusf_acc_aac_762sdn6_silencer";
 		player addPrimaryWeaponItem "rhsusf_acc_nxs_3515x50f1_md";
 		player addPrimaryWeaponItem "rhsusf_acc_anpeq15side_bk";
@@ -325,7 +334,7 @@ switch (_type) do {
 		break;
 	};
 	case "sig556":{
-		["srifle_DMR_03_F"] call CGQC_fnc_getCustomGun;		
+		["srifle_DMR_03_F"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "rhsusf_acc_aac_762sdn6_silencer";
 		player addPrimaryWeaponItem "optic_AMS";
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
@@ -334,7 +343,7 @@ switch (_type) do {
 		break;
 	};
 	case "noreen":{
-		["srifle_DMR_02_F"] call CGQC_fnc_getCustomGun;		
+		["srifle_DMR_02_F"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "optic_lrps";
 		player addPrimaryWeaponItem "muzzle_snds_338_black";
 		player addPrimaryWeaponItem "Tier1_NGAL_Side";
@@ -343,7 +352,7 @@ switch (_type) do {
 		break;
 	};
 	case "m200":{
-		["cgqc_gun_mk1_m200"] call CGQC_fnc_getCustomGun;		
+		["cgqc_gun_mk1_m200"] call CGQC_fnc_getCustomGun;
 		player addPrimaryWeaponItem "optic_lrps";
 		player addPrimaryWeaponItem "ace_acc_pointer_green";
 		player addPrimaryWeaponItem "7Rnd_mas_can_408_Mag";
@@ -351,7 +360,7 @@ switch (_type) do {
 	};
 
 	case "swat_p90":{
-		["UK3CB_P90C_TR_black"] call CGQC_fnc_getCustomGun;		
+		["UK3CB_P90C_TR_black"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems player;
 		player addPrimaryWeaponItem "muzzle_snds_570";
 		player addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
@@ -361,7 +370,7 @@ switch (_type) do {
 	};
 
 	case "swat_blk":{
-		["Tier1_SIG_MCX_115_Virtus_300BLK_Black"] call CGQC_fnc_getCustomGun;		
+		["Tier1_SIG_MCX_115_Virtus_300BLK_Black"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems player;
 		player addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		player addPrimaryWeaponItem "Tier1_MCX_NGAL_M300C_Black";
@@ -372,7 +381,7 @@ switch (_type) do {
 	};
 
 	case "swat_mp7":{
-		["rhsusf_weap_MP7A2_grip2"] call CGQC_fnc_getCustomGun;		
+		["rhsusf_weap_MP7A2_grip2"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems player;
 		player addPrimaryWeaponItem "rhsusf_mag_40Rnd_46x30_AP";
 		player addPrimaryWeaponItem "rhsusf_acc_rotex_mp7";
@@ -382,7 +391,7 @@ switch (_type) do {
 	};
 
 	case "swat_mp5sd6":{
-		["UK3CB_MP5SD6"] call CGQC_fnc_getCustomGun;		
+		["UK3CB_MP5SD6"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems player;
 		player addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
 		player addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";
@@ -390,7 +399,7 @@ switch (_type) do {
 	};
 
 	case "swat_m14":{
-		["UK3CB_M14DMR_Railed_BLK"] call CGQC_fnc_getCustomGun;		
+		["UK3CB_M14DMR_Railed_BLK"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems player;
 		player addPrimaryWeaponItem "uk3cb_muzzle_snds_M14";
 		player addPrimaryWeaponItem "Tier1_Razor_Gen3_110_Geissele_Docter";
@@ -399,7 +408,7 @@ switch (_type) do {
 	};
 
 	case "swat_m24":{
-		["rhs_weap_m24sws"] call CGQC_fnc_getCustomGun;		
+		["rhs_weap_m24sws"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems player;
 		player addPrimaryWeaponItem "rhsusf_acc_m24_silencer_black";
 		player addPrimaryWeaponItem "Tier1_LeupoldM3A_Geissele_Docter_Black";
@@ -409,7 +418,7 @@ switch (_type) do {
 	};
 
 	case "swat_socom":{
-		["rhs_weap_m14_socom_rail"] call CGQC_fnc_getCustomGun;		
+		["rhs_weap_m14_socom_rail"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems player;
 		player addPrimaryWeaponItem "Tier1_SandmanS_Black";
 		player addPrimaryWeaponItem "Tier1_Mk18_NGAL_Side";
@@ -420,24 +429,19 @@ switch (_type) do {
 	};
 };
 
-// Add mags to vest 
+// Add mags to vest
 [] call CGQC_fnc_addMags;
 
-if (_needGL) then {
-	player addItem "1Rnd_HE_Grenade_shell";
-	player addItem "1Rnd_HE_Grenade_shell";
-	player addItem "1Rnd_HE_Grenade_shell";
-	player addItem "1Rnd_HE_Grenade_shell";
-	player addItem "1Rnd_HE_Grenade_shell";
-	player addItem "1Rnd_Smoke_Grenade_shell";
-	player addItem "1Rnd_Smoke_Grenade_shell";
-	player addItem "1Rnd_SmokeBlue_Grenade_shell";
-	player addItem "1Rnd_SmokeBlue_Grenade_shell";
-	player addItem "1Rnd_SmokeRed_Grenade_shell";
-	player addItem "1Rnd_SmokeRed_Grenade_shell";
-	player addItem "ACE_40mm_Flare_white";
-	player addItem "UGL_FlareRed_F";
-	player addItem "ACE_40mm_Flare_ir";
+if (_needGL) then { // Load with grenade launcher stuff
+	for "_i" from 1 to 5 do {player addItemToVest "1Rnd_HE_Grenade_shell"};
+	for "_i" from 1 to 10 do {player addItemToBackpack "1Rnd_HE_Grenade_shell"};
+	for "_i" from 1 to 3 do {player addItemToBackpack "1Rnd_SmokeRed_Grenade_shell"};
+	for "_i" from 1 to 3 do {player addItemToBackpack "1Rnd_SmokeBlue_Grenade_shell"};
+	for "_i" from 1 to 3 do {player addItemToBackpack "1Rnd_Smoke_Grenade_shell"};
+	for "_i" from 1 to 2 do {player addItemToBackpack "ACE_40mm_Flare_white"};
+	for "_i" from 1 to 2 do {player addItemToBackpack "UGL_FlareRed_F"};
+	for "_i" from 1 to 2 do {player addItemToBackpack "ACE_40mm_Flare_ir"};
+	for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell"};
 };
 
 player action ['SwitchWeapon', player, player, 100];

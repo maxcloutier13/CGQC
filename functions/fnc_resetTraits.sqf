@@ -10,11 +10,18 @@ player setUnitTrait ["explosiveSpecialist", false];
 
 // Remove CGQC perks
 cgqc_perks_basic = true;
-cgqc_perks_recon = false;
-cgqc_perks_pilot = false;
-cgqc_perks_driver = false;
+
+cgqc_perks_hq = false;
+cgqc_perks_sl = false;
+cgqc_perks_tl = false;
+
 cgqc_perks_eng = false;
 cgqc_perks_medic = false;
 cgqc_perks_doctor = false;
+
+cgqc_perks_recon = false;
+cgqc_perks_pilot = false;
+cgqc_perks_driver = false;
+
 
 diag_log "[CGQC_FNC] resetTraits done";
