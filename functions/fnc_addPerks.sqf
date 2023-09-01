@@ -140,7 +140,7 @@ if (cgqc_config_fortify) then {
 
 
 // ------ Heli pilot --------------------------------------------------------------------------------------
-_action = [ "cgqc_perk_heli_getCrew", "Spawn Crew", "", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
+_action = [ "cgqc_perk_heli_getCrew", "Spawn Crew", "CGQC\textures\cgqc_ace_heli.paa", {["getCrew"] spawn CGQC_fnc_perksPilot}, {
 	cgqc_perks_pilot && 
 	!cgqc_perks_pilot_hasCrew &&
 	(vehicle player isKindOf "Helicopter")
