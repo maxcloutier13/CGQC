@@ -33,23 +33,31 @@ switch (_type) do {
 		player setUnitTrait ["engineer", true];
 	};
 	case "recon":{
+		player setUnitTrait ["audibleCoef ", 0.9];
+		player setUnitTrait ["camouflageCoef ", 0.9];
+		player setUnitTrait ["UAVHacker", true];
 		cgqc_perks_recon = true;
 	};
 	case "eng":{
-		cgqc_perks_eng = true;
+
 		player setUnitTrait ["engineer", true];
 		player setUnitTrait ["explosiveSpecialist", true];
+		player setUnitTrait ["loadCoef ", 0.9];
+		cgqc_perks_eng = true;
 	};
 	case "med":{
-		cgqc_perks_medic = true;
-		//cgqc_perks_doctor = true;
 		player setUnitTrait ["Medic", true];
+		player setUnitTrait ["loadCoef ", 0.9];
+		cgqc_perks_medic = true;
 	};
 	case "at":{
+		player setUnitTrait ["loadCoef ", 0.9];
 	};
 	case "mg":{
+		player setUnitTrait ["loadCoef ", 0.9];
 	};
 	case "mortar":{
+		player setUnitTrait ["loadCoef ", 0.8];
 	};
 	case "inf":{
 	};
