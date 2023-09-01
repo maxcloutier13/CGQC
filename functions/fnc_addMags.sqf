@@ -3,6 +3,7 @@
 diag_log "[CGQC_FNC] addMags started";
 
 _mag = (primaryWeaponMagazine player) select 0;
+
 if (isNil "_mag") then {
 	hint "Error: Can't ID mags...";
 	diag_log "[CGQC_ERROR] addMags - can't ID mags";

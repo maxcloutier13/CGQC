@@ -1,7 +1,7 @@
 // --- getCustomHandgun ----------------------------------------------------------
 // Get player custom handgun from config
-params [ "_gun"];
-diag_log format ["[CGQC_FNC] getCustomHandgun %1 started", _gun select 0];
+params [ "_gunArray"];
+diag_log format ["[CGQC_FNC] getCustomHandgun %1 started", _gunArray select 0];
 
 if (cgqc_config_sidearm) then {
 	// === Custom Sidearm
@@ -17,12 +17,13 @@ if (cgqc_config_sidearm) then {
 		player addHandgunItem cgqc_config_sidearm_optic;
 	};
 }else{
-    // === Standard secondary weapon
-    player addWeapon _gun select 0;
+	_gun = _gunArray select 0;
 	// Remove gun from array
-	_gun deleteAt 0;
+	_gunArray deleteAt 0;
+    // === Add gun
+    player addWeapon _gun;
 	// Add all other elements to gun
-	{player addHandgunItem _x;} forEach _gun;
+	{player addHandgunItem _x;} forEach _gunArray;
 };
 
 diag_log "[CGQC_FNC] getCustomHandgun done";
