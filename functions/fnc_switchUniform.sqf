@@ -1,6 +1,6 @@
 // --- switchUniform ----------------------------------------------------------
 // Switch player uniform
-params ["_camo", "_fromLoadout"];
+params ["_camo", ["_fromLoadout", false]];
 diag_log "[CGQC_FNC] switchUniform started";
 
 // Transition/text
