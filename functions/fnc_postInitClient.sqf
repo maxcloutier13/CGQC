@@ -114,11 +114,9 @@ if (cgqc_player_loadAll) then {
 			params["_player", "_rating"];
 			_return = _rating;
 			if(rating _player < 0) then {
-				hint "Méchant garçon!";
 				_return = abs rating _player;
 			} else {
 				if(_rating + rating _player < 0) then {
-					hintSilent "Woops!!!!";
 					_return = 0;
 				};
 			};
@@ -195,12 +193,10 @@ if (cgqc_flag_isTraining) then {
 _switch = player getVariable "cgqc_var_skipLoadoutSwitch";
 if (isNil "_switch") then {
 	diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
-	diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
 	[] call CGQC_fnc_checkLoadout;
 } else {
 	if !(_switch) then {
 		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
-		diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
 		[] call CGQC_fnc_checkLoadout;
 	};
 };

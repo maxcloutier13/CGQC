@@ -22,7 +22,7 @@ params ["_type"];
 		};
 	};
 
-	// Rearming 
+	// Rearming
 	private _playerVic = vehicle player;
 	waitUntil{isTouchingGround _playerVic};
 	if(_skip ==0) then {_playerVic engineOn false;};

@@ -25,7 +25,7 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 				waitUntil {cgqc_roleSwitch_done};
 				//Pop le logo et le texte
 				_text = format [_text, cgqc_config_mission_name, cgqc_config_author];
-				[_text, 0, 0, 5, 2] spawn BIS_fnc_dynamicText;
+				[_text, 0, 0, 4, 2] spawn BIS_fnc_dynamicText;
 				// Fade from black, to blur, to clear as text types.
 				10 fadeSound 1;
 				sleep 6;

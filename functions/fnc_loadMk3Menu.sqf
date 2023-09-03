@@ -580,10 +580,10 @@ diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
 				if (cgqc_player_has2023) then {
 					// Quick Items
 					//m72a7
-					_action = [ "menu_items6", "Jetable: m72a7 LAW", "", {["law"] execVM "\CGQC_2022\loadouts\mk1_box_get_items.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_items6", "Jetable: m72a7 LAW", "", {["law"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 					//m136
-					_action = [ "menu_items7", "Jetable: m136", "", {["m136"] execVM "\CGQC_2022\loadouts\mk1_box_get_items.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+					_action = [ "menu_items7", "Jetable: m136", "", {["m136"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 					_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				};
 
@@ -637,6 +637,32 @@ diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
 				_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[player, player, true] call ace_arsenal_fnc_openBox;}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			};
+		};
+		if (_type isEqualTo "cargo") then {
+			// Supplies spawner --------------------------------------------------------------------------------------------------------------
+			_action = [ "menu_supplies", "Logistics", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			//  Fuel can
+			_action = [ "menu_supplies_fuel", "Fuel Can", "", {["fuel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			//  Vehicle ammo can
+			_action = [ "menu_supplies_vic", "Vehicle Ammo Can", "", {["vic_ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			//  Ammo can
+			_action = [ "menu_supplies_ammo", "Infantry Ammo Box", "", {["ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			//  60mm mortar crate
+			_action = [ "menu_supplies_60", "60mm mortar box", "", {["mort60"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			//  82mm mortar crate
+			_action = [ "menu_supplies_82", "82mm mk6 mortar box", "", {["mort82"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			//  Spare wheel
+			_action = [ "menu_supplies_wheel", "Spare wheel", "", {["wheel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			//  Spare tracks
+			_action = [ "menu_supplies_track", "Spare track", "", {["track"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		};
 	};
 };
