@@ -28,9 +28,7 @@ if (!cgqc_player_known) then {
 		};
 	};
 };
-if (cgqc_player_23rd) then {
-	cgqc_player_patch = "23rd_Logo_Unit_Old";
-};
+
 cgqc_custom_playername = cgqc_player_patch select[11, 22];
 // dubé 76561198056436035
 // gagnon 76561199217287480
@@ -43,18 +41,6 @@ cgqc_custom_playername = cgqc_player_patch select[11, 22];
 // ben 76561198030215888
 // mouland 76561199156866182
 // deslauriers 76561198209656813
-// lukas 76561198452605720
-// frexax 76561198403087179
-// asthma 76561198299699562
-// kanman 76561198136981280
-// robnew skinwalker 76561198174572382
-
-
-//23rd
-//finn 76561198420233487
-//melonmafia 76561198287121425
-//jamie 76561198220396941
-//cactus 76561198060884175
 
 
 //Set variable

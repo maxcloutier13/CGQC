@@ -501,31 +501,6 @@ diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
 
 				};
 
-				// 23rd shit if 23rd mod is present===============================================================================================
-				if (cgqc_player_has23rd) then {
-					// 2023 ---------------------------------------------------------------------------------------------------------
-					_action = [ "menu_23RD", "23RD", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_23rd} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					// 23rd toggle ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-					_action = [ "menu_mk2_23", "23rd CTF Member?", "", {execVM "\CGQC_2022\functions\23rd.sqf"}, {cgqc_player_has23rd && !cgqc_player_23rd} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
-					// 23rd Camos ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-					_action = [ "menu_mk2_23_camo", "23rd Uniforms", "", {}, {cgqc_player_has23rd && cgqc_player_23rd && !cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_23RD" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
-					// Mosschip
-					_action = [ "menu_mk2_23_camo_moss", "Mosschip", "", {["23_moss", false] call CGQC_fnc_switchUniform}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_23RD" , "menu_mk2_23_camo"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					// Multidicc
-					_action = [ "menu_mk2_23_camo_multi", "Multidicc", "", {["23_multi", false] call CGQC_fnc_switchUniform}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_23RD" , "menu_mk2_23_camo"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					// Frostmoss
-					_action = [ "menu_mk2_23_camo_frost", "Frostmoss", "", {["23_frost", false] call CGQC_fnc_switchUniform}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_23RD" , "menu_mk2_23_camo"], _action ] call ace_interact_menu_fnc_addActionToObject;
-					// Tardpat
-					_action = [ "menu_mk2_23_camo_tard", "Tardpat", "", {["23_tard", false] call CGQC_fnc_switchUniform}, {true} ] call ace_interact_menu_fnc_createAction;
-					_adding = [ _crate, 0, ["ACE_MainActions", "menu_23RD" , "menu_mk2_23_camo"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				};
-
 				// Items Rapides ========================================================================================================
 				_action = [ "menu_items", "Items Rapides", "CGQC\textures\icon_items", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
