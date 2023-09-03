@@ -3,6 +3,8 @@
 params [ "_gunArray"];
 diag_log format ["[CGQC_FNC] getCustomHandgun %1 started", _gunArray select 0];
 
+[player] call CGQC_fnc_removeHandgun;
+
 if (cgqc_config_sidearm) then {
 	// === Custom Sidearm
 	player addWeapon cgqc_config_sidearm_pistol;

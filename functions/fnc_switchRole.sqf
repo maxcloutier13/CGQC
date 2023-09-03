@@ -8,8 +8,6 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     diag_log format ["[CGQC_FNC] switchRole %1/%2/%3 started", _type, _section,_showTransition];
 
     cgqc_roleSwitch_done = false;
-    cgqc_mk3_switching_vest = false;
-    cgqc_mk3_switching_backpack = false;
 
     //disableUserInput true;
     if (cgqc_setting_show_transition && _showTransition) then {
@@ -39,6 +37,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     if (cgqc_player_has2023) then {
         switch (_type) do {
             #include "\cgqc\loadouts\2023\roles.hpp"
+            #include "\cgqc\loadouts\swat\roles.hpp"
         };
     };
     // Unsung

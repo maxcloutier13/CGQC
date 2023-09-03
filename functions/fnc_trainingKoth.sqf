@@ -16,7 +16,7 @@ params ["_type"];
 			cgqc_training_koth = true;
 			// Clear all things
 			["clear"] call fnc_trainingKOTH;
-			// Setup stuff depending on difficulty 
+			// Setup stuff depending on difficulty
 			cgqc_training_koth_towers = [];
 			// Amounts
 			switch (cgqc_training_koth_difficulty) do {
@@ -40,37 +40,37 @@ params ["_type"];
 				};
 			};
 			// Ask player for location---------------------------------------------------------------------
-			hint "Click on map to choose KOTH Location.";  
-			// Define the event handler function for MapSingleClick  
-			onMapClick = {  
-				params["_control", "_pos", "_shift", "_alt", "_ctrl"];  
-				// Store the clicked position  
-				y_clickedPos = _pos; 
-				// Remove the MapSingleClick event handler  
-				removeMissionEventHandler ["MapSingleClick", y_clickEvent];  
-				openMap [false, false];  
+			hint "Click on map to choose KOTH Location.";
+			// Define the event handler function for MapSingleClick
+			onMapClick = {
+				params["_control", "_pos", "_shift", "_alt", "_ctrl"];
+				// Store the clicked position
+				y_clickedPos = _pos;
+				// Remove the MapSingleClick event handler
+				removeMissionEventHandler ["MapSingleClick", y_clickEvent];
+				openMap [false, false];
 				hintSilent "";
-			}; 
-			// Add the MapSingleClick event handler  
-			y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];  
-			openMap [true, true]; 
-			// Wait for the player to click on the map  
+			};
+			// Add the MapSingleClick event handler
+			y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];
+			openMap [true, true];
+			// Wait for the player to click on the map
 			waitUntil {!(isNil "y_clickedPos") };
 
 			//Find closest location to clicked position
 			cgqc_training_koth_location = nearestLocation [y_clickedPos,""];
-			// Marker 
+			// Marker
 			y_markerKoth = createMarker ["cgqc_koth_marker", getpos cgqc_training_koth_location];
-			"cgqc_koth_marker" setMarkerType "Contact_circle4"; 
+			"cgqc_koth_marker" setMarkerType "Contact_circle4";
 			"cgqc_koth_marker" setMarkerText "KOTH";
-			"cgqc_koth_marker" setMarkerColor "ColorRed"; 
+			"cgqc_koth_marker" setMarkerColor "ColorRed";
 			"cgqc_koth_marker" setMarkerSize [1.5, 1.5];
 			if (cgqc_training_koth_towers_count > 0 && cgqc_training_koth_towers_count < 8) then {
-				// For each tower, create everything. 
-				for "_i" from 1 to cgqc_training_koth_towers_count do { 
+				// For each tower, create everything.
+				for "_i" from 1 to cgqc_training_koth_towers_count do {
 					// Setup tower
 					hint format ["KOTH tower %1: ON!", _i];
-					// Find location for the tower 
+					// Find location for the tower
 					_safepos = (getpos cgqc_training_koth_location) findEmptyPosition [25,300, "Land_Cargo_Tower_V1_No1_F"];
 					_towerNumbered = format ["Land_Cargo_Tower_V1_No%1_F", _i];
 					_tower = createVehicle [_towerNumbered, _safepos, [], 0, "NONE"];
@@ -81,7 +81,7 @@ params ["_type"];
 					_koth_group_statics = createGroup [east, true];
 					_koth_group_statics setBehaviour "SAFE";
 					// Create units --------------------------------------------------------------------------
-					// Find all positions in tower 
+					// Find all positions in tower
 					y_positions = [_tower] call BIS_fnc_buildingPositions;
 					// Find top position
 					_numPositions = count y_positions;
@@ -138,7 +138,7 @@ params ["_type"];
 						_random_pos = selectRandom y_positions;
 						// Remove used position from array so it doesn't come back
 						y_positions = y_positions - [_random_pos];
-						// Pick random infantry waitUntil 
+						// Pick random infantry waitUntil
 						_infantry_class = selectRandom cgqc_pax_opfor_soldier;
 						// spawn unit, set rotation, and set standing
 						_unit = _koth_group createUnit [ _infantry_class, _random_pos, [], 0, "CAN_COLLIDE"];
@@ -166,10 +166,10 @@ params ["_type"];
 					doStop _koth_1_officer;
 					//_dir = getDir _random_pos;
 					//_koth_1_officer setDir _dir;
-					// Add to list 
+					// Add to list
 					cgqc_training_koth_list pushBack _koth_1_officer;
 
-					//Set all dynamic 
+					//Set all dynamic
 					{
 						_x enableDynamicSimulation true;
 						_x removeAllEventHandlers "HandleDamage";
@@ -197,7 +197,7 @@ params ["_type"];
 				};
 			}else{
 				hint "1-7 towers!";
-				break;
+
 			};
 			hint "KOTH Ready. Bonne chan'";
 		};
@@ -207,7 +207,7 @@ params ["_type"];
 		};
 		case "clear": {
 			// Delete marker
-			if !(isNil "y_markerKoth") then {deleteMarker "cgqc_koth_marker";};	
+			if !(isNil "y_markerKoth") then {deleteMarker "cgqc_koth_marker";};
 			// Delete targets
 			{deleteVehicle _x} forEach cgqc_training_koth_list;
 			{deleteVehicle _x;} forEach cgqc_training_koth_towers;

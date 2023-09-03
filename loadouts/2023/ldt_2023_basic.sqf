@@ -6,7 +6,7 @@ diag_log format ["[CGQC_FNC] ldt_2023_basic %1 started", _target];
 
 // === Clothing ==========================================================================================================
 _hats = [ "cgqc_helmet_mk1"];
-_goggles = ["G_max_can_gog"];
+_goggles = ["G_mas_can_gog"];
 _vests = ["cgqc_vest_mk1_tan"];
 _uniforms = ["cgqc_uniform_mk1"];
 _rucks = ["cgqc_pack_mk1_magic"];

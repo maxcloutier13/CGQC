@@ -9,22 +9,22 @@ player setVariable ["cgqc_version_core", _version, true]; // Set the client's mo
 // Client-side code
 diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
 if !(cgqc_mission_dro) then {
-	
+
 	diag_log "[CGQC_INIT] showing intro/welcome";
-	// Show intro 
+	// Show intro
 	_intro = [] spawn CGQC_fnc_showIntro;
 	// Build a random welcome and shows it
-	_welcome = [] spawn CGQC_fnc_showWelcome; 
+	_welcome = [] spawn CGQC_fnc_showWelcome;
 
 	diag_log "[CGQC_INIT] loading custom death/respawn";
-	//Respawn handler 
+	//Respawn handler
 	player addMPEventHandler ["MPRespawn", {
 		params ["_unit", "_corpse"];
 		[_unit] call CGQC_fnc_playerRespawned;
 	}];
 
-	//Death handler 
-	player addMPEventHandler ["MPKilled", {	
+	//Death handler
+	player addMPEventHandler ["MPKilled", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		[_unit, _killer] call CGQC_fnc_playerKilled;
 	}];
@@ -51,7 +51,7 @@ _rank = [] call CGQC_fnc_findRank;
 _patch = [] call CGQC_fnc_findPatch;
 _beret = [] call CGQC_fnc_getRankedBeret;
 
-// Set and keep patch 
+// Set and keep patch
 _set = [] call CGQC_fnc_setPatch;
 
 // Dynamic group -------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ _set = [] call CGQC_fnc_setPatch;
 
 
 // Briefing entry -------------------------------------------------------------------------------------------------
-_brief = [] call CGQC_fnc_loadDiary; 
+_brief = [] call CGQC_fnc_loadDiary;
 
 if (cgqc_player_loadAll) then {
 
@@ -83,25 +83,25 @@ if (cgqc_player_loadAll) then {
 	//On map click (_pos, _units,_shift,_alt)
 	onMapSingleClick "call CGQC_fnc_mapShareList;false;";
 
-	// Whisper/Yelling event 
-	cgqc_event_talk = ["acre_startedSpeaking", {	
-		params ["_unit", "_onRadio", "_radioId", "_speakingType"];	
+	// Whisper/Yelling event
+	cgqc_event_talk = ["acre_startedSpeaking", {
+		params ["_unit", "_onRadio", "_radioId", "_speakingType"];
 		//If volume is low and player is not talking on radio
 		_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
 		//hint format ["Speaking %1", _vol];
-		if (!_onRadio && _vol < 0.4) then {   
-			_txt = parseText( "Whispering..."); 
-			[ _txt, 0, 1, 2, 1 ] spawn BIS_fnc_dynamicText; 
-		};   
+		if (!_onRadio && _vol < 0.4) then {
+			_txt = parseText( "Whispering...");
+			[ _txt, 0, 1, 2, 1 ] spawn BIS_fnc_dynamicText;
+		};
 	}] call CBA_fnc_addEventHandler;
 
-	//Maximum mags event handler 
+	//Maximum mags event handler
 	["ace_arsenal_displayClosed", {
 		[] call CGQC_fnc_maxMags;
 		[player, true] call ace_arsenal_fnc_removeBox;
 	}] call CBA_fnc_addEventHandler;
 
-	//Unconcious event 
+	//Unconcious event
 	["ace_unconscious", {
 		params ["_unit", "_isUnconscious"];
 	if (_isUnconscious) then {
@@ -132,24 +132,24 @@ if (cgqc_config_fortify) then {
 	fortify_list = format [
 		"[
 		['%1', 0],
-		['%2', 0], 
-		['%3', 0], 
-		['%4', 0], 
-		['%5', 0], 
-		['%6', 0], 
+		['%2', 0],
+		['%3', 0],
+		['%4', 0],
+		['%5', 0],
+		['%6', 0],
 		['%7', 0],
-		['%8', 0], 
-		['%9', 0], 
+		['%8', 0],
+		['%9', 0],
 		['%10', 0]
-		]", 
-		cgqc_config_fortify_1, 
-		cgqc_config_fortify_2, 
-		cgqc_config_fortify_3, 
+		]",
+		cgqc_config_fortify_1,
+		cgqc_config_fortify_2,
+		cgqc_config_fortify_3,
 		cgqc_config_fortify_4,
-		cgqc_config_fortify_5, 
-		cgqc_config_fortify_6, 
-		cgqc_config_fortify_7, 
-		cgqc_config_fortify_8, 
+		cgqc_config_fortify_5,
+		cgqc_config_fortify_6,
+		cgqc_config_fortify_7,
+		cgqc_config_fortify_8,
 		cgqc_config_fortify_9,
 		cgqc_config_fortify_10
 	];
@@ -165,23 +165,23 @@ player addEventHandler ["GetInMan", {
 	["ready", false] call CGQC_fnc_perksBasic;
 }];
 
-//Sets radio channel names 
+//Sets radio channel names
 [0] call CGQC_fnc_nameRadios;
 ["defaultLR"] call CGQC_fnc_setRadios;
 
-// Boost dragging maximum 
+// Boost dragging maximum
 ACE_maxWeightDrag = 3000;
 
 // Ace self interaction perks
-_perks = [] call CGQC_fnc_addPerks; 
+_perks = [] call CGQC_fnc_addPerks;
 
 // Ace auto self interaction perks
-_perks = call CGQC_fnc_addPerksSwitch; 
+_perks = call CGQC_fnc_addPerksSwitch;
 
 // Zeus shenanigans... MAX - to review
-_zeus = [] call CGQC_fnc_setZeus; 
+_zeus = [] call CGQC_fnc_setZeus;
 
-// Lower gun 
+// Lower gun
 diag_log "[CGQC_INIT] gun lowered";
 _holster = [] spawn CGQC_fnc_holsterWeapons;
 
@@ -194,16 +194,14 @@ if (cgqc_flag_isTraining) then {
 // Load loadouts if known unit
 _switch = player getVariable "cgqc_var_skipLoadoutSwitch";
 if (isNil "_switch") then {
-	diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts"; 
-	_unit = typeOf player;
+	diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
 	diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
-	[_unit] call CGQC_fnc_checkLoadout;
+	[] call CGQC_fnc_checkLoadout;
 } else {
 	if !(_switch) then {
-		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts"; 
-		_unit = typeOf player;
+		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
 		diag_log format ["[CGQC_INIT] checking %1 unit for loadout", _unit];
-		[_unit] call CGQC_fnc_checkLoadout;
+		[] call CGQC_fnc_checkLoadout;
 	};
 };
 

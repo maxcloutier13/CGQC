@@ -5,7 +5,13 @@
 [] call CGQC_ldt_swat_basic;
 
 // === Adjust Uniform ====================================================================================================
-player addVest "cgqc_vest_mk1_black_rf";
+_hats = [""];
+_goggles = [""];
+_vests = ["cgqc_vest_mk1_black_rf"];
+_uniforms = [""];
+_rucks = [""];
+_loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
+[_loadout] call CGQC_fnc_loadLoadout;
 
 // === Linked items ==================================================================================================================
 ["2023_basic", "cgqc_item_rangefinder", "JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;

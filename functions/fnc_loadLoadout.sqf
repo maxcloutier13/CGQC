@@ -16,19 +16,14 @@ _vest = selectRandom _vests;
 _uniform = selectRandom _uniforms;
 _ruck = selectRandom _rucks;
 
-
 // DLC checks
 if (_ruck isEqualTo "cgqc_pack_mk1_radiobag" && !cgqc_player_hasContact) then {_ruck = "cgqc_pack_mk1_carryall"};
-
 
 // Load selected items
 if (_hat isNotEqualTo "") then {[_hat] call CGQC_fnc_getCustomHelmet};
 if (_goggle isNotEqualTo "") then {player addGoggles _goggle;};
-if (_vest isNotEqualTo "") then {player addVest _vest;};
-if (_uniform isNotEqualTo "") then {player forceAddUniform _uniform;};
-if (_ruck isNotEqualTo "") then {player addBackpack _ruck;};
-
-// Make sure backpack is empty
-clearAllItemsFromBackpack player;
+if (_vest isNotEqualTo "") then {["vest", _vest] call CGQC_fnc_switchStuff;};
+if (_uniform isNotEqualTo "") then {["uniform", _uniform] call CGQC_fnc_switchStuff;};
+if (_ruck isNotEqualTo "") then {["backpack", _ruck] call CGQC_fnc_switchStuff;};
 
 diag_log "[CGQC_FNC] loadLoadout done";

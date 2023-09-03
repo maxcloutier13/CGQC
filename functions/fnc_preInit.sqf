@@ -229,9 +229,6 @@ cgqc_mk2_arsenal_locked = true;
 cgqc_mk2_animation_locked = false;
 cgqc_mk2_punch_locked = false;
 cgqc_mk2_arsenal_ctr = 0;
-// *** Mk3 **********************
-cgqc_mk3_switching_vest = false;
-cgqc_mk3_switching_backpack = false;
 // *** Unsung **********************
 cgqc_unsung_arsenal_init_done = false;
 cgqc_unsung_blufor = ["UNSUNG_W","UNSUNG_ROK","UNSUNG_AUS","UNSUNG_NZ"];
@@ -670,6 +667,7 @@ waitUntil {scriptDone _convoy};
 // Loadout functions
 #include "\CGQC\loadouts\vanilla\loadouts.hpp"
 #include "\CGQC\loadouts\2023\loadouts.hpp"
+#include "\CGQC\loadouts\swat\loadouts.hpp"
 #include "\CGQC\loadouts\unsung\loadouts.hpp"
 #include "\CGQC\loadouts\ifa3\loadouts.hpp"
 

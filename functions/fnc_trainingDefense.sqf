@@ -17,7 +17,7 @@ params ["_type"];
 			_random_spawn = [];
 			_randomPos = [];
 			_randomTask = 0;
-			
+
 			[] spawn {
 				hint "Something doesn't smell right...";
 				sleep 10;
@@ -33,14 +33,14 @@ params ["_type"];
 
 			[] spawn {
 				cgqc_training_defense = true;
-				[side player, "task_defend", 
+				[side player, "task_defend",
 				["Defend your position!",
 				"Defend", ""],
 				getPos player, "ASSIGNED", 1, true, "defend", false] call BIS_fnc_taskCreate;
 
 				while {cgqc_training_defense} do {
 					_random_amount = selectRandom [1,2,3];
-					for "_i" from 1 to _random_amount do { 
+					for "_i" from 1 to _random_amount do {
 						_random_spawn = selectRandom [cgqc_pax_opfor_hunter, cgqc_pax_opfor_hunter, cgqc_pax_opfor_hunter, cgqc_pax_opfor_team, cgqc_pax_opfor_team, cgqc_pax_opfor_squad];
 						sleep 0.5;
 						_randomPos = [getPos player, 200, 300, 5, 0, 0, 0, [], []] call BIS_fnc_findSafePos;
@@ -52,11 +52,11 @@ params ["_type"];
 							case 2: {[cgqc_defense_group, 1000, 15, [], [], true, false, false] spawn lambs_wp_fnc_taskHunt;};
 							case 3: {[cgqc_defense_group, 1000, 15, [], [], true] spawn lambs_wp_fnc_taskRush;};
 						};
-						
+
 						{
 							cgqc_defense_target_list pushBack _x;
 							cgqc_defense_list pushBack _x;
-							_x addEventHandler ["Killed", { // Killed EventHandler 
+							_x addEventHandler ["Killed", { // Killed EventHandler
 								params ["_unit", "_killer"];
 								hint "Killed";
 								cgqc_defense_list = cgqc_defense_list - [_x];
@@ -70,34 +70,34 @@ params ["_type"];
 					};
 					//hint format ["%1 new groups", _random_amount];
 					sleep 120;
-				};		
+				};
 			};
-			break;
+
 		};
 		case "stop": {
 			cgqc_defense_done = true;
 			hint "Defense canceled";
 			["task_defend", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 			["clear"] call fnc_trainingDefense;
-			break;
+
 		};
 		case "clear":
 		{
 			cgqc_training_defense = false;
 			cgqc_defense_start = false;
 			cgqc_defense_done = false;
-			//Delete all units 
+			//Delete all units
 			{deleteVehicle _x;} forEach cgqc_defense_target_list;
 			{deleteVehicle _x;} forEach allDead;
 			{deleteVehicle _x;} forEach nearestObjects [getpos player, ["Weapon", "WeaponHolder", "GroundWeaponHolder"], 1000];
-			break;
+
 		};
 		case "done": {
 			cgqc_defense_done = true;
 			hint "Good job viper. They're all dead";
 			["task_defend", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 			["clear"] call fnc_trainingDefense;
-			break;
+
 		};
 		default{diag_log "[CGQC_ERROR] trainingDefense fail";};
 	};

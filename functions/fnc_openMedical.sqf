@@ -46,9 +46,10 @@ _250ml = {(toLower _x) in _blood} count _allItems;
 _medbag = {_x isEqualTo "FSGm_ItemMedicBag" } count _allItems;
 _pak = {_x isEqualTo "ACE_personalAidKit" } count _allItems;
 _smoke_purple = {_x isEqualTo "SmokeShellPurple" } count _allMags;
+_bodybags = {_x isEqualTo "ACE_bodyBag" } count _allItems;
 
 switch (_type) do {
-	case "ifak": { 
+	case "ifak": {
 		if (_forceOpen || _bandage < 2) then {
 			_work = _work + "IFAK";
 			_target removeItem "cgqc_items_ifak";
@@ -62,11 +63,11 @@ switch (_type) do {
 			for "_i" from _liquids to 1 do {_target addItemToBackpack "ACE_salineIV_500"};
 			hint _work;
 		};
-		break;
+
 	};
-	case "medkit": { 
+	case "medkit": {
 		if (player isEqualTo _target) then {
-			if (_forceOpen || _liquids < 3) then {				
+			if (_forceOpen || _liquids < 3) then {
 				_work = _work + "Medkit";
 				_target removeItem "cgqc_items_medkit";
 				diag_log format ["[CGQC_FNC] openMedical - unpacking medkit"];
@@ -81,10 +82,11 @@ switch (_type) do {
 				for "_i" from _pak to 0 do {_target addItemToBackpack "ACE_personalAidKit"};
 				for "_i" from _smoke_purple to 1 do {_target addItemToBackpack "SmokeShellPurple"};
 				for "_i" from _medbag to 0 do {_target addItemToBackpack "FSGm_ItemMedicBag"};
+				for "_i" from _bodybags to 1 do {player addItemToBackpack "ACE_bodyBag"};
 				hint _work;
 			};
 		};
-		break;
+
 	};
 	default {diag_log format ["[CGQC_ERROR] openMedical didn't match _type"];};
 };

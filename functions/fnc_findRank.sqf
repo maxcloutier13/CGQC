@@ -14,7 +14,7 @@ switch (true) do {
 		player setRank "PRIVATE";
 		_player_rank = 1;
 		_player_rank_name = "Soldat";
-		break;
+
 	};
 	case (_prefix find "cpl"  > -1):{
 		if (_prefix find "cplc"  > -1) then {
@@ -26,85 +26,85 @@ switch (true) do {
 			_player_rank = 2;
 			_player_rank_name = "Caporal";
 		};
-		break;
+
 	};
 	case (_prefix find "sgt"  > -1):{
 		player setRank "SERGEANT";
 		_player_rank = 4;
 		_player_rank_name = "Sergent";
-		break;
+
 	};
 	case (_prefix find "adju"  > -1):{
 		player setRank "SERGEANT";
 		_player_rank = 5;
 		_player_rank_name = "Adjudent";
-		break;
+
 	};
 	case (_prefix find "slt"  > -1):{
 		player setRank "LIEUTENANT";
 		_player_rank = 6;
 		_player_rank_name = "Sous-Lieutenant";
-		break;
+
 	};
 	case (_prefix find "lt"  > -1):{
 		player setRank "LIEUTENANT";
 		_player_rank = 7;
 		_player_rank_name = "Lieutenant";
-		break;
+
 	};
 	case (_prefix find "capt"  > -1):{
 		player setRank "CAPTAIN";
 		_player_rank = 8;
 		_player_rank_name = "Capitaine";
-		break;
+
 	};
 	case (_prefix find "maj"  > -1):{
 		player setRank "MAJOR";
 		_player_rank = 9;
 		_player_rank_name = "Major";
-		break;
+
 	};
 	case (_prefix find "lcol"  > -1):{
 		player setRank "COLONEL";
 		_player_rank = 10;
 		_player_rank_name = "Lieutenant Colonel";
-		break;
+
 	};
 	case (_prefix find "col"  > -1):{
 		player setRank "COLONEL";
 		_player_rank = 11;
 		_player_rank_name = "Colonel";
-		break;
+
 	};
-	//Global 23rd catch 
-	case (_prefix find "[23r"  > -1): 
+	//Global 23rd catch
+	case (_prefix find "[23r"  > -1):
 	{
 		//23rd tag detected
 		player setRank "SERGEANT";
 		_player_rank = 5;
 		_player_rank_name = "Adjudent";
 		cgqc_player_23rd = true;
-		break;
+
 	};
 	/*
-	case (_whole_name find "[mann"  > -1): 
-	case (_whole_name find "[asthma"  > -1): 
-	case (_whole_name find "[aliens"  > -1):  
-	case (_whole_name find "[kanman"  > -1): 
+	case (_whole_name find "[mann"  > -1):
+	case (_whole_name find "[asthma"  > -1):
+	case (_whole_name find "[aliens"  > -1):
+	case (_whole_name find "[kanman"  > -1):
 	case (_whole_name find "[melonmafia"  > -1):
 	case (_whole_name find "[bishopsarch"  > -1):
 	case (_whole_name find "[peerse"  > -1):
 	case (_whole_name find "[jamie"  > -1):
 	case (_whole_name find "[larsen"  > -1):
 	case (_whole_name find "[cactus"  > -1):
-	case (_whole_name find "[veskar"  > -1):    
+	case (_whole_name find "[veskar"  > -1):
 	{
 		//23rd tag detected
 		player setRank "SERGEANT";
 		_player_rank = 5;
 		_player_rank_name = "Adjudent";
 		cgqc_player_23rd = true;
-		break;
+
 	};*/
 	default
 	{

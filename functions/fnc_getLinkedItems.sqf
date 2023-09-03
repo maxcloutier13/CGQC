@@ -1,7 +1,7 @@
 // --- getLinkedItems ----------------------------------------------------------
 // Get basic linked items, nvgs and such
 params ["_type", ["_binocs", ""], ["_nvg", ""], ["_loadEssentials", true]];
-diag_log format ["[CGQC_FNC] getLinkedItems %1/%2 started", _type, _nvg];
+diag_log format ["[CGQC_FNC] getLinkedItems %1/%2/%3/%4 started", _type, _binocs, _nvg, _loadEssentials];
 
 _link = [];
 _optionals = [];
@@ -25,69 +25,78 @@ switch (_type) do {
 	case "2023_basic": {
 		_link = _linkedBaseGPS;
 		_optionals = _light + _lockpicks + _phone + _dagr;
-		break;
+		diag_log "[CGQC_FNC] getLinkedItems 2023_basic loading";
 	};
 	case "2023_command": {
 		_link = _linkedBaseUAV;
 		_optionals = _light + _lockpicks + _tablet + _dagr;
-		break;
+		diag_log "[CGQC_FNC] getLinkedItems 2023_command loading";
 	};
 	case "vanilla_basic": {
 		_link = _linkedBaseGPS;
 		_optionals = _light + _lockpicks + _dagr;
-		break;
 	};
 	case "vanilla_command": {
 		_link = _linkedBaseUAV;
 		_optionals = _light + _lockpicks + _dagr;
-		break;
 	};
 	case "unsung_basic": {
 		_link = _linkedBase;
 		_optionals = ["grad_paceCountBeads_functions_paceCountBeads"];
-		break;
 	};
 	case "noGPS": {
 		player linkItem "ItemMap";
 		player linkItem "ItemCompass";
 		player linkItem "ItemWatch";
-		break;
 	};
 	case "noCompass": {
 		player linkItem "ItemMap";
 		player linkItem "ItemWatch";
-		break;
 	};
 	case "noMap": {
 		player linkItem "ItemWatch";
-		break;
 	};
 };
 
 // Essentials
 if (_loadEssentials) then {
+	diag_log "[CGQC_FNC] getLinkedItems essentials loading";
 	{player addItem _x;} forEach _essentials;
 };
 
 // Linked items
-{player linkItem _x;} forEach _link;
+if (count _link > 0) then {
+	diag_log "[CGQC_FNC] getLinkedItems linkedItem loading";
+	{player linkItem _x;} forEach _link;
+};
+
 // Optional goodies
-{player addItem _x;} forEach _optionals;
+if (count _optionals > 0) then {
+	diag_log "[CGQC_FNC] getLinkedItems optionals loading";
+	{player addItem _x;} forEach _optionals;
+};
 
 // Binos
-player addWeapon _binocs;
-if ("designator" in _binocs) then {player addMagazine "Laserbatteries";};
+if (_binocs isNotEqualTo "") then {
+	diag_log "[CGQC_FNC] getLinkedItems binocs loading";
+	player addWeapon _binocs;
+	if ("designator" in _binocs) then {player addMagazine "Laserbatteries";};
+};
+
 
 // NVG'S -------------------------------------------------------------------------------------------------------
 if (_nvg isNotEqualTo "") then {
+	diag_log "[CGQC_FNC] getLinkedItems nvgs loading";
 	// === NVG's
 	[] call CGQC_fnc_isDaytime;
 	if (cgqc_mission_daytime) then {
 		player addItemToBackpack _nvg;
+		diag_log "[CGQC_FNC] getLinkedItems - Daytime. Nvg's in backpack";
 		hint "Daytime. Nvg's in backpack";
 	}else{
 		//Night mission
 		player linkItem _nvg;
+		diag_log "[CGQC_FNC] getLinkedItems - Night. Nvg's on helmet";
 		hint "Night. Nvg's on helmet";
 	};
 };

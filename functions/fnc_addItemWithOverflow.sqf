@@ -1,11 +1,14 @@
 // --- addItemWithOverflow ----------------------------------------------------------
-// Add item to player, handling overflow all the way to the ground if needed 
+// Add item to player, handling overflow all the way to the ground if needed
 // example: [player, "uniform", "medkit", true] call CGQC_fnc_addItemWithOverflow;
 params ["_unit", "_target", "_item", ["_overflow", true]];
 diag_log format ["[CGQC_FNC] addItemWithOverflow %1/%2/%3/%4 started", _unit, _target, _item, _overflow];
 
+// Lower string in case.
+_item = toLower _item;
+
 switch (_target) do {
-	case "uniform": { 
+	case "uniform": {
 		if (_unit canAddItemToUniform _item) then {
 			_unit addItemToUniform _item;
 		} else {
@@ -31,7 +34,7 @@ switch (_target) do {
 			};
 		};
 	};
-	case "vest": { 
+	case "vest": {
 		if (_unit canAddItemToVest _item) then {
 			_unit addItemToVest _item;
 		} else {

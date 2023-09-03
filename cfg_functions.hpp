@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class removePrimary{
+            file = "\cgqc\functions\fnc_removePrimary.sqf";
+            description = "Remove primary gun and mags ";
+        };
+        class removeHandgun{
+            file = "\cgqc\functions\fnc_removeHandgun.sqf";
+            description = "Remove handgun and mags ";
+        };
         class loadLoadout{
             file = "\cgqc\functions\fnc_loadLoadout.sqf";
             description = "Load selected uniform items ";
@@ -59,7 +67,7 @@ class CGQC {
         class trainingDefense{
             file = "\cgqc\functions\fnc_trainingDefense.sqf";
             description = "Wave defense mission";
-        };        
+        };
         class trainingHeli{
             file = "\cgqc\functions\fnc_trainingHeli.sqf";
             description = "Helicopter training";
@@ -159,7 +167,7 @@ class CGQC {
         class mapShareList{
             file = "\cgqc\functions\fnc_mapShareList.sqf";
             description = "Show list of players that see your markers";
-        };        
+        };
         class addItemWithOverflow{
             file = "\cgqc\functions\fnc_addItemWithOverflow.sqf";
             description = "Add items to uniform/vest/backpack/ground";
@@ -207,7 +215,7 @@ class CGQC {
         class nameRadios {
             file = "\cgqc\functions\fnc_nameRadios.sqf";
             description = "Set radio channel names";
-        };      
+        };
         class switchPrimary{
             file = "\cgqc\functions\fnc_switchPrimary.sqf";
             description = "Switch primary weapon";
@@ -251,11 +259,11 @@ class CGQC {
         class showWelcome {
             file = "\cgqc\functions\fnc_showWelcome.sqf";
             description = "Prep un message de bienvenue semi-random";
-        }; 
+        };
         class loadDiary {
             file = "\cgqc\functions\fnc_loadDiary.sqf";
             description = "Post group info in default briefing";
-        };  
+        };
         class addPerks {
             file = "\cgqc\functions\fnc_addPerks.sqf";
             description = "Add all perks to player";
@@ -263,19 +271,19 @@ class CGQC {
         class setZeus {
             file = "\cgqc\functions\fnc_setZeus.sqf";
             description = "Set zeus and keeps them there";
-        };        
+        };
         class maxMags {
             file = "\cgqc\functions\fnc_maxMags.sqf";
             description = "Limit maximum mags on player";
-        };  
+        };
         class playerKilled {
             file = "\cgqc\functions\fnc_playerKilled.sqf";
             description = "Code in the event a player gets dead";
-        }; 
+        };
         class playerRespawned {
             file = "\cgqc\functions\fnc_playerRespawned.sqf";
             description = "Code in the event a player respawns";
-        }; 
+        };
         class showIntro {
             file = "\cgqc\functions\fnc_showIntro.sqf";
             description = "Show intro on load";
