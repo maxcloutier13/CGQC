@@ -40,7 +40,6 @@ switch (_variant) do {
 		if (!cgqc_config_sidearm) then {
 			player addItemToBackpack cgqc_config_sidearm_alternate;
 			player addItemToBackpack cgqc_config_sidearm_alternate;
-			player addItemToBackpack cgqc_config_sidearm_alternate;
 		};
 		player addItem "ACE_M26_Clacker";
 		player addItem "ACE_ATragMX";

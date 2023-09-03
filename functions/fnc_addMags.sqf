@@ -19,7 +19,7 @@ if (isNil "_mag") then {
 
 	// Compare the magazine size
 	switch (true) do {
-		case (_magSize < 20): {_addMags = _addMags * 2};
+		case (_magSize < 20): {_addMags = _addMags * 1.6};
 		case (_magSize == 20): {_addMags = _addMags * 1.5};
 		case (_magSize > 30): {_addMags = _addMags * 0.6};
 	};
