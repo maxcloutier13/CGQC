@@ -76,36 +76,7 @@ switch (true) do {
 		_player_rank_name = "Colonel";
 
 	};
-	//Global 23rd catch
-	case (_prefix find "[23r"  > -1):
-	{
-		//23rd tag detected
-		player setRank "SERGEANT";
-		_player_rank = 5;
-		_player_rank_name = "Adjudent";
-		cgqc_player_23rd = true;
 
-	};
-	/*
-	case (_whole_name find "[mann"  > -1):
-	case (_whole_name find "[asthma"  > -1):
-	case (_whole_name find "[aliens"  > -1):
-	case (_whole_name find "[kanman"  > -1):
-	case (_whole_name find "[melonmafia"  > -1):
-	case (_whole_name find "[bishopsarch"  > -1):
-	case (_whole_name find "[peerse"  > -1):
-	case (_whole_name find "[jamie"  > -1):
-	case (_whole_name find "[larsen"  > -1):
-	case (_whole_name find "[cactus"  > -1):
-	case (_whole_name find "[veskar"  > -1):
-	{
-		//23rd tag detected
-		player setRank "SERGEANT";
-		_player_rank = 5;
-		_player_rank_name = "Adjudent";
-		cgqc_player_23rd = true;
-
-	};*/
 	default
 	{
 		cgqc_player_known = false;

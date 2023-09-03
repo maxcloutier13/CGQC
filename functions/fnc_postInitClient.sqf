@@ -62,8 +62,18 @@ _set = [] call CGQC_fnc_setPatch;
 _brief = [] call CGQC_fnc_loadDiary;
 
 if (cgqc_player_loadAll) then {
-
 	// Init arsenal ---------------------------------------------------------------------------------------------------
+	if(cgqc_player_has2023) then {
+		cgqc_mk2_arsenal_1 = [];
+		cgqc_mk2_arsenal_2 = [];
+		cgqc_mk2_arsenal_3 = [];
+		cgqc_mk2_arsenal_4 = [];
+		cgqc_mk2_arsenal_5 = [];
+		cgqc_mk2_arsenal_8 = [];
+		// Prep les variables de l'arsenal dynamique
+		#include "\cgqc\loadouts\2023\arsenal\init_arsenal.sqf";
+		cgqc_2023_arsenal_init_done = true;
+	};
 	if(cgqc_player_hasUnsung) then {
 		cgqc_unsung_arsenal_1 = [];
 		cgqc_unsung_arsenal_8 = [];

@@ -5,6 +5,7 @@ _type = typeOf player;
 diag_log format ["[CGQC_FNC] checkLoadout %1 started", _type];
 _switchRole = "";
 _section = 1;
+_dive = false;
 
 switch (_type) do {
 	// == Training ================================================================
@@ -40,9 +41,6 @@ switch (_type) do {
     // == Pilots ================================================================
     case "CGQC_units_mk1_4_Pilot_heli":{_switchRole = "2023_h_pilot"};
     case "CGQC_units_mk1_4_crew_heli":{_switchRole = "2023_h_crew"};
-    //case "CGQC_units_mk1_4_Pilot_Jet":{
-    //    ["", 1, true] execVM "\CGQC_2022\loadouts\mk2_role_switch.sqf";
-    //};
     // == Drivers ================================================================
     case "CGQC_units_mk1_4_Tank_Driver":{_switchRole = "2023_t_driver"};
     case "CGQC_units_mk1_4_Tank_Crew":{_switchRole = "2023_t_crew"};
@@ -51,22 +49,10 @@ switch (_type) do {
     case "CGQC_units_mk1_0_SL":{_switchRole = "2023_sl"};
     case "CGQC_units_mk1_0_TeamLeader_Carbine":{_switchRole = "2023_tl"};
     // == Divers ================================================================
-    case "CGQC_units_mk1_5_Diver_TL":{
-        _switchRole = "2023_tl";
-        ["diver", true] execVM "\CGQC_2022\loadouts\mk1_camo_switch.sqf";
-    };
-    case "CGQC_units_mk1_5_Diver_sniper":{
-        _switchRole = "2023_sniper";
-        ["diver", true] execVM "\CGQC_2022\loadouts\mk1_camo_switch.sqf";
-    };
-    case "CGQC_units_mk1_5_Diver_Spotter":{
-        _switchRole = "2023_spotter";
-        ["diver", true] execVM "\CGQC_2022\loadouts\mk1_camo_switch.sqf";
-    };
-    case "CGQC_units_mk1_5_Diver_Engineer":{
-        _switchRole = "2023_eng";
-        ["diver", true] execVM "\CGQC_2022\loadouts\mk1_camo_switch.sqf";
-    };
+    case "CGQC_units_mk1_5_Diver_TL":{_switchRole = "2023_tl";_dive = true;};
+    case "CGQC_units_mk1_5_Diver_sniper":{_switchRole = "2023_sniper";_dive = true;};
+    case "CGQC_units_mk1_5_Diver_Spotter":{_switchRole = "2023_spotter";_dive = true;};
+    case "CGQC_units_mk1_5_Diver_Engineer":{_switchRole = "2023_eng";_dive = true;};
 };
 
 if (_switchRole isNotEqualTo "" && _switch) then {
@@ -75,5 +61,10 @@ if (_switchRole isNotEqualTo "" && _switch) then {
 } else {
 	diag_log "[CGQC_FNC] Loadout not found. Skipping.";
 };
+
+if (_dive) then {
+    ["diver", true] call CGQC_fnc_switchUniform;
+};
+
 
 diag_log "[CGQC_FNC] checkLoadout done";

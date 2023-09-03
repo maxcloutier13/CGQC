@@ -299,7 +299,7 @@ class cgqc_box_mk2_cargo : Land_Cargo10_military_green_F
     author = "silent1";
     _generalMacro = "cgqc_box_mk2_cargo";
     displayName = "CGQC MK2 Cargo Container";
-    model = "\cgqc_2022\containers\cgqc_box_cargo.p3d";
+    model = "\cgqc\containers\cgqc_box_cargo.p3d";
     ace_cargo_canLoad = 0;  // Enables the object to be loaded (1-yes, 0-no)
     ace_cargo_noRename = 1;
     class EventHandlers
