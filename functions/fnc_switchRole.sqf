@@ -9,7 +9,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
 
     cgqc_roleSwitch_done = false;
 
-    //disableUserInput true;
+    //
     if (cgqc_setting_show_transition && _showTransition) then {
     // Fade to black
         cutText ["", "BLACK FADED", 999];

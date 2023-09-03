@@ -5,7 +5,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
 
 [_type, _fromLoadout] spawn {
     params ["_type", "_fromLoadout"];
-    //disableUserInput true;
+    //
     switch (_type) do {
         case "stealth":{
             cgqc_player_state = 0;
@@ -196,7 +196,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 };
                 cgqc_player_chill = true;
                 if !(cgqc_welcome_done) then {
-                    disableUserInput false;
+
                     waitUntil {cgqc_welcome_done};
                     sleep 10;
                 };
@@ -699,8 +699,8 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
         };
     };
     // Return control to player
-    disableUserInput false;
-    if (userInputDisabled) then {disableUserInput false;};
+
+    if (userInputDisabled) then {};
 };
 
 diag_log "[CGQC_FNC] perksBasic done";

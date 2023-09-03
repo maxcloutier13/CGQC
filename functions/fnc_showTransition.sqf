@@ -5,7 +5,7 @@ params ["_type", ["_show", true]];
 [_type, _show] spawn {
     params ["_type", ["_show", true]];
     diag_log format ["[CGQC_FNC] transition %1/%2 started", _type, _show];
-    disableUserInput true;
+
     cgqc_mk3_transition = true;
     _text = "";
     _text_insert = "";
@@ -130,7 +130,7 @@ params ["_type", ["_show", true]];
         _text = format [_text, _text_insert];
         [_text, 0, 0, 3, 2] spawn BIS_fnc_dynamicText;
         sleep _sleep;
-        disableUserInput false;
+
         // Wake up with blur
         "dynamicBlur" ppEffectEnable true;
         "dynamicBlur" ppEffectAdjust [6];
@@ -140,6 +140,6 @@ params ["_type", ["_show", true]];
         "dynamicBlur" ppEffectCommit 2;
         cgqc_mk3_transition = false;
     };
-    disableUserInput false;
+
     diag_log "[CGQC_FNC] transition done";
 };

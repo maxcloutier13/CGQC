@@ -31,8 +31,8 @@ if !(cgqc_mission_dro) then {
 } else {
 	1 fadeSound 1;
 	titleCut ["", "BLACK IN", 1];
-	disableUserInput false;
-	if (userInputDisabled) then {disableUserInput false;};
+
+	if (userInputDisabled) then {};
 };
 
 // Player identification --------------------------------------------------------------------------------------------
