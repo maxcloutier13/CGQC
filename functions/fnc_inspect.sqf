@@ -1,6 +1,7 @@
 // --- inspect ----------------------------------------------------------
 // Inspect target laodout and reports problems 
-_type = _this select 0;
+params ["_type"];
+diag_log format ["[CGQC_FNC] inspect %1 started", _type];
 
 inspect_target = cursorTarget;
 _inspect_txt = "";
@@ -125,7 +126,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		inspect_target_uniform_gunMags = [];
 		inspect_target_uniform_throwables = [];
 
-		[inspect_target_uniform_allMags, inspect_target_uniform_gunMags, inspect_target_uniform_throwables, inspect_target_uniform_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
+		[inspect_target_uniform_allMags, inspect_target_uniform_gunMags, inspect_target_uniform_throwables, inspect_target_uniform_txt] call CGQC_fnc_inspectSort;
 
 	}else{
 		inspect_target_uniform_txt = inspect_target_uniform_txt + "-- None --<br/>";
@@ -160,7 +161,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		inspect_target_vest_allMags = vestMagazines inspect_target; 
 		inspect_target_vest_gunMags = [];
 		inspect_target_vest_throwables = [];
-		[inspect_target_vest_allMags, inspect_target_vest_gunMags, inspect_target_vest_throwables, inspect_target_vest_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
+		[inspect_target_vest_allMags, inspect_target_vest_gunMags, inspect_target_vest_throwables, inspect_target_vest_txt] call CGQC_fnc_inspectSort;
 	} else {
 		inspect_target_vest_txt = inspect_target_vest_txt + "-- None --<br/>";
 	};
@@ -194,7 +195,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		inspect_target_backpack_allMags = backpackMagazines inspect_target; 
 		inspect_target_backpack_gunMags = [];
 		inspect_target_backpack_throwables = [];
-		[inspect_target_backpack_allMags, inspect_target_backpack_gunMags, inspect_target_backpack_throwables, inspect_target_backpack_txt] execVM "\cgqc\functions\fnc_inspectSort.sqf";
+		[inspect_target_backpack_allMags, inspect_target_backpack_gunMags, inspect_target_backpack_throwables, inspect_target_backpack_txt] call CGQC_fnc_inspectSort;
 	} else {
 		inspect_target_backpack_txt = inspect_target_backpack_txt + "-- None --<br/>";
 	};
@@ -238,7 +239,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	_notepad = 0;
 	_maptools = 0;
 	// Count meds
-	_ifak = {_x isEqualTo "ace_items_ifak" } count inspect_target_allItems;
+	_ifak = {_x isEqualTo "cgqc_items_ifak" } count inspect_target_allItems;
 	_bandage = {_x isEqualTo "ACE_fieldDressing" } count inspect_target_allItems;
 	_earplugs = {_x isEqualTo "ACE_EarPlugs" } count inspect_target_allItems;
 	_epi ={_x isEqualTo "ACE_epinephrine" } count inspect_target_allItems;
@@ -395,4 +396,12 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	};
 };
 
-Hint parseText format ["%1", _inspect_txt];
+// Show inspection message
+[_inspect_txt] spawn {
+	params ["_txt"];
+	Hint parseText format ["%1", _txt];
+	sleep 20;
+	hintSilent "";
+};
+
+diag_log "[CGQC_FNC] inspect done";

@@ -1,8 +1,7 @@
 // --- zeusUnit ----------------------------------------------------------
 // Unit has been double clicked
-
 params ["_unit"];
-
+diag_log format ["[CGQC_FNC] zeusUnit %1 started", _unit];
 if !(cgqc_zeus_event) then {
 	cgqc_zeus_event = true;
 	_unit addEventHandler ["CuratorObjectDoubleClicked", {
@@ -17,3 +16,5 @@ if !(cgqc_zeus_event) then {
 		};
 	}];
 };
+
+diag_log "[CGQC_FNC] zeusUnit done";

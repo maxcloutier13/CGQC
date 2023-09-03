@@ -2,28 +2,20 @@
 // TL loadout for Vanilla
 
 // === Adjust Uniform ====================================================================================================
-["backpack", "B_Kitbag_rgr"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
-["vest", "V_PlateCarrier2_rgr"] execVM "\CGQC\loadouts\mk3_switchStuff.sqf";
-
-// === Radios ==========================================================================================================
-["tl"] execVM "\CGQC\loadouts\mk3_getRadios.sqf";
+["backpack", "B_Kitbag_rgr"] call CGQC_fnc_switchStuff;
+["vest", "V_PlateCarrier2_rgr"] call CGQC_fnc_switchStuff;
 
 // === Adjust Items ====================================================================================================
-player unlinkItem "cgqc_item_rangefinder";
-player linkItem "cgqc_item_laserdesignator";
-player unlinkItem "ItemGPS";
-player linkItem "B_UavTerminal";
+["vanilla_command", "cgqc_item_laserdesignator", "ACE_NVG_Gen4_Black"] call CGQC_fnc_getLinkedItems;
 
 // === Primary ==========================================================================================================
-["arifle_SPAR_01_GL_blk_F"] execVM "\CGQC\functions\fnc_getCustomGun.sqf";
-sleep 0.5;
-removeAllPrimaryWeaponItems player;
+["arifle_SPAR_01_GL_blk_F"] call CGQC_fnc_getCustomGun;
 player addPrimaryWeaponItem "muzzle_snds_M";
 player addPrimaryWeaponItem "ACE_acc_pointer_green";
 player addPrimaryWeaponItem "optic_Arco_AK_blk_F";
 player addPrimaryWeaponItem "ACE_30Rnd_556x45_Stanag_Mk262_mag";
-// Mags 
-[] execVM "cgqc\functions\fnc_addMags.sqf";
+// Mags
+[] call CGQC_fnc_addMags;
 
 // === Role Items ==========================================================================================================
 player addItemToBackpack "tsp_stickCharge_auto_mag";

@@ -12,7 +12,7 @@ class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
     crew = "CGQC_Soldat_Base";
     // Heavy ADS
     class EventHandlers {
-        init = "['heavy', _this] execVM 'cgqc\vehicles\fnc_addADS.sqf'";
+        init = "['heavy', _this] call CGQC_fnc_addADS";
     };
 };
 
@@ -31,7 +31,7 @@ class cgqc_vic_fennec : I_MRAP_03_F{
         "\a3\soft_f_beta\mrap_03\data\mrap_03_ext_indp_co.paa",
         "\a3\data_f\vehicles\turret_indp_co.paa"};
     // Light ADS
-    class EventHandlers {init = "['light', _this] execVM 'cgqc\vehicles\fnc_addADS.sqf'";};
+    class EventHandlers {init = "['light', _this] call CGQC_fnc_addADS";};
 };
     
 class I_MRAP_03_hmg_F;
@@ -46,7 +46,7 @@ class cgqc_vic_fennec_hmg : I_MRAP_03_hmg_F{
     hiddenSelections[] = {"Camo1","Camo2"};
 	hiddenSelectionsTextures[] = {"\a3\soft_f_beta\mrap_03\data\mrap_03_ext_indp_co.paa","\a3\data_f\vehicles\turret_indp_co.paa"};
     // Light ADS
-    class EventHandlers {init = "['light', _this] execVM 'cgqc\vehicles\fnc_addADS.sqf'";};
+    class EventHandlers {init = "['light', _this] call CGQC_fnc_addADS";};
 };
 
 class B_T_Truck_01_box_F;
@@ -68,9 +68,8 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     };
 	class EventHandlers
     {
-    	init = "[_this] execVM '\cgqc\vehicles\loadout_construction.sqf';[_this select 0, 'car'] execVM '\cgqc\functions\fnc_addSpares.sqf'"; 
+    	init = "[_this] call CGQC_fnc_loadoutConstructionVic;[_this select 0, 'car'] call CGQC_fnc_addSpares"; 
     };
-    //#include "vehicles\cgqc_vic_loadout_construction.sqf"
 };
 
 // Objects ===================================================================================
@@ -85,7 +84,7 @@ class cgqc_refuel_h : Land_HelipadSquare_F
     displayName = "CGQC Helipad - Standard";
     class EventHandlers
     {
-        init = "[_this, 0] execVM '\cgqc\functions\fnc_refuel_setup.sqf'"; 
+        init = "[_this, 0] call CGQC_fnc_refuelSetup"; 
     };
 };
 class cgqc_refuel_h_short : Land_HelipadSquare_F
@@ -97,7 +96,7 @@ class cgqc_refuel_h_short : Land_HelipadSquare_F
     displayName = "CGQC Helipad - Rapide";
     class EventHandlers
     {
-        init = "[_this, 1] execVM '\cgqc\functions\fnc_refuel_setup.sqf'";  
+        init = "[_this, 1] call CGQC_fnc_refuelSetup";  
     };
 };
 class cgqc_refuel_h_invis: cgqc_refuel_h

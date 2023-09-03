@@ -1,5 +1,7 @@
 // --- setZeus ----------------------------------------------------------
 // Set zeus and keeps them there
+diag_log format ["[CGQC_FNC] setZeus started"];
+
 
 // Delay until the server time has sync'd
 waitUntil {	time > 5};
@@ -10,8 +12,8 @@ waitUntil {	!isNull (findDisplay 46)};
 if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["zeus", format["%1", player]] call BIS_fnc_inString) then {
 	hint "Zeus!";
 	sleep 1;
-	waitUntil {!isNil "cgqc_postInitClient_done"};
-	waitUntil {cgqc_postInitClient_done};
+	waitUntil {!isNil "cgqc_start_postInitClient_done"};
+	waitUntil {cgqc_start_postInitClient_done};
 
 	[] spawn {
 		while {true} do {
@@ -56,4 +58,4 @@ if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["ze
 	sleep 25.0;
 	};
 };
-
+diag_log "[CGQC_FNC] setZeus done";

@@ -1,8 +1,7 @@
 // --- openMedical ----------------------------------------------------------
 // Open medical items
-_type = _this select 0;
-_target = _this select 1;
-_forceOpen = _this select 2;
+params ["_type", ["_target", ACE_player], ["_forceOpen", true]];
+diag_log format ["[CGQC_FNC] openMedical %1/%2/%3 started"];
 
 _work = "";
 if (player isEqualTo _target) then {
@@ -29,6 +28,7 @@ _medbag = 0;
 _pak = 0;
 _smoke_purple = 0;
 
+// Checking player inventory
 _bandage = {_x isEqualTo "ACE_fieldDressing" } count _allItems;
 _epi ={_x isEqualTo "ACE_epinephrine" } count _allItems;
 _morphine = {_x isEqualTo "ACE_morphine" } count _allItems;
@@ -46,12 +46,14 @@ _250ml = {(toLower _x) in _blood} count _allItems;
 _medbag = {_x isEqualTo "FSGm_ItemMedicBag" } count _allItems;
 _pak = {_x isEqualTo "ACE_personalAidKit" } count _allItems;
 _smoke_purple = {_x isEqualTo "SmokeShellPurple" } count _allMags;
+_bodybags = {_x isEqualTo "ACE_bodyBag" } count _allItems;
 
 switch (_type) do {
-	case "ifak": { 
+	case "ifak": {
 		if (_forceOpen || _bandage < 2) then {
 			_work = _work + "IFAK";
 			_target removeItem "cgqc_items_ifak";
+			diag_log format ["[CGQC_FNC] openMedical - unpacking ifak"];
 			for "_i" from _bandage to 9 do {_target addItem "ACE_fieldDressing"};
 			for "_i" from _epi to 1 do {_target addItem "ACE_epinephrine"};
 			for "_i" from _morphine to 1 do {_target addItem "ACE_morphine"};
@@ -61,13 +63,14 @@ switch (_type) do {
 			for "_i" from _liquids to 1 do {_target addItemToBackpack "ACE_salineIV_500"};
 			hint _work;
 		};
-		break;
+
 	};
-	case "medkit": { 
+	case "medkit": {
 		if (player isEqualTo _target) then {
 			if (_forceOpen || _liquids < 3) then {
 				_work = _work + "Medkit";
 				_target removeItem "cgqc_items_medkit";
+				diag_log format ["[CGQC_FNC] openMedical - unpacking medkit"];
 				for "_i" from _bandage to 49 do {_target addItemToBackpack "ACE_fieldDressing"};
 				for "_i" from _epi to 9 do {_target addItemToBackpack "ACE_epinephrine"};
 				for "_i" from _morphine to 9 do {_target addItemToBackpack "ACE_morphine"};
@@ -79,11 +82,13 @@ switch (_type) do {
 				for "_i" from _pak to 0 do {_target addItemToBackpack "ACE_personalAidKit"};
 				for "_i" from _smoke_purple to 1 do {_target addItemToBackpack "SmokeShellPurple"};
 				for "_i" from _medbag to 0 do {_target addItemToBackpack "FSGm_ItemMedicBag"};
+				for "_i" from _bodybags to 1 do {player addItemToBackpack "ACE_bodyBag"};
 				hint _work;
 			};
 		};
-		break;
+
 	};
-	default {hint "Erreur openMedical" };
+	default {diag_log format ["[CGQC_ERROR] openMedical didn't match _type"];};
 };
 
+diag_log format ["[CGQC_FNC] openMedical done"];

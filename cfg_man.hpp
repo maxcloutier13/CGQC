@@ -6,7 +6,7 @@ class CAManBase: Man {
 			class cgqc_inspect_detail {
 				displayName = "Rapid Gear Inspection";
 				condition = "true";
-				statement = "[0] execVM '\cgqc\functions\fnc_inspect.sqf'";
+				statement = "[0] call CGQC_fnc_inspect";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Quick check of the essentials'";
@@ -14,7 +14,7 @@ class CAManBase: Man {
 			class cgqc_inspect {
 				displayName = "Full Gear Inspection";
 				condition = "true";
-				statement = "[1] execVM '\cgqc\functions\fnc_inspect.sqf'";
+				statement = "[1] call CGQC_fnc_inspect";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Inspect the soldiers gear'";

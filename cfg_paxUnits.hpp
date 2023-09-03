@@ -117,20 +117,20 @@ switch (true) do {
 	// *** PAX - 2023 *******************************************************
 	case (cgqc_player_has2023): {
 		#include "\cgqc\pax\cfg_pax2023.hpp"
-		break;
+
 	};
 	case (cgqc_player_hasIfa3): {// *** PAX - WW2 **********************************************************************************************
 		#include "\cgqc\pax\cfg_paxIfa3.hpp"
-		break;
+
 	};
 	case (cgqc_player_hasScandinavia): {// *** PAX - Scandinavia **********************************************************************************************
 		#include "\cgqc\pax\cfg_paxScandinavia.hpp"
-		break;
+
 	};
 	case (cgqc_player_hasUnsung): {// *** PAX - Unsung **********************************************************************************************
 		#include "\cgqc\pax\cfg_paxUnsung.hpp"
-		break;
-	};	
+
+	};
 	default	{
 		#include "\cgqc\pax\cfg_paxVanilla.hpp"
 	};

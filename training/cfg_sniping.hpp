@@ -10,11 +10,11 @@ cgqc_position_sniping =
 // Sniping ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_sniping", "Sniping", "\CGQC\textures\icon_sniping", {}, {true} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-_action = [ "menu_sniping_on", "Sniping-> On", "", {[1]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {!cgqc_training_sniping} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_sniping_on", "Sniping-> On", "", {[1] call CGQC_fnc_trainingSniping}, {!cgqc_training_sniping} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-_action = [ "menu_sniping_on", "Sniping-> Off", "", {[0]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {cgqc_training_sniping} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_sniping_on", "Sniping-> Off", "", {[0] call CGQC_fnc_trainingSniping}, {cgqc_training_sniping} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-_action = [ "menu_sniping_comp", "Spawn Snipning Info", "", {[2]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {!cgqc_training_sniping_comp_on} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_sniping_comp", "Spawn Snipning Info", "", {[2] call CGQC_fnc_trainingSniping}, {!cgqc_training_sniping_comp_on} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_sniping"], _action ] call  ace_interact_menu_fnc_addActionToObject;   
-_action = [ "menu_sniping_comp", "Delete Snipning Info", "", {[3]execVM '\cgqc\functions\fnc_trainingSniping.sqf'}, {cgqc_training_sniping_comp_on} ] call ace_interact_menu_fnc_createAction;     
+_action = [ "menu_sniping_comp", "Delete Snipning Info", "", {[3] call CGQC_fnc_trainingSniping}, {cgqc_training_sniping_comp_on} ] call ace_interact_menu_fnc_createAction;     
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;   

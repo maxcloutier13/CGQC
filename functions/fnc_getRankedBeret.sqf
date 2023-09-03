@@ -1,5 +1,9 @@
- cgqc_player_beret = "";
-waitUntil {cgqc_player_rank_found};
+// --- getRankedBeret ----------------------------------------------------------
+// Match steamID with known players 
+diag_log "[CGQC_FNC] getRankedBeret started";
+
+cgqc_player_beret = "";
+//waitUntil {cgqc_player_rank_found};
 if (cgqc_player_23rd) then {
 	cgqc_player_beret = "cgqc_beret_23"; //23rd basic beret
 } else {
@@ -56,3 +60,4 @@ if (cgqc_player_23rd) then {
 	};
 };
 
+diag_log "[CGQC_FNC] getRankedBeret done";

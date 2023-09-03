@@ -20,16 +20,16 @@
 
 		// Compare the magazine size
 		switch (true) do {
-			case (_magSize < 20): {_addMags = _addMags * 2; break;};
-			case (_magSize == 20): {_addMags = _addMags * 1.5; break;};
-			case (_magSize > 30): {_addMags = _addMags * 0.6; break;};
+			case (_magSize < 20): {_addMags = _addMags * 2; };
+			case (_magSize == 20): {_addMags = _addMags * 1.5; };
+			case (_magSize > 30): {_addMags = _addMags * 0.6; };
 		};
 			// Compare compatible mags to current mags
 		_delta = cgqc_setting_limitMags_max - count y_foundMags;
 		if (_delta < 0) then { //Too many mags mofo!
 			hint format["Too many mags mofo!! Max: %1!", cgqc_setting_limitMags_max];
 			_remove = (_delta * -1) - 1;
-			for "_i" from 0 to _remove do { 
+			for "_i" from 0 to _remove do {
 				player removeMagazine (y_foundMags select _i); //Remove excess
 			};
 			sleep 3;
@@ -39,7 +39,7 @@
 		};
 	};
 };
-	// does not prevent unit from pickup up more mags outside of arsenal. 
+	// does not prevent unit from pickup up more mags outside of arsenal.
 
 
 

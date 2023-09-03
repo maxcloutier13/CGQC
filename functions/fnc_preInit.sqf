@@ -1,12 +1,17 @@
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
+diag_log "[CGQC_PREINIT] === preInit started =====================================";
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
 // CGQC Variables ===================================================================================================
 // *** Init **********************
-cgqc_preInit_done = false;
-cgqc_postInitClient_done = false;
-cgqc_postInitServer_done = false;
-cgqc_2023_preInit_done = false;
+cgqc_start_preInit_done = false;
+cgqc_start_postInitClient_done = false;
+cgqc_start_postInitServer_done = false;
+cgqc_start_2023_preInit_done = false;
+
+// Intro/Welcome stuff
+cgqc_intro_running = false;
 cgqc_intro_running = false;
 cgqc_intro_done = false;
 cgqc_intro_skipped = false;
@@ -27,9 +32,9 @@ cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
 cgqc_player_rank_unknown = false;
 cgqc_player_role = "";
+cgqc_player_roleType = "";
 cgqc_player_beret = "";
 cgqc_player_beret_name = "";
-cgqc_player_role = "";
 cgqc_player_chill = false;
 cgqc_player_state = 1;
 cgqc_player_oldNvg = "";
@@ -40,12 +45,14 @@ cgqc_player_23rd = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
 cgqc_subskills = [
-	"aimingAccuracy", "aimingShake", "aimingSpeed", "spotDistance", "spotTime", 
+	"aimingAccuracy", "aimingShake", "aimingSpeed", "spotDistance", "spotTime",
 	"courage", "reloadSpeed", "commanding", "general"
 ];
-      
+
 // *** Mission stuff *******************
 cgqc_mission_daytime = true;
+
+// *** Anti/DRO compats ******************
 cgqc_mission_dro = false;
 cgqc_mission_dro_ready = false;
 
@@ -89,7 +96,7 @@ cgqc_player_hasRHS = false;
 cgqc_player_hasDrongoFactions = false;
 cgqc_player_has23rd = false;
 cgqc_player_has2023 = false;
-cgqc_player_hasIfa3 = false; 
+cgqc_player_hasIfa3 = false;
 cgqc_player_hasScandinavia = false;
 cgqc_player_hasUnsung = false;
 cgqc_player_isModern = false;
@@ -97,6 +104,9 @@ cgqc_player_isWw2 = false;
 cgqc_player_isVietnam = false;
 // *** Perks **********************
 cgqc_perks_basic = false;
+cgqc_perks_hq = false;
+cgqc_perks_sl = false;
+cgqc_perks_tl = false;
 cgqc_perks_recon = false;
 cgqc_perks_diver = false;
 cgqc_perks_diver_suit_on = false;
@@ -112,7 +122,7 @@ cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
 cgqc_reset_speaker = false;
-// Advanced perks 
+// Advanced perks
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
 cgqc_perk_player_stash_on = false;
@@ -132,10 +142,10 @@ cgqc_zeus_attached = false;
 cgqc_zeus_paused = false;
 cgqc_blackout_player_on = false;
 
-// PAX System 
+// PAX System
 cgqc_pax_prep = false;
 
-// Sniping stuff 
+// Sniping stuff
 cgqc_training_mode = false;
 cgqc_training_sniping = false;
 cgqc_training_sniping_comp = [];
@@ -143,13 +153,14 @@ cgqc_training_sniping_comp_on = false;
 cgqc_spawn = false;
 cgqc_spawn_vic = "";
 
-// Medical stuff 
+// Medical stuff
 cgqc_training_medical = false;
 
-// Parachute 
-cgqc_training_jump = false; 
+// Parachute
+cgqc_training_jump = false;
 cgqc_training_jump_target = true;
 cgqc_training_jump_comp_on = false;
+cgqc_training_jump_autoOpen = true;
 cgqc_training_jump_comp = [];
 
 // Landnav
@@ -157,7 +168,7 @@ cgqc_training_landnav = false;
 cgqc_training_landnav_start_time = 0;
 cgqc_training_landnav_targetlist = [];
 cgqc_training_landnav_distance = 0;
-// Landnav default options 
+// Landnav default options
 cgqc_training_landnav_objective = "city";
 cgqc_training_landnav_difficulty = 1;
 cgqc_training_landnav_min = 1000;
@@ -168,7 +179,7 @@ cgqc_training_landnav_playerAssigned = [];
 cgqc_training_landnav_playerItems = [];
 cgqc_training_landnav_playerBinos = "";
 
-// Convoy 
+// Convoy
 cgqc_training_convoy = false;
 cgqc_training_convoy_speed = 60;
 cgqc_training_convoy_distance = 15;
@@ -177,8 +188,8 @@ cgqc_training_convoy_vics = ["random", "random", "random", "random", "nothing", 
 cgqc_training_convoy_debug = 0;
 cgqc_training_convoy_allUnits = [];
 cgqc_training_convoy_allVics = [];
- 
-// Defense 
+
+// Defense
 cgqc_defense_timer = 0;
 cgqc_training_defense = false;
 cgqc_defense_done = false;
@@ -186,10 +197,10 @@ cgqc_defense_start = false;
 // Helicopter training
 cgqc_training_heli = false;
 cgqc_heli_difficulty = 0;
-// Mortar training 
+// Mortar training
 cgqc_training_mortar = false;
-// KOTH training 
-cgqc_training_koth = false; 
+// KOTH training
+cgqc_training_koth = false;
 cgqc_training_koth_towers_count = 1;
 cgqc_training_koth_towers = [];
 cgqc_training_koth_difficulty = 1;
@@ -204,7 +215,7 @@ cgqc_cqb_on = false;
 cgqc_cqb_target_nbr = 10;
 cgqc_cqb_move = 0;
 cgqc_cqb_timer = 0;
-cgqc_cqb_timer_random = false; 
+cgqc_cqb_timer_random = false;
 cgqc_cqb_civ = false;
 cgqc_cqb_nade = false;
 cgqc_cqb_tgt_move = 0;
@@ -218,9 +229,6 @@ cgqc_mk2_arsenal_locked = true;
 cgqc_mk2_animation_locked = false;
 cgqc_mk2_punch_locked = false;
 cgqc_mk2_arsenal_ctr = 0;
-// *** Mk3 **********************
-cgqc_mk3_switching_vest = false;
-cgqc_mk3_switching_backpack = false;
 // *** Unsung **********************
 cgqc_unsung_arsenal_init_done = false;
 cgqc_unsung_blufor = ["UNSUNG_W","UNSUNG_ROK","UNSUNG_AUS","UNSUNG_NZ"];
@@ -238,7 +246,7 @@ cgqc_unconscious_sounds = [];
 // *** MapSharing default value (instead of 7) *****************
 jibrm_restrictmarkers_shareDistance = 10;
 
-// Check what DLC the player owns 
+// Check what DLC the player owns
 cgqc_player_ownedDLCs = getDLCs 1;
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 
@@ -254,7 +262,7 @@ cgqc_player_hasUnsung = ["uns_base"] call ace_common_fnc_isModLoaded;
 // Eras
 if (cgqc_player_hasIfa3) then {cgqc_player_isWw2 = true;}; // WW2
 if (cgqc_player_hasScandinavia) then {cgqc_player_isWw2 = true;}; // WW2
-if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam 
+if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam
 if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
@@ -263,7 +271,7 @@ if (cgqc_player_hasAnti) then {
 	cgqc_player_loadAll = false;
 };
 
-// Acre default radio 
+// Acre default radio
 if (cgqc_player_hasUnsung) then {
 	// Weird radio for Vietnam use
 	["ACRE_SEM52SL"] call acre_api_fnc_setItemRadioReplacement;
@@ -275,44 +283,44 @@ if (cgqc_player_hasUnsung) then {
 
 // Key-fucking-binds ===================================================================================
 // -- Repos --
-["CGQC", "cgqc_kb_repos", "Au Repos", 
+["CGQC", "cgqc_kb_repos", "Au Repos",
 	{ ["flip_chill", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- Crickets --
-["CGQC", "cgqc_kb_criquet", "Criquet", 
+["CGQC", "cgqc_kb_criquet", "Criquet",
 	{ ["click", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- QuickStates --
-["CGQC", "cgqc_kb_stealth", "Quick States: Stealth", 
+["CGQC", "cgqc_kb_stealth", "Quick States: Stealth",
 	{ ["stealth", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_normal", "Quick States: Normal", 
+["CGQC", "cgqc_kb_normal", "Quick States: Normal",
 	{ ["normal", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_battle", "Quick States: Battle", 
+["CGQC", "cgqc_kb_battle", "Quick States: Battle",
 	{ ["battle", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
 
 
-//Wind changer event 
+//Wind changer event
 ["cgqc_change_fucking_wind", {
 	params ["_type"];
 	hint format ["Event wind: %1", _type];
-	[_type] execVM "\cgqc\functions\fnc_training.sqf";
+	[_type] call CGQC_fnc_training;
 }] call CBA_fnc_addEventHandler;
 
-// Medical menu / IFAK eventhandler 
+// Medical menu / IFAK eventhandler
 ["ace_medicalMenuOpened", {
     params ["_acePlayer", "_targetPlayer", "_display"];
-	// Check if target has an IFAK 
+	// Check if target has an IFAK
 	if([_targetPlayer, 'cgqc_items_ifak'] call BIS_fnc_hasItem) then {
-		['ifak', _targetPlayer, false] execVM '\cgqc\functions\fnc_openMedical.sqf';
+		['ifak', _targetPlayer, false] call CGQC_fnc_openMedical;
 	};
-	// Check if player 
+	// Check if player
 	if([player, 'cgqc_items_medkit'] call BIS_fnc_hasItem) then {
-		['medkit', _targetPlayer, false] execVM '\cgqc\functions\fnc_openMedical.sqf';
+		['medkit', _targetPlayer, false] call CGQC_fnc_openMedical;
 	};
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
 }] call CBA_fnc_addEventHandler;
@@ -321,52 +329,52 @@ if (cgqc_player_hasUnsung) then {
 _menu_name = "CGQC Zeus";
 
 //Intro Stuff
-["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"], 
+["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 cgqc_config_author = getMissionConfigValue "author";
-cgqc_config_mission_name = getMissionConfigValue "onLoadName"; 
+cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 /*
-["cgqc_config_author", "EDITBOX", ["Auteur:", "Le nom du créateur de la map, pour display dans l'intro"], 
+["cgqc_config_author", "EDITBOX", ["Auteur:", "Le nom du créateur de la map, pour display dans l'intro"],
     [_menu_name, "Intro"], "Cpl. Quelque chose"] call CBA_fnc_addSetting;
-["cgqc_config_mission_name", "EDITBOX", ["Nom de la mission:", "Le nom du ta mission, pour display dans l'intro"], 
+["cgqc_config_mission_name", "EDITBOX", ["Nom de la mission:", "Le nom du ta mission, pour display dans l'intro"],
     [_menu_name, "Intro"], "Le nom de ta mission"] call CBA_fnc_addSetting;
 */
 // Options skippables ===================================================================================================
-["cgqc_setting_show_transition", "CHECKBOX", ["Show Transition", "Transition lors d'un loadout swtich "], 
+["cgqc_setting_show_transition", "CHECKBOX", ["Show Transition", "Transition lors d'un loadout swtich "],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
-["cgqc_setting_show_welcome", "CHECKBOX", ["Show Msg de Bienvenue", "Message de bienvenue avec la patch si dispo"], 
+["cgqc_setting_show_welcome", "CHECKBOX", ["Show Msg de Bienvenue", "Message de bienvenue avec la patch si dispo"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 // Channels =================================================================================================
-//["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"], 
+//["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"],
 //   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
 
 // Map Sharing =================================================================================================
-["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"], 
+["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"],
    [_menu_name, "Option Toggles"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
 
 // Spares =================================================================================================
-["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"], 
+["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"],
 [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 // Radio stuff ==============================================================================================
-["cgqc_config_DefaultRadios", "CHECKBOX", ["Radios CGQC", "Utilise les noms de channels CGQC par défaut"], 
+["cgqc_config_DefaultRadios", "CHECKBOX", ["Radios CGQC", "Utilise les noms de channels CGQC par défaut"],
     [_menu_name, "Radios"], true] call CBA_fnc_addSetting;
-["cgqc_config_ch1", "EDITBOX", ["Channel 1:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch1", "EDITBOX", ["Channel 1:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Spartan/HQ"] call CBA_fnc_addSetting;
-["cgqc_config_ch2", "EDITBOX", ["Channel 2:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch2", "EDITBOX", ["Channel 2:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Support/HQ"] call CBA_fnc_addSetting;
-["cgqc_config_ch3", "EDITBOX", ["Channel 3:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch3", "EDITBOX", ["Channel 3:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Griffon"] call CBA_fnc_addSetting;
-["cgqc_config_ch4", "EDITBOX", ["Channel 4:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch4", "EDITBOX", ["Channel 4:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"],  "Centaure"] call CBA_fnc_addSetting;
-["cgqc_config_ch5", "EDITBOX", ["Channel 5:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch5", "EDITBOX", ["Channel 5:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Recon"] call CBA_fnc_addSetting;
-["cgqc_config_ch6", "EDITBOX", ["Channel 6:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch6", "EDITBOX", ["Channel 6:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Convoy 1"] call CBA_fnc_addSetting;
-["cgqc_config_ch7", "EDITBOX", ["Channel 7:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch7", "EDITBOX", ["Channel 7:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Convoy 2"] call CBA_fnc_addSetting;
-["cgqc_config_ch8", "EDITBOX", ["Channel 8:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch8", "EDITBOX", ["Channel 8:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Libre"] call CBA_fnc_addSetting;
-["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"], 
+["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Zeus"] call CBA_fnc_addSetting;
 
 // Briefing  ===============================================================================================
@@ -376,179 +384,180 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 [_menu_name, "Briefing"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
 
 // Zeus radios ===============================================================================================
-["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"], 
+["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"],
 [_menu_name, "Option Toggles"], false, 1, {}, false] call CBA_fnc_addSetting;
 
 // Grenade in Hatch
 // Distance
-["cgqc_config_grenade_distance", "SLIDER",["Distance", "Minimal distance for option to be visible"], 
+["cgqc_config_grenade_distance", "SLIDER",["Distance", "Minimal distance for option to be visible"],
 [_menu_name, "Grenade in tank Hatch"], [2, 20, 5, 0], 1, {publicVariable "cgqc_config_grenade_distance"}, false] call CBA_fnc_addSetting;
-// Types 
+// Types
 ["cgqc_config_grenade_types","EDITBOX", ["Compatible Grenades", "Classnames usable to drop in tank hatches"],
-	[_menu_name, "Grenade in tank Hatch"], 
+	[_menu_name, "Grenade in tank Hatch"],
 	"gm_handgrenade_conc_dm51,gm_handgrenade_conc_dm51a1,gm_handgrenade_frag_dm51,gm_handgrenade_frag_dm51a1,gm_handgrenade_frag_rgd5,vn_chicom_grenade_mag,vn_f1_grenade_mag,vn_m34_grenade_mag,vn_m61_grenade_mag,vn_m67_grenade_mag,vn_rg42_grenade_mag,vn_rgd33_grenade_mag,vn_rgd5_grenade_mag,vn_rkg3_grenade_mag,vn_t67_grenade_mag,vn_v40_grenade_mag,CUP_HandGrenade_L109A1_HE,CUP_HandGrenade_L109A2_HE,CUP_HandGrenade_M67,HandGrenade,CUP_HandGrenade_RGD5,CUP_HandGrenade_RGO,MiniGrenade, rhs_mag_rgd5, rhs_mag_m67, rhs_mag_an_m14",
 	true
 ] call CBA_fnc_addSetting;
 
 // Maximum mags ===============================================================================================
-["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"], 
+["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
     [_menu_name, "Option Toggles"], [6, 18, 10, 0]] call CBA_fnc_addSetting;
-["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"], 
+["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
-["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"], 
+["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"],
     [_menu_name, "Option Toggles"], false, 1, {["animation_setting", 0, ""] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
 // Training ===============================================================================================
-["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"], 
+["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"],
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
 
 // Fortify tool
-["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"], 
+["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"],
     [_menu_name, "Fortify"], true
 ] call CBA_fnc_addSetting;
 // Item list
-["cgqc_config_fortify_1", "EDITBOX", ["Item 1:", "Item 1"], 
+["cgqc_config_fortify_1", "EDITBOX", ["Item 1:", "Item 1"],
     [_menu_name, "Fortify"],"Land_BagFence_Short_F"
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_2", "EDITBOX", ["Item 2:", "Item 2"], 
+["cgqc_config_fortify_2", "EDITBOX", ["Item 2:", "Item 2"],
     [_menu_name, "Fortify"],"Land_BagFence_Long_F"
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_3", "EDITBOX", ["Item 3:", "Item 3"], 
+["cgqc_config_fortify_3", "EDITBOX", ["Item 3:", "Item 3"],
     [_menu_name, "Fortify"],"Land_BagFence_Round_F"
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_4", "EDITBOX", ["Item 4:", "Item 4"], 
+["cgqc_config_fortify_4", "EDITBOX", ["Item 4:", "Item 4"],
     [_menu_name, "Fortify"],"Land_Plank_01_4m_F"
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_5", "EDITBOX", ["Item 5:", "Item 5"], 
+["cgqc_config_fortify_5", "EDITBOX", ["Item 5:", "Item 5"],
     [_menu_name, "Fortify"],"Land_Plank_01_8m_F"
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_6", "EDITBOX", ["Item 6:", "Item 6"], 
+["cgqc_config_fortify_6", "EDITBOX", ["Item 6:", "Item 6"],
     [_menu_name, "Fortify"],"Land_CamoNetVar_NATO"
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_7", "EDITBOX", ["Item 7:", "Item 7"], 
+["cgqc_config_fortify_7", "EDITBOX", ["Item 7:", "Item 7"],
     [_menu_name, "Fortify"],"Land_fortified_nest_small_EP1"
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_8", "EDITBOX", ["Item 8:", "Item 8"], 
+["cgqc_config_fortify_8", "EDITBOX", ["Item 8:", "Item 8"],
     [_menu_name, "Fortify"],""
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_9", "EDITBOX", ["Item 9:", "Item 9"], 
+["cgqc_config_fortify_9", "EDITBOX", ["Item 9:", "Item 9"],
     [_menu_name, "Fortify"],""
 ] call CBA_fnc_addSetting;
-["cgqc_config_fortify_10", "EDITBOX", ["Item 10:", "Item 10"], 
+["cgqc_config_fortify_10", "EDITBOX", ["Item 10:", "Item 10"],
     [_menu_name, "Fortify"],""
 ] call CBA_fnc_addSetting;
 
 // IFAK/Medkit/Bandolier content ===================================================================================================
 
 // IFAK
-["cgqc_config_ifak_bandages", "SLIDER",["Bandages", "Number in IFAK"], 
+["cgqc_config_ifak_bandages", "SLIDER",["Bandages", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_ifak_bandages"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ifak_epi", "SLIDER",["Epinephrine", "Number in IFAK"], 
+["cgqc_config_ifak_epi", "SLIDER",["Epinephrine", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_epi"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ifak_morphine", "SLIDER",["Morphine", "Number in IFAK"], 
+["cgqc_config_ifak_morphine", "SLIDER",["Morphine", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_morphine"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ifak_painkill", "SLIDER",["Painkillers", "Number in IFAK"], 
+["cgqc_config_ifak_painkill", "SLIDER",["Painkillers", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 5, 0], 1, {publicVariable "cgqc_config_ifak_painkill"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ifak_splint", "SLIDER",["Splint", "Number in IFAK"], 
+["cgqc_config_ifak_splint", "SLIDER",["Splint", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_splint"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ifak_tourniquet", "SLIDER",["Tourniquets", "Number in IFAK"], 
+["cgqc_config_ifak_tourniquet", "SLIDER",["Tourniquets", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_tourniquet"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ifak_liquids", "SLIDER",["Saline", "Number in IFAK"], 
+["cgqc_config_ifak_liquids", "SLIDER",["Saline", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_liquids"}, false] call CBA_fnc_addSetting;
 
 // Medic Supplies
-["cgqc_config_medkit_bandages", "SLIDER",["Bandages", "Number in medkit"], 
+["cgqc_config_medkit_bandages", "SLIDER",["Bandages", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 100, 50, 0], 1, {publicVariable "cgqc_config_medkit_bandages"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_epi", "SLIDER",["Epinephrine", "Number in medkit"], 
+["cgqc_config_medkit_epi", "SLIDER",["Epinephrine", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_epi"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_morphine", "SLIDER",["Morphine", "Number in medkit"], 
+["cgqc_config_medkit_morphine", "SLIDER",["Morphine", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_morphine"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_painkill", "SLIDER",["Painkillers", "Number in medkit"], 
+["cgqc_config_medkit_painkill", "SLIDER",["Painkillers", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_medkit_painkill"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_splint", "SLIDER",["Splint", "Number in medkit"], 
+["cgqc_config_medkit_splint", "SLIDER",["Splint", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_splint"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_tourniquet", "SLIDER",["Tourniquets", "Number in medkit"], 
+["cgqc_config_medkit_tourniquet", "SLIDER",["Tourniquets", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_tourniquet"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_1000", "SLIDER",["Saline 1000ml", "Number in medkit"], 
+["cgqc_config_medkit_1000", "SLIDER",["Saline 1000ml", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 30, 5, 0], 1, {publicVariable "cgqc_config_medkit_1000"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_500", "SLIDER",["Saline 500ml", "Number in medkit"], 
+["cgqc_config_medkit_500", "SLIDER",["Saline 500ml", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 30, 8, 0], 1, {publicVariable "cgqc_config_medkit_500"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_pak", "SLIDER",["PAK", "Number in medkit"], 
+["cgqc_config_medkit_pak", "SLIDER",["PAK", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 5, 8, 0], 1, {publicVariable "cgqc_config_medkit_pak"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_smoke", "SLIDER",["Smoke (Purple)", "Number in medkit"], 
+["cgqc_config_medkit_smoke", "SLIDER",["Smoke (Purple)", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 5, 8, 0], 1, {publicVariable "cgqc_config_medkit_smoke"}, false] call CBA_fnc_addSetting;
-["cgqc_config_medkit_medbag", "SLIDER",["Medbag", "Numberin medkit"], 
+["cgqc_config_medkit_medbag", "SLIDER",["Medbag", "Numberin medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 1, 1, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
 
 // Ammo Bandoliers
-["cgqc_config_ammo_primary", "SLIDER",["Primary mags", "Number in bandolier"], 
+["cgqc_config_ammo_primary", "SLIDER",["Primary mags", "Number in bandolier"],
 	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 6, 0], 1, {publicVariable "cgqc_config_ammo_primary"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_ammo_refill", "CHECKBOX", ["Refill", "Refill handgun/throwables instead of adding more"],
 	[_menu_name, "Content: Ammo Bandolier"], true] call CBA_fnc_addSetting;
-["cgqc_config_ammo_handgun", "SLIDER",["Handgun mags", "Number in bandolier"], 
+["cgqc_config_ammo_handgun", "SLIDER",["Handgun mags", "Number in bandolier"],
 	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_handgun"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_ammo_nade", "SLIDER",["Grenades", "Number in bandolier"], 
+["cgqc_config_ammo_nade", "SLIDER",["Grenades", "Number in bandolier"],
     [_menu_name, "Content: Ammo Bandolier"], [0, 25, 4, 0], 1, {publicVariable "cgqc_config_ammo_nade"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ammo_nade_type", "EDITBOX", ["Grenade Type", "Type of grenade"], 
+["cgqc_config_ammo_nade_type", "EDITBOX", ["Grenade Type", "Type of grenade"],
     [_menu_name, "Content: Ammo Bandolier"], "HandGrenade"] call CBA_fnc_addSetting;
 
-["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"], 
+["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
     [_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"], 
+["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
     [_menu_name, "Content: Ammo Bandolier"], "ACE_CTS9"] call CBA_fnc_addSetting;
 
-["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"], 
+["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
     [_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ammo_smoke_type", "EDITBOX", ["Smoke Grenade Type", "Type of smoke"], 
+["cgqc_config_ammo_smoke_type", "EDITBOX", ["Smoke Grenade Type", "Type of smoke"],
     [_menu_name, "Content: Ammo Bandolier"], "SmokeShell"] call CBA_fnc_addSetting;
 
-// Supply box 
-["cgqc_config_supply_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"], 
+// Supply box
+["cgqc_config_supply_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ammo"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_ifak", "SLIDER",["Kit: Individual First-Aid", "Number in supply box"], 
+["cgqc_config_supply_ifak", "SLIDER",["Kit: Individual First-Aid", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ifak"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_medkit", "SLIDER",["Kit: Medic Supply", "Number in supply box"], 
+["cgqc_config_supply_medkit", "SLIDER",["Kit: Medic Supply", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 50, 2, 0], 1, {publicVariable "cgqc_config_supply_medkit"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_supply_launcher", "SLIDER",["Launchers", "Number in supply box"], 
+["cgqc_config_supply_launcher", "SLIDER",["Launchers", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_supply_launcher"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_nlaw", "SLIDER",["NLAW", "Number in supply box"], 
+["cgqc_config_supply_nlaw", "SLIDER",["NLAW", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_nlaw"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_supply_explosives", "SLIDER",["Explosive charges", "Number in supply box"], 
+["cgqc_config_supply_explosives", "SLIDER",["Explosive charges", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_mine_large", "SLIDER",["Large mines", "AT mines"], 
+["cgqc_config_supply_mine_large", "SLIDER",["Large mines", "AT mines"],
     [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_large"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_mine_medium", "SLIDER",["Medium mines", "Anti vehicles mines"], 
+["cgqc_config_supply_mine_medium", "SLIDER",["Medium mines", "Anti vehicles mines"],
     [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_mine_small", "SLIDER",["Small mines", "Anti-personel mines"], 
+["cgqc_config_supply_mine_small", "SLIDER",["Small mines", "Anti-personel mines"],
     [_menu_name, "Content: Supply Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_supply_batteries", "SLIDER",["Batteries", "Number in supply box"], 
+["cgqc_config_supply_batteries", "SLIDER",["Batteries", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_batteries"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_radios", "SLIDER",["Radios", "Number in supply box"], 
+["cgqc_config_supply_radios", "SLIDER",["Radios", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
 
 // Player custom Options ===================================================================================================
-// Check that 2023 is not present 
+// Check that 2023 is not present
 if (!cgqc_player_has2023) then {
-_menu_name = "CGQC Player settings";
-	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"], 
+	// Custom pistol 2023 version
+	_menu_name = "CGQC Player settings";
+	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"], 
+	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"], 
+	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"], 
+	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"], 
+	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"], 
+	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 };
 // === Custom arsenal categories ===============================================================================
@@ -649,10 +658,19 @@ cgqc_unconscious_sounds = [
 // PAX Units definitions
 #include "\cgqc\cfg_paxUnits.hpp"
 
-// Loading functions 
+// Loading UI functions
 _landnav = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\landnav_fnc.sqf";
 waitUntil {scriptDone _landnav};
 _convoy = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\convoy_fnc.sqf";
 waitUntil {scriptDone _convoy};
+
+// Loadout functions
+#include "\CGQC\loadouts\vanilla\loadouts.hpp"
+#include "\CGQC\loadouts\2023\loadouts.hpp"
+#include "\CGQC\loadouts\swat\loadouts.hpp"
+#include "\CGQC\loadouts\unsung\loadouts.hpp"
+#include "\CGQC\loadouts\ifa3\loadouts.hpp"
+
 // **************************************************************************************************************
-cgqc_preInit_done = true;
+cgqc_start_preInit_done = true;
+diag_log "[CGQC_PREINIT] === preInit done =====================================";

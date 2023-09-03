@@ -1,33 +1,17 @@
 // --- perkSwitch ----------------------------------------------------------
 // Switch perks
 params ["_type"];
+diag_log format ["[CGQC_FNC] switchPerks %1 started", _type];
 
 // Set all traits to default
-player setUnitTrait ["Medic", false];
-player setUnitTrait ["engineer", false];
-player setUnitTrait ["explosiveSpecialist", false];
-
-// Remove ghillie up and other perks
-cgqc_perks_basic = true;
-cgqc_perks_recon = false;
-cgqc_perks_pilot = false;
-cgqc_perks_driver = false;
-cgqc_perks_eng = false;
-cgqc_perks_medic = false;
-cgqc_perks_doctor = false;
-
-// Every CplC is a medic
-/* 
-if (cgqc_player_rank > 2) then 
-{
-	player setUnitTrait ["Medic", true];
-	cgqc_perks_medic = true;
-};*/
+[player] call CGQC_fnc_resetTraits;
 
 switch (_type) do {
 	case "zeus":{
 	};
 	case "hq":{
+	};
+	case "sl":{
 	};
 	case "tl":{
 	};
@@ -49,27 +33,37 @@ switch (_type) do {
 		player setUnitTrait ["engineer", true];
 	};
 	case "recon":{
+		player setUnitTrait ["audibleCoef ", 0.9];
+		player setUnitTrait ["camouflageCoef ", 0.9];
+		player setUnitTrait ["UAVHacker", true];
 		cgqc_perks_recon = true;
 	};
 	case "eng":{
-		cgqc_perks_eng = true;
+
 		player setUnitTrait ["engineer", true];
 		player setUnitTrait ["explosiveSpecialist", true];
+		player setUnitTrait ["loadCoef ", 0.9];
+		cgqc_perks_eng = true;
 	};
 	case "med":{
-		cgqc_perks_medic = true;
-		//cgqc_perks_doctor = true;
 		player setUnitTrait ["Medic", true];
+		player setUnitTrait ["loadCoef ", 0.9];
+		cgqc_perks_medic = true;
 	};
 	case "at":{
+		player setUnitTrait ["loadCoef ", 0.9];
 	};
 	case "mg":{
+		player setUnitTrait ["loadCoef ", 0.9];
 	};
 	case "mortar":{
+		player setUnitTrait ["loadCoef ", 0.8];
 	};
 	case "inf":{
 	};
 	default	{
-		hintc "mk3_switch_perk fail";
+		diag_log "[CGQC_ERROR] switchPerks fail";
 	};
 };
+
+diag_log "[CGQC_FNC] switchPerks done";

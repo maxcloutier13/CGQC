@@ -24,11 +24,25 @@ class CGQC_Soldat_Base : B_Soldier_f
 	respawnLinkedItems[] = {"ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "cgqc_item_rangefinder", "cgqc_cap_green", "V_Rangemaster_belt", "None"};
 	backpack = "cgqc_pack_mk1_magic";
 	editorPreview = "cgqc\pics\cgqc_soldat_base.jpg";
-	class EventHandlers {
-        //init = "[] spawn CGQC_fnc_initTraining";
-    };
+	class Attributes {
+		class SubCategory
+		{
+			data = "AttributeSystemSubcategory"; // This is needed for the attribute to work
+			control = "SubCategory";
+			displayName = "CGQC"; // Visible text. Despite the attribute code saying the property should be title, displayName is correct
+		};
+		class skipLoadout {
+			displayName = "Don't switch loadout";
+			tooltip = "Skip loadout switch on init";
+			property = "cgqc_var_skipLoadoutSwitch";
+			control = "Checkbox";
+			defaultValue = "false";
+			expression = "_this setVariable ['cgqc_var_skipLoadoutSwitch',_value];";
+			condition = "objectBrain";
+		};
+	};
 };
-class CGQC_Officer_Base : B_Soldier_f
+class CGQC_Officer_Base : CGQC_Soldat_Base
 {
 	author = "silent1";
 	faction = "CGQC";
@@ -73,9 +87,4 @@ class CGQC_units_vanilla_rifleman : CGQC_Soldat_Base
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "SmokeShell", "SmokeShell", "SmokeShell", "ACE_30Rnd_556x45_Stanag_Mk262_mag", "ACE_30Rnd_556x45_Stanag_Mk262_mag", "ACE_30Rnd_556x45_Stanag_Mk262_mag", "ACE_30Rnd_556x45_Stanag_Mk262_mag", "ACE_30Rnd_556x45_Stanag_Mk262_mag", "ACE_30Rnd_556x45_Stanag_Mk262_mag","16Rnd_9x21_Mag", "Laserbatteries"};
 	items[] = {"ACRE_PRC343", "ACRE_PRC148", "cgqc_items_ifak" "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "MS_Strobe_Mag_1", "ACE_microDAGR", "ACE_EntrenchingTool", "WBK_HeadLampItem"};
 	linkedItems[] = {"V_PlateCarrier1_rgr", "H_HelmetSpecB", "None", "ItemMap", "ItemCompass", "ItemWatch", "ItemGPS", "ACE_NVG_Gen4_Black", "muzzle_snds_M", "ACE_acc_pointer_green", "optic_Hamr", "WBK_HeadLampItem"};
-
-    class EventHandlers
-    {
-		//init = ["vanilla_rifleman", 1, false] execVM "\CGQC\loadouts\mk3_switch_role.sqf";
-    };
 };

@@ -50,12 +50,13 @@ class cgqc_bandolier_ammo: CBA_MiscItem
 	model = "\A3\Weapons_F\ammo\mag_univ.p3d";
 	picture = "\cgqc\textures\cgqc_bandolier.paa";
 	class ItemInfo: CBA_MiscItem_ItemInfo
-	{ 
+	{
 		mass = 80;
 	};
 };
 
 // === Lighter Tookit
+/*
 class ToolKitItem;
 class ToolKit: ItemCore
 {
@@ -63,7 +64,7 @@ class ToolKit: ItemCore
 	{
 		mass = 50;
 	};
-};
+};*/
 
 // === Lighter Headlamps ==========================================================================================
 class WBK_HeadLampItem: ItemCore {
@@ -133,7 +134,7 @@ class ACRE_PRC343: ACRE_BaseRadio
 };
 // Items
 class ACE_Tripod : ACE_ItemCore // Tripod
-{ 
+{
     class ItemInfo : CBA_MiscItem_ItemInfo
     {
         mass = 20;

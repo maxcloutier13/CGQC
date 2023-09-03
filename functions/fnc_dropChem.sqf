@@ -1,7 +1,7 @@
 // --- dropChem ----------------------------------------------------------
 // Drop chemlight
-_type = _this select 0;
-_item = _this select 1;
+params ["_type", "_item"];
+diag_log format ["[CGQC_FNC] dropChem %1/%2 started", _type, _item];
 
 switch (_type) do {
 	case "panel": { 
@@ -23,10 +23,8 @@ switch (_type) do {
 		{player addItemToUniform  _x; false} count _uniformGrenades ;
 		{player addItemToVest     _x; false} count _vestGrenades    ;
 		{player addItemToBackpack _x; false} count _backpackGrenades;
-		call ace_advanced_throwing_fnc_drawThrowable;
+		[] call ace_advanced_throwing_fnc_drawThrowable;
 	};
 	default { };
 };
-
-
-
+diag_log "[CGQC_FNC] dropChem done";

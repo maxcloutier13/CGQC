@@ -1,6 +1,7 @@
 // --- nameRadios ----------------------------------------------------------
 // Set radio channel names
-_type = param [0, 1];
+params ["_type"];
+diag_log format ["[CGQC_INIT] nameRadios started"];
 
 switch (_type) do{
 	case 0: { 
@@ -66,5 +67,4 @@ switch (_type) do{
 		["ACRE_PRC117f", "Default", 7, "name", cgqc_config_ch7] call acre_api_fnc_setPresetChannelField;
 	};
 };
-
-
+diag_log format ["[CGQC_INIT] nameRadios done"];

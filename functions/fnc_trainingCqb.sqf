@@ -1,6 +1,7 @@
 // --- trainingCqb ----------------------------------------------------------
 // Cqb shenanigans
-_type = _this select 0;
+params ["_type"];
+diag_log format ["[CGQC_FNC] trainingCQB %1 started", _type];
 
 switch (_type) do {
 	case 0: {cgqc_cqb_on = false};
@@ -163,7 +164,6 @@ if (_type < 40) then {
 				_unit enableSimulationGlobal false;
 				_unit disableAI "all";
 				cgqc_cqb_list pushBack _unit;
-				sleep 0.1;
 			};
 			if (cgqc_cqb_civ) then {
 				_civ_nbr = selectRandom [1,2,3];
@@ -194,50 +194,50 @@ if (_type < 40) then {
 				getPos _building, "ASSIGNED", 1, true, "attack", true] call BIS_fnc_taskCreate;
 			cgqc_cqb_on = true;
 
-			sleep 10;
-			hint "GO!!!!!";
-			{
-				_x enableSimulationGlobal true;
-				_x enableAI "all";
-			} forEach cgqc_cqb_list; 
+			[] spawn {
+				sleep 10;
+				hint "GO!!!!!";
+				{
+					_x enableSimulationGlobal true;
+					_x enableAI "all";
+				} forEach cgqc_cqb_list; 
 
-			while {cgqc_cqb_on} do {
-				if (cgqc_cqb_timer > 0) then {
-						if (cgqc_cqb_timer_random) then {
-							//cgqc_cqb_timer = selectRandom [5,10,15,20,30];
-							cgqc_cqb_timer = selectRandom [5,10,15,20,30,60,90,120,180,240,300,360];
-						};
-						sleep cgqc_cqb_timer;
-						if (count cgqc_cqb_list_static > 0) then {
-							_random_pax = selectRandom cgqc_cqb_list_static;
-							cgqc_cqb_list_static = cgqc_cqb_list_static - [_random_pax];
-							cgqc_cqb_list_moving pushBack _random_pax;
-							_random_pax enableAI "PATH";
-							systemChat format ["%1 started moving", typeOf _random_pax]; 
-						}
+				while {cgqc_cqb_on} do {
+					if (cgqc_cqb_timer > 0) then {
+							if (cgqc_cqb_timer_random) then {
+								//cgqc_cqb_timer = selectRandom [5,10,15,20,30];
+								cgqc_cqb_timer = selectRandom [5,10,15,20,30,60,90,120,180,240,300,360];
+							};
+							sleep cgqc_cqb_timer;
+							if (count cgqc_cqb_list_static > 0) then {
+								_random_pax = selectRandom cgqc_cqb_list_static;
+								cgqc_cqb_list_static = cgqc_cqb_list_static - [_random_pax];
+								cgqc_cqb_list_moving pushBack _random_pax;
+								_random_pax enableAI "PATH";
+								systemChat format ["%1 started moving", typeOf _random_pax]; 
+							}
+					}else{
+						sleep 10;
+					};
+				};
+				//CQB is off 
+				// Check if succeeded 
+				if (count cgqc_cqb_list < 1) then 
+				{
+					//Win
+					["task_cqb", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+					sleep 10;
 				}else{
+					//Lose
+					["task_cqb", "CANCELED", true] call BIS_fnc_taskSetState;
 					sleep 10;
 				};
-			};
-			//CQB is off 
-			// Check if succeeded 
-			if (count cgqc_cqb_list < 1) then 
-			{
-				//Win
-				["task_cqb", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-				sleep 10;
-			}else{
-				//Lose
-				["task_cqb", "CANCELED", true] call BIS_fnc_taskSetState;
-				sleep 10;
-			};
-			["task_cqb", true, true] call BIS_fnc_deleteTask;
-
-
-
-
+				["task_cqb", true, true] call BIS_fnc_deleteTask;
+			};		
 		} else{
 			hint "Not a good building";
 		};
 	};
 };
+
+diag_log "[CGQC_FNC] trainingCqb done";
