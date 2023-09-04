@@ -4,7 +4,7 @@ params ["_type"];
 
 if (hasInterface) then {
 	try {
-		disableUserInput true;
+
 		_ghillie = "";
 		_to_ghillie = 0;
 		switch (_type) do	{
@@ -134,12 +134,12 @@ if (hasInterface) then {
 			};
 		};
 		sleep 1;
-		disableUserInput false;
+
 	} catch{ // In case of error: Return control to player
-		disableUserInput false;
+
 		hintc "Erreur: perksRecon";
 	};
-	disableUserInput false;
+
 };
-disableUserInput false;
+
 

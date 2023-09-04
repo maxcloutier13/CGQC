@@ -3,7 +3,7 @@
 diag_log "[CGQC_INIT] === postInit started =====================================";
 if (!isServer) then {
 	// Start with a silent black screen.
-	disableUserInput true;
+
 	0 fadeSound 0;
 	titleCut ["", "BLACK FADED", 999];
 };

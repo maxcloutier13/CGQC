@@ -16,7 +16,7 @@ if !(_fromLoadout) then {
 	_skip = false;
 	_skip_msg = "";
 
-	disableUserInput true;
+
 	// Check if player in chill mode
 	if (cgqc_player_chill) then {["ready", true] call CGQC_fnc_perksBasic;};
 	// Init new variables
@@ -204,8 +204,8 @@ if !(_fromLoadout) then {
 	// Lower gun
 	_holster = [] spawn CGQC_fnc_holsterWeapons;
 	// Return control
-	disableUserInput false;
-	if (userInputDisabled) then {disableUserInput false;};
+
+	if (userInputDisabled) then {};
 	// Done
 	cgqc_camoSwitch_done = true;
 	diag_log "[CGQC_FNC] switchUniform done";

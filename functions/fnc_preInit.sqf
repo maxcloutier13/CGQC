@@ -399,7 +399,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Maximum mags ===============================================================================================
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"],
-    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
     [_menu_name, "Option Toggles"], [6, 18, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"],
@@ -482,9 +482,9 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_medkit_500", "SLIDER",["Saline 500ml", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 30, 8, 0], 1, {publicVariable "cgqc_config_medkit_500"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_pak", "SLIDER",["PAK", "Number in medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 5, 8, 0], 1, {publicVariable "cgqc_config_medkit_pak"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 5, 1, 0], 1, {publicVariable "cgqc_config_medkit_pak"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_smoke", "SLIDER",["Smoke (Purple)", "Number in medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 5, 8, 0], 1, {publicVariable "cgqc_config_medkit_smoke"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_medkit_smoke"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_medbag", "SLIDER",["Medbag", "Numberin medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 1, 1, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
 
