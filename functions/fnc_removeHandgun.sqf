@@ -5,7 +5,7 @@ diag_log format ["[CGQC_FNC] removeHandgun %1 started",_target];
 
 // Remove handgun and old ammo
 _gun = handgunWeapon _target;
-_target action ['SwitchWeapon', _target, _target, 250];
+[player] call ace_weaponselect_fnc_putWeaponAway;
 
 if (_gun isNotEqualTo "") then {
 	_mags = handgunMagazine _target;

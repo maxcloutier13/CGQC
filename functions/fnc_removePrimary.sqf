@@ -4,7 +4,7 @@ params [["_target", player]];
 diag_log format ["[CGQC_FNC] removePrimary %1 started",_target];
 
 _gun = primaryWeapon _target;
-_target action ['SwitchWeapon', _target, _target, 250];
+[player] call ace_weaponselect_fnc_putWeaponAway;
 
 if (_gun isNotEqualTo "") then {
 	diag_log"[CGQC_FNC] removePrimary found gun";

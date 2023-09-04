@@ -63,7 +63,7 @@ if (_switchRole isNotEqualTo "" && _switch) then {
 };
 
 if (_dive) then {
-    ["diver", true] call CGQC_fnc_switchUniform;
+    ["diver", true] spawn CGQC_fnc_switchUniform;
 };
 
 

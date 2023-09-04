@@ -20,6 +20,13 @@ class CfgPatches
 							"ace_tagging"};
 		// List of objects (CfgVehicles classes) contained in the addon. Important also for Zeus content (units and groups) unlocking.
 		units[] = {	"CGQC_Soldat_Base",
+					"CGQC_soldat_desert",
+					"CGQC_soldat_mcam",
+					"CGQC_soldat_cadpat",
+					"CGQC_soldat_cadpat_2",
+					"CGQC_soldat_black",
+					"CGQC_soldat_black_all",
+					"CGQC_soldat_white",
 					"CGQC_Officer_Base",
 					"cgqc_pack_mk1_magic",
 					"cgqc_pack_mk1_magic_zeus",

@@ -42,6 +42,63 @@ class CGQC_Soldat_Base : B_Soldier_f
 		};
 	};
 };
+
+class CGQC_soldat_desert : CGQC_Soldat_Base
+{
+	scope = 1;
+	displayName = "Soldat (Desert)";
+	uniformClass = "cgqc_uniform_mk1_desert";
+	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_desert.paa"};
+};
+
+class CGQC_soldat_mcam : CGQC_Soldat_Base
+{
+	scope = 1;
+	displayName = "Soldat (Multicam)";
+	uniformClass = "cgqc_uniform_mk1_desert";
+	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_multi.paa"};
+};
+
+class CGQC_soldat_cadpat : CGQC_Soldat_Base
+{
+	scope = 1;
+	displayName = "Soldat (Cadpat)";
+	uniformClass = "cgqc_uniform_mk1_cadpat";
+	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_cadpat_all.paa"};
+};
+
+class CGQC_soldat_cadpat_2 : CGQC_Soldat_Base
+{
+	scope = 1;
+	displayName = "Soldat (Cadpat 2)";
+	uniformClass = "cgqc_uniform_mk1_cadpat_2";
+	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_cadpat.paa"};
+};
+
+class CGQC_soldat_black : CGQC_Soldat_Base
+{
+	scope = 1;
+	displayName = "Soldat (Black)";
+	uniformClass = "cgqc_uniform_mk1_black";
+	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_black.paa"};
+};
+
+class CGQC_soldat_black_all : CGQC_Soldat_Base
+{
+	scope = 1;
+	displayName = "Soldat (All Black)";
+	uniformClass = "cgqc_uniform_mk1_allBlack";
+	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_black_all.paa"};
+};
+
+class CGQC_soldat_white : CGQC_Soldat_Base
+{
+	scope = 1;
+	displayName = "Soldat (Winter)";
+	uniformClass = "cgqc_uniform_mk1_white";
+	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_white.paa"};
+};
+
 class CGQC_Officer_Base : CGQC_Soldat_Base
 {
 	author = "silent1";

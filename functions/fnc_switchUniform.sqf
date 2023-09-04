@@ -202,7 +202,7 @@ if !(_fromLoadout) then {
 	[ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
 
 	// Lower gun
-	_holster = [] spawn CGQC_fnc_holsterWeapons;
+	[player] call ace_weaponselect_fnc_putWeaponAway;
 	// Return control
 
 	if (userInputDisabled) then {};

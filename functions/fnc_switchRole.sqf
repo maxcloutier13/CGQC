@@ -70,7 +70,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
 
     // Lower gun
     diag_log "[CGQC_FNC] switchRole - lower gun";
-    _holster = [] spawn CGQC_fnc_holsterWeapons;
+    [player] call ace_weaponselect_fnc_putWeaponAway;
 
     cgqc_roleSwitch_done = true;
     diag_log "[CGQC_FNC] switchRole done";

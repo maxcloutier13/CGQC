@@ -1,3 +1,7 @@
+
+
+
+
 class XtdGearModels
 {
 	class CfgVehicles
@@ -5,7 +9,7 @@ class XtdGearModels
 	class CfgWeapons
 	{
 		// Berets ------------------------------------
-		class CGQC_Berets 
+		class CGQC_Berets
 		{
 			options[] = {"Color"};
 			label = "CGQC Berets";
@@ -27,7 +31,7 @@ class XtdGearModels
 			};
 		};
 		// Heli helmets -----------------------------
-		class CGQC_Heli_Helmets 
+		class CGQC_Heli_Helmets
 		{
 			options[] = {"Camo", "Type", "Type_c"};
 			label = "CGQC Heli Helmet";
@@ -93,7 +97,7 @@ class XtdGearInfos
 {
 	class CfgVehicles
 	{
-		
+
 	};
 
     class CfgWeapons
@@ -273,12 +277,38 @@ class XtdGearInfos
 			Type = "Crew";
 			Type_c = "Comeau";
         };
-		
+
 		// Uniform ------------------------------------------------------------------
 		class cgqc_uniform_mk1
 		{
             model = "CGQC_Uniform";
 			Camo = "RGR";
+        };
+		// Uniform ------------------------------------------------------------------
+		class cgqc_uniform_mk1_desert
+		{
+            model = "CGQC_Uniform";
+			Camo = "TAN";
+        };
+		class cgqc_uniform_mk1_mcam
+		{
+            model = "CGQC_Uniform";
+			Camo = "MC";
+        };
+		class cgqc_uniform_mk1_cadpat
+		{
+            model = "CGQC_Uniform";
+			Camo = "CADPAT";
+        };
+		class cgqc_uniform_mk1_allBlack
+		{
+            model = "CGQC_Uniform";
+			Camo = "BLK";
+        };
+		class cgqc_uniform_mk1_white
+		{
+            model = "CGQC_Uniform";
+			Camo = "WHT";
         };
     };
 };
