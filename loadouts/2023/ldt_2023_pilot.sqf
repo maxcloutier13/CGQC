@@ -15,7 +15,7 @@ switch (_variant) do {
 
 _goggles = ["G_mas_can_wrap_B"];
 _vests = ["cgqc_vest_mk1_pilot_black"];
-_uniforms = ["cgqc_uniform_mk1_helipilot"];
+_uniforms = ["cgqc_uniform_mk1_allBlack"];
 _rucks = ["CGQC_units_mk1_4_Pilot_heli_pack"];
 _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;

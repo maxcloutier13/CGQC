@@ -140,10 +140,6 @@ class CGQC {
             file = "\cgqc\functions\fnc_addMags.sqf";
             description = "Fill player with maximum mags according to settings";
         };
-        class holsterWeapons{
-            file = "\cgqc\functions\fnc_holsterWeapons.sqf";
-            description = "Holster all weapons";
-        };
         class getCustomGun{
             file = "\cgqc\functions\fnc_getCustomGun.sqf";
             description = "Get custom gun if it exists";

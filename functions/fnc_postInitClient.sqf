@@ -2,7 +2,7 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.0";
+_version = "4.0.1";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 
@@ -184,14 +184,11 @@ ACE_maxWeightDrag = 3000;
 _perks = [] call CGQC_fnc_addPerks;
 
 // Ace auto self interaction perks
-_perks = call CGQC_fnc_addPerksSwitch;
-
-// Zeus shenanigans... MAX - to review
-_zeus = [] call CGQC_fnc_setZeus;
+_perks = [] call CGQC_fnc_addPerksSwitch;
 
 // Lower gun
 diag_log "[CGQC_INIT] gun lowered";
-_holster = [] spawn CGQC_fnc_holsterWeapons;
+[player] call ace_weaponselect_fnc_putWeaponAway;
 
 // Training menu if training is on
 if (cgqc_flag_isTraining) then {
@@ -199,6 +196,11 @@ if (cgqc_flag_isTraining) then {
 	[] call CGQC_fnc_trainingLoadMenu;
 };
 
+/*
+// Zeus shenanigans... MAX - to review
+_zeus = [] call CGQC_fnc_setZeus;
+
+diag_log "[CGQC_INIT] === postInitClient - checkLoadout";
 // Load loadouts if known unit
 _switch = player getVariable "cgqc_var_skipLoadoutSwitch";
 if (isNil "_switch") then {
@@ -209,7 +211,7 @@ if (isNil "_switch") then {
 		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
 		[] call CGQC_fnc_checkLoadout;
 	};
-};
+};*/
 
 // All done
 cgqc_start_postInitClient_done = true;

@@ -185,7 +185,7 @@ class cgqc_box_mk2_arsenal : B_supplyCrate_F
 
     class EventHandlers
     {
-        init = "[_this, 'arsenal'] call CGQC_fnc_loadMk3Menu";
+        init = "[_this, 'arsenal'] spawn CGQC_fnc_loadMk3Menu";
     };
     class TransportMagazines{};
     class TransportWeapons{};
@@ -237,7 +237,7 @@ class cgqc_box_mk2_parachute : Box_NATO_Equip_F
     };
     class EventHandlers
     {
-        init = "[_this, 'para'] call CGQC_fnc_loadMk3Menu";
+        init = "[_this, 'para'] spawn CGQC_fnc_loadMk3Menu";
     };
 };
 // Diving stuff
@@ -287,7 +287,7 @@ class cgqc_box_mk2_diving : Box_NATO_Equip_F
     };
     class EventHandlers
     {
-        init = "[_this, 'dive'] call CGQC_fnc_loadMk3Menu";
+        init = "[_this, 'dive'] spawn CGQC_fnc_loadMk3Menu";
     };
 };
 
@@ -304,7 +304,7 @@ class cgqc_box_mk2_cargo : Land_Cargo10_military_green_F
     ace_cargo_noRename = 1;
     class EventHandlers
     {
-        init = "[_this, 'cargo'] call CGQC_fnc_loadMk3Menu";
+        init = "[_this, 'cargo'] spawn CGQC_fnc_loadMk3Menu";
     };
 };
 
