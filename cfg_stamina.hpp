@@ -12,10 +12,10 @@ class CfgMovesFatigue
 // Maximum individual weight
 class CfgInventoryGlobalVariable
 {
-	maxSoldierLoad = 1250; //De-fault: 1000 Modded:1800
+	maxSoldierLoad = 1100; //De-fault: 1000 Modded:1800
 };
 
-// Slope speed penalties 
+// Slope speed penalties
 class CfgSlopeLimits
 {
 	maxRun = "0.6f";
