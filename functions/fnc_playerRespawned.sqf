@@ -10,17 +10,16 @@ _unit setUnitLoadout(_unit getVariable["Saved_Loadout",[]]); //Load loadout save
 _unit setFace(_unit getVariable["Saved_Face",[]]);
 // Slinged helmet
 [_unit, _unit getVariable["Saved_Slinged",[]]] call GRAD_slingHelmet_fnc_addSlungHelmet;
-// Secondary weapon
+// WBK Secondary weapon
 cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
 
 // Set patch
-[] call CGQC_fnc_keepPatch;
+[] spawn CGQC_fnc_keepPatch;
 // Load Radio priorities
 y_mpttRadioList1 = _unit getVariable["Radio_Settings",[]];
 _success = [y_mpttRadioList1] call acre_api_fnc_setMultiPushToTalkAssignment;
 //hint "Check tes radios! Ça inverse parfois au respawn.";
 // Lower gun
 [player] call ace_weaponselect_fnc_putWeaponAway;
-sleep 5;
-hintSilent "";
+
 diag_log "[CGQC_EVENT] playerRespawned done";

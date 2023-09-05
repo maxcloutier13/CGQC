@@ -233,7 +233,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                     _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Prêt au combat</t><br/>");
                     [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
                 };
-                call CGQC_fnc_holsterWeapons;
+                [player] call ace_weaponselect_fnc_putWeaponAway;
             };
 
         };
