@@ -108,7 +108,7 @@ if (cgqc_player_loadAll) then {
 			if (_vol isEqualTo 1.0) then {_txt = parseText("<t color='#ff8c00'>Loud</t>")};
 			if (_vol isEqualTo 1.3) then {_txt = parseText("<t color='#b10000'>Shouting</t>")};
 			if (_txt isNotEqualTo "") then {
-				[ _txt, 0, 1.15, 1, 1 ] spawn BIS_fnc_dynamicText;
+				[ _txt, 0, 1.15, 1, 0.8 ] spawn BIS_fnc_dynamicText;
 			};
 		};
 	}] call CBA_fnc_addEventHandler;
