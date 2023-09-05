@@ -9,11 +9,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
     switch (_type) do {
         case "stealth":{
             cgqc_player_state = 0;
-            FW_Acre_Volume_Value = 0;
-            [{call acre_api_fnc_isInitialized}, {
-                [0.1] call acre_api_fnc_setSelectableVoiceCurve;
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
+            [player, "whisper"] call CGQC_fnc_setVoiceVolume;
             // Install Silencer if found
             _currentWeapon = currentWeapon player;
             _compatible = _currentWeapon call bis_fnc_compatibleItems;
@@ -52,18 +48,19 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
 
             // Turn off speakers
             _handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-            _handRadio_1 = _handRadios select 0;
-            // Check speaker state
-            _isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-            if(_isSpeaker) then {
-                // Turn speaker off
-                _speakerOff = true;
-                cgqc_reset_speaker = true;
-                _success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
-                _speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-                hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
+            if (count _handRadios > 0) then {
+                _handRadio_1 = _handRadios select 0;
+                // Check speaker state
+                _isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
+                if(_isSpeaker) then {
+                    // Turn speaker off
+                    _speakerOff = true;
+                    cgqc_reset_speaker = true;
+                    _success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
+                    _speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
+                    hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
+                };
             };
-
             _txt = "-- Stealth --<br/>";
             if (_addedSilencer) then {
                 _txt = _txt + "Silencer: On<br/>";
@@ -79,12 +76,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
         case "normal":{
             cgqc_player_state = 1;
             // Normal voice
-            FW_Acre_Volume_Value = 0.5;
-            [{call acre_api_fnc_isInitialized}, {
-                [0.7] call acre_api_fnc_setSelectableVoiceCurve;
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
-
+            [player, "default"] call CGQC_fnc_setVoiceVolume;
             _txt = "Normal:<br/> Default voice level<br/>";
 
             //Turn speaker back on
@@ -99,11 +91,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
         };
         case "battle":{
             cgqc_player_state = 2;
-            FW_Acre_Volume_Value = 0.75;
-            [{call acre_api_fnc_isInitialized}, {
-                [1.3] call acre_api_fnc_setSelectableVoiceCurve;
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
+            [player, "loud"] call CGQC_fnc_setVoiceVolume;
             // Remove silencer
             _currentWeapon = currentWeapon player;
             _compatible = _currentWeapon call bis_fnc_compatibleItems;
@@ -363,12 +351,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
         {
             hint "Sound: Volumes reset";
             [] call ace_volume_fnc_restoreVolume;
-            FW_Acre_Volume_Value = 0.5;
-            [{call acre_api_fnc_isInitialized}, {
-                [0.7] call acre_api_fnc_setSelectableVoiceCurve;
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
-
+            [player, "default"] call CGQC_fnc_setVoiceVolume;
         };
         case "fix_blackout":
         {

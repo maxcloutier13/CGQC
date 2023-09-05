@@ -63,6 +63,10 @@ cgqc_state_briefing_full = false;
 cgqc_state_briefing_leaders = false;
 cgqc_state_debrief = false;
 cgqc_state_end = false;
+cgqc_acre_defaultVolume = 0.4;
+cgqc_acre_defaultLevel = 0.25;
+cgqc_acre_previousVolume = 0;
+cgqc_acre_previousLevel = 0;
 
 // *** Magic range stuff *******************
 cgqc_range_on = false;
