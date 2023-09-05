@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class setVoiceVolume{
+            file = "\cgqc\functions\fnc_setVoiceVolume.sqf";
+            description = "Quick set voice to specified volume";
+        };
+
         class removePrimary{
             file = "\cgqc\functions\fnc_removePrimary.sqf";
             description = "Remove primary gun and mags ";

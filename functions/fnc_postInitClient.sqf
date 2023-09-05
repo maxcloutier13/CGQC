@@ -93,17 +93,27 @@ if (cgqc_player_loadAll) then {
 	//On map click (_pos, _units,_shift,_alt)
 	onMapSingleClick "call CGQC_fnc_mapShareList;false;";
 
+
 	// Whisper/Yelling event
 	cgqc_event_talk = ["acre_startedSpeaking", {
 		params ["_unit", "_onRadio", "_radioId", "_speakingType"];
 		//If volume is low and player is not talking on radio
 		_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
-		//hint format ["Speaking %1", _vol];
-		if (!_onRadio && _vol < 0.4) then {
-			_txt = parseText( "Whispering...");
-			[ _txt, 0, 1, 2, 1 ] spawn BIS_fnc_dynamicText;
+		// Volume is low: notify the player he is whispering
+		if (!_onRadio) then {
+			hint "talking";
+			_txt = "";
+			if (_vol < 0.3) then {_txt = parseText("<t color='#006400'>Whispering</t>")};
+			if (_vol isEqualTo 0.4) then {_txt = parseText("<t color='##4169e1'>Talking</t>")};
+			if (_vol isEqualTo 1.0) then {_txt = parseText("<t color='#ff8c00'>Loud</t>")};
+			if (_vol isEqualTo 1.3) then {_txt = parseText("<t color='#b10000'>Shouting</t>")};
+			if (_txt isNotEqualTo "") then {
+				[ _txt, 0, 1.15, 1, 1 ] spawn BIS_fnc_dynamicText;
+			};
 		};
 	}] call CBA_fnc_addEventHandler;
+
+
 
 	//Maximum mags event handler
 	["ace_arsenal_displayClosed", {
@@ -215,4 +225,11 @@ if (isNil "_switch") then {
 
 // All done
 cgqc_start_postInitClient_done = true;
+
+sleep 5;
+// Set default voice volume
+[player, "talk"] call CGQC_fnc_setVoiceVolume;
+// Save initial volume
+cgqc_acre_previousVolume = [] call acre_api_fnc_getSelectableVoiceCurve;
+
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
