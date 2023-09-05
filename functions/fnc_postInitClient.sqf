@@ -89,7 +89,7 @@ if (cgqc_player_loadAll) then {
 		cgqc_ifa3_arsenal_init_done = true;
 	};
 
-	// Event Handers ----------------
+	// Event Handers -----------------------------------------------------------------------
 	//On map click (_pos, _units,_shift,_alt)
 	onMapSingleClick "call CGQC_fnc_mapShareList;false;";
 
@@ -104,7 +104,7 @@ if (cgqc_player_loadAll) then {
 			hint "talking";
 			_txt = "";
 			if (_vol < 0.3) then {_txt = parseText("<t color='#006400'>Whispering</t>")};
-			if (_vol isEqualTo 0.4) then {_txt = parseText("<t color='##4169e1'>Talking</t>")};
+			//if (_vol isEqualTo 0.4) then {_txt = parseText("<t color='##4169e1'>Talking</t>")};
 			if (_vol isEqualTo 1.0) then {_txt = parseText("<t color='#ff8c00'>Loud</t>")};
 			if (_vol isEqualTo 1.3) then {_txt = parseText("<t color='#b10000'>Shouting</t>")};
 			if (_txt isNotEqualTo "") then {
