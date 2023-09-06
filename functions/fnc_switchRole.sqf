@@ -8,7 +8,10 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     diag_log format ["[CGQC_FNC] switchRole %1/%2/%3 started", _type, _section,_showTransition];
 
     cgqc_roleSwitch_done = false;
-
+    // Delay until the server time has sync'd
+	waitUntil {	time > 5};
+	// for JIP, wait until the main screen loads
+	waitUntil {	!isNull (findDisplay 46)};
     //
     if (cgqc_setting_show_transition && _showTransition) then {
     // Fade to black

@@ -242,6 +242,8 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             cgqc_perks_para = false;
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Tu drop ton kit de parachutiste</t><br/>");
             [_text, 0, 0, 10, 4] spawn BIS_fnc_dynamicText;
+            // Remove the action
+            [cgqc_actions_dropPara] call ace_interact_menu_fnc_removeAction;
             player playMove "AinvPknlMstpSnonWnonDnon_medic4";
             // Watch / Altimeter
             _items = assignedItems player;

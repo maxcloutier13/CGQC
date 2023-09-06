@@ -12,8 +12,6 @@ diag_log format ["[CGQC_FNC] setZeus started"];
 	if (["zeus", format["%1", roleDescription player]] call BIS_fnc_inString || ["zeus", format["%1", player]] call BIS_fnc_inString) then {
 		hint "Zeus!";
 		sleep 1;
-		waitUntil {!isNil "cgqc_start_postInitClient_done"};
-		waitUntil {cgqc_start_postInitClient_done};
 
 		[] spawn {
 			while {true} do {
@@ -21,7 +19,6 @@ diag_log format ["[CGQC_FNC] setZeus started"];
 				if (cgqc_config_zeusRadios) then {
 					[player] spawn CGQC_fnc_zeusUnit;
 					_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-					waitUntil {sleep 0.5;!isNil "_zeusRadios"};
 					if (count _zeusRadios < 2) then {
 						["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;
 					};
