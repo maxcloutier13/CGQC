@@ -68,6 +68,14 @@ if !(_fromLoadout) then {
 				//hint "Diving Goggles";
 				// Keep old mask in backpack
 				player addItemToBackpack player_goggles_old;
+
+				// Diver actions ----------------------------------------
+				// Drop Diving suit ---------------------------------------------------------------------------------------------------------------
+				_action = [ "menu_self_dropDiver", "Remove Diving suit", "CGQC\textures\cgqc_ace_dive", {["diver", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_diver_suit_on && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				// Diver suit back on ---------------------------------------------------------------------------------------------------------------
+				_action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_dive", {["diver", false] call CGQC_fnc_switchUniform}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// Add diver perks
 				cgqc_perks_diver = true;
 				cgqc_perks_diver_suit_on = true;
@@ -112,6 +120,9 @@ if !(_fromLoadout) then {
 				_backpack_new  = "B_Parachute";
 				// Icon Indicator
 				[] spawn {
+					// Drop parachute action ---------------------------------------------------------------------------------------------------------------
+					_action = [ "menu_self_dropPara", " Remove Parachute", "CGQC\textures\cgqc_ace_para", {["para", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_para && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+					cgqc_actions_dropPara = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 					// Paradrop
 					while {cgqc_perks_para} do {
 						[format["<img size= '1' style='vertical-align:bottom' shadow='false' image='\cgqc\textures\cgqc_ace_para.paa'/>"]
