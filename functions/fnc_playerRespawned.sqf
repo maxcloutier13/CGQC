@@ -15,10 +15,19 @@ cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
 
 // Set patch
 [] spawn CGQC_fnc_keepPatch;
-// Load Radio priorities
-y_mpttRadioList1 = _unit getVariable["Radio_Settings",[]];
-_success = [y_mpttRadioList1] call acre_api_fnc_setMultiPushToTalkAssignment;
-//hint "Check tes radios! Ça inverse parfois au respawn.";
+// Reload radios
+_radios = _unit getVariable "Radio_Settings_radios";
+{
+	_radio = _x select 0;
+	_side = _x select 1;
+	_vol = _x select 2;
+	[_radio, _side] call acre_api_fnc_setRadioSpatial;
+	[_radio, _vol] call acre_api_fnc_setRadioVolume;
+} forEach _radios;
+// Reset ptt's
+_mpttRadioList = _unit getVariable "Radio_Settings_ptt";
+_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
+
 // Lower gun
 [player] call ace_weaponselect_fnc_putWeaponAway;
 
