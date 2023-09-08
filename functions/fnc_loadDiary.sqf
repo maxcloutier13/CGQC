@@ -2,13 +2,15 @@
 // Post group info in default briefing
 diag_log "[CGQC_FNC] loadDiary started";
 
+player createDiarySubject ["CGQC","CGQC"];
+
 // CGQC Links
 _text = (
 	"<font size='22' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
 	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca/</font>"+"<br/>" +
 	"<font size='20' color='#BDBDBD'>Teamspeak: ts.cgqc.ca</font>"
 );
-player createDiaryRecord ["Diary", ["CGQC Info", _text]];
+player createDiaryRecord ["CGQC", ["Group Info", _text]];
 
 // Radio reference
 _text = (
@@ -33,7 +35,7 @@ _text = (
 	"<font size='16' color='#BDBDBD'>Channel 9 - Zeus</font>"+"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"
 );
-player createDiaryRecord ["Diary", ["Référence Radios", _text]];
+player createDiaryRecord ["CGQC", ["Référence Radios", _text]];
 
 // Training map
 /*
