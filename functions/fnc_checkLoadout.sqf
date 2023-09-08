@@ -35,6 +35,7 @@ if (_load) then {
         case "cgqc_officer_moderne": {[] call CGQC_fnc_initTraining;};
 
         // == Infantry ================================================================
+        case "CGQC_units_mk1_1_Rifleman_CQB":{_switchRole = "2023_rifle_cqb"};
         case "CGQC_units_mk1_1_Rifleman_Carbine":{_switchRole = "2023_rifle_carb"};
         case "CGQC_units_mk1_1_Rifleman_full":{_switchRole = "2023_rifle_rifle"};
         case "CGQC_units_mk1_1_Rifleman_grenadier":{_switchRole = "2023_rifle_grenadier"};
@@ -77,6 +78,7 @@ if (_load) then {
     };
 
     if (_dive) then {
+        sleep 1;
         ["diver", true] spawn CGQC_fnc_switchUniform;
         diag_log "[CGQC_FNC] checkLoadout - Diver suit";
     };

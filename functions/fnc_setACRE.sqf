@@ -33,5 +33,8 @@ if (_radios isNotEqualTo "") then {
 	["ACRE_PRC117f", _radios] call acre_api_fnc_setPreset;
 };
 
+// Set PTT Delay
+_delay = [0.5] call acre_api_fnc_setPTTDelay;
+
 diag_log format ["[CGQC_FNC] setACRE %1: %2/%3 executed", _info, _language, _radios];
 diag_log "[CGQC_FNC] setACRE done";
