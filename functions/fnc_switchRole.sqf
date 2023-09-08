@@ -66,6 +66,9 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
         ["role", true] call CGQC_fnc_showTransition;
     };
 
+    // Add side keys to player
+    ["side", player] call CGQC_fnc_getKey;
+
     //Set patch back
     diag_log "[CGQC_FNC] switchRole - set patch back";
     player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
