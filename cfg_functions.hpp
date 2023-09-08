@@ -12,11 +12,22 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class setACRE{
+            file = "\cgqc\functions\fnc_setACRE.sqf";
+            description = "Set ACRE stuffs";
+        };
+        class getKey{
+            file = "\cgqc\functions\fnc_getKey.sqf";
+            description = "Get key to target vehicle";
+        };
+        class lockChannels{
+            file = "\cgqc\functions\fnc_lockChannels.sqf";
+            description = "Lock some chat channels";
+        };
         class setVoiceVolume{
             file = "\cgqc\functions\fnc_setVoiceVolume.sqf";
             description = "Quick set voice to specified volume";
         };
-
         class removePrimary{
             file = "\cgqc\functions\fnc_removePrimary.sqf";
             description = "Remove primary gun and mags ";

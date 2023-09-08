@@ -1,45 +1,53 @@
 // --- lockChannels ----------------------------------------------------------
 // Lock some of the comms channels
-_type = param [0, 1];
+params ["_type"];
+diag_log format ["[CGQC_FNC] lockChannels %1 started", _type];
 
 if (cgqc_config_hide_channels) then {
-	switch (_type)
-	do{
+	0 enableChannel false; //Global
+	1 enableChannel false;	//Side
+	2 enableChannel false;	//Command
+	3 enableChannel false;	//Group
+	4 enableChannel false; //Vehicle
+} else {
+	switch (_type) do {
+		case "globside": { //Lock all but global and side, for simplicity
+			0 enableChannel true; //Global
+			1 enableChannel true;	//Side
+			2 enableChannel false;	//Command
+			3 enableChannel false;	//Group
+			4 enableChannel false; //Vehicle
+		};
 		case "init": { //Locks everything but Global. For debug on logon mostly.
-			hint "Start: Locking all but Global";
 			0 enableChannel true; //Global
 			1 enableChannel false;	//Side
 			2 enableChannel false;	//Command
 			3 enableChannel false;	//Group
 			4 enableChannel false; //Vehicle
-			sleep 3;
-			hintSilent "";
 		};
 		case "high": { //High Command/Comms unit - Vehicle for personal + Side for sharing
-			hint "Locking Global/Command/Group";
 			0 enableChannel false; //Global
 			1 enableChannel true;	//Side
 			2 enableChannel false;	//Command
 			3 enableChannel false;	//Group
 			4 enableChannel false; //Vehicle
-			sleep 3;
-			hintSilent "";
 		};
-		case "low": {  //Normal units - Vehicle ONLY. 
-			hint "Locking All Channels";
+		case "low": {  //Normal units - Vehicle ONLY.
 			0 enableChannel false; //Global
 			1 enableChannel false;	//Side
 			2 enableChannel false;	//Command
 			3 enableChannel false;	//Group
 			4 enableChannel false; //Vehicle
-			sleep 3;
-			hintSilent "";
+		};
+		case "reset": {
+			0 enableChannel true; //Global
+		1 enableChannel true;	//Side
+		2 enableChannel true;	//Command
+		3 enableChannel true;	//Group
+		4 enableChannel true; //Vehicle
 		};
 	};
-} else {
-	0 enableChannel true; //Global
-	1 enableChannel true;	//Side
-	2 enableChannel true;	//Command
-	3 enableChannel true;	//Group
-	4 enableChannel true; //Vehicle
 };
+
+
+diag_log "[CGQC_FNC] lockChannels done";
