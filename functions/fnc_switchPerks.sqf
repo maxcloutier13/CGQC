@@ -61,6 +61,7 @@ switch (_type) do {
 		player setUnitTrait ["audibleCoef ", 0.9];
 		player setUnitTrait ["camouflageCoef ", 0.9];
 		player setUnitTrait ["UAVHacker", true];
+		player setUnitTrait ["loadCoef ", 0.9];
 		// ------ Ghillie up --------------------------------------------------------------------------------------
 		_action = [ "cgqc_perk_ghillie", " Ghillie up", "cgqc\textures\cgqc_ace_ghillie", {}, {!cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 		cgqc_action_ghillie = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;

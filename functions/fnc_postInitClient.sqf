@@ -182,9 +182,8 @@ player addEventHandler ["GetInMan", {
 	["ready", false] call CGQC_fnc_perksBasic;
 }];
 
-//Sets radio channel names
-[0] call CGQC_fnc_nameRadios;
-["defaultLR"] call CGQC_fnc_setRadios;
+
+
 
 // Boost dragging maximum
 ACE_maxWeightDrag = 3000;
@@ -211,26 +210,23 @@ if (cgqc_flag_isTraining) then {
 
 
 // Zeus shenanigans... MAX - to review
-//_zeus = [] call CGQC_fnc_setZeus;
+_zeus = [] call CGQC_fnc_setZeus;
 
-diag_log "[CGQC_INIT] postInitClient - checkLoadout";
-// Load loadouts if known unit
-_switch = player getVariable "cgqc_var_skipLoadoutSwitch";
-if (isNil "_switch") then {
-	diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
-	[] call CGQC_fnc_checkLoadout;
-} else {
-	if !(_switch) then {
-		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
-		[] call CGQC_fnc_checkLoadout;
-	};
-};
+// Check if unit has an auto-switch loadout
+[] call CGQC_fnc_checkLoadout;
+
+// RHS fix to remove chatter
+ profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
 
 // All done
 cgqc_start_postInitClient_done = true;
 
-
-
+[] spawn {
+	// Switch map to topo by default
+	waitUntil { !isNull (findDisplay 12)};
+	private _map = findDisplay 12;
+	ctrlActivate (_map displayCtrl 107); // Toggle map textures off
+};
 
 sleep 3;
 // Set default voice volume
