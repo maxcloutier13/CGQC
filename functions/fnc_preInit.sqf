@@ -350,8 +350,8 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_setting_show_welcome", "CHECKBOX", ["Show Msg de Bienvenue", "Message de bienvenue avec la patch si dispo"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 // Channels =================================================================================================
-//["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"],
-//   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
+["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"],
+   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
 
 // Map Sharing =================================================================================================
 ["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"],
@@ -545,6 +545,14 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_supply_radios", "SLIDER",["Radios", "Number in supply box"],
     [_menu_name, "Content: Supply Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
 
+["cgqc_config_sideKeys", "CHECKBOX", ["Sidekeys for all", "Adds a key for all side vehicles to player"],
+	[_menu_name, "Keys"], true, 1, {publicVariable "cgqc_config_sideKeys"}] call CBA_fnc_addSetting;
+["cgqc_config_customKey", "CHECKBOX", ["Get CustomKey action", "Action on player to get a custom key to specific vehicle"],
+	[_menu_name, "Keys"], false, 1, {publicVariable "cgqc_config_sideKeys"}] call CBA_fnc_addSetting;
+
+["cgqc_config_sideLanguage", "CHECKBOX", ["Separate radio/language per side", "Each side has specific radio frequencies and languages"],
+	[_menu_name, "Babel Language"], true, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
+
 // Player custom Options ===================================================================================================
 // Check that 2023 is not present
 if (!cgqc_player_has2023) then {
@@ -675,6 +683,13 @@ waitUntil {scriptDone _convoy};
 #include "\CGQC\loadouts\swat\loadouts.hpp"
 #include "\CGQC\loadouts\unsung\loadouts.hpp"
 #include "\CGQC\loadouts\ifa3\loadouts.hpp"
+
+//Sets radio channel names
+[0] call CGQC_fnc_nameRadios;
+["side"] call CGQC_fnc_setACRE;
+// Lock superfluous channels
+["globside"] call CGQC_fnc_lockChannels;
+
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
