@@ -10,26 +10,17 @@ if(!isNil "cgqc_event_148") then {
 };
 
 switch (_type) do {
-	case "all": { 
+	case "all": {
 		diag_log "[CGQC_FNC] removeRadios _type = all. Deleting everything";
 		// Remove all radios
 		_radios = call acre_api_fnc_getCurrentRadioList;
-		{
+		while {count _radios > 0} do {
+			{
 			_target unassignItem _x;
 			_target removeItem _x;
-		} forEach _radios;
-
-		/*
-		// Sanity check 
-		_radios = call acre_api_fnc_getCurrentRadioList;
-		_check = count _radios;
-		if (_check > 0) then {
-			_txt = "";
-			{
-				_txt = _txt + _x + "/";
 			} forEach _radios;
-			diag_log format ["[CGQC_ERROR] removeRadios sanity check failed. Still got %1 radios: %2", _check, _txt];
-		};*/
+			_radios = call acre_api_fnc_getCurrentRadioList;
+		};
 	};
 	default {diag_log "[CGQC_ERROR] removeRadios _type not matched";};
 };
