@@ -32,5 +32,10 @@ if (cgqc_flag_isTraining) then {
 
 // Do the deed
 [_radios] call CGQC_fnc_addRadios;
-[_preset, _team] call CGQC_fnc_setRadios;
+[_preset,_team] spawn {
+	params ["_preset", "_team"];
+	sleep 1;
+	[_preset, _team] call CGQC_fnc_setRadios;
+};
+
 diag_log "[CGQC_FNC] getRadioPresets done";
