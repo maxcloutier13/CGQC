@@ -70,7 +70,7 @@ if (hasInterface) then {
 				diag_log "[CGQC_FNC] loadMk3Menu - loading vanilla stuff";
 				//waitUntil {sleep 1; cgqc_mk2_arsenal_init_done};
 				// Vanilla ---------------------------------------------------------------------------------------------------------
-				_action = [ "menu_vanilla", "Vanilla", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_vanilla", "Vanilla", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_side isEqualTo WEST} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				//  Loadout switcher
 				_action = [ "menu_loadouts", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;

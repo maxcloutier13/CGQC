@@ -2,9 +2,10 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.3";
+_version = "4.3.1";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
+waitUntil { cgqc_start_preInit_done};
 // Set side
 cgqc_player_side = side player;
 
@@ -235,5 +236,6 @@ sleep 3;
 [player, "talk"] call CGQC_fnc_setVoiceVolume;
 // Save initial volume
 cgqc_acre_previousVolume = [] call acre_api_fnc_getSelectableVoiceCurve;
+
 
 diag_log "[CGQC_INIT] === postInitClient done =====================================";

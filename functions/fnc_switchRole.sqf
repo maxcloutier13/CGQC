@@ -28,8 +28,16 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
         ["ready", true] call CGQC_fnc_perksBasic;
     };
 
-    // Prep player for switch
-    [player] call CGQC_fnc_loadoutPrep;
+    if (_type isEqualTo "training") then {
+        diag_log "[CGQC_INIT] initTraining started";
+        ['chill', false] spawn CGQC_fnc_perksBasic;
+        ["training"] call CGQC_fnc_getRadioPresets;
+        cgqc_player_role = "Training";
+    } else {
+        // Prep player for switch
+        [player] call CGQC_fnc_loadoutPrep;
+    };
+
 
     // Switch according to role
     // Vanilla

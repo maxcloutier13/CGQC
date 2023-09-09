@@ -1,5 +1,4 @@
 case "vanilla_rifleman":{
-	[player] call CGQC_fnc_loadoutPrep;
 	[] call CGQC_loadout_vanillaBasic;
 	[] call CGQC_loadout_vanillaRifleman;
 	["tl"] call CGQC_fnc_getRadioPresets;
@@ -8,7 +7,6 @@ case "vanilla_rifleman":{
 
 };
 case "vanilla_tl":{
-	[player] call CGQC_fnc_loadoutPrep;
 	[] call CGQC_loadout_vanillaBasic;
 	[] call CGQC_loadout_vanillaTL;
 	["tl"] call CGQC_fnc_getRadioPresets;
