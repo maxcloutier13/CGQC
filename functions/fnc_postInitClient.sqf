@@ -5,6 +5,8 @@ diag_log "[CGQC_INIT] === postInitClient started ===============================
 _version = "4.3";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
+// Set side
+cgqc_player_side = side player;
 
 // Client-side code
 diag_log "[CGQC_INIT] checking if intro/welcome should be shown";

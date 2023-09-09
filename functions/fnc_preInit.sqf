@@ -22,6 +22,7 @@ cgqc_mk3_transition = false;
 cgqc_player_loadAll = true;
 // *** Player **********************
 cgqc_player_known = true;
+cgqc_player_side = WEST;
 cgqc_player_face = "";
 cgqc_player_patch = "";
 cgqc_player_patch_found = false;
