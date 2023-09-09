@@ -122,7 +122,7 @@ if (hasInterface) then {
 			if (cgqc_player_has2023) then {
 				diag_log "[CGQC_FNC] loadMk3Menu - loading 2023 stuff";
 				// SWAT ***********************************************************************************
-				_action = [ "menu_swat", "SWAT", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_swat", "SWAT", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_side isEqualTo WEST} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Loadout switcher ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_swat_roles", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -159,7 +159,7 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 				// 2023 ***********************************************************************************
-				_action = [ "menu_2023", "2023", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_2023", "2023", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_side isEqualTo WEST} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Mk1 Loadout switcher ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_mk2", "Loadouts/Rôles MK3", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
