@@ -208,15 +208,29 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace
 // Fixes =========================================================================================================
 _action = [ "menu_self_fixes", "Fixes/Debug", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Fix Sound   ---------------------------------------------------------------------------------------------------------------
+// Fix Sound
 _action = [ "menu_self_fix_sound", "Fix Sound", "", {["fix", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Fix Blackout   ---------------------------------------------------------------------------------------------------------------
+// Fix Blackout
 _action = [ "menu_self_blackout", "Fix Blackout", "", {["fix_blackout", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Set patch ---------------------------------------------------------------------------------------------------------------
+// Set patch
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "\cgqc\textures\cgqc_ace_defend.paa", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Fix ARMA
+_action = [ "zeus_fix_arma", "Rise from your Grave", "", {}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "zeus_fix_arma_rejoin", "Rejoin in place", "", {["rejoin"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "zeus_fix_arma_heal", "Magic Heal", "", {["heal"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "zeus_fix_arma_tp", "Teleport to Leader", "", {["teleport"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 
 // Open items =========================================================================================================
 // Open IFAK
@@ -305,6 +319,13 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc
 // Options
 _action = [ "zeus_options", "Options", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// ------ Langages
+_action = ["zeus_babel_on", "Separate Languages: Turn On", "", {cgqc_config_sideLanguage = true; ["side"] call CGQC_fnc_setACRE}, {!cgqc_config_sideLanguage} ] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = ["zeus_babel_off", "Separate Languages: Turn Off", "", {cgqc_config_sideLanguage = false; ["unlock"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 // ------ Zeus radios on/off
 _action = [ "zeus_radios_on", "Zeus Radios: Turn On", "", {cgqc_config_zeusRadios = true;["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;}, {!cgqc_config_zeusRadios} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;

@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class arma{
+            file = "\cgqc\functions\fnc_arma.sqf";
+            description = "Functions to deal with debug/mulligans";
+        };
         class setACRE{
             file = "\cgqc\functions\fnc_setACRE.sqf";
             description = "Set ACRE stuffs";
