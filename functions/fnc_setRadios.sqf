@@ -157,15 +157,11 @@ switch (_type) do {
 		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Racks
 		_racks = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-
 		_rack1 = _racks select 0;
 		_rack2 = _racks select 1;
 		// Channels
-
 		[_handRadio, 3] call acre_api_fnc_setRadioChannel; //Sol-HQ
-
 		[_rack1, 6] call acre_api_fnc_setRadioChannel; //Interteam
-
 		[_rack2, 3] call acre_api_fnc_setRadioChannel; //Sol-HQ
 		// Set sides
 		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
@@ -185,15 +181,11 @@ switch (_type) do {
 		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Racks
 		_racks = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-
 		_rack1 = _racks select 0;
 		_rack2 = _racks select 1;
 		// Channels
-
 		[_handRadio, 2] call acre_api_fnc_setRadioChannel; //Air-net
-
 		[_rack1, 5] call acre_api_fnc_setRadioChannel; //Interteam
-
 		[_rack2, 2] call acre_api_fnc_setRadioChannel; //Air-HQ
 		// Set radio orders
 		_success = [ [ _rack1, _rack2, _handRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
@@ -363,7 +355,7 @@ switch (_type) do {
 
 		[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
 
-		// Set radios for centaure use
+		// Set radios for griffon use use
 		["griffon"] spawn CGQC_fnc_setRadios;
 	};
 	case "set_centaure": {

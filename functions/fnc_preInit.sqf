@@ -330,7 +330,6 @@ if (cgqc_player_hasUnsung) then {
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
 }] call CBA_fnc_addEventHandler;
 
-
 // Addon Options ===================================================================================================
 _menu_name = "CGQC Zeus";
 
@@ -688,10 +687,12 @@ waitUntil {scriptDone _convoy};
 //Sets radio channel names
 [0] call CGQC_fnc_nameRadios;
 ["side"] call CGQC_fnc_setACRE;
+// Set PTT Delay
+_delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
-// Create default languages 
+// Create default languages
 ["en", "English"] call acre_api_fnc_babelAddLanguageType;
 ["ru", "Russian"] call acre_api_fnc_babelAddLanguageType;
 ["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;

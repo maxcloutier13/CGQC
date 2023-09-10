@@ -509,7 +509,7 @@ if (hasInterface) then {
 			_action = [ "menu_items", "Items Rapides", "CGQC\textures\icon_items", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 			// Quick Heal
-			_action = [ "menu_items9", "Quick heal", "", {["heal"] call CGQC_fnc_getStuff}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items9", "Quick heal", "", {["heal"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_items10", "Refill Mags", "", {[] call CGQC_fnc_addMags; [] call CGQC_fnc_maxMags;}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call  ace_interact_menu_fnc_addActionToObject;
