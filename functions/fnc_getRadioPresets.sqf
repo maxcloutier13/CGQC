@@ -17,6 +17,7 @@ if (cgqc_flag_isTraining) then {
 	_team = 1;
 } else {
 	switch (_type) do {
+		case "training": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "training"};
 		case "inf":	{_radios = ["ACRE_PRC343"];_preset = "spartan"};
 		case "medic": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "medic"};
 		case "tl": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "spartan_1"};
@@ -34,8 +35,9 @@ if (cgqc_flag_isTraining) then {
 [_radios] call CGQC_fnc_addRadios;
 [_preset,_team] spawn {
 	params ["_preset", "_team"];
-	sleep 1;
-	[_preset, _team] call CGQC_fnc_setRadios;
+	sleep 10;
+	diag_log format ["[CGQC_FNC] getRadioPresets setRadios: %1/%2 started", _preset, _team];
+	[_preset, _team] spawn CGQC_fnc_setRadios;
 };
 
 diag_log "[CGQC_FNC] getRadioPresets done";
