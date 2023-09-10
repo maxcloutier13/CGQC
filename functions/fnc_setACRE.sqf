@@ -11,9 +11,9 @@ switch (_type) do {
 		if (cgqc_config_sideLanguage) then {
 			_side = side player;
 			switch (_side) do {
-				case WEST: { _language = "en"; _radios = "default"; _info = "WEST";};
-				case EAST: { _language = "ru"; _radios = "default3"; _info = "EAST"};
-				case INDEPENDENT: { _language = "ab"; _radios = "default2"; _info = "IND"};
+				case WEST: { _language = "en"; _radios = "default"; _info = "English";};
+				case EAST: { _language = "ru"; _radios = "default3"; _info = "Russian"};
+				case INDEPENDENT: { _language = "ab"; _radios = "default2"; _info = "Arabic"};
 			};
 		} else {
 			_language = "en";
@@ -26,6 +26,7 @@ switch (_type) do {
 // Set language
 if (_language isNotEqualTo "") then {
 	[_language] call acre_api_fnc_babelSetSpokenLanguages;
+	hint format ["You speak %1", _info];
 };
 if (_radios isNotEqualTo "") then {
 	// Set radio presets

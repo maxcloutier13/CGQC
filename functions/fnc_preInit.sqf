@@ -691,6 +691,16 @@ waitUntil {scriptDone _convoy};
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
+// Create default languages 
+["en", "English"] call acre_api_fnc_babelAddLanguageType;
+["ru", "Russian"] call acre_api_fnc_babelAddLanguageType;
+["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;
+
+// Setup default groups colors
+["HQ", [1.0, 0.38, 0,1], [1.0, 0.38, 0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
+["Spartan 1", [1.0, 0.5, 0.5,1], [1.0, 0.5, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Spartan 2", [0.5, 0.5, 1.0,1], [0.5, 0.5, 1.0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Spartan 3", [0.5, 1.0, 0.5,1], [0.5, 1.0, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
