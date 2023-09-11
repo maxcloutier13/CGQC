@@ -325,6 +325,10 @@ _action = ["zeus_babel_on", "Separate Languages: Turn On", "", {cgqc_config_side
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = ["zeus_babel_off", "Separate Languages: Turn Off", "", {cgqc_config_sideLanguage = false; ["unlock"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = ["zeus_babel_zeus", "Zeus: learn all languages", "", {["side"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+["side"] call CGQC_fnc_setACRE;
 
 // ------ Zeus radios on/off
 _action = [ "zeus_radios_on", "Zeus Radios: Turn On", "", {cgqc_config_zeusRadios = true;["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;}, {!cgqc_config_zeusRadios} ] call ace_interact_menu_fnc_createAction;

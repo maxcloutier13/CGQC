@@ -13,6 +13,7 @@ diag_log format ["[CGQC_FNC] setZeus started"];
 		hint "Zeus!";
 		sleep 1;
 
+
 		[] spawn {
 			while {true} do {
 				// Make sure radios are on
@@ -46,6 +47,7 @@ diag_log format ["[CGQC_FNC] setZeus started"];
 							sleep 2.0;
 						} else {
 							hint format["Zeus assigned to curator %1", _x];
+							["side"] call CGQC_fnc_setACRE;
 							_exitLoop = true;
 						};
 					};
