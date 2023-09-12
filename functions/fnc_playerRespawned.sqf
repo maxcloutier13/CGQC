@@ -1,9 +1,11 @@
 // --- playerRespawned ----------------------------------------------------------
 // Code in the event a player respawns
-params ["_unit"];
+params ["_unit", "_corpse"];
 diag_log "[CGQC_EVENT] playerRespawned started";
 
 // Save stuff for player respawn
+// Corpse position
+_unit setVariable["corpse_position", getPos _corpse];
 // Loadout
 _unit setUnitLoadout(_unit getVariable["Saved_Loadout",[]]); //Load loadout saved on death
 // Face/identity

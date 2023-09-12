@@ -13,11 +13,18 @@ switch (_type) do {
 	};
 	case "side": { // Get side keys
 		if (cgqc_config_sideLanguage) then {
-			_side = side player;
-			switch (_side) do {
-				case WEST: { _language = "en"; _radios = "default"; _info = "English";};
-				case EAST: { _language = "ru"; _radios = "default3"; _info = "Russian"};
-				case INDEPENDENT: { _language = "ab"; _radios = "default2"; _info = "Arabic"};
+			// Check if player is Zeus
+			if ([player] call CGQC_fnc_checkZeus) then {
+				_language = ["en", "ru", "ab"];
+				_info = "English/Russian/Arabic";
+				_radios = "default";
+			} else {
+				_side = side player;
+				switch (_side) do {
+					case WEST: { _language = "en"; _radios = "default"; _info = "English";};
+					case EAST: { _language = "ru"; _radios = "default3"; _info = "Russian"};
+					case INDEPENDENT: { _language = "ab"; _radios = "default2"; _info = "Arabic"};
+				};
 			};
 		} else {
 			_language = "en";
@@ -38,6 +45,8 @@ if (_radios isNotEqualTo "") then {
 	["ACRE_PRC152", _radios] call acre_api_fnc_setPreset;
 	["ACRE_PRC117f", _radios] call acre_api_fnc_setPreset;
 };
+
+
 
 diag_log format ["[CGQC_FNC] setACRE %1: %2/%3 executed", _info, _language, _radios];
 diag_log "[CGQC_FNC] setACRE done";
