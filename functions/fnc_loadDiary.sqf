@@ -17,11 +17,18 @@ _text = (
 	"<font size='20' color='#f2f2f2'>Référence Radios</font>" +"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
 	"<font size='18' color='#f2f2f2'>Short-Range - 343</font>" +"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan 1</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 2 - Spartan 2</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 3 - Spartan 3</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 4 - HQ</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 5+ - Libres</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan-1</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 2 - Spartan-2</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 3 - Spartan-3</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 4 - Spartan-4</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 5 - Trident-1</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 6 - Trident-2</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 7 - Trident-3</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 8 - Trident-4</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 9 - Recon</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 10 - Supports</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 11+ - Libres</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 16 - HQ</font>"+"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
 	"<font size='18' color='#f2f2f2'>Long-Range - 152</font>" +"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan/HQ</font>"+"<br/>" +
