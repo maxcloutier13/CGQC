@@ -23,19 +23,17 @@ if !(cgqc_mission_dro) then {
 	//Respawn handler
 	player addMPEventHandler ["MPRespawn", {
 		params ["_unit", "_corpse"];
-		[_unit] call CGQC_fnc_playerRespawned;
+		[_unit, _corpse] call CGQC_fnc_playerRespawned;
 	}];
 
 	//Death handler
 	player addMPEventHandler ["MPKilled", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
-		[_unit, _killer] call CGQC_fnc_playerKilled;
+		[_unit, _killer, _instigator, _useEffects] call CGQC_fnc_playerKilled;
 	}];
 } else {
 	1 fadeSound 1;
 	titleCut ["", "BLACK IN", 1];
-
-	if (userInputDisabled) then {};
 };
 
 // Player identification --------------------------------------------------------------------------------------------
@@ -58,8 +56,9 @@ _beret = [] call CGQC_fnc_getRankedBeret;
 _set = [] call CGQC_fnc_setPatch;
 
 // Dynamic group -------------------------------------------------------------------------------------------------
-["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
-
+//["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+cgqc_player_group = group player;
+cgqc_player_groupID = groupId player;
 
 // Briefing entry -------------------------------------------------------------------------------------------------
 _brief = [] call CGQC_fnc_loadDiary;

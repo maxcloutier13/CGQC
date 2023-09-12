@@ -222,15 +222,17 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 _action = [ "zeus_fix_arma", "Rise from your Grave", "", {}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "zeus_fix_arma_rejoin", "Rejoin in place", "", {["rejoin"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_fix_arma_heal", "Magic Heal", "", {["heal"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "zeus_fix_arma_heal", "Magic Heal", "", {["heal"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_fix_arma_rejoin", "Rejoin after Disconnect", "", {["rejoin"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "zeus_fix_arma_corpse", "Teleport to corpse", "", {["respawnOnCorpse"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "zeus_fix_arma_tp", "Teleport to Leader", "", {["teleport"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
 
 // Open items =========================================================================================================
 // Open IFAK
@@ -321,14 +323,27 @@ _action = [ "zeus_options", "Options", "", {""}, {true} ] call ace_interact_menu
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ------ Langages
+_action = ["zeus_babel_zeus", "Zeus: learn all languages", "", {["side"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = ["zeus_babel_on", "Separate Languages: Turn On", "", {cgqc_config_sideLanguage = true; ["side"] call CGQC_fnc_setACRE}, {!cgqc_config_sideLanguage} ] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = ["zeus_babel_off", "Separate Languages: Turn Off", "", {cgqc_config_sideLanguage = false; ["unlock"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = ["zeus_babel_zeus", "Zeus: learn all languages", "", {["side"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
+
+// Faction relations
+_action = ["zeus_relations", "Faction Relations", "", {}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-["side"] call CGQC_fnc_setACRE;
+_action = ["zeus_relations_all", "All enemies", "", {["all"] call CGQC_fnc_setRelations}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options", "zeus_relations"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = ["zeus_relations_west", "Ind friendly to West", "", {["indWest"] call CGQC_fnc_setRelations}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options", "zeus_relations"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = ["zeus_relations_east", "Ind friendly to East", "", {["indEast"] call CGQC_fnc_setRelations}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options", "zeus_relations"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = ["zeus_relations_friend", "Ind friendly to All", "", {["indAll"] call CGQC_fnc_setRelations}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options", "zeus_relations"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
 
 // ------ Zeus radios on/off
 _action = [ "zeus_radios_on", "Zeus Radios: Turn On", "", {cgqc_config_zeusRadios = true;["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;}, {!cgqc_config_zeusRadios} ] call ace_interact_menu_fnc_createAction;
