@@ -4,11 +4,23 @@ params ["_type", ["_target", player]];
 diag_log format ["[CGQC_FNC] arma %1:%2 started", _type, _target];
 
 switch (_type) do {
-	case "rejoin": {[] call grad_persistence_fn_loadPlayer};
+	case "rejoin": {
+		[] call grad_persistence_fn_loadPlayer;
+	};
+	case "respawnOnCorpse": {
+		_pos = _target getVariable "corpse_position";
+		if (isNil "_pos") then {
+			player setPos _pos;
+			hint "TP'd to corpse";
+		}else {
+			hint "No corpse found";
+		};
+
+	};
 	case "heal": {["heal"] call CGQC_fnc_getStuff};
 	case "teleport": {
 		_groupLeader = leader group _target;
-		_target setPosition (position _groupLeader);
+		_target setPos (position _groupLeader);
 	};
 	default { };
 };
