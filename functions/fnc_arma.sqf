@@ -8,9 +8,9 @@ switch (_type) do {
 		[] call grad_persistence_fn_loadPlayer;
 	};
 	case "respawnOnCorpse": {
-		_pos = _target getVariable "corpse_position";
+		corpse_pos = _target getVariable "corpse_position";
 		if (isNil "_pos") then {
-			player setPos _pos;
+			player setPos corpse_pos;
 			hint "TP'd to corpse";
 		}else {
 			hint "No corpse found";
