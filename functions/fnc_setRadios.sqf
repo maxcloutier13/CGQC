@@ -1,8 +1,9 @@
 // --- setRadios ----------------------------------------------------------
-// Set radio setups depending on role
+// Set radio channels depending on group
 params ["_type", ["_section", 1]];
 diag_log format ["[CGQC_FNC] setRadios %1/%2 started", _type, _section];
 
+_running = true;
 _handRadios = [];
 _racks = [];
 _accessibleRacks = [];
@@ -45,7 +46,7 @@ switch (_type) do {
 		_success = [_radio2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		hint parseText "
 		--- Training radio setup --- <br/>
-		Radio1 - 343|L|1 - Spartan-1<br/>
+		Radio1 - 343|L - Team<br/>
 		Radio2 - 152|R|1 - Spartan/HQ<br/>";
 	};
 	case "flipSides":	{
@@ -459,5 +460,7 @@ switch (_type) do {
 		hint "fnc_setRadios fucked up. ";
 	};
 };
+
+[] call CGQC_fnc_setGroupRadios;
 
 diag_log "[CGQC_FNC] setRadios done";

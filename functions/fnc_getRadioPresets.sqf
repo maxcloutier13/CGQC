@@ -35,7 +35,7 @@ if (cgqc_flag_isTraining) then {
 [_radios] call CGQC_fnc_addRadios;
 [_preset,_team] spawn {
 	params ["_preset", "_team"];
-	sleep 10;
+	sleep 5;
 	diag_log format ["[CGQC_FNC] getRadioPresets setRadios: %1/%2 started", _preset, _team];
 	[_preset, _team] spawn CGQC_fnc_setRadios;
 };

@@ -74,7 +74,7 @@ if (_load) then {
     } else {
         diag_log "[CGQC_FNC] checkLoadout - Loadout not found. Skipping.";
         sleep 15;
-        ["defaultLR"] spawn CGQC_fnc_setRadios;
+        ["defaultLR"] call CGQC_fnc_setRadios;
     };
 
     if (_dive) then {
@@ -85,9 +85,11 @@ if (_load) then {
 } else {
     diag_log "[CGQC_FNC] checkLoadout - Unit switch is OFF Skipping";
     sleep 15;
-    ["defaultLR"] spawn CGQC_fnc_setRadios;
+    ["defaultLR"] call CGQC_fnc_setRadios;
     // Add side keys to player
     ["side", player] call CGQC_fnc_getKey;
 };
+
+
 
 diag_log "[CGQC_FNC] checkLoadout done";

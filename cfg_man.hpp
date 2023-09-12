@@ -19,19 +19,193 @@ class CAManBase: Man {
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Inspect the soldiers gear'";
 			};
-	
 		};
 	};
 	class ACE_SelfActions {
-		class aceax_ingame_gear
+		// Remove this thing
+		delete aceax_ingame_gear;
+
+		// Group manager
+
+		class ACE_TeamManagement
 		{
-			//displayName = "$STR_aceax_ingame_Gear";
-			condition = "false";
-			//icon = "\z\aceax\addons\ingame\data\gear.paa";
-			//exceptions[] = {"isNotInside","isNotSitting"};
-			//statement = "";
-			//insertChildren = "_this call aceax_ingame_fnc_aceSelfActions";
-			//priority = 0.1;
+			class CGQC_group_manager
+			{
+				displayName = "Join Group";
+				statement = "";
+				condition = "true";
+				icon = "\z\ace\addons\interaction\UI\team\team_management_ca.paa";
+				class CGQC_group_manager_hq
+				{
+					displayName = "HQ";
+					condition = "true";
+					statement = "['HQ' call CGQC_fnc_joinGroup]";
+				};
+				class CGQC_group_manager_spartan
+				{
+					displayName = "Spartan";
+					condition = "true";
+					statement = "";
+					class CGQC_group_manager_spartan_1
+					{
+						displayName = "Spartan-1";
+						condition = "true";
+						statement = "['Spartan-1' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+					};
+					class CGQC_group_manager_spartan_2
+					{
+						displayName = "Spartan-2";
+						condition = "true";
+						statement = "['Spartan-2' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+					};
+					class CGQC_group_manager_spartan_3
+					{
+						displayName = "Spartan-3";
+						condition = "true";
+						statement = "['Spartan-3' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+					};
+					class CGQC_group_manager_spartan_4
+					{
+						displayName = "Spartan-4";
+						condition = "true";
+						statement = "['Spartan-4' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+					};
+				};
+				class CGQC_group_manager_trident
+				{
+					displayName = "Trident";
+					condition = "true";
+					statement = "";
+					class CGQC_group_manager_trident_1
+					{
+						displayName = "Trident-1";
+						condition = "true";
+						statement = "['Trident-1' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+					};
+					class CGQC_group_manager_trident_2
+					{
+						displayName = "Trident-2";
+						condition = "true";
+						statement = "['Trident-2' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+					};
+					class CGQC_group_manager_trident_3
+					{
+						displayName = "Trident-3";
+						condition = "true";
+						statement = "['Trident-3' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+					};
+					class CGQC_group_manager_trident_4
+					{
+						displayName = "Trident-4";
+						condition = "true";
+						statement = "['Trident-4' call CGQC_fnc_joinGroup]";
+						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+					};
+				};
+				class CGQC_group_manager_recon
+				{
+					displayName = "Recon";
+					condition = "true";
+					statement = "";
+					class CGQC_group_manager_hermes
+					{
+						displayName = "Hermes";
+						condition = "true";
+						statement = "['Hermes' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_orion_1
+					{
+						displayName = "Orion-1";
+						condition = "true";
+						statement = "['Orion-1' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_orion_2
+					{
+						displayName = "Orion-2";
+						condition = "true";
+						statement = "['Orion-1' call CGQC_fnc_joinGroup]";
+					};
+				};
+				class CGQC_group_manager_centaure
+				{
+					displayName = "Centaure";
+					condition = "true";
+					statement = "";
+					class CGQC_group_manager_centaure_1
+					{
+						displayName = "Centaure-1";
+						condition = "true";
+						statement = "['Centaure-1' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_centaure_2
+					{
+						displayName = "Centaure-2";
+						condition = "true";
+						statement = "['Centaure-2' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_centaure_3
+					{
+						displayName = "Centaure-3";
+						condition = "true";
+						statement = "['Centaure-3' call CGQC_fnc_joinGroup]";
+					};
+				};
+				class CGQC_group_manager_griffon
+				{
+					displayName = "Griffon";
+					condition = "true";
+					statement = "";
+					class CGQC_group_manager_griffon_1
+					{
+						displayName = "Griffon-1";
+						condition = "true";
+						statement = "['Griffon-1' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_griffon_2
+					{
+						displayName = "Griffon-2";
+						condition = "true";
+						statement = "['Griffon-2' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_griffon_3
+					{
+						displayName = "Griffon-3";
+						condition = "true";
+						statement = "['Griffon-3' call CGQC_fnc_joinGroup]";
+					};
+				};
+				class CGQC_group_manager_pegase
+				{
+					displayName = "Pegase";
+					condition = "true";
+					statement = "";
+					class CGQC_group_manager_pegase_1
+					{
+						displayName = "Pegase-1";
+						condition = "true";
+						statement = "['Pegase-1' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_pegase_2
+					{
+						displayName = "Pegase-2";
+						condition = "true";
+						statement = "['Pegase-2' call CGQC_fnc_joinGroup]";
+					};
+					class CGQC_group_manager_pegase_3
+					{
+						displayName = "Pegase-3";
+						condition = "true";
+						statement = "['Pegase-3' call CGQC_fnc_joinGroup]";
+					};
+				};
+			};
 		};
 		class ACE_Animations {
 			displayName = "Animations";

@@ -42,6 +42,8 @@ cgqc_player_oldNvg = "";
 cgqc_player_oldFace = "";
 cgqc_player_slinged_helmet = "";
 cgqc_player_max = false;
+cgqc_player_group = createGroup west;
+cgqc_player_groupID = 0;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
 cgqc_subskills = [
@@ -696,6 +698,7 @@ _delay = [0.5] call acre_api_fnc_setPTTDelay;
 ["en", "English"] call acre_api_fnc_babelAddLanguageType;
 ["ru", "Russian"] call acre_api_fnc_babelAddLanguageType;
 ["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;
+
 
 // Setup default groups colors
 ["HQ", [1.0, 0.38, 0,1], [1.0, 0.38, 0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
