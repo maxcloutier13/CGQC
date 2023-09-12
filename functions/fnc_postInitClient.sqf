@@ -2,7 +2,7 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.3.1";
+_version = "4.4";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 waitUntil { cgqc_start_preInit_done};
