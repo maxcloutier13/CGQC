@@ -12,6 +12,15 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+
+        class setGroupRadios{
+            file = "\cgqc\functions\fnc_setGroupRadios.sqf";
+            description = "Set radio channels depending on group";
+        };
+        class joinGroup{
+            file = "\cgqc\functions\fnc_joinGroup.sqf";
+            description = "Group stuffs";
+        };
         class arma{
             file = "\cgqc\functions\fnc_arma.sqf";
             description = "Functions to deal with debug/mulligans";
