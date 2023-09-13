@@ -22,7 +22,7 @@ cgqc_mk3_transition = false;
 cgqc_player_loadAll = true;
 // *** Player **********************
 cgqc_player_known = true;
-cgqc_player_side = WEST;
+cgqc_player_side = nil;
 cgqc_player_face = "";
 cgqc_player_patch = "";
 cgqc_player_patch_found = false;
@@ -44,6 +44,8 @@ cgqc_player_slinged_helmet = "";
 cgqc_player_max = false;
 cgqc_player_group = createGroup west;
 cgqc_player_groupID = 0;
+cgqc_player_acre_setup = false;
+cgqc_player_radio_names = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
 cgqc_subskills = [
@@ -553,7 +555,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 	[_menu_name, "Keys"], false, 1, {publicVariable "cgqc_config_sideKeys"}] call CBA_fnc_addSetting;
 
 ["cgqc_config_sideLanguage", "CHECKBOX", ["Separate radio/language per side", "Each side has specific radio frequencies and languages"],
-	[_menu_name, "Babel Language"], true, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
+	[_menu_name, "Babel Language"], false, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
 
 // Player custom Options ===================================================================================================
 // Check that 2023 is not present
@@ -687,18 +689,31 @@ waitUntil {scriptDone _convoy};
 #include "\CGQC\loadouts\ifa3\loadouts.hpp"
 
 //Sets radio channel names
-[0] call CGQC_fnc_nameRadios;
-["side"] call CGQC_fnc_setACRE;
+[0] spawn CGQC_fnc_nameRadios;
+
 // Set PTT Delay
 _delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
 // Create default languages
-["en", "English"] call acre_api_fnc_babelAddLanguageType;
-["ru", "Russian"] call acre_api_fnc_babelAddLanguageType;
-["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;
+if (cgqc_config_sideLanguage) then {
+	["en", "English"] call acre_api_fnc_babelAddLanguageType;
+	["ru", "Russian"] call acre_api_fnc_babelAddLanguageType;
+	["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;
+	//[false, true] call acre_api_fnc_setupMission; // Scramble frequencies
+	//[ [west, "English"], [east, "Russian"], [independent, "Arabic"], [civilian, "English", "Russian", "Arabic"] ] call acre_api_fnc_babelSetupMission;
+};
 
+/*
+// Player switch event
+["unit", {
+    params ["_player"];
+	if (cgqc_config_sideLanguage) then {
+		["side"] call CGQC_fnc_setACRE;
+	};
+}, true] call CBA_fnc_addPlayerEventHandler;
+*/
 
 // Setup default groups colors
 ["HQ", [1.0, 0.38, 0,1], [1.0, 0.38, 0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple

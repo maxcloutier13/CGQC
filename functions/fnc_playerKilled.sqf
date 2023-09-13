@@ -1,7 +1,7 @@
 // --- playerKilled ----------------------------------------------------------
 // Code in the event a player gets dead
 params ["_unit", "_killer", "_instigator", "_useEffects"];
-diag_log "[CGQC_EVENT] playerKilled started";
+diag_log format ["[CGQC_EVENT] playerKilled %1/Killer:%2/Inst:%3/Effect:%4 started", _unit, _killer, _instigator, _useEffects];
 
 if (local _unit) then {
 	_unit setVariable["Saved_Loadout",getUnitLoadout _unit];
@@ -24,7 +24,7 @@ if (local _unit) then {
 	if (isNull "_instigator") then {
 		_killa = name _killer;
 	} else {
-		_killa = _name _instigator;
+		_killa = name _instigator;
 	};
 
 	if (player isEqualTo _killer || player isEqualTo _instigator) then {

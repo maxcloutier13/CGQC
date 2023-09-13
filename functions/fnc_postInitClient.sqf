@@ -2,12 +2,24 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.4";
+_version = "4.4.1";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
-waitUntil { cgqc_start_preInit_done};
 // Set side
 cgqc_player_side = side player;
+
+// Set language and radio channels
+["side"] call CGQC_fnc_setACRE;
+
+// Reset radios in case.
+_radios = call acre_api_fnc_getCurrentRadioList;
+{
+	player unassignItem _x;
+	player removeItem _x;
+} forEach _radios;
+
+waitUntil {sleep 0.5; cgqc_player_acre_setup;};
+waitUntil {sleep 0.5; cgqc_player_radio_names;};
 
 // Client-side code
 diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
@@ -229,6 +241,7 @@ cgqc_start_postInitClient_done = true;
 	private _map = findDisplay 12;
 	ctrlActivate (_map displayCtrl 107); // Toggle map textures off
 };
+
 
 sleep 3;
 // Set default voice volume
