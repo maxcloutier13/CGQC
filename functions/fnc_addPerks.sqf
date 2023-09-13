@@ -234,6 +234,10 @@ _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", 
 _action = [ "zeus_fix_arma_tp", "Teleport to Leader", "", {["teleport"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+// Dynamic group
+_action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Open items =========================================================================================================
 // Open IFAK
 _action = [ "menu_self_ifak", "Unpack: IFAK", "\CGQC\textures\icon_med", {["ifak", player, true] call CGQC_fnc_openMedical}, {[player, 'cgqc_items_ifak'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
@@ -325,10 +329,12 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace
 // ------ Langages
 _action = ["zeus_babel_zeus", "Zeus: learn all languages", "", {["side"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = ["zeus_babel_on", "Separate Languages: Turn On", "", {cgqc_config_sideLanguage = true; ["side"] call CGQC_fnc_setACRE}, {!cgqc_config_sideLanguage} ] call ace_interact_menu_fnc_createAction;
+_action = ["zeus_babel_on", "Separate Languages: Turn On", "", {cgqc_config_sideLanguage = true; [-1, {["side"] call CGQC_fnc_setACRE}] call CBA_fnc_globalExecute;}, {!cgqc_config_sideLanguage} ] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = ["zeus_babel_off", "Separate Languages: Turn Off", "", {cgqc_config_sideLanguage = false; ["unlock"] call CGQC_fnc_setACRE}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
+_action = ["zeus_babel_off", "Separate Languages: Turn Off", "", {cgqc_config_sideLanguage = false; [-1, {["unlock"] call CGQC_fnc_setACRE}] call CBA_fnc_globalExecute;}, {cgqc_config_sideLanguage }] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
 
 // Faction relations
 _action = ["zeus_relations", "Faction Relations", "", {}, {true}] call ace_interact_menu_fnc_createAction;
