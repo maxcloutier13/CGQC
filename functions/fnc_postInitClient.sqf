@@ -8,6 +8,7 @@ player setVariable ["cgqc_version_core", _version, true]; // Set the client's mo
 // Set side
 cgqc_player_side = side player;
 
+/*
 // Set language and radio channels
 ["side"] call CGQC_fnc_setACRE;
 
@@ -20,6 +21,7 @@ _radios = call acre_api_fnc_getCurrentRadioList;
 
 waitUntil {sleep 0.5; cgqc_player_acre_setup;};
 waitUntil {sleep 0.5; cgqc_player_radio_names;};
+*/
 
 // Client-side code
 diag_log "[CGQC_INIT] checking if intro/welcome should be shown";

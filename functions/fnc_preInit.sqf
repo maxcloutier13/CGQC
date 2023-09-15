@@ -554,8 +554,11 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_customKey", "CHECKBOX", ["Get CustomKey action", "Action on player to get a custom key to specific vehicle"],
 	[_menu_name, "Keys"], false, 1, {publicVariable "cgqc_config_sideKeys"}] call CBA_fnc_addSetting;
 
-["cgqc_config_sideLanguage", "CHECKBOX", ["Separate radio/language per side", "Each side has specific radio frequencies and languages"],
-	[_menu_name, "Babel Language"], false, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
+["cgqc_config_sideLanguage", "CHECKBOX", ["Separate language per side", "Each side has specific languages"],
+	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
+
+["cgqc_config_sideRadios", "CHECKBOX", ["Separate radios per side", "Each side has specific radio frequencies"],
+	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideRadios"}] call CBA_fnc_addSetting;
 
 // Player custom Options ===================================================================================================
 // Check that 2023 is not present
@@ -696,6 +699,7 @@ _delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
+/*
 // Create default languages
 if (cgqc_config_sideLanguage) then {
 	["en", "English"] call acre_api_fnc_babelAddLanguageType;
@@ -703,7 +707,7 @@ if (cgqc_config_sideLanguage) then {
 	["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;
 	//[false, true] call acre_api_fnc_setupMission; // Scramble frequencies
 	//[ [west, "English"], [east, "Russian"], [independent, "Arabic"], [civilian, "English", "Russian", "Arabic"] ] call acre_api_fnc_babelSetupMission;
-};
+};*/
 
 /*
 // Player switch event

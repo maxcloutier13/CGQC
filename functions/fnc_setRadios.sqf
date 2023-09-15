@@ -21,7 +21,7 @@ _packRadio_2 = "";
 _packRadio_3 = "";
 
 waitUntil {([] call acre_api_fnc_isInitialized)};
-waitUntil {cgqc_player_acre_setup};
+//waitUntil {cgqc_player_acre_setup};
 
 switch (_type) do {
 	case "defaultLR":	{

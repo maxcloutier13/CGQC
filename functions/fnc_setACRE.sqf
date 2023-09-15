@@ -6,6 +6,7 @@ _language = ["en"];
 _radios = "default";
 _info = "All English";
 
+/*
 switch (_type) do {
 	case "unlock": {
 		[false, false] call acre_api_fnc_setupMission;
@@ -33,12 +34,18 @@ switch (_type) do {
 	};
 };
 
-
+if !(cgqc_config_sideLanguage) then {
+	_language = ["en"];
+	_info = "All English";
+};
 // Set language
 if (_language isNotEqualTo "") then {
 	[_language] call acre_api_fnc_babelSetSpokenLanguages;
 	[_language select 0] call acre_sys_core_fnc_setSpeakingLanguage;
 	hint format ["You speak %1", _info];
+};
+if !(cgqc_config_sideRadios) then {
+	_radios = "default";
 };
 // Set radio frequencies
 diag_log "[CGQC_FNC] setACRE - Setting frequencies";
@@ -47,6 +54,6 @@ diag_log "[CGQC_FNC] setACRE - Setting frequencies";
 
 
 cgqc_player_acre_setup = true;
-
+*/
 diag_log format ["[CGQC_FNC] setACRE %1: %2/%3 executed", _info, _language, _radios];
 diag_log "[CGQC_FNC] setACRE done";
