@@ -22,7 +22,7 @@ cgqc_mk3_transition = false;
 cgqc_player_loadAll = true;
 // *** Player **********************
 cgqc_player_known = true;
-cgqc_player_side = WEST;
+cgqc_player_side = nil;
 cgqc_player_face = "";
 cgqc_player_patch = "";
 cgqc_player_patch_found = false;
@@ -44,6 +44,8 @@ cgqc_player_slinged_helmet = "";
 cgqc_player_max = false;
 cgqc_player_group = createGroup west;
 cgqc_player_groupID = 0;
+cgqc_player_acre_setup = false;
+cgqc_player_radio_names = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
 cgqc_subskills = [
@@ -256,7 +258,9 @@ jibrm_restrictmarkers_shareDistance = 10;
 // Check what DLC the player owns
 cgqc_player_ownedDLCs = getDLCs 1;
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
-
+// CDLC
+cgqc_player_hasSahara = (1681170 in cgqc_player_ownedDLCs);
+// Mods
 cgqc_player_hasAceMedical = ["ace_medical_treatment"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasAnti = ["A3A_Events"] call ace_common_fnc_isModLoaded;
 cgqc_player_has23rd = ["23rd_Logo_core"] call ace_common_fnc_isModLoaded;
@@ -273,10 +277,19 @@ if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam
 if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
+
+
 //For specific modes of games, skip some options
 if (cgqc_player_hasAnti) then {
 	cgqc_player_loadAll = false;
 };
+
+// Western sahara missions
+if (cgqc_player_hasSahara) then {
+	cgqc_player_loadAll = false;
+	//cgqc_mission_dro = true;
+};
+
 
 // Acre default radio
 if (cgqc_player_hasUnsung) then {
@@ -552,8 +565,11 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_customKey", "CHECKBOX", ["Get CustomKey action", "Action on player to get a custom key to specific vehicle"],
 	[_menu_name, "Keys"], false, 1, {publicVariable "cgqc_config_sideKeys"}] call CBA_fnc_addSetting;
 
-["cgqc_config_sideLanguage", "CHECKBOX", ["Separate radio/language per side", "Each side has specific radio frequencies and languages"],
-	[_menu_name, "Babel Language"], true, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
+["cgqc_config_sideLanguage", "CHECKBOX", ["Separate language per side", "Each side has specific languages"],
+	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
+
+["cgqc_config_sideRadios", "CHECKBOX", ["Separate radios per side", "Each side has specific radio frequencies"],
+	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideRadios"}] call CBA_fnc_addSetting;
 
 // Player custom Options ===================================================================================================
 // Check that 2023 is not present
@@ -687,18 +703,32 @@ waitUntil {scriptDone _convoy};
 #include "\CGQC\loadouts\ifa3\loadouts.hpp"
 
 //Sets radio channel names
-[0] call CGQC_fnc_nameRadios;
-["side"] call CGQC_fnc_setACRE;
+[0] spawn CGQC_fnc_nameRadios;
+
 // Set PTT Delay
 _delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
+/*
 // Create default languages
-["en", "English"] call acre_api_fnc_babelAddLanguageType;
-["ru", "Russian"] call acre_api_fnc_babelAddLanguageType;
-["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;
+if (cgqc_config_sideLanguage) then {
+	["en", "English"] call acre_api_fnc_babelAddLanguageType;
+	["ru", "Russian"] call acre_api_fnc_babelAddLanguageType;
+	["ab", "Arabic"] call acre_api_fnc_babelAddLanguageType;
+	//[false, true] call acre_api_fnc_setupMission; // Scramble frequencies
+	//[ [west, "English"], [east, "Russian"], [independent, "Arabic"], [civilian, "English", "Russian", "Arabic"] ] call acre_api_fnc_babelSetupMission;
+};*/
 
+/*
+// Player switch event
+["unit", {
+    params ["_player"];
+	if (cgqc_config_sideLanguage) then {
+		["side"] call CGQC_fnc_setACRE;
+	};
+}, true] call CBA_fnc_addPlayerEventHandler;
+*/
 
 // Setup default groups colors
 ["HQ", [1.0, 0.38, 0,1], [1.0, 0.38, 0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple

@@ -60,6 +60,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
 
     // Cloutier thangs
     if (cgqc_player_max) then {
+        if !([player, "taro_tripwire_spool"] call ace_common_fnc_hasItem) then {player addItem "taro_tripwire_spool";};
         if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_lighter";};
         if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_cigpack";};
         if !([player, "immersion_cigs_cigar0_nv"] call ace_common_fnc_hasItem) then {player addItem "immersion_cigs_cigar0_nv";};
@@ -79,8 +80,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
 
     //Set patch back
     diag_log "[CGQC_FNC] switchRole - set patch back";
-    player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
-    [ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
+    [] call CGQC_fnc_setPatch;
 
     // Lower gun
     diag_log "[CGQC_FNC] switchRole - lower gun";

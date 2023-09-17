@@ -2,12 +2,26 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.4";
+_version = "4.4.1";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
-waitUntil { cgqc_start_preInit_done};
 // Set side
 cgqc_player_side = side player;
+
+/*
+// Set language and radio channels
+["side"] call CGQC_fnc_setACRE;
+
+// Reset radios in case.
+_radios = call acre_api_fnc_getCurrentRadioList;
+{
+	player unassignItem _x;
+	player removeItem _x;
+} forEach _radios;
+
+waitUntil {sleep 0.5; cgqc_player_acre_setup;};
+waitUntil {sleep 0.5; cgqc_player_radio_names;};
+*/
 
 // Client-side code
 diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
@@ -56,6 +70,7 @@ _beret = [] call CGQC_fnc_getRankedBeret;
 _set = [] call CGQC_fnc_setPatch;
 
 // Dynamic group -------------------------------------------------------------------------------------------------
+["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 //["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 cgqc_player_group = group player;
 cgqc_player_groupID = groupId player;
@@ -95,27 +110,6 @@ if (cgqc_player_loadAll) then {
 	//On map click (_pos, _units,_shift,_alt)
 	onMapSingleClick "call CGQC_fnc_mapShareList;false;";
 
-
-	// Whisper/Yelling event
-	cgqc_event_talk = ["acre_startedSpeaking", {
-		params ["_unit", "_onRadio", "_radioId", "_speakingType"];
-		//If volume is low and player is not talking on radio
-		_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
-		// Volume is low: notify the player he is whispering
-		if (!_onRadio) then {
-			_txt = "";
-			if (_vol < 0.3) then {_txt = parseText("<t color='#006400'>Whispering</t>")};
-			//if (_vol isEqualTo 0.4) then {_txt = parseText("<t color='##4169e1'>Talking</t>")};
-			if (_vol isEqualTo 1.0) then {_txt = parseText("<t color='#ff8c00'>Loud</t>")};
-			if (_vol isEqualTo 1.3) then {_txt = parseText("<t color='#b10000'>Shouting</t>")};
-			if (_txt isNotEqualTo "") then {
-				[ _txt, 0, 1.15, 1, 0.8 ] spawn BIS_fnc_dynamicText;
-			};
-		};
-	}] call CBA_fnc_addEventHandler;
-
-
-
 	//Maximum mags event handler
 	["ace_arsenal_displayClosed", {
 		[] call CGQC_fnc_maxMags;
@@ -129,21 +123,6 @@ if (cgqc_player_loadAll) then {
 			playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
 		};
 	}] call CBA_fnc_addEventHandler;
-
-	// Friendly fire fix - Prevent AI from shooting back
-	player addEventHandler [ "HandleRating", {
-			params["_player", "_rating"];
-			_return = _rating;
-			if(rating _player < 0) then {
-				_return = abs rating _player;
-			} else {
-				if(_rating + rating _player < 0) then {
-					_return = 0;
-				};
-			};
-			_return
-		}
-	];
 };
 
 // ------ Fortify --------------------------------------------------------------------------------------
@@ -184,7 +163,47 @@ player addEventHandler ["GetInMan", {
 	["ready", false] call CGQC_fnc_perksBasic;
 }];
 
+// Friendly fire fix - Prevent AI from shooting back
+player addEventHandler [ "HandleRating", {
+		params["_player", "_rating"];
+		_return = _rating;
+		if(rating _player < 0) then {
+			_return = abs rating _player;
+		} else {
+			if(_rating + rating _player < 0) then {
+				_return = 0;
+			};
+		};
+		_return
+	}
+];
 
+// Whisper/Yelling event
+cgqc_event_talk = ["acre_startedSpeaking", {
+	params ["_unit", "_onRadio", "_radioId", "_speakingType"];
+	//If volume is low and player is not talking on radio
+	_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
+	// Volume is low: notify the player he is whispering
+	if (!_onRadio) then {
+		_txt = "";
+		if (_vol < 0.3) then {_txt = parseText("<t color='#006400'>Whispering</t>")};
+		//if (_vol isEqualTo 0.4) then {_txt = parseText("<t color='##4169e1'>Talking</t>")};
+		if (_vol isEqualTo 1.0) then {_txt = parseText("<t color='#ff8c00'>Loud</t>")};
+		if (_vol isEqualTo 1.3) then {_txt = parseText("<t color='#b10000'>Shouting</t>")};
+		if (_txt isNotEqualTo "") then {
+			[ _txt, 0, 1.15, 1, 0.8 ] spawn BIS_fnc_dynamicText;
+		};
+	};
+}] call CBA_fnc_addEventHandler;
+
+// Team switched
+addMissionEventHandler ["TeamSwitch", {
+	params ["_previousUnit", "_newUnit"];
+	_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >TEAMSWITCHED!</t><br/>");
+	[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
+	// Reset patch
+	[] call CGQC_fnc_setPatch;
+}];
 
 
 // Boost dragging maximum
@@ -230,7 +249,15 @@ cgqc_start_postInitClient_done = true;
 	ctrlActivate (_map displayCtrl 107); // Toggle map textures off
 };
 
-sleep 3;
+// Create/Join initial group
+[groupId (group player)] call CGQC_fnc_joinGroup;
+
+sleep 2;
+// Set back custom patch
+[] call CGQC_fnc_setPatch;
+if (!cgqc_flag_isTraining) then {
+	[] call CGQC_fnc_setGroupRadios;
+};
 // Set default voice volume
 [player, "talk"] call CGQC_fnc_setVoiceVolume;
 // Save initial volume

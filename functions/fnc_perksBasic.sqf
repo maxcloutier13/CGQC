@@ -7,6 +7,10 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
     params ["_type", "_fromLoadout"];
     //
     switch (_type) do {
+        case "group": {
+            ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+            hint "Press U for the classic dynamic group";
+        };
         case "stealth":{
             cgqc_player_state = 0;
             [player, "whisper"] call CGQC_fnc_setVoiceVolume;

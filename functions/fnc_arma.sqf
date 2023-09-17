@@ -26,7 +26,7 @@ switch (_type) do {
 };
 y_target = _target;
 
-y_txt = format ["<t color='FF0000'>I just used magic functions to %1</t>", _type];
+y_txt = format [" just used magic functions to %1", _type];
 [-1, {y_target globalChat y_txt}] call CBA_fnc_globalExecute;
 
 diag_log format ["!!!![CGQC_FNC]!!!!! arma %1 used:%2",_target , _type];

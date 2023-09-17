@@ -16,7 +16,7 @@ _unit setFace(_unit getVariable["Saved_Face",[]]);
 cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
 
 // Set patch
-[] spawn CGQC_fnc_keepPatch;
+[] spawn CGQC_fnc_setPatch;
 // Reload radios
 _radios = _unit getVariable "Radio_Settings_radios";
 {

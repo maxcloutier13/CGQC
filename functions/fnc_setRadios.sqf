@@ -20,7 +20,8 @@ _packRadio_1 = "";
 _packRadio_2 = "";
 _packRadio_3 = "";
 
-waitUntil { time > 10};
+waitUntil {([] call acre_api_fnc_isInitialized)};
+//waitUntil {cgqc_player_acre_setup};
 
 switch (_type) do {
 	case "defaultLR":	{
@@ -460,7 +461,5 @@ switch (_type) do {
 		hint "fnc_setRadios fucked up. ";
 	};
 };
-
-[] call CGQC_fnc_setGroupRadios;
 
 diag_log "[CGQC_FNC] setRadios done";

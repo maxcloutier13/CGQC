@@ -13,7 +13,7 @@ diag_log format ["[CGQC_FNC] setZeus started"];
 		hint "Zeus!";
 		sleep 1;
 
-
+		/*
 		[] spawn {
 			while {true} do {
 				// Make sure radios are on
@@ -24,9 +24,9 @@ diag_log format ["[CGQC_FNC] setZeus started"];
 						["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;
 					};
 				};
-				sleep 10;
+				sleep 20;
 			};
-		};
+		};*/
 		// Ensure Zeus keeps slot, despite admin logging
 		while { true } do {
 			// Check that Zeus has been assigned to player
@@ -47,7 +47,6 @@ diag_log format ["[CGQC_FNC] setZeus started"];
 							sleep 2.0;
 						} else {
 							hint format["Zeus assigned to curator %1", _x];
-							["side"] call CGQC_fnc_setACRE;
 							_exitLoop = true;
 						};
 					};
