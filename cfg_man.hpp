@@ -39,7 +39,7 @@ class CAManBase: Man {
 				{
 					displayName = "HQ";
 					condition = "true";
-					statement = "['HQ' call CGQC_fnc_joinGroup]";
+					statement = "['HQ'] call CGQC_fnc_joinGroup";
 				};
 				class CGQC_group_manager_spartan
 				{
@@ -50,28 +50,28 @@ class CAManBase: Man {
 					{
 						displayName = "Spartan-1";
 						condition = "true";
-						statement = "['Spartan-1' call CGQC_fnc_joinGroup]";
+						statement = "['Spartan-1'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
 					};
 					class CGQC_group_manager_spartan_2
 					{
 						displayName = "Spartan-2";
 						condition = "true";
-						statement = "['Spartan-2' call CGQC_fnc_joinGroup]";
+						statement = "['Spartan-2'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
 					};
 					class CGQC_group_manager_spartan_3
 					{
 						displayName = "Spartan-3";
 						condition = "true";
-						statement = "['Spartan-3' call CGQC_fnc_joinGroup]";
+						statement = "['Spartan-3'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
 					};
 					class CGQC_group_manager_spartan_4
 					{
 						displayName = "Spartan-4";
 						condition = "true";
-						statement = "['Spartan-4' call CGQC_fnc_joinGroup]";
+						statement = "['Spartan-4'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
 					};
 				};
@@ -84,28 +84,28 @@ class CAManBase: Man {
 					{
 						displayName = "Trident-1";
 						condition = "true";
-						statement = "['Trident-1' call CGQC_fnc_joinGroup]";
+						statement = "['Trident-1'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
 					};
 					class CGQC_group_manager_trident_2
 					{
 						displayName = "Trident-2";
 						condition = "true";
-						statement = "['Trident-2' call CGQC_fnc_joinGroup]";
+						statement = "['Trident-2'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
 					};
 					class CGQC_group_manager_trident_3
 					{
 						displayName = "Trident-3";
 						condition = "true";
-						statement = "['Trident-3' call CGQC_fnc_joinGroup]";
+						statement = "['Trident-3'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
 					};
 					class CGQC_group_manager_trident_4
 					{
 						displayName = "Trident-4";
 						condition = "true";
-						statement = "['Trident-4' call CGQC_fnc_joinGroup]";
+						statement = "['Trident-4'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
 					};
 				};
@@ -118,19 +118,19 @@ class CAManBase: Man {
 					{
 						displayName = "Hermes";
 						condition = "true";
-						statement = "['Hermes' call CGQC_fnc_joinGroup]";
+						statement = "['Hermes'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_orion_1
 					{
 						displayName = "Orion-1";
 						condition = "true";
-						statement = "['Orion-1' call CGQC_fnc_joinGroup]";
+						statement = "['Orion-1'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_orion_2
 					{
 						displayName = "Orion-2";
 						condition = "true";
-						statement = "['Orion-1' call CGQC_fnc_joinGroup]";
+						statement = "['Orion-1'] call CGQC_fnc_joinGroup";
 					};
 				};
 				class CGQC_group_manager_centaure
@@ -142,19 +142,19 @@ class CAManBase: Man {
 					{
 						displayName = "Centaure-1";
 						condition = "true";
-						statement = "['Centaure-1' call CGQC_fnc_joinGroup]";
+						statement = "['Centaure-1'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_centaure_2
 					{
 						displayName = "Centaure-2";
 						condition = "true";
-						statement = "['Centaure-2' call CGQC_fnc_joinGroup]";
+						statement = "['Centaure-2'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_centaure_3
 					{
 						displayName = "Centaure-3";
 						condition = "true";
-						statement = "['Centaure-3' call CGQC_fnc_joinGroup]";
+						statement = "['Centaure-3'] call CGQC_fnc_joinGroup";
 					};
 				};
 				class CGQC_group_manager_griffon
@@ -166,19 +166,19 @@ class CAManBase: Man {
 					{
 						displayName = "Griffon-1";
 						condition = "true";
-						statement = "['Griffon-1' call CGQC_fnc_joinGroup]";
+						statement = "['Griffon-1'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_griffon_2
 					{
 						displayName = "Griffon-2";
 						condition = "true";
-						statement = "['Griffon-2' call CGQC_fnc_joinGroup]";
+						statement = "['Griffon-2'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_griffon_3
 					{
 						displayName = "Griffon-3";
 						condition = "true";
-						statement = "['Griffon-3' call CGQC_fnc_joinGroup]";
+						statement = "['Griffon-3'] call CGQC_fnc_joinGroup";
 					};
 				};
 				class CGQC_group_manager_pegase
@@ -190,19 +190,19 @@ class CAManBase: Man {
 					{
 						displayName = "Pegase-1";
 						condition = "true";
-						statement = "['Pegase-1' call CGQC_fnc_joinGroup]";
+						statement = "['Pegase-1'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_pegase_2
 					{
 						displayName = "Pegase-2";
 						condition = "true";
-						statement = "['Pegase-2' call CGQC_fnc_joinGroup]";
+						statement = "['Pegase-2'] call CGQC_fnc_joinGroup";
 					};
 					class CGQC_group_manager_pegase_3
 					{
 						displayName = "Pegase-3";
 						condition = "true";
-						statement = "['Pegase-3' call CGQC_fnc_joinGroup]";
+						statement = "['Pegase-3'] call CGQC_fnc_joinGroup";
 					};
 				};
 			};

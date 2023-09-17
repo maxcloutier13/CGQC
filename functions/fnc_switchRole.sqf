@@ -80,8 +80,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
 
     //Set patch back
     diag_log "[CGQC_FNC] switchRole - set patch back";
-    player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
-    [ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
+    [] call CGQC_fnc_setPatch;
 
     // Lower gun
     diag_log "[CGQC_FNC] switchRole - lower gun";

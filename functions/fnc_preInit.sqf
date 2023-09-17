@@ -258,7 +258,9 @@ jibrm_restrictmarkers_shareDistance = 10;
 // Check what DLC the player owns
 cgqc_player_ownedDLCs = getDLCs 1;
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
-
+// CDLC
+cgqc_player_hasSahara = (1681170 in cgqc_player_ownedDLCs);
+// Mods
 cgqc_player_hasAceMedical = ["ace_medical_treatment"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasAnti = ["A3A_Events"] call ace_common_fnc_isModLoaded;
 cgqc_player_has23rd = ["23rd_Logo_core"] call ace_common_fnc_isModLoaded;
@@ -275,10 +277,19 @@ if (cgqc_player_hasUnsung) then {cgqc_player_isVietnam = true;}; // Vietnam
 if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
+
+
 //For specific modes of games, skip some options
 if (cgqc_player_hasAnti) then {
 	cgqc_player_loadAll = false;
 };
+
+// Western sahara missions
+if (cgqc_player_hasSahara) then {
+	cgqc_player_loadAll = false;
+	//cgqc_mission_dro = true;
+};
+
 
 // Acre default radio
 if (cgqc_player_hasUnsung) then {

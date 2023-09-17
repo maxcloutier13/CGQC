@@ -4,6 +4,7 @@ params [];
 diag_log format ["[CGQC_FNC] setGroupRadios started"];
 
 // Set default 343 channel for group
+_notFound = false;
 _ch = 0;
 switch (groupid cgqc_player_group) do {
 case "Spartan-1": {_ch = 1;};
@@ -29,11 +30,24 @@ case "Pegase-2";
 case "Pegase-3";
 case "Supports": {_ch = 10;};
 case "HQ": {_ch = 16;};
-default {_ch = 1;};
+default {
+	_ch = 1;};
+	_notFound = true;
 };
-// Find 343
-_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-// Set channel
-[_personalRadio, _ch] call acre_api_fnc_setRadioChannel;
+if (_notFound) then {
+	hint "Group not found. Set your 343 channel manually";
+} else {
+	// Find 343
+	_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
+	if !(isNil "_personalRadio") then {
+		// Set channel
+		hint format ["343 set to team channel:%1", _ch];
+		[_personalRadio, _ch] call acre_api_fnc_setRadioChannel;
+	} else {
+		hint "no 343 found... skipping";
+	};
+};
+
+[] call CGQC_fnc_setPatch;
 
 diag_log "[CGQC_FNC] setRadios done";

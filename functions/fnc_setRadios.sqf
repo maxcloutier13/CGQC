@@ -462,6 +462,4 @@ switch (_type) do {
 	};
 };
 
-[] call CGQC_fnc_setGroupRadios;
-
 diag_log "[CGQC_FNC] setRadios done";
