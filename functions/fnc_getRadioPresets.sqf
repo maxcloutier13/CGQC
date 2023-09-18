@@ -38,6 +38,7 @@ if (cgqc_flag_isTraining) then {
 	sleep 5;
 	diag_log format ["[CGQC_FNC] getRadioPresets setRadios: %1/%2 started", _preset, _team];
 	[_preset, _team] spawn CGQC_fnc_setRadios;
+	[] call CGQC_fnc_setGroupRadios;
 };
 
 diag_log "[CGQC_FNC] getRadioPresets done";

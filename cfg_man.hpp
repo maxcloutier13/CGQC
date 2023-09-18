@@ -75,37 +75,37 @@ class CAManBase: Man {
 						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
 					};
 				};
-				class CGQC_group_manager_trident
+				class CGQC_group_manager_typhon
 				{
-					displayName = "Trident";
+					displayName = "Typhon";
 					condition = "true";
 					statement = "";
-					class CGQC_group_manager_trident_1
+					class CGQC_group_manager_typhon_1
 					{
-						displayName = "Trident-1";
+						displayName = "Typhon-1";
 						condition = "true";
-						statement = "['Trident-1'] call CGQC_fnc_joinGroup";
+						statement = "['Typhon-1'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
 					};
-					class CGQC_group_manager_trident_2
+					class CGQC_group_manager_typhon_2
 					{
-						displayName = "Trident-2";
+						displayName = "Typhon-2";
 						condition = "true";
-						statement = "['Trident-2'] call CGQC_fnc_joinGroup";
+						statement = "['Typhon-2'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
 					};
-					class CGQC_group_manager_trident_3
+					class CGQC_group_manager_typhon_3
 					{
-						displayName = "Trident-3";
+						displayName = "Typhon-3";
 						condition = "true";
-						statement = "['Trident-3'] call CGQC_fnc_joinGroup";
+						statement = "['Typhon-3'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
 					};
-					class CGQC_group_manager_trident_4
+					class CGQC_group_manager_typhon_4
 					{
-						displayName = "Trident-4";
+						displayName = "Typhon-4";
 						condition = "true";
-						statement = "['Trident-4'] call CGQC_fnc_joinGroup";
+						statement = "['Typhon-4'] call CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
 					};
 				};

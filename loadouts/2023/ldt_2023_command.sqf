@@ -54,6 +54,9 @@ switch (_variant) do {
 		player addItemToBackpack "rhsusf_m112_mag";
 		player addItemToBackpack "rhsusf_mine_m14_mag";
 	};
+	case "zeus": {
+		if (_ruck isNotEqualTo "") then {["backpack", "cgqc_pack_mk1_magic_zeus"] call CGQC_fnc_switchStuff;};
+	};
 };
 
 diag_log "[CGQC_FNC] ldt_2023_c_hq done";
