@@ -20,8 +20,9 @@ if (local _unit) then {
 	_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
 	_unit setVariable["Radio_Settings_ptt", _mpttRadioList];
 
+
 	_killa = "";
-	if (isNull "_instigator") then {
+	if (isNil "_instigator") then {
 		_killa = name _killer;
 	} else {
 		_killa = name _instigator;
@@ -37,7 +38,6 @@ if (local _unit) then {
 	_text = format ["<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Woops! tu t'es fait pèté par:
 		<br/> %1", _killa];
  	[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
-
 };
 
 diag_log format ["[CGQC_KILL]%1 killed by %2", name _unit, _killa];

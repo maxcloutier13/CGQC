@@ -14,7 +14,7 @@ _allGroups = ["GetAllGroups"] call BIS_fnc_dynamicGroups;
 // Check if group is registered
 if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
     // Join the group
-    [-2,{["AddGroupMember", [n_targetGroup, player]] call BIS_fnc_dynamicGroups}] call CBA_fnc_globalExecute;
+    ["SwitchGroup", [n_targetGroup, player]] remoteExecCall ["BIS_fnc_dynamicGroups", 2];
 } else {// Not registered
     // Check if group already exists itself
     _exists = false;
@@ -29,17 +29,15 @@ if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
         n_targetGroup = createGroup _side;
 	    n_targetGroup setGroupId [_groupName]; // Event when a unit joins the group
         [player] joinSilent n_targetGroup;
-    } else {
-        if (leader group player isEqualTo player) then {
-            // Player is leader
-            n_data = ["cgqc_patch_logo", _groupName, false];
-            [-2,{["RegisterGroup", [n_targetGroup, player, n_data]] call BIS_fnc_dynamicGroups}] call CBA_fnc_globalExecute;
-        };
+    };
+    if (leader group player isEqualTo player) then {
+        // Player is leader
+        n_data = ["cgqc_patch_logo", _groupName, false];
+        ["RegisterGroup", [n_targetGroup, leader n_targetGroup, n_data]] remoteExec ["BIS_fnc_dynamicGroups", 2];
     };
     n_targetGroup addEventHandler ["UnitJoined", {
         params ["_group", "_newUnit"];
         if (!cgqc_flag_isTraining) then {[] call CGQC_fnc_setGroupRadios};
-        [] call CGQC_fnc_setPatch;
     }];
 };
 
@@ -47,7 +45,6 @@ cgqc_player_group = n_targetGroup;
 cgqc_player_groupID = groupId player;
 
 if (!cgqc_flag_isTraining) then {[] call CGQC_fnc_setGroupRadios};
-[] call CGQC_fnc_setPatch;
 
 hint format ["You've joined %1", _groupName];
 

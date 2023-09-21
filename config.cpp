@@ -149,22 +149,13 @@ class CfgMainMenuSpotlight // RscDisplayMain >> Spotlight works but is considere
 		actionText = "Join CGQC server"; // Text displayed in top left corner of on-hover white frame
 		condition = "true"; // Condition for showing the spotlight
 	};
-	class CGQC_synthwave : CGQC_spotlight
-	{
-		picture = "\CGQC\textures\CGQC_512_synth.paa";
-	};
 	class CGQC_dance : CGQC_spotlight
 	{
 		picture = "\CGQC\textures\CGQC_512_dance.paa";
 	};
-
 	class CGQC_flag : CGQC_spotlight
 	{
 		picture = "\CGQC\textures\CGQC_512_flag.paa";
-	};
-	class CGQC_group : CGQC_spotlight
-	{
-		picture = "\CGQC\textures\CGQC_512_group.paa";
 	};
 	class CGQC_nvg : CGQC_spotlight
 	{
@@ -177,5 +168,13 @@ class CfgMainMenuSpotlight // RscDisplayMain >> Spotlight works but is considere
 	class CGQC_swat2 : CGQC_spotlight
 	{
 		picture = "\CGQC\textures\CGQC_512_swat2.paa";
+	};
+	class CGQC_group : CGQC_spotlight
+	{
+		picture = "\CGQC\textures\CGQC_512_group.paa";
+	};
+	class CGQC_synthwave : CGQC_spotlight
+	{
+		picture = "\CGQC\textures\CGQC_512_synth.paa";
 	};
 };

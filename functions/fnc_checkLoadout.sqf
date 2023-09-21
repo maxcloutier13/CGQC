@@ -16,9 +16,11 @@ if (isNil "_switch") then {
 	if !(_switch) then {
 		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
 		_load = true;
+    } else {
+        hint "Skipping loadout";
+        diag_log "[CGQC_INIT] postInitClient - NOT loading custom loadout";
     };
 };
-
 
 if (_load) then {
     switch (_type) do {

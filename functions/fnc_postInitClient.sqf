@@ -2,7 +2,7 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.4.1";
+_version = "4.4.4";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 // Set side
@@ -70,7 +70,7 @@ _beret = [] call CGQC_fnc_getRankedBeret;
 _set = [] call CGQC_fnc_setPatch;
 
 // Dynamic group -------------------------------------------------------------------------------------------------
-["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
+["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 //["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 cgqc_player_group = group player;
 cgqc_player_groupID = groupId player;

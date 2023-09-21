@@ -23,9 +23,9 @@ class CGQC_Soldat_Base : B_Soldier_f
 	class Attributes {
 		class SubCategory
 		{
-			data = "AttributeSystemSubcategory"; // This is needed for the attribute to work
+			data = "AttributeSystemSubcategory";
 			control = "SubCategory";
-			displayName = "CGQC"; // Visible text. Despite the attribute code saying the property should be title, displayName is correct
+			displayName = "CGQC";
 		};
 		class skipLoadout {
 			displayName = "Don't switch loadout";
@@ -33,7 +33,7 @@ class CGQC_Soldat_Base : B_Soldier_f
 			property = "cgqc_var_skipLoadoutSwitch";
 			control = "Checkbox";
 			defaultValue = "false";
-			expression = "_this setVariable ['cgqc_var_skipLoadoutSwitch',_value];";
+			expression = "_this setVariable ['cgqc_var_skipLoadoutSwitch',_value, true];";
 			condition = "objectBrain";
 		};
 	};

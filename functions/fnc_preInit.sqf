@@ -99,6 +99,7 @@ cgqc_range_lane_9_check = false;
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasAceMedical = false;
 cgqc_player_hasContact = false;
+cgqc_player_hasSahara = false;
 cgqc_player_hasAnti = false;
 cgqc_player_hasRHS = false;
 cgqc_player_hasDrongoFactions = false;
@@ -260,7 +261,8 @@ cgqc_player_ownedDLCs = getDLCs 1;
 cgqc_player_hasContact = (1021790 in cgqc_player_ownedDLCs);
 // CDLC
 cgqc_player_hasSahara = (1681170 in cgqc_player_ownedDLCs);
-// Mods
+
+// Mods and actively loaded DLC's
 cgqc_player_hasAceMedical = ["ace_medical_treatment"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasAnti = ["A3A_Events"] call ace_common_fnc_isModLoaded;
 cgqc_player_has23rd = ["23rd_Logo_core"] call ace_common_fnc_isModLoaded;
