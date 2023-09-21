@@ -15,8 +15,6 @@ _rucks = ["cgqc_pack_mk1_radiobag"];
 _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;
 
-// === Linked items ==================================================================================================================
-["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_Full_blk_TI"] call CGQC_fnc_getLinkedItems;
 
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
@@ -31,6 +29,7 @@ switch (_variant) do {
 	case "tl": {
 		for "_i" from 1 to 2 do {player addItemToBackpack "tsp_stickCharge_auto_mag"};
 		for "_i" from 1 to 2 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
+		["2023_basic","cgqc_item_laserdesignator","JAS_GPNVG18_Full_blk_TI"] call CGQC_fnc_getLinkedItems;
 	};
 	case "sl";
 	case "hq": {
@@ -39,7 +38,7 @@ switch (_variant) do {
 		player addItemToBackpack "Rev_darter_item";
 		// === Comms =================================
 		player addItemToBackpack "ACRE_VHF30108SPIKE";
-
+		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_Full_blk_TI"] call CGQC_fnc_getLinkedItems;
 	};
 	case "jtac": {
 		player addItem "ACE_ATragMX";
