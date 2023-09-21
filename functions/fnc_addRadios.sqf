@@ -3,7 +3,11 @@
 params ["_radios"];
 diag_log format ["[CGQC_FNC] addRadios %1 started", _radios];
 {
-	(uniformContainer ACE_player) addItemCargoGlobal [_x, 1];
+	if (_x isEqualTo "ACRE_PRC117F") then {
+		(backpackContainer ACE_player) addItemCargoGlobal [_x, 1];
+	} else {
+		(uniformContainer ACE_player) addItemCargoGlobal [_x, 1];
+	};
 	if (_x isEqualTo "ACRE_PRC148" && isNil "cgqc_event_148") then {
 		cgqc_event_148 = ["acre_startedSpeaking", {
 			params ["_unit", "_onRadio", "_radioId", "_speakingType"];
