@@ -111,8 +111,8 @@ switch (_type) do {
 		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		// Set HQ radio to speaker
-		_success = [_handRadio, true] call acre_api_fnc_setRadioSpeaker;
+		// Set TL radio to speaker
+		//_success = [_handRadio, true] call acre_api_fnc_setRadioSpeaker;
 		hint parseText "
 		--- TL radio setup ---
 		Radio1:Gauche/343/Team<br/>
