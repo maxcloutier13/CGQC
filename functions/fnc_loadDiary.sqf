@@ -2,38 +2,126 @@
 // Post group info in default briefing
 diag_log "[CGQC_FNC] loadDiary started";
 
+player createDiarySubject ["CGQC","CGQC"];
+
 // CGQC Links
 _text = (
 	"<font size='22' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
 	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca/</font>"+"<br/>" +
 	"<font size='20' color='#BDBDBD'>Teamspeak: ts.cgqc.ca</font>"
 );
-player createDiaryRecord ["Diary", ["CGQC Info", _text]];
+player createDiaryRecord ["CGQC", ["Group Info", _text]];
 
+_343_1 = "Spartan-1";
+_343_2 = "Spartan-2";
+_343_3 = "Spartan-3";
+_343_4 = "Spartan-4";
+_343_5 = "Typhon-1";
+_343_6 = "Typhon-2";
+_343_7 = "Typhon-3";
+_343_8 = "Typhon-4";
+_343_9 = "Recon";
+_343_10 = "Supports";
+_343_11 = "Libres";
+_343_16 = "HQ";
+_152_1 = "Spartan";
+_152_2 = "Supports";
+_152_3 = "Griffon";
+_152_4 = "Centaure";
+_152_5 = "Hermes";
+_152_98 = "Blue/Green";
+_152_99 = "Blue/Red";
+
+switch (cgqc_player_side) do {
+	case EAST: {
+		_343_1 = "Viper-1";
+		_343_2 = "Viper-2";
+		_343_3 = "Viper-3";
+		_343_4 = "Viper-4";
+		_343_5 = "Mamba-1";
+		_343_6 = "Mamba-2";
+		_343_7 = "Mamba-3";
+		_343_8 = "Mamba-4";
+		_343_9 = "Recon";
+		_343_10 = "Supports";
+		_343_11 = "Libres";
+		_343_16 = "HQ";
+		_152_1 = "Viper";
+		_152_2 = "Supports";
+		_152_3 = "Valkyrie";
+		_152_4 = "Scorpion";
+		_152_98 = "Red/Green";
+		_152_99 = "Red/Blue";
+	};
+	case INDEPENDENT: {
+		_343_1 = "Bandit-1";
+		_343_2 = "Bandit-2";
+		_343_3 = "Bandit-3";
+		_343_4 = "Bandit-4";
+		_343_5 = "Tango-1";
+		_343_6 = "Tango-2";
+		_343_7 = "Tango-3";
+		_343_8 = "Tango-4";
+		_343_9 = "Recon";
+		_343_10 = "Supports";
+		_343_11 = "Libres";
+		_343_16 = "HQ";
+		_152_1 = "Bandit";
+		_152_2 = "Supports";
+		_152_3 = "Flyboyz";
+		_152_4 = "Hardshells";
+		_152_98 = "Green/Red";
+		_152_99 = "Green/Blue";
+	};
+	default { };
+};
+
+// Common channel names
+_152_6 = "Convoy 1";
+_152_7 = "Convoy 2";
+_152_8 = "Libre";
+// Common channels
+_152_9 = "Zeus";
+_152_69 = "Party";
 // Radio reference
 _text = (
 	"<font size='20' color='#f2f2f2'>Référence Radios</font>" +"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
-	"<font size='18' color='#f2f2f2'>Short-Range - 343</font>" +"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan 1</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 2 - Spartan 2</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 3 - Spartan 3</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 4 - HQ</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 5+ - Libres</font>"+"<br/>" +
+	"<font size='18' color='#f2f2f2'>Short-Range</font>" +"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 1 - %1</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 2 - %2</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 3 - %3</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 4 - %4</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 5 - %5</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 6 - %6</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 7 - %7</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 8 - %8</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 9 - %9</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 10 - %10</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 11+ - %11</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 16 - %12</font>"+"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
-	"<font size='18' color='#f2f2f2'>Long-Range - 152</font>" +"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 1 - Spartan/HQ</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 2 - Support/HQ</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 3 - Griffon</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 4 - Centaure</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 5 - Recon</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 6 - Convoy 1</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 7 - Convoy 2</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 8 - Libre</font>"+"<br/>" +
-	"<font size='16' color='#BDBDBD'>Channel 9 - Zeus</font>"+"<br/>" +
+	"<font size='18' color='#f2f2f2'>Long-Range</font>" +"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 1 - %13</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 2 - %14</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 3 - %15</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 4 - %16</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 5 - %17</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 6 - %18</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 7 - %19</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 8 - %20</font>"+"<br/>" +
+	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
+	"<font size='18' color='#f2f2f2'>Common Channels</font>" +"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 9 - %21</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 69 - %22</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 98 - %23</font>"+"<br/>" +
+	"<font size='16' color='#BDBDBD'>Channel 99 - %24</font>"+"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"
 );
-player createDiaryRecord ["Diary", ["Référence Radios", _text]];
+
+_cleantext = format [_text, _343_1,_343_2,_343_3,_343_4,_343_5,_343_6,_343_7,_343_8,_343_9,_343_10,_343_11,_343_16,_152_1,_152_2,_152_3,_152_4, _152_5,_152_6,_152_7,_152_8,_152_9,_152_69, _152_98, _152_99];
+
+player createDiaryRecord ["CGQC", ["Référence Radios", _cleantext]];
 
 // Training map
 /*

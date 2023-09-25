@@ -4,7 +4,7 @@ params ["_type"];
 
 if (hasInterface) then {
 	try {
-		disableUserInput true;
+
 		_ghillie = "";
 		_to_ghillie = 0;
 		switch (_type) do	{
@@ -98,47 +98,48 @@ if (hasInterface) then {
 		switch (_to_ghillie) do	{
 			case 1: // Change to ghillie
 			{
-				// Save old uniform 
+				// Save old uniform
 				cgqc_perks_ghillie_uniform = uniform player;
 				// Save items
 				_uniform_items = uniformItems player;
-				// Animation 
+				// Animation
 				player playMove "AinvPknlMstpSnonWnonDnon_medic4";
 				sleep 6;
-				// switch to ghillie 
+				// switch to ghillie
 				player forceAddUniform _ghillie;
-				// Add items back 
+				// Add items back
 				{
 					player addItemToUniform _x
 				} forEach _uniform_items;
 				//Lower the camouflage level of unit in ghillie
 				player setUnitTrait ["camouflageCoef", 0.4];
+				player setUnitTrait ["audibleCoef ", 0.8];
 				cgqc_perks_ghillie_isOn = true;
 			};
 			case 2:// Change back to uniform
 			{
 				// Save items
 				_uniform_items = uniformItems player;
-				// Animation 
+				// Animation
 				player playMove "AinvPknlMstpSnonWnonDnon_medic4";
 				sleep 6;
-				// switch to uniform 
+				// switch to uniform
 				player forceAddUniform cgqc_perks_ghillie_uniform;
-				// Add items back 
-				{
-					player addItemToUniform _x
-				} forEach _uniform_items;
-				//Lower the camouflage level of unit in ghillie
-				player setUnitTrait ["camouflageCoef", 1.4];
+				// Add items back
+				{player addItemToUniform _x} forEach _uniform_items;
+				//Back to default coefs
+				player setUnitTrait ["camouflageCoef", 1];
+				player setUnitTrait ["audibleCoef ", 1];
 				cgqc_perks_ghillie_isOn = false;
 			};
 		};
 		sleep 1;
-		disableUserInput false;    
+
 	} catch{ // In case of error: Return control to player
-		disableUserInput false;
+
 		hintc "Erreur: perksRecon";
 	};
+
 };
 
 

@@ -34,6 +34,7 @@ class Boat_Armed_01_base_F : Boat_F {
             allowedPositions[] = {"driver"};
             mountedRadio = "ACRE_PRC117F";
             intercom[] = {"intercom_1"};
+            isRadioRemovable = 1;
         };
     };
 };

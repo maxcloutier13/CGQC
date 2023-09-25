@@ -39,8 +39,8 @@ switch (_type) do {
 				hint "skiptime problem";
 			};
 		};
-		titleText [y_timeText, "BLACK IN",7]; 
-		break;
+		titleText [y_timeText, "BLACK IN",7];
+
 	};
 	case "sunrise":{
 		_sun = date call BIS_fnc_sunriseSunsetTime;
@@ -61,8 +61,8 @@ switch (_type) do {
 				_text = "Aaah... sunset...";
 			};
 		};
-		titleText [_text, "BLACK IN",7]; 
-		break;
+		titleText [_text, "BLACK IN",7];
+
 	};
 	case "nice":{
 		[0,{ 0 setOvercast 0}] call CBA_fnc_globalExecute;
@@ -89,28 +89,28 @@ switch (_type) do {
 		w_north = floor random [0,2,4];
 		_change_wind = true;
 		hint "Low wind.";
-		break;
+
 	};
 	case "wind_med": {
 		w_east = floor random [5,7.5,10];
 		w_north = floor random [5,7.5,10];
 		_change_wind = true;
 		hint "Medium wind.";
-		break;
+
 	};
 	case "wind_hi": {
 		w_east = floor random [10,15,20];
 		w_north = floor random [10,15,20];
 		_change_wind = true;
 		hint "High wind.";
-		break;
+
 	};
 	case "wind_random": {
 		w_east = floor (random [0,20,35]);
 		w_north = floor (random [0,20,35]);
 		_change_wind = true;
 		hint "Random wind.";
-		break;
+
 	};
 };
 if(_change_wind) then {

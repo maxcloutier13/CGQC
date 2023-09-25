@@ -5,14 +5,8 @@
 ["backpack", "B_Kitbag_rgr"] call CGQC_fnc_switchStuff;
 ["vest", "V_PlateCarrier2_rgr"] call CGQC_fnc_switchStuff;
 
-// === Radios ==========================================================================================================
-["tl"] call CGQC_fnc_getRadioPresets;
-
 // === Adjust Items ====================================================================================================
-player unlinkItem "cgqc_item_rangefinder";
-player linkItem "cgqc_item_laserdesignator";
-player unlinkItem "ItemGPS";
-player linkItem "B_UavTerminal";
+["vanilla_command", "cgqc_item_laserdesignator", "ACE_NVG_Gen4_Black"] call CGQC_fnc_getLinkedItems;
 
 // === Primary ==========================================================================================================
 ["arifle_SPAR_01_GL_blk_F"] call CGQC_fnc_getCustomGun;
@@ -20,7 +14,7 @@ player addPrimaryWeaponItem "muzzle_snds_M";
 player addPrimaryWeaponItem "ACE_acc_pointer_green";
 player addPrimaryWeaponItem "optic_Arco_AK_blk_F";
 player addPrimaryWeaponItem "ACE_30Rnd_556x45_Stanag_Mk262_mag";
-// Mags 
+// Mags
 [] call CGQC_fnc_addMags;
 
 // === Role Items ==========================================================================================================

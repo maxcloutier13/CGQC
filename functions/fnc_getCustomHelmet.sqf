@@ -3,6 +3,7 @@
 params ["_helmet"];
 diag_log format ["[CGQC_FNC] getCustomHelmet %1 started", _helmet];
 
+removeHeadgear player;
 _customHelmet = _helmet + "_" + cgqc_custom_playername;
 //hint format ["Custom Helmet:%1", _customHelmet];sleep 5;
 player addHeadgear _customHelmet;

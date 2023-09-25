@@ -1,26 +1,36 @@
 // --- playerRespawned ----------------------------------------------------------
 // Code in the event a player respawns
-params ["_unit"];
+params ["_unit", "_corpse"];
 diag_log "[CGQC_EVENT] playerRespawned started";
 
 // Save stuff for player respawn
+// Corpse position
+_unit setVariable["corpse_position", getPos _corpse];
 // Loadout
 _unit setUnitLoadout(_unit getVariable["Saved_Loadout",[]]); //Load loadout saved on death
 // Face/identity
 _unit setFace(_unit getVariable["Saved_Face",[]]);
 // Slinged helmet
 [_unit, _unit getVariable["Saved_Slinged",[]]] call GRAD_slingHelmet_fnc_addSlungHelmet;
-// Secondary weapon
+// WBK Secondary weapon
 cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
 
 // Set patch
-[] call CGQC_fnc_keepPatch;
-// Load Radio priorities
-y_mpttRadioList1 = _unit getVariable["Radio_Settings",[]];
-_success = [y_mpttRadioList1] call acre_api_fnc_setMultiPushToTalkAssignment;
-//hint "Check tes radios! Ça inverse parfois au respawn.";
-// Lower gun 
-_holster = [] spawn CGQC_fnc_holsterWeapons;
-sleep 5;
-hintSilent ""; 
+[] spawn CGQC_fnc_setPatch;
+// Reload radios
+_radios = _unit getVariable "Radio_Settings_radios";
+{
+	_radio = _x select 0;
+	_side = _x select 1;
+	_vol = _x select 2;
+	[_radio, _side] call acre_api_fnc_setRadioSpatial;
+	[_radio, _vol] call acre_api_fnc_setRadioVolume;
+} forEach _radios;
+// Reset ptt's
+_mpttRadioList = _unit getVariable "Radio_Settings_ptt";
+_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
+
+// Lower gun
+[player] call ace_weaponselect_fnc_putWeaponAway;
+
 diag_log "[CGQC_EVENT] playerRespawned done";

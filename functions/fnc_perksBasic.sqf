@@ -5,15 +5,15 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
 
 [_type, _fromLoadout] spawn {
     params ["_type", "_fromLoadout"];
-    //disableUserInput true;
+    //
     switch (_type) do {
-        case "stealth":{ 
+        case "group": {
+            ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+            hint "Press U for the classic dynamic group";
+        };
+        case "stealth":{
             cgqc_player_state = 0;
-            FW_Acre_Volume_Value = 0; 
-            [{call acre_api_fnc_isInitialized}, {
-                [0.1] call acre_api_fnc_setSelectableVoiceCurve; 
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
+            [player, "whisper"] call CGQC_fnc_setVoiceVolume;
             // Install Silencer if found
             _currentWeapon = currentWeapon player;
             _compatible = _currentWeapon call bis_fnc_compatibleItems;
@@ -29,7 +29,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                     _compatibleSilencers pushBack _x;
                 };
             } forEach _compatible;
-            // Check inventory 
+            // Check inventory
             if (count _compatibleSilencers > 0) then {
                 {
                     _silencerClassName = _x;
@@ -52,18 +52,19 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
 
             // Turn off speakers
             _handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-            _handRadio_1 = _handRadios select 0;
-            // Check speaker state
-            _isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-            if(_isSpeaker) then {
-                // Turn speaker off 
-                _speakerOff = true;
-                cgqc_reset_speaker = true;
-                _success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
-                _speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-                hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
+            if (count _handRadios > 0) then {
+                _handRadio_1 = _handRadios select 0;
+                // Check speaker state
+                _isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
+                if(_isSpeaker) then {
+                    // Turn speaker off
+                    _speakerOff = true;
+                    cgqc_reset_speaker = true;
+                    _success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
+                    _speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
+                    hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
+                };
             };
-            
             _txt = "-- Stealth --<br/>";
             if (_addedSilencer) then {
                 _txt = _txt + "Silencer: On<br/>";
@@ -74,36 +75,27 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 _txt = _txt + "Radio Speaker: Off<br/>";
             };
             hint parseText _txt;
-            break;
+
         };
         case "normal":{
             cgqc_player_state = 1;
-            // Normal voice 
-            FW_Acre_Volume_Value = 0.5; 
-            [{call acre_api_fnc_isInitialized}, {
-                [0.7] call acre_api_fnc_setSelectableVoiceCurve; 
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
-            
-            _txt = "Normal:<br/> Default voice level<br/>"; 
+            // Normal voice
+            [player, "default"] call CGQC_fnc_setVoiceVolume;
+            _txt = "Normal:<br/> Default voice level<br/>";
 
             //Turn speaker back on
             if(cgqc_reset_speaker) then {
                 cgqc_reset_speaker = false;
-                ["speaker_on"] call CGQC_fnc_setRadios;
+                ["speaker_on"] spawn CGQC_fnc_setRadios;
                 _txt = _txt + "Radio Speaker: On<br/>";
             };
-                
-            hint parseText _txt;   
-            break;
+
+            hint parseText _txt;
+
         };
         case "battle":{
-            cgqc_player_state = 2;         
-            FW_Acre_Volume_Value = 0.75; 
-            [{call acre_api_fnc_isInitialized}, {
-                [1.3] call acre_api_fnc_setSelectableVoiceCurve; 
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
+            cgqc_player_state = 2;
+            [player, "loud"] call CGQC_fnc_setVoiceVolume;
             // Remove silencer
             _currentWeapon = currentWeapon player;
             _compatible = _currentWeapon call bis_fnc_compatibleItems;
@@ -137,7 +129,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             if(cgqc_reset_speaker) then {
                 cgqc_reset_speaker = false;
                 _speakerOff = true;
-                ["speaker_on"] call CGQC_fnc_setRadios;
+                ["speaker_on"] spawn CGQC_fnc_setRadios;
             };
 
             _txt = "-- Battle --<br/>";
@@ -149,17 +141,17 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 _txt = _txt + "Radio Speaker: On<br/>";
             };
             hint parseText _txt;
-            break;
+
         };
-    
+
         case "flip_chill":{
             if (cgqc_player_chill) then {
                 ["ready", false] spawn CGQC_fnc_perksBasic;
             } else {
                 ["chill", false] spawn CGQC_fnc_perksBasic;
             };
-            break;
-        };    
+
+        };
         case "chill":
         {
             if !(cgqc_player_chill) then {
@@ -187,7 +179,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 //player addItemToBackpack cgqc_player_oldNvg;
                 player unlinkItem cgqc_player_oldNvg;
                 // Holster all weapons
-                player action ['SwitchWeapon', player, player, 250];
+                [player] call ace_weaponselect_fnc_putWeaponAway;
                 if (cgqc_player_max) then {
                     //player linkItem "immersion_cigs_cigar0_nv";
                     player addGoggles "G_Aviator";
@@ -196,17 +188,17 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 };
                 cgqc_player_chill = true;
                 if !(cgqc_welcome_done) then {
-                    disableUserInput false;
+
                     waitUntil {cgqc_welcome_done};
                     sleep 10;
                 };
                 if (cgqc_player_chill) then {
-                    //cgqc_welcome_pic = format["<img size= '3' style='vertical-align:bottom' shadow='false' image='textures\%1.paa'/>", cgqc_player_rank_badge]; 
+                    //cgqc_welcome_pic = format["<img size= '3' style='vertical-align:bottom' shadow='false' image='textures\%1.paa'/>", cgqc_player_rank_badge];
                     _txt = parseText format[
                     "<t font='PuristaBold' size='1.6'>Au Repos!</t><br />
                     <t font='PuristaBold' size='1.2'>Rang: %1</t><br/>
-                    <t font='PuristaBold' size='1.2'>Beret: %2</t><br/>", cgqc_player_rank_name ,cgqc_player_beret_name]; 
-                    //[cgqc_welcome_pic, 0.9, 0.2, 6, 2 ] spawn BIS_fnc_dynamicText; 
+                    <t font='PuristaBold' size='1.2'>Beret: %2</t><br/>", cgqc_player_rank_name ,cgqc_player_beret_name];
+                    //[cgqc_welcome_pic, 0.9, 0.2, 6, 2 ] spawn BIS_fnc_dynamicText;
                     //sleep 1;
                     // Rank and color up top
                     [_txt, [1.25,0,1,1], nil, 4, [2,3], 0] spawn BIS_fnc_textTiles;
@@ -216,7 +208,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 // player linkItem cgqc_player_oldNvg;
                 };
             };
-            break;
+
         };
         case "ready":
         {
@@ -245,15 +237,17 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                     _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Prêt au combat</t><br/>");
                     [_text, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
                 };
-                call CGQC_fnc_holsterWeapons;
+                [player] call ace_weaponselect_fnc_putWeaponAway;
             };
-            break;
-        };             
+
+        };
         case "para":
         {
             cgqc_perks_para = false;
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Tu drop ton kit de parachutiste</t><br/>");
             [_text, 0, 0, 10, 4] spawn BIS_fnc_dynamicText;
+            // Remove the action
+            [cgqc_actions_dropPara] call ace_interact_menu_fnc_removeAction;
             player playMove "AinvPknlMstpSnonWnonDnon_medic4";
             // Watch / Altimeter
             _items = assignedItems player;
@@ -263,7 +257,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 hint "Removed altimeter";
                 sleep 1;
             };
-            //Switch mask 
+            //Switch mask
             _goggles = goggles player;
             if (_goggles find "cgqc_goggles_mk1_para" == 0) then {
                 removeGoggles player;
@@ -294,13 +288,13 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 sleep 3;
                 hintSilent "";
             };
-            break;
+
         };
         case "diver":
         {
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Tu drop ton kit de plongeur</t><br/>");
             [_text, 0, 0, 10, 3] spawn BIS_fnc_dynamicText;
-            //Switch mask 
+            //Switch mask
             player playMove "AinvPknlMstpSnonWnonDnon_medic4";
             _goggles = goggles player;
             if (_goggles find "cgqc_goggles_mk1_diver" == 0) then {
@@ -310,7 +304,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 hint "No diving mask?";
             };
             sleep 2;
-            // Switch uniform 
+            // Switch uniform
             _uniform = uniform player;
             if (_uniform find "cgqc_uniform_mk1_diver" == 0) then {
                 _items_uniform = uniformItems player;
@@ -322,7 +316,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             };
             sleep 2;
             if (cgqc_player_has2023) then{
-                // Switch Vest 
+                // Switch Vest
                 if (vest player find "cgqc_vest_mk1_diver" == 0) then {
                     _items_vest = vestItems player;
                     player addVest player_vest_old;
@@ -330,7 +324,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                     hint "Removed Rebreather";
                 }else{
                     hint "No rebreather?";
-                }; 
+                };
                 sleep 1;
                 // Switch backpack
                 _items_pack = backpackItems player;
@@ -340,7 +334,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 {player addItemToBackpack _x} forEach _items_pack;
                 hint "Switched Backpack";
             } else{ // Default stuff
-                // Switch Vest 
+                // Switch Vest
                 if (backpack player find "cgqc_backpack_mk1_diver" == 0) then {
                     _items_back = backpackItems player;
                     removeBackpack player;
@@ -349,36 +343,31 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                     hint "Removed Diving Bottle";
                 }else{
                     hint "No Diving Bottle?";
-                }; 
+                };
             };
             cgqc_perks_diver_suit_on = false;
             //cgqc_perks_diver = false;
-            break;
+
         };
         case "click":{
             [player, "click"] remoteExec ["say3D"];
-            break;
+
         };
         case "fix":
         {
             hint "Sound: Volumes reset";
             [] call ace_volume_fnc_restoreVolume;
-            FW_Acre_Volume_Value = 0.5; 
-            [{call acre_api_fnc_isInitialized}, {
-                [0.7] call acre_api_fnc_setSelectableVoiceCurve; 
-                acre_sys_gui_volumeLevel = FW_Acre_Volume_Value;
-            }, player] call CBA_fnc_waitUntilAndExecute;
-            break;
+            [player, "default"] call CGQC_fnc_setVoiceVolume;
         };
         case "fix_blackout":
         {
             titleCut ["", "BLACK IN", 1];
             hint "Black screen should be fixed";
-            break;
+
         };
         case "spawn_range":
         {
-            // Take player position to return later 
+            // Take player position to return later
             cgqc_range_player_pos = getPosATL player;
             // Check if range already exists
             if (!cgqc_range_on) then {
@@ -391,7 +380,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
         };
         case "cone":
         {
-            if (vehicle player != player) then // If player in a vehicle, skip the trigger 
+            if (vehicle player != player) then // If player in a vehicle, skip the trigger
             {
                 // Setup trigger
                 y_act = "[] call ace_volume_fnc_lowerVolume;"; // Lower volume on player
@@ -407,14 +396,14 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             };
             cgqc_perks_silence = true;
             [] spawn {
-                while {cgqc_perks_silence} do { 
+                while {cgqc_perks_silence} do {
                     [format["<img size= '1' style='vertical-align:bottom' shadow='false' image='\cgqc\textures\icon_sound_off.paa'/>"]
-                    , 1.05, 0.2, 4, 2] spawn BIS_fnc_dynamicText; 
+                    , 1.05, 0.2, 4, 2] spawn BIS_fnc_dynamicText;
                     sleep 5;
                 };
             };
             hint "Cone of silence: On";
-            break;
+
         };
         case "cone_off":
         {
@@ -424,33 +413,33 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             [] call ace_volume_fnc_restoreVolume;
             cgqc_perks_silence = false;
             hint "Cone of silence: Off";
-            break;
+
         };
         case "stash":
         {
             cgqc_perk_player_stash = "cgqc_box_mk2_stash" createVehicle (position player);
-            if (count cgqc_player_stash_items > 0) then {  
-                _items = cgqc_player_stash_items select 0; 
-                _amnts = cgqc_player_stash_items select 1; 
-                _cnt = 0; 
-                {  
-                    _amnt = _amnts select _cnt; 
-                    cgqc_perk_player_stash addItemCargo [_x, _amnt]; 
-                    _cnt = _cnt + 1;  
-                }forEach _items;  
+            if (count cgqc_player_stash_items > 0) then {
+                _items = cgqc_player_stash_items select 0;
+                _amnts = cgqc_player_stash_items select 1;
+                _cnt = 0;
+                {
+                    _amnt = _amnts select _cnt;
+                    cgqc_perk_player_stash addItemCargo [_x, _amnt];
+                    _cnt = _cnt + 1;
+                }forEach _items;
             };
-            if (count cgqc_player_stash_mags > 0) then {  
-                _mags = cgqc_player_stash_mags select 0; 
-                _amnts = cgqc_player_stash_mags select 1; 
-                _cnt = 0; 
-                {  
-                    _amnt = _amnts select _cnt; 
-                    cgqc_perk_player_stash addMagazineCargo [_x, _amnt]; 
-                    _cnt = _cnt + 1;  
-                }forEach _mags;  
+            if (count cgqc_player_stash_mags > 0) then {
+                _mags = cgqc_player_stash_mags select 0;
+                _amnts = cgqc_player_stash_mags select 1;
+                _cnt = 0;
+                {
+                    _amnt = _amnts select _cnt;
+                    cgqc_perk_player_stash addMagazineCargo [_x, _amnt];
+                    _cnt = _cnt + 1;
+                }forEach _mags;
             };
             cgqc_perk_player_stash_on = true;
-            break;
+
         };
         case "del_stash":
         {
@@ -458,7 +447,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             _mags = getMagazineCargo cgqc_perk_player_stash;
             _count = count _items + count _mags;
             if (_count >0) then {
-                hint format["%1 stash Items saved", _count]; 
+                hint format["%1 stash Items saved", _count];
                 cgqc_player_stash_items = [];
                 cgqc_player_stash_mags = [];
                 cgqc_player_stash_items = _items;
@@ -468,7 +457,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             };
             deleteVehicle cgqc_perk_player_stash;
             cgqc_perk_player_stash_on = false;
-            break;
+
         };
         case "cam":{
             [player, [
@@ -490,7 +479,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 "G_Lowprofile"
             ]] call ace_arsenal_fnc_initBox;
             [player, player, false] call ace_arsenal_fnc_openBox;
-            break;
+
         };
         case "check":{
             _allItems = items player;
@@ -579,7 +568,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 if (_tourniquet > 0) then {_txt_tourniquet = "ok"} else {_txt_tourniquet = "<t color='#ff0000'>LOW</t>"};
                 if (_liquids > 0) then {_txt_liquids = "ok"} else {_txt_liquids = "<t color='#ff0000'>MISSING</t>"};
             };
-        
+
             if (_earplugs > 0) then {_txt_earplugs = "ok"} else {_txt_earplugs = "<t color='#ff0000'>MISSING</t>"};
             if (_map > 0) then {_txt_map = "ok"} else {_txt_map = "<t color='#ff0000'>MISSING</t>"};
             if (_compass > 0) then {_txt_compass = "ok"} else {_txt_compass = "<t color='#ff0000'>MISSING</t>"};
@@ -643,43 +632,43 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             _percent = "%";
             _kg = "kg";
 
-            Hint parseText format [ 
+            Hint parseText format [
                 "------ QuickCheck -------<br/>" +
                 "Load: %1%2/%3kg <br/>" +
                 "Uniform:%4%5 -Vest:%6%7 -Pack:%8%9<br/>" +
                 "Traits: %10<br/>" +
-                "------- Medical ------- <br/>" + 
+                "------- Medical ------- <br/>" +
                 " -IFAK: %11 <br/>" +
-                "- Bandage: %12 <br/>" + 
-                "- Epinephrine: %13 <br/>" + 
-                "- Morphine: %14 <br/>" + 
+                "- Bandage: %12 <br/>" +
+                "- Epinephrine: %13 <br/>" +
+                "- Morphine: %14 <br/>" +
                 "- Painkiller: %15 <br/>" +
                 "- Splint: %16 <br/>" +
                 "- Tourniquet: %17 <br/>" +
                 "- Blood: %18 <br/>" +
                 "<br/>------- Essentials ------- <br/>" +
                 "- Earplugs: %19 <br/>" +
-                "- Map: %20 <br/>" + 
-                "- Compass: %21 <br/>" + 
+                "- Map: %20 <br/>" +
+                "- Compass: %21 <br/>" +
                 "<br/>------- Nice to haves ------- <br/>" +
-                "- GPS: %22 <br/>" + 
-                "- Notepad: %23 <br/>" + 
-                "- Maptools: %24 <br/>" + 
+                "- GPS: %22 <br/>" +
+                "- Notepad: %23 <br/>" +
+                "- Maptools: %24 <br/>" +
                 "<br/>------- Magazines ------- <br/>" +
-                "- Primary: %25 <br/>" +  
-                "- Handgun: %26 <br/>"   
+                "- Primary: %25 <br/>" +
+                "- Handgun: %26 <br/>"
                 ,
-                _check_currentLoad, 
-                _kg, 
-                _check_maxLoad, 
-                _check_uniform_load, 
-                _percent, 
-                _check_vest_load, 
-                _percent, 
-                _check_backpack_load, 
-                _percent, 
-                _check_traits, 
-                _ifak, 
+                _check_currentLoad,
+                _kg,
+                _check_maxLoad,
+                _check_uniform_load,
+                _percent,
+                _check_vest_load,
+                _percent,
+                _check_backpack_load,
+                _percent,
+                _check_traits,
+                _ifak,
                 _txt_bandage,
                 _txt_epi,
                 _txt_morphine,
@@ -699,8 +688,8 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
         };
     };
     // Return control to player
-    disableUserInput false;
-    if (userInputDisabled) then {disableUserInput false;};
+
+    if (userInputDisabled) then {};
 };
 
 diag_log "[CGQC_FNC] perksBasic done";

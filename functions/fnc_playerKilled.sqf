@@ -1,15 +1,44 @@
 // --- playerKilled ----------------------------------------------------------
 // Code in the event a player gets dead
-params ["_unit", "_killer"];
-diag_log "[CGQC_EVENT] playerKilled started";
+params ["_unit", "_killer", "_instigator", "_useEffects"];
+diag_log format ["[CGQC_EVENT] playerKilled %1/Killer:%2/Inst:%3/Effect:%4 started", _unit, _killer, _instigator, _useEffects];
 
-_unit setVariable["Saved_Loadout",getUnitLoadout _unit];
-_unit setVariable["Saved_Face", face _unit];
-_unit setVariable["Saved_Slinged", [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet];
-// Save radio ptt priorities
-y_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
-_unit setVariable["Radio_Settings", y_mpttRadioList];
-sleep 0.2;
-//hint format ["Woops! tu t'es fait pèté par: %1", _killer]; 
+if (local _unit) then {
+	_unit setVariable["Saved_Loadout",getUnitLoadout _unit];
+	_unit setVariable["Saved_Face", face _unit];
+	_unit setVariable["Saved_Slinged", [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet];
+	// Save radios and ptt priorities
+	_allRadios = [] call acre_api_fnc_getCurrentRadioList;
+	_radios = [];
+	{
+		_radio = _x;
+		_side = [_x] call acre_api_fnc_getRadioSpatial;
+		_vol = [_x] call acre_api_fnc_getRadioVolume;
+		_radios pushBack [_radio, _side, _vol];
+	} forEach _allRadios;
+	_unit setVariable["Radio_Settings_radios", _radios];
+	_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
+	_unit setVariable["Radio_Settings_ptt", _mpttRadioList];
 
+
+	_killa = "";
+	if (isNil "_instigator") then {
+		_killa = name _killer;
+	} else {
+		_killa = name _instigator;
+	};
+
+	if (player isEqualTo _killer || player isEqualTo _instigator) then {
+		_killa = ".. toi même?";
+	} else {
+		if (side player isEqualTo side _killer) then {
+			_killa = "ton chummy " + _killa + "!!";
+		};
+	};
+	_text = format ["<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Woops! tu t'es fait pèté par:
+		<br/> %1", _killa];
+ 	[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
+};
+
+diag_log format ["[CGQC_KILL]%1 killed by %2", name _unit, _killa];
 diag_log "[CGQC_EVENT] playerKilled done";

@@ -98,14 +98,6 @@ class cgqc_cap_green : H_HelmetB
 	hiddenSelectionsTextures[] = {"\CGQC\helmets\cgqc_cap_green.paa"};
 	hiddenSelectionsMaterials[] = {"\CGQC\helmets\cgqc_cap_green.rvmat"};
 };
-class cgqc_beret_23: H_Beret_02
-{
-	author = "23rd CTF";
-	displayName = "23rd beret";
-	picture = "\cgqc\helmets\23rd_logo_picture_beret_lila_ca.paa";
-	hiddenSelectionsTextures[] = {"\cgqc\helmets\23rd_logo_berret_purp_co.paa"};
-	hiddenSelectionsMaterials[] = {"\cgqc\helmets\23rd_logo_berret.rvmat"};
-};
 
 //
 class H_Watchcap_blk;
@@ -276,7 +268,7 @@ class cgqc_helmet_crew_black_audi : H_CrewHelmetHeli_B
 	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_audi.paa"};
 	grad_slingHelmet_allow = true;
 };
-// Turcotte 
+// Turcotte
 class cgqc_helmet_heli_black_turcotte : H_PilotHelmetHeli_B
 {
 	scope = 2;
@@ -293,7 +285,7 @@ class cgqc_helmet_crew_black_turcotte : H_CrewHelmetHeli_B
 	hiddenSelectionsTextures[] = {"\cgqc\helmets\cgqc_helmet_heli_turcotte.paa"};
 	grad_slingHelmet_allow = true;
 };
-// Comeau 
+// Comeau
 class cgqc_helmet_heli_black_comeau : H_PilotHelmetHeli_B
 {
 	scope = 2;

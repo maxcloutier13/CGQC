@@ -1,6 +1,6 @@
 // --- switchUniform ----------------------------------------------------------
-// Switch player uniform 
-params ["_camo", "_fromLoadout"];
+// Switch player uniform
+params ["_camo", ["_fromLoadout", false]];
 diag_log "[CGQC_FNC] switchUniform started";
 
 // Transition/text
@@ -16,7 +16,7 @@ if !(_fromLoadout) then {
 	_skip = false;
 	_skip_msg = "";
 
-	disableUserInput true;
+
 	// Check if player in chill mode
 	if (cgqc_player_chill) then {["ready", true] call CGQC_fnc_perksBasic;};
 	// Init new variables
@@ -25,7 +25,7 @@ if !(_fromLoadout) then {
 	_vest_new = "";
 	_backpack_new = "";
 	_goggles_new = "";
-	
+
 	// Find what to switch to
 	switch (_camo) do {
 		case "diver": //Diver time
@@ -35,7 +35,7 @@ if !(_fromLoadout) then {
 				_skip_msg = "T'as déja un suit de diver, dummy! Skipping.";
 			};
 			if (_skip) then {
-				// Reset everything as it was... 
+				// Reset everything as it was...
 				_helmet_new = player_helmet_old;
 				_uniform_new = player_uniform_old;
 				_vest_new = player_vest_old;
@@ -53,7 +53,7 @@ if !(_fromLoadout) then {
 					// Black backpack
 					player_backpack_old = toLower player_backpack_old;
 					if ((player_backpack_old find["radiobag", 0]) > 0) then {_backpack_new = "cgqc_pack_mk1_radiobag_black";};
-					if ((player_backpack_old find["assault", 0]) > 0) then {_backpack_new = "cgqc_pack_mk1_assault_black";}; 
+					if ((player_backpack_old find["assault", 0]) > 0) then {_backpack_new = "cgqc_pack_mk1_assault_black";};
 					if ((player_backpack_old find["carryall", 0]) > 0) then {_backpack_new = "cgqc_pack_mk1_carryall_black";};
 					if ((player_backpack_old find["kitbag", 0]) > 0) then {_backpack_new = "cgqc_pack_mk1_kitbag_black";};
 					if ((player_backpack_old find["magic", 0]) > 0) then {_backpack_new = "cgqc_pack_mk1_magic";};
@@ -68,6 +68,14 @@ if !(_fromLoadout) then {
 				//hint "Diving Goggles";
 				// Keep old mask in backpack
 				player addItemToBackpack player_goggles_old;
+
+				// Diver actions ----------------------------------------
+				// Drop Diving suit ---------------------------------------------------------------------------------------------------------------
+				_action = [ "menu_self_dropDiver", "Remove Diving suit", "CGQC\textures\cgqc_ace_dive", {["diver", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_diver_suit_on && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				// Diver suit back on ---------------------------------------------------------------------------------------------------------------
+				_action = [ "menu_self_kitDiver", "Plongeur: Suit up", "CGQC\textures\cgqc_ace_dive", {["diver", false] call CGQC_fnc_switchUniform}, {cgqc_perks_diver && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// Add diver perks
 				cgqc_perks_diver = true;
 				cgqc_perks_diver_suit_on = true;
@@ -84,7 +92,7 @@ if !(_fromLoadout) then {
 				_skip = true;
 				_skip_msg = parseText ("<br/>" + "<br/>" + "<br/>" + "<br/>" + "T'as déja un parachute, dummy!" + "<br/>" + "Arrange toi tout seul.");
 			};
-			if(_skip) then { 
+			if(_skip) then {
 				[_skip_msg, 0, 0, 2, 2] spawn BIS_fnc_dynamicText;
 			}else{//Keep proceeding
 				["prep"] call CGQC_fnc_switchStuff;
@@ -112,48 +120,19 @@ if !(_fromLoadout) then {
 				_backpack_new  = "B_Parachute";
 				// Icon Indicator
 				[] spawn {
-					// Paradrop 
-					while {cgqc_perks_para} do { 
+					// Drop parachute action ---------------------------------------------------------------------------------------------------------------
+					_action = [ "menu_self_dropPara", " Remove Parachute", "CGQC\textures\cgqc_ace_para", {["para", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_para && isTouchingGround player} ] call ace_interact_menu_fnc_createAction;
+					cgqc_actions_dropPara = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+					// Paradrop
+					while {cgqc_perks_para} do {
 						[format["<img size= '1' style='vertical-align:bottom' shadow='false' image='\cgqc\textures\cgqc_ace_para.paa'/>"]
-						, 1.05, 0.2, 3, 2] spawn BIS_fnc_dynamicText; 
+						, 1.05, 0.2, 3, 2] spawn BIS_fnc_dynamicText;
 						sleep 3;
 					};
-				};	
+				};
 				//hint "Parachute";
 				hint parseText ("Prêt à sauter" + "<br/>" + "Ace Self-Action->Drop Parachute" + "<br/>" + "une fois au sol...");
 			};
-		};
-		case "23_moss": 
-		{
-			_helmet_new = "23rd_logo_helmet_moss";
-			_uniform_new = "23rd_logo_U_combatshirt_moss";
-			_vest_new = "23rd_logo_carrier_light_moss";
-			_backpack_new = "23rd_logo_civbag_moss";   
-			_goggles_new = player_goggles_old;  
-		};
-		case "23_multi":
-		{
-			_helmet_new = "23rd_logo_helmet_multi";
-			_uniform_new = "23rd_logo_U_combatshirt_multi";
-			_vest_new = "23rd_logo_carrier_light_multi";
-			_backpack_new = "23rd_logo_civbag_multi";   
-			_goggles_new = player_goggles_old;  
-		};
-		case "23_frost":
-		{
-			_helmet_new = "23rd_logo_helmet_win";
-			_uniform_new = "23rd_logo_U_combatshirt_win";
-			_vest_new = "23rd_logo_carrier_light_win";
-			_backpack_new = "23rd_logo_civbag_win";  
-			_goggles_new = player_goggles_old; 
-		};
-		case "23_tard": 
-		{
-			_helmet_new = "23rd_logo_helmet";
-			_uniform_new = "23rd_logo_U_shirt2";
-			_vest_new = "23rd_logo_carrier_light_tard";
-			_backpack_new = "23rd_logo_civbag_tard";  
-			_goggles_new = player_goggles_old; 
 		};
 		default // Normal camo switch
 		{
@@ -162,15 +141,15 @@ if !(_fromLoadout) then {
 			_backpack_new = "cgqc_pack_mk1";
 			// goggles
 			_goggles_new = player_goggles_old;
-			// Check backpack variant 
+			// Check backpack variant
 			player_backpack_old = toLower player_backpack_old;
 			if ((player_backpack_old find["radiobag", 0]) > 0) then {_backpack_new = _backpack_new + "_radiobag";};
-			if ((player_backpack_old find["assault", 0]) > 0) then {_backpack_new = _backpack_new + "_assault";}; 
+			if ((player_backpack_old find["assault", 0]) > 0) then {_backpack_new = _backpack_new + "_assault";};
 			if ((player_backpack_old find["carryall", 0]) > 0) then {	_backpack_new = _backpack_new + "_carryall";};
 			if ((player_backpack_old find["kitbag", 0]) > 0) then {	_backpack_new = _backpack_new + "_kitbag";};
 			if ((player_backpack_old find["magic", 0]) > 0) then {	_backpack_new = _backpack_new + "_magic";};
 
-			// Sets base names 
+			// Sets base names
 			if (_camo == "tan") then {
 				_helmet_new = "cgqc_helmet_mk1";
 				_uniform_new = "cgqc_uniform_mk1";
@@ -220,7 +199,7 @@ if !(_fromLoadout) then {
 		if (check_backpack == "") then {player addBackpack player_backpack_old;};
 		if (check_goggles == "") then {player addGoggles player_goggles_old;};
 
-		// Flush potential leftovers 
+		// Flush potential leftovers
 		clearAllItemsFromBackpack player;
 
 		// load items in new uniform
@@ -228,16 +207,16 @@ if !(_fromLoadout) then {
 		{player addItemToVest _x} forEach player_items_vest;
 		{player addItemToBackpack _x} forEach player_items_pack;
 	};
-	
+
 	// Set back patch
 	player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
 	[ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
 
-	// Lower gun 
-	_holster = [] spawn CGQC_fnc_holsterWeapons;
+	// Lower gun
+	[player] call ace_weaponselect_fnc_putWeaponAway;
 	// Return control
-	disableUserInput false;
-	if (userInputDisabled) then {disableUserInput false;};
+
+	if (userInputDisabled) then {};
 	// Done
 	cgqc_camoSwitch_done = true;
 	diag_log "[CGQC_FNC] switchUniform done";

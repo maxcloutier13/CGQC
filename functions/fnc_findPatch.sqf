@@ -1,36 +1,34 @@
 // --- findPatch ----------------------------------------------------------
-// Match steamID with known players 
+// Match steamID with known players
 diag_log "[CGQC_FNC] findPatch started";
 
-//Check if player had a rank prefix 
+//Check if player had a rank prefix
 if (!cgqc_player_known) then {
 	// If player unknown: patch de baby yoda
 	cgqc_player_patch = "cgqc_patch_outsider";
 } else {
 	switch (cgqc_player_steamid) do {
-		case "76561198129263895" : {cgqc_player_patch = "cgqc_patch_audi"; break;};
-		case "76561198846742913" : {cgqc_player_patch = "cgqc_patch_braddock"; break;};
-		case "76561198024730191" : {cgqc_player_patch = "cgqc_patch_cloutier"; break; cgqc_player_max = true;};
-		case "76561199227907428" : {cgqc_player_patch = "cgqc_patch_comeau"; break;};
-		case "76561198117404775" : {cgqc_player_patch = "cgqc_patch_fortin"; break;};
-		case "76561198057658135" : {cgqc_player_patch = "cgqc_patch_frechette"; break;};
-		case "76561198964313408" : {cgqc_player_patch = "cgqc_patch_genest"; break;};
-		case "76561198249898654" : {cgqc_player_patch = "cgqc_patch_laforest"; break;};
-		case "76561198087933626" : {cgqc_player_patch = "cgqc_patch_pinard"; break;};
-		case "76561197981463935" : {cgqc_player_patch = "cgqc_patch_tremblay"; break;};
-		case "76561198065449719" : {cgqc_player_patch = "cgqc_patch_villeneuve"; break;};
-		case "76561198255907431" : {cgqc_player_patch = "cgqc_patch_turcotte"; break;};
-		case "76561198846742913" : {_player_patch = "cgqc_patch_monolith_2"; break;}; //melo
-		case "76561198846742913" : {_player_patch = "cgqc_patch_woods"; break;};
+		case "76561198129263895" : {cgqc_player_patch = "cgqc_patch_audi"; };
+		case "76561198846742913" : {cgqc_player_patch = "cgqc_patch_braddock"; };
+		case "76561198024730191" : {cgqc_player_patch = "cgqc_patch_cloutier";  cgqc_player_max = true;};
+		case "76561199227907428" : {cgqc_player_patch = "cgqc_patch_comeau"; };
+		case "76561198117404775" : {cgqc_player_patch = "cgqc_patch_fortin"; };
+		case "76561198057658135" : {cgqc_player_patch = "cgqc_patch_frechette"; };
+		case "76561198964313408" : {cgqc_player_patch = "cgqc_patch_genest"; };
+		case "76561198249898654" : {cgqc_player_patch = "cgqc_patch_laforest"; };
+		case "76561198087933626" : {cgqc_player_patch = "cgqc_patch_pinard"; };
+		case "76561197981463935" : {cgqc_player_patch = "cgqc_patch_tremblay"; };
+		case "76561198065449719" : {cgqc_player_patch = "cgqc_patch_villeneuve"; };
+		case "76561198255907431" : {cgqc_player_patch = "cgqc_patch_turcotte"; };
+		case "76561198846742913" : {_player_patch = "cgqc_patch_monolith_2"; }; //melo
+		case "76561198846742913" : {_player_patch = "cgqc_patch_woods"; };
 		default	{
 			// Patch par défaut: CGQC logo
 			cgqc_player_patch = "cgqc_patch_logo";
 		};
 	};
 };
-if (cgqc_player_23rd) then {
-	cgqc_player_patch = "23rd_Logo_Unit_Old";
-};
+
 cgqc_custom_playername = cgqc_player_patch select[11, 22];
 // dubé 76561198056436035
 // gagnon 76561199217287480
@@ -43,18 +41,6 @@ cgqc_custom_playername = cgqc_player_patch select[11, 22];
 // ben 76561198030215888
 // mouland 76561199156866182
 // deslauriers 76561198209656813
-// lukas 76561198452605720
-// frexax 76561198403087179
-// asthma 76561198299699562
-// kanman 76561198136981280
-// robnew skinwalker 76561198174572382
-
-
-//23rd
-//finn 76561198420233487
-//melonmafia 76561198287121425
-//jamie 76561198220396941
-//cactus 76561198060884175
 
 
 //Set variable

@@ -239,7 +239,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	_notepad = 0;
 	_maptools = 0;
 	// Count meds
-	_ifak = {_x isEqualTo "ace_items_ifak" } count inspect_target_allItems;
+	_ifak = {_x isEqualTo "cgqc_items_ifak" } count inspect_target_allItems;
 	_bandage = {_x isEqualTo "ACE_fieldDressing" } count inspect_target_allItems;
 	_earplugs = {_x isEqualTo "ACE_EarPlugs" } count inspect_target_allItems;
 	_epi ={_x isEqualTo "ACE_epinephrine" } count inspect_target_allItems;
