@@ -439,7 +439,7 @@ switch (_type) do {
 	case "god": {
 		while {isDamageAllowed player} do
 		{
-			[-2,{player allowDamage false}] call CBA_fnc_globalExecute;
+			[0,{player allowDamage false}] call CBA_fnc_globalExecute;
 			sleep 0.5;
 		};
 		cgqc_zeus_god = true;
@@ -449,7 +449,7 @@ switch (_type) do {
 	case "mortal": {
 		while {!isDamageAllowed player} do
 		{
-			[-2,{player allowDamage true}] call CBA_fnc_globalExecute;
+			[0,{player allowDamage true}] call CBA_fnc_globalExecute;
 			sleep 0.5;
 		};
 		cgqc_zeus_god = false;
