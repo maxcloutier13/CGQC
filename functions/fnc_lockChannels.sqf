@@ -18,6 +18,13 @@ if (cgqc_config_hide_channels) then {
 			3 enableChannel false;	//Group
 			4 enableChannel false; //Vehicle
 		};
+		case "globsidevic": { //Lock all but global and side and vic
+			0 enableChannel true; //Global
+			1 enableChannel true;	//Side
+			2 enableChannel false;	//Command
+			3 enableChannel false;	//Group
+			4 enableChannel true; //Vehicle
+		};
 		case "init": { //Locks everything but Global. For debug on logon mostly.
 			0 enableChannel true; //Global
 			1 enableChannel false;	//Side
