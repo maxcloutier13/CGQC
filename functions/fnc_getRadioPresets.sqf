@@ -25,8 +25,8 @@ if (cgqc_flag_isTraining) then {
 		case "hq": {_radios = ["ACRE_PRC343", "ACRE_PRC117F", "ACRE_PRC117F"];_preset = "hq"};
 		case "recon": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "recon"};
 		case "jtac": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "jtac"};
-		case "pilot": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "griffon_pieton"};
-		case "driver": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "centaure_pieton"};
+		case "pilot": {_radios = ["ACRE_PRC152", "ACRE_PRC152", "ACRE_PRC343"];_preset = "griffon_pieton"};
+		case "driver": {_radios = ["ACRE_PRC152", "ACRE_PRC152", "ACRE_PRC343"];_preset = "centaure_pieton"};
 		default	{default {diag_log "[CGQC_ERROR] mk3_getRadios issue";}};
 	};
 };

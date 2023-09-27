@@ -301,43 +301,43 @@ switch (_type) do {
 	};
 	case "centaure_pieton":	{
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-
+		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		_handRadio_1 = _handRadios select 0;
 		_handRadio_2 = _handRadios select 1;
 		// Channels
-
 		[_handRadio_1, 6] call acre_api_fnc_setRadioChannel;
-
 		[_handRadio_2, 3] call acre_api_fnc_setRadioChannel;
+		[_personalRadio, 10] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_handRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_handRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
-		_success = [ [ _handRadio_1, _handRadio_2, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		_success = [ [ _handRadio_1, _handRadio_2, _personalRadio] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		hint parseText "
 		--- Centaure radio setup ---
 		Radio1:Gauche/152/Inter-Centaure<br/>
-		Radio2:Droite/152/Centaure-HQ</t>";
+		Radio2:Droite/152/Centaure-HQ</t>
+		Radio3:Gauche/343/Team</t>";
 	};
 	case "griffon_pieton": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-
+		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		_handRadio_1 = _handRadios select 0;
 		_handRadio_2 = _handRadios select 1;
 		// Channels
-
 		[_handRadio_1, 3] call acre_api_fnc_setRadioChannel;
-
 		[_handRadio_2, 2] call acre_api_fnc_setRadioChannel;
+		[_personalRadio, 10] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_handRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_handRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
-		_success = [ [ _handRadio_1, _handRadio_2, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		_success = [ [ _handRadio_1, _handRadio_2, _personalRadio] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		hint parseText "
 		--- Griffon radio setup ---
 		Radio1:Gauche/117/Griffon<br/>
-		Radio2:Droite/117/Support-HQ</t>";
+		Radio2:Droite/117/Support-HQ</t>
+		Radio3:Gauche/343/Team</t>";
 	};
 	case "set_griffon":	{
 		_vic = vehicle player;
