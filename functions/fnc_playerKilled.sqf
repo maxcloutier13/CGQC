@@ -4,7 +4,6 @@ params ["_unit", "_killer", "_instigator", "_useEffects"];
 diag_log format ["[CGQC_EVENT] playerKilled %1/Killer:%2/Inst:%3/Effect:%4 started", _unit, _killer, _instigator, _useEffects];
 
 if (local _unit) then {
-	_unit setVariable["Saved_Loadout",getUnitLoadout _unit];
 	_unit setVariable["Saved_Face", face _unit];
 	_unit setVariable["Saved_Slinged", [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet];
 	// Save radios and ptt priorities
@@ -19,7 +18,10 @@ if (local _unit) then {
 	_unit setVariable["Radio_Settings_radios", _radios];
 	_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
 	_unit setVariable["Radio_Settings_ptt", _mpttRadioList];
-
+	// Remove everything to begin with
+	[_unit, "all"] call CGQC_fnc_removeRadios;
+	_loadout = getUnitLoadout [_unit, true]; //reloads magazines
+	_unit setVariable["Saved_Loadout",_loadout];
 
 	_killa = "";
 	if (isNil "_instigator") then {
