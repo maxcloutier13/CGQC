@@ -3,13 +3,15 @@
 params ["_vic", "_type"];
 diag_log format ["[CGQC_FNC] addSpares %1/%2 called", _vic, _type];
 
+if !(local _vic) exitWith {};
+
 [_vic, _type] spawn {
 	params ["_vic", "_type"];
 	waitUntil {!isNil "cgqc_start_postInitClient_done"};
 	waitUntil {sleep 1; cgqc_start_postInitClient_done};
 	diag_log format ["[CGQC_FNC] addSpares %1/%2 started", _vic, _type];
 
-	if (cgqc_config_spares) then 
+	if (cgqc_config_spares) then
 	{
 		if (!isNil "_vic") then {
 			if (toLower (typeOf _vic) find "cgqc" == 0) then {
