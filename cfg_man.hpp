@@ -21,12 +21,13 @@ class CAManBase: Man {
 			};
 		};
 	};
+
 	class ACE_SelfActions {
 		// Remove this thing
 		delete aceax_ingame_gear;
+		delete fox_self;
 
 		// Group manager
-
 		class ACE_TeamManagement
 		{
 			class CGQC_group_manager
