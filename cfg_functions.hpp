@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-
+        class whistle{
+            file = "\cgqc\functions\fnc_whistle.sqf";
+            description = "Whistle stuff";
+        };
         class setGroupRadios{
             file = "\cgqc\functions\fnc_setGroupRadios.sqf";
             description = "Set radio channels depending on group";
