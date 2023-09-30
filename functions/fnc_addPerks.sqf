@@ -6,6 +6,10 @@ diag_log "[CGQC_INIT] addPerks started";
 _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Whistle ---------------------------------------------------------------------------------------------------------------
+_action = [ "menu_self_whistle", "Whistle", "\fox_whistle\ui\whistle.paa", {[_player] call fox_whistle_fnc_whistle}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Anti quick-jump
 _action = [ "menu_self_para_quickMap", "QuickJump to map point", "\CGQC\textures\cgqc_ace_para", {[0, 0] call CGQC_fnc_trainingPara}, {cgqc_player_hasAnti || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;

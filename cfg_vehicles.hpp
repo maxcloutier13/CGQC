@@ -1,5 +1,5 @@
 // --- cfgVehicles ----------------------------------------------------------
-// Vehicles definition. Yeah I know. 
+// Vehicles definition. Yeah I know.
 
 class B_W_MBT_01_TUSK_F;
 class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
@@ -16,7 +16,7 @@ class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
     };
 };
 
-// 
+//
 class I_MRAP_03_F;
 class cgqc_vic_fennec : I_MRAP_03_F{
     scope = 2;
@@ -33,7 +33,7 @@ class cgqc_vic_fennec : I_MRAP_03_F{
     // Light ADS
     class EventHandlers {init = "['light', _this] call CGQC_fnc_addADS";};
 };
-    
+
 class I_MRAP_03_hmg_F;
 class cgqc_vic_fennec_hmg : I_MRAP_03_hmg_F{
     scope = 2;
@@ -68,7 +68,7 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     };
 	class EventHandlers
     {
-    	init = "[_this] call CGQC_fnc_loadoutConstructionVic;[_this select 0, 'car'] call CGQC_fnc_addSpares"; 
+    	init = "[_this] call CGQC_fnc_loadoutConstructionVic;if (isServer) then {[_this select 0, 'car'] call CGQC_fnc_addSpares}";
     };
 };
 
@@ -84,7 +84,7 @@ class cgqc_refuel_h : Land_HelipadSquare_F
     displayName = "CGQC Helipad - Standard";
     class EventHandlers
     {
-        init = "[_this, 0] call CGQC_fnc_refuelSetup"; 
+        init = "[_this, 0] call CGQC_fnc_refuelSetup";
     };
 };
 class cgqc_refuel_h_short : Land_HelipadSquare_F
@@ -96,7 +96,7 @@ class cgqc_refuel_h_short : Land_HelipadSquare_F
     displayName = "CGQC Helipad - Rapide";
     class EventHandlers
     {
-        init = "[_this, 1] call CGQC_fnc_refuelSetup";  
+        init = "[_this, 1] call CGQC_fnc_refuelSetup";
     };
 };
 class cgqc_refuel_h_invis: cgqc_refuel_h
