@@ -1,6 +1,6 @@
 // --- trainingPara ----------------------------------------------------------
 // Paradrop shenanigans
-params ["_jumpHeight", ["_tpVersion", 0], "_playerTarget"];
+params ["_jumpHeight", ["_tpVersion", 0], ["_playerTarget", ""]];
 
 [_jumpHeight, _tpVersion, _playerTarget] spawn {
 	params ["_jumpHeight", "_tpVersion", "_playerTarget"];
