@@ -339,11 +339,12 @@ if (cgqc_player_hasUnsung) then {
 // Map open/close
 cgqc_mapOpen = addMissionEventHandler ["Map", {
 	params ["_mapIsOpened", "_mapIsForced"];
+	cgqc_mapOpened = _mapIsOpened;
 	// Refresh the roster every 5 seconds
 	[_mapIsOpened, _mapIsForced] spawn {
 		params ["_mapIsOpened", "_mapIsForced"];
 		if (_mapIsOpened) then {
-			while {_mapIsOpened} do {
+			while {cgqc_mapOpened} do {
 				[] call CGQC_fnc_loadDiaryRoster;
 				sleep 5;
 			};

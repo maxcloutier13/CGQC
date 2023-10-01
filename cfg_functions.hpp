@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+
+        class setTeamColors{
+            file = "\cgqc\functions\fnc_setTeamColors.sqf";
+            description = "Auto set team colors";
+        };
         class loadDiaryRoster{
             file = "\cgqc\functions\fnc_loadDiaryRoster.sqf";
             description = "Load current group rosters";

@@ -21,7 +21,16 @@ _playerGroups = [];
 	_roster = _roster + "<font color='#FFFFFF' size='18'>--- " + _groupName + " ---</font><br/>";
 	{
 		_unitName = name _x;
-		_roster = _roster + format ["<font color='#F0F0F0' size='15'>%1 - %2", _ctr, _unitName] + "</font><br/>";
+		_color = "";
+		_unitColor = assignedTeam _x;
+		switch (_unitColor) do {
+			case "RED": {_color = "#CC3333" };
+			case "GREEN": {_color = "#5C7829" };
+			case "BLUE": {_color = "#087099" };
+			case "YELLOW": {_color = "#B7B327" };
+			default {_color = "#F0F0F0"};
+		};
+		_roster = _roster + format ["<font color='%1' size='15'>%2 - %3",_color, _ctr, _unitName] + "</font><br/>";
 		_ctr = _ctr + 1;
 	} forEach units _x;
 	_roster = _roster + "<br/>";
