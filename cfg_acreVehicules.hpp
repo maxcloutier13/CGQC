@@ -1,12 +1,114 @@
 // --- acreVehicules ----------------------------------------------------------
 // All the vehicle acre bullshit
-
-class Air;
-class Plane;
 class VTOL_01_base_F;
 class Boat_F;
-class Car;
-class Tank;
+
+class LandVehicle;
+class Car: LandVehicle {
+    class ACE_Actions {
+		class ACE_MainActions {
+            class cgqc_maintenance {
+				displayName = "Maintenance";
+				condition = "cgqc_flag_supply";
+				statement = "['normal'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+			class cgqc_maintenance_quick {
+				displayName = "Maintenance (Quick)";
+				condition = "cgqc_flag_supply_rapide";
+				statement = "['short'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+		};
+	};
+};
+class Tank: LandVehicle {
+    class ACE_Actions {
+		class ACE_MainActions {
+            class cgqc_maintenance {
+				displayName = "Maintenance";
+				condition = "cgqc_flag_supply";
+				statement = "['normal'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+			class cgqc_maintenance_quick {
+				displayName = "Maintenance (Quick)";
+				condition = "cgqc_flag_supply_rapide";
+				statement = "['short'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+		};
+	};
+};
+class Air;
+class Helicopter: Air {
+    class ViewPilot;
+    class Turrets;
+    class HitPoints {
+        class HitGlass1;
+        class HitGlass2;
+        class HitGlass3;
+        class HitGlass4;
+        class HitGlass5;
+        class HitGlass6;
+        class HitHull;
+        class HitEngine;
+        class HitAvionics;
+    };
+    class ACE_Actions {
+		class ACE_MainActions {
+            class cgqc_maintenance {
+				displayName = "Maintenance";
+				condition = "cgqc_flag_supply";
+				statement = "['normal'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+			class cgqc_maintenance_quick {
+				displayName = "Maintenance (Quick)";
+				condition = "cgqc_flag_supply_rapide";
+				statement = "['short'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+		};
+	};
+};
+
+class Plane: Air {
+    class ACE_Actions {
+		class ACE_MainActions {
+            class cgqc_maintenance {
+				displayName = "Maintenance";
+				condition = "cgqc_flag_supply";
+				statement = "['normal'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+			class cgqc_maintenance_quick {
+				displayName = "Maintenance (Quick)";
+				condition = "cgqc_flag_supply_rapide";
+				statement = "['short'] call CGQC_fnc_refuel";
+				exceptions[] = {};
+				icon = "\CGQC\textures\icon_maintenance";
+				runOnHover = "hint 'Repair/Refuel/Rearm'";
+			};
+		};
+	};
+};
+
+
 // Class overrides for spares/Acre settings
 class Boat_Armed_01_base_F : Boat_F {
     class AcreIntercoms {
@@ -164,22 +266,7 @@ class MRAP_03_base_F: Car_F {
 		};
 	};
 };
-class Helicopter : Air
-{
-    class ViewPilot;
-    class Turrets;
-    class HitPoints {
-        class HitGlass1;
-        class HitGlass2;
-        class HitGlass3;
-        class HitGlass4;
-        class HitGlass5;
-        class HitGlass6;
-        class HitHull;
-        class HitEngine;
-        class HitAvionics;
-    };
-};
+
 class Helicopter_Base_F: Helicopter {
 	class EventHandlers {
         init = "[_this select 0, 'air'] call CGQC_fnc_addSpares;";
