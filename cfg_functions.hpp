@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-
+        class loadDiaryRoster{
+            file = "\cgqc\functions\fnc_loadDiaryRoster.sqf";
+            description = "Load current group rosters";
+        };
         class copyClackerCheck{
             file = "\cgqc\functions\fnc_copyClackerCheck.sqf";
             description = "Check if clacker codes can be copied from target";
