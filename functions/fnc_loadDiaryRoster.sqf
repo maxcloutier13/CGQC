@@ -18,11 +18,16 @@ _playerGroups = [];
 {
 	_ctr = 1;
 	_groupName = groupID _x;
-	_roster = _roster + "<font color='#FFFFFF' size='18'>--- " + _groupName + " ---</font><br/>";
+	_roster = _roster + "<font color='#969696' size='18'>--- " + _groupName + " ---</font><br/>";
 	{
 		_unitName = name _x;
 		_color = "";
 		_unitColor = assignedTeam _x;
+		_weight = [ACE_Player] call ace_common_fnc_getweight;
+		_role = cgqc_player_role;
+		/*if (cgqc_player_role isEqualTo "") then {
+			_role = typeOf player;
+		};*/
 		switch (_unitColor) do {
 			case "RED": {_color = "#CC3333" };
 			case "GREEN": {_color = "#5C7829" };
@@ -30,7 +35,7 @@ _playerGroups = [];
 			case "YELLOW": {_color = "#B7B327" };
 			default {_color = "#F0F0F0"};
 		};
-		_roster = _roster + format ["<font color='%1' size='15'>%2 - %3",_color, _ctr, _unitName] + "</font><br/>";
+		_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5",_color, _ctr, _role, _unitName, _weight] + "</font><br/>";
 		_ctr = _ctr + 1;
 	} forEach units _x;
 	_roster = _roster + "<br/>";
@@ -39,7 +44,7 @@ _playerGroups = [];
 _hour = systemTime select 3;
 _mins = systemTime select 4;
 _secs = systemTime select 5;
-_roster = _roster + format ["<br/><font color='#969696'> -Updated %1:%2:%3 </font>", _hour, _mins, _secs];
+_roster = _roster + format ["<br/><font color='#282828'> -Updated %1:%2:%3 </font>", _hour, _mins, _secs];
 
 player createDiarySubject ["CGQC_Roster", "Roster"];
 player createDiaryRecord ["CGQC_Roster", ["Roster", _roster]];

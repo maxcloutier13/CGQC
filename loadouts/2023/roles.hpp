@@ -78,7 +78,7 @@ case "2023_lmg":{
 	[player, "lmg", "mk46"] call CGQC_ldt_2023_mg;
 	["mg"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
-	cgqc_player_role = "Light MachineGunner";
+	cgqc_player_role = "LMG";
 	cgqc_player_roleType = "Infantry";
 };
 
@@ -86,7 +86,7 @@ case "2023_hmg":{
 	[player, "hmg", "mk48"] call CGQC_ldt_2023_mg;
 	["mg"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
-	cgqc_player_role = "Heavy MachineGunner";
+	cgqc_player_role = "HMG";
 	cgqc_player_roleType = "Infantry";
 };
 
@@ -95,7 +95,7 @@ case "2023_at_maaws":{
 	[player, "maaws", "m4_dotplus"] call CGQC_ldt_2023_at;
 	["at"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
-	cgqc_player_role = "AT - MAAWS";
+	cgqc_player_role = "AT/MAAWS";
 	cgqc_player_roleType = "Infantry";
 };
 
@@ -103,7 +103,7 @@ case "2023_at_javelin":{
 	[player, "javelin", "m4_lpvo"] call CGQC_ldt_2023_at;
 	["at"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
-	cgqc_player_role = "AT - Javelin";
+	cgqc_player_role = "AT/Javelin";
 	cgqc_player_roleType = "Infantry";
 };
 

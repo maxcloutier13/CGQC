@@ -3,7 +3,7 @@ case "vanilla_rifleman":{
 	[] call CGQC_loadout_vanillaRifleman;
 	["tl"] call CGQC_fnc_getRadioPresets;
 	["inf"] spawn cgqc_fnc_switchPerks;
-	cgqc_player_role = "Vanilla Rifleman";
+	cgqc_player_role = "Rifleman";
 
 };
 case "vanilla_tl":{
@@ -11,5 +11,5 @@ case "vanilla_tl":{
 	[] call CGQC_loadout_vanillaTL;
 	["tl"] call CGQC_fnc_getRadioPresets;
 	["tl"] spawn cgqc_fnc_switchPerks;
-	cgqc_player_role = "Vanilla TeamLeader";
+	cgqc_player_role = "TeamLeader";
 };
