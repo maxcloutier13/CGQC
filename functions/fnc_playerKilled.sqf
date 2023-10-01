@@ -25,6 +25,7 @@ if (local _unit) then {
 	_unit setVariable["Saved_Loadout",_loadout];
 
 	_killa = "";
+	private _killerVehicle = vehicle _killer;
 	if (isNil "_instigator") then {
 		_killa = name _killer;
 	} else {

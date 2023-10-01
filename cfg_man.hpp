@@ -10,6 +10,7 @@ class CAManBase: Man {
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Quick check of the essentials'";
+				distance = 2;
 			};
 			class cgqc_inspect {
 				displayName = "Full Gear Inspection";
@@ -18,10 +19,19 @@ class CAManBase: Man {
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Inspect the soldiers gear'";
+				distance = 2;
+			};
+			class cgqc_CopyClackerCodes
+			{
+				displayName = "Copy Clacker Codes";
+				selection = "";
+				statement = "[_player, _target] spawn CGQC_fnc_copyClacker";
+				condition = "[_player, _target] call CGQC_fnc_copyClackerCheck";
+				icon = "a3\ui_f\data\gui\rsc\RscDisplayArsenal\radio_ca.paa";
+				distance = 2;
 			};
 		};
 	};
-
 	class ACE_SelfActions {
 		// Remove this thing
 		delete aceax_ingame_gear;
