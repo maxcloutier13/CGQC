@@ -46,6 +46,8 @@ cgqc_player_groupID = groupId player;
 
 if (!cgqc_flag_isTraining) then {[] call CGQC_fnc_setGroupRadios};
 
+[] call CGQC_fnc_setTeamColors;
+
 hint format ["You've joined %1", _groupName];
 
 diag_log format ["[CGQC_FNC] joinGroup Player %1 joined %2", cgqc_custom_playername,  _groupName];

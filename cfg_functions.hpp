@@ -13,6 +13,14 @@ class CGQC {
     class functions {
         // Fonctions ----------------------------------------------------------------------------
 
+        class setTeamColors{
+            file = "\cgqc\functions\fnc_setTeamColors.sqf";
+            description = "Auto set team colors";
+        };
+        class loadDiaryRoster{
+            file = "\cgqc\functions\fnc_loadDiaryRoster.sqf";
+            description = "Load current group rosters";
+        };
         class copyClackerCheck{
             file = "\cgqc\functions\fnc_copyClackerCheck.sqf";
             description = "Check if clacker codes can be copied from target";

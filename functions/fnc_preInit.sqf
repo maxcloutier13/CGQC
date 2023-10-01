@@ -333,6 +333,25 @@ if (cgqc_player_hasUnsung) then {
 	[_type] call CGQC_fnc_training;
 }] call CBA_fnc_addEventHandler;
 
+// Initial roster
+[] spawn CGQC_fnc_loadDiaryRoster;
+
+// Map open/close
+cgqc_mapOpen = addMissionEventHandler ["Map", {
+	params ["_mapIsOpened", "_mapIsForced"];
+	cgqc_mapOpened = _mapIsOpened;
+	// Refresh the roster every 5 seconds
+	[_mapIsOpened, _mapIsForced] spawn {
+		params ["_mapIsOpened", "_mapIsForced"];
+		if (_mapIsOpened) then {
+			while {cgqc_mapOpened} do {
+				[] call CGQC_fnc_loadDiaryRoster;
+				sleep 5;
+			};
+		};
+	};
+}];
+
 // Medical menu / IFAK eventhandler
 ["ace_medicalMenuOpened", {
     params ["_acePlayer", "_targetPlayer", "_display"];
