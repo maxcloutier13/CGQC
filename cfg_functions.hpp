@@ -12,6 +12,15 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+
+        class copyClackerCheck{
+            file = "\cgqc\functions\fnc_copyClackerCheck.sqf";
+            description = "Check if clacker codes can be copied from target";
+        };
+        class copyClacker{
+            file = "\cgqc\functions\fnc_copyClacker.sqf";
+            description = "Copy clacker codes";
+        };
         class whistle{
             file = "\cgqc\functions\fnc_whistle.sqf";
             description = "Whistle stuff";
