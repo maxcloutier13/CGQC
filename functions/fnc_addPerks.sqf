@@ -471,7 +471,7 @@ _adding = [ ["ACE_ZeusActions", "zeus_options"], _action ] call  ace_interact_me
 
 
 // Whistle ---------------------------------------------------------------------------------------------------------------
-_action = [ "menu_self_whistle", "Whistle", "\fox_whistle\ui\whistle.paa", {[player] call CGQC_fnc_whistle}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+//_action = [ "menu_self_whistle", "Whistle", "\fox_whistle\ui\whistle.paa", {[player] call CGQC_fnc_whistle}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 diag_log "[CGQC_INIT] --- addPerks done";
