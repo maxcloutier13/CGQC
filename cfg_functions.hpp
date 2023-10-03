@@ -12,7 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-
+        class markStuff{
+            file = "\cgqc\functions\fnc_markStuff.sqf";
+            description = "Mark dropped stuff";
+        };
+        class dropStuff{
+            file = "\cgqc\functions\fnc_dropStuff.sqf";
+            description = "Drop player stuff";
+        };
         class setTeamColors{
             file = "\cgqc\functions\fnc_setTeamColors.sqf";
             description = "Auto set team colors";

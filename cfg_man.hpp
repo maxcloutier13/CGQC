@@ -36,24 +36,25 @@ class CAManBase: Man {
 		// Remove this thing
 		delete aceax_ingame_gear;
 		delete fox_self;
-
+		class CGQC_dropRuck	{
+			displayName = "Drop Backpack";
+			statement = "[player, backpack player, 'DropBag'] call CGQC_fnc_dropStuff";
+			condition = "backpack player != '' && isNull objectParent player";
+			icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa";
+		};
 		// Group manager
-		class ACE_TeamManagement
-		{
-			class CGQC_group_manager
-			{
+		class ACE_TeamManagement {
+			class CGQC_group_manager {
 				displayName = "Join Group";
 				statement = "";
 				condition = "true";
 				icon = "\z\ace\addons\interaction\UI\team\team_management_ca.paa";
-				class CGQC_group_manager_hq
-				{
+				class CGQC_group_manager_hq	{
 					displayName = "HQ";
 					condition = "true";
 					statement = "['HQ'] call CGQC_fnc_joinGroup";
 				};
-				class CGQC_group_manager_spartan
-				{
+				class CGQC_group_manager_spartan {
 					displayName = "Spartan";
 					condition = "true";
 					statement = "";
