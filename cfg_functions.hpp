@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-
+        class changeAperture{
+            file = "\cgqc\functions\fnc_setTeamColors.sqf";
+            description = "Auto set team colors";
+        };
         class setTeamColors{
             file = "\cgqc\functions\fnc_setTeamColors.sqf";
             description = "Auto set team colors";
