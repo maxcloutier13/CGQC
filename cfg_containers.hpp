@@ -146,7 +146,7 @@ class cgqc_box_mk2_stash :  NATO_Box_Base
     displayName = "CGQC Logistics Stash";
     model = "\CGQC\containers\cgqc_box_vic_ammo";
     icon = "iconCrateAmmo";
-    maximumLoad = 400; //Can't store inventory items
+    maximumLoad = 2000; //Can't store inventory items
 
     ace_cargo_space = 0;  // Cargo space your vehicle has
     ace_cargo_hasCargo = 0;  // Enables cargo to be loaded inside the vehicle (1-yes, 0-no)
