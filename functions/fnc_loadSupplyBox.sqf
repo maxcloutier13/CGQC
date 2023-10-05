@@ -1,5 +1,5 @@
 // --- loadSupplyBox ----------------------------------------------------------
-// Dynamic supply box 
+// Dynamic supply box
 params ["_crate_array"];
 _crate = _crate_array select 0;
 diag_log format ["[CGQC_FNC] loadSupplyBox %1 started", _crate];
@@ -8,8 +8,8 @@ diag_log format ["[CGQC_FNC] loadSupplyBox %1 started", _crate];
 	params ["_crate"];
 	waitUntil {!isNil "cgqc_start_postInitClient_done"};
 	waitUntil {cgqc_start_postInitClient_done};
-	if (isServer) then {
-		
+	if (local _crate) then {
+
 		clearItemCargoGlobal _crate;
 		clearWeaponCargoGlobal  _crate;
 		clearMagazineCargoGlobal  _crate;
