@@ -23,8 +23,8 @@ _playerGroups = [];
 		_unitName = name _x;
 		_color = "";
 		_unitColor = assignedTeam _x;
-		_weight = [ACE_Player] call ace_common_fnc_getweight;
-		_role = cgqc_player_role;
+		_weight = [_x] call ace_common_fnc_getweight;
+		_role = _x getVariable "cgqc_player_role";
 		/*if (cgqc_player_role isEqualTo "") then {
 			_role = typeOf player;
 		};*/
