@@ -1,17 +1,17 @@
-// --- loadUnsung ----------------------------------------------------------
-// Handles the arsenal for Unsung
+// --- loadNorthern ----------------------------------------------------------
+// Handles the arsenal for Northern Front
 
 _type = _this select 0;
 
 [_type] spawn {
 	params ["_type"];
 	_zeus = false;
-	_items = cgqc_unsung_arsenal_1;
+	_items = cgqc_northern_arsenal_1;
 	_found = false;
 	switch (_type) do {
 		case 0: {
-			hint "Arsenal: Vietnam";
-			_items = cgqc_unsung_arsenal_8;
+			hint "Arsenal: Complet";
+			_items = cgqc_northern_arsenal_all;
 			_found = true;
 		};
 		case 5: {
@@ -20,12 +20,10 @@ _type = _this select 0;
 			[player, player, true] call ace_arsenal_fnc_openBox;
 		};
 		default	{
-			hintc "loadUnsung fucked up. ";
+			hintc "loadNorthern fucked up. ";
 		};
 	};
 	if (!_zeus) then {
-		//hintc "Not Zeus: Pop box";
-		waitUntil {_found};
 		// Init crate
 		[player, _items] call ace_arsenal_fnc_initBox;
 		// Open arsenal
