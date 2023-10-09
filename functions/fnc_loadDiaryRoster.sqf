@@ -23,11 +23,9 @@ _playerGroups = [];
 		_unitName = name _x;
 		_color = "";
 		_unitColor = assignedTeam _x;
-		_weight = [_x] call ace_common_fnc_getweight;
-		_role = _x getVariable "cgqc_player_role";
-		/*if (cgqc_player_role isEqualTo "") then {
-			_role = typeOf player;
-		};*/
+		_weight = [_x] remoteExec ["ace_common_fnc_getweight", _x];
+		_role = [_x, "player_role"] remoteExec ["getVariable", _x];
+
 		switch (_unitColor) do {
 			case "RED": {_color = "#CC3333" };
 			case "GREEN": {_color = "#5C7829" };

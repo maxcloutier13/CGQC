@@ -2,7 +2,7 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.4.6.2";
+_version = "4.4.7";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 // Set side
@@ -104,6 +104,13 @@ if (cgqc_player_loadAll) then {
 		#include "\cgqc\loadouts\ifa3\all_items.hpp";
 		cgqc_ifa3_arsenal_8 = cgqc_ifa3_arsenal_all;
 		cgqc_ifa3_arsenal_init_done = true;
+	};
+	if(cgqc_player_hasNorthern) then {
+		cgqc_northern_arsenal_1 = [];
+		cgqc_northern_arsenal_8 = [];
+		#include "\cgqc\loadouts\northern\all_items.hpp";
+		cgqc_northern_arsenal_8 = cgqc_northern_arsenal_all;
+		cgqc_northern_arsenal_init_done = true;
 	};
 
 	// Event Handers -----------------------------------------------------------------------

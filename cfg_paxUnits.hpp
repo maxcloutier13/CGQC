@@ -123,7 +123,7 @@ switch (true) do {
 		#include "\cgqc\pax\cfg_paxIfa3.hpp"
 
 	};
-	case (cgqc_player_hasScandinavia): {// *** PAX - Scandinavia **********************************************************************************************
+	case (cgqc_player_hasNorthern): {// *** PAX - Scandinavia **********************************************************************************************
 		#include "\cgqc\pax\cfg_paxScandinavia.hpp"
 
 	};

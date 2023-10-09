@@ -86,6 +86,8 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     diag_log "[CGQC_FNC] switchRole - lower gun";
     [player] call ace_weaponselect_fnc_putWeaponAway;
 
+    player setVariable ["player_role", cgqc_player_role, false];
+
     cgqc_roleSwitch_done = true;
     diag_log "[CGQC_FNC] switchRole done";
 };

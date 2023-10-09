@@ -66,7 +66,7 @@ if (hasInterface) then {
 			_action = [ "menu_zeus_maxMags_20", "SetMax: 20", "", {cgqc_setting_limitMags_max = 20; publicVariable "cgqc_setting_limitMags_max";hint "MaxMags: 20"}, {cgqc_setting_limitMags} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_zeus_options", "menu_zeus_maxMags" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-			if !(cgqc_player_has2023) then {
+			if (!cgqc_player_has2023 && !cgqc_player_hasUnsung && !cgqc_player_hasIfa3) then {
 				diag_log "[CGQC_FNC] loadMk3Menu - loading vanilla stuff";
 				//waitUntil {sleep 1; cgqc_mk2_arsenal_init_done};
 				// Vanilla ---------------------------------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ if (hasInterface) then {
 				_action = [ "menu_unsung", "Vietnam", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Unsung Arsenal Complet
-				_action = [ "menu_unsung_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\unsung\load_unsung.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_unsung_complete", "Arsenal: Vietnam", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\unsung\load_unsung.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// Unsung Loadout switcher ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_unsung_loadouts", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -493,13 +493,13 @@ if (hasInterface) then {
 
 			};
 			// Scandinavia shit ===============================================================================================
-			if (cgqc_player_hasScandinavia) then {
+			if (cgqc_player_hasNorthern) then {
 				diag_log "[CGQC_FNC] loadMk3Menu - loading Scandinavia stuff";
 				// Main Menu ---------------------------------------------------------------------------------------------------------
-				_action = [ "menu_scandinavia", "ww2 Scandinavia", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasScandinavia} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_scandinavia", "Northern Front", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasNorthern} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Scandinavia Arsenal Complet
-				_action = [ "menu_scandinavia_complete", "Arsenal: Complet", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\scandinavia\load_scandinavia.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_scandinavia_complete", "Arsenal: Northern", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\northern\load_northern.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_scandinavia" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 			};
