@@ -32,11 +32,26 @@ switch (_type) do {
 			if !(isNil "_handgunMag") then {
 				_handgunMags = {_x isEqualTo _handgunMag } count _allMags;
 			};
-			_grenades = ["rhs_mag_m67", "HandGrenade"] apply {toLower _x};
-			_nade = {(toLower _x) in _grenades} count _allMags;
+
+			_grenades = ["HandGrenade"] apply {toLower _x};
 			_flash = ["ACE_M84", "ACE_CTS9"]  apply {toLower _x};
+			_moke = ["SmokeShell"]  apply {toLower _x};
+
+			if (cgqc_player_has2023) then {
+				_grenades = ["rhs_mag_m67", "HandGrenade"] apply {toLower _x};
+				_flash = ["ACE_M84", "ACE_CTS9"]  apply {toLower _x};
+				_moke = ["SmokeShell"]  apply {toLower _x};
+			};
+			if (cgqc_player_hasNorthern) then {
+				_grenades = ["NORTH_M43Grenade_mag"] apply {toLower _x};
+				_moke = ["NORTH_M43SmokeGrenade_mag"]  apply {toLower _x};
+				_flash = ["SmokeShell"]  apply {toLower _x};
+			};
+
+
+			_nade = {(toLower _x) in _grenades} count _allMags;
 			_nadeFlash = {(toLower _x) in _flash} count _allMags;
-			_smoke = {_x isEqualTo "SmokeShell" } count _allMags;
+			_smoke = {(toLower _x) in _moke} count _allMags;
 
 			// Add primary mags
 			if !(isNil "_primaryMag") then {
@@ -50,6 +65,7 @@ switch (_type) do {
 				switch (true) do {
 					case (_magSize > 50): {_addMags = 3; };
 					case (_magSize > 30): {_addMags = 4; };
+					case (_magSize < 15): {_addMags = 10; };
 				};
 
 				for "_i" from 1 to _addMags do {
@@ -72,9 +88,11 @@ switch (_type) do {
 				}else{hint "No Secondary weapon!";};
 
 				// Refill throwables
-				for "_i" from _nade to cgqc_config_ammo_nade - 1 do {[ACE_player, "vest", _grenadeType, true] call cgqc_fnc_addItemWithOverflow;_nadeCount = _nadeCount + 1};
-				for "_i" from _nadeFlash to cgqc_config_ammo_flash - 1 do {[ACE_player, "vest", cgqc_config_ammo_flash_type, true] call cgqc_fnc_addItemWithOverflow; _nadeFlashCount = _nadeFlashCount +1};
+
+				for "_i" from _nade to cgqc_config_ammo_nade - 1 do {[ACE_player, "vest", cgqc_config_ammo_nade_type, true] call cgqc_fnc_addItemWithOverflow;_nadeCount = _nadeCount + 1};
 				for "_i" from _smoke to cgqc_config_ammo_smoke - 1 do {[ACE_player, "vest", cgqc_config_ammo_smoke_type, true] call cgqc_fnc_addItemWithOverflow; _smokeCount = _smokeCount + 1};
+				for "_i" from _nadeFlash to cgqc_config_ammo_flash - 1 do {[ACE_player, "vest", cgqc_config_ammo_flash_type, true] call cgqc_fnc_addItemWithOverflow; _nadeFlashCount = _nadeFlashCount +1};
+
 			} else {
 				// Add new mags/throwables regardless of current count
 				if !(isNil "_handgunMag") then {
@@ -85,10 +103,12 @@ switch (_type) do {
 						};
 				}else{hint "No Secondary weapon!";};
 
+
 				// Refill throwables
-				for "_i" from 1 to cgqc_config_ammo_nade do {[ACE_player, "vest", _grenadeType, true] call cgqc_fnc_addItemWithOverflow;_nadeCount = _nadeCount + 1};
+				for "_i" from 1 to cgqc_config_ammo_nade do {[ACE_player, "vest", cgqc_config_ammo_nade_type, true] call cgqc_fnc_addItemWithOverflow;_nadeCount = _nadeCount + 1};
 				for "_i" from 1 to cgqc_config_ammo_flash  do {[ACE_player, "vest", cgqc_config_ammo_flash_type, true] call cgqc_fnc_addItemWithOverflow; _nadeFlashCount = _nadeFlashCount +1};
 				for "_i" from 1 to cgqc_config_ammo_smoke do {[ACE_player, "vest", cgqc_config_ammo_smoke_type, true] call cgqc_fnc_addItemWithOverflow; _smokeCount = _smokeCount + 1};
+
 			};
 
 
