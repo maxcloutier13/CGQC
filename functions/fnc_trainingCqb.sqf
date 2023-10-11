@@ -56,13 +56,13 @@ switch (_type) do {
 	case 73: {cgqc_cqb_timer = cgqc_cqb_timer + 60; hint format["Time until release:%1secs",cgqc_cqb_timer];};
 	case 74: {cgqc_cqb_timer = cgqc_cqb_timer - 60; hint format["Time until release:%1secs",cgqc_cqb_timer];};
 	case 75: {cgqc_cqb_timer = 10; cgqc_cqb_timer_random = true; hint "Time until release:Random";};
-	
+
 	case 500: {
 		{
 			_x enableSimulationGlobal false;
 			_x disableAI "all";
 		} forEach cgqc_cqb_list;
-		cgqc_cqb_paused = true; 
+		cgqc_cqb_paused = true;
 		hint "CQB Paused";
 	};
 	case 501: {
@@ -73,8 +73,8 @@ switch (_type) do {
 		{
 			_x disableAI "PATH";
 		} forEach cgqc_cqb_list_static;
-		
-		cgqc_cqb_paused = false; 
+
+		cgqc_cqb_paused = false;
 		hint "CQB Resumed";
 	};
 	default {
@@ -99,7 +99,7 @@ if (_type < 40) then {
 		//_building = nearestBuilding player; // Replace player with the unit you want to search for buildings near
 		if([_building] call BIS_fnc_isBuildingEnterable) then {
 			//Close all doors
-			for "_i" from 1 to 22 do { 
+			for "_i" from 1 to 22 do {
 				[_building, _i, 0] call BIS_fnc_door;
 			};
 			_positions = [_building] call BIS_fnc_buildingPositions;
@@ -108,15 +108,13 @@ if (_type < 40) then {
 			_unit_group setBehaviour "SAFE";
 			_civ_group = createGroup [civilian, true];
 			cgqc_cqb_list = [];
-			for "_i" from 1 to cgqc_cqb_target_nbr do { 
+			for "_i" from 1 to cgqc_cqb_target_nbr do {
 				// Pick random position
 				_random_pos = selectRandom _positions;
 				_positions = _positions - _random_pos;
 				_spawn_class = selectRandom cgqc_cqb_hostile_class;
 				_unit = _unit_group createUnit [_spawn_class, _random_pos, [], 0, "CAN_COLLIDE"];
-				if (_type == 2) then {
-					_unit removeWeapon (primaryWeapon _unit);
-				};
+				if (_type == 2) then {_unit removeWeapon (primaryWeapon _unit);};
 				doStop _unit;
 				_move = 0;
 				if (cgqc_cqb_move == 5) then {
@@ -147,7 +145,7 @@ if (_type < 40) then {
 					_unit removeMagazines "MiniGrenade";
 					_unit removeMagazines "rhs_mag_m67";
 				};
-				// Killed EventHandler 
+				// Killed EventHandler
 				_unit addEventHandler ["Killed", {
 					params ["_unit", "_killer"];
 					cgqc_cqb_list = cgqc_cqb_list - [_unit];
@@ -161,9 +159,10 @@ if (_type < 40) then {
 					};
 				}];
 				// Disable unit
-				_unit enableSimulationGlobal false;
+				//_unit enableSimulationGlobal false;
 				_unit disableAI "all";
 				cgqc_cqb_list pushBack _unit;
+				sleep 0.2;
 			};
 			if (cgqc_cqb_civ) then {
 				_civ_nbr = selectRandom [1,2,3];
@@ -176,7 +175,7 @@ if (_type < 40) then {
 					_unit disableAI "PATH";
 					_unit setUnitPos "UP";
 					cgqc_cqb_tgt_civ = cgqc_cqb_tgt_civ + 1;
-					// Killed EventHandler 
+					// Killed EventHandler
 					_unit addEventHandler ["Killed", {
 						params ["_unit", "_killer"];
 						cgqc_cqb_list_civ = cgqc_cqb_list_civ - [_unit];
@@ -184,23 +183,25 @@ if (_type < 40) then {
 						systemChat _txt;
 					}];
 					cgqc_cqb_list_civ pushBack _unit;
+					sleep 0.2;
 				};
 			};
-			_txt = parseText format["-- Ready to go in 10s --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ]; 
+			_txt = parseText format["-- Ready to go in 10s --"  + "<br/>" + "Total Units: %1" + "<br/>" + "Moving: %2" + "<br/>" + "Static: %3" + "<br/>" + "Civ: %4", count cgqc_cqb_list,cgqc_cqb_tgt_move,cgqc_cqb_tgt_static,cgqc_cqb_tgt_civ];
 			hint _txt;
-			[side player, "task_cqb", [
-				format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list], 
-				format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""],
-				getPos _building, "ASSIGNED", 1, true, "attack", true] call BIS_fnc_taskCreate;
 			cgqc_cqb_on = true;
 
 			[] spawn {
 				sleep 10;
 				hint "GO!!!!!";
+				[side player, "task_cqb", [
+				format["Enter and clear building. Kill the %1 PAX", count cgqc_cqb_list],
+				format["CQB: Kill the %1 PAX",count cgqc_cqb_list], ""],
+				getPos _building, "ASSIGNED", 1, true, "attack", true] call BIS_fnc_taskCreate;
 				{
-					_x enableSimulationGlobal true;
+					//_x enableSimulationGlobal true;
 					_x enableAI "all";
-				} forEach cgqc_cqb_list; 
+					sleep 0.1;
+				} forEach cgqc_cqb_list;
 
 				while {cgqc_cqb_on} do {
 					if (cgqc_cqb_timer > 0) then {
@@ -214,15 +215,15 @@ if (_type < 40) then {
 								cgqc_cqb_list_static = cgqc_cqb_list_static - [_random_pax];
 								cgqc_cqb_list_moving pushBack _random_pax;
 								_random_pax enableAI "PATH";
-								systemChat format ["%1 started moving", typeOf _random_pax]; 
+								systemChat format ["%1 started moving", typeOf _random_pax];
 							}
 					}else{
 						sleep 10;
 					};
 				};
-				//CQB is off 
-				// Check if succeeded 
-				if (count cgqc_cqb_list < 1) then 
+				//CQB is off
+				// Check if succeeded
+				if (count cgqc_cqb_list < 1) then
 				{
 					//Win
 					["task_cqb", "SUCCEEDED", true] call BIS_fnc_taskSetState;
@@ -233,7 +234,7 @@ if (_type < 40) then {
 					sleep 10;
 				};
 				["task_cqb", true, true] call BIS_fnc_deleteTask;
-			};		
+			};
 		} else{
 			hint "Not a good building";
 		};

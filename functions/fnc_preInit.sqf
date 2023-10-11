@@ -540,20 +540,41 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_ammo_handgun", "SLIDER",["Handgun mags", "Number in bandolier"],
 	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_handgun"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_ammo_nade", "SLIDER",["Grenades", "Number in bandolier"],
-    [_menu_name, "Content: Ammo Bandolier"], [0, 25, 4, 0], 1, {publicVariable "cgqc_config_ammo_nade"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ammo_nade_type", "EDITBOX", ["Grenade Type", "Type of grenade"],
-    [_menu_name, "Content: Ammo Bandolier"], "HandGrenade"] call CBA_fnc_addSetting;
 
-["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
-    [_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
-    [_menu_name, "Content: Ammo Bandolier"], "ACE_CTS9"] call CBA_fnc_addSetting;
+if (cgqc_player_hasNorthern) then {
+	["cgqc_config_ammo_nade", "SLIDER",["Grenades", "Number in bandolier"],
+		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_nade"}, false] call CBA_fnc_addSetting;
+	["cgqc_config_ammo_nade_type", "EDITBOX", ["Grenade Type", "Type of grenade"],
+		[_menu_name, "Content: Ammo Bandolier"], "NORTH_M43Grenade_mag"] call CBA_fnc_addSetting;
 
-["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
-    [_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
-["cgqc_config_ammo_smoke_type", "EDITBOX", ["Smoke Grenade Type", "Type of smoke"],
-    [_menu_name, "Content: Ammo Bandolier"], "SmokeShell"] call CBA_fnc_addSetting;
+	["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
+		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 0, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
+	["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
+		[_menu_name, "Content: Ammo Bandolier"], "ACE_CTS9"] call CBA_fnc_addSetting;
+
+	["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
+		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
+	["cgqc_config_ammo_smoke_type", "EDITBOX", ["Smoke Grenade Type", "Type of smoke"],
+		[_menu_name, "Content: Ammo Bandolier"], "NORTH_M43SmokeGrenade_mag"] call CBA_fnc_addSetting;
+
+} else {
+	["cgqc_config_ammo_nade", "SLIDER",["Grenades", "Number in bandolier"],
+		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 4, 0], 1, {publicVariable "cgqc_config_ammo_nade"}, false] call CBA_fnc_addSetting;
+	["cgqc_config_ammo_nade_type", "EDITBOX", ["Grenade Type", "Type of grenade"],
+		[_menu_name, "Content: Ammo Bandolier"], "HandGrenade"] call CBA_fnc_addSetting;
+
+	["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
+		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
+	["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
+		[_menu_name, "Content: Ammo Bandolier"], "ACE_CTS9"] call CBA_fnc_addSetting;
+
+	["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
+		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
+	["cgqc_config_ammo_smoke_type", "EDITBOX", ["Smoke Grenade Type", "Type of smoke"],
+		[_menu_name, "Content: Ammo Bandolier"], "SmokeShell"] call CBA_fnc_addSetting;
+};
+
+
 
 // Supply box
 ["cgqc_config_supply_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"],

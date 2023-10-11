@@ -117,19 +117,18 @@ switch (true) do {
 	// *** PAX - 2023 *******************************************************
 	case (cgqc_player_has2023): {
 		#include "\cgqc\pax\cfg_pax2023.hpp"
-
 	};
 	case (cgqc_player_hasIfa3): {// *** PAX - WW2 **********************************************************************************************
-		#include "\cgqc\pax\cfg_paxIfa3.hpp"
-
+		if (cgqc_player_hasNorthern) then {
+			// *** PAX - Scandinavia ************************************************
+			#include "\cgqc\pax\cfg_paxScandinavia.hpp"
+		} else {
+			#include "\cgqc\pax\cfg_paxIfa3.hpp"
+		};
 	};
-	case (cgqc_player_hasNorthern): {// *** PAX - Scandinavia **********************************************************************************************
-		#include "\cgqc\pax\cfg_paxScandinavia.hpp"
 
-	};
 	case (cgqc_player_hasUnsung): {// *** PAX - Unsung **********************************************************************************************
 		#include "\cgqc\pax\cfg_paxUnsung.hpp"
-
 	};
 	default	{
 		#include "\cgqc\pax\cfg_paxVanilla.hpp"
