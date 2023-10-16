@@ -6,6 +6,7 @@ diag_log format ["[CGQC_FNC] setVoiceVolume %1/%2 started", _unit, _vol];
 
 _target = 0;
 _lvl = 0;
+_normal = false;
 switch (_vol) do {
 	case "default": {
 		_target = cgqc_acre_defaultVolume;
@@ -14,7 +15,7 @@ switch (_vol) do {
 	case "whisper": {_target = 0.1; _lvl = 0;};
 	case "discreet": {_target = 0.2; _lvl = 0.15;};
 	case "talk": {_target = 0.4;_lvl = 0.25;};
-	case "normal": {_target = 0.7;_lvl = 0.5;};
+	case "normal": {_target = 0.7;_lvl = 0.5;_normal = true;};
 	case "loud": {_target = 1.0;_lvl = 0.75;};
 	case "shout": {_target = 1.3;_lvl = 1;};
 };
