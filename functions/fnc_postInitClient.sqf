@@ -190,13 +190,38 @@ cgqc_event_talk = ["acre_startedSpeaking", {
 	params ["_unit", "_onRadio", "_radioId", "_speakingType"];
 	//If volume is low and player is not talking on radio
 	_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
+	diag_log format ["[CGQC_FNC] startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType];
+	if (isNil "cgqc_normalVoiceShown") then {
+		cgqc_normalVoiceShown = false;
+	};
 	// Volume is low: notify the player he is whispering
 	if (!_onRadio) then {
 		_txt = "";
-		if (_vol < 0.3) then {_txt = parseText("<t color='#006400'>Whispering</t>")};
-		//if (_vol isEqualTo 0.4) then {_txt = parseText("<t color='##4169e1'>Talking</t>")};
-		if (_vol isEqualTo 1.0) then {_txt = parseText("<t color='#ff8c00'>Loud</t>")};
-		if (_vol isEqualTo 1.3) then {_txt = parseText("<t color='#b10000'>Shouting</t>")};
+		diag_log format ["[CGQC_FNC] startedSpeaking checking vol %1", _vol];
+		if (_vol < 0.3) then {
+			_txt = parseText("<t color='#006400'>Whispering</t>");
+			cgqc_normalVoiceShown = false;
+		} else {
+			if (_vol < 0.5) then {
+				_txt = parseText("<t color='##4169e1'>Talking low</t>");
+				cgqc_normalVoiceShown = false;
+			};
+		};
+		if (_vol isEqualTo 0.7) then {
+			if (!cgqc_normalVoiceShown) then {
+				_txt = parseText("<t color='#4169e1'>Normal voice</t>");
+				cgqc_normalVoiceShown = true;
+			};
+		};
+		if (_vol isEqualTo 1.0) then {
+			_txt = parseText("<t color='#ff8c00'>Loud</t>");
+			cgqc_normalVoiceShown = false;
+		};
+		if (_vol isEqualTo 1.3) then {
+			_txt = parseText("<t color='#b10000'>Shouting</t>");
+			cgqc_normalVoiceShown = false;
+		};
+		diag_log format ["[CGQC_FNC] startedSpeaking showing? %1", !cgqc_normalVoiceShown];
 		if (_txt isNotEqualTo "") then {
 			[ _txt, 0, 1.15, 1, 0.8 ] spawn BIS_fnc_dynamicText;
 		};
