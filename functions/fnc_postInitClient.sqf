@@ -295,5 +295,11 @@ if (!cgqc_flag_isTraining) then {
 // Save initial volume
 cgqc_acre_previousVolume = [] call acre_api_fnc_getSelectableVoiceCurve;
 
+// Setup default groups colors
+["HQ", [1.0, 0.38, 0,1], [1.0, 0.38, 0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
+["Spartan-1", [1.0, 0.5, 0.5,1], [1.0, 0.5, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Spartan-2", [0.5, 0.5, 1.0,1], [0.5, 0.5, 1.0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Spartan-3", [0.5, 1.0, 0.5,1], [0.5, 1.0, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+
 
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
