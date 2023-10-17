@@ -293,7 +293,7 @@ if (cgqc_player_hasSahara) then {
 	//cgqc_mission_dro = true;
 };*/
 
-
+/*
 // Acre default radio
 if (cgqc_player_hasUnsung) then {
 	// Weird radio for Vietnam use
@@ -301,7 +301,7 @@ if (cgqc_player_hasUnsung) then {
 }else{
 	// Default modern radio = 152
 	["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
-};
+};*/
 
 
 // Key-fucking-binds ===================================================================================
@@ -772,12 +772,6 @@ if (cgqc_config_sideLanguage) then {
 	};
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
-
-// Setup default groups colors
-["HQ", [1.0, 0.38, 0,1], [1.0, 0.38, 0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
-["Spartan 1", [1.0, 0.5, 0.5,1], [1.0, 0.5, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
-["Spartan 2", [0.5, 0.5, 1.0,1], [0.5, 0.5, 1.0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
-["Spartan 3", [0.5, 1.0, 0.5,1], [0.5, 1.0, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
