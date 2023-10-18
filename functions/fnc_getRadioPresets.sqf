@@ -19,9 +19,10 @@ if (cgqc_flag_isTraining) then {
 	switch (_type) do {
 		case "training": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "training"};
 		case "inf":	{_radios = ["ACRE_PRC343"];_preset = "spartan"};
+		case "2ic": {_radios = ["ACRE_PRC343", "ACRE_PRC148"];_preset = "2ic"};
 		case "medic": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "medic"};
 		case "tl": {_radios = ["ACRE_PRC343", "ACRE_PRC152"];_preset = "spartan_1"};
-		case "sl": {_radios = ["ACRE_PRC343", "ACRE_PRC117F", "ACRE_PRC117F"];_preset = "hq"};
+		case "sl": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "sl"};
 		case "hq": {_radios = ["ACRE_PRC343", "ACRE_PRC117F", "ACRE_PRC117F"];_preset = "hq"};
 		case "recon": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "recon"};
 		case "jtac": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "jtac"};
