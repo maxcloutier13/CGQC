@@ -80,6 +80,21 @@ switch (_type) do {
 		[ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
 		hint "Patch restored";
 	};
+	case "2ic": {
+		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
+		_handRadio = ["ACRE_PRC148"] call acre_api_fnc_getRadioByType;
+		// Channels
+		[_handRadio, 1] call acre_api_fnc_setRadioChannel;
+		// Set sides
+		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		// Set radio PTT: 148 is listen-only
+		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		hint parseText "
+		--- 2iC radio setup --- <br/>
+		Radio1:Gauche/343/Team<br/>
+		Radio2:Droite/148/2iC<br/>";
+	};
 	case "spartan":	{  //Grunts
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		//_handRadio = ["ACRE_PRC148"] call acre_api_fnc_getRadioByType;
@@ -223,6 +238,33 @@ switch (_type) do {
 		Radio1:Gauche/343/Team<br/>
 		Radio2:Droite/152/Spartan/HQ<br/>
 		Radio3:Gauche/152/Griffon</t>";
+	};
+	case "sl": {
+		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
+		// 152's
+		_packRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
+
+		_packRadio_1 = _packRadios select 0;
+		_packRadio_2 = _packRadios select 1;
+		// Channels
+
+		[_personalRadio, 4] call acre_api_fnc_setRadioChannel;
+		// Channels
+
+		[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
+
+		[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Support
+		// Set order
+		_success = [ [_personalRadio, _packRadio_1, _packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		// Set sides
+		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		_success = [_packRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
+		hint parseText "
+		--- HQ/SL radio setup ---
+		Radio1:Gauche/343/Team: HQ<br/>
+		Radio2:Droite/152/Spartan/HQ<br/>
+		Radio3:Gauche/152/Support/HQ</t>";
 	};
 	case "hq": {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;

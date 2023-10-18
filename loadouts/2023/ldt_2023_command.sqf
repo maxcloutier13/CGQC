@@ -27,31 +27,38 @@ switch (_gunVariant) do {
 
 switch (_variant) do {
 	case "tl": {
-		for "_i" from 1 to 2 do {player addItemToBackpack "tsp_stickCharge_auto_mag"};
-		for "_i" from 1 to 2 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
-		["2023_basic","cgqc_item_laserdesignator","JAS_GPNVG18_Full_blk_TI"] call CGQC_fnc_getLinkedItems;
+		for "_i" from 1 to 2 do {_target addItemToBackpack "tsp_stickCharge_auto_mag"};
+		for "_i" from 1 to 2 do {_target addItemToBackpack "tsp_popperCharge_auto_mag"};
+		["2023_basic","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 	};
-	case "sl";
-	case "hq": {
-		player removeItems "ACE_EntrenchingTool";
+	case "sl": {
+		_target removeItems "ACE_EntrenchingTool";
+		_target removeItems "ACE_Canteen";
+		_target addItem "ACE_M26_Clacker";
 		// === Drones ================================
-		player addItemToBackpack "Rev_darter_item";
+		_target addItemToBackpack "Rev_darter_item";
+		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
+	};
+	case "hq": {
+		_target removeItems "ACE_EntrenchingTool";
+		// === Drones ================================
+		_target addItemToBackpack "Rev_darter_item";
 		// === Comms =================================
-		player addItemToBackpack "ACRE_VHF30108SPIKE";
-		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_Full_blk_TI"] call CGQC_fnc_getLinkedItems;
+		_target addItemToBackpack "ACRE_VHF30108SPIKE";
+		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 	};
 	case "jtac": {
-		player addItem "ACE_ATragMX";
-		player addItem "ACE_Kestrel4500";
-		player addItem "ACE_M26_Clacker";
+		_target addItem "ACE_ATragMX";
+		_target addItem "ACE_Kestrel4500";
+		_target addItem "ACE_M26_Clacker";
 		// === Stuff ================================
-		player addItemToBackpack "Rev_darter_item";
-		player addItemToBackpack "ACE_Tripod";
-		player addItemToBackpack "ACE_Vector";
+		_target addItemToBackpack "Rev_darter_item";
+		_target addItemToBackpack "ACE_Tripod";
+		_target addItemToBackpack "ACE_Vector";
 		// === Explosives ================================
-		player addItemToBackpack "ACE_DefusalKit";
-		player addItemToBackpack "rhsusf_m112_mag";
-		player addItemToBackpack "rhsusf_mine_m14_mag";
+		_target addItemToBackpack "ACE_DefusalKit";
+		_target addItemToBackpack "rhsusf_m112_mag";
+		_target addItemToBackpack "rhsusf_mine_m14_mag";
 	};
 	case "zeus": {
 		if (_ruck isNotEqualTo "") then {["backpack", "cgqc_pack_mk1_magic_zeus"] call CGQC_fnc_switchStuff;};

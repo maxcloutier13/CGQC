@@ -597,6 +597,8 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_radios_1", "Infantry - 343", "", {["inf"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			_action = [ "menu_radios_2", "2iC - 343+148", "", {["2ic"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_radios_3", "TL - 343+152", "", {["tl"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_radios_2", "Medic - 343+152", "", {["medic"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
