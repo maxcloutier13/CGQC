@@ -44,6 +44,7 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 			};
 		};
 	};
+	/*
 	if (!cgqc_intro_done) then {
 		titleCut ["", "BLACK IN", 1];
 		1 fadeSound 1;
@@ -51,6 +52,6 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 		cgqc_intro_done = true;
 
 		if (userInputDisabled) then {};
-	};
+	};*/
 };
 diag_log "[CGQC_FNC] showIntro done";
