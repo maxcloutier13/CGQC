@@ -15,7 +15,7 @@ diag_log format ["[CGQC_FNC] addRadios %1 started", _radios];
 				if(_radioId find "148" > -1) then {
 					y_channel = [] call acre_api_fnc_getCurrentRadioChannelNumber;
 					if(y_channel == 1) then {
-						_channel_txt = parseText( "148:Ch1 = Listen Only" + "<br/>" + "Change channel to communicate!");
+						_channel_txt = parseText( "<br/><br/><br/><br/><br/>148:Ch1 = Listen Only" + "<br/>" + "Change channel to communicate!");
 						[ _channel_txt, 0, 0, 3, 1 ] spawn BIS_fnc_dynamicText;
 					};
 				};

@@ -190,12 +190,12 @@ cgqc_event_talk = ["acre_startedSpeaking", {
 	params ["_unit", "_onRadio", "_radioId", "_speakingType"];
 	//If volume is low and player is not talking on radio
 	_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
-	diag_log format ["[CGQC_FNC] startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType];
+	//diag_log format ["[CGQC_FNC] startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType];
 
 	// Volume is low: notify the player he is whispering
 	if (!_onRadio) then {
 		_txt = "";
-		diag_log format ["[CGQC_FNC] startedSpeaking checking vol %1", _vol];
+		//diag_log format ["[CGQC_FNC] startedSpeaking checking vol %1", _vol];
 		if (_vol < 0.3) then {
 			_txt = parseText("<t color='#006400'>Whispering</t>");
 		} else {
