@@ -181,7 +181,7 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                 // Holster all weapons
                 [player] call ace_weaponselect_fnc_putWeaponAway;
                 if (cgqc_player_max) then {
-                    //player linkItem "immersion_cigs_cigar0_nv";
+                    player linkItem "immersion_cigs_cigar4_nv";
                     player addGoggles "G_Aviator";
                     player allowDamage false;
                     hint "NoDamage";
