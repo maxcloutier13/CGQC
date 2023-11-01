@@ -37,21 +37,18 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 				titleCut ["", "BLACK IN", 6];
 
 				sleep 1;
-				if (userInputDisabled) then {};
 				cgqc_intro_running = false;
 				cgqc_intro_done = true;
 				ace_hearing_disableVolumeUpdate = false;
 			};
 		};
 	};
-	/*
-	if (!cgqc_intro_done) then {
+
+	if (cgqc_flag_isTraining) then {
 		titleCut ["", "BLACK IN", 1];
 		1 fadeSound 1;
 		cgqc_intro_skipped = true;
 		cgqc_intro_done = true;
-
-		if (userInputDisabled) then {};
-	};*/
+	};
 };
 diag_log "[CGQC_FNC] showIntro done";
