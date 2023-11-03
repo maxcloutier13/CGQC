@@ -219,7 +219,7 @@ _action = [ "menu_self_patch", "Remettre ta patch personelle", "\cgqc\textures\c
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Fix ARMA
-_action = [ "zeus_fix_arma", "Rise from your Grave", "", {}, {true}] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_fix_arma", "Tu t'es fait Arma?", "", {}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "zeus_fix_arma_heal", "Magic Heal", "", {["heal"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
@@ -228,11 +228,11 @@ _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", 
 //_action = [ "zeus_fix_arma_rejoin", "Rejoin after Disconnect", "", {["rejoin"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-//_action = [ "zeus_fix_arma_corpse", "Teleport to corpse", "", {["respawnOnCorpse"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
-//_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_fix_arma_corpse", "Teleport to corpse", "", {["tp_corpse"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-//_action = [ "zeus_fix_arma_tp", "Teleport to Leader", "", {["teleport"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
-//_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_fix_arma_tp", "Teleport to Leader", "", {["tp_leader"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Dynamic group
 //_action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
