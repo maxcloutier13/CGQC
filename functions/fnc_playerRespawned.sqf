@@ -5,7 +5,7 @@ diag_log "[CGQC_EVENT] playerRespawned started";
 
 // Save stuff for player respawn
 // Corpse position
-_unit setVariable["corpse_position", getPos _corpse];
+_unit setVariable["corpse_position", getPosASL _corpse];
 // Loadout
 _unit setUnitLoadout(_unit getVariable["Saved_Loadout",[]]); //Load loadout saved on death
 // Face/identity
