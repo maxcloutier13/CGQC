@@ -90,6 +90,7 @@ switch (_type) do {
 		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio PTT: 148 is listen-only
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		[] call CGQC_fnc_setGroupRadios;
 		hint parseText "
 		--- 2iC radio setup --- <br/>
 		Radio1:Gauche/343/Team<br/>
@@ -128,6 +129,7 @@ switch (_type) do {
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		// Set TL radio to speaker
 		//_success = [_handRadio, true] call acre_api_fnc_setRadioSpeaker;
+		[] call CGQC_fnc_setGroupRadios;
 		hint parseText "
 		--- TL radio setup ---
 		Radio1:Gauche/343/Team<br/>
@@ -146,6 +148,7 @@ switch (_type) do {
 		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		[] call CGQC_fnc_setGroupRadios;
 		hint parseText "
 		--- 2iC radio setup ---
 		Radio1:Gauche/343/Team<br/>
@@ -155,15 +158,14 @@ switch (_type) do {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		_handRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
 		// Channels
-
 		[_personalRadio, 4] call acre_api_fnc_setRadioChannel;
-
 		[_handRadio, 1] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_handRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		[] call CGQC_fnc_setGroupRadios;
 		hint parseText "
 		--- Medic radio setup ---
 		Radio1:Gauche/343/Team: HQ<br/>
@@ -188,6 +190,7 @@ switch (_type) do {
 		[_handRadio,0.5] call acre_api_fnc_setRadioVolume;
 		// Set radio orders
 		_success = [ [ _rack1, _rack2, _handRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
+		[] call CGQC_fnc_setGroupRadios;
 		hint parseText "<t>
 		Radio1:Gauche/117/Inter-Centaure<br/>
 		Radio2:Droite/117/Centaure-HQ<br/>
@@ -209,6 +212,7 @@ switch (_type) do {
 		// Set sides
 		_success = [_rack1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_rack2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
+		[] call CGQC_fnc_setGroupRadios;
 		hint parseText "<t>
 		Radio1:Gauche/117/Inter-Griffon<br/>
 		Radio2:Droite/117/Griffon-HQ<br/>
@@ -221,11 +225,8 @@ switch (_type) do {
 		_handRadio_1 = _handRadios select 0;
 		_handRadio_2 = _handRadios select 1;
 		// Channels
-
 		[_personalRadio, 4] call acre_api_fnc_setRadioChannel;
-
 		[_handRadio_1, 1] call acre_api_fnc_setRadioChannel;
-
 		[_handRadio_2, 3] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -243,16 +244,12 @@ switch (_type) do {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		// 152's
 		_packRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-
 		_packRadio_1 = _packRadios select 0;
 		_packRadio_2 = _packRadios select 1;
 		// Channels
-
 		[_personalRadio, 4] call acre_api_fnc_setRadioChannel;
 		// Channels
-
 		[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
-
 		[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Support
 		// Set order
 		_success = [ [_personalRadio, _packRadio_1, _packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
@@ -270,16 +267,12 @@ switch (_type) do {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 		// 117f's
 		_packRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-
 		_packRadio_1 = _packRadios select 0;
 		_packRadio_2 = _packRadios select 1;
 		// Channels
-
 		[_personalRadio, 4] call acre_api_fnc_setRadioChannel;
 		// Channels
-
 		[_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
-
 		[_packRadio_2, 2] call acre_api_fnc_setRadioChannel; //Support
 		// Set order
 		_success = [ [_personalRadio, _packRadio_1, _packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
@@ -323,11 +316,8 @@ switch (_type) do {
 		_handRadio_1 = _handRadios select 0;
 		_handRadio_2 = _handRadios select 1;
 		// Channels
-
 		[_personalRadio, 4] call acre_api_fnc_setRadioChannel;
-
 		[_handRadio_1, 2] call acre_api_fnc_setRadioChannel;
-
 		[_handRadio_2, 5] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -387,18 +377,12 @@ switch (_type) do {
 		//Get racks
 		_accessibleRacks = [_vic, _player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
 		//Get mounted radios
-
 		_rack1 = _accessibleRacks select 0;
 		_rack2 = _accessibleRacks select 1;
-
 		_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
-
 		_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
-
 		[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
-
 		[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
-
 		// Set radios for griffon use use
 		["griffon"] spawn CGQC_fnc_setRadios;
 	};
@@ -408,92 +392,74 @@ switch (_type) do {
 		//Get racks
 		_accessibleRacks = [_vic, _player] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
 		//Get mounted radios
-
 		_rack1 = _accessibleRacks select 0;
 		_rack2 = _accessibleRacks select 1;
-
 		_radio1 = [_rack1] call acre_api_fnc_getMountedRackRadio;
-
 		_radio2 = [_rack2] call acre_api_fnc_getMountedRackRadio;
 		waitUntil {!isNil "_radio_1"};
 		[_vic, _player, _radio1] call acre_sys_rack_fnc_startUsingMountedRadio;
-
 		[_vic, _player, _radio2] call acre_sys_rack_fnc_startUsingMountedRadio;
 		// Set radios for centaure use
 		["centaure"] spawn CGQC_fnc_setRadios;
 	};
 	case "speaker_off": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-
 		_handRadio_1 = _handRadios select 0;
-
 		// Check speaker state
 		_isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 		waitUntil {!isNil "_isSpeaker"};
 		if(_isSpeaker) then {
 			// Turn speaker off
 			_success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
-
 			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 		};
 	};
 	case "speaker_on": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-
 		_handRadio_1 = _handRadios select 0;
-
 		// Check speaker state
 		_isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 		waitUntil {!isNil "_isSpeaker"};
 		if !(_isSpeaker) then {
 			// Turn speaker on
 			_success = [_handRadio_1, true] call acre_api_fnc_setRadioSpeaker;
-
 			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 		};
 	};
 	case "toggle_speaker": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-
 		_handRadio_1 = _handRadios select 0;
-
 		// Check speaker state
 		_isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 		waitUntil {!isNil "_isSpeaker"};
 		if(_isSpeaker) then {
 			// Turn speaker off
 			_success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
-
 			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 		}else{
 			// Turn speaker on
 			_success = [_handRadio_1, true] call acre_api_fnc_setRadioSpeaker;
-
 			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
 			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 		};
 	};
 	case "toggle_speaker_2": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-
 		_handRadio_2 = _handRadios select 1;
-
 		// Check speaker state
 		_isSpeaker = [_handRadio_2] call acre_api_fnc_isRadioSpeaker;
 		waitUntil {!isNil "_isSpeaker"};
 		if(_isSpeaker) then {
 			// Turn speaker off
 			_success = [_handRadio_2, false] call acre_api_fnc_setRadioSpeaker;
-
 			_speaker_check = [_handRadio_2] call acre_api_fnc_isRadioSpeaker;
 			hint format ["%1 Speaker: %2", _handRadio_2, _speaker_check];
 		}else{
 			// Turn speaker on
 			_success = [_handRadio_2, true] call acre_api_fnc_setRadioSpeaker;
-
 			_speaker_check = [_handRadio_2] call acre_api_fnc_isRadioSpeaker;
 			hint format ["%1 Speaker: %2", _handRadio_2, _speaker_check];
 		};
