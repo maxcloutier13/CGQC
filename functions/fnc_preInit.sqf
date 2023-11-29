@@ -138,6 +138,7 @@ cgqc_perks_ghillie_uniform = "";
 cgqc_perk_player_stash_on = false;
 cgqc_player_stash_items = [];
 cgqc_player_stash_mags = [];
+cgqc_perks_camo = false;
 // Zeus perks
 cgqc_zeus_event = false;
 cgqc_zeus_crate = false;

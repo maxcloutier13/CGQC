@@ -11,6 +11,33 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
             hint "Press U for the classic dynamic group";
         };
+        case "camo": {
+            // Animation
+            player playMove "AinvPknlMstpSnonWnonDnon_medic4";
+            sleep 16;
+            //hide the player
+            player setUnitTrait ["camouflageCoef", 0.4];
+            player setUnitTrait ["audibleCoef ", 0.8];
+            hint "You are hidden... ish";
+            // Setup trigger
+            y_act = ""; // Lower volume on player
+            y_deAct = "
+                deleteVehicle cgqc_hide_trg;
+                cgqc_perks_camo = false;
+                hint 'Not hidden anymore!';
+                player setUnitTrait ['camouflageCoef', 1];
+                player setUnitTrait ['audibleCoef', 1];";
+            _int = 2;
+            // Create trigger
+            cgqc_hide_trg = createTrigger ["EmptyDetector",getPos player, true];
+            cgqc_hide_trg triggerAttachVehicle [player];
+            cgqc_hide_trg setTriggerArea [2, 2, 0, false];
+            cgqc_hide_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+            cgqc_hide_trg setTriggerStatements ["this", y_act, y_deAct];
+            cgqc_hide_trg setTriggerInterval _int;
+            player playActionNow "PlayerProne";
+            cgqc_perks_camo = true;
+        };
         case "stealth":{
             cgqc_player_state = 0;
             [player, "whisper"] call CGQC_fnc_setVoiceVolume;

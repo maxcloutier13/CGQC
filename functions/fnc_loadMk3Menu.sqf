@@ -8,6 +8,7 @@ diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
 
 diag_log "[CGQC_FNC] loadMk3Menu - waiting for postInit to finish";
 waitUntil {!isNil "cgqc_start_postInitClient_done"};
+sleep 0.5;
 waitUntil {cgqc_start_postInitClient_done};
 diag_log "[CGQC_FNC] loadMk3Menu - postInit finished!";
 
