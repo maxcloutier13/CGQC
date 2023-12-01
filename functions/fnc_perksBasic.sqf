@@ -12,8 +12,8 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
             hint "Press U for the classic dynamic group";
         };
         case "camo": {
-            [15, [], {
-                [
+            [
+                15, [], {
                     player playMove "AinvPknlMstpSnonWnonDnon_medic4";
                     //hide the player
                     player setUnitTrait ["camouflageCoef", 0.4];
@@ -36,8 +36,8 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
                     cgqc_hide_trg setTriggerInterval _int;
                     player playActionNow "PlayerProne";
                     cgqc_perks_camo = true;
-                ]
-            }, {player switchMove "";hint "Aborted!";}, "Hiding yourself"] call ace_common_fnc_progressBar;
+                }, {player switchMove "";hint "Aborted!";}, "Hiding yourself"
+            ] call ace_common_fnc_progressBar;
         };
         case "stealth":{
             cgqc_player_state = 0;
