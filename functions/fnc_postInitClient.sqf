@@ -238,8 +238,8 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 
 
 	// Boost dragging maximum
-	ACE_maxWeightDrag = 3000;
-	ACE_maxWeightCarry = 1500;
+	ACE_maxWeightDrag = 5000;
+	ACE_maxWeightCarry = 2000;
 
 	// Ace self interaction perks
 	_perks = [] call CGQC_fnc_addPerks;

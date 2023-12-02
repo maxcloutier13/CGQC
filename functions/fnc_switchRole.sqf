@@ -68,6 +68,9 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
         if !([player, "acex_intelitems_notepad"] call ace_common_fnc_hasMagazine) then {player addItem "acex_intelitems_notepad";};
     };
 
+    //Save role for further use
+    player setVariable["cgqc_role", cgqc_player_role];
+
     diag_log "[CGQC_FNC] switchRole - checking if run transition";
     // Start transition
     if (!cgqc_intro_running && _showTransition) then {

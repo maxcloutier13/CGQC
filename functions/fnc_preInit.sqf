@@ -579,30 +579,36 @@ if (cgqc_player_hasNorthern) then {
 
 // Supply box
 ["cgqc_config_supply_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"],
-    [_menu_name, "Content: Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ammo"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Squad Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ammo"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_supply_ifak", "SLIDER",["Kit: Individual First-Aid", "Number in supply box"],
-    [_menu_name, "Content: Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ifak"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Squad Supply Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ifak"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_supply_medkit", "SLIDER",["Kit: Medic Supply", "Number in supply box"],
-    [_menu_name, "Content: Supply Box"], [0, 50, 2, 0], 1, {publicVariable "cgqc_config_supply_medkit"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Squad Supply Box"], [0, 50, 2, 0], 1, {publicVariable "cgqc_config_supply_medkit"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_supply_launcher", "SLIDER",["Launchers", "Number in supply box"],
-    [_menu_name, "Content: Supply Box"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_supply_launcher"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Squad Supply Box"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_supply_launcher"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_supply_nlaw", "SLIDER",["NLAW", "Number in supply box"],
-    [_menu_name, "Content: Supply Box"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_nlaw"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Squad Supply Box"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_nlaw"}, false] call CBA_fnc_addSetting;
+
+// Rockets
+["cgqc_config_supply_maaws", "SLIDER",["MAAWS ammo", "Number in supply box"],
+    [_menu_name, "Content: Squad Supply Box"], [0, 5, 3, 0], 1, {publicVariable "cgqc_config_supply_maaws"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_javelin", "SLIDER",["Javelin ammo", "Number in supply box"],
+    [_menu_name, "Content: Squad Supply Box"], [0, 5, 3, 0], 1, {publicVariable "cgqc_config_supply_javelin"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_supply_batteries", "SLIDER",["Batteries", "Number in supply box"],
-    [_menu_name, "Content: Supply Box"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_batteries"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Squad Supply Box"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_batteries"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_supply_radios", "SLIDER",["Radios", "Number in supply box"],
-    [_menu_name, "Content: Supply Box"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Squad Supply Box"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_supply_explosives", "SLIDER",["Explosive charges", "Number in supply box"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 6, 0], 1, {publicVariable "cgqc_config_supply_explosives"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Explosives Box"], [0, 50, 10, 0], 1, {publicVariable "cgqc_config_supply_explosives"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_supply_mine_large", "SLIDER",["Large mines", "AT mines"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_large"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Explosives Box"], [0, 50, 10, 0], 1, {publicVariable "cgqc_config_supply_mine_large"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_supply_mine_medium", "SLIDER",["Medium mines", "Anti vehicles mines"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Explosives Box"], [0, 50, 10, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_supply_mine_small", "SLIDER",["Small mines", "Anti-personel mines"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Explosives Box"], [0, 50, 10, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
 
 
 ["cgqc_config_sideKeys", "CHECKBOX", ["Sidekeys for all", "Adds a key for all side vehicles to player"],

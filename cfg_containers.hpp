@@ -118,7 +118,7 @@ class cgqc_box_mk1_supplies : Box_NATO_Wps_F
     scope = 2;
     author = "silent1";
     _generalMacro = "cgqc_box_mk1_supplies";
-    displayName = "CGQC Infantry Supply box";
+    displayName = "CGQC Squad Supply box";
     maximumLoad = 3000;
     hiddenSelectionsTextures[] = {
         "\CGQC\containers\cgqc_box_mk1_supplies.paa",
@@ -126,7 +126,7 @@ class cgqc_box_mk1_supplies : Box_NATO_Wps_F
     };
     class EventHandlers
     {
-        init = "[_this, 'fireteam'] call CGQC_fnc_loadSupplyBox";
+        init = "[_this, 'squad'] call CGQC_fnc_loadSupplyBox";
     };
     ace_cargo_size = 1;  // Cargo space the object takes
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
