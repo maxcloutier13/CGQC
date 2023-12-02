@@ -35,7 +35,7 @@ switch (_type) do {
 	case "fuel": {supplies_item = "cgqc_box_mk1_fuelcan" createVehicle (position player);};
 	case "vic_ammo": {supplies_item = "cgqc_box_mk1_ammocan" createVehicle (position player);};
 	case "ammo": {supplies_item = "cgqc_box_mk1_supplies" createVehicle (position player);};
-	case "exp" : {supplies_item = "cgqc_box_mk1_explosives" createVehicle (position player);}
+	case "exp": {supplies_item = "cgqc_box_mk1_explosives" createVehicle (position player);};
 	case "mort60": {supplies_item = "cgqc_box_mk1_mortar" createVehicle (position player);};
 	case "mort82": {supplies_item = "cgqc_box_mk1_mortar_mk6" createVehicle (position player);};
 	case "track": {supplies_item = "ACE_Track" createVehicle (position player);};
