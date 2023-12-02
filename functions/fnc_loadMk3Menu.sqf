@@ -1,4 +1,4 @@
-// --- mk3_menu ----------------------------------------------------------
+// --- loadMk3Menu ----------------------------------------------------------
 // Ace menu for mk3 sheeits
  params ["_crate_array", ["_type", "default"]];
 //_crate = (_this select 0) select 0;
@@ -7,9 +7,8 @@ _crate = _crate_array select 0;
 diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
 
 diag_log "[CGQC_FNC] loadMk3Menu - waiting for postInit to finish";
-waitUntil {!isNil "cgqc_start_postInitClient_done"};
-sleep 0.5;
-waitUntil {cgqc_start_postInitClient_done};
+//waitUntil {!isNil "cgqc_start_postInitClient_done"};
+//waitUntil {cgqc_start_postInitClient_done};
 diag_log "[CGQC_FNC] loadMk3Menu - postInit finished!";
 
 diag_log "[CGQC_FNC] loadMk3Menu - Checking for Interface";
