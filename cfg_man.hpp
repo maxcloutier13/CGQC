@@ -30,6 +30,15 @@ class CAManBase: Man {
 				icon = "a3\ui_f\data\gui\rsc\RscDisplayArsenal\radio_ca.paa";
 				distance = 2;
 			};
+			class cgqc_strip_152 {
+				displayName = "Remove 152!";
+				condition = "cgqc_player_rank > 3 && [_target, 'ACRE_PRC152'] call BIS_fnc_hasItem";
+				statement = "['strip_152'] spawn CGQC_fnc_getStuff";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "CGQC\textures\search.paa";
+				runOnHover = "hint 'Remove 152s'";
+				distance = 2;
+			};
 		};
 	};
 	class ACE_SelfActions {

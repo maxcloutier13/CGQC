@@ -8,6 +8,12 @@ _addItem = false;
 _item = "";
 
 switch (_type) do {
+	case "strip_152": {
+		_target = cursorTarget;
+		_targetID = owner _target;
+		[_target, "ACRE_PRC152"] remoteExec ["removeItems", _targetID];
+		hint "Removed all 152's"
+	};
 	case "crate": {
 		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
 		player_crate = "cgqc_box_mk2_arsenal" createVehicle _pos_free;
