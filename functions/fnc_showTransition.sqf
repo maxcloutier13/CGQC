@@ -61,6 +61,7 @@ params ["_type", ["_show", true]];
                 // Weight and load stuff ----------------------------------------------------------------------
                 _maxLoad = ((maxLoad player)*0.1)/2.2;
                 _check_maxLoad = parseNumber (_maxLoad toFixed 1);
+                sleep 1;
                 _currentLoad = ((loadAbs player)*0.1)/2.2;
                 _currentLoadKg = parseNumber (_currentLoad toFixed 1);
                 _check_currentLoad = "";
@@ -102,6 +103,7 @@ params ["_type", ["_show", true]];
                 // Show traits
                 _text = _text + format ["%1<br/>", _check_traits];
                 // Show weight
+                sleep 1;
                 _text = _text + format ["Loadout weight: %1kg (%2)<br/>", _check_currentLoad, _load_desc];
 
             };
