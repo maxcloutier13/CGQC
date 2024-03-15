@@ -22,6 +22,8 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 switch (_gunVariant) do {
 	case "mk46": {["mk46"] spawn CGQC_fnc_switchPrimary;};
 	case "mk48": {["mk48"] spawn CGQC_fnc_switchPrimary;};
+	case "m27": {["m27"] spawn CGQC_fnc_switchPrimary;};
+	case "lwmmg": {["lwmmg"] spawn CGQC_fnc_switchPrimary;};
 };
 
 diag_log "[CGQC_FNC] ldt_2023_s_mg done";

@@ -33,10 +33,24 @@ switch (_variant) do {
 		player addWeapon "rhs_weap_m72a7"; // Launcher
 		player addItemToBackpack "ACE_wirecutter";
 	};
-	case "marksman": {
+	case "sharpshooter": {
 		player addItemToBackpack "ACE_Tripod";
 		player addItem "ACE_ATragMX";
 		player addItem "ACE_Kestrel4500";
+	};
+	case "lifesaver": {
+		for "_i" from 1 to 20 do {player addItemToBackpack "ACE_fieldDressing";};
+		for "_i" from 1 to 10 do {player addItemToBackpack "FF_Painkiller";};
+		for "_i" from 1 to 5 do {player addItemToBackpack "ACE_morphine";};
+		for "_i" from 1 to 5 do {player addItemToBackpack "ACE_epinephrine";};
+		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_splint";};
+		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_tourniquet";};
+	};
+	case "engineer": {
+		player addItemToBackpack "ToolKit";
+		// Common items
+		player addItemToBackpack "ACE_DefusalKit";
+		player addItemToBackpack "ACE_M26_Clacker";
 	};
 };
 

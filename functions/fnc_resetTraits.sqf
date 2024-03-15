@@ -16,7 +16,7 @@ player setUnitTrait ["loadCoef ", 1];
 
 // Delete all perks actions
 {
-	[_x] call ace_interact_menu_fnc_removeAction
+	[player,0,[_x]] call ace_interact_menu_fnc_removeActionFromObject;
 } forEach cgqc_perks_action_list;
 
 // Remove CGQC perks

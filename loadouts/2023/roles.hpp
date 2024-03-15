@@ -37,6 +37,31 @@ case "2023_rifle_grenadier":{
 	cgqc_player_roleType = "Infantry";
 };
 
+// Junior Specialists ===============================================================
+case "2023_rifle_shoot":{
+	[player, "sharpshooter", "417"] call CGQC_ldt_2023_rifleman;
+	["recon"] call cgqc_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Sharpshooter";
+	cgqc_player_roleType = "Infantry";
+};
+
+case "2023_rifle_life":{
+	[player, "lifesaver", "carbine"] call CGQC_ldt_2023_rifleman;
+	["med"] call cgqc_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Combat Lifesaver";
+	cgqc_player_roleType = "Infantry";
+};
+
+case "2023_rifle_eng":{
+	[player, "engineer", "carbine"] call CGQC_ldt_2023_rifleman;
+	["eng"] call cgqc_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Combat Engineer";
+	cgqc_player_roleType = "Infantry";
+};
+
 // Medic ===============================================================
 case "2023_medic":{
 	[player, "medic", "carbine"] call CGQC_ldt_2023_medic;
@@ -63,16 +88,6 @@ case "2023_eng_saboteur":{
 	cgqc_player_roleType = "Infantry";
 };
 
-// Marksman ===============================================================
-case "2023_marks":{
-	[player, "marksman", "417"] call CGQC_ldt_2023_rifleman;
-	["recon"] call cgqc_fnc_switchPerks;
-	["inf"] call CGQC_fnc_getRadioPresets;
-	cgqc_player_role = "Marksman";
-	cgqc_player_roleType = "Infantry";
-};
-
-
 // MG ===============================================================
 case "2023_lmg":{
 	[player, "lmg", "mk46"] call CGQC_ldt_2023_mg;
@@ -87,6 +102,22 @@ case "2023_hmg":{
 	["mg"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HMG";
+	cgqc_player_roleType = "Infantry";
+};
+
+case "2023_autorifle":{
+	[player, "autorifle", "m27"] call CGQC_ldt_2023_mg;
+	["mg"] call cgqc_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Autorifleman";
+	cgqc_player_roleType = "Infantry";
+};
+
+case "2023_lwmmg":{
+	[player, "lwmmg", "lwmmg"] call CGQC_ldt_2023_mg;
+	["mg"] call cgqc_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "LWMMG";
 	cgqc_player_roleType = "Infantry";
 };
 

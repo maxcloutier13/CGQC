@@ -240,6 +240,14 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "Tier1_100Rnd_762x51_Belt_M993_AP";
 		_target addPrimaryWeaponItem "Tier1_SAW_Bipod_2_KAC";
 	};
+	case "lwmmg":{
+		["MMG_02_black_F"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "muzzle_snds_338_black";
+		_target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
+		_target addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black";
+		_target addPrimaryWeaponItem "130Rnd_338_Mag";
+		_target addPrimaryWeaponItem "Tier1_Harris_Bipod_Black";
+	};
 	case "p90":{
 		["cgqc_gun_mk1_p90"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "muzzle_snds_570";
