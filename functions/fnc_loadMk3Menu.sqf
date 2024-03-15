@@ -182,12 +182,23 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_inf_Grenadier", "Grenadier", "", {["2023_rifle_grenadier"] call CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+				// Junior specialists
+				// Sharpshooter
+				_action = [ "menu_mk2_inf_mrk", "Sharpshooter", "", {["2023_rifle_shoot"] call CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				// Repair Engineer
+				_action = [ "menu_mk2_inf_eng", "Combat Engineer", "", {["2023_rifle_eng"] call CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				// Combat Lifesaver
+				_action = [ "menu_mk2_inf_life", "Combat Lifesaver", "", {["2023_rifle_life"] call CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 				// Specialists ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_mk2_spec", "Spécialistes", "\cgqc\textures\cgqc_ace_specialists", {""}, {cgqc_player_rank > 1 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 				// Medic
-				_action = [ "menu_mk2_inf_medic", "Medic", "", {["2023_medic"] call CGQC_fnc_switchRole}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_inf_medic", "Squad Medic", "", {["2023_medic"] call CGQC_fnc_switchRole}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 				// Engineer
@@ -197,16 +208,19 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_inf_saboteur", "Saboteur", "", {["2023_eng_saboteur"] call CGQC_fnc_switchRole}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-
-				// Marksman
-				_action = [ "menu_mk2_inf_marks", "Marksman", "", {["2023_marks"] call CGQC_fnc_switchRole}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+				// Autorifleman
+				_action = [ "menu_mk2_inf_auto", "AutoRifleman (m27 - 5.56)", "", {["2023_autorifle"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 				// MG (Light)
-				_action = [ "menu_mk2_inf_LMG", "Light machinegun", "", {["2023_lmg"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_inf_LMG", "Light machinegun (mk46 - 5.56)", "", {["2023_lmg"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				//  MG (Heavy)
-				_action = [ "menu_mk2_inf_HMG", "Heavy machinegun", "", {["2023_hmg"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_inf_HMG", "Heavy machinegun (mk48 - 7.62)", "", {["2023_hmg"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+				// LWMMG
+				_action = [ "menu_mk2_inf_LWMMG", "LWMMG (.338)", "", {["2023_lwmmg"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 				// Anti-Tank (MAAWS)
@@ -241,7 +255,7 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_pilots", "Griffon", "\cgqc\textures\cgqc_ace_heli.paa", {""}, {cgqc_player_rank > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Helicopter pilot
-				_action = [ "menu_mk2_inf_medic", "Helicopter pilot", "", {["2023_h_pilot"] call CGQC_fnc_switchRole}, {cgqc_player_rank > 4 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_helipilot", "Helicopter pilot", "", {["2023_h_pilot"] call CGQC_fnc_switchRole}, {cgqc_player_rank > 4 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_pilots"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Helicopter crew
 				_action = [ "menu_mk2_helicrew", "Helicopter crew", "", {["2023_h_crew"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;

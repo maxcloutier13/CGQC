@@ -40,14 +40,18 @@ if (_load) then {
         case "CGQC_units_mk1_1_Rifleman_Carbine":{_switchRole = "2023_rifle_carb"};
         case "CGQC_units_mk1_1_Rifleman_full":{_switchRole = "2023_rifle_rifle"};
         case "CGQC_units_mk1_1_Rifleman_grenadier":{_switchRole = "2023_rifle_grenadier"};
+        case "CGQC_units_mk1_2_Marksman":{_switchRole = "2023_rifle_shoot"};
+        case "CGQC_units_mk1_2_repair":{_switchRole = "2023_rifle_eng"};
+        case "CGQC_units_mk1_2_lifesaver":{_switchRole = "2023_rifle_life"};
         // == Specialists
         case "CGQC_units_mk1_3_AT_MAAWS":{_switchRole = "2023_at_maaws"};
         case "CGQC_units_mk1_3_AT_Javelin":{_switchRole = "2023_at_javelin"};
         case "CGQC_units_mk1_2_LMG":{_switchRole = "2023_lmg"};
         case "CGQC_units_mk1_2_HMG":{_switchRole = "2023_hmg"};
+        case "CGQC_units_mk1_2_autorifleman":{_switchRole = "2023_autorifle"};
+        case "CGQC_units_mk1_2_LWMMG":{_switchRole = "2023_lwmmg"};
         case "CGQC_units_mk1_1_Engineer":{_switchRole = "2023_eng"};
         case "CGQC_units_mk1_1_Medic":{_switchRole = "2023_medic"};
-        case "CGQC_units_mk1_2_Marksman":{_switchRole = "2023_marks"};
         // == Recon
         case "CGQC_units_mk1_0_Drone_operator":{_switchRole = "2023_drone"};
         case "CGQC_units_mk1_0_JTAC":{_switchRole = "2023_jtac"};

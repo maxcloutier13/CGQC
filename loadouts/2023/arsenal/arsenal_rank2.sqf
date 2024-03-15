@@ -2,10 +2,10 @@
 cgqc_mk2_arsenal_rank2 = [
      // Backpacks -----------------------------------
     "cgqc_pack_mk1_carryall",
-    "cgqc_pack_mk1_carryall_desert", 
-    "cgqc_pack_mk1_carryall_mcam", 
+    "cgqc_pack_mk1_carryall_desert",
+    "cgqc_pack_mk1_carryall_mcam",
     "cgqc_pack_mk1_carryall_cadpat",
-    "cgqc_pack_mk1_carryall_black", 
+    "cgqc_pack_mk1_carryall_black",
     "cgqc_pack_mk1_carryall_white",
     // Variants -----------------------------------
     "Tier1_HK416D10_SMR_MFT",
@@ -26,20 +26,23 @@ cgqc_mk2_arsenal_rank2 = [
     "srifle_DMR_02_F",
     // MG ------------------------------------------------------------------------------
     "cgqc_gun_mk1_mk46",
-    "Tier1_MK46_Mod1_Savit_Desert", 
+    "Tier1_MK46_Mod1_Savit_Desert",
     "cgqc_gun_mk1_mk48",
-    "Tier1_MK48_Mod1_Desert",  
+    "Tier1_MK48_Mod1_Desert",
     "LMG_Mk200_F",
     "LMG_Mk200_black_F",
+    "MMG_02_black_F",
+    "MMG_02_camo_F",
+    "MMG_02_sand_F",
     // Launchers --------------------------------------------------------------------------
     "launch_NLAW_F",
-    "cgqc_gun_mk1_MAAWS", 
+    "cgqc_gun_mk1_MAAWS",
     "cgqc_gun_mk1_MAAWS_laforest",
-    "cgqc_gun_mk1_MAAWS_cadpat", 
+    "cgqc_gun_mk1_MAAWS_cadpat",
     "cgqc_gun_mk1_MAAWS_woodland",
-    "launch_MRAWS_green_F", 
-    "launch_MRAWS_olive_F", 
-    "launch_MRAWS_sand_F", 
+    "launch_MRAWS_green_F",
+    "launch_MRAWS_olive_F",
+    "launch_MRAWS_sand_F",
     "cgqc_gun_mk1_Javelin",
     "launch_mas_can_Stinger_F",
     // Breaching --------------------------------------------------------------------------
@@ -50,13 +53,13 @@ cgqc_mk2_arsenal_rank2 = [
     "cgqc_beanie_green",
     "cgqc_beanie_khaki",
     "cgqc_beanie_coyote",
-    "H_mas_can_beanie_b", 
-    "G_mas_can_bala_b",       
-    "H_mas_can_Booniehat_aor2", 
-    "H_mas_can_Booniehat_mul", 
-    "H_mas_can_Booniehat_aor1", 
-    "H_mas_can_beanie_gogw", 
-    "H_mas_can_beanie_gog", 
+    "H_mas_can_beanie_b",
+    "G_mas_can_bala_b",
+    "H_mas_can_Booniehat_aor2",
+    "H_mas_can_Booniehat_mul",
+    "H_mas_can_Booniehat_aor1",
+    "H_mas_can_beanie_gogw",
+    "H_mas_can_beanie_gog",
     "H_mas_can_beanie_w",
     "UK3CB_H_Beanie_02_BLK",
     "UK3CB_H_Woolhat_BLK",
@@ -206,7 +209,7 @@ cgqc_mk2_arsenal_rank2 = [
     "rhs_weap_rsp30_green",
     "rhs_weap_rsp30_red",
     "hgun_esd_01_F",
-    // --- Ammo 
+    // --- Ammo
     "rhs_mag_100Rnd_556x45_Mk262_cmag",
     "rhs_mag_100Rnd_556x45_Mk318_cmag",
     "UK3CB_BHP_9_13Rnd",
@@ -249,5 +252,6 @@ cgqc_mk2_arsenal_rank2 = [
     "ACE_16Rnd_9x19_mag",
     "muzzle_antenna_01_f",
     "muzzle_antenna_02_f",
-    "muzzle_antenna_03_f"
-]; 
+    "muzzle_antenna_03_f",
+    "130Rnd_338_Mag"
+];

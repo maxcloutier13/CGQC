@@ -63,8 +63,8 @@ switch (_type) do {
 				// Compare the magazine size
 				_addMags = cgqc_config_ammo_primary;
 				switch (true) do {
-					case (_magSize > 50): {_addMags = 3; };
-					case (_magSize > 30): {_addMags = 4; };
+					case (_magSize > 50): {_addMags = 4; };
+					case (_magSize > 30): {_addMags = 6; };
 					case (_magSize < 15): {_addMags = 10; };
 				};
 
