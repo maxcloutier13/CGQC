@@ -265,6 +265,10 @@ class CGQC {
             file = "\cgqc\functions\fnc_switchPrimary.sqf";
             description = "Switch primary weapon";
         };
+        class switchOptics{
+            file = "\cgqc\functions\fnc_switchOptics.sqf";
+            description = "Switch optics";
+        };
         class switchPerks{
             file = "\cgqc\functions\fnc_switchPerks.sqf";
             description = "Switch role perks";

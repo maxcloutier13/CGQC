@@ -180,7 +180,7 @@ switch (_type) do {
 		["rhs_weap_m16a4_imod_grip2"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
-		_target addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black_PIP";
+		_target addPrimaryWeaponItem "Tier1_Shortdot_Geissele_Docter_Black";
 		_target addPrimaryWeaponItem "Tier1_Harris_Bipod_Black";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
 	};
@@ -259,7 +259,7 @@ switch (_type) do {
 		["Tier1_M110k5"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_762_DSR";
 		_target addPrimaryWeaponItem "Tier1_URX4_NGAL_M603V_FL";
-		_target addPrimaryWeaponItem "Tier1_ATACR18_Geissele_Docter_Desert_PIP";
+		_target addPrimaryWeaponItem "Tier1_ATACR18_Geissele_Docter_Desert";
 		_target addPrimaryWeaponItem "Tier1_20Rnd_762x51_M118_Special_SR25_Mag";
 		_target addPrimaryWeaponItem "Tier1_Harris_Bipod_MLOK_Tan";
 	};
