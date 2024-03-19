@@ -20,7 +20,7 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
-	case "carbine": {["m4_dotplus"] spawn CGQC_fnc_switchPrimary;};
+	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 	case "lpvo": {["m4_lpvo"] spawn CGQC_fnc_switchPrimary;};
 };
 

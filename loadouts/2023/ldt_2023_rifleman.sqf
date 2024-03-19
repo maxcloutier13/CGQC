@@ -21,7 +21,7 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
 	case "cqb": {["mk18_dot"] spawn CGQC_fnc_switchPrimary;};
-	case "carbine": {["m4_dotplus"] spawn CGQC_fnc_switchPrimary;};
+	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 	case "rifle": {["m16_shortdot"] spawn CGQC_fnc_switchPrimary;};
 	case "grenade": {["m4_gl_m320"] spawn CGQC_fnc_switchPrimary;};
 	case "417": {["417"] spawn CGQC_fnc_switchPrimary;};

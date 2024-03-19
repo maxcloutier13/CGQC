@@ -24,7 +24,7 @@ player linkItem "B_UavTerminal";
 
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
-	case "carbine": {["m4_dotplus"] spawn CGQC_fnc_switchPrimary;};
+	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 };
 
 switch (_variant) do {

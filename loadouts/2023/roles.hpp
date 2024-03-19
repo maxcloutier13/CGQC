@@ -123,7 +123,7 @@ case "2023_lwmmg":{
 
 // AT ===============================================================
 case "2023_at_maaws":{
-	[player, "maaws", "m4_dotplus"] call CGQC_ldt_2023_at;
+	[player, "maaws", "m4_elcan"] call CGQC_ldt_2023_at;
 	["at"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "AT/MAAWS";
