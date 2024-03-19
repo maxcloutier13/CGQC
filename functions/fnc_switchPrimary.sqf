@@ -82,7 +82,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
 		_needGL = true;
 	};
-	case "m4_dotplus":{
+	case "m4_elcan":{
 		["cgqc_gun_mk1_m4a1blkII"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M300C_Black";
@@ -107,7 +107,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
 		_needGL = true;
 	};
-	case "sr16_dotplus":{
+	case "sr16_elcan":{
 		["Tier1_SR16_Carbine_Mod2_MFT_Black"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
@@ -123,7 +123,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
 	};
-	case "hk416_dotplus":{
+	case "hk416_elcan":{
 		["Tier1_HK416D145_SMR_MFT"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Tan";
 		_target addPrimaryWeaponItem "Tier1_145_NGAL_M600V_alt";
