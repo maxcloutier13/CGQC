@@ -70,14 +70,14 @@ switch (_type) do {
 		["arifle_TRG21_F"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "rhsusf_acc_nt4_tan";
 		_target addPrimaryWeaponItem "Tier1_NGAL_Side";
-		_target addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
+		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 	};
 	case "TAR21GL":{
 		["arifle_TRG21_GL_F"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "rhsusf_acc_nt4_tan";
 		_target addPrimaryWeaponItem "Tier1_NGAL_Side";
-		_target addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
+		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 		_target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
 		_needGL = true;
@@ -86,7 +86,7 @@ switch (_type) do {
 		["cgqc_gun_mk1_m4a1blkII"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M300C_Black";
-		_target addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
+		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
 		_target addPrimaryWeaponItem "rhsusf_acc_grip2";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 	};
@@ -111,7 +111,7 @@ switch (_type) do {
 		["Tier1_SR16_Carbine_Mod2_MFT_Black"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
-		_target addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Down";
+		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
 		_target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 	};
@@ -183,7 +183,7 @@ switch (_type) do {
 		["cgqc_gun_mk1_mk46"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_Mk46Mod1_LA5_M600V_Black";
-		_target addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
+		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
 		_target addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote";
 		_target addPrimaryWeaponItem "Tier1_SAW_Bipod_DD";
 	};
@@ -191,7 +191,7 @@ switch (_type) do {
 		["cgqc_gun_mk1_mk48"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_SOCOM762MG_Black";
 		_target addPrimaryWeaponItem "Tier1_Mk48Mod0_LA5_M600V_Black";
-		_target addPrimaryWeaponItem "Tier1_EXPS3_0_3xMag_Black_Up";
+		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
 		_target addPrimaryWeaponItem "Tier1_100Rnd_762x51_Belt_M993_AP";
 		_target addPrimaryWeaponItem "Tier1_SAW_Bipod_2_KAC";
 	};
