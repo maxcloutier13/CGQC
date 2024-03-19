@@ -311,7 +311,7 @@ switch (_type) do {
 	};
 
 	case "swat_p90":{
-		["UK3CB_P90C_TR_black"] call CGQC_fnc_getCustomGun;
+		["cgqc_gun_mk1_p90"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems _target;
 		_target addPrimaryWeaponItem "muzzle_snds_570";
 		_target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
@@ -339,7 +339,7 @@ switch (_type) do {
 	};
 
 	case "swat_mp5sd6":{
-		["UK3CB_MP5SD6"] call CGQC_fnc_getCustomGun;
+		["arifle_mas_can_mp5sd6_F"] call CGQC_fnc_getCustomGun;
 		removeAllPrimaryWeaponItems _target;
 		_target addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
 		_target addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";
