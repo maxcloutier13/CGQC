@@ -3,7 +3,7 @@
 
 // === Clothing ==========================================================================================================
 _hats = ["cgqc_helmet_mk1_f_black"];
-_goggles = ["UK3CB_G_Balaclava"];
+_goggles = ["USP_BALACLAVA_BLK"];
 _vests = ["cgqc_vest_mk1_black"];
 _uniforms = ["cgqc_uniform_mk1_black"];
 _rucks = ["cgqc_pack_mk1_assault_black"];
