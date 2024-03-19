@@ -19,7 +19,7 @@ cgqc_pax_opfor_vic_technical_mg = ["rhsgref_BRDM2_HQ_vdv"];
 cgqc_pax_opfor_vic_technical_gl = ["rhs_tigr_sts_vdv", "rhs_tigr_sts_3camo_vdv"];
 //Statics
 cgqc_pax_opfor_aa_light = ["rhs_Igla_AA_pod_vdv", "RHS_ZU23_VDV"];
-cgqc_pax_opfor_aa_heavy = ["rhs_zsu234_aa", "UK3CB_O_2S6M_Tunguska_VPV"];
+cgqc_pax_opfor_aa_heavy = ["rhs_zsu234_aa"];
 cgqc_pax_opfor_fixed_light = ["RHS_NSV_TriPod_VDV", "rhs_KORD_high_VDV"];
 cgqc_pax_opfor_fixed_heavy = ["RHS_AGS30_TriPod_VDV", "rhs_SPG9M_MSV"];
 cgqc_pax_opfor_mortar = ["rhs_2b14_82mm_vdv"];
@@ -27,7 +27,7 @@ cgqc_pax_opfor_arty = ["rhs_D30_vdv", "rhs_D30_at_vdv"];
 //Air
 cgqc_pax_opfor_radar = ["O_Radar_System_02_F", "rhs_p37_turret_vpvo", "rhs_prv13_turret_vpvo"];
 cgqc_pax_opfor_sam = ["O_SAM_System_04_F"];
-cgqc_pax_opfor_plane_transport = ["UK3CB_CW_SOV_O_EARLY_LI2_CARGO", "RHS_TU95MS_vvs_old"];
+cgqc_pax_opfor_plane_transport = [ "RHS_TU95MS_vvs_old"];
 cgqc_pax_opfor_plane_fighter = ["rhs_mig29s_vvs", "rhs_mig29sm_vvs"];
 cgqc_pax_opfor_plane_cas = ["RHS_Su25SM_vvsc"];
 cgqc_pax_opfor_heli_cas_light = ["RHS_Mi8MTV3_vdv", "RHS_Mi8MTV3_heavy_vdv"];
@@ -36,6 +36,6 @@ cgqc_pax_opfor_heli_transport = ["rhs_ka60_c", "RHS_Mi8AMT_vdv", "RHS_Mi8mt_vdv"
 //Special shit
 cgqc_pax_opfor_uav = ["rhs_pchela1t_vvsc", "O_UAV_02_dynamicLoadout_F", "O_T_UAV_04_CAS_F", "O_UAV_01_F"];
 cgqc_pax_opfor_ugv = ["O_UGV_01_rcws_F"];
-cgqc_pax_opfor_boat_light = ["UK3CB_AAF_O_Rubber_Rhib"];
-cgqc_pax_opfor_boat_heavy = ["UK3CB_TKA_O_RHIB_Gunboat"];
-cgqc_pax_opfor_sub = ["UK3CB_AAF_O_SDV"];
+cgqc_pax_opfor_boat_light = ["B_W_Boat_Transport_01_F"];
+cgqc_pax_opfor_boat_heavy = ["B_W_Boat_Armed_01_minigun_F"];
+cgqc_pax_opfor_sub = ["O_SDV_01_F"];

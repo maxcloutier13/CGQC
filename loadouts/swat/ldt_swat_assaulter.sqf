@@ -17,7 +17,7 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 ["2023_basic", "cgqc_item_rangefinder", "JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 
 // === Primary ==========================================================================================================
-["UK3CB_MP5SD6"] call CGQC_fnc_getCustomGun;
+["arifle_mas_can_mp5sd6_F"] call CGQC_fnc_getCustomGun;
 player addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
 player addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";
 

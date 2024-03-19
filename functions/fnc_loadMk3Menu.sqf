@@ -153,8 +153,6 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_swat_alt_socom", "Socom 16", "", {["swat_socom"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_swat_alt_m14", "M14 DMR", "", {["swat_m14"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_swat_alt_m24", "M24", "", {["swat_m24"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
@@ -366,13 +364,9 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_GL"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_416", "10in HK416", "", {["416_dot"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_acr", "10.5in ACR-E", "", {["ACR_dot"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_virtus", "11.5in Virtus", "", {["virtus_dot"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_sr16", "11.5in SR16", "", {["sr16_dot"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_g36v", "12.5in G36v", "", {["g36_dot"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_ctar21", "15in CTAR-21", "", {["CTAR21"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_cqb"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -387,12 +381,6 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_alt_sr16dot", "14.5in SR16 Dot+", "", {["sr16_dotplus"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_sr16lpvo", "14.5in SR16 LPVO", "", {["sr16_lpvo"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_acredot", "14.5in ACR-E Dot+", "", {["acre_dotplus"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_acrelpvo", "14.5in ACR-E LPVO", "", {["acre_lpvo"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_acregl", "14.5in ACR-E GL", "", {["acre_gl"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_416dot+", "14.5in HK416 Dot+", "", {["sr16_dotplus"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_carbine"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -409,8 +397,6 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_alt_mk12", "18in Mk12 LPVO", "", {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_m16lpvo", "20in M16a4 ShortDot", "", {["m16_shortdot"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_acrelpvo", "20in ACR-E ShortDot", "", {["acre_shortdot"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_rifle"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 				// DMR 7.62
