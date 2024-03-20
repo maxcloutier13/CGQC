@@ -48,6 +48,7 @@ switch (_variant) do {
 	};
 	case "engineer": {
 		player addItemToBackpack "ToolKit";
+		player addItemToBackpack "ACE_Fortify";
 		// Common items
 		player addItemToBackpack "ACE_DefusalKit";
 		player addItemToBackpack "ACE_M26_Clacker";
