@@ -7,10 +7,10 @@ _crate = _crate_array select 0;
 diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
 
 diag_log "[CGQC_FNC] loadMk3Menu - waiting for postInit to finish";
-//waitUntil {!isNil "cgqc_start_postInitClient_done"};
-//waitUntil {cgqc_start_postInitClient_done};
+waitUntil {!isNil "cgqc_start_postInitClient_done"};
+waitUntil {cgqc_start_postInitClient_done};
 diag_log "[CGQC_FNC] loadMk3Menu - postInit finished!";
-
+waitUntil{ !isNull (findDisplay 46) };
 diag_log "[CGQC_FNC] loadMk3Menu - Checking for Interface";
 if (hasInterface) then {
 	diag_log "[CGQC_FNC] loadMk3Menu - hasInterface - loading menu";

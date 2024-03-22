@@ -7,16 +7,20 @@ diag_log format ["[CGQC_FNC] switchPerks %1 started", _type];
 if (_clearFirst) then {
 	// Set all traits to default
 	[player] call CGQC_fnc_resetTraits;
+	["reset"]call CGQC_fnc_setLeadership;
 };
 
 switch (_type) do {
 	case "zeus":{
 	};
 	case "hq":{
+		["HQ"]call CGQC_fnc_setLeadership;
 	};
 	case "sl":{
+		["SL"]call CGQC_fnc_setLeadership;
 	};
 	case "tl":{
+		["TL"]call CGQC_fnc_setLeadership;
 	};
 	case "heli":{
 		player setUnitTrait ["engineer", true];
