@@ -39,6 +39,16 @@ class CAManBase: Man {
 				runOnHover = "hint 'Remove 152s'";
 				distance = 2;
 			};
+			class cgqc_set2IC {
+				displayName = "Designate: 2iC";
+				condition = "cgqc_player_isTL";
+				//[_target, '2IC'] remoteExec ['CGQC_fnc_setLeadership', owner _target];
+				statement = "[_target, 'ACRE_PRC152'] remoteExec ['addItem', owner _target]";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "";
+				runOnHover = "hint 'Designate as 2iC'";
+				distance = 3;
+			};
 		};
 	};
 	class ACE_SelfActions {
