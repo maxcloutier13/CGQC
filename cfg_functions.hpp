@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
-
+        class setLeadership{
+            file = "\cgqc\functions\fnc_setLeadership.sqf";
+            description = "Set leadership level of player";
+        };
         class setTeamColors{
             file = "\cgqc\functions\fnc_setTeamColors.sqf";
             description = "Auto set team colors";

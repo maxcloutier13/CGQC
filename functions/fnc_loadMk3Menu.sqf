@@ -7,10 +7,10 @@ _crate = _crate_array select 0;
 diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
 
 diag_log "[CGQC_FNC] loadMk3Menu - waiting for postInit to finish";
-//waitUntil {!isNil "cgqc_start_postInitClient_done"};
-//waitUntil {cgqc_start_postInitClient_done};
+waitUntil {!isNil "cgqc_start_postInitClient_done"};
+waitUntil {cgqc_start_postInitClient_done};
 diag_log "[CGQC_FNC] loadMk3Menu - postInit finished!";
-
+waitUntil{ !isNull (findDisplay 46) };
 diag_log "[CGQC_FNC] loadMk3Menu - Checking for Interface";
 if (hasInterface) then {
 	diag_log "[CGQC_FNC] loadMk3Menu - hasInterface - loading menu";
@@ -122,7 +122,7 @@ if (hasInterface) then {
 			if (cgqc_player_has2023) then {
 				diag_log "[CGQC_FNC] loadMk3Menu - loading 2023 stuff";
 				// SWAT ***********************************************************************************
-				_action = [ "menu_swat", "SWAT", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_side isEqualTo WEST} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_swat", "SWAT", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Loadout switcher ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_swat_roles", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -157,7 +157,7 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_swat" , "menu_swat_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 				// 2023 ***********************************************************************************
-				_action = [ "menu_2023", "2023", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_side isEqualTo WEST} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_2023", "2023", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Mk1 Loadout switcher ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_mk2", "Loadouts/Rôles MK3", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -539,7 +539,7 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_11", "Arsenal: Colonel", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_mk2_arsenal_locked && cgqc_player_rank == 11} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// Complet -
-				_action = [ "menu_mk2_5", "Arsenal: CGQC Complet", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_5", "Arsenal: CGQC Complet", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_flag_isTraining || cgqc_player_rank > 7} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 			};
@@ -655,7 +655,7 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 			// Radio setups
-			_action = [ "menu_radios", "Switch: Radios", "CGQC\textures\radio.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_radios", "Switch: Radios", "CGQC\textures\radio.paa", {""}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_radios_1", "Infantry - 343", "", {["inf"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
