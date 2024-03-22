@@ -655,7 +655,7 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions" ,"menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 			// Radio setups
-			_action = [ "menu_radios", "Switch: Radios", "CGQC\textures\radio.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_radios", "Switch: Radios", "CGQC\textures\radio.paa", {""}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 			_action = [ "menu_radios_1", "Infantry - 343", "", {["inf"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
