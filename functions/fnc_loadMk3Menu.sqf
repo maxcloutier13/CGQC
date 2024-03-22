@@ -539,7 +539,7 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_11", "Arsenal: Colonel", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_mk2_arsenal_locked && cgqc_player_rank == 11} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// Complet -
-				_action = [ "menu_mk2_5", "Arsenal: CGQC Complet", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_flag_isTraining || cgqc_player_rank > 7} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_5", "Arsenal: CGQC Complet", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 			};
@@ -675,7 +675,7 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 			// Zeus Arsenal ========================================================================================================
-			_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[player, player, true] call ace_arsenal_fnc_openBox;}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[player, player, true] call ace_arsenal_fnc_openBox;}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked || cgqc_player_rank > 7} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		};
 	};
