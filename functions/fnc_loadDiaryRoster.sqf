@@ -25,6 +25,10 @@ _playerGroups = [];
 		_unitColor = assignedTeam _x;
 		_weight = [_x] remoteExec ["ace_common_fnc_getweight", _x];
 		_role = [_x, "player_role"] remoteExec ["getVariable", _x];
+		_343 = [_target, 'ACRE_PRC343'] call BIS_fnc_hasItem;
+		_148 = [_target, 'ACRE_PRC148'] call BIS_fnc_hasItem;
+		_152 = [_target, 'ACRE_PRC152'] call BIS_fnc_hasItem;
+		_117 = [_target, 'ACRE_PRC117F'] call BIS_fnc_hasItem;
 
 		switch (_unitColor) do {
 			case "RED": {_color = "#CC3333" };
@@ -33,7 +37,20 @@ _playerGroups = [];
 			case "YELLOW": {_color = "#B7B327" };
 			default {_color = "#F0F0F0"};
 		};
-		_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5",_color, _ctr, _role, _unitName, _weight] + "</font><br/>";
+		_radios = "";
+		if (_343) then {
+			_radios = _radios + "343/";
+		};
+		if (_148) then {
+			_radios = _radios + "148/";
+		};
+		if (_152) then {
+			_radios = _radios + "152/";
+		};
+		if (_117) then {
+			_radios = _radios + "117F/";
+		};
+		_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6",_color, _ctr, _role, _unitName, _weight, _radios] + "</font><br/>";
 		_ctr = _ctr + 1;
 	} forEach units _x;
 	_roster = _roster + "<br/>";
