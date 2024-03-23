@@ -269,6 +269,7 @@ cgqc_player_hasSahara = (1681170 in cgqc_player_ownedDLCs);
 // Mods and actively loaded DLC's
 cgqc_player_hasAceMedical = ["ace_medical_treatment"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasAnti = ["A3A_Events"] call ace_common_fnc_isModLoaded;
+
 cgqc_player_has23rd = ["23rd_Logo_core"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasRHS = ["rhsusf_weapons"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasDrongoFactions = ["DSF_ABUS"] call ace_common_fnc_isModLoaded;
@@ -288,6 +289,7 @@ if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 //For specific modes of games, skip some options
 if (cgqc_player_hasAnti) then {
 	cgqc_player_loadAll = false;
+	cgqc_mission_dro = true;
 };
 
 // Western sahara missions
@@ -707,7 +709,11 @@ private _electronics = [
 	"ItemAndroid",
 	"ItemcTabHCam",
 	"ItemcTab",
-	"WBK_HeadLampItem"
+	"WBK_HeadLampItem",
+	"sps_black_hornet_01_Static_F",
+	"MRH_BluForTransponder",
+	"MRH_TacticalDisplay",
+	"MRH_FoldedSatcomAntenna"
 ];
 private _logistics = [
 	"cgqc_items_medkit",
