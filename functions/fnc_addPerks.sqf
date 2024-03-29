@@ -10,6 +10,85 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 _action = [ "menu_self_para_quickMap", "QuickJump to map point", "\CGQC\textures\cgqc_ace_para", {[0, 0] call CGQC_fnc_trainingPara}, {cgqc_player_hasAnti || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+
+// Group manager
+_action = [ "menu_group_manager", "Join Group", "\z\ace\addons\interaction\UI\team\team_management_ca.paa", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Spartan
+_action = [ "menu_group_manager_spartan", "Spartan", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_group_manager_spartan1", "Spartan-1", "\z\ace\addons\interaction\UI\team\team_red_ca.paa", {['Spartan-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_spartan2", "Spartan-2", "\z\ace\addons\interaction\UI\team\team_blue_ca.paa", {['Spartan-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_spartan3", "Spartan-3", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", {['Spartan-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_spartan3", "Spartan-4", "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa", {['Spartan-4'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Typhon
+_action = [ "menu_group_manager_typhon", "Typhon", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_group_manager_typhon1", "Typhon-1", "\z\ace\addons\interaction\UI\team\team_red_ca.paa", {['Typhon-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_typhon2", "Typhon-2", "\z\ace\addons\interaction\UI\team\team_blue_ca.paa", {['Typhon-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_typhon3", "Typhon-3", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", {['Typhon-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_typhon3", "Typhon-4", "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa", {['Typhon-4'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Recon
+_action = [ "menu_group_manager_recon", "Recon", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_group_manager_hermes", "Hermes", "", {['Hermes'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_recon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_orion1", "Orion-1", "", {['Orion-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_recon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_orion2", "Orion-2", "", {['Orion-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_recon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Centaure
+_action = [ "menu_group_manager_centaure", "Centaure", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_group_manager_cent", "Centaure-1", "", {['Centaure-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_centaure"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_cent1", "Centaure-2", "", {['Centaure-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_centaure"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_cent2", "Centaure-3", "", {['Centaure-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_centaure"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Griffon
+_action = [ "menu_group_manager_griffon", "Griffon", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_group_manager_griff", "Griffon-1", "", {['Griffon-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_griffon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_griff1", "Griffon-2", "", {['Griffon-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_griffon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_griff2", "Griffon-3", "", {['Griffon-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_griffon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Pegase
+_action = [ "menu_group_manager_pegase", "Pegase", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_group_manager_peg", "Pegase-1", "", {['Pegase-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_pegase"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_peg1", "Pegase-2", "", {['Pegase-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_pegase"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_group_manager_peg2", "Pegase-3", "", {['Pegase-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_pegase"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// HQ
+_action = [ "menu_group_manager_HQ", "HQ", "", {['HQ'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Repos ---------------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_chill", " au Repos", "CGQC\textures\cgqc_ace_beret", {["chill", true] spawn CGQC_fnc_perksBasic}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -17,52 +96,6 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 _action = [ "menu_self_ready", " Prêt au Combat", "CGQC\textures\cgqc_ace_combat", {["ready", true] spawn CGQC_fnc_perksBasic}, {cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-
-//  Change Goggles =========================================================================================================
-_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {}, {cgqc_player_has2023} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// ---- Types
-_action = [ "cgqc_perk_goggles_clr", "Clear Glasses", "cgqc\textures\cgqc_ace_glasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_clr_msk", "Goggles/Masks", "CGQC\textures\cgqc_ace_mask", {}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_sun", "Sunglasses", "cgqc\textures\cgqc_ace_sunglasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_gas", "Gasmask", "cgqc\textures\cgqc_ace_gasmask", {["G_mas_can_gasmask"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// - Clear glasses
-_action = [ "cgqc_perk_goggles_base", "Ballistic Glasses", "", {["G_mas_can_gog"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_base_t", "Facewrap (Tan)", "", {["G_mas_can_wrap_gog_T"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_base_b", "Facewrap (Blk)", "", {["G_mas_can_wrap_gog_B"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_shem_down", "Shemagh Up", "", {["G_mas_can_shemag_gog_l"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_shem_up", "Shemagh Down", "", {["G_mas_can_shemag_gog"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// - Clear mask
-_action = [ "cgqc_perk_mask_blk", "Mask (Black)", "", {["G_mas_can_mask_b"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_mask_tan", "Mask (Tan)", "", {["G_mas_can_mask"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_mask_b_blk", "Balaclava (Blk)", "", {["G_mas_can_balaM_b"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_mask_b_tan", "Balaclava (Tan)", "", {["G_mas_can_balaM_T"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_mask_shemagh", "Shemagh Up", "", {["G_mas_can_shemag_mask"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// - Sunglasses
-_action = [ "cgqc_perk_sun_blk", "Dark Glasses", "", {["rhs_googles_black"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_sun_mask", "Dark Mask", "", {["rhsusf_oakley_goggles_blk"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_sun_shemagh", "Mask+Shemagh Up", "", {["rhsusf_shemagh_gogg_tan"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_sun_shemagh_d", "Mask+Shemagh Down", "", {["rhsusf_shemagh2_gogg_tan"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_sun_low", "Low Profile Goggles", "", {["G_Lowprofile"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Quick State =========================================================================================================
 _action = [ "cgqc_perk_state", "Quick State", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -150,7 +183,7 @@ _action = [ "menu_self_camo", "Hide yourself", "", {["camo", false] spawn CGQC_f
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Inspect   =========================================================================================================
-_action = [ "menu_self_inspect", "Inspect", "CGQC\textures\search.paa", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_inspect", "Inspect/Visual", "CGQC\textures\search.paa", {}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Show player
 _action = [ "menu_self_cam", "Player Mirror", "CGQC\textures\cgqc_ace_mirror", {["cam", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -158,6 +191,54 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"
 // Confirm self-loadout
 _action = [ "menu_self_check", "Confirm Self Loadout", "CGQC\textures\search.paa", {["check", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+//  Change Goggles =========================================================================================================
+_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {}, {cgqc_player_has2023} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// ---- Types
+_action = [ "cgqc_perk_goggles_clr", "Clear Glasses", "cgqc\textures\cgqc_ace_glasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_goggles_clr_msk", "Goggles/Masks", "CGQC\textures\cgqc_ace_mask", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_goggles_sun", "Sunglasses", "cgqc\textures\cgqc_ace_sunglasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_goggles_gas", "Gasmask", "cgqc\textures\cgqc_ace_gasmask", {["G_mas_can_gasmask"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// - Clear glasses
+_action = [ "cgqc_perk_goggles_base", "Ballistic Glasses", "", {["G_mas_can_gog"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_goggles_base_t", "Facewrap (Tan)", "", {["G_mas_can_wrap_gog_T"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_goggles_base_b", "Facewrap (Blk)", "", {["G_mas_can_wrap_gog_B"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_goggles_shem_down", "Shemagh Up", "", {["G_mas_can_shemag_gog_l"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_goggles_shem_up", "Shemagh Down", "", {["G_mas_can_shemag_gog"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// - Clear mask
+_action = [ "cgqc_perk_mask_blk", "Mask (Black)", "", {["G_mas_can_mask_b"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_mask_tan", "Mask (Tan)", "", {["G_mas_can_mask"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_mask_b_blk", "Balaclava (Blk)", "", {["G_mas_can_balaM_b"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_mask_b_tan", "Balaclava (Tan)", "", {["G_mas_can_balaM_T"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_mask_shemagh", "Shemagh Up", "", {["G_mas_can_shemag_mask"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_clr_msk"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// - Sunglasses
+_action = [ "cgqc_perk_sun_blk", "Dark Glasses", "", {["rhs_googles_black"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_sun_mask", "Dark Mask", "", {["rhsusf_oakley_goggles_blk"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_sun_shemagh", "Mask+Shemagh Up", "", {["rhsusf_shemagh_gogg_tan"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_sun_shemagh_d", "Mask+Shemagh Down", "", {["rhsusf_shemagh2_gogg_tan"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_sun_low", "Low Profile Goggles", "", {["G_Lowprofile"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles", "cgqc_perk_goggles_sun"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+
 
 // Signals =========================================================================================================
 _action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {}, {cgqc_perks_chems > 0} ] call ace_interact_menu_fnc_createAction;

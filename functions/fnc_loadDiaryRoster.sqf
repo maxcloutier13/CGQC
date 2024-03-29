@@ -24,7 +24,7 @@ _playerGroups = [];
   _color = "";
   _unitColor = assignedTeam _x;
   _weight = _x call ace_common_fnc_getweight;
-  _role = _x getVariable "player_role";
+  _role = _x getVariable "cgqc_player_role";
 
   _343 = [_x, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio;
   _148 = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
