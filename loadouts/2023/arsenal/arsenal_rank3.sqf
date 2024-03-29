@@ -1,5 +1,7 @@
 // Rang 3 - CplC - Marksman/Engineer/Medic/Crew
 cgqc_mk2_arsenal_rank3 = [
+    // Radios ---------------------------
+    "ACRE_PRC148",
     // Engineer items ---------------------------
     "ToolKit",
     "ACE_DefusalKit",

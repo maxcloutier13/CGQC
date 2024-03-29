@@ -461,6 +461,7 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_optics_elcan", "RCO - Elcan SpecterDR - 0/1-2x", "", {["Tier1_Elcan_156_C2_Docter_Black"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_night"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+
 				// Day optics
 				_action = [ "menu_mk2_optics_eotech+", "RedELCAN - Eotech - 0/3x", "", {["Tier1_EXPS3_0_3xMag_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -476,6 +477,14 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_optics_gen3", "Sniper - Nightforce NXS - 0/5-22x", "", {["optic_lrps"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121s", "Sniper - R-VPS - 4-20x ", "", {["121_USASOC_RVPS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121L", "Sniper - P-VPS - 7-35x", "", {["121_USASOC_PVPS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
 
 				// Special optics
 				_action = [ "menu_mk2_optics_skeet", "SkeetIR - 1-2x", "", {["SkeetIR_TWS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -490,7 +499,11 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_optics_tws", "TWS - 4-10x", "", {["optic_tws"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_optics_Nightpro", "Nightstalker Pro - 4-31x", "", {["SN_NS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_optics_Nightpro", "Nightstalker Pro - 0/4-31x", "", {["SN_NS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121ns", "R-PVS - 4-20x", "", {["121_USASOC_RVPS_ANPVS30"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121nl", "P-PVS - 7-35x", "", {["121_USASOC_PVPS_ANPVS30"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 				// 2023 arsenal ---------------------------------------------------------------------------------------------------
@@ -539,7 +552,7 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_11", "Arsenal: Colonel", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_mk2_arsenal_locked && cgqc_player_rank == 11} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// Complet -
-				_action = [ "menu_mk2_5", "Arsenal: CGQC Complet", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_flag_isTraining || cgqc_player_rank > 7} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_5", "Arsenal: CGQC Complet", "CGQC\textures\icon_arsenal", {[0] call CGQC_ldt_2023_arsenal}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 			};
@@ -582,11 +595,11 @@ if (hasInterface) then {
 			// Individual radios
 			_action = [ "menu_items1", "Get: 343", "", {["343"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items2", "Get: 152", "", {["152"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items2", "Get: 152", "", {["152"] call CGQC_fnc_getStuff}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 148", "", {["148"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 148", "", {["148"] call CGQC_fnc_getStuff}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 117f", "", {["117"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 117f", "", {["117"] call CGQC_fnc_getStuff}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Radios Vietnam
 			_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] call CGQC_fnc_getStuff}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
@@ -675,7 +688,7 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 			// Zeus Arsenal ========================================================================================================
-			_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[player, player, true] call ace_arsenal_fnc_openBox;}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[player, player, true] call ace_arsenal_fnc_openBox;}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked || cgqc_player_rank > 7} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		};
 	};

@@ -1,7 +1,6 @@
 // Rang 4 - Sgt - Recon/Centaure
 cgqc_mk2_arsenal_rank4 = [
     // Radios -----------------------------------
-    "ACRE_PRC148",
     "ACRE_PRC152",
     // Uniforms -----------------------------------
     "cgqc_uniform_mk1_diver",
@@ -63,6 +62,43 @@ cgqc_mk2_arsenal_rank4 = [
     "srifle_DMR_02_F",
     "srifle_DMR_02_camo_F",
     "srifle_DMR_02_sniper_F",
+
+    // 121 sniper rifles --------------------------------
+    "121_USASOC_MRAD",
+    "121_USASOC_CTSR",
+    "121_USASOC_M2010",
+    "121_USASOC_CSR_16",
+    "121_USASOC_CSR_24",
+    "121_USASOC_PVPS",
+    "121_USASOC_RVPS",
+    "121_USASOC_RVPS_ANPVS30",
+    "121_USASOC_PVPS_ANPVS30",
+    "121_USASOC_STORM_SLX_Laser",
+    "121_USASOC_Raptar_Laser",
+    "121_USASOC_AAC_BLK",
+    "121_USASOC_AAC_TAN",
+    "121_USASOC_AML338_TAN",
+    "121_USASOC_SFMB338",
+    "121_USASOC_SOCOM338_BLK",
+    "121_USASOC_SOCOM338_MANTA",
+    "121_USASOC_SOCOM338_TAN",
+    "121_USASOC_Atlas",
+    "121_USASOC_Harris",
+    "121_338_250gr_API526_10rnd",
+    "121_308_Mk316_Mod_0_10rnd",
+    "121_300WM_Mk248_Mod_1_10rnd",
+    "121_300WM_Berger_OTM_10rnd",
+    "121_338_250gr_API526_5rnd",
+    "121_300WM_Mk248_Mod_1_5rnd",
+    "121_308_M118LR_10rnd",
+    "121_338_300gr_NM_10rnd",
+    "121_300WM_Mk248_Mod_0_5rnd",
+    "121_338_300gr_HPBT_5rnd",
+    "121_300WM_Mk248_Mod_0_10rnd",
+    "121_308_Mk319_Mod_0_10rnd",
+    "121_338_300gr_HPBT_10rnd",
+    "121_300WM_Berger_OTM_5rnd",
+
     // --- Ammo
     "7Rnd_mas_can_408_Mag",
     "7Rnd_mas_can_408_APDS_Mag",

@@ -269,6 +269,7 @@ cgqc_player_hasSahara = (1681170 in cgqc_player_ownedDLCs);
 // Mods and actively loaded DLC's
 cgqc_player_hasAceMedical = ["ace_medical_treatment"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasAnti = ["A3A_Events"] call ace_common_fnc_isModLoaded;
+
 cgqc_player_has23rd = ["23rd_Logo_core"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasRHS = ["rhsusf_weapons"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasDrongoFactions = ["DSF_ABUS"] call ace_common_fnc_isModLoaded;
@@ -288,6 +289,7 @@ if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 //For specific modes of games, skip some options
 if (cgqc_player_hasAnti) then {
 	cgqc_player_loadAll = false;
+	cgqc_mission_dro = true;
 };
 
 // Western sahara missions
@@ -330,6 +332,13 @@ if (cgqc_player_hasUnsung) then {
 	{ ["battle", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
 
+// -- 152 speakers --
+["CGQC", "cgqc_kb_speaker1", "Toggle speaker 1",
+	{ ["toggle_speaker"] spawn CGQC_fnc_setRadios}, {""}, []
+] call cba_fnc_addKeybind;
+["CGQC", "cgqc_kb_speaker2", "Toggle speaker radio 2",
+	{ ["toggle_speaker_2"] spawn CGQC_fnc_setRadios}, {""}, []
+] call cba_fnc_addKeybind;
 
 //Wind changer event
 ["cgqc_change_fucking_wind", {
@@ -348,12 +357,14 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 	// Refresh the roster every 5 seconds
 	[_mapIsOpened, _mapIsForced] spawn {
 		params ["_mapIsOpened", "_mapIsForced"];
+		[] call CGQC_fnc_loadDiaryRoster;
+		/*
 		if (_mapIsOpened) then {
 			while {cgqc_mapOpened} do {
 				[] call CGQC_fnc_loadDiaryRoster;
 				sleep 5;
 			};
-		};
+		};*/
 	};
 }];
 
@@ -707,7 +718,14 @@ private _electronics = [
 	"ItemAndroid",
 	"ItemcTabHCam",
 	"ItemcTab",
-	"WBK_HeadLampItem"
+	"WBK_HeadLampItem",
+	"sps_black_hornet_01_Static_F",
+	"MRH_BluForTransponder",
+	"MRH_TacticalDisplay",
+	"MRH_FoldedSatcomAntenna",
+	"NER_item_bulatv3",
+	"Item_JammerSania",
+	"Item_JammerVolnorez"
 ];
 private _logistics = [
 	"cgqc_items_medkit",
