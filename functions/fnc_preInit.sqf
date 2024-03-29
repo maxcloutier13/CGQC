@@ -332,6 +332,13 @@ if (cgqc_player_hasUnsung) then {
 	{ ["battle", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
 
+// -- 152 speakers --
+["CGQC", "cgqc_kb_speaker1", "Toggle speaker 1",
+	{ ["toggle_speaker"] spawn CGQC_fnc_setRadios}, {""}, []
+] call cba_fnc_addKeybind;
+["CGQC", "cgqc_kb_speaker2", "Toggle speaker radio 2",
+	{ ["toggle_speaker_2"] spawn CGQC_fnc_setRadios}, {""}, []
+] call cba_fnc_addKeybind;
 
 //Wind changer event
 ["cgqc_change_fucking_wind", {
@@ -350,12 +357,14 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 	// Refresh the roster every 5 seconds
 	[_mapIsOpened, _mapIsForced] spawn {
 		params ["_mapIsOpened", "_mapIsForced"];
+		[] call CGQC_fnc_loadDiaryRoster;
+		/*
 		if (_mapIsOpened) then {
 			while {cgqc_mapOpened} do {
 				[] call CGQC_fnc_loadDiaryRoster;
 				sleep 5;
 			};
-		};
+		};*/
 	};
 }];
 
