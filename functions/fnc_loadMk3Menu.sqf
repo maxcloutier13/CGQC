@@ -461,6 +461,7 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_optics_elcan", "RCO - Elcan SpecterDR - 0/1-2x", "", {["Tier1_Elcan_156_C2_Docter_Black"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_night"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+
 				// Day optics
 				_action = [ "menu_mk2_optics_eotech+", "RedELCAN - Eotech - 0/3x", "", {["Tier1_EXPS3_0_3xMag_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -476,6 +477,14 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_optics_gen3", "Sniper - Nightforce NXS - 0/5-22x", "", {["optic_lrps"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121s", "Sniper - R-VPS - 4-20x ", "", {["121_USASOC_RVPS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121L", "Sniper - P-VPS - 7-35x", "", {["121_USASOC_PVPS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_day"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
 
 				// Special optics
 				_action = [ "menu_mk2_optics_skeet", "SkeetIR - 1-2x", "", {["SkeetIR_TWS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -490,7 +499,11 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_optics_tws", "TWS - 4-10x", "", {["optic_tws"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_optics_Nightpro", "Nightstalker Pro - 4-31x", "", {["SN_NS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_optics_Nightpro", "Nightstalker Pro - 0/4-31x", "", {["SN_NS"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121ns", "R-PVS - 4-20x", "", {["121_USASOC_RVPS_ANPVS30"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_optics_121nl", "P-PVS - 7-35x", "", {["121_USASOC_PVPS_ANPVS30"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_special"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 				// 2023 arsenal ---------------------------------------------------------------------------------------------------
