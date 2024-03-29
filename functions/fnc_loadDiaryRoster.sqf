@@ -25,10 +25,10 @@ _playerGroups = [];
 		_unitColor = assignedTeam _x;
 		_weight = [_x] remoteExec ["ace_common_fnc_getweight", _x];
 		_role = [_x, "player_role"] remoteExec ["getVariable", _x];
-		_343 = [_target, 'ACRE_PRC343'] call BIS_fnc_hasItem;
-		_148 = [_target, 'ACRE_PRC148'] call BIS_fnc_hasItem;
-		_152 = [_target, 'ACRE_PRC152'] call BIS_fnc_hasItem;
-		_117 = [_target, 'ACRE_PRC117F'] call BIS_fnc_hasItem;
+		_343 = [_x, 'ACRE_PRC343'] call BIS_fnc_hasItem;
+		_148 = [_x, 'ACRE_PRC148'] call BIS_fnc_hasItem;
+		_152 = [_x, 'ACRE_PRC152'] call BIS_fnc_hasItem;
+		_117 = [_x, 'ACRE_PRC117F'] call BIS_fnc_hasItem;
 
 		switch (_unitColor) do {
 			case "RED": {_color = "#CC3333" };
