@@ -22,6 +22,9 @@ cgqc_mk2_arsenal_rank4 = [
     "immersion_cigs_cigar0_nv",
     // Electronics ------------------------------
     "ItemcTab",
+    "NER_item_bulatv3",
+	"Item_JammerSania",
+	"Item_JammerVolnorez"
     // Drones ------------------------------
     "Rev_darter_item",
     "Rev_pelican_item",
