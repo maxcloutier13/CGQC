@@ -595,11 +595,11 @@ if (hasInterface) then {
 			// Individual radios
 			_action = [ "menu_items1", "Get: 343", "", {["343"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items2", "Get: 152", "", {["152"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items2", "Get: 152", "", {["152"] call CGQC_fnc_getStuff}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 148", "", {["148"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 148", "", {["148"] call CGQC_fnc_getStuff}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 117f", "", {["117"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 117f", "", {["117"] call CGQC_fnc_getStuff}, {cgqc_player_rank > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Radios Vietnam
 			_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] call CGQC_fnc_getStuff}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
