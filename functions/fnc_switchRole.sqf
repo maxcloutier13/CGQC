@@ -69,7 +69,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     };
 
     //Save role for further use
-    player setVariable["cgqc_role", cgqc_player_role];
+    player setVariable["cgqc_player_role", cgqc_player_role];
 
     diag_log "[CGQC_FNC] switchRole - checking if run transition";
     // Start transition

@@ -2,7 +2,7 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.5.4";
+_version = "4.5.4.1";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 // Set side
@@ -79,8 +79,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 	_set = [] call CGQC_fnc_setPatch;
 
 	// Dynamic group -------------------------------------------------------------------------------------------------
-	["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
-	//["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+	['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
 	cgqc_player_group = group player;
 	cgqc_player_groupID = groupId player;
 

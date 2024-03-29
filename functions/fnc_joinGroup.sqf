@@ -37,15 +37,14 @@ if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
     };
     n_targetGroup addEventHandler ["UnitJoined", {
         params ["_group", "_newUnit"];
-        if (!cgqc_flag_isTraining) then {[] call CGQC_fnc_setGroupRadios};
+        [] call CGQC_fnc_setGroupRadios;
     }];
 };
 
 cgqc_player_group = n_targetGroup;
 cgqc_player_groupID = groupId player;
 
-if (!cgqc_flag_isTraining) then {[] call CGQC_fnc_setGroupRadios};
-
+[] call CGQC_fnc_setGroupRadios;
 [] call CGQC_fnc_setTeamColors;
 
 hint format ["You've joined %1", _groupName];
