@@ -722,7 +722,10 @@ private _electronics = [
 	"sps_black_hornet_01_Static_F",
 	"MRH_BluForTransponder",
 	"MRH_TacticalDisplay",
-	"MRH_FoldedSatcomAntenna"
+	"MRH_FoldedSatcomAntenna",
+	"NER_item_bulatv3",
+	"Item_JammerSania",
+	"Item_JammerVolnorez"
 ];
 private _logistics = [
 	"cgqc_items_medkit",

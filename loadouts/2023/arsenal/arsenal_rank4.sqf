@@ -1,7 +1,6 @@
 // Rang 4 - Sgt - Recon/Centaure
 cgqc_mk2_arsenal_rank4 = [
     // Radios -----------------------------------
-    "ACRE_PRC148",
     "ACRE_PRC152",
     // Uniforms -----------------------------------
     "cgqc_uniform_mk1_diver",
