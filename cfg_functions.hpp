@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class promotePlayer{
+            file = "\cgqc\functions\fnc_promotePlayer.sqf";
+            description = "Boost level of player so he has access to items/roles";
+        };
         class setLeadership{
             file = "\cgqc\functions\fnc_setLeadership.sqf";
             description = "Set leadership level of player";

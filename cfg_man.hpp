@@ -41,12 +41,21 @@ class CAManBase: Man {
 			};
 			class cgqc_set2IC {
 				displayName = "Designate: 2iC";
-				condition = "cgqc_player_isTL";
+				condition = "cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				//[_target, '2IC'] remoteExec ['CGQC_fnc_setLeadership', owner _target];
 				statement = "[_target, 'ACRE_PRC152'] remoteExec ['addItem', owner _target]";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "";
 				runOnHover = "hint 'Designate as 2iC'";
+				distance = 3;
+			};
+			class cgqc_promotePlayer {
+				displayName = "Promote Player";
+				condition = "cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				statement = "remoteExec ['CGQC_fnc_promotePlayer', owner _target];hint 'target promoted'";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "";
+				runOnHover = "hint 'Promote the target to give him access to more stuff/roles'";
 				distance = 3;
 			};
 		};
