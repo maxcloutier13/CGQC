@@ -24,7 +24,7 @@ cgqc_mk2_arsenal_rank4 = [
     "ItemcTab",
     "NER_item_bulatv3",
 	"Item_JammerSania",
-	"Item_JammerVolnorez"
+	"Item_JammerVolnorez",
     // Drones ------------------------------
     "Rev_darter_item",
     "Rev_pelican_item",
