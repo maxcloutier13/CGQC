@@ -2,6 +2,8 @@
 // List all groups and players + roles
 diag_log "[CGQC_FNC] loadDiaryRoster started";
 
+waitUntil {cgqc_start_postInitClient_done};
+
 if (player diarySubjectExists "CGQC_Roster") then {
     player removeDiarySubject "CGQC_Roster";
 };
@@ -25,6 +27,9 @@ _playerGroups = [];
         _unitColor = assignedTeam _x;
         _weight = _x call ace_common_fnc_getweight;
         _role = _x getVariable "cgqc_player_role";
+        if (isNil "_role") then {
+            _role = "Unknown";
+        };
 
         _343 = [_x, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio;
         _148 = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
