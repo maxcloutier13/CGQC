@@ -52,6 +52,9 @@ cgqc_player_acre_setup = false;
 cgqc_player_radio_names = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
+//
+player setVariable ["cgqc_player_wakeup_time", 0];
+
 cgqc_subskills = [
 	"aimingAccuracy", "aimingShake", "aimingSpeed", "spotDistance", "spotTime",
 	"courage", "reloadSpeed", "commanding", "general"
@@ -397,6 +400,18 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_mission_name", "EDITBOX", ["Nom de la mission:", "Le nom du ta mission, pour display dans l'intro"],
     [_menu_name, "Intro"], "Le nom de ta mission"] call CBA_fnc_addSetting;
 */
+// Custom medical stuff ===================================================================================================
+["cgqc_player_wakeup_active", "CHECKBOX", ["Activate custom wakeup", "Randomly lets player wake up if not in cardia arrest"],
+[_menu_name, "Custom Medical"], false, 1, {publicVariable "cgqc_player_wakeup_active"}] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_min","SLIDER", ["Min Wakeup check", "Minimum time before a wakeup check"],
+[_menu_name, "Custom Medical"], [5, 300, 10, 0], 1, {publicVariable "cgqc_player_wakeup_min"}, false] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_max","SLIDER", ["Max Wakeup check", "Maximum time before a wakeup check"],
+[_menu_name, "Custom Medical"], [5, 300, 30, 0], 1, {publicVariable "cgqc_player_wakeup_max"}, false] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_random","SLIDER", ["Chance of wakeup", "Random chance of waking up"],
+[_menu_name, "Custom Medical"], [0, 100, 30, 0], 1, {publicVariable "cgqc_player_wakeup_random"}, false] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_randomBoost","SLIDER", ["Bonus for next check", "More % bonus at each fail to get more chance to wake up"],
+[_menu_name, "Custom Medical"], [0, 100, 10, 0], 1, {publicVariable "cgqc_player_wakeup_randomBoost"}, false] call CBA_fnc_addSetting;
+
 // Options skippables ===================================================================================================
 ["cgqc_setting_show_transition", "CHECKBOX", ["Show Transition", "Transition lors d'un loadout swtich "],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;

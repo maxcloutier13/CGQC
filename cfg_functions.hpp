@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class playerUnconscious{
+            file = "\cgqc\functions\fnc_playerUnconscious.sqf";
+            description = "Handle player unconciousness";
+        };
         class promotePlayer{
             file = "\cgqc\functions\fnc_promotePlayer.sqf";
             description = "Boost level of player so he has access to items/roles";
