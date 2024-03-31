@@ -66,6 +66,14 @@ if (hasInterface) then {
 			_action = [ "menu_zeus_maxMags_20", "SetMax: 20", "", {cgqc_setting_limitMags_max = 20; publicVariable "cgqc_setting_limitMags_max";hint "MaxMags: 20"}, {cgqc_setting_limitMags} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_zeus_options", "menu_zeus_maxMags" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+
+			// Flag that arsenal is unlocked or in training mode
+			_action = [ "mode_unlocked", "--- Arsenal is UNLOCKED ---", "", {""}, {!cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+			_action = [ "mode_training", "--- Arsenal in TRAINING MODE ---", "", {""}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 			if (!cgqc_player_has2023 && !cgqc_player_hasUnsung && !cgqc_player_hasIfa3) then {
 				diag_log "[CGQC_FNC] loadMk3Menu - loading vanilla stuff";
 				//waitUntil {sleep 1; cgqc_mk2_arsenal_init_done};
