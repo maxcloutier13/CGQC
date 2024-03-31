@@ -705,12 +705,6 @@ if (hasInterface) then {
 	// Supplies spawner --------------------------------------------------------------------------------------------------------------
 	_action = [ "menu_supplies", "Logistics", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
-	//  Fuel can
-	_action = [ "menu_supplies_fuel", "Fuel Can", "", {["fuel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
-	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-	//  Vehicle ammo can
-	_action = [ "menu_supplies_vic", "Vehicle Ammo Can", "", {["vic_ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
-	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 	//  Ammo can
 	_action = [ "menu_supplies_ammo", "Squad Ammo Box", "", {["ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -722,6 +716,12 @@ if (hasInterface) then {
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 	//  82mm mortar crate
 	_action = [ "menu_supplies_82", "82mm mk6 mortar box", "", {["mort82"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+	//  Fuel can
+	_action = [ "menu_supplies_fuel", "Fuel Can", "", {["fuel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+	//  Vehicle ammo can
+	_action = [ "menu_supplies_vic", "Vehicle Ammo Can", "", {["vic_ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 	//  Spare wheel
 	_action = [ "menu_supplies_wheel", "Spare wheel", "", {["wheel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
