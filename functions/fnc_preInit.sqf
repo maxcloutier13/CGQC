@@ -627,8 +627,10 @@ if (cgqc_player_hasNorthern) then {
 
 ["cgqc_config_supply_batteries", "SLIDER",["Batteries", "Number in supply box"],
     [_menu_name, "Content: Squad Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_batteries"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_radios", "SLIDER",["Radios", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_radios", "SLIDER",["Radios 343", "Number in supply box"],
+    [_menu_name, "Content: Squad Box"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_radios_152", "SLIDER",["Radios 152", "Number in supply box"],
+    [_menu_name, "Content: Squad Box"], [0, 10, 0, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_supply_explosives", "SLIDER",["Explosive charges", "Number in supply box"],
     [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives"}, false] call CBA_fnc_addSetting;

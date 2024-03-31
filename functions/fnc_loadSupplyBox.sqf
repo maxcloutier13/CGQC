@@ -36,9 +36,12 @@ diag_log format ["[CGQC_FNC] loadSupplyBox %1/%2 started", _crate, _type];
 				};
 
 				if (cgqc_config_supply_radios > 0) then {
-					_crate addItemCargoGlobal ["ACRE_PRC152", cgqc_config_supply_radios];
 					_crate addItemCargoGlobal ["ACRE_PRC343", cgqc_config_supply_radios];
 					diag_log format ["[CGQC_FNC] loadSupplyBox %1 radios",cgqc_config_supply_radios];
+				};
+				if (cgqc_config_supply_radios_152 > 0) then {
+					_crate addItemCargoGlobal ["ACRE_PRC152", cgqc_config_supply_radios_152];
+					diag_log format ["[CGQC_FNC] loadSupplyBox %1 152s",cgqc_config_supply_radios_152];
 				};
 				if (cgqc_config_supply_batteries > 0) then {
 					_crate addItemCargoGlobal ["Laserbatteries", cgqc_config_supply_batteries];
