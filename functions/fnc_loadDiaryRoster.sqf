@@ -30,11 +30,43 @@ _playerGroups = [];
         if (isNil "_role") then {
             _role = "Unknown";
         };
-
-        _343 = [_x, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio;
-        _148 = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
-        _152 = [_x, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio;
-        _117 = [_x, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio;
+        _radios = "";
+        if ([_x] call acre_api_fnc_hasRadio) then {
+            if ([player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio) then {
+                _343s = ["ACRE_PRC343"] call acre_api_fnc_getAllRadiosByType;
+                {
+                    _radioType = "343";
+                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
+                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
+                } forEach _343s;
+            };
+            if ([player, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio) then {
+                _148s = ["ACRE_PRC148"] call acre_api_fnc_getAllRadiosByType;
+                {
+                    _radioType = "148";
+                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
+                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
+                } forEach _148s;
+            };
+            if ([player, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio) then {
+                _152s = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
+                {
+                    _radioType = "152";
+                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
+                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
+                } forEach _152s;
+            };
+            if ([player, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio) then {
+                _117s = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
+                {
+                    _radioType = "117";
+                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
+                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
+                } forEach _117s;
+            };
+        } else {
+            _radios = "No radio";
+        };
 
         switch (_unitColor) do {
             case "RED": {_color = "#CC3333" };
@@ -43,19 +75,7 @@ _playerGroups = [];
             case "YELLOW": {_color = "#B7B327" };
             default {_color = "#F0F0F0"};
         };
-        _radios = "";
-        if (_343) then {
-            _radios = _radios + "343/";
-        };
-        if (_148) then {
-            _radios = _radios + "148/";
-        };
-        if (_152) then {
-            _radios = _radios + "152/";
-        };
-        if (_117) then {
-            _radios = _radios + "117F/";
-        };
+
         _roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6",_color, _ctr, _role, _unitName, _weight, _radios] + "</font><br/>";
         _ctr = _ctr + 1;
     } forEach units _x;
