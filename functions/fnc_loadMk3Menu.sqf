@@ -295,8 +295,10 @@ if (hasInterface) then {
 				// SL
 				_action = [ "menu_mk2_inf_sl", "Squad Leader", "", {["2023_sl"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_inf_xo", "Executive Officer/Sergent", "", {["2023_xo"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// HQ
-				_action = [ "menu_mk2_inf_hq", "HQ", "", {["2023_hq"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_inf_hq", "HQ (Static)", "", {["2023_hq"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 				/*

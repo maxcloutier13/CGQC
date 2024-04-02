@@ -40,6 +40,15 @@ switch (_variant) do {
 		_target addItemToBackpack "sps_black_hornet_01_Static_F";
 		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 	};
+	case "xo": {
+		_target removeItems "ACE_EntrenchingTool";
+		_target removeItems "ACE_Canteen";
+		_target addItem "ACE_M26_Clacker";
+		// === Drones ================================
+		_target addItemToBackpack "Rev_darter_item";
+		_target addItemToBackpack "sps_black_hornet_01_Static_F";
+		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
+	};
 	case "hq": {
 		_target removeItems "ACE_EntrenchingTool";
 		// === Drones ================================
