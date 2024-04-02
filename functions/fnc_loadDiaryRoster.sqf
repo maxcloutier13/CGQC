@@ -4,80 +4,52 @@ diag_log "[CGQC_FNC] loadDiaryRoster started";
 
 waitUntil {cgqc_start_postInitClient_done};
 
-_side = side player;
+// Load Everything
+[] call CGQC_fnc_loadGroupInfo;
+
 _roster = "";
-_playerGroups = [];
-{
-    if ({isPlayer _x} count (units _x) > 0) then {
-        _playerGroups pushBack _x;
-    };
-} forEach allGroups;
 
-{
-    _ctr = 1;
-    _groupName = groupID _x;
-    _roster = _roster + "<font color='#969696' size='18'>--- " + _groupName + " ---</font><br/>";
-    {
-        _unitName = name _x;
-        _color = "";
-        _unitColor = assignedTeam _x;
-        _weight = _x call ace_common_fnc_getweight;
-        _role = _x getVariable "cgqc_player_role";
-        if (isNil "_role") then {
-            _role = "Unknown";
+{ // For each valid group
+	_groupName = _x select 0;
+	_group = _x select 1;
+	_roster = _roster + "<font color='#969696' size='20'>------- " + _groupName + " ----------------------------------------</font><br/>";
+	_setGroup1 = true;
+	_setGroup2 = true;
+    _setHQ = true;
+	_firstRun = true;
+	{ // For each Soldiers
+		//_unit = _x select 0;
+		_color = _x select 1;
+		_pos = _x select 2;
+		_role = _x select 3;
+		_name = _x select 4;
+		_weight = _x select 5;
+		_radio = _x select 6;
+
+		if (_firstRun) then {
+			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6",_color, _pos, _role, _name, _weight, _radio] + "</font><br/>";
+		};
+		if (_setGroup1 && (_color isEqualTo "#CC3333" || _color isEqualTo "#5C7829")) then {
+			_roster = _roster + format ["<font color='#CC3333' size='18'>	 --- %1-1 ---</font><br/>", _groupName];
+			_setGroup1 = false;
+		};
+		if (_setGroup2 && (_color isEqualTo "#087099" || _color isEqualTo "#B7B327")) then {
+			_roster = _roster + format ["<font color='#087099' size='18'>	 --- %1-2 ---</font><br/>", _groupName];
+			_setGroup2 = false;
+		};
+		if (!_firstRun && !_setGroup1 && _setHQ && _color isEqualTo "#F0F0F0" ) then {
+			_roster = _roster + format ["<font color='#ffffff' size='18'>	 --- %1-HQ ---</font><br/>", _groupName];
+            _setHQ = false;
         };
-        _radios = "";
-        if ([_x] call acre_api_fnc_hasRadio) then {
-            if ([player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio) then {
-                _343s = ["ACRE_PRC343"] call acre_api_fnc_getAllRadiosByType;
-                {
-                    _radioType = "343";
-                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
-                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
-                } forEach _343s;
-            };
-            if ([player, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio) then {
-                _148s = ["ACRE_PRC148"] call acre_api_fnc_getAllRadiosByType;
-                {
-                    _radioType = "148";
-                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
-                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
-                } forEach _148s;
-            };
-            if ([player, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio) then {
-                _152s = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-                {
-                    _radioType = "152";
-                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
-                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
-                } forEach _152s;
-            };
-            if ([player, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio) then {
-                _117s = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-                {
-                    _radioType = "117";
-                    _radioChan = [_x] call acre_api_fnc_getRadioChannel;
-                    _radios = _radios + format ["%1/%2-", _radioType, _radioChan];
-                } forEach _117s;
-            };
-        } else {
-            _radios = "No radio";
-        };
+		if !(_firstRun) then {
+			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6",_color, _pos, _role, _name, _weight, _radio] + "</font><br/>";
+		};
+		_firstRun = false;
+	} forEach _group;
+	_roster = _roster + "<br/>";
+} forEach cgqc_allGroupsInfo;
 
-        switch (_unitColor) do {
-            case "RED": {_color = "#CC3333" };
-            case "GREEN": {_color = "#5C7829" };
-            case "BLUE": {_color = "#087099" };
-            case "YELLOW": {_color = "#B7B327" };
-            default {_color = "#F0F0F0"};
-        };
-
-        _roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6",_color, _ctr, _role, _unitName, _weight, _radios] + "</font><br/>";
-        _ctr = _ctr + 1;
-    } forEach units _x;
-    _roster = _roster + "<br/>";
-} forEach _playerGroups;
-
+// Timestamp for the update
 _hour = systemTime select 3;
 _mins = systemTime select 4;
 _secs = systemTime select 5;
@@ -90,7 +62,7 @@ if !(player diarySubjectExists "CGQC_Roster") then {
 } else {
     _records = player allDiaryRecords "CGQC_Roster";
     _record = _records select 0;
-    player setDiaryRecordText [["CGQC_Roster", _x select 8], ["Roster", _roster]];
+    player setDiaryRecordText [["CGQC_Roster", _record select 8], ["Roster", _roster]];
 };
 
 diag_log "[CGQC_FNC] loadDiaryRoster done";
