@@ -1,6 +1,80 @@
 // --- cfgVehicles ----------------------------------------------------------
 // Vehicles definition. Yeah I know.
 
+class B_UGV_01_F;
+class B_UGV_01_rcws_F;
+class B_T_UGV_01_olive_F;
+class B_T_UGV_01_rcws_olive_F;
+
+class cgqc_vic_stomper_tan : B_UGV_01_F {
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_drones";
+    displayName = "Stomper - Tan (1)";
+    maximumLoad = 2000;
+    armor = 50;
+    enginePower = 80;
+    maxSpeed = 50;
+    terrainCoef = 1.2;
+    turnCoef = 4;
+    precision = 10;
+    acceleration = 15;
+    armorStructural = 4;
+    damageResistance = 0.00719;
+    canFloat = 0;
+    enableGPS = 1;
+    killFriendlyExpCoef = 0.1;
+    fuelExplosionPower = 2;
+    wheelDamageThreshold = 0.7;
+    wheelDestroyThreshold = 0.99;
+    wheelDamageRadiusCoef = 0.95;
+    wheelDestroyRadiusCoef = 0.75;
+    //hiddenSelectionsTextures[] = {"\A3\Drones_F\soft_f_gamma\UGV_01\data\UGV_01_ext_co.paa","\A3\Drones_F\soft_f_gamma\UGV_01\data\UGV_01_int_co.paa","\A3\Data_F\Vehicles\Turret_co.paa"};
+    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+};
+class cgqc_vic_stomper_tan_a : B_UGV_01_rcws_F {
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_drones";
+    displayName = "Stomper Armed - Tan (1)";
+    maximumLoad = 2000;
+    armor = 50;
+    enginePower = 80;
+    maxSpeed = 50;
+    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+};
+
+class cgqc_vic_stomper_green : B_T_UGV_01_olive_F {
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_drones";
+    displayName = "Stomper - green (1)";
+    maximumLoad = 2000;
+    armor = 50;
+    enginePower = 80;
+    maxSpeed = 50;
+    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+};
+class cgqc_vic_stomper_green_a : B_T_UGV_01_rcws_olive_F {
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_drones";
+    displayName = "Stomper Armed - green (1)";
+    maximumLoad = 2000;
+    armor = 50;
+    enginePower = 80;
+    maxSpeed = 50;
+    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+};
+
 class B_W_MBT_01_TUSK_F;
 class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
     scope = 2;

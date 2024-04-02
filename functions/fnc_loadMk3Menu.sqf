@@ -66,6 +66,14 @@ if (hasInterface) then {
 			_action = [ "menu_zeus_maxMags_20", "SetMax: 20", "", {cgqc_setting_limitMags_max = 20; publicVariable "cgqc_setting_limitMags_max";hint "MaxMags: 20"}, {cgqc_setting_limitMags} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_zeus_options", "menu_zeus_maxMags" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+
+			// Flag that arsenal is unlocked or in training mode
+			_action = [ "mode_unlocked", "--- Arsenal is UNLOCKED ---", "", {""}, {!cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+			_action = [ "mode_training", "--- Arsenal in TRAINING MODE ---", "", {""}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 			if (!cgqc_player_has2023 && !cgqc_player_hasUnsung && !cgqc_player_hasIfa3) then {
 				diag_log "[CGQC_FNC] loadMk3Menu - loading vanilla stuff";
 				//waitUntil {sleep 1; cgqc_mk2_arsenal_init_done};
@@ -287,8 +295,10 @@ if (hasInterface) then {
 				// SL
 				_action = [ "menu_mk2_inf_sl", "Squad Leader", "", {["2023_sl"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				_action = [ "menu_mk2_inf_xo", "Executive Officer/Sergent", "", {["2023_xo"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// HQ
-				_action = [ "menu_mk2_inf_hq", "HQ", "", {["2023_hq"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_mk2_inf_hq", "HQ (Static)", "", {["2023_hq"] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_lead"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 				/*
@@ -697,12 +707,6 @@ if (hasInterface) then {
 	// Supplies spawner --------------------------------------------------------------------------------------------------------------
 	_action = [ "menu_supplies", "Logistics", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
-	//  Fuel can
-	_action = [ "menu_supplies_fuel", "Fuel Can", "", {["fuel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
-	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-	//  Vehicle ammo can
-	_action = [ "menu_supplies_vic", "Vehicle Ammo Can", "", {["vic_ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
-	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 	//  Ammo can
 	_action = [ "menu_supplies_ammo", "Squad Ammo Box", "", {["ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -714,6 +718,12 @@ if (hasInterface) then {
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 	//  82mm mortar crate
 	_action = [ "menu_supplies_82", "82mm mk6 mortar box", "", {["mort82"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+	//  Fuel can
+	_action = [ "menu_supplies_fuel", "Fuel Can", "", {["fuel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+	//  Vehicle ammo can
+	_action = [ "menu_supplies_vic", "Vehicle Ammo Can", "", {["vic_ammo"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 	//  Spare wheel
 	_action = [ "menu_supplies_wheel", "Spare wheel", "", {["wheel"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;

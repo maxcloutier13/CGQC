@@ -35,17 +35,18 @@ if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
         n_data = ["cgqc_patch_logo", _groupName, false];
         ["RegisterGroup", [n_targetGroup, leader n_targetGroup, n_data]] remoteExec ["BIS_fnc_dynamicGroups", 2];
     };
+    /*
     n_targetGroup addEventHandler ["UnitJoined", {
         params ["_group", "_newUnit"];
         [] call CGQC_fnc_setGroupRadios;
-    }];
+    }];*/
 };
 
 cgqc_player_group = n_targetGroup;
 cgqc_player_groupID = groupId player;
 
-[] call CGQC_fnc_setGroupRadios;
-[] call CGQC_fnc_setTeamColors;
+//[] call CGQC_fnc_setGroupRadios;
+//[] call CGQC_fnc_setTeamColors;
 
 hint format ["You've joined %1", _groupName];
 

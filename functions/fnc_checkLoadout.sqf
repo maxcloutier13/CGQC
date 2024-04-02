@@ -67,6 +67,7 @@ if (_load) then {
         // == Command
         case "CGQC_units_mk1_0_HQ":{_switchRole = "2023_hq"};
         case "CGQC_units_mk1_0_SL":{_switchRole = "2023_sl"};
+        case "CGQC_units_mk1_0_XO":{_switchRole = "2023_xo"};
         case "CGQC_units_mk1_0_TeamLeader_Carbine":{_switchRole = "2023_tl"};
         // == Divers
         case "CGQC_units_mk1_5_Diver_TL":{_switchRole = "2023_tl";_dive = true;};

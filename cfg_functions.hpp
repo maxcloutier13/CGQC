@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class loadGroupInfo{
+            file = "\cgqc\functions\fnc_loadGroupInfo.sqf";
+            description = "Load all of the info about groups and members";
+        };
+        class playerUnconscious{
+            file = "\cgqc\functions\fnc_playerUnconscious.sqf";
+            description = "Handle player unconciousness";
+        };
         class promotePlayer{
             file = "\cgqc\functions\fnc_promotePlayer.sqf";
             description = "Boost level of player so he has access to items/roles";

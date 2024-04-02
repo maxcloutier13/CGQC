@@ -222,6 +222,13 @@ case "2023_sl":{
 	cgqc_player_role = "Squad Leader";
 	cgqc_player_roleType = "Command";
 };
+case "2023_xo":{
+	[player, "xo", "carbine"] call CGQC_ldt_2023_command;
+	["sl"] call cgqc_fnc_switchPerks;
+	["sl"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Exective Officer";
+	cgqc_player_roleType = "Command";
+};
 
 case "2023_tl":{
 	[player, "tl", "carbine"] call CGQC_ldt_2023_command;
