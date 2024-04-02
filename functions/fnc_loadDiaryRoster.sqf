@@ -4,10 +4,6 @@ diag_log "[CGQC_FNC] loadDiaryRoster started";
 
 waitUntil {cgqc_start_postInitClient_done};
 
-if (player diarySubjectExists "CGQC_Roster") then {
-    player removeDiarySubject "CGQC_Roster";
-};
-
 _side = side player;
 _roster = "";
 _playerGroups = [];
@@ -87,7 +83,14 @@ _mins = systemTime select 4;
 _secs = systemTime select 5;
 _roster = _roster + format ["<br/><font color='#282828'> -Updated %1:%2:%3 </font>", _hour, _mins, _secs];
 
-player createDiarySubject ["CGQC_Roster", "Roster"];
-player createDiaryRecord ["CGQC_Roster", ["Roster", _roster]];
+if !(player diarySubjectExists "CGQC_Roster") then {
+    //Create subject and record
+    player createDiarySubject ["CGQC_Roster", "Roster"];
+    player createDiaryRecord ["CGQC_Roster", ["Roster", _roster]];
+} else {
+    _records = player allDiaryRecords "CGQC_Roster";
+    _record = _records select 0;
+    player setDiaryRecordText [["CGQC_Roster", _x select 8], ["Roster", _roster]];
+};
 
 diag_log "[CGQC_FNC] loadDiaryRoster done";
