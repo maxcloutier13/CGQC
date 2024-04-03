@@ -7,5 +7,5 @@ if (vehicle player == player && trgBriefCmd_player_lowered) then {
 	[] call ace_volume_fnc_restoreVolume;
 	trgBriefCmd_player_lowered = false;
 };
-_txt = parseText ("Commanders Briefing in progress." + "<br/>" + "Your voice volume is reduced.");
+_txt = parseText ("Leaders Briefing in progress." + "<br/>" + "Your voice volume is reduced.");
 hintSilent _txt;

@@ -146,42 +146,42 @@ switch (_type) do {
 	};
 	case "max":{
 		// Camo Faces ---------------------------------------------------------------------------------------------------------------
-		_action = [ "menu_self_camo", " Camo Faces", "", {""}, {cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
+		_action = [ "menu_self_camo_faces", " Camo Faces", "", {""}, {cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_0", " Remove Camo", "", {["face_0"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_1", " Camo 01", "", {["face_1"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_2", " Camo 02", "", {["face_2"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_3", " Camo 03", "", {["face_3"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_4", " Camo 04", "", {["face_1"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_5", " Camo 05", "", {["face_2"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_6", " Camo 06", "", {["face_3"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_7", " Camo 07", "", {["face_1"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_8", " Camo 08", "", {["face_2"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_9", " Camo 09", "", {["face_3"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_10", " Camo 10", "", {["face_1"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_11", " Camo 11", "", {["face_2"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_12", " Camo 12", "", {["face_3"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_13", " Camo 13", "", {["face_1"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_14", " Camo 14", "", {["face_2"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_15", " Camo 15", "", {["face_3"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "menu_self_camo_16", " Camo 16", "", {["face_3"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 		// Shooting range
 		_action = [ "menu_self_range", "Shooting Range WIP", "", {

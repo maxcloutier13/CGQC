@@ -389,7 +389,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_
 _action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Commanders briefing
-_action = [ "zeus_briefingCmd_start", "Start Mini Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_briefingCmd_start", "Start Leaders Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Commanders done
 _action = [ "zeus_briefingCmd_stop", "Stop Leader's Briefing", "", {["briefingCmd_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_state_briefing_leaders} ] call ace_interact_menu_fnc_createAction;

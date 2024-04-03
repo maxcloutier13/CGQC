@@ -1,12 +1,12 @@
 // --- addPerksSwitch ----------------------------------------------------------
-// Event that adds perks when player uses unit the first time 
+// Event that adds perks when player uses unit the first time
 ["ace_interact_menu_newControllableObject", {
     params ["_type"]; // string of the object's classname
     if (!(_type isKindOf "CAManBase")) exitWith {}; // All humans
 	[_type] spawn {
 		params ["_type"];
 		hint "Unit compatible, Zeus perks";
-		// Add Zeus radios 
+		// Add Zeus radios
 		/*
 		{
 			_unit = _x;
@@ -43,9 +43,9 @@
 		_action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		// Commanders briefing
-		_action = [ "zeus_briefingCmd_start", "Start Mini Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
+		_action = [ "zeus_briefingCmd_start", "Start Leaders Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToCLass;
-		// Commanders done 
+		// Commanders done
 		_action = [ "zeus_briefingCmd_stop", "Stop Leader's Briefing", "", {["briefingCmd_stop", 0] spawn CGQC_fnc_perksZeus}, {cgqc_state_briefing_leaders} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		// General briefing
@@ -67,19 +67,19 @@
 		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		_action = [ "zeus_mapSharing_off", "MapSharing: Turn on", "", {["mapshare", 0] spawn CGQC_fnc_perksZeus}, {jib_restrictmarkers_enabled} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToCLass;
-		// ------ Animation on/off 
+		// ------ Animation on/off
 		_action = [ "zeus_anim_on", "Animations: Turn off", "", {["animation_on", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_mk2_animation_locked} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		_action = [ "zeus_anim_off", "Animations: Turn on", "", {["animation_off", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_mk2_animation_locked }] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToCLass;
-		// ------ Punching on/off 
+		// ------ Punching on/off
 		_action = [ "zeus_punch_on", "Punching: Turn On", "", {["punch_on", 0, ""] spawn CGQC_fnc_perksZeus}, {!BRIDGE_KPU_MasterSetting} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		_action = [ "zeus_punch_off", "Punching: Turn Off", "", {["punch_off", 0, ""] spawn CGQC_fnc_perksZeus}, {BRIDGE_KPU_MasterSetting }] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 
 
-		// ------ GRAD Persistence 
+		// ------ GRAD Persistence
 		_action = [ "zeus_grad_persistence", "Persistence", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		_action = [ "zeus_grad_save", "Save Mission", "", { [true, 10] remoteExec ["grad_persistence_fnc_saveMission",2,false];}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -99,26 +99,26 @@
 		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		// ------ Get 343
 		_action = [ "max_343", "get 343", "", {["343", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;		
+		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		// ------ Get 152
 		_action = [ "max_152", "get 152", "", {["152", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		// ------ Get 152
 		_action = [ "max_117", "get 117f", "", {["117", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;		
+		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		// ------ Get Crate
 		_action = [ "zeus_getcrate", "Spawn: Arsenal mk3", "", {["crate", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToCLass;	
-		//  ------ Delete Crate 
+		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToCLass;
+		//  ------ Delete Crate
 		_action = [ "zeus_delcrate", "Delete Arsenal", "", {["del_crate", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_crate} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 		// ------ Get Cargo
 		_action = [ "zeus_getcargo", "get Cargo", "", {["cargo", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;	
-		//  ------ Delete Cargo 
+		_adding = [ _type, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
+		//  ------ Delete Cargo
 		_action = [ "zeus_delcargo", "delete Cargo", "", {["del_cargo", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_cargo} ] call ace_interact_menu_fnc_createAction;
-		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;	
-		// ------ Export Loadout  
+		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
+		// ------ Export Loadout
 		_action = [ "zeus_export", "Loadout to Clipboard", "", {[cursorTarget] call CGQC_fnc_loadoutToClipboard}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ _type, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToCLass;
 	};
