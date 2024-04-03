@@ -18,16 +18,24 @@ _roster = "";
     _setHQ = true;
 	_firstRun = true;
 	{ // For each Soldiers
-		//_unit = _x select 0;
+		_unit = _x select 0;
 		_color = _x select 1;
 		_pos = _x select 2;
 		_role = _x select 3;
 		_name = _x select 4;
 		_weight = _x select 5;
 		_radio = _x select 6;
+		_versionCheck = "</font>";
+		if (cgqc_player_max) then {
+			_versionCore = _unit getVariable ["cgqc_version_core", "ERROR"];
+			_ref_version_core = player getVariable "cgqc_version_core";
+			if (_versionCore isNotEqualTo _ref_version_core) then {
+				_versionCheck = "</font><font color='CC3333' size='15'>!!!</font>";
+			};
+		};
 
 		if (_firstRun) then {
-			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6",_color, _pos, _role, _name, _weight, _radio] + "</font><br/>";
+			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6 - %7",_color, _pos, _role, _name, _weight, _radio, _versionCheck ] + "<br/>";
 		};
 		if (_setGroup1 && (_color isEqualTo "#CC3333" || _color isEqualTo "#5C7829")) then {
 			_roster = _roster + format ["<font color='#CC3333' size='18'>	 --- %1-1 ---</font><br/>", _groupName];
@@ -42,7 +50,7 @@ _roster = "";
             _setHQ = false;
         };
 		if !(_firstRun) then {
-			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6",_color, _pos, _role, _name, _weight, _radio] + "</font><br/>";
+			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6 - %7",_color, _pos, _role, _name, _weight, _radio, _versionCheck] + "<br/>";
 		};
 		_firstRun = false;
 	} forEach _group;
