@@ -3,6 +3,48 @@ class CAManBase: Man {
 	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
+			//delete ACE_TeamManagement;
+			class ACE_TeamManagement {
+				delete ACE_AssignTeamRed;
+				delete ACE_AssignTeamGreen;
+				delete ACE_AssignTeamBlue;
+				delete ACE_AssignTeamYellow;
+				class CGQC_setColor_red {
+					displayName = "Team Rouge";
+					condition = "true";
+					statement = "['RED', _target] call CGQC_fnc_setTeamColors";
+					showDisabled = 1;
+					icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+				};
+				class CGQC_setColor_green {
+					displayName = "Team Vert";
+					condition = "true";
+					statement = "['GREEN', _target] call CGQC_fnc_setTeamColors";
+					showDisabled = 1;
+					icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+				};
+				class CGQC_setColor_blue {
+					displayName = "Team Bleu";
+					condition = "true";
+					statement = "['BLUE', _target] call CGQC_fnc_setTeamColors";
+					showDisabled = 1;
+					icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+				};
+				class CGQC_setColor_yellow {
+					displayName = "Team Jaune";
+					condition = "true";
+					statement = "['YELLOW', _target] call CGQC_fnc_setTeamColors";
+					showDisabled = 1;
+					icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+				};
+				class CGQC_setColor_leave {
+					displayName = "Leave Team";
+					condition = "assignedTeam _player != 'MAIN'";
+					exceptions[] = {};
+					statement = "['MAIN', _target] call CGQC_fnc_setTeamColors";
+					showDisabled = 1;
+				};
+			};
 			class cgqc_inspect_detail {
 				displayName = "Rapid Gear Inspection";
 				condition = "true";
@@ -64,6 +106,153 @@ class CAManBase: Man {
 		// Remove this thing
 		delete aceax_ingame_gear;
 		delete fox_self;
+		//delete ACE_TeamManagement;
+		class ACE_TeamManagement {
+			delete ACE_JoinTeamRed;
+			delete ACE_JoinTeamGreen;
+			delete ACE_JoinTeamBlue;
+			delete ACE_JoinTeamYellow;
+			delete ACE_LeaveTeam;
+			class CGQC_joinColor_red {
+				displayName = "1-1 Rouge";
+				condition = "true";
+				exceptions[] = {"isNotSwimming", "isNotSitting"};
+				statement = "['RED'] call CGQC_fnc_setTeamColors";
+				showDisabled = 1;
+				icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+			};
+			class CGQC_joinColor_green {
+				displayName = "1-2 Vert";
+				condition = "true";
+				exceptions[] = {"isNotSwimming", "isNotSitting"};
+				statement = "['GREEN'] call CGQC_fnc_setTeamColors";
+				showDisabled = 1;
+				icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+			};
+			class CGQC_joinColor_blue {
+				displayName = "2-1 Bleu";
+				condition = "true";
+				exceptions[] = {"isNotSwimming", "isNotSitting"};
+				statement = "['BLUE'] call CGQC_fnc_setTeamColors";
+				showDisabled = 1;
+				icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+			};
+			class CGQC_joinColor_yellow {
+				displayName = "2-2 Jaune";
+				condition = "true";
+				exceptions[] = {"isNotSwimming", "isNotSitting"};
+				statement = "['YELLOW'] call CGQC_fnc_setTeamColors";
+				showDisabled = 1;
+				icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+			};
+			class CGQC_joinColor_leave {
+				displayName = "0 - Blanc";
+				condition = "true";
+				exceptions[] = {"isNotSwimming", "isNotSitting"};
+				statement = "['MAIN'] call CGQC_fnc_setTeamColors";
+				showDisabled = 1;
+				icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
+			};
+			class CGQC_joinGroup {
+				displayName = "Join/Create Group";
+				condition = "true";
+				exceptions[] = {"isNotSwimming", "isNotSitting"};
+				statement = "";
+				showDisabled = 1;
+				icon = "\z\ace\addons\interaction\UI\team\team_management_ca.paa";
+				class CGQC_joinGroup_spartan {
+					displayName = "Spartan";
+					condition = "true";
+					exceptions[] = {"isNotSwimming", "isNotSitting"};
+					statement = "";
+					showDisabled = 1;
+					class CGQC_joinGroup_spartan_11 {
+						displayName = "1-1 Rouge";
+						condition = "true";
+						exceptions[] = {"isNotSwimming", "isNotSitting"};
+						statement = "['Spartan', 'RED'] call CGQC_fnc_joinGroup";
+						showDisabled = 1;
+						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_12 {
+						displayName = "1-2 Vert";
+						condition = "true";
+						exceptions[] = {"isNotSwimming", "isNotSitting"};
+						statement = "['Spartan', 'GREEN'] call CGQC_fnc_joinGroup";
+						showDisabled = 1;
+						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_21 {
+						displayName = "2-1 Bleu";
+						condition = "true";
+						exceptions[] = {"isNotSwimming", "isNotSitting"};
+						statement = "['Spartan', 'BLUE'] call CGQC_fnc_joinGroup";
+						showDisabled = 1;
+						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_22 {
+						displayName = "2-2 Jaune";
+						condition = "true";
+						exceptions[] = {"isNotSwimming", "isNotSitting"};
+						statement = "['Spartan', 'YELLOW'] call CGQC_fnc_joinGroup";
+						showDisabled = 1;
+						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_0 {
+						displayName = "0 - Blanc";
+						condition = "true";
+						exceptions[] = {"isNotSwimming", "isNotSitting"};
+						statement = "['Spartan', 'MAIN'] call CGQC_fnc_joinGroup";
+						icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
+						showDisabled = 1;
+					};
+				};
+				class CGQC_joinGroup_hermes {
+					displayName = "Hermes";
+					condition = "true";
+					exceptions[] = {"isNotSwimming", "isNotSitting"};
+					statement = "['Hermes', 'MAIN'] call CGQC_fnc_joinGroup";
+					showDisabled = 1;
+				};
+				class CGQC_joinGroup_orion {
+					displayName = "Orion";
+					condition = "true";
+					exceptions[] = {"isNotSwimming", "isNotSitting"};
+					statement = "['Orion', 'MAIN'] call CGQC_fnc_joinGroup";
+					showDisabled = 1;
+				};
+				class CGQC_joinGroup_centaure {
+					displayName = "Centaure";
+					condition = "true";
+					exceptions[] = {"isNotSwimming", "isNotSitting"};
+					statement = "['Centaure', 'MAIN'] call CGQC_fnc_joinGroup";
+					showDisabled = 1;
+				};
+				class CGQC_joinGroup_griffon {
+					displayName = "Griffon";
+					condition = "true";
+					exceptions[] = {"isNotSwimming", "isNotSitting"};
+					statement = "['Griffon', 'MAIN'] call CGQC_fnc_joinGroup";
+					showDisabled = 1;
+				};
+				class CGQC_joinGroup_pegase {
+					displayName = "Pegase";
+					condition = "true";
+					exceptions[] = {"isNotSwimming", "isNotSitting"};
+					statement = "['Pegase', 'MAIN'] call CGQC_fnc_joinGroup";
+					showDisabled = 1;
+				};
+				class CGQC_joinGroup_hq {
+					displayName = "HQ";
+					condition = "true";
+					exceptions[] = {"isNotSwimming", "isNotSitting"};
+					statement = "['HQ', 'MAIN'] call CGQC_fnc_joinGroup";
+					showDisabled = 1;
+				};
+			};
+		};
+
+
 		class ACE_Animations {
 			displayName = "Animations";
 			//icon = "\z\ace\addons\gestures\UI\gestures_ca.paa";

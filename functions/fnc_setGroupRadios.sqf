@@ -1,38 +1,44 @@
 // --- setGroupRadios ----------------------------------------------------------
 // Set radio setups depending on role
-params [];
-diag_log format ["[CGQC_FNC] setGroupRadios started"];
+params [["_groupName", groupid cgqc_player_group], ["_color", 'UNSET']];
+diag_log format ["[CGQC_FNC] setGroupRadios %1/%2 started", _groupName, _color];
 
 // Set default 343 channel for group
 _notFound = false;
 _ch = 0;
 switch (groupid cgqc_player_group) do {
-case "Spartan-1": {_ch = 1;};
-case "Spartan-2": {_ch = 2;};
-case "Spartan-3": {_ch = 3;};
-case "Spartan-4": {_ch = 4;};
-case "Typhon-1": {_ch = 5;};
-case "Typhon-2": {_ch = 6;};
-case "Typhon-3": {_ch = 7;};
-case "Typhon-4": {_ch = 8;};
-case "Hermes";
-case "Orion-1";
-case "Orion-2";
-case "Recon": {_ch = 9;};
-case "Centaure-1";
-case "Centaure-2";
-case "Centaure-3";
-case "Griffon-1";
-case "Griffon-2";
-case "Griffon-3";
-case "Pegase-1";
-case "Pegase-2";
-case "Pegase-3";
-case "Supports": {_ch = 10;};
-case "HQ": {_ch = 16;};
-default {
-	_ch = 1;};
-	_notFound = true;
+	case "Spartan": {
+		switch (_color) do {
+			case "UNSET": {_ch = 16;};
+			case "RED": {_ch = 1;};
+			case "GREEN": {_ch = 1;};
+			case "BLUE": {_ch = 2;};
+			case "YELLOW": {_ch = 2;};
+			default {_ch = 1;};
+		};
+	};
+	case "Typhon": {
+		switch (_color) do {
+			case "UNSET": {_ch = 15;};
+			case "RED": {_ch = 3;};
+			case "GREEN": {_ch = 3;};
+			case "BLUE": {_ch = 4;};
+			case "YELLOW": {_ch = 4;};
+			default {_ch = 3;};
+		};
+	};
+	case "Hermes";
+	case "Orion";
+	case "Recon": {_ch = 9;};
+	case "Centaure";
+	case "Griffon";
+	case "Pegase";
+	case "Supports": {_ch = 10;};
+	case "HQ": {_ch = 16;};
+	default {
+		_ch = 1;};
+		_notFound = true;
+	};
 };
 if (_notFound) then {
 	hint "Group not found. Set your 343 channel manually";

@@ -17,7 +17,8 @@ cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
 
 // Set patch
 [] spawn CGQC_fnc_setPatch;
-
+// Set color
+[] spawn CGQC_fnc_setTeamColors;
 /*
 
 // Reload radios

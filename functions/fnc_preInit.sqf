@@ -36,7 +36,8 @@ cgqc_player_isSL = false;
 cgqc_player_isTL = false;
 cgqc_player_is2IC = false;
 cgqc_player_role = "Unknown";
-player setVariable["cgqc_player_role", cgqc_player_role];
+player setVariable ["cgqc_player_role", cgqc_player_role];
+player setVariable ["CGQC_teamColor", "UNSET"];
 cgqc_player_roleType = "";
 cgqc_player_beret = "";
 cgqc_player_beret_name = "";
@@ -312,7 +313,6 @@ if (cgqc_player_hasUnsung) then {
 	// Default modern radio = 152
 	["ACRE_PRC152"] call acre_api_fnc_setItemRadioReplacement;
 };*/
-
 
 // Key-fucking-binds ===================================================================================
 // -- Repos --

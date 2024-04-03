@@ -134,6 +134,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 		//Unconcious event
 		["ace_unconscious", {
 			params ["_unit", "_isUnconscious"];
+			[] call CGQC_fnc_setTeamColors;
 			if (_isUnconscious) then {
 				playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
 			};
