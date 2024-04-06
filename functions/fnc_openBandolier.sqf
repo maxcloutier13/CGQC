@@ -8,8 +8,12 @@ switch (_type) do {
 		if !("cgqc_bandolier_ammo" in items player) exitWith{};
 
 		// Start animation
-		player playMove "AinvPknlMstpSnonWnonDnon_medic4";
-
+		if (isNull objectParent player) then {
+			diag_log "[CGQC_FNC] openBandolier - Player not in vehicle - animation";
+			player playMove "AinvPknlMstpSnonWnonDnon_medic4";
+		} else {
+			diag_log "[CGQC_FNC] openBandolier - Player in vehicle! Skip animation";
+		};
 		// Progress bar
 		[15, [], {
 			[ACE_player, "cgqc_bandolier_ammo"] call ace_common_fnc_useItem;
@@ -59,7 +63,7 @@ switch (_type) do {
 
 				// Extract the magazine size from the class name
 				_magSize = getNumber(configFile >> "CfgMagazines" >> _primaryMag >> "count");
-
+				diag_log format ["[CGQC_FNC] openBandolier Mag:%1/Size:%2",_primaryMag, _magSize];
 				// Compare the magazine size
 				_addMags = cgqc_config_ammo_primary;
 				switch (true) do {
@@ -67,42 +71,60 @@ switch (_type) do {
 					case (_magSize > 30): {_addMags = 6; };
 					case (_magSize < 15): {_addMags = 10; };
 				};
-
+				diag_log format ["[CGQC_FNC] openBandolier Adding %1 primary mags",_addMags];
 				for "_i" from 1 to _addMags do {
 					[ACE_player, "vest", _primaryMag, true] call cgqc_fnc_addItemWithOverflow;
 					_primaryMagCount = _primaryMagCount + 1;
 				};
 
-			}else{hint "No primary weapon!";};
+			}else{
+				hint "No primary weapon!";
+				diag_log "[CGQC_FNC] openBandolier No primary weapon?";
+			};
 
 			// Refill handgun/throwables instead of adding more
 			if (cgqc_config_ammo_refill) then {
-
+				diag_log "[CGQC_FNC] openBandolier Config in Refill mode";
 				// Refill handgun
 				if !(isNil "_handgunMag") then {
 					//hint format ["HandgunMag: %1", _handgunMag];
-					for "_i" from _handgunMags to (cgqc_config_sidearm_mag_nbr - 1) do {
+					_handgunAdd = (cgqc_config_sidearm_mag_nbr - 1) - _handgunMags;
+					diag_log format ["[CGQC_FNC] openBandolier Adding %1/%2 handgun mags",_handgunAdd, _handgunMag];
+					for "_i" from 0 to _handgunAdd do {
 						[ACE_player, "vest", _handgunMag, true] call cgqc_fnc_addItemWithOverflow;
 						_handMagCount = _handMagCount + 1;
 						};
-				}else{hint "No Secondary weapon!";};
+				}else{
+					hint "No Secondary weapon!";
+					diag_log "[CGQC_FNC] openBandolier No Secondary weapon?";
+				};
 
 				// Refill throwables
-
-				for "_i" from _nade to cgqc_config_ammo_nade - 1 do {[ACE_player, "vest", cgqc_config_ammo_nade_type, true] call cgqc_fnc_addItemWithOverflow;_nadeCount = _nadeCount + 1};
-				for "_i" from _smoke to cgqc_config_ammo_smoke - 1 do {[ACE_player, "vest", cgqc_config_ammo_smoke_type, true] call cgqc_fnc_addItemWithOverflow; _smokeCount = _smokeCount + 1};
-				for "_i" from _nadeFlash to cgqc_config_ammo_flash - 1 do {[ACE_player, "vest", cgqc_config_ammo_flash_type, true] call cgqc_fnc_addItemWithOverflow; _nadeFlashCount = _nadeFlashCount +1};
+				_nadeAdd = (cgqc_config_ammo_nade - 1) - _nade;
+				_smokeAdd = (cgqc_config_ammo_smoke - 1) - _smoke;
+				_flashAdd = (cgqc_config_ammo_flash - 1) - _nadeFlash;
+				diag_log format ["[CGQC_FNC] openBandolier Refill %1/%2/%3",_nadeAdd, _smokeAdd, _flashAdd];
+				for "_i" from 0 to _nadeAdd do {[ACE_player, "vest", cgqc_config_ammo_nade_type, true] call cgqc_fnc_addItemWithOverflow;_nadeCount = _nadeCount + 1};
+				for "_i" from 0 to _smokeAdd do {[ACE_player, "vest", cgqc_config_ammo_smoke_type, true] call cgqc_fnc_addItemWithOverflow; _smokeCount = _smokeCount + 1};
+				for "_i" from 0 to _flashAdd do {[ACE_player, "vest", cgqc_config_ammo_flash_type, true] call cgqc_fnc_addItemWithOverflow; _nadeFlashCount = _nadeFlashCount +1};
 
 			} else {
+				diag_log "[CGQC_FNC] openBandolier Config in Additional item mode";
 				// Add new mags/throwables regardless of current count
 				if !(isNil "_handgunMag") then {
+					diag_log format ["[CGQC_FNC] openBandolier Adding %1/%2 handgun mags",cgqc_config_ammo_handgun, _handgunMag];
 					//hint format ["HandgunMag: %1", _handgunMag];
 					for "_i" from 1 to cgqc_config_ammo_handgun do {
 						[ACE_player, "uniform", _handgunMag, true] call cgqc_fnc_addItemWithOverflow;
 						_handMagCount = _handMagCount + 1;
 						};
-				}else{hint "No Secondary weapon!";};
+				}else{
+					hint "No Secondary weapon!";
+					diag_log "[CGQC_FNC] openBandolier No Secondary weapon?";
+				};
 
+
+				diag_log format ["[CGQC_FNC] openBandolier AddNades %1/%2/%3",cgqc_config_ammo_nade, cgqc_config_ammo_flash, cgqc_config_ammo_smoke];
 
 				// Refill throwables
 				for "_i" from 1 to cgqc_config_ammo_nade do {[ACE_player, "vest", cgqc_config_ammo_nade_type, true] call cgqc_fnc_addItemWithOverflow;_nadeCount = _nadeCount + 1};
@@ -129,7 +151,13 @@ switch (_type) do {
 				, _primaryMagCount, _handMagCount, _throwables
 				];
 			[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
-		}, {player switchMove "";hint "Aborted!";}, "Reloading from Bandolier"] call ace_common_fnc_progressBar;
+		}, {
+			hint "Aborted!";
+			if (isNull objectParent player) then {
+				diag_log "[CGQC_FNC] openBandolier - Canceled";
+				player switchMove "";
+			};
+		}, "Reloading from Bandolier"] call ace_common_fnc_progressBar;
 
 	};
 	default {diag_log format ["[CGQC_ERROR] openBandolier _type didn't match"];};

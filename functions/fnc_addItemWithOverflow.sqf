@@ -19,7 +19,7 @@ switch (_target) do {
 					_unit addItemToBackpack _item;
 				}else {
 					if (_overflow) then {
-						hint "Not enough spac... Dropping on ground";
+						hint "Not enough space... Dropping on ground";
 						_itemPos = getPos player; // Get player's position
 						_itemPos set [2, 0];      // Set the height to 0 to place the item on the ground
 
@@ -28,7 +28,7 @@ switch (_target) do {
 
 						// Optional: Name the weapon holder (you can replace "MyMagazineHolder" with your desired name)
 						_name = format ["%1's gear", cgqc_custom_playername];
-						_groundItem setVariable ["BIS_displayName", _name];
+						_groundItem setVariable ["cgqc_object_name", _name, true];
 					};
 				};
 			};
@@ -42,7 +42,7 @@ switch (_target) do {
 				_unit addItemToBackpack _item;
 			} else {
 				if (_overflow) then {
-					hint "Not enough spac... Dropping on ground";
+					hint "Not enough space... Dropping on ground";
 					_itemPos = getPos player; // Get player's position
 					_itemPos set [2, 0];      // Set the height to 0 to place the item on the ground
 
@@ -51,7 +51,7 @@ switch (_target) do {
 
 					// Optional: Name the weapon holder (you can replace "MyMagazineHolder" with your desired name)
 					_name = format ["%1's gear", cgqc_custom_playername];
-					_groundItem setVariable ["BIS_displayName", _name];
+					_groundItem setVariable ["cgqc_object_name", _name, true];
 				};
 			};
 		};
@@ -61,7 +61,7 @@ switch (_target) do {
 			_unit addItemToBackpack _item;
 		}else{
 			if (_overflow) then {
-				hint "Not enough spac... Dropping on ground";
+				hint "Not enough space... Dropping on ground";
 				_itemPos = getPos player; // Get player's position
 				_itemPos set [2, 0];      // Set the height to 0 to place the item on the ground
 
@@ -70,7 +70,7 @@ switch (_target) do {
 
 				// Optional: Name the weapon holder (you can replace "MyMagazineHolder" with your desired name)
 				_name = format ["%1's gear", cgqc_custom_playername];
-				_groundItem setVariable ["BIS_displayName", _name];
+				_groundItem setVariable ["cgqc_object_name", _name, true];
 			};
 		};
 	};

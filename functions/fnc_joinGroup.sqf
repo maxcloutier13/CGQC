@@ -1,6 +1,6 @@
 // --- joinGroup ----------------------------------------------------------
 // Group stuff
-params ["_groupName", ["_color", "UNSET"], ["_side", west]];
+params ["_groupName", ["_color", "MAIN"], ["_side", west]];
 diag_log format ["[CGQC_FNC] joinGroup %1", _groupName];
 
 n_targetGroup = nil;
@@ -45,8 +45,8 @@ if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
 cgqc_player_group = n_targetGroup;
 cgqc_player_groupID = groupId player;
 
-[_color] call CGQC_fnc_setTeamColors;
-[_groupName, _color] call CGQC_fnc_setGroupRadios;
+[_color] spawn CGQC_fnc_setTeamColors;
+[_groupName, _color] spawn CGQC_fnc_setGroupRadios;
 hint format ["You've joined %1", _groupName];
 
 diag_log format ["[CGQC_FNC] joinGroup Player %1 joined %2", cgqc_custom_playername,  _groupName];

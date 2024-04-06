@@ -2,7 +2,7 @@
 // Convoy training
 
 
-CGQC_fnc_convoy_openUI = {	
+CGQC_fnc_convoy_openUI = {
 	disableSerialization;
 	player action ["WeaponOnBack", player];
 	createDialog "RscCGQCConvoy";
@@ -56,17 +56,17 @@ CGQC_fnc_convoy_spawn = {
 			};
 		} forEach cgqc_training_convoy_vics;
 
-		// Check settings 
+		// Check settings
 		_speed = 0;
 		_behavior = "";
 		_distance = 0;
-		
-		// Speed 
+
+		// Speed
 		if (cgqc_training_convoy_speed isEqualTo 0) then {
 			//Random speed
 			_speed = selectRandom [30,40,50,60,70,80];
 		};
-		
+
 		// Behavior
 		switch (cgqc_training_convoy_behavior) do {
 			case 0: {_behavior = selectRandom ["AWARE", "pushThroughContact"] };
@@ -91,7 +91,7 @@ CGQC_fnc_convoy_spawn = {
 				if (_firstRun) then {
 					_validPos = cgqc_convoy_start findEmptyPosition [1, 30, _x];
 				} else {
-					_previous = cgqc_training_convoy_allVics select (_forEachIndex - 1); 
+					_previous = cgqc_training_convoy_allVics select (_forEachIndex - 1);
 					_pos = _previous modelToWorld [0, 0, -5];
 					_validPos = _pos findEmptyPosition [1, 20, _x];
 					//_validPos = cgqc_convoy_start findEmptyPosition [1, 30, _x];
@@ -126,7 +126,7 @@ CGQC_fnc_convoy_spawn = {
 						_infantry_group = [ _validPos, east, _team] call BIS_fnc_spawnGroup;
 						{_x moveInCargo _vic} forEach units _infantry_group;
 					};
-					 
+
 					// Compile all units from this vic
 					cgqc_training_convoy_allVics pushBack _vic;
 					{cgqc_training_convoy_allUnits pushBack _x} forEach crew _vic;
@@ -134,8 +134,8 @@ CGQC_fnc_convoy_spawn = {
 					[] call CGQC_fnc_convoy_error;
 				};
 			} forEach cgqc_training_convoy_vic_selection;
-			
-			// Vehicles are ready. Creating the logic 
+
+			// Vehicles are ready. Creating the logic
 			// create the logic (alternative to placing a synchronized module named Convoy_01)
 			_logicCenter_01 = createCenter sideLogic;
 			_logicGroup_01 = createGroup _logicCenter_01;
@@ -152,16 +152,16 @@ CGQC_fnc_convoy_spawn = {
 			Convoy_01 setVariable ["behaviourConv", _behavior];
 			Convoy_01 setVariable ["debug", _debug];
 
-			// create the convoy 
-			// does not like the array... at all... 
+			// create the convoy
+			// does not like the array... at all...
 			//call{ 0 = [Convoy_01,[cgqc_convoy_vic_lead,cgqc_convoy_vic_troops,cgqc_convoy_vic_vip, cgqc_convoy_vic_last]] execVM "\nagas_Convoy\functions\fn_initConvoy.sqf" };
 
 			call{ 0 = [Convoy_01,cgqc_training_convoy_allVics] execVM "\nagas_Convoy\functions\fn_initConvoy.sqf" };
 
-			// Set waypoint on map target_2 
+			// Set waypoint on map target_2
 			cgqc_training_convoy_leadGroup addWaypoint [cgqc_convoy_end, 0];
 			[cgqc_training_convoy_leadGroup, 1] setWaypointType "MOVE";
-			
+
 			// Message to player
 			_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Convoy created. Get ready...</t><br/>";
 			[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
@@ -178,47 +178,47 @@ CGQC_fnc_convoy_start = {
 	[] spawn {
 
 		cgqc_convoy_start = nil;
-		// Define the event handler function for MapSingleClick  
-		onMapClick = {  
-			params["_control", "_pos", "_shift", "_alt", "_ctrl"];  
-			// Store the clicked position  
-			cgqc_convoy_start = _pos; 
-			// Remove the MapSingleClick event handler  
-			removeMissionEventHandler ["MapSingleClick", y_clickEvent];   
+		// Define the event handler function for MapSingleClick
+		onMapClick = {
+			params["_control", "_pos", "_shift", "_alt", "_ctrl"];
+			// Store the clicked position
+			cgqc_convoy_start = _pos;
+			// Remove the MapSingleClick event handler
+			removeMissionEventHandler ["MapSingleClick", y_clickEvent];
 			hintSilent "";
-		}; 
-		  
-		// Add the MapSingleClick event handler  
-		y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];  
-		openMap [true, true]; 
-		// Ask for start point  
+		};
+
+		// Add the MapSingleClick event handler
+		y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];
+		openMap [true, true];
+		// Ask for start point
 		_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Click on a road for the Starting Point of the convoy</t><br/>";
 		[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
-		// Wait for the player to click on the map  
-		waitUntil {!(isNil "cgqc_convoy_start") }; 
+		// Wait for the player to click on the map
+		waitUntil {!(isNil "cgqc_convoy_start") };
 
-		// Fade to black  
+		// Fade to black
 		cutText ["", "BLACK FADED", 999];
 		titleText ["", "PLAIN"];
 		titleCut ["", "BLACK IN", 1];
-		// Ask for destination point  
+		// Ask for destination point
 		_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Click on road for Convoy destination point</t><br/>";
 		[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
 		cgqc_convoy_end = nil;
-		// Define the event handler function for MapSingleClick  
-		onMapClick = {  
-			params["_control", "_pos", "_shift", "_alt", "_ctrl"];  
-			// Store the clicked position  
-			cgqc_convoy_end = _pos; 
-			// Remove the MapSingleClick event handler  
-			removeMissionEventHandler ["MapSingleClick", y_clickEvent];  
-			openMap [false, false];  
+		// Define the event handler function for MapSingleClick
+		onMapClick = {
+			params["_control", "_pos", "_shift", "_alt", "_ctrl"];
+			// Store the clicked position
+			cgqc_convoy_end = _pos;
+			// Remove the MapSingleClick event handler
+			removeMissionEventHandler ["MapSingleClick", y_clickEvent];
+			openMap [false, false];
 			hintSilent "";
-		}; 
-		// Add the MapSingleClick event handler  
-		y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];  
-		// Wait for the player to click on the map  
-		waitUntil {sleep 0.5; !(isNil "cgqc_convoy_end") }; 
+		};
+		// Add the MapSingleClick event handler
+		y_clickEvent = addMissionEventHandler ["MapSingleClick", onMapClick];
+		// Wait for the player to click on the map
+		waitUntil {sleep 0.5; !(isNil "cgqc_convoy_end") };
 
 		// Show the interface for the rest of the settings
 		_convoyUI = [] call CGQC_fnc_convoy_openUI;

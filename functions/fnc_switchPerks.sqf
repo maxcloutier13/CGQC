@@ -128,14 +128,14 @@ switch (_type) do {
 	};
 	case "med":{
 		player setUnitTrait ["Medic", true];
-		player setUnitTrait ["loadCoef ", 0.9];
+		player setUnitTrait ["loadCoef ", 0.7];
 		cgqc_perks_medic = true;
 	};
 	case "at":{
-		player setUnitTrait ["loadCoef ", 0.9];
+		player setUnitTrait ["loadCoef ", 0.8];
 	};
 	case "mg":{
-		player setUnitTrait ["loadCoef ", 0.9];
+		player setUnitTrait ["loadCoef ", 0.8];
 	};
 	case "mortar":{
 		player setUnitTrait ["loadCoef ", 0.8];
