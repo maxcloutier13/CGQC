@@ -1,6 +1,6 @@
 // --- setGroupRadios ----------------------------------------------------------
 // Set radio setups depending on role
-params [["_groupName", groupid cgqc_player_group], ["_color", 'UNSET']];
+params [["_groupName", groupid cgqc_player_group], ["_color", 'MAIN']];
 diag_log format ["[CGQC_FNC] setGroupRadios %1/%2 started", _groupName, _color];
 
 // Set default 343 channel for group
@@ -9,7 +9,7 @@ _ch = 0;
 switch (groupid cgqc_player_group) do {
 	case "Spartan": {
 		switch (_color) do {
-			case "UNSET": {_ch = 16;};
+			case "MAIN": {_ch = 16;};
 			case "RED": {_ch = 1;};
 			case "GREEN": {_ch = 1;};
 			case "BLUE": {_ch = 2;};
@@ -19,7 +19,7 @@ switch (groupid cgqc_player_group) do {
 	};
 	case "Typhon": {
 		switch (_color) do {
-			case "UNSET": {_ch = 15;};
+			case "MAIN": {_ch = 15;};
 			case "RED": {_ch = 3;};
 			case "GREEN": {_ch = 3;};
 			case "BLUE": {_ch = 4;};
@@ -36,7 +36,7 @@ switch (groupid cgqc_player_group) do {
 	case "Supports": {_ch = 10;};
 	case "HQ": {_ch = 16;};
 	default {
-		_ch = 1;};
+		_ch = 1;
 		_notFound = true;
 	};
 };

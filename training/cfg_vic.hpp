@@ -2,7 +2,7 @@ cgqc_fnc_spawnVic = {
 	[] spawn {
 		_pos = player getPos [15, getDir player];
 		_vehicle = createVehicle ['Land_HelipadEmpty_F', _pos, [], 0, 'NONE'];
-		_vehicle setVariable ['BIS_enableRandomization', false];
+		_vehicle setVariable ['BIS_enableRandomization', false, true];
 		['Open', [true, _vehicle]] call BIS_fnc_garage;
 	};
 };
@@ -41,12 +41,12 @@ _action = [ "menu_self_training_spawn_del", "Delete Vehicle", "", {
 }, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_vic"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Event when the garage is closed 
+// Event when the garage is closed
 [missionNamespace, 'garageClosed', {
     _textures = getObjectTextures BIS_fnc_garage_center;
     deleteVehicle BIS_fnc_garage_center;
     _newvehicle = createVehicle [typeOf BIS_fnc_garage_center, (player getPos [17, getDir player]), [], 0, "NONE"];
-	if(!isNil "cgqc_spawnvic_h") then {deleteVehicle cgqc_spawnvic_h}; 
+	if(!isNil "cgqc_spawnvic_h") then {deleteVehicle cgqc_spawnvic_h};
 	cgqc_spawnvic_h = "cgqc_refuel_h_short" createVehicle (getPos _newvehicle);
 	_count = 0;
     {
@@ -57,6 +57,6 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_trai
     if (unitIsUAV _newvehicle) then {
         createVehicleCrew _newvehicle;
     };
-	// Open pylon editor? 
+	// Open pylon editor?
 	[_newvehicle] call ace_pylons_fnc_showDialog;
 }] call BIS_fnc_addScriptedEventHandler;

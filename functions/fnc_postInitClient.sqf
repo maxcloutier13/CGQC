@@ -2,7 +2,7 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.5.9.1";
+_version = "4.5.10.4";
 player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
 
 // Set side
@@ -210,7 +210,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 				_txt = parseText("<t color='#006400'>Whispering</t>");
 			} else {
 				if (_vol < 0.5) then {
-					_txt = parseText("<t color='##4169e1'>Talking</t>");
+					_txt = parseText("<t color='#4169e1'>Talking</t>");
 				};
 			};
 			if (_vol isEqualTo 0.7) then {

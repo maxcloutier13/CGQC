@@ -28,7 +28,7 @@ cgqc_player_patch = "";
 cgqc_player_patch_found = false;
 cgqc_custom_playername = "";
 cgqc_player_crate = false;
-cgqc_player_rank = 0;
+player setVariable ["cgqc_player_rank", 0, true];
 cgqc_player_rank_name = "";
 cgqc_player_rank_found = false;
 cgqc_player_rank_unknown = false;
@@ -36,8 +36,8 @@ cgqc_player_isSL = false;
 cgqc_player_isTL = false;
 cgqc_player_is2IC = false;
 cgqc_player_role = "Unknown";
-player setVariable ["cgqc_player_role", cgqc_player_role];
-player setVariable ["CGQC_teamColor", "UNSET"];
+player setVariable ["cgqc_player_role", cgqc_player_role, true];
+player setVariable ["CGQC_teamColor", "MAIN", true];
 cgqc_player_roleType = "";
 cgqc_player_beret = "";
 cgqc_player_beret_name = "";
@@ -53,8 +53,8 @@ cgqc_player_acre_setup = false;
 cgqc_player_radio_names = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
-//
-player setVariable ["cgqc_player_wakeup_time", 0];
+
+player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
 	"aimingAccuracy", "aimingShake", "aimingSpeed", "spotDistance", "spotTime",
@@ -409,6 +409,10 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 [_menu_name, "Custom Medical"], [0, 100, 30, 0], 1, {publicVariable "cgqc_player_wakeup_random"}, false] call CBA_fnc_addSetting;
 ["cgqc_player_wakeup_randomBoost","SLIDER", ["Bonus for next check", "More % bonus at each fail to get more chance to wake up"],
 [_menu_name, "Custom Medical"], [0, 100, 10, 0], 1, {publicVariable "cgqc_player_wakeup_randomBoost"}, false] call CBA_fnc_addSetting;
+
+// Auto teamcolor delay
+["cgqc_player_teamcolor_delay","SLIDER", ["Time between teamcolor resets", "What is says"],
+[_menu_name, "Fixes"], [5, 300, 30, 0], 1, {publicVariable "cgqc_player_teamcolor_delay"}, false] call CBA_fnc_addSetting;
 
 // Options skippables ===================================================================================================
 ["cgqc_setting_show_transition", "CHECKBOX", ["Show Transition", "Transition lors d'un loadout swtich "],
