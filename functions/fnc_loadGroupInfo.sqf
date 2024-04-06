@@ -32,7 +32,7 @@ cgqc_allGroupsInfo = [];
 		_radios = [];
         _radioTxt = "";
 		if ([_soldier] call acre_api_fnc_hasRadio) then {
-			if ([player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio) then {
+			if ([_soldier, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio) then {
 				_343s = ["ACRE_PRC343"] call acre_api_fnc_getAllRadiosByType;
 				{
 					_radioType = "343";
@@ -41,7 +41,7 @@ cgqc_allGroupsInfo = [];
 					_radios pushBack _txt;
 				} forEach _343s;
 			};
-			if ([player, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio) then {
+			if ([_soldier, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio) then {
 				_148s = ["ACRE_PRC148"] call acre_api_fnc_getAllRadiosByType;
 				{
 					_radioType = "148";
@@ -50,7 +50,7 @@ cgqc_allGroupsInfo = [];
 					_radios pushBack _txt;
 				} forEach _148s;
 			};
-			if ([player, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio) then {
+			if ([_soldier, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio) then {
 				_152s = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
 				{
 					_radioType = "152";
@@ -59,7 +59,7 @@ cgqc_allGroupsInfo = [];
 					_radios pushBack _txt;
 				} forEach _152s;
 			};
-			if ([player, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio) then {
+			if ([_soldier, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio) then {
 				_117s = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
 				{
 					_radioType = "117";

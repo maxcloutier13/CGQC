@@ -9,7 +9,7 @@ if !(isNil "trgBriefCmd_player_lowered") then {
 		trgBriefCmd_player_lowered = false;
 	};
 };
-_txt = parseText ("Briefing finished." + "<br/>" + "Volume/Voice restored.");
+_txt = parseText ("Leaders Briefing finished." + "<br/>" + "Volume/Voice restored.");
 cgqc_state_started = true;
 hintSilent _txt;
 sleep 5;

@@ -3,6 +3,49 @@ class CAManBase: Man {
 	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
+			//delete ACE_TeamManagement;
+			class ACE_TeamManagement {
+				delete ACE_AssignTeamRed;
+				delete ACE_AssignTeamGreen;
+				delete ACE_AssignTeamBlue;
+				delete ACE_AssignTeamYellow;
+				showDisabled = 1;
+				class CGQC_setColor_red {
+					displayName = "1-1 Rouge";
+					condition = "true";
+					statement = "['RED', _target] call CGQC_fnc_setTeamColors";
+					icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+					showDisabled = 1;
+				};
+				class CGQC_setColor_green {
+					displayName = "1-2 Vert";
+					condition = "true";
+					statement = "['GREEN', _target] call CGQC_fnc_setTeamColors";
+					icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+					showDisabled = 1;
+				};
+				class CGQC_setColor_blue {
+					displayName = "2-1 Bleu";
+					condition = "true";
+					statement = "['BLUE', _target] call CGQC_fnc_setTeamColors";
+					icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+					showDisabled = 1;
+				};
+				class CGQC_setColor_yellow {
+					displayName = "2-2 Jaune";
+					condition = "true";
+					statement = "['YELLOW', _target] call CGQC_fnc_setTeamColors";
+					icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+					showDisabled = 1;
+				};
+				class CGQC_setColor_leave {
+					displayName = "HQ-0 Blanc";
+					condition = "assignedTeam _player != 'MAIN'";
+					statement = "['MAIN', _target] call CGQC_fnc_setTeamColors";
+					icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
+					showDisabled = 1;
+				};
+			};
 			class cgqc_inspect_detail {
 				displayName = "Rapid Gear Inspection";
 				condition = "true";
@@ -14,7 +57,7 @@ class CAManBase: Man {
 			};
 			class cgqc_inspect {
 				displayName = "Full Gear Inspection";
-				condition = "true";
+				condition = "cgqc_player_isTL || cgqc_player_isSL || cgqc_player_is2iC || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "[1] call CGQC_fnc_inspect";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
@@ -32,28 +75,25 @@ class CAManBase: Man {
 			};
 			class cgqc_strip_152 {
 				displayName = "Remove 152!";
-				condition = "cgqc_player_rank > 3 && [_target, 'ACRE_PRC152'] call BIS_fnc_hasItem";
+				condition = "player getVariable 'cgqc_player_rank' > 3 && [_target, 'ACRE_PRC152'] call BIS_fnc_hasItem";
 				statement = "['strip_152'] spawn CGQC_fnc_getStuff";
-				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
 				runOnHover = "hint 'Remove 152s'";
 				distance = 2;
 			};
 			class cgqc_set2IC {
 				displayName = "Designate: 2iC";
-				condition = "cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
-				//[_target, '2IC'] remoteExec ['CGQC_fnc_setLeadership', owner _target];
-				statement = "[_target, 'ACRE_PRC152'] remoteExec ['addItem', owner _target]";
-				exceptions[] = {"isNotInside","isNotSitting"};
+				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				statement = "['2IC', 'target'] spawn CGQC_fnc_setLeadership";
+				//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
 				icon = "";
 				runOnHover = "hint 'Designate as 2iC'";
 				distance = 3;
 			};
 			class cgqc_promotePlayer {
 				displayName = "Promote Player";
-				condition = "cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
-				statement = "remoteExec ['CGQC_fnc_promotePlayer', owner _target];hint 'target promoted'";
-				exceptions[] = {"isNotInside","isNotSitting"};
+				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				statement = "['target'] spawn CGQC_fnc_promotePlayer;hint 'target promoted'";
 				icon = "";
 				runOnHover = "hint 'Promote the target to give him access to more stuff/roles'";
 				distance = 3;
@@ -64,10 +104,123 @@ class CAManBase: Man {
 		// Remove this thing
 		delete aceax_ingame_gear;
 		delete fox_self;
+		//delete ACE_TeamManagement;
+		class ACE_TeamManagement {
+			delete ACE_JoinTeamRed;
+			delete ACE_JoinTeamGreen;
+			delete ACE_JoinTeamBlue;
+			delete ACE_JoinTeamYellow;
+			delete ACE_LeaveTeam;
+			class CGQC_joinColor_red {
+				displayName = "1-1 Rouge";
+				condition = "true";
+				statement = "['RED'] call CGQC_fnc_setTeamColors";
+				icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+			};
+			class CGQC_joinColor_green {
+				displayName = "1-2 Vert";
+				condition = "true";
+				statement = "['GREEN'] call CGQC_fnc_setTeamColors";
+				icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+			};
+			class CGQC_joinColor_blue {
+				displayName = "2-2 Bleu";
+				condition = "true";
+				statement = "['BLUE'] call CGQC_fnc_setTeamColors";
+				icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+			};
+			class CGQC_joinColor_yellow {
+				displayName = "2-2 Jaune";
+				condition = "true";
+				statement = "['YELLOW'] call CGQC_fnc_setTeamColors";
+				icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+			};
+			class CGQC_joinColor_leave {
+				displayName = "HQ Blanc";
+				condition = "true";
+				statement = "['MAIN'] call CGQC_fnc_setTeamColors";
+				icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
+			};
+			class CGQC_joinGroup {
+				displayName = "Join/Create Group";
+				condition = "true";
+				statement = "";
+
+				icon = "\z\ace\addons\interaction\UI\team\team_management_ca.paa";
+				class CGQC_joinGroup_spartan {
+					displayName = "Spartan";
+					condition = "true";
+					statement = "['Spartan', 'MAIN'] call CGQC_fnc_joinGroup";
+
+					class CGQC_joinGroup_spartan_11 {
+						displayName = "1-1 Rouge";
+						condition = "true";
+						statement = "['Spartan', 'RED'] call CGQC_fnc_joinGroup";
+						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_12 {
+						displayName = "1-2 Vert";
+						condition = "true";
+						statement = "['Spartan', 'GREEN'] call CGQC_fnc_joinGroup";
+						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_21 {
+						displayName = "2-1 Bleu";
+						condition = "true";
+						statement = "['Spartan', 'BLUE'] call CGQC_fnc_joinGroup";
+						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_22 {
+						displayName = "2-2 Jaune";
+						condition = "true";
+						statement = "['Spartan', 'YELLOW'] call CGQC_fnc_joinGroup";
+						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
+					};
+					class CGQC_joinGroup_spartan_0 {
+						displayName = "0 - Blanc";
+						condition = "true";
+						statement = "['Spartan', 'MAIN'] call CGQC_fnc_joinGroup";
+						icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
+					};
+				};
+				class CGQC_joinGroup_hermes {
+					displayName = "Hermes";
+					condition = "true";
+					statement = "['Hermes', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+				class CGQC_joinGroup_orion {
+					displayName = "Orion";
+					condition = "true";
+					statement = "['Orion', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+				class CGQC_joinGroup_centaure {
+					displayName = "Centaure";
+					condition = "true";;
+					statement = "['Centaure', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+				class CGQC_joinGroup_griffon {
+					displayName = "Griffon";
+					condition = "true";
+					statement = "['Griffon', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+				class CGQC_joinGroup_pegase {
+					displayName = "Pegase";
+					condition = "true";
+					statement = "['Pegase', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+				class CGQC_joinGroup_hq {
+					displayName = "HQ";
+					condition = "true";
+					statement = "['HQ', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+			};
+		};
+
+
 		class ACE_Animations {
 			displayName = "Animations";
 			//icon = "\z\ace\addons\gestures\UI\gestures_ca.paa";
-			condition = "!cgqc_mk2_animation_locked || cgqc_player_rank > 8";
+			condition = "!cgqc_mk2_animation_locked || player getVariable 'cgqc_player_rank' > 8";
 			class tsp_ace_animate_cancel
 			{
 				//displayName = "Cancel Patate Poil";
@@ -198,6 +351,13 @@ class CAManBase: Man {
 					showDisabled = 1;
 				};
 			};
+		};
+		class CGQC_Bandolier {
+			displayName = "Unpack: Ammo Bandolier";
+			condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
+			exceptions[] = {"isNotSwimming", "isNotSitting", "isNotInside"};
+			statement = "['ammo'] call CGQC_fnc_openBandolier";
+			icon = "\CGQC\textures\rearm.paa";
 		};
 	};
 };

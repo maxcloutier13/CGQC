@@ -69,7 +69,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     };
 
     //Save role for further use
-    player setVariable["cgqc_player_role", cgqc_player_role];
+    player setVariable["cgqc_player_role", cgqc_player_role, true];
 
     diag_log "[CGQC_FNC] switchRole - checking if run transition";
     // Start transition
@@ -89,7 +89,7 @@ params ["_type", ["_section", 1], ["_showTransition", true]];
     diag_log "[CGQC_FNC] switchRole - lower gun";
     [player] call ace_weaponselect_fnc_putWeaponAway;
 
-    player setVariable ["player_role", cgqc_player_role, false];
+    player setVariable ["player_role", cgqc_player_role, true];
 
     cgqc_roleSwitch_done = true;
     diag_log "[CGQC_FNC] switchRole done";

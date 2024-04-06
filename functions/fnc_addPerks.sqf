@@ -17,85 +17,6 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 _action = [ "menu_self_ready", " Prêt au Combat", "CGQC\textures\cgqc_ace_combat", {["ready", true] spawn CGQC_fnc_perksBasic}, {cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Group manager
-_action = [ "menu_group_manager", "Join Group", "\z\ace\addons\interaction\UI\team\team_management_ca.paa", {}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Spartan
-_action = [ "menu_group_manager_spartan", "Spartan", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-_action = [ "menu_group_manager_spartan1", "Spartan-1", "\z\ace\addons\interaction\UI\team\team_red_ca.paa", {['Spartan-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_spartan2", "Spartan-2", "\z\ace\addons\interaction\UI\team\team_blue_ca.paa", {['Spartan-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_spartan3", "Spartan-3", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", {['Spartan-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_spartan3", "Spartan-4", "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa", {['Spartan-4'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Typhon
-_action = [ "menu_group_manager_typhon", "Typhon", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-_action = [ "menu_group_manager_typhon1", "Typhon-1", "\z\ace\addons\interaction\UI\team\team_red_ca.paa", {['Typhon-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_typhon2", "Typhon-2", "\z\ace\addons\interaction\UI\team\team_blue_ca.paa", {['Typhon-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_typhon3", "Typhon-3", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", {['Typhon-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_typhon3", "Typhon-4", "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa", {['Typhon-4'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_typhon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Recon
-_action = [ "menu_group_manager_recon", "Recon", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-_action = [ "menu_group_manager_hermes", "Hermes", "", {['Hermes'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_recon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_orion1", "Orion-1", "", {['Orion-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_recon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_orion2", "Orion-2", "", {['Orion-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_recon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Centaure
-_action = [ "menu_group_manager_centaure", "Centaure", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-_action = [ "menu_group_manager_cent", "Centaure-1", "", {['Centaure-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_centaure"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_cent1", "Centaure-2", "", {['Centaure-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_centaure"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_cent2", "Centaure-3", "", {['Centaure-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_centaure"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Griffon
-_action = [ "menu_group_manager_griffon", "Griffon", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-_action = [ "menu_group_manager_griff", "Griffon-1", "", {['Griffon-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_griffon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_griff1", "Griffon-2", "", {['Griffon-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_griffon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_griff2", "Griffon-3", "", {['Griffon-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_griffon"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Pegase
-_action = [ "menu_group_manager_pegase", "Pegase", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-_action = [ "menu_group_manager_peg", "Pegase-1", "", {['Pegase-1'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_pegase"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_peg1", "Pegase-2", "", {['Pegase-2'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_pegase"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_group_manager_peg2", "Pegase-3", "", {['Pegase-3'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager", "menu_group_manager_pegase"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// HQ
-_action = [ "menu_group_manager_HQ", "HQ", "", {['HQ'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_group_manager"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-
 // Quick State =========================================================================================================
 _action = [ "cgqc_perk_state", "Quick State", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -109,6 +30,9 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_state"], 
 _action = [ "cgqc_perk_state_battle", "Battle", "", {["battle", false] spawn CGQC_fnc_perksBasic}, {cgqc_player_state < 2} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_state"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Reset colors
+_action = [ "menu_self_resetColors", "Reset TeamColors", "", {['NONE', player, 'ALL'] call CGQC_fnc_setTeamColors;}, {leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Radios =========================================================================================================
 _action = [ "menu_self_radios", " Radio Presets", "CGQC\textures\radio.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -300,11 +224,19 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_fixes"],
 // Set patch
 _action = [ "menu_self_patch", "Remettre ta patch personelle", "\cgqc\textures\cgqc_ace_defend.paa", {[player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Reset teamColor
+_action = [ "menu_self_color", "Reset Team Color", "", {[] call CGQC_fnc_setTeamColors}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Fix ARMA
 _action = [ "zeus_fix_arma", "Tu t'es fait Arma?", "", {}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+// Save individual snapshot
+_action = [ "zeus_fix_arma_save", "Save Snapshot", "", {[player, "single"] call CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Other fixes
 _action = [ "zeus_fix_arma_heal", "Magic Heal", "", {["heal"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
@@ -328,10 +260,6 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ac
 // Open Medic supply kit
 _action = [ "menu_self_medkit", "Unpack: Medic supply kit", "\CGQC\textures\icon_med", {["medkit", player, true] call CGQC_fnc_openMedical}, {[player, 'cgqc_items_medkit'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Bandoliers
-_action = [ "menu_self_bandolier", "Unpack: Ammo Bandolier", "\CGQC\textures\rearm.paa", {["ammo"] call CGQC_fnc_openBandolier}, {[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
 
 // Zeus perks ===================================================================================================
 _action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
@@ -389,7 +317,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_
 _action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Commanders briefing
-_action = [ "zeus_briefingCmd_start", "Start Mini Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_briefingCmd_start", "Start Leaders Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Commanders done
 _action = [ "zeus_briefingCmd_stop", "Stop Leader's Briefing", "", {["briefingCmd_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_state_briefing_leaders} ] call ace_interact_menu_fnc_createAction;

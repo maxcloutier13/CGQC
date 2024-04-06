@@ -92,7 +92,7 @@ switch (true) do {
 };
 // Set the variable
 cgqc_player_rank_found = true;
-cgqc_player_rank = _player_rank;
+player setVariable ["cgqc_player_rank", _player_rank, true];
 cgqc_player_rank_name = _player_rank_name;
 
 diag_log "[CGQC_FNC] findRank done";

@@ -1,5 +1,5 @@
 // --- inspect ----------------------------------------------------------
-// Inspect target laodout and reports problems 
+// Inspect target laodout and reports problems
 params ["_type"];
 diag_log format ["[CGQC_FNC] inspect %1 started", _type];
 
@@ -83,15 +83,15 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		}
 	} forEach inspect_target_allMags;
 	inspect_target_allThrowables sort true;
-	// Remove throwables from mags 
+	// Remove throwables from mags
 	inspect_target_allMags = inspect_target_allMags - inspect_target_allThrowables;
 	// Radios
 	inspect_target_allRadios = call acre_api_fnc_getCurrentRadioList;
 	{
 		_x = toUpper _x;
 	} forEach inspect_target_allRadios;
-	
-	// Assigned Items 
+
+	// Assigned Items
 	inspect_target_items_assigned = assignedItems inspect_target;
 	// Head/face --------------------------------------------------------------------------
 	inspect_target_helmet = headgear inspect_target;
@@ -104,7 +104,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		inspect_target_uniform_items = inspect_target_uniform_items - inspect_target_allRadios;
 		inspect_target_uniform_items_list = [];
 		if (count inspect_target_uniform_items > 0) then {
-			// Find unique entries 
+			// Find unique entries
 			{
 				if (!(_x in inspect_target_uniform_items_list)) then {
 					inspect_target_uniform_items_list pushBack _x;
@@ -122,7 +122,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		};
 
 		// Uniform - Mags
-		inspect_target_uniform_allMags = uniformMagazines inspect_target; 
+		inspect_target_uniform_allMags = uniformMagazines inspect_target;
 		inspect_target_uniform_gunMags = [];
 		inspect_target_uniform_throwables = [];
 
@@ -140,7 +140,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	inspect_target_vest_txt = "---------- Vest ----------<br/>";
 	if !(inspect_target_vest isEqualTo "") then {
 		if (count inspect_target_vest_items > 0) then {
-			// Find unique entries 
+			// Find unique entries
 			{
 				if (!(_x in inspect_target_vest_items_list)) then {
 					inspect_target_vest_items_list pushBack _x;
@@ -158,7 +158,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		};
 
 		// Vest - Mags
-		inspect_target_vest_allMags = vestMagazines inspect_target; 
+		inspect_target_vest_allMags = vestMagazines inspect_target;
 		inspect_target_vest_gunMags = [];
 		inspect_target_vest_throwables = [];
 		[inspect_target_vest_allMags, inspect_target_vest_gunMags, inspect_target_vest_throwables, inspect_target_vest_txt] call CGQC_fnc_inspectSort;
@@ -174,7 +174,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 
 	if !(inspect_target_backpack isEqualTo "") then {
 		if (count inspect_target_backpack_items > 0) then {
-			// Find unique entries 
+			// Find unique entries
 			{
 				if (!(_x in inspect_target_backpack_items_list)) then {
 					inspect_target_backpack_items_list pushBack _x;
@@ -192,7 +192,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 		};
 
 		// Backpack - Mags
-		inspect_target_backpack_allMags = backpackMagazines inspect_target; 
+		inspect_target_backpack_allMags = backpackMagazines inspect_target;
 		inspect_target_backpack_gunMags = [];
 		inspect_target_backpack_throwables = [];
 		[inspect_target_backpack_allMags, inspect_target_backpack_gunMags, inspect_target_backpack_throwables, inspect_target_backpack_txt] call CGQC_fnc_inspectSort;
@@ -202,21 +202,21 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 
 	// Weapons -----------------------------------------------------------------------------------------
 	inspect_target_primary = primaryWeapon  inspect_target;
-	inspect_target_primary_mag_types = getArray (configFile >> "CfgWeapons" >> inspect_target_primary >> "magazines");
+	inspect_target_primary_mag_types = compatibleMagazines inspect_target_primary;
 	inspect_target_primary_mag_valid = [];
 	{if (_x in inspect_target_primary_mag_types) then {inspect_target_primary_mag_valid pushBack _x};
 	} forEach inspect_target_allMags;
 	inspect_target_primary_mag_total = count inspect_target_primary_mag_valid;
 	// Handgun
 	inspect_target_handgun = handgunWeapon  inspect_target;
-	inspect_target_handgun_mag_types = getArray (configFile >> "CfgWeapons" >> inspect_target_handgun >> "magazines");
+	inspect_target_handgun_mag_types = compatibleMagazines inspect_target_handgun;
 	inspect_target_handgun_mag_valid = [];
 	{if (_x in inspect_target_handgun_mag_types) then {inspect_target_handgun_mag_valid pushBack _x};
 	} forEach inspect_target_allMags;
 	inspect_target_handgun_mag_total = count inspect_target_handgun_mag_valid;
 	// Launcher
 	inspect_target_launcher = secondaryWeapon  inspect_target;
-	inspect_target_launcher_mag_types = getArray (configFile >> "CfgWeapons" >> inspect_target_launcher >> "magazines");
+	inspect_target_launcher_mag_types = compatibleMagazines inspect_target_launcher;
 	inspect_target_launcher_mag_valid = [];
 	{if (_x in inspect_target_launcher_mag_types) then {inspect_target_launcher_mag_valid pushBack _x};
 	} forEach inspect_target_allMags;
@@ -255,7 +255,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	_gps = {_x isEqualTo "ItemGPS" } count inspect_target_items_assigned;
 	_notepad = {_x isEqualTo "acex_intelitems_notepad" } count inspect_target_allMags;
 	_maptools = {_x isEqualTo "ACE_MapTools" } count inspect_target_allItems;
-	// Build message 
+	// Build message
 	if (inspect_target_primary isEqualTo "") then {inspect_target_alerts = inspect_target_alerts + "-No Primary<br/>"};
 	if (inspect_target_primary_mag_total < 4) then {inspect_target_alerts = inspect_target_alerts + "-Low Primary Ammo<br/>"};
 	if (inspect_target_handgun isEqualTo "") then {inspect_target_alerts = inspect_target_alerts + "-No Handgun<br/>"};
@@ -297,9 +297,9 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	}else{
 		inspect_target_launcher = (getText (configFile >> 'CfgWeapons' >> inspect_target_launcher >> 'displayName'));
 	};
-	
+
 	switch (_type) do {
-		case 0: { 
+		case 0: {
 			// Build the text
 			_inspect_txt = format [
 				"------- QuickCheck: %1 ------- <br/>" +
@@ -315,7 +315,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 				"--Mags%17<br/>" +
 				"<t color='#ff0000'>---------- MISSING/LOW ----------<br/></t>" +
 				"%18"
-				, 
+				,
 				inspect_target_name, //1
 				inspect_target_currentLoad, //2
 				_kg, //3
@@ -326,7 +326,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 				_percent, //8
 				inspect_target_backpack_load, //9
 				_percent, //10
-				inspect_target_traits, //11 
+				inspect_target_traits, //11
 				inspect_target_primary, //12
 				inspect_target_primary_mag_total, //13
 				inspect_target_handgun, //14
@@ -336,7 +336,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 				inspect_target_alerts //18
 			];
 		};
-		case 1: {  // Full inspection 
+		case 1: {  // Full inspection
 			// Build the text
 			_inspect_txt = format [
 				"------- Inspection: %1 ------- <br/>" +
@@ -345,10 +345,10 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 				"Traits: %11<br/>" +
 				"------------------------<br/>" +
 				"Helmet: %12<br/>" +
-				"Goggles: %13<br/>" + 
+				"Goggles: %13<br/>" +
 				"Uniform: %14<br/>" +
-				"Vest: %15<br/>" + 
-				"Pack: %16<br/>" + 
+				"Vest: %15<br/>" +
+				"Pack: %16<br/>" +
 				"%17" +
 				"%18" +
 				"%19" +
@@ -361,7 +361,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 				"--Mags%25<br/>" +
 				"<t color='#ff0000'>---------- MISSING/LOW ----------<br/></t>" +
 				"%26"
-				, 
+				,
 				inspect_target_name, //1
 				inspect_target_currentLoad, //2
 				_percent, //3
@@ -372,14 +372,14 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 				_percent, //8
 				inspect_target_backpack_load, //9
 				_percent, //10
-				inspect_target_traits,  
-				inspect_target_helmet, 
+				inspect_target_traits,
+				inspect_target_helmet,
 				inspect_target_goggles,
-				inspect_target_uniform, 
-				inspect_target_vest, 
-				inspect_target_backpack, 
-				inspect_target_uniform_txt, 
-				inspect_target_vest_txt, 
+				inspect_target_uniform,
+				inspect_target_vest,
+				inspect_target_backpack,
+				inspect_target_uniform_txt,
+				inspect_target_vest_txt,
 				inspect_target_backpack_txt,
 				inspect_target_primary,
 				inspect_target_primary_mag_total,
@@ -400,7 +400,7 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 [_inspect_txt] spawn {
 	params ["_txt"];
 	Hint parseText format ["%1", _txt];
-	sleep 20;
+	sleep 30;
 	hintSilent "";
 };
 

@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class snapshot{
+            file = "\cgqc\functions\fnc_snapshot.sqf";
+            description = "Handles saving and reloading of stuffs";
+        };
         class loadGroupInfo{
             file = "\cgqc\functions\fnc_loadGroupInfo.sqf";
             description = "Load all of the info about groups and members";

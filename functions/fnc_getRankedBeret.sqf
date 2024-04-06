@@ -4,8 +4,8 @@ diag_log "[CGQC_FNC] getRankedBeret started";
 
 cgqc_player_beret = "";
 //waitUntil {cgqc_player_rank_found};
-
-switch (cgqc_player_rank) do {
+_rank = player getVariable "cgqc_player_rank";
+switch (_rank) do {
 	case 1: {  // Sdt
 		cgqc_player_beret = "cgqc_beret_yellow"; // Subalternes
 		cgqc_player_beret_name = "Jaune";
