@@ -8,5 +8,6 @@ removeAllAssignedItems _target;
 removeAllWeapons _target;
 removeAllContainers _target;
 removeGoggles _target;
+removeHeadgear _target;
 
 diag_log "[CGQC_FNC] loadoutRemoveAll done";
