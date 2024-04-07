@@ -215,7 +215,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace
 // Fixes =========================================================================================================
 _action = [ "menu_self_fixes", "Fixes/Debug", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-/ Fix Blackout
+// Fix Blackout
 _action = [ "menu_self_blackout", "Fix Blackout", "", {["fix_blackout", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Fix Sound
@@ -246,11 +246,11 @@ _action = [ "zeus_fix_arma_tp", "Teleport to Leader", "", {["tp_leader"] call CG
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Save individual snapshot
-_action = [ "zeus_fix_arma_save", "Save Snapshot", "", {[player, "save"] call CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_fix_arma_save", "Save Snapshot", "", {[player, "save"] spawn CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Load individual snapshot
-_action = [ "zeus_fix_arma_load", "Load Snapshot", "", {[player, "load"] call CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_fix_arma_load", "Load Snapshot", "", {[player, "load"] spawn CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 
@@ -293,9 +293,9 @@ _action = [ "zeus_visible", "Invisible->Off", "", {["visible", 0, ""] spawn CGQC
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ----- Snapshot all
-_action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all"] call CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "load", "all"] call CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "load", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Players stuff

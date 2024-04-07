@@ -88,7 +88,7 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
 
          // Save a snapshot
         if (_saveSnapshot) then {
-            [player, "save"] call CGQC_fnc_snapshot;
+            [player, "save"] spawn CGQC_fnc_snapshot;
         };
 
         // Lower gun

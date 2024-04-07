@@ -3,13 +3,11 @@ class CAManBase: Man {
 	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
-			//delete ACE_TeamManagement;
 			class ACE_TeamManagement {
 				delete ACE_AssignTeamRed;
 				delete ACE_AssignTeamGreen;
 				delete ACE_AssignTeamBlue;
 				delete ACE_AssignTeamYellow;
-				showDisabled = 1;
 				class CGQC_setColor_red {
 					displayName = "1-1 Rouge";
 					condition = "true";
@@ -104,7 +102,6 @@ class CAManBase: Man {
 		// Remove this thing
 		delete aceax_ingame_gear;
 		delete fox_self;
-		//delete ACE_TeamManagement;
 		class ACE_TeamManagement {
 			delete ACE_JoinTeamRed;
 			delete ACE_JoinTeamGreen;

@@ -7,7 +7,7 @@ diag_log "[CGQC_PREINIT] === postInitServer started ============================
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
 	// Save unit stuff in the snapshot
-	[_unit, "save"] call CGQC_fnc_snapshot;
+	//[_unit, "save"] spawn CGQC_fnc_snapshot;
 	false; //Prevents from turning into AI
 }];
 

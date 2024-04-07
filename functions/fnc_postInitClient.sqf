@@ -136,7 +136,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 			[] call CGQC_fnc_maxMags;
 			[player, true] call ace_arsenal_fnc_removeBox;
 			// Save player loadout
-			//[player, "save"] call CGQC_fnc_snapshot;
+			[player, "save"] spawn CGQC_fnc_snapshot;
 		}] call CBA_fnc_addEventHandler;
 
 		//Unconcious event
@@ -312,13 +312,13 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 
 	sleep 10;
 	// Check if a snapshot exists
-	cgqc_snapshot_check = missionProfileNamespace getVariable "cgqc_player_snapshot";
+	cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
 	if !(isNil "cgqc_snapshot_check") then {
 		//Notify the player
 		_team = cgqc_snapshot_check select 2;
         _color = cgqc_snapshot_check select 3;
 		_role = cgqc_snapshot_check select 4;
-		hintC format ["A copy of your saved loadout exists.<br/> Role:%1 in %2's %3 team <br/> Check perks->Fixes->Arma->Load Snapshot", _role, _team, _color];
+		hintC format ["A copy of your saved loadout exists --- Role:%1 in %2's %3 team ---  Check perks->Fixes->Arma->Load Snapshot", _role, _team, _color];
 	};
 };
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
