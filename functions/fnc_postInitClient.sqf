@@ -2,12 +2,18 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-_version = "4.5.10.4";
-player setVariable ["cgqc_version_core", _version, true]; // Set the client's mod version
-
 // Set side
 cgqc_player_side = side player;
 
+// Set version variable
+player setVariable ["cgqc_version_core", core_version, true]; // Set the client's mod version
+
+// Quick version check and login message
+_checkVersion = missionNamespace getVariable ["cgqc_version_core", "ERROR"];
+_name = name player;
+_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, cgqc_version_core, _checkVersion];
+[_msg] remoteExec ["systemChat", 0];
+diag_log "[CGQC_INIT] ===" + _msg;
 /*
 // Set language and radio channels
 ["side"] call CGQC_fnc_setACRE;
@@ -129,6 +135,8 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 		["ace_arsenal_displayClosed", {
 			[] call CGQC_fnc_maxMags;
 			[player, true] call ace_arsenal_fnc_removeBox;
+			// Save player loadout
+			//[player, "save"] call CGQC_fnc_snapshot;
 		}] call CBA_fnc_addEventHandler;
 
 		//Unconcious event
@@ -302,5 +310,15 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 	["Spartan-2", [0.5, 0.5, 1.0,1], [0.5, 0.5, 1.0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
 	["Spartan-3", [0.5, 1.0, 0.5,1], [0.5, 1.0, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
 
+	sleep 10;
+	// Check if a snapshot exists
+	cgqc_snapshot_check = missionProfileNamespace getVariable "cgqc_player_snapshot";
+	if !(isNil "cgqc_snapshot_check") then {
+		//Notify the player
+		_team = _snapshot select 2;
+        _color = _snapshot select 3;
+		_role = cgqc_snapshot_check select 4;
+		hintC format ["A copy of your saved loadout exists.<br/> Role:%1 in %2's %3 team <br/> Check perks->Fixes->Arma->Load Snapshot", _role, _team, _color];
+	};
 };
 diag_log "[CGQC_INIT] === postInitClient done =====================================";

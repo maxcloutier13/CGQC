@@ -6,21 +6,19 @@ switch (_type) do {
 	case "check_mods": {
 		//Find all valid player except current
 		_players = allPlayers - entities "HeadlessClient_F";
-		_players = _players - [player];
 		// Initial values
 		_version = "--- Versions des mods --- <br/>";
-		_ref_version_core = player getVariable "cgqc_version_core";
-		_ref_version_addons = player getVariable "cgqc_version_addons";
+		_ref_version_core = missionNamespace getVariable ["cgqc_version_core", "ERROR"];
+		_ref_version_addons = player getVariable ["cgqc_version_addons", "ERROR"];
 		_ref_version_2023 = "";
 		if (cgqc_player_has2023) then {
 			_ref_version_2023 = player getVariable "cgqc_version_2023";
 		};
-		_version = _version + "--------------------------- <br/>";
-		_refVersion_txt = "----- Current Player -----<br/>";
+		_refVersion_txt = "----- Server Versions -----<br/>";
 		{
 			_name = name _x;
-			_version_core = _x getVariable "cgqc_version_core";
-			_version_addons = _x getVariable "cgqc_version_addons";
+			_version_core = _x getVariable ["cgqc_version_core", "ERROR"];
+			_version_addons = _x getVariable ["cgqc_version_addons", "ERROR"];
 			if (isNil "_version_core") then {_version_core = 0};
 			if (isNil "_version_addons") then {_version_addons = 0};
 			if !(_version_core isEqualTo _ref_version_core) then { // Bad core version
