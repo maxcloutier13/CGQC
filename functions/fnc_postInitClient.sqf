@@ -315,8 +315,8 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 	cgqc_snapshot_check = missionProfileNamespace getVariable "cgqc_player_snapshot";
 	if !(isNil "cgqc_snapshot_check") then {
 		//Notify the player
-		_team = _snapshot select 2;
-        _color = _snapshot select 3;
+		_team = cgqc_snapshot_check select 2;
+        _color = cgqc_snapshot_check select 3;
 		_role = cgqc_snapshot_check select 4;
 		hintC format ["A copy of your saved loadout exists.<br/> Role:%1 in %2's %3 team <br/> Check perks->Fixes->Arma->Load Snapshot", _role, _team, _color];
 	};
