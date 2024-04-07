@@ -136,7 +136,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 			[] call CGQC_fnc_maxMags;
 			[player, true] call ace_arsenal_fnc_removeBox;
 			// Save player loadout
-			[player, "save"] spawn CGQC_fnc_snapshot;
+			//[player, "save"] spawn CGQC_fnc_snapshot;
 		}] call CBA_fnc_addEventHandler;
 
 		//Unconcious event

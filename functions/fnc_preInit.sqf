@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.11.4";
+core_version = "4.5.11.5";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_core", core_version, true]; // Set the server's mod version
@@ -574,7 +574,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Ammo Bandoliers
 ["cgqc_config_ammo_primary", "SLIDER",["Primary mags", "Number in bandolier"],
-	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 6, 0], 1, {publicVariable "cgqc_config_ammo_primary"}, false] call CBA_fnc_addSetting;
+	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 8, 0], 1, {publicVariable "cgqc_config_ammo_primary"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_ammo_refill", "CHECKBOX", ["Refill", "Refill handgun/throwables instead of adding more"],
 	[_menu_name, "Content: Ammo Bandolier"], true] call CBA_fnc_addSetting;

@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class listRadios{
+            file = "\cgqc\functions\fnc_listRadios.sqf";
+            description = "Returns a list of the unit radio and their settings";
+        };
         class snapshot{
             file = "\cgqc\functions\fnc_snapshot.sqf";
             description = "Handles saving and reloading of stuffs";
