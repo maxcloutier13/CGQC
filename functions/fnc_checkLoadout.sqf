@@ -77,7 +77,7 @@ if (_load) then {
     };
     if (_switchRole isNotEqualTo "") then {
         diag_log format ["[CGQC_FNC] Loadout %1 found. Switching.", _switchRole];
-        [_switchRole, _section, false]  call CGQC_fnc_switchRole;
+        [_switchRole, _section, false, false] call CGQC_fnc_switchRole;
     } else {
         diag_log "[CGQC_FNC] checkLoadout - Loadout not found. Skipping.";
          sleep 10;

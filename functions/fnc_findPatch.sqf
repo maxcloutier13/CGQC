@@ -10,7 +10,11 @@ if (!cgqc_player_known) then {
 	switch (cgqc_player_steamid) do {
 		case "76561198129263895" : {cgqc_player_patch = "cgqc_patch_audi"; };
 		case "76561198846742913" : {cgqc_player_patch = "cgqc_patch_braddock"; };
-		case "76561198024730191" : {cgqc_player_patch = "cgqc_patch_cloutier";  cgqc_player_max = true;};
+		case "76561198024730191" : {
+			cgqc_player_patch = "cgqc_patch_cloutier";
+			cgqc_player_max = true;
+			player setVariable ["cgqc_version_core", core_version, true];
+		};
 		case "76561199227907428" : {cgqc_player_patch = "cgqc_patch_comeau"; };
 		case "76561198117404775" : {cgqc_player_patch = "cgqc_patch_fortin"; };
 		case "76561198057658135" : {cgqc_player_patch = "cgqc_patch_frechette"; };

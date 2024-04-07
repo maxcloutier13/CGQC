@@ -736,6 +736,16 @@ if (hasInterface) then {
 	_action = [ "menu_supplies_track", "Spare track", "", {["track"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+	// Snapshots --------------------------------------------------------------------------------------------------------------
+	_action = [ "menu_snapshots", "Snapshots", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+	_action = [ "menu_snapshot_save", "Save Player Snapshot", "", {[player, "save"] call CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+	_action = [ "menu_snapshot_load", "Load Player Snapshot", "", {[player, "load"] call CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 } else {
 	diag_log "[CGQC_FNC] loadMk3Menu - NO INTERFACE - skipping";
 };
