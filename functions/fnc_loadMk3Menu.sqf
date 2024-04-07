@@ -739,11 +739,9 @@ if (hasInterface) then {
 	// Snapshots --------------------------------------------------------------------------------------------------------------
 	_action = [ "menu_snapshots", "Snapshots", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-	_action = [ "menu_snapshot_save", "Save Player Snapshot", "", {[player, "save"] call CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "menu_snapshot_save", "Save Player Snapshot", "", {[player, "save"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-	_action = [ "menu_snapshot_load", "Load Player Snapshot", "", {[player, "load"] call CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+	_action = [ "menu_snapshot_load", "Load Player Snapshot", "", {[player, "load"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 } else {

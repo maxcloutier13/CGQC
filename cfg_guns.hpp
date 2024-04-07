@@ -20,6 +20,11 @@ class cgqc_item_rangefinder : Rangefinder
 	_generalMacro = "cgqc_item_rangefinder";
 	baseWeapon = "cgqc_item_rangefinder";
 	displayName = "CGQC Rangefinder ";
+	opticsZoomMin = 0.005;
+	opticsZoomMax = 0.05;
+	opticsZoomInit = 0.05;
+	distanceZoomMin = 100;
+	distanceZoomMax = 2300;
 };
 class Laserdesignator_03;
 class cgqc_item_laserdesignator : Laserdesignator_03
@@ -29,6 +34,9 @@ class cgqc_item_laserdesignator : Laserdesignator_03
 	_generalMacro = "cgqc_item_laserdesignator";
 	baseWeapon = "cgqc_item_laserdesignator";
 	displayName = "CGQC Laser Designator";
+	opticsZoomMin = 0.005;
+	opticsZoomMax = 0.25;
+	opticsZoomInit = 0.25;
 };
 class launch_MRAWS_green_F;
 class cgqc_gun_mk1_MAAWS : launch_MRAWS_green_F
@@ -46,7 +54,7 @@ class cgqc_gun_mk1_MAAWS : launch_MRAWS_green_F
 	};
 };
 // Custom skins ----------------------------------------------------------
-class cgqc_gun_mk1_MAAWS_cadpat : launch_MRAWS_green_F 
+class cgqc_gun_mk1_MAAWS_cadpat : launch_MRAWS_green_F
 {
 	scope = 2;
 	author = "silent1";
@@ -60,7 +68,7 @@ class cgqc_gun_mk1_MAAWS_cadpat : launch_MRAWS_green_F
 	{
 	};
 };
-class cgqc_gun_mk1_MAAWS_woodland : launch_MRAWS_green_F 
+class cgqc_gun_mk1_MAAWS_woodland : launch_MRAWS_green_F
 {
 	scope = 2;
 	author = "silent1";
@@ -75,7 +83,7 @@ class cgqc_gun_mk1_MAAWS_woodland : launch_MRAWS_green_F
 	};
 };
 
-class cgqc_gun_mk1_MAAWS_laforest : launch_MRAWS_green_F 
+class cgqc_gun_mk1_MAAWS_laforest : launch_MRAWS_green_F
 {
 	scope = 2;
 	author = "silent1";

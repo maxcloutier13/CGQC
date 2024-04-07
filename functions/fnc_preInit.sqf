@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.11";
+core_version = "4.5.11.4";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_core", core_version, true]; // Set the server's mod version

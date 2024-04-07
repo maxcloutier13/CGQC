@@ -7,7 +7,7 @@ switch (_scope) do {
     case "single": {
         // Get snapshot, or create it if not found
         _found = true;
-        _snapshot = missionProfileNamespace getVariable "cgqc_player_snapshot";
+        _snapshot = MissionProfileNamespace getVariable "cgqc_player_snapshot";
         if (isNil "_snapshot") then {
             _snapshot = [];
             _found = false;
@@ -62,20 +62,12 @@ switch (_scope) do {
                 // Snapshot entry
                 _entry = [_name, _time, _team, _color, _role, _entry_uniform, _entry_vest, _entry_pack, _entry_gear, _entry_weapons];
 
-                if ( _found) then {
-                    diag_log "[CGQC_FNC] snapshot : found player snapshot - Overwriting with current";
-                    missionProfileNamespace setVariable ["cgqc_player_snapshot", nil];
-                    saveMissionProfileNamespace;
-                }else{
-                    diag_log "[CGQC_FNC] snapshot : NO player snapshot - Creating new one";
-                };
                 hint "Player snapshot saved";
-                missionProfileNamespace setVariable ["cgqc_player_snapshot", _entry];
+                MissionProfileNamespace setVariable ["cgqc_player_snapshot", _entry];
                 saveMissionProfileNamespace;
             };
             case "load": {
                 if (_found) then {
-                    [_snapshot] call CGQC_interne_loadSnapshot;
                     hint "Player snapshot found";
                     diag_log "[CGQC_FNC] snapshot found!";
 
@@ -125,6 +117,14 @@ switch (_scope) do {
                     _launcher_mag = _entry_launcher select 2;
                     _launcher_stuff = _launcher_acc + _launcher_mag;
 
+
+                    // Rejoin to team
+                    [_team, _color] call CGQC_fnc_joinGroup;
+                    // Grab back the role if possible
+                    [_role, 1, false, false]  call CGQC_fnc_switchRole;
+
+                    sleep 1;
+
                     // Remove everything
                     removeAllItems _target;
                     removeAllAssignedItems _target;
@@ -132,10 +132,7 @@ switch (_scope) do {
                     removeAllContainers _target;
                     removeGoggles _target;
                     removeHeadgear _target;
-                    // Rejoin to team
-                    [_team, _color] call CGQC_fnc_joinGroup;
-                    // Grab back the role if possible
-                    [_role, 1, false, false]  call CGQC_fnc_switchRole;
+
 
                     // Add selected uniform
                     _target addHeadgear _helmet;
@@ -165,18 +162,20 @@ switch (_scope) do {
                     // Add back guns
                     _target addWeapon _primary;
                     {
-                        _player addPrimaryWeaponItem _x;
+                        _target addPrimaryWeaponItem _x;
                     } forEach _primary_stuff;
                     _target addWeapon _handgun;
                     {
-                        _player addHandgunItem _x;
+                        _target addHandgunItem _x;
                     } forEach _handgun_stuff;
                     _target addWeapon _launcher;
                     {
-                        _player addSecondaryWeaponItem _x;
+                        _target addSecondaryWeaponItem _x;
                     } forEach _launcher_stuff;
 
-                    hint format["Snapshot Loaded! %1/%2/%3", _name, _time, _role];
+                    _displayText = format["Snapshot Loaded! <br/> %1<br/>%2<br/>%3", _name, _time, _role];
+                    ["ace_common_displayTextStructured", [_displayText, 3, player]] call CBA_fnc_localEvent;
+
                     diag_log format ["[CGQC_FNC] snapshot Loaded %1/%2/%3", _name, _time, _role];
 
                     // Set back patch
