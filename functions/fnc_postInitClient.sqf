@@ -318,7 +318,11 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 		_team = cgqc_snapshot_check select 2;
         _color = cgqc_snapshot_check select 3;
 		_role = cgqc_snapshot_check select 4;
-		hintC format ["A copy of your saved loadout exists --- Role:%1 in %2's %3 team ---  Check perks->Fixes->Arma->Load Snapshot", _role, _team, _color];
+		_msg = format ["A copy of your saved loadout exists! <br/> --- Role:%1 in %2's %3 team --- <br/> Load Snapshot?", _role, _team, _color];
+		private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
+		if (_result) then {
+			[player, "load"] spawn CGQC_fnc_snapshot;
+		};
 	};
 };
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
