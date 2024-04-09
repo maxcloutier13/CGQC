@@ -53,6 +53,22 @@ class cgqc_bandolier_ammo: CBA_MiscItem
 	{
 		mass = 80;
 	};
+	/*
+	class EventHandlers {
+        init = "_this setVariable ['cgqc_bandolier_mags', cgqc_config_ammo_primary]";
+    };*/
+};
+
+class cgqc_bandolier_ammo_half: cgqc_bandolier_ammo
+{
+	displayName = "Bandolier: Half";
+	class ItemInfo: CBA_MiscItem_ItemInfo
+	{
+		mass = 30;
+	};
+	/*class EventHandlers {
+        init = "_this setVariable ['cgqc_bandolier_mags', cgqc_config_ammo_primary / 2]";
+    };*/
 };
 
 // === Lighter Tookit
