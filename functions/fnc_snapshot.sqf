@@ -27,10 +27,13 @@ switch (_scope) do {
                 // Equipment
                 _helmet = headgear _target;
                 _goggles = goggles _target;
-                _assigned_items = assignedItems _target;
+                _assigned_items = assignedItems [_target, false, false];
                 // Equipment array
                 _entry_gear = [_helmet, _goggles, _assigned_items];
                 // Weapons
+                _binocular = binocular _target;
+                _binocular_acc = binocularItems _target;
+                _binocular_mag = binocularMagazine _target;
                 _primary = primaryWeapon  _target;
                 _primary_acc = primaryWeaponItems _target;
                 _primary_mag = primaryWeaponMagazine _target;
@@ -44,25 +47,31 @@ switch (_scope) do {
                 _entry_primary = [_primary, _primary_acc, _primary_mag];
                 _entry_handgun = [_handgun, _handgun_acc, _handgun_mag];
                 _entry_launcher = [_launcher, _launcher_acc, _launcher_mag];
-                _entry_weapons = [_entry_primary, _entry_handgun, _entry_launcher];
+                _entry_binocular = [_binocular, _binocular_acc, _binocular_mag];
+                _entry_weapons = [_entry_primary, _entry_handgun, _entry_launcher, _entry_binocular];
+                // List of radios to exclude from item lists
+                _exclude_radios = [] call acre_api_fnc_getAllRadios;
                 // Loadout
                 _uniform = uniform _target;
-                _uniform_items = uniformItems _target;
+                _uniform_items = uniformItems _target - _exclude_radios;
                 _uniform_mags = uniformMagazines _target;
-                _entry_uniform = [_uniform, _uniform_items, _uniform_mags];
                 _vest = vest _target;
-                _vest_items = vestItems _target;
+                _vest_items = vestItems _target - _exclude_radios;
                 _vest_mags = vestMagazines _target;
-                _entry_vest = [_vest, _vest_items, _vest_mags];
                 _pack = backpack _target;
-                _pack_items = backpackItems _target;
+                _pack_items = backpackItems _target - _exclude_radios;
                 _pack_mags = backpackMagazines _target;
+
+                // Build the loadout entries with the info
+                _entry_uniform = [_uniform, _uniform_items, _uniform_mags];
+                _entry_vest = [_vest, _vest_items, _vest_mags];
                 _entry_pack = [_pack, _pack_items, _pack_mags];
+                _entry_radios = [_target] call CGQC_fnc_listRadios;
 
                 // Snapshot entry
-                _entry = [_name, _time, _team, _color, _role, _entry_uniform, _entry_vest, _entry_pack, _entry_gear, _entry_weapons];
+                _entry = [_name, _time, _team, _color, _role, _entry_uniform, _entry_vest, _entry_pack, _entry_gear, _entry_weapons, _entry_radios];
 
-                hint "Player snapshot saved";
+                hint format ["Player snapshot saved: %1", _role];
                 MissionProfileNamespace setVariable ["cgqc_player_snapshot", _entry];
                 saveMissionProfileNamespace;
             };
@@ -86,6 +95,8 @@ switch (_scope) do {
                     _entry_primary = _entry_weapons select 0;
                     _entry_handgun = _entry_weapons select 1;
                     _entry_launcher =  _entry_weapons select 2;
+                    _entry_binocular = _entry_weapons select 3;
+                    _entry_radios = _snapshot select 10;
 
                     // Uniforms
                     _uniform = _entry_uniform select 0;
@@ -116,15 +127,40 @@ switch (_scope) do {
                     _launcher_acc = _entry_launcher select 1;
                     _launcher_mag = _entry_launcher select 2;
                     _launcher_stuff = _launcher_acc + _launcher_mag;
+                    _binocular = _entry_binocular select 0;
+                    _binocular_acc = _entry_binocular select 1;
+                    _binocular_mag = _entry_binocular select 2;
+                    _binocular_stuff = _binocular_acc + _binocular_mag;
 
+                    {
+                        _type = _x select 0;
+                        // Add radio
+                        [_target, "uniform", _type, 1] call CGQC_fnc_addItemWithOverflow;
+                    } forEach _entry_radios;
+                    // entry = [_entry_type, _entry_chan, _entry_side, _entry_vol, _entry_speaker]
+                    _id = 0;
+                    _radios = [] call acre_api_fnc_getCurrentRadioList;
+                    {
+                        _settings = _entry_radios select _id;
+                        _chan = _settings select 1;
+                        _side = _settings select 2;
+                        _vol = _settings select 3;
+                        _speaker = _settings select 4;
+                        [_x, _chan] call acre_api_fnc_setRadioChannel;
+                        [_x, _side] call acre_api_fnc_setRadioSpatial;
+                        [_x, _chan] call acre_api_fnc_setRadioVolume;
+                        _id = _id + 1;
+                    } forEach _radios;
+                    // Set radios PTT
+                    [_radios] call acre_api_fnc_setMultiPushToTalkAssignment;
 
                     // Rejoin to team
-                    [_team, _color] call CGQC_fnc_joinGroup;
+                    [_team, "MAIN"] call CGQC_fnc_joinGroup;
                     // Grab back the role if possible
                     [_role, 1, false, false]  call CGQC_fnc_switchRole;
 
                     sleep 1;
-
+                    [_color] call CGQC_fnc_setTeamColors;
                     // Remove everything
                     removeAllItems _target;
                     removeAllAssignedItems _target;
@@ -156,22 +192,29 @@ switch (_scope) do {
 
                     // Assigned items
                     {
-                        _target assignItem _x;
+                        _target linkItem _x;
                     } forEach _assigned_items;
 
-                    // Add back guns
+                    // Add primary
                     _target addWeapon _primary;
                     {
                         _target addPrimaryWeaponItem _x;
                     } forEach _primary_stuff;
+                    // Add Handgun
                     _target addWeapon _handgun;
                     {
                         _target addHandgunItem _x;
                     } forEach _handgun_stuff;
+                    // Add Launcher
                     _target addWeapon _launcher;
                     {
                         _target addSecondaryWeaponItem _x;
                     } forEach _launcher_stuff;
+                    // Add binoculars
+                    _target addWeapon _binocular;
+                    {
+                        _target addSecondaryWeaponItem _x;
+                    } forEach _binocular_stuff;
 
                     _displayText = format["Snapshot Loaded! <br/> %1<br/>%2<br/>%3", _name, _time, _role];
                     ["ace_common_displayTextStructured", [_displayText, 3, player]] call CBA_fnc_localEvent;
@@ -193,7 +236,7 @@ switch (_scope) do {
         };
      };
     case "all": {
-        _players = allPlayers - entities "HeadlessClient_F";
+        _players = [] call CGQC_int_allHumanPlayers;
         switch (_type) do {
             case "save": {
                 {
