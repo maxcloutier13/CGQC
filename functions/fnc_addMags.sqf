@@ -27,11 +27,11 @@ if (isNil "_mag") then {
 	// Add amount of mags
 	diag_log format ["[CGQC_FNC] addMags - adding %1 mags", _addMags];
 	if (_addMags <= 8) then {
-		for "_i" from 1 to _addMags do {[player, "vest", _mag, false] call CGQC_fnc_addItemWithOverflow;};
+		[player, "vest", _mag, _addMags] call CGQC_fnc_addItemWithOverflow;
 	} else {
 		_additional = _addMags - 8;
-		for "_i" from 1 to 8 do {[player, "vest", _mag, false] call CGQC_fnc_addItemWithOverflow;};
-		for "_i" from 1 to _additional do {[player, "backpack", _mag, false] call CGQC_fnc_addItemWithOverflow;};
+		[player, "vest", _mag, 8] call CGQC_fnc_addItemWithOverflow;
+		[player, "backpack", _mag, _additional] call CGQC_fnc_addItemWithOverflow;
 	};
 };
 

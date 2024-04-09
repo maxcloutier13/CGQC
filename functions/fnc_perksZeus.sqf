@@ -5,7 +5,7 @@ params ["_type", "_briefing_time", "_targetPlayer"];
 switch (_type) do {
 	case "check_mods": {
 		//Find all valid player except current
-		_players = allPlayers - entities "HeadlessClient_F";
+		_players = [] call CGQC_int_allHumanPlayers;
 		// Initial values
 		_version = "--- Versions des mods --- <br/>";
 		_ref_version_core = missionNamespace getVariable ["cgqc_version_core", "ERROR"];
@@ -58,7 +58,7 @@ switch (_type) do {
 
 	};
 	case "pause": {
-		y_allAIs = allUnits - allPlayers;
+		y_allAIs = allUnits - [] call CGQC_int_allHumanPlayers;
 		{
 			_x enableSimulationGlobal false;
 			_x disableAI "all";
@@ -69,7 +69,7 @@ switch (_type) do {
 
 	};
 	case "unpause": {
-		y_allAIs = allUnits - allPlayers;
+		y_allAIs = allUnits - [] call CGQC_int_allHumanPlayers;
 		{
 			_x enableSimulationGlobal true;
 			_x enableAI "all";
@@ -231,7 +231,7 @@ switch (_type) do {
 		};
 		// Remote reset volumes on everyone
 		{['\cgqc\functions\fnc_briefingCmdStop.sqf'] remoteExec ['execVM',vehicle _x];
-		} forEach allPlayers;
+		} forEach [] call CGQC_int_allHumanPlayers;
 
 	};
 	case "briefing":
@@ -308,7 +308,7 @@ switch (_type) do {
 		};
 		// Remote reset volumes on everyone
 		{['\cgqc\functions\fnc_briefingStop.sqf'] remoteExec ['execVM',vehicle _x];
-		} forEach allPlayers;
+		} forEach [] call CGQC_int_allHumanPlayers;
 
 	};
 	case "delete": {

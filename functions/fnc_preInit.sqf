@@ -828,6 +828,11 @@ if (cgqc_config_sideLanguage) then {
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
 
+// Custom internal functions
+CGQC_int_allHumanPlayers = {
+	allPlayers select {!(_x isKindOf "VirtualMan_F")}
+};
+
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
 diag_log "[CGQC_PREINIT] === preInit done =====================================";

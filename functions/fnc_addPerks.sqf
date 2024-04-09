@@ -299,7 +299,7 @@ _action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "lo
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Players stuff
-//_action = [ "zeus_players", "Players", "", {""}, {count AllPlayers > 1} ] call ace_interact_menu_fnc_createAction;
+//_action = [ "zeus_players", "Players", "", {""}, {count [] call CGQC_int_allHumanPlayers > 1} ] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Yeet

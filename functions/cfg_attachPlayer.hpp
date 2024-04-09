@@ -23,8 +23,8 @@ _insertChildren = {
 			private _action = [format ["Player: %1",attach_playerName], attach_playerName, "", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
 			_actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
 		};
-		
-    } forEach allPlayers;
+
+    } forEach [] call CGQC_int_allHumanPlayers;
 
     _actions
 };
@@ -36,4 +36,4 @@ _modifierFunc = {
     _actionData set [1, "Attach to Player"];
 };
 _action = [ "menu_self_zeus_attach", "?", "", _statement,_condition,_insertChildren,[123],"",4,[false, false, false, true, false], _modifierFunc] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_players"], _action ] call ace_interact_menu_fnc_addActionToObject;	
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_players"], _action ] call ace_interact_menu_fnc_addActionToObject;
