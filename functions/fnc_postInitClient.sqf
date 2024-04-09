@@ -85,7 +85,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 	_set = [] call CGQC_fnc_setPatch;
 
 	// Dynamic group -------------------------------------------------------------------------------------------------
-	['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
+	//['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
 	cgqc_player_group = group player;
 	cgqc_player_groupID = groupId player;
 

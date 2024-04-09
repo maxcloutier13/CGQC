@@ -227,6 +227,9 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 // Reset teamColor
 _action = [ "menu_self_color", "Reset Team Color", "", {[] call CGQC_fnc_setTeamColors}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Dynamic group
+_action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Fix ARMA
 _action = [ "zeus_fix_arma", "ARMA?", "", {}, {true}] call ace_interact_menu_fnc_createAction;
@@ -254,9 +257,6 @@ _action = [ "zeus_fix_arma_load", "Load Snapshot", "", {[player, "load"] spawn C
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 
-// Dynamic group
-//_action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
-//_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Open items =========================================================================================================
 // Open IFAK
