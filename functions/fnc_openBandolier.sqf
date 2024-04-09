@@ -12,11 +12,10 @@ if (isNull objectParent player) then {
 	diag_log "[CGQC_FNC] openBandolier - Player in vehicle! Skip animation";
 };
 _showTxt = false;
-y_text = "";
+_text = "";
 _primaryMagCount = 0;
 switch (_type) do {
 	case "ammo": {
-		_showTxt = true;
 		if !("cgqc_bandolier_ammo" in items player) exitWith{};
 		  // Progress bar
 		[10, [], {
@@ -187,13 +186,14 @@ switch (_type) do {
 			if (_added) then {
 				_throwables = "Grabbed: " + _throwables;
 			};
-			y_text = parseText format [
+			_text = parseText format [
 				"<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-- Ammo Bandolier unpacked --<br/>" +
 				"- %1 primary mags added<br/>" +
 				"- %2 handgun mags refilled<br/>" +
 				"%3", _primaryMagCount, _handMagCount, _throwables
 			];
 			player switchMove "";
+			[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
 		}, {
 			hint "Aborted!";
 			if (isNull objectParent player) then {
@@ -203,7 +203,6 @@ switch (_type) do {
 		}, "Reloading from Bandolier - "] call ace_common_fnc_progressBar;
 	};
 	case "all": {
-		_showTxt = true;
 		if !("cgqc_bandolier_ammo" in items player) exitWith{
 			player switchMove "";
 		};
@@ -214,11 +213,12 @@ switch (_type) do {
 			[ACE_player, "vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
 			[ACE_player, "cgqc_bandolier_ammo"] call ace_common_fnc_useItem;
 			diag_log "[CGQC_FNC] openBandolier - Grabbed all mags";
-			y_text = parseText format [
+			_text = parseText format [
 				"<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-- Ammo Bandolier unpacked --<br/>" +
 				"- Grabbed all primary mags: %1<br/>", _primaryMagCount
 			];
 			player switchMove "";
+			[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
 		}, {
 			hint "Aborted!";
 			if (isNull objectParent player) then {
@@ -228,7 +228,6 @@ switch (_type) do {
 		}, "Grabbing just the mags - "] call ace_common_fnc_progressBar;
 	};
 	case "half": {
-		_showTxt = true;
 		if !("cgqc_bandolier_ammo" in items player) exitWith{
 			player switchMove "";
 		};
@@ -240,11 +239,12 @@ switch (_type) do {
 			[ACE_player, "cgqc_bandolier_ammo"] call ace_common_fnc_useItem;
 			[ACE_player, "vest", "cgqc_bandolier_ammo_half", 1] call cgqc_fnc_addItemWithOverflow;
 			diag_log "[CGQC_FNC] openBandolier - Grabbed half the mags and stripped the bandolier";
-			y_text = parseText format [
+			_text = parseText format [
 				"<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-- Ammo Bandolier unpacked --<br/>" +
 				"- Grabbed half primary mags: %1<br/>", _primaryMagCount
 			];
 			player switchMove "";
+			[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
 		}, {
 			hint "Aborted!";
 			if (isNull objectParent player) then {
@@ -254,7 +254,6 @@ switch (_type) do {
 		}, "Grabbing half the mags - "] call ace_common_fnc_progressBar;
 	};
 	case "last_half": {
-		_showTxt = true;
 		if !("cgqc_bandolier_ammo_half" in items player) exitWith{
 			player switchMove "";
 		};
@@ -264,11 +263,12 @@ switch (_type) do {
 			[ACE_player, "vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
 			[ACE_player, "cgqc_bandolier_ammo_half"] call ace_common_fnc_useItem;
 			diag_log "[CGQC_FNC] openBandolier - Used up the last half of the stripped bandolier";
-			y_text = parseText format [
+			_text = parseText format [
 				"<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-- Ammo Bandolier unpacked --<br/>" +
 				"- Grabbed last half primary mags: %1<br/>", _primaryMagCount
 			];
 			player switchMove "";
+			[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
 		}, {
 			hint "Aborted!";
 			if (isNull objectParent player) then {
@@ -282,7 +282,4 @@ switch (_type) do {
 	};
 };
 
-if (_showTxt) then {
-	[y_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
-};
 diag_log format ["[CGQC_FNC] openBandolier done"];
