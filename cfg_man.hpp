@@ -352,32 +352,29 @@ class CAManBase: Man {
 		class CGQC_Bandolier {
 			displayName = "Unpack: Ammo Bandolier";
 			condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
-			exceptions[] = {"isNotSwimming", "isNotSitting", "isNotInside"};
+			exceptions[] = {"isNotSwimming"};
 			statement = "['ammo'] spawn CGQC_fnc_openBandolier";
 			icon = "\CGQC\textures\rearm.paa";
 			class CGQC_Bandolier_ressupply {
 				displayName = "Full Ressupply";
 				condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
-				exceptions[] = {"isNotSwimming", "isNotSitting", "isNotInside"};
 				statement = "['ammo'] spawn CGQC_fnc_openBandolier";
+				exceptions[] = {"isNotSwimming"};
 			};
 			class CGQC_Bandolier_mags_all {
 				displayName = "Just Mags: All";
 				condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
-				exceptions[] = {"isNotSwimming", "isNotSitting", "isNotInside"};
 				statement = "['all'] spawn CGQC_fnc_openBandolier";
 			};
 			class CGQC_Bandolier_mags_half {
 				displayName = "Just Mags: Half";
 				condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
-				exceptions[] = {"isNotSwimming", "isNotSitting", "isNotInside"};
 				statement = "['half'] spawn CGQC_fnc_openBandolier";
 			};
 		};
 		class CGQC_Bandolier_half {
 			displayName = "Unpack: Half Bandolier";
 			condition = "[player, 'cgqc_bandolier_ammo_half'] call BIS_fnc_hasItem";
-			exceptions[] = {"isNotSwimming", "isNotSitting", "isNotInside"};
 			statement = "['last_half'] spawn CGQC_fnc_openBandolier";
 			icon = "\CGQC\textures\rearm.paa";
 		};
