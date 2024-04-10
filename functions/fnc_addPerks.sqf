@@ -249,12 +249,12 @@ _action = [ "zeus_fix_arma_tp", "Teleport to Leader", "", {["tp_leader"] call CG
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Save individual snapshot
-_action = [ "zeus_fix_arma_save", "Save Snapshot", "", {[player, "save"] spawn CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+//_action = [ "zeus_fix_arma_save", "Save Snapshot", "", {[player, "save"] spawn CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Load individual snapshot
-_action = [ "zeus_fix_arma_load", "Load Snapshot", "", {[player, "load"] spawn CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+//_action = [ "zeus_fix_arma_load", "Load Snapshot", "", {[player, "load"] spawn CGQC_fnc_snapshot;}, {true}] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 
 
