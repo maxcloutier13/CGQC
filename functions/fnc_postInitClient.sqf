@@ -310,6 +310,12 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 	["Spartan-2", [0.5, 0.5, 1.0,1], [0.5, 0.5, 1.0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
 	["Spartan-3", [0.5, 1.0, 0.5,1], [0.5, 1.0, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
 
+	// Pause the AI if the config says so
+	if (missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
+		[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;
+		hint "AI Paused!";
+	};
+
 	sleep 10;
 	// Check if a snapshot exists
 	cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";

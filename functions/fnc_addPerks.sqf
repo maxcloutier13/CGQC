@@ -18,7 +18,7 @@ _action = [ "menu_self_ready", " Prêt au Combat", "CGQC\textures\cgqc_ace_comba
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Quick State =========================================================================================================
-_action = [ "cgqc_perk_state", "Quick State", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_state", "Quick State", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Stealth
 _action = [ "cgqc_perk_state_stealth", "Stealth", "", {["stealth", false] spawn CGQC_fnc_perksBasic}, {cgqc_player_state > 0} ] call ace_interact_menu_fnc_createAction;
@@ -106,7 +106,7 @@ _action = [ "menu_self_camo", "Hide yourself", "", {["camo", false] spawn CGQC_f
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Inspect   =========================================================================================================
-_action = [ "menu_self_inspect", "Inspect/Visual", "CGQC\textures\search.paa", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_inspect", "Inspect/Visual", "CGQC\textures\search.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Show player
 _action = [ "menu_self_cam", "Player Mirror", "CGQC\textures\cgqc_ace_mirror", {["cam", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -116,14 +116,14 @@ _action = [ "menu_self_check", "Confirm Self Loadout", "CGQC\textures\search.paa
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 //  Change Goggles =========================================================================================================
-_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {}, {cgqc_player_has2023} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_goggles", "Change Goggles", "CGQC\textures\cgqc_ace_goggles", {""}, {cgqc_player_has2023} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // ---- Types
-_action = [ "cgqc_perk_goggles_clr", "Clear Glasses", "cgqc\textures\cgqc_ace_glasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_goggles_clr", "Clear Glasses", "cgqc\textures\cgqc_ace_glasses", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect", "cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_clr_msk", "Goggles/Masks", "CGQC\textures\cgqc_ace_mask", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_goggles_clr_msk", "Goggles/Masks", "CGQC\textures\cgqc_ace_mask", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "cgqc_perk_goggles_sun", "Sunglasses", "cgqc\textures\cgqc_ace_sunglasses", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_goggles_sun", "Sunglasses", "cgqc\textures\cgqc_ace_sunglasses", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "cgqc_perk_goggles_gas", "Gasmask", "cgqc\textures\cgqc_ace_gasmask", {["G_mas_can_gasmask"] spawn CGQC_fnc_perkGoggles}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect","cgqc_perk_goggles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -164,7 +164,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"
 
 
 // Signals =========================================================================================================
-_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {}, {cgqc_perks_chems > 0} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {""}, {cgqc_perks_chems > 0} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Criquet
 _action = ["menu_self_criquet", "Criquet", "CGQC\textures\cgqc_ace_cricket", {["click", false] spawn CGQC_fnc_perksBasic;}, {true}] call ace_interact_menu_fnc_createAction;
@@ -213,7 +213,7 @@ _action = [ "cgqc_perk_stash_delete", " Delete Stash", "", {["del_stash", false]
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Fixes =========================================================================================================
-_action = [ "menu_self_fixes", "Fixes/Debug", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_fixes", "Fixes/Debug", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Fix Blackout
 _action = [ "menu_self_blackout", "Fix Blackout", "", {["fix_blackout", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -232,7 +232,7 @@ _action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] 
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Fix ARMA
-_action = [ "zeus_fix_arma", "ARMA?", "", {}, {true}] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_fix_arma", "ARMA?", "", {""}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Other fixes
@@ -267,36 +267,77 @@ _action = [ "menu_self_medkit", "Unpack: Medic supply kit", "\CGQC\textures\icon
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Zeus perks ===================================================================================================
-_action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Gamestate handling
+_action = [ "zeus_gamestate", "Game State", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Staging
+_action = [ "zeus_gamestate_staging", "Now-> Staging", "", {true}, {missionNamespace getVariable "CGQC_gamestate_staging"} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Briefing mode
+_action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Commanders briefing
+_action = [ "zeus_briefingCmd_start", "Start Leaders Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Commanders done
+_action = [ "zeus_briefingCmd_stop", "Stop Leader's Briefing", "", {["briefingCmd_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_state_briefing_leaders} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// General briefing
+_action = [ "zeus_briefing_start", "Start Full Briefing", "", {["briefing", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_briefing_start_2", "Start Full Briefing dans 2mins", "", {["briefing", 120] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_briefing_start_5", "Start Full Briefing dans 5mins", "", {["briefing", 300] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Briefing done
+_action = [ "zeus_briefing_stop", "Stop Briefing", "", {["briefing_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_state_briefing_full} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Start the game
+_action = [ "zeus_gamestate_start", "Start Mission (save snapshots)", "", {["start"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable "CGQC_gamestate_mission_staging"} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Mission
+_action = [ "zeus_gamestate_mission", "Now-> Mission", "", {""}, {missionNamespace getVariable "CGQC_gamestate_mission_start";} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// End mission
+_action = [ "zeus_gamestate_start", "End Mission (End Briefing)", "", {["end"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable "CGQC_gamestate_mission_staging"} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+// End Mission
+_action = [ "zeus_gamestate_end", "Now-> Post Mission", "", {""}, {missionNamespace getVariable "CGQC_gamestate_mission_post";} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Utilities
+_action = [ "zeus_gamestate_utils", "Utilities", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 // ------ Pause AI
-_action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute}, {!cgqc_zeus_paused} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {cgqc_zeus_paused} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {!(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused")} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {missionNamespace getVariable "CGQC_gamestate_mission_AIpaused"} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// ------ Manual snapshot
+_action = [ "zeus_snapshot_save", "Save Manual Player snapshots", "", {[player, "save", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_snapshot_load", "Load Manual player Snapshots", "", {[player, "load", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Other stuff
 
 // ------ Delete all dead
 _action = [ "zeus_delete", "Delete Dead", "", {["delete", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-// ------ Invincible
-_action = [ "zeus_invincible", "God Mode", "", {["god", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_god} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_mortal", "God Mode->Off", "", {["mortal", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_god} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-// ------ Invisible
-_action = [ "zeus_invisible", "Turn Invisible", "", {["ghost", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_ghost} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_visible", "Invisible->Off", "", {["visible", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_ghost} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
-// ----- Snapshot all
-_action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "load", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Players stuff
 //_action = [ "zeus_players", "Players", "", {""}, {count [] call CGQC_int_allHumanPlayers > 1} ] call ace_interact_menu_fnc_createAction;
@@ -322,26 +363,6 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_
 //_action = [ "zeus_detach", "Detach from player", "", {["detach", 0] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_attached} ] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-// Briefing mode
-_action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
-// Commanders briefing
-_action = [ "zeus_briefingCmd_start", "Start Leaders Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
-// Commanders done
-_action = [ "zeus_briefingCmd_stop", "Stop Leader's Briefing", "", {["briefingCmd_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_state_briefing_leaders} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-// General briefing
-_action = [ "zeus_briefing_start", "Start Full Briefing", "", {["briefing", 0] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_briefing_start_2", "Start Briefing dans 2mins", "", {["briefing", 120] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_briefing_start_5", "Start Briefing dans 5mins", "", {["briefing", 300] spawn CGQC_fnc_perksZeus}, {!cgqc_state_briefing} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
-// Briefing done
-_action = [ "zeus_briefing_stop", "Stop Briefing", "", {["briefing_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && cgqc_state_briefing_full} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
 // Options
 _action = [ "zeus_options", "Options", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -357,7 +378,7 @@ _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _ac
 
 
 // Faction relations
-_action = ["zeus_relations", "Faction Relations", "", {}, {true}] call ace_interact_menu_fnc_createAction;
+_action = ["zeus_relations", "Faction Relations", "",{""}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 _action = ["zeus_relations_all", "All enemies", "", {["all"] call CGQC_fnc_setRelations}, {true}] call ace_interact_menu_fnc_createAction;
@@ -394,7 +415,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_options"], _ac
 
 
 // ------ GRAD Persistence
-_action = [ "zeus_grad_persistence", "Persistence", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_grad_persistence", "Persistence", "", {""}, {false} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_options"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "zeus_grad_save", "Save Mission", "", { [true, 10] remoteExec ["grad_persistence_fnc_saveMission",2,false];}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_zeus", "zeus_options", "zeus_grad_persistence"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -438,6 +459,19 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"],
 _action = [ "zeus_export", "Self loadout to Clipboard", "", {[player] call CGQC_fnc_loadoutToClipboard}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+// ------ Invincible
+_action = [ "zeus_invincible", "God Mode", "", {["god", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_god} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_mortal", "God Mode->Off", "", {["mortal", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_god} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// ------ Invisible
+_action = [ "zeus_invisible", "Turn Invisible", "", {["ghost", 0, ""] spawn CGQC_fnc_perksZeus}, {!cgqc_zeus_ghost} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_visible", "Invisible->Off", "", {["visible", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_ghost} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
 // Other actions ================================================================================
 // Actual Zeus mode perks ================================================================================
 _action = [ "menu_zeus_trg", "CGQC Triggers", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {false} ] call ace_interact_menu_fnc_createAction;
@@ -461,9 +495,9 @@ _action = [ "menu_zeus_trg_8", "Activate 8", "", {hint "Trigger 8"}, {!isNil "cg
 _adding = [ ["ACE_ZeusActions", "menu_zeus_trg"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
 
 // ------ Pause AI
-_action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute}, {!cgqc_zeus_paused} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute}, {!(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused")} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_ZeusActions"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
-_action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {cgqc_zeus_paused} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused")} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_ZeusActions"], _action ] call  ace_interact_menu_fnc_addActionToZeus;
 
 // ------ Delete all dead

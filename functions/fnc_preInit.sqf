@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.12";
+core_version = "4.5.12.1";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_core", core_version, true]; // Set the server's mod version
@@ -166,7 +166,6 @@ cgqc_zeus_mapRestricted_txt_on = false;
 cgqc_zeus_god = false;
 cgqc_zeus_ghost = false;
 cgqc_zeus_attached = false;
-cgqc_zeus_paused = false;
 cgqc_blackout_player_on = false;
 
 // PAX System
@@ -460,11 +459,15 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Zeus"] call CBA_fnc_addSetting;
 
+
+// Gamestate ===============================================================================================
+["cgqc_config_state_pause", "CHECKBOX",["Auto-Pause AI outside of mission", "Pauses the AI when mission is not running. Unpaused manually or at mission start"],
+[_menu_name, "GameState"], false, 1, {publicVariable "cgqc_config_state_pause"}, false] call CBA_fnc_addSetting;
 // Briefing  ===============================================================================================
 ["cgqc_setting_briefingCmd_area","SLIDER", ["Leaders's Briefing area size", "Square around the Zeus"],
-[_menu_name, "Briefing"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
+[_menu_name, "GameState"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_setting_briefing_area","SLIDER", ["Full Briefing area size", "Square around the Zeus"],
-[_menu_name, "Briefing"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
+[_menu_name, "GameState"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
 
 // Zeus radios ===============================================================================================
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"],
@@ -831,6 +834,12 @@ if (cgqc_config_sideLanguage) then {
 // Custom internal functions
 CGQC_int_allHumanPlayers = {
 	allPlayers select {!(_x isKindOf "VirtualMan_F")}
+};
+
+CGQC_int_allAI = {
+	_units = allUnits - ([] call CGQC_int_allHumanPlayers);
+	_units = _units - (entities "HeadlessClient_F");
+	_units;
 };
 
 // **************************************************************************************************************

@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class notifyAll{
+            file = "\cgqc\functions\fnc_notifyAll.sqf";
+            description = "Handles global messages";
+        };
+        class gamestate{
+            file = "\cgqc\functions\fnc_gamestate.sqf";
+            description = "Handles the gamestate flow";
+        };
         class fireteam{
             file = "\cgqc\functions\fnc_fireteam.sqf";
             description = "Handles the CGQC subgroups fireteam";

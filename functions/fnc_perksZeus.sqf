@@ -58,26 +58,22 @@ switch (_type) do {
 
 	};
 	case "pause": {
-		y_allAIs = allUnits - [] call CGQC_int_allHumanPlayers;
+		_allAIs = [] call CGQC_int_allAI;
 		{
 			_x enableSimulationGlobal false;
 			_x disableAI "all";
-		} forEach y_allAIs;
-		["All AI units PAUSED!"] remoteExec ["hint", 0];
-		cgqc_zeus_paused = true;
-		publicVariable "cgqc_zeus_paused";
-
+		} forEach _allAIs;
+		[-1,{hint "All AI units PAUSED!"}] call CBA_fnc_globalExecute;
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", true];
 	};
 	case "unpause": {
-		y_allAIs = allUnits - [] call CGQC_int_allHumanPlayers;
+		_allAIs = [] call CGQC_int_allAI;
 		{
 			_x enableSimulationGlobal true;
 			_x enableAI "all";
-		} forEach y_allAIs;
-		["All AI units unpaused!"] remoteExec ["hint", 0];
-		cgqc_zeus_paused = false;
-		publicVariable "cgqc_zeus_paused";
-
+		} forEach _allAIs;
+		[-1,{hint "All AI units UNPAUSED!"}] call CBA_fnc_globalExecute;
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false]
 	};
 	case "zeus_radios":
 	{

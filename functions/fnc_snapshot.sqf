@@ -1,7 +1,12 @@
 // --- snapshot ----------------------------------------------------------
 // Saves/update a snapshot of the target
-params [["_target", player], ["_type", "save"], ["_scope", "single"]];
+params [["_target", player], ["_type", "save"], ["_scope", "single"], ["_saveTarget", "personnal"]];
 diag_log format ["[CGQC_FNC] snapshot %1/%2 started", _target, _type];
+
+// Variants
+// personnal - missionProfil local save
+// start - mission group save at mission start
+// manual - mission group save
 
 switch (_scope) do {
     case "single": {
