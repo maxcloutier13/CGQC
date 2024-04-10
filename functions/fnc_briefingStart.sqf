@@ -3,7 +3,7 @@
 trgBrief_units = [];
 trgBrief_player_lowered = false;
 publicVariable "trgBrief_player_lowered";
-while {cgqc_state_briefing_full} do {
+while {missionNamespace getVariable "CGQC_gamestate_briefing_full"} do {
 	{
 		if (_x in list cgqc_briefing_trg) then {
 			trgBrief_current = _x;

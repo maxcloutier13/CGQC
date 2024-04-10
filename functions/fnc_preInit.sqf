@@ -77,13 +77,6 @@ cgqc_mission_dro = false;
 cgqc_mission_dro_ready = false;
 
 // *** GameState stuff *********************
-cgqc_state_pregame = true;
-cgqc_state_started = false;
-cgqc_state_briefing = false;
-cgqc_state_briefing_full = false;
-cgqc_state_briefing_leaders = false;
-cgqc_state_debrief = false;
-cgqc_state_end = false;
 cgqc_acre_defaultVolume = 0.4;
 cgqc_acre_defaultLevel = 0.25;
 cgqc_acre_previousVolume = 0;

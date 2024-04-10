@@ -176,10 +176,8 @@ switch (_type) do {
 	case "briefingCmd":
 	{
 		// Command briefing started
-		cgqc_state_briefing_leaders = true;
-		publicVariable "cgqc_state_briefing_leaders";
-		cgqc_state_briefing = true;
-		publicVariable "cgqc_state_briefing";
+		missionNamespace setVariable ["CGQC_gamestate_briefing", true];
+		missionNamespace setVariable ["CGQC_gamestate_briefing_leaders", true];
 		// Create briefing marker
 		_markerstr = createMarker ["cgqcBriefingCmd", player];
 		"cgqcBriefingCmd" setMarkerType "mil_objective";
@@ -208,10 +206,8 @@ switch (_type) do {
 	case "briefingCmd_stop":
 	{
 		// Commanders Briefing done
-		cgqc_state_briefing_leaders = false;
-		publicVariable "cgqc_state_briefing_leaders";
-		cgqc_state_briefing = false;
-		publicVariable "cgqc_state_briefing";
+		missionNamespace setVariable ["CGQC_gamestate_briefing", false];
+		missionNamespace setVariable ["CGQC_gamestate_briefing_leaders", false];
 		// Delete briefing marker
 		deleteMarker "cgqcBriefing";
 		//Restriction back on
@@ -233,17 +229,16 @@ switch (_type) do {
 	case "briefing":
 	{
 		// Briefing started
-		cgqc_state_briefing_full = true;
-		publicVariable "cgqc_state_briefing_full";
-		cgqc_state_briefing = true;
-		publicVariable "cgqc_state_briefing";
+		missionNamespace setVariable ["CGQC_gamestate_briefing", true];
+		missionNamespace setVariable ["CGQC_gamestate_briefing_full", true];
+
 		// Create briefing marker
 		_markerstr = createMarker ["cgqcBriefing", player];
 		"cgqcBriefing" setMarkerType "mil_objective";
 		"cgqcBriefing" setMarkerText "Briefing";
 		"cgqcBriefing" setMarkerColor "colorBLUFOR";
 		//Timer before briefing start
-		while {_briefing_time > 0 && cgqc_state_briefing_full} do {
+		while {_briefing_time > 0 && missionNamespace getVariable "CGQC_gamestate_briefing_full"} do {
 			_min = floor (_briefing_time / 60);
 			_sec =  _briefing_time - (_min * 60);
 			_min_sec = format["%1:%2", _min, _sec];
@@ -253,7 +248,7 @@ switch (_type) do {
 			_briefing_time = _briefing_time - 1;
 			sleep 1;
 		};
-		if(cgqc_state_briefing_full) then {
+		if(missionNamespace getVariable "CGQC_gamestate_briefing_full") then {
 			if (cgqc_zeus_mapRestricted) then {
 				hint "MapSharing is ON";
 				//Remove map sharing restriction for briefing
@@ -286,10 +281,9 @@ switch (_type) do {
 	case "briefing_stop":
 	{
 		// Briefing done
-		cgqc_state_briefing_full = false;
-		publicVariable "cgqc_state_briefing_full";
-		cgqc_state_briefing = false;
-		publicVariable "cgqc_state_briefing";
+		missionNamespace setVariable ["CGQC_gamestate_briefing", false];
+		missionNamespace setVariable ["CGQC_gamestate_briefing_full", false];
+
 		// Delete briefing marker
 		deleteMarker "cgqcBriefing";
 		if (cgqc_zeus_mapRestricted) then {

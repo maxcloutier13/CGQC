@@ -10,7 +10,6 @@ if !(isNil "trgBriefCmd_player_lowered") then {
 	};
 };
 _txt = parseText ("Leaders Briefing finished." + "<br/>" + "Volume/Voice restored.");
-cgqc_state_started = true;
 hintSilent _txt;
 sleep 5;
 hintSilent "";
