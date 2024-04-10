@@ -4,6 +4,14 @@ params ["_type"];
 diag_log format ["[CGQC_FNC] gamestate %1 mode started", _type];
 
 switch (_type) do {
+    case "anti": {
+        missionNamespace setVariable ["CGQC_gamestate_staging", false];
+		missionNamespace setVariable ["CGQC_gamestate_mission_start", true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_post", false];
+		missionNamespace setVariable ["CGQC_gamestate_training", false];
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false];
+		missionNamespace setVariable ["CGQC_gamestate_current", "anti"];
+    };
 	case "training": {
 		missionNamespace setVariable ["CGQC_gamestate_staging", false];
 		missionNamespace setVariable ["CGQC_gamestate_mission_start", false];
@@ -20,7 +28,7 @@ switch (_type) do {
 		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", cgqc_config_state_pause];
 		missionNamespace setVariable ["CGQC_gamestate_current", "staging"];
 
-		// Notify the player of staging phase
+		// Notify the player of staging phase once in a while
 		[] spawn {
 			while { missionNamespace getVariable "CGQC_gamestate_staging" } do {
 				sleep 30;
