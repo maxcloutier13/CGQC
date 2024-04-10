@@ -88,6 +88,15 @@ class CAManBase: Man {
 				runOnHover = "hint 'Designate as 2iC'";
 				distance = 3;
 			};
+			class cgqc_setTL {
+				displayName = "Designate: TeamLeader";
+				condition = "leader player == player || cgqc_player_isSL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				statement = "['TL', 'target'] spawn CGQC_fnc_setLeadership";
+				//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
+				icon = "";
+				runOnHover = "hint 'Designate as TeamLeader'";
+				distance = 3;
+			};
 			class cgqc_promotePlayer {
 				displayName = "Promote Player";
 				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";

@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class fireteam{
+            file = "\cgqc\functions\fnc_fireteam.sqf";
+            description = "Handles the CGQC subgroups fireteam";
+        };
         class listRadios{
             file = "\cgqc\functions\fnc_listRadios.sqf";
             description = "Returns a list of the unit radio and their settings";
