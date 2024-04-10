@@ -9,7 +9,7 @@ cgqc_player_side = side player;
 player setVariable ["cgqc_version_core", core_version, true]; // Set the client's mod version
 
 // Quick version check and login message
-_checkVersion = missionNamespace getVariable ["cgqc_version_core", "ERROR"];
+_checkVersion = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 _name = name player;
 _msg = format ["Player %1 connected - CoreCheck %2/%3", _name, cgqc_version_core, _checkVersion];
 [_msg] remoteExec ["systemChat", 0];

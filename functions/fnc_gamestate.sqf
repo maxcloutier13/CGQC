@@ -5,28 +5,28 @@ diag_log format ["[CGQC_FNC] gamestate %1 mode started", _type];
 
 switch (_type) do {
     case "anti": {
-        missionNamespace setVariable ["CGQC_gamestate_staging", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_start", true];
-		missionNamespace setVariable ["CGQC_gamestate_mission_post", false];
-		missionNamespace setVariable ["CGQC_gamestate_training", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false];
-		missionNamespace setVariable ["CGQC_gamestate_current", "anti"];
+        missionNamespace setVariable ["CGQC_gamestate_staging", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_start", true, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_post", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_training", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_current", "anti", true];
     };
 	case "training": {
-		missionNamespace setVariable ["CGQC_gamestate_staging", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_start", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_post", false];
-		missionNamespace setVariable ["CGQC_gamestate_training", true];
-		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false];
-		missionNamespace setVariable ["CGQC_gamestate_current", "training"];
+		missionNamespace setVariable ["CGQC_gamestate_staging", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_start", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_post", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_training", true, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_current", "training", true];
 	};
 	case "staging": {
-		missionNamespace setVariable ["CGQC_gamestate_staging", true];
-		missionNamespace setVariable ["CGQC_gamestate_mission_start", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_post", false];
-		missionNamespace setVariable ["CGQC_gamestate_training", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", cgqc_config_state_pause];
-		missionNamespace setVariable ["CGQC_gamestate_current", "staging"];
+		missionNamespace setVariable ["CGQC_gamestate_staging", true, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_start", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_post", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_training", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", cgqc_config_state_pause, true];
+		missionNamespace setVariable ["CGQC_gamestate_current", "staging", true];
 
 		// Notify the player of staging phase once in a while
 		[] spawn {
