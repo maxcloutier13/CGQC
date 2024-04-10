@@ -44,7 +44,7 @@ _yellow = [];
 
 // Remove squadlead
 _units = units _group;
-_units = _units - _lead;
+_units = _units - [_lead];
 
 {
     _soldier = _x;
