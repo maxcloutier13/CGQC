@@ -3,7 +3,7 @@
 params [["_target", player]];
 diag_log format ["[CGQC_FNC] fireteam %1 started", _target];
 
-CGQC_int_getFireteamNbr = {
+CGQC_int_getTeamNbr = {
     params [["_target", player]];
     // 0-HQ / 1/2 = fireteams
     _teamNbr = 0;
@@ -17,10 +17,10 @@ CGQC_int_getFireteamNbr = {
     _teamNbr;
 };
 
-CGQC_int_getFireteamName = {
+CGQC_int_getTeamName = {
      params [["_target", player]];
     _groupName = groupId group _target;
-    _team = [_target] call CGQC_int_getFireteamNbr;
+    _team = [_target] call CGQC_int_getTeamNbr;
     if (_team < 1) then {
         _team = "HQ";
     };
