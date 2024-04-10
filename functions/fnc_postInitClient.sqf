@@ -2,10 +2,10 @@
 // Start everything player related
 diag_log "[CGQC_INIT] === postInitClient started =====================================";
 
-// Set side
+// set side
 cgqc_player_side = side player;
 
-// Set version variable
+// set version variable
 player setVariable ["cgqc_version_core", core_version, true]; // Set the client's mod version
 
 // Quick version check and login message
@@ -15,24 +15,27 @@ _msg = format ["Player %1 connected - CoreCheck %2/%3", _name, cgqc_version_core
 [_msg] remoteExec ["systemChat", 0];
 diag_log "[CGQC_INIT] ===" + _msg;
 /*
-// Set language and radio channels
-["side"] call CGQC_fnc_setACRE;
+// set language and radio channels
+	["side"] call CGQC_fnc_setACRE;
 
 // Reset radios in case.
-_radios = call acre_api_fnc_getCurrentRadioList;
-{
-	player unassignItem _x;
-	player removeItem _x;
-} forEach _radios;
+	_radios = call acre_api_fnc_getCurrentRadioList;
+	{
+		player unassignItem _x;
+		player removeItem _x;
+	} forEach _radios;
 
-waitUntil {sleep 0.5; cgqc_player_acre_setup;};
-waitUntil {sleep 0.5; cgqc_player_radio_names;};
+	waitUntil {
+		sleep 0.5; cgqc_player_acre_setup;
+	};
+	waitUntil {
+		sleep 0.5; cgqc_player_radio_names;
+	};
 */
 
 // Client-side code
 diag_log "[CGQC_INIT] checking if intro/welcome should be shown";
 if !(cgqc_mission_dro) then {
-
 	diag_log "[CGQC_INIT] showing intro/welcome";
 	// Show intro
 	_intro = [] spawn CGQC_fnc_showIntro;
@@ -40,13 +43,13 @@ if !(cgqc_mission_dro) then {
 	_welcome = [] spawn CGQC_fnc_showWelcome;
 
 	diag_log "[CGQC_INIT] loading custom death/respawn";
-	//Respawn handler
+	// Respawn handler
 	player addMPEventHandler ["MPRespawn", {
 		params ["_unit", "_corpse"];
 		[_unit, _corpse] call CGQC_fnc_playerRespawned;
 	}];
 
-	//Death handler
+	// Death handler
 	player addMPEventHandler ["MPKilled", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		[_unit, _killer, _instigator, _useEffects] call CGQC_fnc_playerKilled;
@@ -56,14 +59,15 @@ if !(cgqc_mission_dro) then {
 	titleCut ["", "BLACK IN", 1];
 };
 
-// Player identification --------------------------------------------------------------------------------------------
-//Get some player info
+// player identification --------------------------------------------------------------------------------------------
+// get some player info
 cgqc_player_name = name player;
 cgqc_player_steamid = getPlayerUID player;
-//cgqc_player_steamid isEqualTo "76561198024730191" ||
-if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isEqualTo "76561198089396393") then
-{
-	waitUntil {	!isNull (findDisplay 46)};
+// cgqc_player_steamid isEqualTo "76561198024730191" ||
+if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isEqualTo "76561198089396393") then {
+	waitUntil {
+		!isNull (findDisplay 46)
+	};
 	_text = "<br/><br/><br/>Bye!<br/>
 	";
 	[_text, 0, 0, 50, 2] spawn BIS_fnc_dynamicText;
@@ -73,19 +77,19 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 	cgqc_perks_basic = true;
 	cgqc_player_face = face player;
 
-	// Check if daytime
+	// Check if dayTime
 	[] call CGQC_fnc_isDaytime;
 
-	//ID player and find patch
+	// ID player and find patch
 	_rank = [] call CGQC_fnc_findRank;
 	_patch = [] call CGQC_fnc_findPatch;
 	_beret = [] call CGQC_fnc_getRankedBeret;
 
-	// Set and keep patch
+	// set and keep patch
 	_set = [] call CGQC_fnc_setPatch;
 
 	// Dynamic group -------------------------------------------------------------------------------------------------
-	//['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
+	// ['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
 	cgqc_player_group = group player;
 	cgqc_player_groupID = groupId player;
 
@@ -94,7 +98,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 
 	if (cgqc_player_loadAll) then {
 		// Init arsenal ---------------------------------------------------------------------------------------------------
-		if(cgqc_player_has2023) then {
+		if (cgqc_player_has2023) then {
 			cgqc_mk2_arsenal_1 = [];
 			cgqc_mk2_arsenal_2 = [];
 			cgqc_mk2_arsenal_3 = [];
@@ -105,21 +109,21 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 			#include "\cgqc\loadouts\2023\arsenal\init_arsenal.sqf";
 			cgqc_2023_arsenal_init_done = true;
 		};
-		if(cgqc_player_hasUnsung) then {
+		if (cgqc_player_hasUnsung) then {
 			cgqc_unsung_arsenal_1 = [];
 			cgqc_unsung_arsenal_8 = [];
 			#include "\cgqc\loadouts\unsung\all_items.hpp";
 			cgqc_unsung_arsenal_8 = cgqc_unsung_arsenal_all;
 			cgqc_unsung_arsenal_init_done = true;
 		};
-		if(cgqc_player_hasIfa3) then {
+		if (cgqc_player_hasIfa3) then {
 			cgqc_ifa3_arsenal_1 = [];
 			cgqc_ifa3_arsenal_8 = [];
 			#include "\cgqc\loadouts\ifa3\all_items.hpp";
 			cgqc_ifa3_arsenal_8 = cgqc_ifa3_arsenal_all;
 			cgqc_ifa3_arsenal_init_done = true;
 		};
-		if(cgqc_player_hasNorthern) then {
+		if (cgqc_player_hasNorthern) then {
 			cgqc_northern_arsenal_1 = [];
 			cgqc_northern_arsenal_8 = [];
 			#include "\cgqc\loadouts\northern\all_items.hpp";
@@ -128,25 +132,26 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 		};
 
 		// Event Handers -----------------------------------------------------------------------
-		//On map click (_pos, _units,_shift,_alt)
-		onMapSingleClick "call CGQC_fnc_mapShareList;false;";
+		// On map click (_pos, _units, _shift, _alt)
+		onMapSingleClick "call CGQC_fnc_mapShareList;
+		false;";
 
-		//Maximum mags event handler
+		// Maximum mags event handler
 		["ace_arsenal_displayClosed", {
 			[] call CGQC_fnc_maxMags;
 			[player, true] call ace_arsenal_fnc_removeBox;
 			// Save player loadout
-			//[player, "save"] spawn CGQC_fnc_snapshot;
+			// [player, "save"] spawn CGQC_fnc_snapshot;
 		}] call CBA_fnc_addEventHandler;
 
-		//Unconcious event
+		// Unconcious event
 		["ace_unconscious", {
 			params ["_unit", "_isUnconscious"];
 			[] call CGQC_fnc_setTeamColors;
 			if (_isUnconscious) then {
 				playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
 			};
-			//[_unit, _isUnconscious] spawn CGQC_fnc_playerUnconscious;
+			// [_unit, _isUnconscious] spawn CGQC_fnc_playerUnconscious;
 		}] call CBA_fnc_addEventHandler;
 	};
 
@@ -154,16 +159,16 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 	if (cgqc_config_fortify) then {
 		fortify_list = format [
 			"[
-			['%1', 0],
-			['%2', 0],
-			['%3', 0],
-			['%4', 0],
-			['%5', 0],
-			['%6', 0],
-			['%7', 0],
-			['%8', 0],
-			['%9', 0],
-			['%10', 0]
+				['%1', 0],
+				['%2', 0],
+				['%3', 0],
+				['%4', 0],
+				['%5', 0],
+				['%6', 0],
+				['%7', 0],
+				['%8', 0],
+				['%9', 0],
+				['%10', 0]
 			]",
 			cgqc_config_fortify_1,
 			cgqc_config_fortify_2,
@@ -182,7 +187,7 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 		[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
 	};
 
-	//Switch beret to ready when getting inside vehicle
+	// switch beret to ready when getting inside vehicle
 	player addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle", "_turret"];
 		["ready", false] call CGQC_fnc_perksBasic;
@@ -190,145 +195,167 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 
 	// Friendly fire fix - Prevent AI from shooting back
 	player addEventHandler [ "HandleRating", {
-			params["_player", "_rating"];
-			_return = _rating;
-			if(rating _player < 0) then {
-				_return = abs rating _player;
-			} else {
-				if(_rating + rating _player < 0) then {
-					_return = 0;
-				};
-			};
-			_return
-		}
-	];
-
-	// Whisper/Yelling event
-	cgqc_event_talk = ["acre_startedSpeaking", {
-		params ["_unit", "_onRadio", "_radioId", "_speakingType"];
-		//If volume is low and player is not talking on radio
-		_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
-		//diag_log format ["[CGQC_FNC] startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType];
-
-		// Volume is low: notify the player he is whispering
-		if (!_onRadio) then {
-			_txt = "";
-			//diag_log format ["[CGQC_FNC] startedSpeaking checking vol %1", _vol];
-			if (_vol < 0.3) then {
-				_txt = parseText("<t color='#006400'>Whispering</t>");
-			} else {
-				if (_vol < 0.5) then {
-					_txt = parseText("<t color='#4169e1'>Talking</t>");
-				};
-			};
-			if (_vol isEqualTo 0.7) then {
-				_txt = parseText("<t color='#4169e1'>Speaking Loud</t>");
-			};
-			if (_vol isEqualTo 1.0) then {
-				_txt = parseText("<t color='#ff8c00'>Shouting</t>");
-			};
-			if (_vol isEqualTo 1.3) then {
-				_txt = parseText("<t color='#b10000'>Yelling</t>");
-			};
-			if (_txt isNotEqualTo "") then {
-				[ _txt, 0, 1.15, 1, 0.8 ] spawn BIS_fnc_dynamicText;
+		params["_player", "_rating"];
+		_return = _rating;
+		if (rating _player < 0) then {
+			_return = abs rating _player;
+		} else {
+			if (_rating + rating _player < 0) then {
+				_return = 0;
 			};
 		};
-	}] call CBA_fnc_addEventHandler;
+		_return
+	}
+];
 
-	// Team switched
-	addMissionEventHandler ["TeamSwitch", {
-		params ["_previousUnit", "_newUnit"];
-		_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >TEAMSWITCHED!</t><br/>");
-		[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
-		// Reset patch
-		[] call CGQC_fnc_setPatch;
-	}];
+// Whisper/Yelling event
+cgqc_event_talk = ["acre_startedSpeaking", {
+	params ["_unit", "_onRadio", "_radioId", "_speakingType"];
+	// if volume is low and player is not talking on radio
+	_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
+	// diag_log format ["[CGQC_FNC] startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType];
 
-
-	// Boost dragging maximum
-	ACE_maxWeightDrag = 5000;
-	ACE_maxWeightCarry = 2000;
-
-	// Ace self interaction perks
-	_perks = [] call CGQC_fnc_addPerks;
-	if (cgqc_player_max) then {
-		// Cloutier perks
-		["max", false] call CGQC_fnc_switchPerks;
+	// Volume is low: notify the player he is whispering
+	if (!_onRadio) then {
+		_txt = "";
+		// diag_log format ["[CGQC_FNC] startedSpeaking checking vol %1", _vol];
+		if (_vol < 0.3) then {
+			_txt = parseText("<t color='#006400'>Whispering</t>");
+		} else {
+			if (_vol < 0.5) then {
+				_txt = parseText("<t color='#4169e1'>Talking</t>");
+			};
+		};
+		if (_vol isEqualTo 0.7) then {
+			_txt = parseText("<t color='#4169e1'>Speaking Loud</t>");
+		};
+		if (_vol isEqualTo 1.0) then {
+			_txt = parseText("<t color='#ff8c00'>Shouting</t>");
+		};
+		if (_vol isEqualTo 1.3) then {
+			_txt = parseText("<t color='#b10000'>Yelling</t>");
+		};
+		if (_txt isNotEqualTo "") then {
+			[ _txt, 0, 1.15, 1, 0.8 ] spawn BIS_fnc_dynamicText;
+		};
 	};
+}] call CBA_fnc_addEventHandler;
 
-	// Ace auto self interaction perks
-	_perks = [] call CGQC_fnc_addPerksSwitch;
-
-	// Lower gun
-	diag_log "[CGQC_INIT] gun lowered";
-	[player] call ace_weaponselect_fnc_putWeaponAway;
-
-	// Training menu if training is on
-	if (cgqc_flag_isTraining) then {
-		diag_log "[CGQC_INIT] cgqc_flag_isTraining is true. Loading training menu";
-		[] call CGQC_fnc_trainingLoadMenu;
-	};
-
-
-	// Zeus shenanigans... MAX - to review
-	_zeus = [] call CGQC_fnc_setZeus;
-
-	// Check if unit has an auto-switch loadout
-	[] call CGQC_fnc_checkLoadout;
-
-	// RHS fix to remove chatter
-	profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
-
-	// All done
-	cgqc_start_postInitClient_done = true;
-
-	[] spawn {
-		// Switch map to topo by default
-		waitUntil { !isNull (findDisplay 12)};
-		private _map = findDisplay 12;
-		ctrlActivate (_map displayCtrl 107); // Toggle map textures off
-	};
-
-	// Create/Join initial group
-	[groupId (group player)] call CGQC_fnc_joinGroup;
-
-	sleep 2;
-	// Set back custom patch
+// Team switched
+addMissionEventHandler ["TeamSwitch", {
+	params ["_previousUnit", "_newUnit"];
+	_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >TEAMSWITCHED!</t><br/>");
+	[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
+	// Reset patch
 	[] call CGQC_fnc_setPatch;
-	if (!cgqc_flag_isTraining) then {
-		[] call CGQC_fnc_setGroupRadios;
+}];
+
+// Boost dragging maximum
+ACE_maxWeightDrag = 5000;
+ACE_maxWeightCarry = 2000;
+
+// Ace self interaction perks
+_perks = [] call CGQC_fnc_addPerks;
+if (cgqc_player_max) then {
+	// Cloutier perks
+	["max", false] call CGQC_fnc_switchPerks;
+};
+
+// Ace auto self interaction perks
+_perks = [] call CGQC_fnc_addPerksSwitch;
+
+// Lower gun
+diag_log "[CGQC_INIT] gun lowered";
+[player] call ace_weaponselect_fnc_putWeaponAway;
+
+// Training menu if training is on
+if (cgqc_flag_isTraining) then {
+	diag_log "[CGQC_INIT] cgqc_flag_isTraining is true. Loading training menu";
+	[] call CGQC_fnc_trainingLoadMenu;
+};
+
+// Zeus shenanigans... max - to review
+_zeus = [] call CGQC_fnc_setZeus;
+
+// Check if unit has an auto-switch loadout
+[] call CGQC_fnc_checkLoadout;
+
+// RHS fix to remove chatter
+profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
+
+// All done
+cgqc_start_postInitClient_done = true;
+
+[] spawn {
+	// switch map to topo by default
+	waitUntil {
+		!isNull (findDisplay 12)
 	};
-	// Set default voice volume
-	[player, "talk"] call CGQC_fnc_setVoiceVolume;
-	// Save initial volume
-	cgqc_acre_previousVolume = [] call acre_api_fnc_getSelectableVoiceCurve;
+	private _map = findDisplay 12;
+	ctrlActivate (_map displayCtrl 107); // Toggle map textures off
+};
 
-	// Setup default groups colors
-	["HQ", [1.0, 0.38, 0,1], [1.0, 0.38, 0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
-	["Spartan-1", [1.0, 0.5, 0.5,1], [1.0, 0.5, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
-	["Spartan-2", [0.5, 0.5, 1.0,1], [0.5, 0.5, 1.0,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
-	["Spartan-3", [0.5, 1.0, 0.5,1], [0.5, 1.0, 0.5,0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+// Create/join initial group
+[groupId (group player)] call CGQC_fnc_joinGroup;
 
-	// Pause the AI if the config says so
-	if (missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
-		[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;
-		hint "AI Paused!";
-	};
+sleep 2;
+// set back custom patch
+[] call CGQC_fnc_setPatch;
+if (!cgqc_flag_isTraining) then {
+	[] call CGQC_fnc_setGroupRadios;
+};
+// set default voice volume
+[player, "talk"] call CGQC_fnc_setVoiceVolume;
+// Save initial volume
+cgqc_acre_previousVolume = [] call acre_api_fnc_getSelectableVoiceCurve;
 
-	sleep 10;
-	// Check if a snapshot exists
-	cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
-	if !(isNil "cgqc_snapshot_check") then {
-		//Notify the player
-		_team = cgqc_snapshot_check select 2;
-        _color = cgqc_snapshot_check select 3;
-		_role = cgqc_snapshot_check select 4;
-		_msg = format ["A copy of your saved loadout exists! <br/> --- Role:%1 in %2's %3 team --- <br/> Load Snapshot?", _role, _team, _color];
-		private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
-		if (_result) then {
-			[player, "load"] spawn CGQC_fnc_snapshot;
+// Setup default groups colors
+["HQ", [1.0, 0.38, 0, 1], [1.0, 0.38, 0, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
+["Spartan-1", [1.0, 0.5, 0.5, 1], [1.0, 0.5, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Spartan-2", [0.5, 0.5, 1.0, 1], [0.5, 0.5, 1.0, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Spartan-3", [0.5, 1.0, 0.5, 1], [0.5, 1.0, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+
+// Pause the AI if the config says so
+if (missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
+	[0, {
+		["pause", 0, ""] spawn CGQC_fnc_perksZeus
+	}] call CBA_fnc_globalExecute;
+	hint "AI Paused!";
+};
+
+// Show current phase initially
+[] spawn {
+	_phase = missionNamespace getVariable "CGQC_gamestate_current";
+	_phaseTxt = "";
+	switch (_phase) do {
+		case "training": {
+			_phaseTxt = "Training <br/> Have fun!";
+		};
+		case "staging": {
+			_phaseTxt = "Staging <br/> Get ready!";
+		};
+		case "mission": {
+			_phaseTxt = "Mission <br/> Here we go!";
 		};
 	};
+	sleep 20;
+	_text = format ["<br/><br/><br/><br/><br/><br/><t size='1' >Phase: %1</t>", _phaseTxt];
+	[_text, 5, 2] call CGQC_fnc_notifyAll;
+};
+
+sleep 10;
+// Check if a snapshot exists
+cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
+if !(isNil "cgqc_snapshot_check") then {
+	// Notify the player
+	_team = cgqc_snapshot_check select 2;
+	_color = cgqc_snapshot_check select 3;
+	_role = cgqc_snapshot_check select 4;
+	_msg = format ["A copy of your saved loadout exists! <br/> --- Role:%1 in %2's %3 team --- <br/> Load Snapshot?", _role, _team, _color];
+	private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
+	if (_result) then {
+		[player, "load"] spawn CGQC_fnc_snapshot;
+	};
+};
 };
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
