@@ -8,9 +8,9 @@ if !(["IsInitialized"] call BIS_fnc_dynamicGroups) then {
 };
 
 // Set some internal variables default state
-missionNamespace setVariable ["CGQC_gamestate_briefing", false];
-missionNamespace setVariable ["CGQC_gamestate_briefing_leaders", false];
-missionNamespace setVariable ["cgqc_state_briefing_full", false];
+missionNamespace setVariable ["CGQC_gamestate_briefing", false, true];
+missionNamespace setVariable ["CGQC_gamestate_briefing_leaders", false, true];
+missionNamespace setVariable ["cgqc_state_briefing_full", false, true];
 
 
 diag_log "[CGQC_PREINIT] === preInitServer done =====================================";
