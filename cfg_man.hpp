@@ -88,6 +88,15 @@ class CAManBase: Man {
 				runOnHover = "hint 'Designate as 2iC'";
 				distance = 3;
 			};
+			class cgqc_setTL {
+				displayName = "Designate: TeamLeader";
+				condition = "leader player == player || cgqc_player_isSL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				statement = "['TL', 'target'] spawn CGQC_fnc_setLeadership";
+				//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
+				icon = "";
+				runOnHover = "hint 'Designate as TeamLeader'";
+				distance = 3;
+			};
 			class cgqc_promotePlayer {
 				displayName = "Promote Player";
 				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
@@ -352,9 +361,32 @@ class CAManBase: Man {
 		class CGQC_Bandolier {
 			displayName = "Unpack: Ammo Bandolier";
 			condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
-			exceptions[] = {"isNotSwimming", "isNotSitting", "isNotInside"};
-			statement = "['ammo'] call CGQC_fnc_openBandolier";
+			exceptions[] = {"isNotSwimming"};
+			statement = "['ammo'] spawn CGQC_fnc_openBandolier";
+			icon = "\CGQC\textures\rearm.paa";
+			class CGQC_Bandolier_ressupply {
+				displayName = "Full Ressupply";
+				condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
+				statement = "['ammo'] spawn CGQC_fnc_openBandolier";
+				exceptions[] = {"isNotSwimming"};
+			};
+			class CGQC_Bandolier_mags_all {
+				displayName = "Just Mags: All";
+				condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
+				statement = "['all'] spawn CGQC_fnc_openBandolier";
+			};
+			class CGQC_Bandolier_mags_half {
+				displayName = "Just Mags: Half";
+				condition = "[player, 'cgqc_bandolier_ammo'] call BIS_fnc_hasItem";
+				statement = "['half'] spawn CGQC_fnc_openBandolier";
+			};
+		};
+		class CGQC_Bandolier_half {
+			displayName = "Unpack: Half Bandolier";
+			condition = "[player, 'cgqc_bandolier_ammo_half'] call BIS_fnc_hasItem";
+			statement = "['last_half'] spawn CGQC_fnc_openBandolier";
 			icon = "\CGQC\textures\rearm.paa";
 		};
+
 	};
 };

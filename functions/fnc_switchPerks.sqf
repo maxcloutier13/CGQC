@@ -183,11 +183,13 @@ switch (_type) do {
 		_action = [ "menu_self_camo_16", " Camo 16", "", {["face_3"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_camo_faces"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+		/*
 		// Shooting range
 		_action = [ "menu_self_range", "Shooting Range WIP", "", {
 			["spawn_range", true] spawn CGQC_fnc_perksBasic
-			}, {!cgqc_state_started || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 		_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		*/
 	};
 	default	{
 		diag_log "[CGQC_ERROR] switchPerks fail";

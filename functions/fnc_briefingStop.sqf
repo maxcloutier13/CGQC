@@ -9,7 +9,6 @@ if !(isNil "trgBrief_player_lowered") then {
 	};
 };
 _txt = parseText ("Briefing finished." + "<br/>" + "Volume/Voice restored.");
-cgqc_state_started = true;
 hintSilent _txt;
 sleep 5;
 hintSilent "";

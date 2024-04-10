@@ -39,6 +39,7 @@ CGQC_int_setSL = {
 CGQC_int_setTL = {
 	params ["_target"];
 	cgqc_player_isTL = true;
+	hint "Designated TeamLeader";
 };
 CGQC_int_set2IC = {
 	params ["_target"];

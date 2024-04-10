@@ -20,6 +20,13 @@ addMissionEventHandler ["HandleDisconnect", {
 	};
 };
 
+// Gamephase start
+if (cgqc_flag_isTraining) then {
+	["training"] call CGQC_fnc_gamestate;
+} else {
+	["staging"] call CGQC_fnc_gamestate;
+};
+
 cgqc_start_postInitServer_done = true;
 
 diag_log "[CGQC_PREINIT] === postInitServer started =====================================";

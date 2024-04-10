@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.11.4";
+core_version = "4.5.12.2";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_core", core_version, true]; // Set the server's mod version
@@ -77,13 +77,6 @@ cgqc_mission_dro = false;
 cgqc_mission_dro_ready = false;
 
 // *** GameState stuff *********************
-cgqc_state_pregame = true;
-cgqc_state_started = false;
-cgqc_state_briefing = false;
-cgqc_state_briefing_full = false;
-cgqc_state_briefing_leaders = false;
-cgqc_state_debrief = false;
-cgqc_state_end = false;
 cgqc_acre_defaultVolume = 0.4;
 cgqc_acre_defaultLevel = 0.25;
 cgqc_acre_previousVolume = 0;
@@ -166,7 +159,6 @@ cgqc_zeus_mapRestricted_txt_on = false;
 cgqc_zeus_god = false;
 cgqc_zeus_ghost = false;
 cgqc_zeus_attached = false;
-cgqc_zeus_paused = false;
 cgqc_blackout_player_on = false;
 
 // PAX System
@@ -460,11 +452,15 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_ch9", "EDITBOX", ["Channel 9:", "Nom affiché dans le jeux"],
     [_menu_name, "Radios"], "Zeus"] call CBA_fnc_addSetting;
 
+
+// Gamestate ===============================================================================================
+["cgqc_config_state_pause", "CHECKBOX",["Auto-Pause AI outside of mission", "Pauses the AI when mission is not running. Unpaused manually or at mission start"],
+[_menu_name, "GameState"], false, 1, {publicVariable "cgqc_config_state_pause"}, false] call CBA_fnc_addSetting;
 // Briefing  ===============================================================================================
 ["cgqc_setting_briefingCmd_area","SLIDER", ["Leaders's Briefing area size", "Square around the Zeus"],
-[_menu_name, "Briefing"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
+[_menu_name, "GameState"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_setting_briefing_area","SLIDER", ["Full Briefing area size", "Square around the Zeus"],
-[_menu_name, "Briefing"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
+[_menu_name, "GameState"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
 
 // Zeus radios ===============================================================================================
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"],
@@ -574,7 +570,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Ammo Bandoliers
 ["cgqc_config_ammo_primary", "SLIDER",["Primary mags", "Number in bandolier"],
-	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 6, 0], 1, {publicVariable "cgqc_config_ammo_primary"}, false] call CBA_fnc_addSetting;
+	[_menu_name, "Content: Ammo Bandolier"], [0, 25, 8, 0], 1, {publicVariable "cgqc_config_ammo_primary"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_ammo_refill", "CHECKBOX", ["Refill", "Refill handgun/throwables instead of adding more"],
 	[_menu_name, "Content: Ammo Bandolier"], true] call CBA_fnc_addSetting;
@@ -827,6 +823,17 @@ if (cgqc_config_sideLanguage) then {
 	};
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
+
+// Custom internal functions
+CGQC_int_allHumanPlayers = {
+	allPlayers select {!(_x isKindOf "VirtualMan_F")}
+};
+
+CGQC_int_allAI = {
+	_units = allUnits - ([] call CGQC_int_allHumanPlayers);
+	_units = _units - (entities "HeadlessClient_F");
+	_units;
+};
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;

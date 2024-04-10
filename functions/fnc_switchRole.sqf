@@ -87,9 +87,9 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
         [] call CGQC_fnc_setPatch;
 
          // Save a snapshot
-        if (_saveSnapshot) then {
+        /*if (_saveSnapshot) then {
             [player, "save"] spawn CGQC_fnc_snapshot;
-        };
+        };*/
 
         // Lower gun
         diag_log "[CGQC_FNC] switchRole - lower gun";

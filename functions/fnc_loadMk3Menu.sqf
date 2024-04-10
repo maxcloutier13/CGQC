@@ -632,14 +632,14 @@ if (hasInterface) then {
 			//IFAK
 			_action = [ "menu_items_ifak", "Kit: Individual First-AId", "", {["ifak"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
+			//Bandolier
+			_action = [ "menu_items_bandolier", "Bandolier: Ammo", "", {["bandolier"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Medikit
 			_action = [ "menu_items_medkit", "Kit: Medic Supply", "", {["medkit"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Kidnapping Kit
 			_action = [ "menu_items8", "Kidnaping Kit", "", {["kidnap"] call CGQC_fnc_getStuff}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			//Bandolier
-			_action = [ "menu_items_bandolier", "Bandolier: Ammo", "", {["bandolier"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			// Pistol mags
 			_action = [ "menu_items11", "2x Secondary mags", "", {["mags_secondary"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;

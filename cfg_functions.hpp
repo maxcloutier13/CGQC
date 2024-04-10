@@ -12,6 +12,22 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class notifyAll{
+            file = "\cgqc\functions\fnc_notifyAll.sqf";
+            description = "Handles global messages";
+        };
+        class gamestate{
+            file = "\cgqc\functions\fnc_gamestate.sqf";
+            description = "Handles the gamestate flow";
+        };
+        class fireteam{
+            file = "\cgqc\functions\fnc_fireteam.sqf";
+            description = "Handles the CGQC subgroups fireteam";
+        };
+        class listRadios{
+            file = "\cgqc\functions\fnc_listRadios.sqf";
+            description = "Returns a list of the unit radio and their settings";
+        };
         class snapshot{
             file = "\cgqc\functions\fnc_snapshot.sqf";
             description = "Handles saving and reloading of stuffs";
