@@ -6,11 +6,11 @@ diag_log format ["[CGQC_FNC] setTeamColors color:%1/Target:%2/Type:%3 started", 
 _targetId = owner _target;
 
 CGQC_int_setSingleColor = {
-	params ["_color"];
+	params ["_color", "NONE"];
 	if (_color isEqualTo "NONE") then {
 		diag_log "[CGQC_FNC] setTeamColors - Color not provided. Loading from variable";
 		_name = name player;
-		_color = player getVariable "CGQC_teamColor";
+		_color = player getVariable ["CGQC_teamColor", "MAIN"];
 		_team = assignedTeam player;
 		if (_color isNotEqualTo _team) then {
 			diag_log format ["[CGQC_FNC] setTeamColors Color wrong!: %1:%2/%3", _name, _color, _team];
