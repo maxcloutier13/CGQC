@@ -1,5 +1,30 @@
 // --- fireteam ----------------------------------------------------------
 // Handles the CGQC "subgroups" fireteam
+
+
+// Structure:
+// [_group, _groupName, _hq, _team1, _team2];
+//
+// _group = yeah. The whole group
+// _groupName = Full name
+// _hq[] = team HQ
+//     _lead = group leader
+//     _white[] = White team (HQ)
+// _team1[] = Fireteam 1
+//     _1-1[] = RED
+//          _tl = team leader
+//          _red[] = red team
+//     _1-2[] = GREEN
+//          _tl = team leader
+//          _green[] = grean team
+// _team2[] = Fireteam 2
+//     _2-1[] = BLUE
+//          _tl = team leader
+//          _blue[] = blue team
+//     _2-2[] = YELLOW
+//          _tl = team leader
+//          _yellow[] = red team
+
 params [["_target", player]];
 diag_log format ["[CGQC_FNC] fireteam %1 started", _target];
 
@@ -35,10 +60,12 @@ _lead = leader _target;
 _white = [_lead];
 // Fireteam 1
 _tl_1 = "";
+_2iC_1 = "";
 _red = [];
 _green = [];
 // Fireteam 2
 _tl_2 = "";
+_2iC_2 = "";
 _blue = [];
 _yellow = [];
 
@@ -61,10 +88,51 @@ _units = _units - [_lead];
     };
 } forEach units _group;
 
+// Find team 1 leader
+{
+    //152? You're the TL friend!
+    if ([_x, 'ACRE_PRC152'] call BIS_fnc_hasItem) then {
+        _tl_1 = _x;
+        _red = _red - [_x];
+        break;
+    };
+} forEach _red;
+
+{
+    //148? You're the 2iC  buddy!
+    if ([_x, 'ACRE_PRC148'] call BIS_fnc_hasItem) then {
+        _2iC_1 = _x;
+        _green = _green - [_x];
+    };
+} forEach _green;
+
+// Find team 2 leader
+{
+    //152? You're the TL friend!
+    if ([_x, 'ACRE_PRC152'] call BIS_fnc_hasItem) then {
+        _tl_2 = _x;
+        _blue = _blue - [_x];
+        break;
+    };
+} forEach _blue;
+
+{
+    //148? You're the 2iC  buddy!
+    if ([_x, 'ACRE_PRC148'] call BIS_fnc_hasItem) then {
+        _2iC_2 = _x;
+        _yellow = _yellow - [_x];
+    };
+} forEach _yellow;
+
 // Build the team arrays
 _hq = [_lead, _white];
-_team1 = [_tl_1, _red, _green];
-_team2 = [_tl_2, _blue, _yellow];
+_binome_1_1 = [_tl_1, _red];
+_binome_1_2 = [_2iC_1, _green];
+_binome_2_1 = [_tl_2, _blue];
+_binome_2_2 = [_2iC_2, _yellow];
+
+_team1 = [_binome_1_1, _binome_1_2];
+_team2 = [_binome_2_1, _binome_2_2];
 
 // Return that group shit
 [_group, _groupName, _hq, _team1, _team2];
