@@ -3,24 +3,24 @@
 params [["_target", player]];
 diag_log format ["[CGQC_FNC] fireteam %1 started", _target];
 
-CGQC_int_getFireteam = {
+CGQC_int_getFireteamNbr = {
     params [["_target", player]];
     // 0-HQ / 1/2 = fireteams
-    _team = 0;
+    _teamNbr = 0;
     _color = assignedTeam _target;
     switch (_color) do {
-        case "RED": {_team = 1};
-        case "GREEN": {_team = 1};
-        case "BLUE": {_team = 2};
-        case "YELLOW": {_team = 2};
+        case "RED": {_teamNbr = 1};
+        case "GREEN": {_teamNbr = 1};
+        case "BLUE": {_teamNbr = 2};
+        case "YELLOW": {_teamNbr = 2};
     };
-    _team;
+    _teamNbr;
 };
 
 CGQC_int_getFireteamName = {
      params [["_target", player]];
     _groupName = groupId group _target;
-    _team = [_target] call CGQC_int_getFireteam;
+    _team = [_target] call CGQC_int_getFireteamNbr;
     if (_team < 1) then {
         _team = "HQ";
     };
