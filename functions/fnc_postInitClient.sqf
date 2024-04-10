@@ -338,7 +338,8 @@ if (missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
 			_phaseTxt = "Mission <br/> Here we go!";
 		};
 	};
-	sleep 20;
+	waitUntil {sleep 0.5,cgqc_intro_done};
+	sleep 5;
 	_text = format ["<br/><br/><br/><br/><br/><br/><t size='1' >Phase: %1</t>", _phaseTxt];
 	[_text, 5, 2] call CGQC_fnc_notifyAll;
 };
