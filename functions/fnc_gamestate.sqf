@@ -40,11 +40,11 @@ switch (_type) do {
 	};
 	case "start": {
 		// Sets variables
-		missionNamespace setVariable ["CGQC_gamestate_staging", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_start", true];
-		missionNamespace setVariable ["CGQC_gamestate_mission_post", false];
-		missionNamespace setVariable ["CGQC_gamestate_training", false];
-		missionNamespace setVariable ["CGQC_gamestate_current", "mission"];
+		missionNamespace setVariable ["CGQC_gamestate_staging", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_start", true, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_post", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_training", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_current", "mission", true];
 		// Save "start" snapshot
 		[player, "save", "all", "start"] spawn CGQC_fnc_snapshot;
 		// Unpause the AI if they are paused
@@ -59,10 +59,10 @@ switch (_type) do {
 		[_text, 5, 2] call CGQC_fnc_notifyAll;
 	};
 	case "end": {
-		missionNamespace setVariable ["CGQC_gamestate_staging", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_start", false];
-		missionNamespace setVariable ["CGQC_gamestate_mission_post", true];
-		missionNamespace setVariable ["CGQC_gamestate_current", "end"];
+		missionNamespace setVariable ["CGQC_gamestate_staging", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_start", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_post", true, true];
+		missionNamespace setVariable ["CGQC_gamestate_current", "end", true];
 		// Pause the AI?
 		if !(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
 			[0, {

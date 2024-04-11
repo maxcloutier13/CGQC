@@ -7,7 +7,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 core_version = "4.5.12.5";
 
 if (isServer) then {
-	missionNamespace setVariable ["cgqc_version_server_core", core_version, true, true]; // Set the server's mod version
+	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
 };
 
 // CGQC Variables ===================================================================================================
