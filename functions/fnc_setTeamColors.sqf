@@ -4,9 +4,23 @@ params [["_color", "NONE"], ["_target", player], ["_type", "SINGLE"]];
 diag_log format ["[CGQC_FNC] setTeamColors color:%1/Target:%2/Type:%3 started", _color, _target, _type];
 
 _targetId = owner _target;
+_players =  [] call CGQC_int_allHumanPlayers;
+switch (_type) do {
+	case "AUTO";
+	case "SINGLE": {
+		[_color] remoteExec ['CGQC_int_setSingleColor', _targetId];
+	};
+	case "ALL": {
+		{
+			["NONE"] remoteExec ['CGQC_int_setSingleColor', _targetId];
+		} forEach _players;
+	};
+};
+
+diag_log "[CGQC_FNC] setTeamColors done";
 
 CGQC_int_setSingleColor = {
-	params ["_color", "NONE"];
+	params [["_color", "NONE"]];
 	if (_color isEqualTo "NONE") then {
 		diag_log "[CGQC_FNC] setTeamColors - Color not provided. Loading from variable";
 		_name = name player;
@@ -27,18 +41,3 @@ CGQC_int_setSingleColor = {
 		player setVariable ["CGQC_teamColor", _color, true];
 	};
 };
-
-
-switch (_type) do {
-	case "AUTO";
-	case "SINGLE": {
-		[_color] remoteExec ['CGQC_int_setSingleColor', _targetId];
-	};
-	case "ALL": {
-		{
-			["NONE"] remoteExec ['CGQC_int_setSingleColor', _targetId];
-		} forEach [] call CGQC_int_allHumanPlayers;
-	};
-};
-
-diag_log "[CGQC_FNC] setTeamColors done";
