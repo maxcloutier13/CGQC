@@ -11,9 +11,17 @@ player setVariable ["cgqc_version_core", core_version, true]; // Set the client'
 // Quick version check and login message
 _checkVersion = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 _name = name player;
-_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, cgqc_version_core, _checkVersion];
-[_msg] remoteExec ["systemChat", 0];
+//_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, core_version, _checkVersion];
+//[_msg] remoteExec ["systemChat", 0];
 diag_log "[CGQC_INIT] ===" + _msg;
+
+// Popup if version mismatch
+_msg = format ["Mod version mismatch! <br/> --- Tes mods:%1 | Le serveur:%2 <br/> Ferme le jeux pis sync Swifty <br/> Sync ton swifty avant de partir le jeux!", core_version, _checkVersion];
+private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
+if (_result) then {
+	[player, "load"] spawn CGQC_fnc_snapshot;
+};
+
 /*
 // set language and radio channels
 	["side"] call CGQC_fnc_setACRE;
