@@ -3,6 +3,9 @@
 params ["_groupName", ["_color", "MAIN"], ["_side", west]];
 diag_log format ["[CGQC_FNC] joinGroup %1", _groupName];
 
+waitUntil {!isNull player};
+waitUntil {time > 0};
+
 n_targetGroup = nil;
 _allGroups = ["GetAllGroups"] call BIS_fnc_dynamicGroups;
 {
