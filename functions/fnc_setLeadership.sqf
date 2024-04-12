@@ -45,5 +45,5 @@ CGQC_int_set2IC = {
 	params ["_target"];
 	cgqc_player_is2IC = true;
 	hint "Designated 2iC";
-	_target addItem "ACRE_PRC148";
+	_target addItem "ACRE_PRC152";
 };
