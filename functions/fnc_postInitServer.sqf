@@ -12,13 +12,15 @@ addMissionEventHandler ["HandleDisconnect", {
 }];
 
 // Fix for dropped teamcolors
+/*
 [] spawn {
+	sleep 300;
 	while {true} do {
 		sleep cgqc_player_teamcolor_delay;
 		['NONE', player, 'ALL'] call CGQC_fnc_setTeamColors;
 		diag_log "TeamColors Reset";
 	};
-};
+};*/
 
 // Gamephase start
 if (cgqc_flag_isTraining) then {

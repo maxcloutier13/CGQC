@@ -8,7 +8,7 @@ if (jib_restrictmarkers_enabled) then {
 	if (!cgqc_zeus_mapRestricted_txt_on && cgqc_intro_done) then {
 		if (vehicle player == player) then {
 			//Get list of players within 5m
-			if ((missionNamespace getVariable "CGQC_gamestate_briefing") || !cgqc_zeus_mapRestricted) then {
+			if ((missionNamespace getVariable "CGQC_gamestate_1_briefing") || !cgqc_zeus_mapRestricted) then {
 				//Everyone sees your map.
 				cgqc_zeus_mapRestricted_txt = parseText ("Map is shared"  + "<br/>" + "with everyone");
 			}else{
