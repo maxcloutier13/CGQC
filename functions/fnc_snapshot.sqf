@@ -28,7 +28,7 @@ switch (_scope) do {
                 //Color
                 _color = _target getVariable "CGQC_teamColor";
                 //Role
-                _role = _target getVariable "cgqc_player_role_type";
+                _role = _target getVariable "cgqc_player_role";
                 // Equipment
                 _helmet = headgear _target;
                 _goggles = goggles _target;
