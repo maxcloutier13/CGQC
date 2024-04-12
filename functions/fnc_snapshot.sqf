@@ -153,7 +153,7 @@ switch (_scope) do {
                         _speaker = _settings select 4;
                         [_x, _chan] call acre_api_fnc_setRadioChannel;
                         [_x, _side] call acre_api_fnc_setRadioSpatial;
-                        [_x, _chan] call acre_api_fnc_setRadioVolume;
+                        [_x, _vol] call acre_api_fnc_setRadioVolume;
                         _id = _id + 1;
                     } forEach _radios;
                     // Set radios PTT
