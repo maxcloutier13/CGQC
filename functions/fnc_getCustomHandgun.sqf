@@ -32,7 +32,7 @@ if (cgqc_config_sidearm) then {
 _magHandgun = (handgunMagazine player) select 0;
 _nbr = 2;
 if (isNil "_magHandgun") then {
-		diag_log "[CGQC_ERROR] addMags - can't ID mags";
+		diag_log "[CGQC_ERROR] getCustomHandgun - can't ID mags";
 } else {
 	// Make sure there is at least one mag...
 	if (count _magHandgun > 0) then {
