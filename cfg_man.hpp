@@ -63,7 +63,7 @@ class CAManBase: Man {
 				distance = 3;
 			};
 			class cgqc_promotePlayer {
-				displayName = "Promote Player";
+				displayName = "Promote Player - Rank+1";
 				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "['target'] spawn CGQC_fnc_promotePlayer;hint 'target promoted'";
 				icon = "";

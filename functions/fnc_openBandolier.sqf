@@ -98,7 +98,7 @@ switch (_type) do {
 					};
 				};
 				diag_log format ["[CGQC_FNC] openBandolier Adding %1 primary mags", _addMags];
-				[ACE_player, "vest", _primaryMag, _addMags] call cgqc_fnc_addItemWithOverflow;
+				["vest", _primaryMag, _addMags] call cgqc_fnc_addItemWithOverflow;
 				_primaryMagCount = _addMags;
 			} else {
 				hint "No primary weapon!";
@@ -113,7 +113,7 @@ switch (_type) do {
 					// hint format ["HandgunMag: %1", _handgunMag];
 					_handgunAdd = cgqc_config_sidearm_mag_nbr - _handgunMags;
 					diag_log format ["[CGQC_FNC] openBandolier Adding %1/%2 handgun mags", _handgunAdd, _handgunMag];
-					[ACE_player, "vest", _handgunMag, _handgunAdd] call cgqc_fnc_addItemWithOverflow;
+					["vest", _handgunMag, _handgunAdd] call cgqc_fnc_addItemWithOverflow;
 					_handMagCount = _handgunAdd;
 				} else {
 					hint "No Secondary weapon!";
@@ -135,13 +135,13 @@ switch (_type) do {
 				};
 				diag_log format ["[CGQC_FNC] openBandolier Refill %1/%2/%3", _nadeAdd, _smokeAdd, _flashAdd];
 
-				[ACE_player, "vest", cgqc_config_ammo_nade_type, _nadeAdd] call cgqc_fnc_addItemWithOverflow;
+				["vest", cgqc_config_ammo_nade_type, _nadeAdd] call cgqc_fnc_addItemWithOverflow;
 				_nadeCount = _nadeAdd;
 
-				[ACE_player, "vest", cgqc_config_ammo_smoke_type, _smokeAdd] call cgqc_fnc_addItemWithOverflow;
+				["vest", cgqc_config_ammo_smoke_type, _smokeAdd] call cgqc_fnc_addItemWithOverflow;
 				_smokeCount = _smokeAdd;
 
-				[ACE_player, "vest", cgqc_config_ammo_flash_type, _flashAdd] call cgqc_fnc_addItemWithOverflow;
+				["vest", cgqc_config_ammo_flash_type, _flashAdd] call cgqc_fnc_addItemWithOverflow;
 				_nadeFlashCount = _nadeFlashCount +1;
 			} else {
 				diag_log "[CGQC_FNC] openBandolier Config in Additional item mode";
@@ -149,7 +149,7 @@ switch (_type) do {
 				if !(isNil "_handgunMag") then {
 					diag_log format ["[CGQC_FNC] openBandolier Adding %1/%2 handgun mags", cgqc_config_ammo_handgun, _handgunMag];
 					// hint format ["HandgunMag: %1", _handgunMag];
-					[ACE_player, "uniform", _handgunMag, cgqc_config_ammo_handgun] call cgqc_fnc_addItemWithOverflow;
+					["uniform", _handgunMag, cgqc_config_ammo_handgun] call cgqc_fnc_addItemWithOverflow;
 					_handMagCount = cgqc_config_ammo_handgun;
 				} else {
 					hint "No Secondary weapon!";
@@ -159,13 +159,13 @@ switch (_type) do {
 				diag_log format ["[CGQC_FNC] openBandolier AddNades %1/%2/%3", cgqc_config_ammo_nade, cgqc_config_ammo_flash, cgqc_config_ammo_smoke];
 
 				// Refill throwables
-				[ACE_player, "vest", cgqc_config_ammo_nade_type, cgqc_config_ammo_nade] call cgqc_fnc_addItemWithOverflow;
+				["vest", cgqc_config_ammo_nade_type, cgqc_config_ammo_nade] call cgqc_fnc_addItemWithOverflow;
 				_nadeCount = cgqc_config_ammo_nade;
 
-				[ACE_player, "vest", cgqc_config_ammo_flash_type, cgqc_config_ammo_flash] call cgqc_fnc_addItemWithOverflow;
+				["vest", cgqc_config_ammo_flash_type, cgqc_config_ammo_flash] call cgqc_fnc_addItemWithOverflow;
 				_nadeFlashCount = cgqc_config_ammo_flash;
 
-				[ACE_player, "vest", cgqc_config_ammo_smoke_type, cgqc_config_ammo_smoke] call cgqc_fnc_addItemWithOverflow;
+				["vest", cgqc_config_ammo_smoke_type, cgqc_config_ammo_smoke] call cgqc_fnc_addItemWithOverflow;
 				_smokeCount = cgqc_config_ammo_smoke;
 			};
 			   // Prep Message
@@ -210,7 +210,7 @@ switch (_type) do {
 			// do stuff
 			_primaryMag = (primaryWeaponMagazine ACE_player) select 0;
 			_primaryMagCount = cgqc_config_ammo_primary;
-			[ACE_player, "vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
+			["vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
 			[ACE_player, "cgqc_bandolier_ammo"] call ace_common_fnc_useItem;
 			diag_log "[CGQC_FNC] openBandolier - Grabbed all mags";
 			_text = parseText format [
@@ -235,9 +235,9 @@ switch (_type) do {
 			// do stuff
 			_primaryMag = (primaryWeaponMagazine ACE_player) select 0;
 			_primaryMagCount = cgqc_config_ammo_primary / 2;
-			[ACE_player, "vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
+			["vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
 			[ACE_player, "cgqc_bandolier_ammo"] call ace_common_fnc_useItem;
-			[ACE_player, "vest", "cgqc_bandolier_ammo_half", 1] call cgqc_fnc_addItemWithOverflow;
+			["vest", "cgqc_bandolier_ammo_half", 1] call cgqc_fnc_addItemWithOverflow;
 			diag_log "[CGQC_FNC] openBandolier - Grabbed half the mags and stripped the bandolier";
 			_text = parseText format [
 				"<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-- Ammo Bandolier unpacked --<br/>" +
@@ -260,7 +260,7 @@ switch (_type) do {
 		[5, [], {
 			_primaryMag = (primaryWeaponMagazine ACE_player) select 0;
 			_primaryMagCount = cgqc_config_ammo_primary / 2;
-			[ACE_player, "vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
+			["vest", _primaryMag, _primaryMagCount] call cgqc_fnc_addItemWithOverflow;
 			[ACE_player, "cgqc_bandolier_ammo_half"] call ace_common_fnc_useItem;
 			diag_log "[CGQC_FNC] openBandolier - Used up the last half of the stripped bandolier";
 			_text = parseText format [

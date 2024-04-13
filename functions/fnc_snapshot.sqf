@@ -140,7 +140,7 @@ switch (_scope) do {
                     {
                         _type = _x select 0;
                         // Add radio
-                        [_target, "uniform", _type, 1] call CGQC_fnc_addItemWithOverflow;
+                        _target addItemToUniform _type;
                     } forEach _entry_radios;
                     // entry = [_entry_type, _entry_chan, _entry_side, _entry_vol, _entry_speaker]
                     _id = 0;
