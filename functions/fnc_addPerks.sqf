@@ -164,7 +164,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"
 
 
 // Signals =========================================================================================================
-_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {""}, {cgqc_perks_chems > 0} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {""}, {cgqc_perks_chems > 0 && cgqc_config_signals} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Criquet
 _action = ["menu_self_criquet", "Criquet", "CGQC\textures\cgqc_ace_cricket", {["click", false] spawn CGQC_fnc_perksBasic;}, {true}] call ace_interact_menu_fnc_createAction;

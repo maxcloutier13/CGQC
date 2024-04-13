@@ -468,6 +468,9 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_config_fix_colorFix_timer","SLIDER", ["Auto-reload colors - Timer", "Delay between checks"],
 [_menu_name, "Fixes"], [5, 600, 30, 0]] call CBA_fnc_addSetting;
 
+["cgqc_config_signals", "CHECKBOX",["Signals perk available", "Lets player spawn smoke/flare/chemlights"],
+[_menu_name, "Option Toggles"], true, 1, {}, false] call CBA_fnc_addSetting;
+
 // Zeus radios ===============================================================================================
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"],
 [_menu_name, "Option Toggles"], false, 1, {}, false] call CBA_fnc_addSetting;

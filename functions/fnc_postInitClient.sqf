@@ -7,7 +7,7 @@ cgqc_player_side = side player;
 
 // set version variable
 player setVariable ["cgqc_version_core", core_version, true]; // Set the client's mod version
-// Get server versio
+// get server versio
 _checkVersion = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 
 _name = name player;
@@ -22,7 +22,6 @@ if (core_version isNotEqualTo _checkVersion) then {
 	if (_result) then {
 		[player, "load"] spawn CGQC_fnc_snapshot;
 	};
-
 } else {
 	hint "Mods up to date. Good job. "
 };
@@ -76,156 +75,147 @@ if !(cgqc_mission_dro) then {
 // get some player info
 cgqc_player_name = name player;
 cgqc_player_steamid = getPlayerUID player;
-// cgqc_player_steamid isEqualTo "76561198024730191" ||
-if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isEqualTo "76561198089396393") then {
-	waitUntil {
-		!isNull (findDisplay 46)
+cgqc_player_steamName = profileNameSteam;
+cgqc_perks_basic = true;
+cgqc_player_face = face player;
+
+// Check if dayTime
+[] call CGQC_fnc_isDaytime;
+
+// ID player and find patch
+_rank = [] call CGQC_fnc_findRank;
+_patch = [] call CGQC_fnc_findPatch;
+_beret = [] call CGQC_fnc_getRankedBeret;
+
+// set and keep patch
+_set = [] call CGQC_fnc_setPatch;
+
+// Dynamic group -------------------------------------------------------------------------------------------------
+// ['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
+cgqc_player_group = group player;
+cgqc_player_groupID = groupId player;
+
+// Briefing entry -------------------------------------------------------------------------------------------------
+_brief = [] call CGQC_fnc_loadDiary;
+
+if (cgqc_player_loadAll) then {
+	// Init arsenal ---------------------------------------------------------------------------------------------------
+	if (cgqc_player_has2023) then {
+		cgqc_mk2_arsenal_1 = [];
+		cgqc_mk2_arsenal_2 = [];
+		cgqc_mk2_arsenal_3 = [];
+		cgqc_mk2_arsenal_4 = [];
+		cgqc_mk2_arsenal_5 = [];
+		cgqc_mk2_arsenal_8 = [];
+		// Prep les variables de l'arsenal dynamique
+		#include "\cgqc\loadouts\2023\arsenal\init_arsenal.sqf";
+		cgqc_2023_arsenal_init_done = true;
 	};
-	_text = "<br/><br/><br/>Bye!<br/>
+	if (cgqc_player_hasUnsung) then {
+		cgqc_unsung_arsenal_1 = [];
+		cgqc_unsung_arsenal_8 = [];
+		#include "\cgqc\loadouts\unsung\all_items.hpp";
+		cgqc_unsung_arsenal_8 = cgqc_unsung_arsenal_all;
+		cgqc_unsung_arsenal_init_done = true;
+	};
+	if (cgqc_player_hasIfa3) then {
+		cgqc_ifa3_arsenal_1 = [];
+		cgqc_ifa3_arsenal_8 = [];
+		#include "\cgqc\loadouts\ifa3\all_items.hpp";
+		cgqc_ifa3_arsenal_8 = cgqc_ifa3_arsenal_all;
+		cgqc_ifa3_arsenal_init_done = true;
+	};
+	if (cgqc_player_hasNorthern) then {
+		cgqc_northern_arsenal_1 = [];
+		cgqc_northern_arsenal_8 = [];
+		#include "\cgqc\loadouts\northern\all_items.hpp";
+		cgqc_northern_arsenal_8 = cgqc_northern_arsenal_all;
+		cgqc_northern_arsenal_init_done = true;
+	};
+
+	// Event Handers -----------------------------------------------------------------------
+	// On map click (_pos, _units, _shift, _alt)
+	onMapSingleClick "call CGQC_fnc_mapShareList;
+	false;
 	";
-	[_text, 0, 0, 50, 2] spawn BIS_fnc_dynamicText;
-	disableUserInput true;
-} else {
-	cgqc_player_steamName = profileNameSteam;
-	cgqc_perks_basic = true;
-	cgqc_player_face = face player;
 
-	// Check if dayTime
-	[] call CGQC_fnc_isDaytime;
+	// Maximum mags event handler
+	["ace_arsenal_displayClosed", {
+		[] call CGQC_fnc_maxMags;
+		[player, true] call ace_arsenal_fnc_removeBox;
+		// Save player loadout
+		// [player, "save"] spawn CGQC_fnc_snapshot;
+	}] call CBA_fnc_addEventHandler;
 
-	// ID player and find patch
-	_rank = [] call CGQC_fnc_findRank;
-	_patch = [] call CGQC_fnc_findPatch;
-	_beret = [] call CGQC_fnc_getRankedBeret;
-
-	// set and keep patch
-	_set = [] call CGQC_fnc_setPatch;
-
-	// Dynamic group -------------------------------------------------------------------------------------------------
-	// ['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
-	cgqc_player_group = group player;
-	cgqc_player_groupID = groupId player;
-
-	// Briefing entry -------------------------------------------------------------------------------------------------
-	_brief = [] call CGQC_fnc_loadDiary;
-
-	if (cgqc_player_loadAll) then {
-		// Init arsenal ---------------------------------------------------------------------------------------------------
-		if (cgqc_player_has2023) then {
-			cgqc_mk2_arsenal_1 = [];
-			cgqc_mk2_arsenal_2 = [];
-			cgqc_mk2_arsenal_3 = [];
-			cgqc_mk2_arsenal_4 = [];
-			cgqc_mk2_arsenal_5 = [];
-			cgqc_mk2_arsenal_8 = [];
-			// Prep les variables de l'arsenal dynamique
-			#include "\cgqc\loadouts\2023\arsenal\init_arsenal.sqf";
-			cgqc_2023_arsenal_init_done = true;
-		};
-		if (cgqc_player_hasUnsung) then {
-			cgqc_unsung_arsenal_1 = [];
-			cgqc_unsung_arsenal_8 = [];
-			#include "\cgqc\loadouts\unsung\all_items.hpp";
-			cgqc_unsung_arsenal_8 = cgqc_unsung_arsenal_all;
-			cgqc_unsung_arsenal_init_done = true;
-		};
-		if (cgqc_player_hasIfa3) then {
-			cgqc_ifa3_arsenal_1 = [];
-			cgqc_ifa3_arsenal_8 = [];
-			#include "\cgqc\loadouts\ifa3\all_items.hpp";
-			cgqc_ifa3_arsenal_8 = cgqc_ifa3_arsenal_all;
-			cgqc_ifa3_arsenal_init_done = true;
-		};
-		if (cgqc_player_hasNorthern) then {
-			cgqc_northern_arsenal_1 = [];
-			cgqc_northern_arsenal_8 = [];
-			#include "\cgqc\loadouts\northern\all_items.hpp";
-			cgqc_northern_arsenal_8 = cgqc_northern_arsenal_all;
-			cgqc_northern_arsenal_init_done = true;
-		};
-
-		// Event Handers -----------------------------------------------------------------------
-		// On map click (_pos, _units, _shift, _alt)
-		onMapSingleClick "call CGQC_fnc_mapShareList;
-		false;";
-
-		// Maximum mags event handler
-		["ace_arsenal_displayClosed", {
-			[] call CGQC_fnc_maxMags;
-			[player, true] call ace_arsenal_fnc_removeBox;
-			// Save player loadout
-			// [player, "save"] spawn CGQC_fnc_snapshot;
-		}] call CBA_fnc_addEventHandler;
-
-		// Unconcious event
-		["ace_unconscious", {
-			params ["_unit", "_isUnconscious"];
-			[] call setTeamColorReload;
-			if (_isUnconscious) then {
-				playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
-				_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
-				[0.2] call acre_api_fnc_setGlobalVolume;
-				diag_log "[CGQC_FNC] Unconscious - Lowered volume";
-			}else {
-				// Set volume back
-				_vol = _unit getVariable "cgqc_player_wakeup_volume";
-				[_vol] call acre_api_fnc_setGlobalVolume;
-				diag_log "[CGQC_FNC] Unconscious - Volume restored";
-			};
-		}] call CBA_fnc_addEventHandler;
-	};
-
-	// ------ Fortify --------------------------------------------------------------------------------------
-	if (cgqc_config_fortify) then {
-		fortify_list = format [
-			"[
-				['%1', 0],
-				['%2', 0],
-				['%3', 0],
-				['%4', 0],
-				['%5', 0],
-				['%6', 0],
-				['%7', 0],
-				['%8', 0],
-				['%9', 0],
-				['%10', 0]
-			]",
-			cgqc_config_fortify_1,
-			cgqc_config_fortify_2,
-			cgqc_config_fortify_3,
-			cgqc_config_fortify_4,
-			cgqc_config_fortify_5,
-			cgqc_config_fortify_6,
-			cgqc_config_fortify_7,
-			cgqc_config_fortify_8,
-			cgqc_config_fortify_9,
-			cgqc_config_fortify_10
-		];
-		cgqc_config_fortify_list = parseSimpleArray fortify_list;
-		[west, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
-		[east, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
-		[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
-	};
-
-	// switch beret to ready when getting inside vehicle
-	player addEventHandler ["GetInMan", {
-		params ["_unit", "_role", "_vehicle", "_turret"];
-		["ready", false] call CGQC_fnc_perksBasic;
-	}];
-
-	// Friendly fire fix - Prevent AI from shooting back
-	player addEventHandler [ "HandleRating", {
-		params["_player", "_rating"];
-		_return = _rating;
-		if (rating _player < 0) then {
-			_return = abs rating _player;
+	// Unconcious event
+	["ace_unconscious", {
+		params ["_unit", "_isUnconscious"];
+		[] call setTeamColorReload;
+		if (_isUnconscious) then {
+			playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
+			_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
+			[0.2] call acre_api_fnc_setGlobalVolume;
+			diag_log "[CGQC_FNC] Unconscious - Lowered volume";
 		} else {
-			if (_rating + rating _player < 0) then {
-				_return = 0;
-			};
+			// set volume back
+			_vol = _unit getVariable "cgqc_player_wakeup_volume";
+			[_vol] call acre_api_fnc_setGlobalVolume;
+			diag_log "[CGQC_FNC] Unconscious - Volume restored";
 		};
-		_return
-	}
+	}] call CBA_fnc_addEventHandler;
+};
+
+// ------ Fortify --------------------------------------------------------------------------------------
+if (cgqc_config_fortify) then {
+	fortify_list = format [
+		"[
+			['%1', 0],
+			['%2', 0],
+			['%3', 0],
+			['%4', 0],
+			['%5', 0],
+			['%6', 0],
+			['%7', 0],
+			['%8', 0],
+			['%9', 0],
+			['%10', 0]
+		]",
+		cgqc_config_fortify_1,
+		cgqc_config_fortify_2,
+		cgqc_config_fortify_3,
+		cgqc_config_fortify_4,
+		cgqc_config_fortify_5,
+		cgqc_config_fortify_6,
+		cgqc_config_fortify_7,
+		cgqc_config_fortify_8,
+		cgqc_config_fortify_9,
+		cgqc_config_fortify_10
+	];
+	cgqc_config_fortify_list = parseSimpleArray fortify_list;
+	[west, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+	[east, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+	[resistance, 0, cgqc_config_fortify_list] call ace_fortify_fnc_registerObjects;
+};
+
+// switch beret to ready when getting inside vehicle
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+	["ready", false] call CGQC_fnc_perksBasic;
+}];
+
+// Friendly fire fix - Prevent AI from shooting back
+player addEventHandler [ "HandleRating", {
+	params["_player", "_rating"];
+	_return = _rating;
+	if (rating _player < 0) then {
+		_return = abs rating _player;
+	} else {
+		if (_rating + rating _player < 0) then {
+			_return = 0;
+		};
+	};
+	_return
+}
 ];
 
 // Whisper/Yelling event
@@ -343,10 +333,9 @@ if (cgqc_config_state_pause) then {
 	hint "AI Paused!";
 };
 
-
 // Fix for dropped teamcolors
 [] spawn {
-	while {true} do {
+	while { true } do {
 		sleep cgqc_config_fix_colorFix_timer;
 		if (cgqc_config_fix_colorFix) then {
 			[] call CGQC_fnc_setTeamColorReload;
@@ -373,7 +362,9 @@ if (cgqc_config_state_pause) then {
 			_phaseTxt = "Here we go!";
 		};
 	};
-	waitUntil {sleep 0.5,cgqc_intro_done};
+	waitUntil {
+		sleep 0.5, cgqc_intro_done
+	};
 	sleep 5;
 	[_phaseName, 5, 2, "phase_msg", _phaseTxt] call CGQC_fnc_notifyAll;
 };
