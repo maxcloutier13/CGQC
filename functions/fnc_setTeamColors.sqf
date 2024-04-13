@@ -1,17 +1,21 @@
 // --- setTeamColors ----------------------------------------------------------
 // set player default team colors
 params [["_color", "NONE"], ["_target", player], ["_type", "SINGLE"], ["_delay", 0]];
-diag_log format ["[CGQC_FNC] setTeamColors color:%1/Target:%2/Type:%3 started", _color, _target, _type];
+diag_log format ["[CGQC_FNC] setTeamColors color:%1/Target:%2/Type:%3/Delay:%4 started", _color, _target, _type, _delay];
 
-_targetId = owner _target;
-_players =  [] call CGQC_int_allHumanPlayers;
+
+
 switch (_type) do {
-	case "AUTO";
 	case "SINGLE": {
+		diag_log "[CGQC_FNC] setTeamColors SingleMode running";
+		_targetId = owner _target;
 		[_color,  _delay] remoteExec ['CGQC_int_setSingleColor', _targetId];
 	};
 	case "ALL": {
+		_players =  [] call CGQC_int_allHumanPlayers;
+		diag_log "[CGQC_FNC] setTeamColors AllMode running";
 		{
+			_targetId = owner _x;
 			["NONE",  _delay] remoteExec ['CGQC_int_setSingleColor', _targetId];
 		} forEach _players;
 	};
@@ -27,13 +31,13 @@ CGQC_int_setSingleColor = {
 		if (_color isEqualTo "NONE") then {
 			diag_log "[CGQC_FNC] setTeamColors - Color not provided. Loading from variable";
 			_name = name player;
-			_color = player getVariable ["CGQC_teamColor", "MAIN"];
+			_color = player getVariable ["CGQC_player_teamColor", "MAIN"];
 			_team = assignedTeam player;
 			if (_color isNotEqualTo _team) then {
 				diag_log format ["[CGQC_FNC] setTeamColors Color wrong!: %1:%2/%3", _name, _color, _team];
 				hint "TeamColor wrong? Restoring";
 				player assignTeam _color;
-				player setVariable ["CGQC_teamColor", _color, true];
+				player setVariable ["CGQC_player_teamColor", _color, true];
 				diag_log "[CGQC_FNC] setTeamColors - Color reset.";
 			} else {
 				diag_log format ["[CGQC_FNC] setTeamColors Color match. Skipping: %1", _name];
@@ -41,7 +45,7 @@ CGQC_int_setSingleColor = {
 		} else {
 			diag_log "[CGQC_FNC] setTeamColors - Color provided. Setting up.";
 			player assignTeam _color;
-			player setVariable ["CGQC_teamColor", _color, true];
+			player setVariable ["CGQC_player_teamColor", _color, true];
 		};
 	};
 };

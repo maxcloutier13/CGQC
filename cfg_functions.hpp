@@ -48,9 +48,17 @@ class CGQC {
             file = "\cgqc\functions\fnc_setLeadership.sqf";
             description = "Set leadership level of player";
         };
-        class setTeamColors{
-            file = "\cgqc\functions\fnc_setTeamColors.sqf";
-            description = "Auto set team colors";
+        class setTeamColorReloadAll{
+            file = "\cgqc\functions\fnc_setTeamColorReloadAll.sqf";
+            description = "Reload all colors";
+        };
+        class setTeamColorReload{
+            file = "\cgqc\functions\fnc_setTeamColorReload.sqf";
+            description = "Reload colors";
+        };
+        class setTeamColor{
+            file = "\cgqc\functions\fnc_setTeamColor.sqf";
+            description = "Set team color";
         };
         class loadDiaryRoster{
             file = "\cgqc\functions\fnc_loadDiaryRoster.sqf";

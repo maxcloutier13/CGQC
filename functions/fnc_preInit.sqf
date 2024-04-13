@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.12.14";
+core_version = "4.5.13";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -44,7 +44,7 @@ cgqc_player_isTL = false;
 cgqc_player_is2IC = false;
 cgqc_player_role = "Unknown";
 player setVariable ["cgqc_player_role", cgqc_player_role, true];
-player setVariable ["CGQC_teamColor", "MAIN", true];
+player setVariable ["CGQC_player_teamColor", "MAIN", true];
 cgqc_player_roleType = "";
 cgqc_player_beret = "";
 cgqc_player_beret_name = "";
