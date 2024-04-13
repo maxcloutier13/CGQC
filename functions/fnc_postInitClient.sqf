@@ -343,6 +343,17 @@ if (cgqc_config_state_pause) then {
 	hint "AI Paused!";
 };
 
+
+// Fix for dropped teamcolors
+[] spawn {
+	while {true} do {
+		sleep cgqc_config_fix_colorFix_timer;
+		if (cgqc_config_fix_colorFix) then {
+			[] call CGQC_fnc_setTeamColorReload;
+		};
+	};
+};
+
 // Show current phase initially
 [] spawn {
 	_phase = missionNamespace getVariable "CGQC_gamestate_current";
@@ -381,5 +392,5 @@ if !(isNil "cgqc_snapshot_check") then {
 		[player, "load"] spawn CGQC_fnc_snapshot;
 	};
 };
-};
+
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
