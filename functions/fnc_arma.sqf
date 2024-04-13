@@ -1,6 +1,6 @@
 // --- arma ----------------------------------------------------------
 // Functions to deal with debug/mulligans
-params ["_type", ["_target", player]];
+params [["_type", "heal"]];
 diag_log format ["[CGQC_FNC] arma %1:%2 started", _type, _target];
 
 switch (_type) do {

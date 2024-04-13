@@ -7,10 +7,7 @@ if !(["IsInitialized"] call BIS_fnc_dynamicGroups) then {
 	["Initialize", [true, 20, false, "cgqc_patch_logo"]] call BIS_fnc_dynamicGroups;
 };
 
-// Set some internal variables default state
-missionNamespace setVariable ["CGQC_gamestate_briefing", false];
-missionNamespace setVariable ["CGQC_gamestate_briefing_leaders", false];
-missionNamespace setVariable ["cgqc_state_briefing_full", false];
-
+// Initialize gamestate variables
+["init"] call CGQC_fnc_gamestate;
 
 diag_log "[CGQC_PREINIT] === preInitServer done =====================================";

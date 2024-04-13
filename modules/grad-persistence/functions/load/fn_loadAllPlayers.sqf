@@ -7,7 +7,7 @@ params [
     ["_savePlayerMoney",([missionConfigFile >> "CfgGradPersistence", "savePlayerMoney", 1] call BIS_fnc_returnConfigEntry) == 1]
 ];
 
-_allPlayers = [] call CGQC_int_allHumanPlayers select {_x isKindOf "Man"};
+_allPlayers = [] call allPlayers select {_x isKindOf "Man"};
 
 {
     [_x,_savePlayerInventory,_savePlayerDamage,_savePlayerPosition,_savePlayerMoney] call grad_persistence_fnc_loadPlayer;

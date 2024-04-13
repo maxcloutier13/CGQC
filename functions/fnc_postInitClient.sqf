@@ -7,13 +7,26 @@ cgqc_player_side = side player;
 
 // set version variable
 player setVariable ["cgqc_version_core", core_version, true]; // Set the client's mod version
+// Get server versio
+_checkVersion = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 
-// Quick version check and login message
-_checkVersion = missionNamespace getVariable ["cgqc_version_core", "ERROR"];
 _name = name player;
-_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, cgqc_version_core, _checkVersion];
+_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, core_version, _checkVersion];
 [_msg] remoteExec ["systemChat", 0];
 diag_log "[CGQC_INIT] ===" + _msg;
+
+if (core_version isNotEqualTo _checkVersion) then {
+	// Popup if version mismatch
+	_msg = format ["Mod version mismatch! <br/> -- Tes mods:%1<br/> -Serveur:%2 <br/> Ferme le jeux pis sync Swifty <br/>ALWAYS Sync ton swifty avant de partir le jeux!", core_version, _checkVersion];
+	private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
+	if (_result) then {
+		[player, "load"] spawn CGQC_fnc_snapshot;
+	};
+
+} else {
+	hint "Mods up to date. Good job. "
+};
+
 /*
 // set language and radio channels
 	["side"] call CGQC_fnc_setACRE;
@@ -147,11 +160,18 @@ if (cgqc_player_steamid isEqualTo "76561198059061680" || cgqc_player_steamid isE
 		// Unconcious event
 		["ace_unconscious", {
 			params ["_unit", "_isUnconscious"];
-			[] call CGQC_fnc_setTeamColors;
+			[] call setTeamColorReload;
 			if (_isUnconscious) then {
 				playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
+				_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
+				[0.2] call acre_api_fnc_setGlobalVolume;
+				diag_log "[CGQC_FNC] Unconscious - Lowered volume";
+			}else {
+				// Set volume back
+				_vol = _unit getVariable "cgqc_player_wakeup_volume";
+				[_vol] call acre_api_fnc_setGlobalVolume;
+				diag_log "[CGQC_FNC] Unconscious - Volume restored";
 			};
-			// [_unit, _isUnconscious] spawn CGQC_fnc_playerUnconscious;
 		}] call CBA_fnc_addEventHandler;
 	};
 
@@ -316,7 +336,7 @@ cgqc_acre_previousVolume = [] call acre_api_fnc_getSelectableVoiceCurve;
 ["Spartan-3", [0.5, 1.0, 0.5, 1], [0.5, 1.0, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
 
 // Pause the AI if the config says so
-if (missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
+if (cgqc_config_state_pause) then {
 	[0, {
 		["pause", 0, ""] spawn CGQC_fnc_perksZeus
 	}] call CBA_fnc_globalExecute;
@@ -326,21 +346,25 @@ if (missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
 // Show current phase initially
 [] spawn {
 	_phase = missionNamespace getVariable "CGQC_gamestate_current";
+	_phaseName = "";
 	_phaseTxt = "";
 	switch (_phase) do {
 		case "training": {
-			_phaseTxt = "Training <br/> Have fun!";
+			_phaseName = "Training";
+			_phaseTxt = "Have fun!";
 		};
 		case "staging": {
-			_phaseTxt = "Staging <br/> Get ready!";
+			_phaseName = "Staging";
+			_phaseTxt = "Get ready!";
 		};
 		case "mission": {
-			_phaseTxt = "Mission <br/> Here we go!";
+			_phaseName = "Mission";
+			_phaseTxt = "Here we go!";
 		};
 	};
-	sleep 20;
-	_text = format ["<br/><br/><br/><br/><br/><br/><t size='1' >Phase: %1</t>", _phaseTxt];
-	[_text, 5, 2] call CGQC_fnc_notifyAll;
+	waitUntil {sleep 0.5,cgqc_intro_done};
+	sleep 5;
+	[_phaseName, 5, 2, "phase_msg", _phaseTxt] call CGQC_fnc_notifyAll;
 };
 
 sleep 10;

@@ -15,7 +15,7 @@ if (isNull _playerUnit) then {
         if (toLower _name == toLower _player) exitWith {
             _playerUnit = _x;
         };
-    } forEach [] call CGQC_int_allHumanPlayers;
+    } forEach [] call allPlayers;
 } else {
     _name = _playerUnit getVariable ["ACE_name",name _playerUnit];
 };

@@ -8,41 +8,6 @@ class CAManBase: Man {
 				delete ACE_AssignTeamGreen;
 				delete ACE_AssignTeamBlue;
 				delete ACE_AssignTeamYellow;
-				class CGQC_setColor_red {
-					displayName = "1-1 Rouge";
-					condition = "true";
-					statement = "['RED', _target] call CGQC_fnc_setTeamColors";
-					icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
-					showDisabled = 1;
-				};
-				class CGQC_setColor_green {
-					displayName = "1-2 Vert";
-					condition = "true";
-					statement = "['GREEN', _target] call CGQC_fnc_setTeamColors";
-					icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
-					showDisabled = 1;
-				};
-				class CGQC_setColor_blue {
-					displayName = "2-1 Bleu";
-					condition = "true";
-					statement = "['BLUE', _target] call CGQC_fnc_setTeamColors";
-					icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
-					showDisabled = 1;
-				};
-				class CGQC_setColor_yellow {
-					displayName = "2-2 Jaune";
-					condition = "true";
-					statement = "['YELLOW', _target] call CGQC_fnc_setTeamColors";
-					icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
-					showDisabled = 1;
-				};
-				class CGQC_setColor_leave {
-					displayName = "HQ-0 Blanc";
-					condition = "assignedTeam _player != 'MAIN'";
-					statement = "['MAIN', _target] call CGQC_fnc_setTeamColors";
-					icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
-					showDisabled = 1;
-				};
 			};
 			class cgqc_inspect_detail {
 				displayName = "Rapid Gear Inspection";
@@ -98,7 +63,7 @@ class CAManBase: Man {
 				distance = 3;
 			};
 			class cgqc_promotePlayer {
-				displayName = "Promote Player";
+				displayName = "Promote Player - Rank+1";
 				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "['target'] spawn CGQC_fnc_promotePlayer;hint 'target promoted'";
 				icon = "";
@@ -120,31 +85,31 @@ class CAManBase: Man {
 			class CGQC_joinColor_red {
 				displayName = "1-1 Rouge";
 				condition = "true";
-				statement = "['RED'] call CGQC_fnc_setTeamColors";
+				statement = "['RED'] call CGQC_fnc_setTeamColor";
 				icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
 			};
 			class CGQC_joinColor_green {
 				displayName = "1-2 Vert";
 				condition = "true";
-				statement = "['GREEN'] call CGQC_fnc_setTeamColors";
+				statement = "['GREEN'] call CGQC_fnc_setTeamColor";
 				icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
 			};
 			class CGQC_joinColor_blue {
 				displayName = "2-2 Bleu";
 				condition = "true";
-				statement = "['BLUE'] call CGQC_fnc_setTeamColors";
+				statement = "['BLUE'] call CGQC_fnc_setTeamColor";
 				icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
 			};
 			class CGQC_joinColor_yellow {
 				displayName = "2-2 Jaune";
 				condition = "true";
-				statement = "['YELLOW'] call CGQC_fnc_setTeamColors";
+				statement = "['YELLOW'] call CGQC_fnc_setTeamColor";
 				icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
 			};
 			class CGQC_joinColor_leave {
 				displayName = "HQ Blanc";
 				condition = "true";
-				statement = "['MAIN'] call CGQC_fnc_setTeamColors";
+				statement = "['MAIN'] call CGQC_fnc_setTeamColor";
 				icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
 			};
 			class CGQC_joinGroup {

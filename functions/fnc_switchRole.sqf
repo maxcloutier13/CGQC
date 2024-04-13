@@ -69,8 +69,7 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
         };
 
         //Save role for further use
-        player setVariable["cgqc_player_role", cgqc_player_role, true];
-        player setVariable["cgqc_player_role_type", _type, true];
+        player setVariable["cgqc_player_role", _type, true];
 
         diag_log "[CGQC_FNC] switchRole - checking if run transition";
         // Start transition

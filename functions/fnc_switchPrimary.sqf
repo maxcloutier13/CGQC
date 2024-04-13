@@ -336,8 +336,8 @@ if (_needGL) then { // Load with grenade launcher stuff
 };
 
 // Add mags to vest
-[] call CGQC_fnc_addMags;
+[_target] call CGQC_fnc_addMags;
 
-[player] call ace_weaponselect_fnc_putWeaponAway;
+[_target] call ace_weaponselect_fnc_putWeaponAway;
 
 diag_log "[CGQC_FNC] primarySwitch done";

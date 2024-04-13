@@ -4,10 +4,10 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.12.2";
+core_version = "4.5.13.2";
 
 if (isServer) then {
-	missionNamespace setVariable ["cgqc_version_core", core_version, true]; // Set the server's mod version
+	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
 };
 
 // CGQC Variables ===================================================================================================
@@ -43,9 +43,8 @@ cgqc_player_isSL = false;
 cgqc_player_isTL = false;
 cgqc_player_is2IC = false;
 cgqc_player_role = "Unknown";
-player setVariable ["cgqc_player_role_type", cgqc_player_role, true];
 player setVariable ["cgqc_player_role", cgqc_player_role, true];
-player setVariable ["CGQC_teamColor", "MAIN", true];
+player setVariable ["CGQC_player_teamColor", "MAIN", true];
 cgqc_player_roleType = "";
 cgqc_player_beret = "";
 cgqc_player_beret_name = "";
@@ -454,7 +453,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 
 // Gamestate ===============================================================================================
-["cgqc_config_state_pause", "CHECKBOX",["Auto-Pause AI outside of mission", "Pauses the AI when mission is not running. Unpaused manually or at mission start"],
+["cgqc_config_state_pause", "CHECKBOX",["Auto-Pause AI before/after mission", "Pauses the AI when mission is not running. Unpaused manually or at mission start"],
 [_menu_name, "GameState"], false, 1, {publicVariable "cgqc_config_state_pause"}, false] call CBA_fnc_addSetting;
 // Briefing  ===============================================================================================
 ["cgqc_setting_briefingCmd_area","SLIDER", ["Leaders's Briefing area size", "Square around the Zeus"],
@@ -804,6 +803,21 @@ _delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
+
+// Fonctions customs
+CGQC_int_allHumanPlayers = {
+    // Returns all humans
+    _units = allPlayers select {!(_x isKindOf "VirtualMan_F")};
+	_units;
+};
+
+CGQC_int_allAIUnits = {
+    // Returns all AI
+    _units = allUnits - ([] call CGQC_int_allHumanPlayers);
+    _units = _units - (entities "HeadlessClient_F");
+    _units;
+};
+
 /*
 // Create default languages
 if (cgqc_config_sideLanguage) then {
@@ -823,17 +837,6 @@ if (cgqc_config_sideLanguage) then {
 	};
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
-
-// Custom internal functions
-CGQC_int_allHumanPlayers = {
-	allPlayers select {!(_x isKindOf "VirtualMan_F")}
-};
-
-CGQC_int_allAI = {
-	_units = allUnits - ([] call CGQC_int_allHumanPlayers);
-	_units = _units - (entities "HeadlessClient_F");
-	_units;
-};
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;

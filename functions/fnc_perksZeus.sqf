@@ -8,7 +8,7 @@ switch (_type) do {
 		_players = [] call CGQC_int_allHumanPlayers;
 		// Initial values
 		_version = "--- Versions des mods --- <br/>";
-		_ref_version_core = missionNamespace getVariable ["cgqc_version_core", "ERROR"];
+		_ref_version_core = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 		_ref_version_addons = player getVariable ["cgqc_version_addons", "ERROR"];
 		_ref_version_2023 = "";
 		if (cgqc_player_has2023) then {
@@ -58,22 +58,22 @@ switch (_type) do {
 
 	};
 	case "pause": {
-		_allAIs = [] call CGQC_int_allAI;
+		_allAIs = [] call CGQC_int_allAIUnits;
 		{
 			_x enableSimulationGlobal false;
 			_x disableAI "all";
 		} forEach _allAIs;
 		[-1,{hint "All AI units PAUSED!"}] call CBA_fnc_globalExecute;
-		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", true];
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", true, true];
 	};
 	case "unpause": {
-		_allAIs = [] call CGQC_int_allAI;
+		_allAIs = [] call CGQC_int_allAIUnits;
 		{
 			_x enableSimulationGlobal true;
 			_x enableAI "all";
 		} forEach _allAIs;
 		[-1,{hint "All AI units UNPAUSED!"}] call CBA_fnc_globalExecute;
-		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false]
+		missionNamespace setVariable ["CGQC_gamestate_mission_AIpaused", false, true]
 	};
 	case "zeus_radios":
 	{
@@ -176,8 +176,8 @@ switch (_type) do {
 	case "briefingCmd":
 	{
 		// Command briefing started
-		missionNamespace setVariable ["CGQC_gamestate_briefing", true];
-		missionNamespace setVariable ["CGQC_gamestate_briefing_leaders", true];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing", true, true];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing_leaders", true, true];
 		// Create briefing marker
 		_markerstr = createMarker ["cgqcBriefingCmd", player];
 		"cgqcBriefingCmd" setMarkerType "mil_objective";
@@ -206,8 +206,8 @@ switch (_type) do {
 	case "briefingCmd_stop":
 	{
 		// Commanders Briefing done
-		missionNamespace setVariable ["CGQC_gamestate_briefing", false];
-		missionNamespace setVariable ["CGQC_gamestate_briefing_leaders", false];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing_leaders", false, true];
 		// Delete briefing marker
 		deleteMarker "cgqcBriefing";
 		//Restriction back on
@@ -229,8 +229,8 @@ switch (_type) do {
 	case "briefing":
 	{
 		// Briefing started
-		missionNamespace setVariable ["CGQC_gamestate_briefing", true];
-		missionNamespace setVariable ["CGQC_gamestate_briefing_full", true];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing", true, true];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing_full", true, true];
 
 		// Create briefing marker
 		_markerstr = createMarker ["cgqcBriefing", player];
@@ -238,7 +238,7 @@ switch (_type) do {
 		"cgqcBriefing" setMarkerText "Briefing";
 		"cgqcBriefing" setMarkerColor "colorBLUFOR";
 		//Timer before briefing start
-		while {_briefing_time > 0 && missionNamespace getVariable "CGQC_gamestate_briefing_full"} do {
+		while {_briefing_time > 0 && missionNamespace getVariable "CGQC_gamestate_1_briefing_full"} do {
 			_min = floor (_briefing_time / 60);
 			_sec =  _briefing_time - (_min * 60);
 			_min_sec = format["%1:%2", _min, _sec];
@@ -248,7 +248,7 @@ switch (_type) do {
 			_briefing_time = _briefing_time - 1;
 			sleep 1;
 		};
-		if(missionNamespace getVariable "CGQC_gamestate_briefing_full") then {
+		if(missionNamespace getVariable "CGQC_gamestate_1_briefing_full") then {
 			if (cgqc_zeus_mapRestricted) then {
 				hint "MapSharing is ON";
 				//Remove map sharing restriction for briefing
@@ -281,8 +281,8 @@ switch (_type) do {
 	case "briefing_stop":
 	{
 		// Briefing done
-		missionNamespace setVariable ["CGQC_gamestate_briefing", false];
-		missionNamespace setVariable ["CGQC_gamestate_briefing_full", false];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing", false, true];
+		missionNamespace setVariable ["CGQC_gamestate_1_briefing_full", false, true];
 
 		// Delete briefing marker
 		deleteMarker "cgqcBriefing";

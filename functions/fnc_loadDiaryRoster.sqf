@@ -28,7 +28,7 @@ _roster = "";
 		_versionCheck = "</font>";
 		if (cgqc_player_max) then {
 			_versionCore = _unit getVariable ["cgqc_version_core", "ERROR"];
-			_ref_version_core = missionNamespace getVariable ["cgqc_version_core", "ERROR"];
+			_ref_version_core = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 			if (_versionCore isNotEqualTo _ref_version_core) then {
 				_versionCheck = "</font><font color='CC3333' size='15'>!!!</font>";
 			};

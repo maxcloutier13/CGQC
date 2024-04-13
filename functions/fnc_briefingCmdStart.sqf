@@ -3,7 +3,7 @@
 trgBriefCmd_units = [];
 trgBriefCmd_player_lowered = false;
 publicVariable "trgBriefCmd_player_lowered";
-while {missionNamespace getVariable "CGQC_gamestate_briefing_leaders"} do {
+while {missionNamespace getVariable "CGQC_gamestate_1_briefing_leaders"} do {
 	{
 		if (_x in list cgqc_briefingCmd_trg) then {
 			trgBriefCmd_current = _x;

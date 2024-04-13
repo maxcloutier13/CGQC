@@ -65,7 +65,7 @@ switch (_type) do {
 		player setUnitTrait ["audibleCoef ", 0.9];
 		player setUnitTrait ["camouflageCoef ", 0.9];
 		player setUnitTrait ["UAVHacker", true];
-		player setUnitTrait ["loadCoef ", 0.9];
+		player setUnitTrait ["loadCoef ", 0.8];
 		// ------ Ghillie up --------------------------------------------------------------------------------------
 		_action = [ "cgqc_perk_ghillie", " Ghillie up", "cgqc\textures\cgqc_ace_ghillie", {}, {!cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 		cgqc_action_ghillie = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -92,7 +92,7 @@ switch (_type) do {
 
 		player setUnitTrait ["engineer", true];
 		player setUnitTrait ["explosiveSpecialist", true];
-		player setUnitTrait ["loadCoef ", 0.9];
+		player setUnitTrait ["loadCoef ", 0.8];
 		// ------ Fortify --------------------------------------------------------------------------------------
 		if (cgqc_config_fortify) then {
 			fortify_list = format [
@@ -128,17 +128,17 @@ switch (_type) do {
 	};
 	case "med":{
 		player setUnitTrait ["Medic", true];
-		player setUnitTrait ["loadCoef ", 0.7];
+		player setUnitTrait ["loadCoef ", 0.6];
 		cgqc_perks_medic = true;
 	};
 	case "at":{
-		player setUnitTrait ["loadCoef ", 0.8];
+		player setUnitTrait ["loadCoef ", 0.7];
 	};
 	case "mg":{
-		player setUnitTrait ["loadCoef ", 0.8];
+		player setUnitTrait ["loadCoef ", 0.7];
 	};
 	case "mortar":{
-		player setUnitTrait ["loadCoef ", 0.8];
+		player setUnitTrait ["loadCoef ", 0.6];
 	};
 	case "inf":{
 	};

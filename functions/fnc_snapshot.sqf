@@ -26,9 +26,9 @@ switch (_scope) do {
                 //Team
                 _team = groupId group _target;
                 //Color
-                _color = _target getVariable "CGQC_teamColor";
+                _color = _target getVariable "CGQC_player_teamColor";
                 //Role
-                _role = _target getVariable "cgqc_player_role_type";
+                _role = _target getVariable "cgqc_player_role";
                 // Equipment
                 _helmet = headgear _target;
                 _goggles = goggles _target;
@@ -140,7 +140,7 @@ switch (_scope) do {
                     {
                         _type = _x select 0;
                         // Add radio
-                        [_target, "uniform", _type, 1] call CGQC_fnc_addItemWithOverflow;
+                        _target addItemToUniform _type;
                     } forEach _entry_radios;
                     // entry = [_entry_type, _entry_chan, _entry_side, _entry_vol, _entry_speaker]
                     _id = 0;
@@ -153,7 +153,7 @@ switch (_scope) do {
                         _speaker = _settings select 4;
                         [_x, _chan] call acre_api_fnc_setRadioChannel;
                         [_x, _side] call acre_api_fnc_setRadioSpatial;
-                        [_x, _chan] call acre_api_fnc_setRadioVolume;
+                        [_x, _vol] call acre_api_fnc_setRadioVolume;
                         _id = _id + 1;
                     } forEach _radios;
                     // Set radios PTT
@@ -165,7 +165,7 @@ switch (_scope) do {
                     [_role, 1, false, false]  call CGQC_fnc_switchRole;
 
                     sleep 1;
-                    [_color] call CGQC_fnc_setTeamColors;
+                    [_color] call CGQC_fnc_setTeamColor;
                     // Remove everything
                     removeAllItems _target;
                     removeAllAssignedItems _target;
