@@ -35,13 +35,28 @@ CGQC_int_createHolder = {
 _drop = true;
 _action = "";
 switch (_type) do {
+    case "toggle": {
+        if (cgqc_backpack_dropped) then {
+            // Dropped: pick it up
+            [player, 'backpack_pickup'] spawn CGQC_fnc_dropStuff;
+        } else {
+            // Not dropped: dropping
+            [backpack player, 'backpack'] spawn CGQC_fnc_dropStuff;
+        };
+    };
     case "restore": {
         if (!isNil "cgqc_player_backpack_backup") then {
             hint "Restoring backpack";
-            player addBackpack cgqc_player_backpack_backup select 0;
+            cgqc_backpack_dropped = false;
+            _pack = cgqc_player_backpack_backup select 0;
+            _items = cgqc_player_backpack_backup select 1;
+            player addBackpack _pack;
             {
                 player addItemToBackpack _x;
-            } forEach cgqc_player_backpack_backup select 1;
+            } forEach _items;
+            // Delete marker and holder
+            if !(isNil "pack_marker") then {deleteMarkerLocal "cgqc_marker_backpack";};
+            if !(isNil "cgqc_backpack_holder") then {deleteVehicle cgqc_backpack_holder;};
         } else {
             hint "Come on man! You don't need this";
         };
@@ -63,17 +78,18 @@ switch (_type) do {
                     _packs = everyBackpack _holder;
                     {
                         if (_x getVariable "cgqc_object_name" isEqualTo name player) then {
-                            disableUserInput true;
                             _found = true;
                             diag_log "[CGQC_FNC] dropStuff - Backpack found. Grabbing";
                             hint "Pack found. Grabbing it";
                             //Grab the bag
                             player action ["AddBag", _holder, typeOf _x];
-                            deleteMarkerLocal "cgqc_player_backpack";
+                            waitUntil {backpack player != ''};
+                            if !(isNil "pack_marker") then {deleteMarkerLocal "cgqc_marker_backpack";};
                             cgqc_backpack_dropped = false;
-                            disableUserInput false;
                             sleep 1;
-                            deleteVehicle cgqc_backpack_holder;
+                            if !(isNil "cgqc_backpack_holder") then {
+                               deleteVehicle cgqc_backpack_holder;
+                            };
                             break;
                         } else {
                             diag_log "[CGQC_FNC] dropStuff - Not player's backpack";
@@ -89,7 +105,6 @@ switch (_type) do {
         };
     };
     case "backpack": {
-        disableUserInput true;
         _item = typeOf unitBackpack player;
         _action = "DropBag";
         cgqc_backpack_holder = [] call CGQC_int_createHolder;
@@ -99,13 +114,10 @@ switch (_type) do {
         cgqc_player_backpack_backup = [_item, backpackItems player];
         player action [_action, cgqc_backpack_holder, _item];
         // Create personal marker for position
-        _name = name player;
-        _txt = format ["%1's Backpack", _name];
-        _marker = createMarkerLocal ["cgqc_player_backpack", player, 1];
-        "cgqc_player_backpack" setMarkerTypeLocal "hd_end_noShadow";
-        "cgqc_player_backpack" setMarkerColorLocal "ColorBlack";
-        "cgqc_player_backpack" setMarkerTextLocal _txt;
-        disableUserInput false;
+        pack_marker = createMarkerLocal ["cgqc_marker_backpack", player, 1];
+        "cgqc_marker_backpack" setMarkerTypeLocal "hd_end_noShadow";
+        "cgqc_marker_backpack" setMarkerColorLocal "ColorRed";
+        "cgqc_marker_backpack" setMarkerTextLocal " Pack";
         cgqc_backpack_dropped = true;
     };
     case "mags": {
@@ -116,46 +128,6 @@ switch (_type) do {
         _action = "DropMagazine";
         _holder = player;
     };
-
-
 };
 
 diag_log "[CGQC_FNC] dropStuff finished";
-
-/*
-//Drop gear function
-STMF_ACE_DropGear = {
-	params ["_unit", "_itemToDrop",["_action","dropWeapon"]];
-
-	private _unitPos = _unit getRelPos [1, 0];
-	private _closestHolder = _unitPos nearestObject "GroundWeaponHolder";
-	private _holder = objNull;
-
-	if (_unitPos distance _closestHolder < STMF_ACE_CloseHolderDist) then {
-		_holder = _closestHolder;
-	} else {
-		_holder = createVehicle ["GroundWeaponHolder", [0,0,100], [], 0, "CAN_COLLIDE"];
-		_holder setPos _unitPos;
-
-		[1, [[_unit, _holder],{_this call STMF_MarkGear}]] call STMF_CallInSeconds
-	};
-	_unit action [_action, _holder, _itemToDrop];
-};
-
-*/
-
-        /*
-        // Find if item or magazine
-        if ( isClass (configFile >> "CFGMagazines" >> _item)) then {
-            _groundItemHolder addMagazineCargo [_item, _amount]; // Add the magazine to the holder
-        } else {
-            // Item
-            _groundItemHolder addItemCargoGlobal [_item, _amount]; // Add the magazine to the holder
-
-        };
-
-
-        // Rename the ground weapon holder
-        _name = format ["%1's gear", cgqc_custom_playername];
-        _groundItemHolder setVariable ["cgqc_object_name", _name, true];
-        */
