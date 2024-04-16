@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.14.2";
+core_version = "4.5.16";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -60,6 +60,7 @@ cgqc_player_acre_setup = false;
 cgqc_player_radio_names = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
+cgqc_player_backpack_backup = [];
 
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
@@ -342,6 +343,11 @@ if (cgqc_player_hasUnsung) then {
 ] call cba_fnc_addKeybind;
 ["CGQC", "cgqc_kb_speaker2", "Toggle speaker radio 2",
 	{ ["toggle_speaker_2"] spawn CGQC_fnc_setRadios}, {""}, []
+] call cba_fnc_addKeybind;
+
+//-- Drop Backpack --
+["CGQC", "cgqc_kb_dropPack_toggle", "Quickdrop/Pickup Backpack",
+	{[backpack player, 'toggle'] call CGQC_fnc_dropStuff}, {""}, []
 ] call cba_fnc_addKeybind;
 
 //Wind changer event

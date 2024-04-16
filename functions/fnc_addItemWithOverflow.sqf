@@ -12,7 +12,7 @@ cgqc_int_addItem_ground = {
 			hint "Inventory full: Dropping on ground";
 			diag_log "[CGQC_FNC] addItemWithOverflow - Dropping on ground!";
 		for "_i" from 1 to _amount do {
-			[_item, "items"] call CGQC_fnc_dropStuff;
+			[_item, "items"] spawn CGQC_fnc_dropStuff;
 		};
 	} else {
 		diag_log "[CGQC_FNC] addItemWithOverflow - Setting says not to drop to ground. Skipping.";
