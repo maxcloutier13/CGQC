@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.13.2";
+core_version = "4.5.13.3";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -460,6 +460,16 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 [_menu_name, "GameState"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_setting_briefing_area","SLIDER", ["Full Briefing area size", "Square around the Zeus"],
 [_menu_name, "GameState"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
+
+// Color fix
+["cgqc_config_fix_colorFix", "CHECKBOX",["Auto-reload colors", "Reloads color on a timed basis"],
+[_menu_name, "Fixes"], false, 1] call CBA_fnc_addSetting;
+
+["cgqc_config_fix_colorFix_timer","SLIDER", ["Auto-reload colors - Timer", "Delay between checks"],
+[_menu_name, "Fixes"], [5, 600, 30, 0]] call CBA_fnc_addSetting;
+
+["cgqc_config_signals", "CHECKBOX",["Signals perk available", "Lets player spawn smoke/flare/chemlights"],
+[_menu_name, "Option Toggles"], true, 1, {}, false] call CBA_fnc_addSetting;
 
 // Zeus radios ===============================================================================================
 ["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"],
