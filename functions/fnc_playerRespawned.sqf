@@ -3,6 +3,9 @@
 params ["_unit", "_corpse"];
 diag_log "[CGQC_EVENT] playerRespawned started";
 
+// Restore controls in case player got killed during a bad moment
+
+disableUserInput false;
 // Save stuff for player respawn
 // Corpse position
 _unit setVariable["corpse_position", getPosASL _corpse];
