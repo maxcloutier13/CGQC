@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class dropStuff{
+            file = "\cgqc\functions\fnc_dropStuff.sqf";
+            description = "Handles the dropping of stuff";
+        };
         class notifyAll{
             file = "\cgqc\functions\fnc_notifyAll.sqf";
             description = "Handles global messages";

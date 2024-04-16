@@ -25,6 +25,8 @@ switch (_mode) do {
 		[-1, {
 			[cgqc_notifAll_txt, 0, 0, cgqc_notifAll_length, cgqc_notifAll_fade] spawn BIS_fnc_dynamicText
 		}] call CBA_fnc_globalExecute;
+		//["ace_common_displayTextStructured", [_displayText, 3, _target], [_target]] call CBA_fnc_targetEvent;
+
 	};
 	case "ace" do {
 		_units = [] call CGQC_int_allHumanPlayers;

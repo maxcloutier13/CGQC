@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.13.3";
+core_version = "4.5.14.2";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -140,6 +140,7 @@ cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
 cgqc_reset_speaker = false;
+cgqc_backpack_dropped = false;
 // Advanced perks
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";

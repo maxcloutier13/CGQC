@@ -227,9 +227,20 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 // Reset teamColor
 _action = [ "menu_self_color", "Reset Team Color", "", {[] call CGQC_fnc_setTeamColorReload}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Restore backpack
+_action = [ "menu_self_restore_pack", "Restore Lost Backpack", "", {["None", "restore"] call CGQC_fnc_dropStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Dynamic group
 _action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Drop backpack
+_action = [ "menu_self_drop", "Drop Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[backpack player, 'backpack'] call CGQC_fnc_dropStuff}, {backpack player != '' && isNull objectParent player} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Pick backpack
+_action = [ "menu_self_grab", "Pickup your Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[player, 'backpack_pickup'] call CGQC_fnc_dropStuff}, {cgqc_backpack_dropped && (count nearestObjects [player, ["GroundWeaponHolder_Scripted"], 5]) > 0} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Fix ARMA
 _action = [ "zeus_fix_arma", "ARMA?", "", {""}, {true}] call ace_interact_menu_fnc_createAction;

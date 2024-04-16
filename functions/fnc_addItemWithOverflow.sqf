@@ -9,15 +9,11 @@ diag_log format ["[CGQC_FNC] addItemWithOverflow %1/%2/%3/%4 started", _target, 
 cgqc_int_addItem_ground = {
 	params ["_target", "_item", "_amount", "_overflow", "_toGround"];
 	if (_toGround) then {
-		hint "Inventory full: Dropping on ground";
-		diag_log "[CGQC_FNC] addItemWithOverflow - Dropping on ground!";
-		_itemPos = getPos player; // Get player's position
-		_itemPos set [2, 0];      // set the height to 0 to place the item on the ground
-		_groundItem = "GroundWeaponHolder" createVehicle _itemPos; // Create a ground weapon holder
-		_groundItem addItemCargoGlobal [_item, _amount]; // Add the magazine to the holder
-		// Optional: Name the weapon holder (you can replace "MyMagazineHolder" with your desired name)
-		_name = format ["%1's gear", cgqc_custom_playername];
-		_groundItem setVariable ["cgqc_object_name", _name, true];
+			hint "Inventory full: Dropping on ground";
+			diag_log "[CGQC_FNC] addItemWithOverflow - Dropping on ground!";
+		for "_i" from 1 to _amount do {
+			[_item, "items"] call CGQC_fnc_dropStuff;
+		};
 	} else {
 		diag_log "[CGQC_FNC] addItemWithOverflow - Setting says not to drop to ground. Skipping.";
 	};
