@@ -41,11 +41,7 @@ switch (_type) do {
 		player_items_vest = vestItems player;
 		player_items_pack = backpackItems player;
 		// Delete old stuff
-		removeHeadgear player;
-		removeUniform player;
-		removeVest player;
-		removeBackpack player;
-		removeGoggles player;
+		[] call CGQC_fnc_removeAll;
 	};
 	default	{diag_log "[CGQC_ERROR] switchStuff not matched";};
 };

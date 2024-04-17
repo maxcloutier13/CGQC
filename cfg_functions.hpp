@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class removeAll{
+            file = "\cgqc\functions\fnc_removeAll.sqf";
+            description = "Remove and reset everything on player loadout";
+        };
         class dropStuff{
             file = "\cgqc\functions\fnc_dropStuff.sqf";
             description = "Handles the dropping of stuff";
