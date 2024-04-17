@@ -239,7 +239,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 _action = [ "menu_self_drop", "Drop Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[backpack player, 'backpack'] spawn CGQC_fnc_dropStuff}, {backpack player != '' && isNull objectParent player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Pick backpack
-_action = [ "menu_self_grab", "Pickup your Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[player, 'backpack_pickup'] spawn CGQC_fnc_dropStuff}, {cgqc_backpack_dropped && (count nearestObjects [player, ["GroundWeaponHolder_Scripted"], 5]) > 0} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_grab", "Pickup Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[player, 'backpack_pickup'] spawn CGQC_fnc_dropStuff}, {cgqc_backpack_dropped && (count nearestObjects [player, ["GroundWeaponHolder_Scripted"], 5]) > 0} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Fix ARMA
