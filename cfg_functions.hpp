@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class switchNonLethal{
+            file = "\cgqc\functions\fnc_switchNonLethal.sqf";
+            description = "Switch to nonLethal setup";
+        };
         class removeAll{
             file = "\cgqc\functions\fnc_removeAll.sqf";
             description = "Remove and reset everything on player loadout";
