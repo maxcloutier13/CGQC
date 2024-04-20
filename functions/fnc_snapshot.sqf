@@ -1,23 +1,50 @@
 // --- snapshot ----------------------------------------------------------
 // Saves/update a snapshot of the target
-params [["_target", player], ["_type", "save"], ["_scope", "single"], ["_saveTarget", "personnal"]];
-diag_log format ["[CGQC_FNC] snapshot %1/%2 started", _target, _type];
+params [["_target", player], ["_type", "save"], ["_scope", "single"], ["_snapshotType", "player"]];
+diag_log format ["[CGQC_FNC] snapshot %1/%2/%3/%4 started", _target, _type, _scope, _snapshotType];
+
+cgqc_snapshot_version = 1;
 
 // Variants
-// personnal - missionProfil local save
+// player - missionProfil local save
+// auto - save when getting out of arsenal
 // start - mission group save at mission start
-// manual - mission group save
+// zeus - mission group save
+_snapshot_slot = "";
+_snapshotDone = false;
+_snapshot_slot_version = "";
+switch (_snapshotType) do {
+    case "player": {
+        _snapshot_slot = "cgqc_player_snapshot";
+        _snapshotDone = "cgqc_player_snapshot_done";
+        _snapshot_slot_version = "cgqc_player_snapshot_version";
+    };
+    case "auto": {
+        _snapshot_slot = "cgqc_player_snapshot_auto";
+        _snapshotDone = "cgqc_player_snapshot_auto_done";
+        _snapshot_slot_version = "cgqc_player_snapshot_auto_version";
+    };
+    case "start": {
+        _snapshot_slot = "cgqc_player_snapshot_start";
+        _snapshotDone = "cgqc_player_snapshot_start_done";
+        _snapshot_slot_version = "cgqc_player_snapshot_start_version";
+    };
+    case "zeus": {
+        _snapshot_slot = "cgqc_player_snapshot_zeus";
+        _snapshotDone = "cgqc_player_snapshot_zeus_done";
+        _snapshot_slot_version = "cgqc_player_snapshot_zeus_version";
+    };
+};
 
 switch (_scope) do {
     case "single": {
         // Get snapshot, or create it if not found
         _found = true;
-        _snapshot = MissionProfileNamespace getVariable "cgqc_player_snapshot";
+        _snapshot = MissionProfileNamespace getVariable _snapshot_slot;
         if (isNil "_snapshot") then {
             _snapshot = [];
             _found = false;
         };
-
         _name = name _target;
         //Set ready so it's not saved during repos
         ["ready", true] spawn CGQC_fnc_perksBasic;
@@ -109,15 +136,21 @@ switch (_scope) do {
                 // Snapshot entry
                 _entry = [_name, _time, _team, _color, _role, _entry_uniform, _entry_vest, _entry_pack, _entry_gear, _entry_weapons, _entry_radios, _additionals];
 
-                hint format ["Player snapshot saved: %1", _role];
-                MissionProfileNamespace setVariable ["cgqc_player_snapshot", _entry];
+                hint format ["%1 snapshot saved: %2", _snapshotType, _role];
+                MissionProfileNamespace setVariable [_snapshot_slot, _entry];
+                MissionProfileNamespace setVariable [_snapshot_slot_version, cgqc_snapshot_version];
+                MissionProfileNamespace setVariable [_snapshotDone, true];
                 saveMissionProfileNamespace;
             };
             case "load": {
                 if (_found) then {
                     hint "Player snapshot found";
                     diag_log "[CGQC_FNC] snapshot found!";
-
+                    // Check version
+                    _checkVersion = MissionProfileNamespace getVariable "_snapshot_slot_version";
+                    if (_checkVersion < cgqc_snapshot_version) exitWith {
+                        hint "Snapshot incompatible... skipping.";
+                    };
                     // Load the snapshot
                     _name = _snapshot select 0;
                     _time = _snapshot select 1;
@@ -184,8 +217,8 @@ switch (_scope) do {
 
                     // Remove everything
                     [] call CGQC_fnc_removeAll;
+                    waitUntil {cgqc_removeAll_done};
 
-                    sleep 0.5;
                     // Face/identity
                     _target setFace _face;
                     // Slinged helmet
@@ -232,7 +265,6 @@ switch (_scope) do {
                         // Add radio
                         _target addItemToUniform _type;
                     } forEach _entry_radios;
-                    // entry = [_entry_type, _entry_chan, _entry_side, _entry_vol, _entry_speaker]
                     _id = 0;
                     _radios = [] call acre_api_fnc_getCurrentRadioList;
                     {
@@ -307,13 +339,13 @@ switch (_scope) do {
             case "save": {
                 {
                     _targetID = owner _x;
-                    [_x, "save"] remoteExec ['CGQC_fnc_snapshot', _targetID];
+                    [_x, "save", "single", _snapshotType] remoteExec ['CGQC_fnc_snapshot', _targetID];
                 } forEach _players;
             };
             case "load": {
                 {
                     _targetID = owner _x;
-                    [_x, "load"] remoteExec ['CGQC_fnc_snapshot', _targetID];
+                    [_x, "load", "single", _snapshotType] remoteExec ['CGQC_fnc_snapshot', _targetID];
                 } forEach _players;
             };
         };

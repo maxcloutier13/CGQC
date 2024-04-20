@@ -2,6 +2,7 @@
 // Remove and reset everything on player loadout
 diag_log "[CGQC_FNC] removeAll";
 
+cgqc_removeAll_done = false;
 [] spawn {
     // Remove everything
     removeAllItems player;
@@ -27,6 +28,7 @@ diag_log "[CGQC_FNC] removeAll";
         sleep 0.1;
         player removeWeapon primaryWeapon player;
     };
+    cgqc_removeAll_done = true;
 };
 
 diag_log "[CGQC_FNC] removeAll finished";
