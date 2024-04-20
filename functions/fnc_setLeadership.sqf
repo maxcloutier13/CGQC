@@ -1,49 +1,28 @@
 // --- setLeadership ----------------------------------------------------------
 // Sets the leadership level of the player
-params ["_type", ["_targetType", "player"]];
+params ["_type", ["_player", player], ["_target", player]];
+diag_log format ["[CGQC_FNC] setLeadership %1/%2/%3 started", _type, _player, _target];
 
-diag_log format ["[CGQC_FNC] setLeadership %1 started", _type];
-_target = player;
-if (_targetType isEqualTo "target") then {
-	_target = cursorTarget;
+if (isPlayer _target && _player isNotEqualTo _target) then {
+	_displayText = format ["%1 has designated you %2", [_player] call ace_common_fnc_getName, _type];
+	["ace_common_displayTextStructured", [_displayText, 3, _target], [_target]] call CBA_fnc_targetEvent;
 };
 
-_targetID = owner _target;
-[_target] remoteExec ['CGQC_int_resetLeadership', _targetID];
+_target setVariable ["cgqc_player_isSL", false, true];
+_target setVariable ["cgqc_player_isTL", false, true];
+_target setVariable ["cgqc_player_is2IC", false, true];
 
 switch (_type) do {
 	case "SL":{
-		[_target] remoteExec ['CGQC_int_setSL', _targetID];
+		_target setVariable ["cgqc_player_isSL", true, true];
 	};
 	case "TL":{
-		[_target] remoteExec ['CGQC_int_setTL', _targetID];
+		_target setVariable ["cgqc_player_isTL", true, true];
 	};
 	case "2IC":{
-		[_target] remoteExec ['CGQC_int_set2IC', _targetID];
+		_target setVariable ["cgqc_player_is2IC", true, true];
+		_target addItem "ACRE_PRC152";
 	};
 };
 
 diag_log "[CGQC_FNC] setLeadership done";
-
-// Internal functions
-CGQC_int_resetLeadership = {
-	params ["_target"];
-	cgqc_player_isSL = false;
-	cgqc_player_isTL = false;
-	cgqc_player_is2IC = false;
-};
-CGQC_int_setSL = {
-	params ["_target"];
-	cgqc_player_isSL = true;
-};
-CGQC_int_setTL = {
-	params ["_target"];
-	cgqc_player_isTL = true;
-	hint "Designated TeamLeader";
-};
-CGQC_int_set2IC = {
-	params ["_target"];
-	cgqc_player_is2IC = true;
-	hint "Designated 2iC";
-	_target addItem "ACRE_PRC152";
-};

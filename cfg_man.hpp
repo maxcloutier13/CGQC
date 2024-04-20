@@ -20,7 +20,7 @@ class CAManBase: Man {
 			};
 			class cgqc_inspect {
 				displayName = "Full Gear Inspection";
-				condition = "cgqc_player_isTL || cgqc_player_isSL || cgqc_player_is2iC || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				condition = "_player getVariable 'cgqc_player_isTL' || _player getVariable 'cgqc_player_isSL' || _player getVariable 'cgqc_player_is2iC' || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "[1] call CGQC_fnc_inspect";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
@@ -46,7 +46,7 @@ class CAManBase: Man {
 			};
 			class cgqc_setLeader {
 				displayName = "Leadership";
-				condition = "leader player == player || cgqc_player_isSL || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				condition = "leader player == player || _player getVariable 'cgqc_player_isSL' || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "";
 				//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
 				icon = "";
@@ -55,7 +55,7 @@ class CAManBase: Man {
 				class cgqc_set2IC {
 					displayName = "Designate: 2iC";
 					condition = "true";
-					statement = "['2IC', 'target'] spawn CGQC_fnc_setLeadership";
+					statement = "['2IC', _player, _target] spawn CGQC_fnc_setLeadership";
 					//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
 					icon = "";
 					runOnHover = "hint 'Designate as 2iC'";
@@ -63,8 +63,8 @@ class CAManBase: Man {
 				};
 				class cgqc_setTL {
 					displayName = "Designate: TeamLeader";
-					condition = "leader player == player || cgqc_player_isSL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
-					statement = "['TL', 'target'] spawn CGQC_fnc_setLeadership";
+					condition = "leader player == player || _player getVariable 'cgqc_player_isSL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+					statement = "['TL', _player, _target] spawn CGQC_fnc_setLeadership";
 					//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
 					icon = "";
 					runOnHover = "hint 'Designate as TeamLeader'";
@@ -74,7 +74,7 @@ class CAManBase: Man {
 
 			class cgqc_promotePlayer {
 				displayName = "Promote Player - Rank+1";
-				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				condition = "leader player == player || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "['target'] spawn CGQC_fnc_promotePlayer;hint 'target promoted'";
 				icon = "";
 				runOnHover = "hint 'Promote the target to give him access to more stuff/roles'";
@@ -83,7 +83,7 @@ class CAManBase: Man {
 
 			class cgqc_setSpecialist {
 				displayName = "Give Perks";
-				condition = "leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				condition = "leader player == player || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "";
 				icon = "";
 				runOnHover = "hint 'Give perk to target'";

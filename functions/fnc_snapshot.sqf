@@ -147,7 +147,7 @@ switch (_scope) do {
                     hint "Player snapshot found";
                     diag_log "[CGQC_FNC] snapshot found!";
                     // Check version
-                    _checkVersion = MissionProfileNamespace getVariable "_snapshot_slot_version";
+                    _checkVersion = MissionProfileNamespace getVariable [_snapshot_slot_version, 0];
                     if (_checkVersion < cgqc_snapshot_version) exitWith {
                         hint "Snapshot incompatible... skipping.";
                     };
