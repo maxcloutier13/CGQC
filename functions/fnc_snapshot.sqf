@@ -273,9 +273,15 @@ switch (_scope) do {
                         _side = _settings select 2;
                         _vol = _settings select 3;
                         _speaker = _settings select 4;
-                        [_x, _chan] call acre_api_fnc_setRadioChannel;
-                        [_x, _side] call acre_api_fnc_setRadioSpatial;
-                        [_x, _vol] call acre_api_fnc_setRadioVolume;
+                        if !(isNil "_chan") then {
+                            [_x, _chan] call acre_api_fnc_setRadioChannel;
+                        };
+                        if !(isNil "_side") then {
+                            [_x, _side] call acre_api_fnc_setRadioSpatial;
+                        };
+                        if !(isNil "_vol") then {
+                            [_x, _vol] call acre_api_fnc_setRadioVolume;
+                        };
                         _id = _id + 1;
                     } forEach _radios;
                     // Set radios PTT
