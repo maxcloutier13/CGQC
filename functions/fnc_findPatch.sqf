@@ -14,7 +14,6 @@ if (!cgqc_player_known) then {
 			cgqc_player_patch = "cgqc_patch_cloutier";
 			cgqc_player_max = true;
 			player setVariable ["cgqc_version_core", core_version, true];
-			[true] spawn CGQC_fnc_setZeus;
 		};
 		case "76561199227907428" : {cgqc_player_patch = "cgqc_patch_comeau"; };
 		case "76561198117404775" : {cgqc_player_patch = "cgqc_patch_fortin"; };
