@@ -11,11 +11,10 @@ player setVariable ["cgqc_version_core", core_version, true]; // Set the client'
 _checkVersion = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 
 _name = name player;
-_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, core_version, _checkVersion];
-[_msg] remoteExec ["systemChat", 0];
-diag_log "[CGQC_INIT] ===" + _msg;
-
 if (core_version isNotEqualTo _checkVersion) then {
+	_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, core_version, _checkVersion];
+	[_msg] remoteExec ["systemChat", 0];
+	diag_log "[CGQC_INIT] === Wrong Version!" + _msg;
 	// Popup if version mismatch
 	_msg = format ["Mod version mismatch! <br/> -- Tes mods:%1<br/> -Serveur:%2 <br/> Ferme le jeux pis sync Swifty <br/>ALWAYS Sync ton swifty avant de partir le jeux!", core_version, _checkVersion];
 	private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
@@ -150,17 +149,19 @@ if (cgqc_player_loadAll) then {
 	// Unconcious event
 	["ace_unconscious", {
 		params ["_unit", "_isUnconscious"];
-		[] call setTeamColorReload;
-		if (_isUnconscious) then {
-			playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
-			_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
-			[0.2] call acre_api_fnc_setGlobalVolume;
-			diag_log "[CGQC_FNC] Unconscious - Lowered volume";
-		} else {
-			// set volume back
-			_vol = _unit getVariable "cgqc_player_wakeup_volume";
-			[_vol] call acre_api_fnc_setGlobalVolume;
-			diag_log "[CGQC_FNC] Unconscious - Volume restored";
+		if (isPlayer _unit) then {
+			[] call setTeamColorReload;
+			if (_isUnconscious) then {
+				playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
+				_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
+				[0.2] call acre_api_fnc_setGlobalVolume;
+				diag_log "[CGQC_FNC] Unconscious - Lowered volume";
+			} else {
+				// set volume back
+				_vol = _unit getVariable "cgqc_player_wakeup_volume";
+				[_vol] call acre_api_fnc_setGlobalVolume;
+				diag_log "[CGQC_FNC] Unconscious - Volume restored";
+			};
 		};
 	}] call CBA_fnc_addEventHandler;
 };
