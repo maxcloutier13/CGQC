@@ -330,8 +330,8 @@ _action = [ "zeus_gamestate_mission", "Now-> Mission", "", {""}, {missionNamespa
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // End mission
-_action = [ "zeus_gamestate_start", "End Mission (End Briefing)", "", {["end"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable "CGQC_gamestate_3_mission_stop"} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_gamestate_start", "End Mission", "", {["end"] spawn CGQC_fnc_gamestate;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate", "zeus_gamestate_mission"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // End Mission
 _action = [ "zeus_gamestate_end", "Now-> Post Mission", "", {""}, {missionNamespace getVariable "CGQC_gamestate_3_mission_stop";} ] call ace_interact_menu_fnc_createAction;

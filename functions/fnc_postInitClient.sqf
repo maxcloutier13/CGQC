@@ -286,7 +286,7 @@ if (cgqc_flag_isTraining) then {
 };
 
 // Zeus shenanigans... max - to review
-_zeus = [] call CGQC_fnc_setZeus;
+_zeus = [] spawn CGQC_fnc_setZeus;
 
 // Check if unit has an auto-switch loadout
 [] call CGQC_fnc_checkLoadout;
