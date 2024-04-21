@@ -254,6 +254,7 @@ switch (_scope) do {
                     {_target addItemToVest _x} forEach _vest_items;
                     if (_pack isNotEqualTo "") then {
                         removeBackpack _target;
+                        waitUntil {backpack _target isEqualTo ""};
                         _target addBackpack _pack;
                         clearAllItemsFromBackpack _target;
                         {_target addItemToBackpack _x;} forEach _pack_items;
