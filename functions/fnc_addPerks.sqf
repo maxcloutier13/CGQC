@@ -31,7 +31,7 @@ _action = [ "cgqc_perk_state_battle", "Battle", "", {["battle", false] spawn CGQ
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_state"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Reset colors
-_action = [ "menu_self_resetColors", "Reset TeamColors", "", {[] call CGQC_setTeamColorReloadAll;}, {leader player == player || cgqc_player_isTL || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_resetColors", "Reset TeamColors", "", {[] call CGQC_setTeamColorReloadAll;}, {leader player == player || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Radios =========================================================================================================
@@ -231,6 +231,14 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 _action = [ "menu_self_restore_pack", "Restore Lost Backpack", "", {["None", "restore"] spawn CGQC_fnc_dropStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Fix stuck walk
+_action = [ "menu_self_fixWalk", "Fix stuck walk", "", {[player, "forceWalk", "BackpackOnChest", false] call ace_common_fnc_statusEffect_set}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+
+
+
+
 // Dynamic group
 _action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -239,7 +247,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 _action = [ "menu_self_drop", "Drop Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[backpack player, 'backpack'] spawn CGQC_fnc_dropStuff}, {backpack player != '' && isNull objectParent player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Pick backpack
-_action = [ "menu_self_grab", "Pickup your Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[player, 'backpack_pickup'] spawn CGQC_fnc_dropStuff}, {cgqc_backpack_dropped && (count nearestObjects [player, ["GroundWeaponHolder_Scripted"], 5]) > 0} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_grab", "Pickup Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[player, 'backpack_pickup'] spawn CGQC_fnc_dropStuff}, {cgqc_backpack_dropped && (count nearestObjects [player, ["GroundWeaponHolder_Scripted"], 5]) > 0} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Fix ARMA
@@ -322,8 +330,8 @@ _action = [ "zeus_gamestate_mission", "Now-> Mission", "", {""}, {missionNamespa
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // End mission
-_action = [ "zeus_gamestate_start", "End Mission (End Briefing)", "", {["end"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable "CGQC_gamestate_3_mission_stop"} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_gamestate_start", "End Mission", "", {["end"] spawn CGQC_fnc_gamestate;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate", "zeus_gamestate_mission"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // End Mission
 _action = [ "zeus_gamestate_end", "Now-> Post Mission", "", {""}, {missionNamespace getVariable "CGQC_gamestate_3_mission_stop";} ] call ace_interact_menu_fnc_createAction;
@@ -336,9 +344,9 @@ _action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ------ Manual snapshot
-_action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all", "zeus"] spawn CGQC_fnc_snapshot}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "load", "all"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "load", "all", "zeus"] spawn CGQC_fnc_snapshot}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_zeus_done", false];} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Other stuff

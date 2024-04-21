@@ -11,16 +11,15 @@ player setVariable ["cgqc_version_core", core_version, true]; // Set the client'
 _checkVersion = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
 
 _name = name player;
-_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, core_version, _checkVersion];
-[_msg] remoteExec ["systemChat", 0];
-diag_log "[CGQC_INIT] ===" + _msg;
-
 if (core_version isNotEqualTo _checkVersion) then {
+	_msg = format ["Player %1 connected - CoreCheck %2/%3", _name, core_version, _checkVersion];
+	[_msg] remoteExec ["systemChat", 0];
+	diag_log "[CGQC_INIT] === Wrong Version!" + _msg;
 	// Popup if version mismatch
 	_msg = format ["Mod version mismatch! <br/> -- Tes mods:%1<br/> -Serveur:%2 <br/> Ferme le jeux pis sync Swifty <br/>ALWAYS Sync ton swifty avant de partir le jeux!", core_version, _checkVersion];
 	private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
 	if (_result) then {
-		[player, "load"] spawn CGQC_fnc_snapshot;
+		hint "Sérieux... reboot!";
 	};
 } else {
 	hint "Mods up to date. Good job. "
@@ -144,23 +143,25 @@ if (cgqc_player_loadAll) then {
 		[] call CGQC_fnc_maxMags;
 		[player, true] call ace_arsenal_fnc_removeBox;
 		// Save player loadout
-		// [player, "save"] spawn CGQC_fnc_snapshot;
+		[player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
 	}] call CBA_fnc_addEventHandler;
 
 	// Unconcious event
 	["ace_unconscious", {
 		params ["_unit", "_isUnconscious"];
-		[] call setTeamColorReload;
-		if (_isUnconscious) then {
-			playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
-			_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
-			[0.2] call acre_api_fnc_setGlobalVolume;
-			diag_log "[CGQC_FNC] Unconscious - Lowered volume";
-		} else {
-			// set volume back
-			_vol = _unit getVariable "cgqc_player_wakeup_volume";
-			[_vol] call acre_api_fnc_setGlobalVolume;
-			diag_log "[CGQC_FNC] Unconscious - Volume restored";
+		if (isPlayer _unit) then {
+			[] call setTeamColorReload;
+			if (_isUnconscious) then {
+				playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
+				_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
+				[0.2] call acre_api_fnc_setGlobalVolume;
+				diag_log "[CGQC_FNC] Unconscious - Lowered volume";
+			} else {
+				// set volume back
+				_vol = _unit getVariable "cgqc_player_wakeup_volume";
+				[_vol] call acre_api_fnc_setGlobalVolume;
+				diag_log "[CGQC_FNC] Unconscious - Volume restored";
+			};
 		};
 	}] call CBA_fnc_addEventHandler;
 };
@@ -285,7 +286,7 @@ if (cgqc_flag_isTraining) then {
 };
 
 // Zeus shenanigans... max - to review
-_zeus = [] call CGQC_fnc_setZeus;
+_zeus = [] spawn CGQC_fnc_setZeus;
 
 // Check if unit has an auto-switch loadout
 [] call CGQC_fnc_checkLoadout;
@@ -371,17 +372,55 @@ if (cgqc_config_state_pause) then {
 
 sleep 10;
 // Check if a snapshot exists
-cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
-if !(isNil "cgqc_snapshot_check") then {
-	// Notify the player
+_snapshotFound = false;
+_snapTxt = "";
+
+
+if (MissionProfileNamespace getVariable  "cgqc_player_snapshot_done") then {
+	_snapshotFound = true;
+	cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
+	_time = cgqc_snapshot_check select 1;
 	_team = cgqc_snapshot_check select 2;
 	_color = cgqc_snapshot_check select 3;
 	_role = cgqc_snapshot_check select 4;
-	_msg = format ["A copy of your saved loadout exists! <br/> --- Role:%1 in %2's %3 team --- <br/> Load Snapshot?", _role, _team, _color];
+	_snapTxt = _snapTxt + format ["<br/>-Manual: %1/%2/%3 @ %4", _role, _team, _color, _time];
+};
+if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
+	_snapshotFound = true;
+	cgqc_snapshot_check_auto = MissionProfileNamespace getVariable "cgqc_player_snapshot_auto";
+	_time = cgqc_snapshot_check_auto select 1;
+	_team = cgqc_snapshot_check_auto select 2;
+	_color = cgqc_snapshot_check_auto select 3;
+	_role = cgqc_snapshot_check_auto select 4;
+	_snapTxt = _snapTxt + format ["<br/>-Auto: %1/%2/%3 @ %4", _role, _team, _color, _time];
+};
+if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then {
+	_snapshotFound = true;
+	cgqc_snapshot_check_start = MissionProfileNamespace getVariable "cgqc_player_snapshot_start";
+	_time = cgqc_snapshot_check_start select 1;
+	_team = cgqc_snapshot_check_start select 2;
+	_color = cgqc_snapshot_check_start select 3;
+	_role = cgqc_snapshot_check_start select 4;
+	_snapTxt = _snapTxt + format ["<br/>-Start: %1/%2/%3 @ %4", _role, _team, _color, _time];
+};
+if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
+	_snapshotFound = true;
+	cgqc_snapshot_check_zeus = MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus";
+	_time = cgqc_snapshot_check_zeus select 1;
+	_team = cgqc_snapshot_check_zeus select 2;
+	_color = cgqc_snapshot_check_zeus select 3;
+	_role = cgqc_snapshot_check_zeus select 4;
+	_snapTxt = _snapTxt + format ["<br/>-Zeus: %1/%2/%3 @ %4", _role, _team, _color, _time];
+};
+
+if (_snapshotFound) then {
+
+	_msg = format ["A saved loadout exists! %1 <br/> --- Check Arsenal to Load ---", _snapTxt];
 	private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
+	/*
 	if (_result) then {
 		[player, "load"] spawn CGQC_fnc_snapshot;
-	};
+	};*/
 };
 
 diag_log "[CGQC_INIT] === postInitClient done =====================================";

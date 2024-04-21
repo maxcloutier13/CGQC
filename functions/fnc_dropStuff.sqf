@@ -31,7 +31,6 @@ CGQC_int_createHolder = {
     _holder;
 };
 
-
 _drop = true;
 _action = "";
 switch (_type) do {
@@ -105,14 +104,44 @@ switch (_type) do {
         };
     };
     case "backpack": {
-        _item = typeOf unitBackpack player;
+        _pack = unitBackpack player;
+        _packName = typeOf _pack;
         _action = "DropBag";
         cgqc_backpack_holder = [] call CGQC_int_createHolder;
+        // Add ace options to holder
+        //_actionAce = [ "menu_pack", "Lock Backpack", "", {cgqc_backpack_holder setVariable ["cgqc_object_lock", true]}, {!(cgqc_backpack_holder getVariable ["cgqc_object_lock", false])} ] call ace_interact_menu_fnc_createAction;
+		//_adding = [ cgqc_backpack_holder, 0, ["ACE_MainActions" ], _actionAce ] call  ace_interact_menu_fnc_addActionToObject;
+        //_actionAce = [ "menu_packUnlock", "UnLock Backpack", "", {cgqc_backpack_holder setVariable ["cgqc_object_lock", false]}, {cgqc_backpack_holder getVariable ["cgqc_object_lock", false]} ] call ace_interact_menu_fnc_createAction;
+		//_adding = [ cgqc_backpack_holder, 0, ["ACE_MainActions" ], _actionAce ] call  ace_interact_menu_fnc_addActionToObject;
+
         // Set backpack name
-        (unitBackpack player) setVariable ["cgqc_object_name", name player, true];
+        _pack setVariable ["cgqc_object_name", name player, true];
+        //cgqc_backpack_holder setVariable ["cgqc_object_name", name player, true];
+        //cgqc_backpack_holder setVariable ["cgqc_object_lock", true, true];
+       /* cgqc_backpack_holder addEventHandler ["ContainerOpened", {
+            params ["_container", "_unit"];
+            if (_container getVariable ["cgqc_object_lock", false]) then {
+                _packName = _container getVariable "cgqc_object_name";
+                // Pack is locked. Check if it's being opened by the owner
+                if (name _unit isNotEqualTo _packName) exitWith {
+                    [{
+                        !isNull (findDisplay 602)
+                    },
+                    {
+                        (findDisplay 602) closeDisplay 0;
+                        if !(isNil "ace_common_fnc_displayTextStructured") then {
+                            ["Backpack is locked"] call ace_common_fnc_displayTextStructured;
+                        } else {
+                            hint "Backpack is locked";
+                        };
+                    },
+                    []] call CBA_fnc_waitUntilAndExecute;
+                };
+            };
+        }];*/
         // Take a backup of the backpack, just in case
-        cgqc_player_backpack_backup = [_item, backpackItems player];
-        player action [_action, cgqc_backpack_holder, _item];
+        cgqc_player_backpack_backup = [_packName, backpackItems player];
+        player action [_action, cgqc_backpack_holder, _packName];
         // Create personal marker for position
         pack_marker = createMarkerLocal ["cgqc_marker_backpack", player, 1];
         "cgqc_marker_backpack" setMarkerTypeLocal "hd_end_noShadow";
