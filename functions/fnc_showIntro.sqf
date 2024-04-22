@@ -42,9 +42,7 @@ diag_log format ["[CGQC_FNC] showIntro started"];
 				ace_hearing_disableVolumeUpdate = false;
 			};
 		};
-	};
-
-	if (cgqc_flag_isTraining) then {
+	} else {
 		titleCut ["", "BLACK IN", 1];
 		1 fadeSound 1;
 		cgqc_intro_skipped = true;

@@ -360,12 +360,13 @@ if (cgqc_config_state_pause) then {
 			_phaseTxt = "Here we go!";
 		};
 	};
-	waitUntil {
-		sleep 0.5, cgqc_intro_done
-	};
+	waitUntil {sleep 1, cgqc_intro_done};
 	sleep 5;
 	[_phaseName, 5, 2, "phase_msg", _phaseTxt] call CGQC_fnc_notifyAll;
 };
+
+// All done
+cgqc_start_postInitClient_done = true;
 
 sleep 10;
 // Check if a snapshot exists
@@ -420,6 +421,5 @@ if (_snapshotFound) then {
 	};*/
 };
 
-// All done
-cgqc_start_postInitClient_done = true;
+
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
