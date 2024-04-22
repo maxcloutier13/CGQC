@@ -294,9 +294,6 @@ _zeus = [] spawn CGQC_fnc_setZeus;
 // RHS fix to remove chatter
 profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
 
-// All done
-cgqc_start_postInitClient_done = true;
-
 [] spawn {
 	// switch map to topo by default
 	waitUntil {
@@ -423,4 +420,6 @@ if (_snapshotFound) then {
 	};*/
 };
 
+// All done
+cgqc_start_postInitClient_done = true;
 diag_log "[CGQC_INIT] === postInitClient done =====================================";
