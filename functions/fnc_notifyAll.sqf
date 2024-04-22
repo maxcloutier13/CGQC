@@ -8,6 +8,9 @@ cgqc_notifAll_length = _length;
 cgqc_notifAll_fade = _fadeIn;
 
 switch (_mode) do {
+	case "cba_notify_phase": {
+		[[_txt, 1.5], true] call CBA_fnc_notify;
+	};
 	case "phase_msg": {
 		[
 			[

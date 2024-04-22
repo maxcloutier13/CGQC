@@ -49,7 +49,7 @@ switch (_type) do {
 				sleep 30;
 				// notify all
 				_txt = "Staging Phase";
-				[_txt, 3, 0, "ace"] call CGQC_fnc_notifyAll;
+				[_txt, 3, 0, "cba_notify_phase"] call CGQC_fnc_notifyAll;
 			};
 		};
 	};
