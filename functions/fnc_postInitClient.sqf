@@ -305,8 +305,11 @@ profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
 
 // Create/join initial group
 [groupId (group player)] call CGQC_fnc_joinGroup;
-
-sleep 2;
+sleep 1;
+_checkColor = player getVariable ["cgqc_var_startingColorTeam", "MAIN"];
+if (_checkColor isNotEqualTo "MAIN") then {
+	[_checkColor] call CGQC_fnc_setTeamColor;
+};
 // set back custom patch
 [] call CGQC_fnc_setPatch;
 if (!cgqc_flag_isTraining) then {
@@ -337,7 +340,7 @@ if (cgqc_config_state_pause) then {
 		sleep cgqc_config_fix_colorFix_timer;
 		if (cgqc_config_fix_colorFix) then {
 			[] call CGQC_fnc_setTeamColorReload;
-		};
+		}
 	};
 };
 

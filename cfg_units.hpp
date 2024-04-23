@@ -36,6 +36,38 @@ class CGQC_Soldat_Base : B_Soldier_f
 			expression = "_this setVariable ['cgqc_var_skipLoadoutSwitch',_value, true];";
 			condition = "objectBrain";
 		};
+		class colorTeam {
+			displayName = "Starting colorTeam";
+			tooltip = "ColorTeam to join on init";
+			property = "cgqc_var_startingColorTeam";
+			control = "combo";
+			defaultValue = "MAIN";
+			expression = "_this setVariable ['cgqc_var_startingColorTeam',_value, true];";
+			condition = "objectBrain";
+			typeName = "STRING";
+			class Values {
+				class White {
+					name = "White";
+					value = "MAIN";
+				};
+				class Red {
+					name = "Red";
+					value = "RED";
+				};
+				class Green {
+					name = "Green";
+					value = "GREEN";
+				};
+				class Blue {
+					name = "Blue";
+					value = "BLUE";
+				};
+				class Yellow {
+					name = "Yellow";
+					value = "YELLOW";
+				};
+			};
+		};
 	};
 };
 
