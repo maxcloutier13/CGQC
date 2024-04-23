@@ -90,7 +90,7 @@ _beret = [] call CGQC_fnc_getRankedBeret;
 _set = [] call CGQC_fnc_setPatch;
 
 // Dynamic group -------------------------------------------------------------------------------------------------
-// ['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
+//['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
 cgqc_player_group = group player;
 cgqc_player_groupID = groupId player;
 
