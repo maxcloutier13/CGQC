@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.6.1.2";
+core_version = "4.6.2";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -63,6 +63,7 @@ cgqc_camoSwitch_done = true;
 cgqc_player_backpack_backup = [];
 cgqc_removeAll_done = false;
 cgqc_bft_forceUpdate = false;
+cgqc_hud_hidden = false;
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -351,6 +352,11 @@ if (cgqc_player_hasUnsung) then {
 ["CGQC", "cgqc_kb_dropPack_toggle", "Quickdrop/Pickup Backpack",
 	{[backpack player, 'toggle'] call CGQC_fnc_dropStuff}, {""}, []
 ] call cba_fnc_addKeybind;
+
+//-- Hide the HUD
+["CGQC", "toggle", "Toggle HUD", {
+	_this call CGQC_fnc_toggleUI}, {""}, [DIK_O,[false,false,false]]
+] call CBA_fnc_addKeybind;
 
 //Wind changer event
 ["cgqc_change_fucking_wind", {
