@@ -1,6 +1,5 @@
 // --- setTeamColorReload ----------------------------------------------------------
 // set player color
-params [["_color", "MAIN"]];
 diag_log "[CGQC_FNC] setTeamColorReload started";
 
 _name = name player;

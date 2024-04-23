@@ -99,6 +99,4 @@ if (_load) then {
     };
 };
 
-
-
 diag_log "[CGQC_FNC] checkLoadout done";

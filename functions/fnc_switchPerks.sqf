@@ -1,4 +1,4 @@
-// --- perkSwitch ----------------------------------------------------------
+// --- switchPerks ----------------------------------------------------------
 // Switch perks
 params ["_type", ["_clearFirst", true]];
 diag_log format ["[CGQC_FNC] switchPerks %1 started", _type];
@@ -15,12 +15,15 @@ switch (_type) do {
 	};
 	case "hq":{
 		["HQ"]call CGQC_fnc_setLeadership;
+		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
 	case "sl":{
 		["SL"]call CGQC_fnc_setLeadership;
+		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
 	case "tl":{
 		["TL"]call CGQC_fnc_setLeadership;
+		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
 	case "heli":{
 		player setUnitTrait ["engineer", true];
@@ -37,6 +40,7 @@ switch (_type) do {
 		cgqc_action_delCrew = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		cgqc_perks_action_list = cgqc_perks_action_list + [cgqc_action_getCrew, cgqc_action_delCrew];
 		cgqc_perks_pilot = true;
+		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
 	case "heli_crew":{
 		player setUnitTrait ["engineer", true];
@@ -57,6 +61,7 @@ switch (_type) do {
 		cgqc_action_delDriver = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		cgqc_perks_action_list = cgqc_perks_action_list + [cgqc_action_getDriver, cgqc_action_delDriver];
 		cgqc_perks_driver = true;
+		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
 	case "tank_crew":{
 		player setUnitTrait ["engineer", true];
@@ -129,6 +134,12 @@ switch (_type) do {
 	case "med":{
 		player setUnitTrait ["Medic", true];
 		player setUnitTrait ["loadCoef ", 0.6];
+		cgqc_perks_medic = true;
+		["transmit"] spawn CGQC_fnc_bluforceTracker;
+	};
+	case "lifesaver":{
+		player setUnitTrait ["Medic", true];
+		player setUnitTrait ["loadCoef ", 0.8];
 		cgqc_perks_medic = true;
 	};
 	case "at":{

@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.5.18.1";
+core_version = "4.6.1";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -62,7 +62,7 @@ cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
 cgqc_player_backpack_backup = [];
 cgqc_removeAll_done = false;
-
+cgqc_bft_forceUpdate = false;
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -143,6 +143,7 @@ cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
 cgqc_reset_speaker = false;
 cgqc_backpack_dropped = false;
+cgqc_backpack_dropped_notif = false;
 // Advanced perks
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -392,7 +393,7 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 }] call CBA_fnc_addEventHandler;
 
 // Addon Options ===================================================================================================
-_menu_name = "CGQC Zeus";
+_menu_name = "[CGQC] Zeus";
 
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"],
@@ -492,53 +493,53 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 
 // Looting settings
 ["cgqc_lootingRestriction_on", "CHECKBOX", ["Restrict corpse looting?", "Empêche/limite le looting des corps"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_lootingRestriction_on"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_lootingRestriction_on"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_gun", "CHECKBOX", ["Keep primary gun", "Comme ça le dit"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_gun"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_gun"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_gun_amnt", "SLIDER",["Max mags", "Combien de mags maximum"],
-    ["CGQC Looting", "Looting Restrictions"], [0, 10, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 10, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_handgun", "CHECKBOX", ["Keep handgun", "Comme ça le dit"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_handgun"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_handgun"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_handgun_amnt", "SLIDER",["Max Handgun mags", "Combien de mags maximum"],
-    ["CGQC Looting", "Looting Restrictions"], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_launcher", "CHECKBOX", ["Keep Launcher", "Comme ça le dit"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_launcher"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_launcher"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_launcher_amnt", "SLIDER",["Max Launcher ammo", "Combien de mags maximum"],
-    ["CGQC Looting", "Looting Restrictions"], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_launcher_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_launcher_amnt"}, false] call CBA_fnc_addSetting;
 
 
 ["cgqc_looting_assigned", "CHECKBOX", ["Keep GPS/Binoculars/NVG's", "Comme ça le dit"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_assigned"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_assigned"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_throwable", "CHECKBOX", ["Keep throwables", "Garde les grenades/smokes"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_throwable"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_throwable"}, false] call CBA_fnc_addSetting;
 
 
 ["cgqc_looting_common", "CHECKBOX", ["Lootlist: Common", "Items de base"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_common"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_common"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_common_items", "EDITBOX", ["Common Items", "Liste des items possibles"],
-    ["CGQC Looting", "Looting Restrictions"], "ACE_fieldDressing, FF_Painkiller", 1, {publicVariable "cgqc_looting_common_items"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], "ACE_fieldDressing, FF_Painkiller", 1, {publicVariable "cgqc_looting_common_items"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_common_chance", "SLIDER",["% de chances", "Chances de trouver des items Common."],
-    ["CGQC Looting", "Looting Restrictions"], [0, 100, 50, 0], 1, {publicVariable "cgqc_looting_common_chance"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 100, 50, 0], 1, {publicVariable "cgqc_looting_common_chance"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_common_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
-    ["CGQC Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_common_max"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_common_max"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_looting_normal", "CHECKBOX", ["Lootlist: Normal", "Items normaux"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_normal"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_normal"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_normal_items", "EDITBOX", ["Normal Items", "Liste des items possibles"],
-    ["CGQC Looting", "Looting Restrictions"], "ACE_tourniquet, ACE_morphine, ACE_epinephrine, ACE_salineIV_500", 1, {publicVariable "cgqc_looting_normal_items"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], "ACE_tourniquet, ACE_morphine, ACE_epinephrine, ACE_salineIV_500", 1, {publicVariable "cgqc_looting_normal_items"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_normal_chance", "SLIDER",["% de chances", "Chances de trouver des items Normaux."],
-    ["CGQC Looting", "Looting Restrictions"], [0, 100, 25, 0], 1, {publicVariable "cgqc_looting_normal_chance"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 100, 25, 0], 1, {publicVariable "cgqc_looting_normal_chance"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_normal_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
-    ["CGQC Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_normal_max"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_normal_max"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_looting_rare", "CHECKBOX", ["Lootlist: Rare", "Items rare"],
-    ["CGQC Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_rare"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_rare"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_rare_items", "EDITBOX", ["Normal Items", "Liste des items possibles"],
-    ["CGQC Looting", "Looting Restrictions"], "ACE_salineIV, ACE_splint", 1, {publicVariable "cgqc_looting_rare_items"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], "ACE_salineIV, ACE_splint", 1, {publicVariable "cgqc_looting_rare_items"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_rare_chance", "SLIDER",["% de chances", "Chances de trouver des items Normaux."],
-    ["CGQC Looting", "Looting Restrictions"], [0, 100, 5, 0], 1, {publicVariable "cgqc_looting_rare_chance"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 100, 5, 0], 1, {publicVariable "cgqc_looting_rare_chance"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_rare_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
-    ["CGQC Looting", "Looting Restrictions"], [0, 20, 1, 0], 1, {publicVariable "cgqc_looting_rare_max"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 1, 0], 1, {publicVariable "cgqc_looting_rare_max"}, false] call CBA_fnc_addSetting;
 
 
 // Maximum mags ===============================================================================================
@@ -553,6 +554,8 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 // Training ===============================================================================================
 ["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"],
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
+["cgqc_flag_backpackNotif", "CHECKBOX", ["Backpack Notification", "Notify the player if he moves too far from his pack"],
+    [_menu_name, "Option Toggles"], true, 1, {publicVariable "cgqc_flag_backpackNotif"}, false] call CBA_fnc_addSetting;
 
 // Fortify tool
 ["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"],
@@ -726,7 +729,7 @@ if (cgqc_player_hasNorthern) then {
 // Check that 2023 is not present
 if (!cgqc_player_has2023) then {
 	// Custom pistol 2023 version
-	_menu_name = "CGQC Player settings";
+	_menu_name = "[CGQC] Player settings";
 	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
 		[_menu_name, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],

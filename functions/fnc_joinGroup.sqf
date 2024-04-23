@@ -30,7 +30,7 @@ if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
     if !(_exists) then {
         // Create and join as leader
         n_targetGroup = createGroup _side;
-	    n_targetGroup setGroupId [_groupName]; // Event when a unit joins the group
+        n_targetGroup setGroupId [_groupName]; // Event when a unit joins the group
         [player] joinSilent n_targetGroup;
     };
     if (leader group player isEqualTo player) then {
@@ -38,11 +38,6 @@ if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
         n_data = ["cgqc_patch_logo", _groupName, false];
         ["RegisterGroup", [n_targetGroup, leader n_targetGroup, n_data]] remoteExec ["BIS_fnc_dynamicGroups", 2];
     };
-    /*
-    n_targetGroup addEventHandler ["UnitJoined", {
-        params ["_group", "_newUnit"];
-        [] call CGQC_fnc_setGroupRadios;
-    }];*/
 };
 
 cgqc_player_group = n_targetGroup;
@@ -51,7 +46,6 @@ cgqc_player_groupID = groupId player;
 [_color] call CGQC_fnc_setTeamColor;
 [_groupName, _color] call CGQC_fnc_setGroupRadios;
 hint format ["You've joined %1", _groupName];
-
 diag_log format ["[CGQC_FNC] joinGroup Player %1 joined %2", cgqc_custom_playername,  _groupName];
 
 diag_log "[CGQC_FNC] getRadioPresets done";

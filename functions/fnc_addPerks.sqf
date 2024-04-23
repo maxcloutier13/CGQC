@@ -308,7 +308,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "z
 _action = [ "zeus_briefingCmd_start", "Start Leaders Briefing", "", {["briefingCmd", 0] spawn CGQC_fnc_perksZeus}, {!(missionNamespace getVariable "CGQC_gamestate_1_briefing")} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Commanders done
-_action = [ "zeus_briefingCmd_stop", "Stop Leader's Briefing", "", {["briefingCmd_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && missionNamespace getVariable "CGQC_gamestate_1_briefing_leaders"} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_briefingCmd_stop", "Stop Leader's Briefing", "", {["briefingCmd_stop", 0] spawn CGQC_fnc_perksZeus}, {([player] call CGQC_fnc_checkZeus || cgqc_player_max) && missionNamespace getVariable "CGQC_gamestate_1_briefing_leaders" } ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // General briefing
 _action = [ "zeus_briefing_start", "Start Full Briefing", "", {["briefing", 0] spawn CGQC_fnc_perksZeus}, {!(missionNamespace getVariable "CGQC_gamestate_1_briefing")} ] call ace_interact_menu_fnc_createAction;
@@ -318,7 +318,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "z
 _action = [ "zeus_briefing_start_5", "Start Full Briefing dans 5mins", "", {["briefing", 300] spawn CGQC_fnc_perksZeus}, {!(missionNamespace getVariable "CGQC_gamestate_1_briefing")} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging", "zeus_briefing"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Briefing done
-_action = [ "zeus_briefing_stop", "Stop Briefing", "", {["briefing_stop", 0] spawn CGQC_fnc_perksZeus}, {[player] call CGQC_fnc_checkZeus && missionNamespace getVariable "CGQC_gamestate_1_briefing_full"} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_briefing_stop", "Stop Briefing", "", {["briefing_stop", 0] spawn CGQC_fnc_perksZeus}, {([player] call CGQC_fnc_checkZeus || cgqc_player_max) && missionNamespace getVariable "CGQC_gamestate_1_briefing_full"} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Start the game

@@ -148,6 +148,19 @@ switch (_type) do {
         "cgqc_marker_backpack" setMarkerColorLocal "ColorRed";
         "cgqc_marker_backpack" setMarkerTextLocal " Pack";
         cgqc_backpack_dropped = true;
+        if (cgqc_flag_backpackNotif) then {
+            [] spawn {
+                while {alive player && cgqc_backpack_dropped && !cgqc_backpack_dropped_notif} do {
+                    // Check distance, if too far notify the player
+                    if (player distance cgqc_backpack_holder > 100) then {
+                        _text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Oublie pas ton backpack!</t><br/>";
+                        [_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
+                        cgqc_backpack_dropped_notif = true;
+                    };
+                    sleep 30;
+                };
+            };
+        };
     };
     case "mags": {
         _action = "DropMagazine";

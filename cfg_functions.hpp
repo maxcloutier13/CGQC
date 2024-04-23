@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class bluforceTracker{
+            file = "\cgqc\functions\fnc_bluforceTracker.sqf";
+            description = " Handle bluforce tracker sheeits";
+        };
         class switchNonLethal{
             file = "\cgqc\functions\fnc_switchNonLethal.sqf";
             description = "Switch to nonLethal setup";

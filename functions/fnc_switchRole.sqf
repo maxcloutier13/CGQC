@@ -94,6 +94,13 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
         diag_log "[CGQC_FNC] switchRole - lower gun";
         [player] call ace_weaponselect_fnc_putWeaponAway;
 
+        // Start receiving BFT
+        ["receive"] spawn CGQC_fnc_bluforceTracker;
+        // Start sending BFT if leader of group or refresh it if it's already running
+        if (leader group player isEqualTo player || AZMBFT_isTransmitting) then {
+            ["transmit"] spawn CGQC_fnc_bluforceTracker;
+        };
+
     } else {
         diag_log "[CGQC_FNC] switchRole - Role unknown - Skipping";
     };

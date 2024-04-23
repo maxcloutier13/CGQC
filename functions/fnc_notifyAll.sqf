@@ -4,21 +4,21 @@ params ["_txt", ["_length", 3], ["_fadeIn", 1], ["_mode", "dynamic"], ["_txt2", 
 diag_log format ["[CGQC_FNC] notifyAll %1/%2/%3 started", _txt, _length, _fadeIn];
 // Make variables accessible...
 cgqc_notifAll_txt = _txt;
+cgqc_notifAll_txt_2 = _txt2;
+cgqc_notifAll_txt_3 = _txt3;
 cgqc_notifAll_length = _length;
 cgqc_notifAll_fade = _fadeIn;
 
 switch (_mode) do {
-	case "phase_msg": {
-		[
-			[
-				[_txt, "align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
-				            ["", "<br/>"], // line break
-				[_txt2, "align = 'center' shadow = '1' size = '1.0'"]
-			]
-		] spawn BIS_fnc_typeText2;
+	case "cba_notify_phase": {
+		[-1, {
+			[[cgqc_notifAll_txt, 1.5], true] call CBA_fnc_notify;
+		}] call CBA_fnc_globalExecute;
 	};
-	case "mission": {
-		[_txt, _txt2, _txt3] spawn BIS_fnc_infoText;
+	case "cba_notify_start": {
+		[-1, {
+			[[cgqc_notifAll_txt, 1.5], [cgqc_notifAll_txt_2], false] call CBA_fnc_notify;
+		}] call CBA_fnc_globalExecute;
 	};
 	case "dynamic": {
 		// Dynamic text on everyone
