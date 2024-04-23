@@ -47,6 +47,7 @@ switch (_type) do {
 	};
 	case "jet":{
 		player setUnitTrait ["engineer", true];
+		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
 	case "driver":{
 		player setUnitTrait ["engineer", true];
