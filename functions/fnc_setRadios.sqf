@@ -390,19 +390,7 @@ switch (_type) do {
 		// Set radios for centaure use
 		["centaure"] spawn CGQC_fnc_setRadios;
 	};
-	case "speaker_off": {
-		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
-		_handRadio_1 = _handRadios select 0;
-		// Check speaker state
-		_isSpeaker = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-		waitUntil {!isNil "_isSpeaker"};
-		if(_isSpeaker) then {
-			// Turn speaker off
-			_success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
-			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
-		};
-	};
+
 	case "speaker_on": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
 		_handRadio_1 = _handRadios select 0;
@@ -413,7 +401,9 @@ switch (_type) do {
 			// Turn speaker on
 			_success = [_handRadio_1, true] call acre_api_fnc_setRadioSpeaker;
 			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
+			_showMsg = true;
+			_title = "Speaker";
+			_msg = format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 		};
 	};
 	case "toggle_speaker": {
@@ -426,13 +416,14 @@ switch (_type) do {
 			// Turn speaker off
 			_success = [_handRadio_1, false] call acre_api_fnc_setRadioSpeaker;
 			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 		}else{
 			// Turn speaker on
 			_success = [_handRadio_1, true] call acre_api_fnc_setRadioSpeaker;
 			_speaker_check = [_handRadio_1] call acre_api_fnc_isRadioSpeaker;
-			hint format ["%1 Speaker: %2", _handRadio_1, _speaker_check];
 		};
+		_showMsg = true;
+		_title = "Speaker Toggle";
+		_msg = format ["%1 Speaker-1: %2", _handRadio_1, _speaker_check];
 	};
 	case "toggle_speaker_2": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -444,20 +435,21 @@ switch (_type) do {
 			// Turn speaker off
 			_success = [_handRadio_2, false] call acre_api_fnc_setRadioSpeaker;
 			_speaker_check = [_handRadio_2] call acre_api_fnc_isRadioSpeaker;
-			hint format ["%1 Speaker: %2", _handRadio_2, _speaker_check];
 		}else{
 			// Turn speaker on
 			_success = [_handRadio_2, true] call acre_api_fnc_setRadioSpeaker;
 			_speaker_check = [_handRadio_2] call acre_api_fnc_isRadioSpeaker;
-			hint format ["%1 Speaker: %2", _handRadio_2, _speaker_check];
 		};
+		_showMsg = true;
+		_title = "Speaker Toggle";
+		_msg = format ["%1 Speaker-2: %2", _handRadio_2, _speaker_check];
 	};
 	default	{
 		hint "fnc_setRadios fucked up. ";
 	};
 };
 if(_showMsg) then {
-	[_title, _msg, false] call CBA_fnc_notify;
+	[[_title], [_msg], false] call CBA_fnc_notify;
 };
 
 diag_log "[CGQC_FNC] setRadios done";
