@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class toggleUI{
+            file = "\cgqc\functions\fnc_toggleUI.sqf";
+            description = "Hide/show the whole UI";
+        };
         class bluforceTracker{
             file = "\cgqc\functions\fnc_bluforceTracker.sqf";
             description = " Handle bluforce tracker sheeits";

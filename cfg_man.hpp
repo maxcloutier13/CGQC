@@ -1,3 +1,5 @@
+
+
 class Man;
 class CAManBase: Man {
 	maxGunElev = 80;
@@ -246,16 +248,6 @@ class CAManBase: Man {
 						icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
 					};
 				};
-				class CGQC_joinGroup_hermes {
-					displayName = "Hermes";
-					condition = "true";
-					statement = "['Hermes', 'MAIN'] call CGQC_fnc_joinGroup";
-				};
-				class CGQC_joinGroup_orion {
-					displayName = "Orion";
-					condition = "true";
-					statement = "['Orion', 'MAIN'] call CGQC_fnc_joinGroup";
-				};
 				class CGQC_joinGroup_centaure {
 					displayName = "Centaure";
 					condition = "true";;
@@ -266,16 +258,27 @@ class CAManBase: Man {
 					condition = "true";
 					statement = "['Griffon', 'MAIN'] call CGQC_fnc_joinGroup";
 				};
+				class CGQC_joinGroup_hermes {
+					displayName = "Hermes";
+					condition = "true";
+					statement = "['Hermes', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+				class CGQC_joinGroup_orion {
+					displayName = "Orion";
+					condition = "true";
+					statement = "['Orion', 'MAIN'] call CGQC_fnc_joinGroup";
+				};
+
 				class CGQC_joinGroup_pegase {
 					displayName = "Pegase";
 					condition = "true";
 					statement = "['Pegase', 'MAIN'] call CGQC_fnc_joinGroup";
 				};
-				class CGQC_joinGroup_hq {
+				/*class CGQC_joinGroup_hq {
 					displayName = "HQ";
 					condition = "true";
 					statement = "['HQ', 'MAIN'] call CGQC_fnc_joinGroup";
-				};
+				};*/
 			};
 		};
 
