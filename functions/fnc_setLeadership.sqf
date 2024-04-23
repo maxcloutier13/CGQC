@@ -8,11 +8,15 @@ if (isPlayer _target && _player isNotEqualTo _target) then {
 	["ace_common_displayTextStructured", [_displayText, 3, _target], [_target]] call CBA_fnc_targetEvent;
 };
 
+_target setVariable ["cgqc_player_isHQ", false, true];
 _target setVariable ["cgqc_player_isSL", false, true];
 _target setVariable ["cgqc_player_isTL", false, true];
 _target setVariable ["cgqc_player_is2IC", false, true];
 
 switch (_type) do {
+	case "HQ":{
+		_target setVariable ["cgqc_player_isHQ", true, true];
+	};
 	case "SL":{
 		_target setVariable ["cgqc_player_isSL", true, true];
 	};

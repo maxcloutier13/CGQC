@@ -3,6 +3,9 @@
 params ["_type", ["_section", 1]];
 diag_log format ["[CGQC_FNC] setRadios %1/%2 started", _type, _section];
 
+_showMsg = false;
+_msg = "";
+_title = "";
 _running = true;
 _handRadios = [];
 _racks = [];
@@ -45,10 +48,9 @@ switch (_type) do {
 		diag_log format ["[CGQC_FNC] setRadios Settings sides for %1/%2", _radio1, _radio2];
 		_success = [_radio1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_radio2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
-		hint parseText "
-		--- Training radio setup --- <br/>
-		Radio1 - 343|L - Team<br/>
-		Radio2 - 152|R|1 - Spartan/HQ<br/>";
+		_showMsg = true;
+		_title = "--- Training radio setup ---";
+		_msg = " -Radio1 - 343|L - Team <br/> -Radio2 - 152|R|1 - Spartan/HQ";
 	};
 	case "flipSides":	{
 		_radios = call acre_api_fnc_getCurrentRadioList;
@@ -71,14 +73,18 @@ switch (_type) do {
 				case "CENTER":	{_success = [_radio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;};
 			};
 		};
-		hint "Radio Sides: Set";
+		_showMsg = true;
+		_title = "--- Radio Sides: Set ---";
+		_msg = "";
 	};
 	case "patch": {
 		// Remove patch
 		player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
 		// Set the patch
 		[ player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
-		hint "Patch restored";
+		_showMsg = true;
+		_title = "--- Patch restored ---";
+		_msg = "";
 	};
 	case "2ic": {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -91,10 +97,9 @@ switch (_type) do {
 		// Set radio PTT: 148 is listen-only
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		[] call CGQC_fnc_setGroupRadios;
-		hint parseText "
-		--- 2iC radio setup --- <br/>
-		Radio1:Gauche/343/Team<br/>
-		Radio2:Droite/148/2iC<br/>";
+		_showMsg = true;
+		_title = "--- 2iC radio setup ---";
+		_msg = "Radio1:Gauche/343/Team<br/>Radio2:Droite/148/2iC";
 	};
 	case "spartan":	{  //Grunts
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -110,9 +115,9 @@ switch (_type) do {
 		// Set radio PTT: 152 is listen-only
 		//_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		_success = [ [ _personalRadio, "", "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hint parseText "
-		--- Infantry radio setup --- <br/>
-		Radio1:Gauche/343/Team<br/>";
+		_showMsg = true;
+		_title = "--- Infantry radio setup ---";
+		_msg = "Radio1:Gauche/343/Team";
 		//Radio2:Droite/Listen-Only/Interteam</t>";
 	};
 	case "spartan_1": { //Team Lead
@@ -130,10 +135,9 @@ switch (_type) do {
 		// Set TL radio to speaker
 		//_success = [_handRadio, true] call acre_api_fnc_setRadioSpeaker;
 		[] call CGQC_fnc_setGroupRadios;
-		hint parseText "
-		--- TL radio setup ---
-		Radio1:Gauche/343/Team<br/>
-		Radio2:Droite/152/Spartan/HQ <br/></t>";
+		_showMsg = true;
+		_title = "--- TL radio setup ---";
+		_msg = "Radio1:Gauche/343/Team<br/>Radio2:Droite/152/Spartan/HQ";
 	};
 	case "spartan_2": { //Spartan 2iC
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -149,10 +153,9 @@ switch (_type) do {
 		// Set radio orders
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		[] call CGQC_fnc_setGroupRadios;
-		hint parseText "
-		--- 2iC radio setup ---
-		Radio1:Gauche/343/Team<br/>
-		Radio2:Droite/152/Spartan/HQ</t>";
+		_showMsg = true;
+		_title = "--- 2iC radio setup ---";
+		_msg = "Radio1:Gauche/343/Team<br/>Radio2:Droite/152/Spartan/HQ";
 	};
 	case "medic": { // Medic
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -166,10 +169,9 @@ switch (_type) do {
 		// Set radio orders
 		_success = [ [ _personalRadio, _handRadio, "" ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		[] call CGQC_fnc_setGroupRadios;
-		hint parseText "
-		--- Medic radio setup ---
-		Radio1:Gauche/343/Team: HQ<br/>
-		Radio2:Droite/152/Spartan/HQ</t>";
+		_showMsg = true;
+		_title = "--- Medic radio setup ---";
+		_msg = "Radio1:Gauche/343/Team: HQ<br/>Radio2:Droite/152/Spartan/HQ";
 	};
 	case "centaure": {
 		// Emergency 152
@@ -191,10 +193,9 @@ switch (_type) do {
 		// Set radio orders
 		_success = [ [ _rack1, _rack2, _handRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 		[] call CGQC_fnc_setGroupRadios;
-		hint parseText "<t>
-		Radio1:Gauche/117/Inter-Centaure<br/>
-		Radio2:Droite/117/Centaure-HQ<br/>
-		Radio3:Droite/152/Urgence</t>";
+		_showMsg = true;
+		_title = "--- Centaure radio setup ---";
+		_msg = "Radio1:Gauche/117/Inter-Centaure<br/>Radio2:Droite/117/Centaure-HQ<br/>Radio3:Droite/152/Urgence";
 	};
 	case "griffon":	{
 		// Emergency 152
@@ -213,10 +214,9 @@ switch (_type) do {
 		_success = [_rack1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_rack2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		[] call CGQC_fnc_setGroupRadios;
-		hint parseText "<t>
-		Radio1:Gauche/117/Inter-Griffon<br/>
-		Radio2:Droite/117/Griffon-HQ<br/>
-		Radio3:Droite/152/Urgence</t>";
+		_showMsg = true;
+		_title = "--- Griffon radio setup ---";
+		_msg = "Radio1:Gauche/117/Inter-Griffon<br/>Radio2:Droite/117/Griffon-HQ<br/>Radio3:Droite/152/Urgence";
 	};
 	case "jtac": {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -234,11 +234,9 @@ switch (_type) do {
 		_success = [_handRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [_personalRadio, _handRadio_1, _handRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hint parseText "
-		--- JTAC radio setup ---
-		Radio1:Gauche/343/Team<br/>
-		Radio2:Droite/152/Spartan/HQ<br/>
-		Radio3:Gauche/152/Griffon</t>";
+		_showMsg = true;
+		_title = "--- JTAC radio setup ---";
+		_msg = "Radio1:Gauche/343/Team<br/>Radio2:Droite/152/Spartan/HQ<br/>Radio3:Gauche/152/Griffon";
 	};
 	case "sl": {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -257,11 +255,9 @@ switch (_type) do {
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_packRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_packRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		hint parseText "
-		--- HQ/SL radio setup ---
-		Radio1:Gauche/343/Team: HQ<br/>
-		Radio2:Droite/152/Spartan/HQ<br/>
-		Radio3:Gauche/152/Support/HQ</t>";
+		_showMsg = true;
+		_title = "--- SL radio setup ---";
+		_msg = "Radio1:Gauche/343/Team:HQ<br/>Radio2:Droite/152/Spartan/HQ<br/>Radio3:Gauche/152/Support/HQ";
 	};
 	case "hq": {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
@@ -280,11 +276,9 @@ switch (_type) do {
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_packRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_packRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
-		hint parseText "
-		--- HQ/SL radio setup ---
-		Radio1:Gauche/343/Team: HQ<br/>
-		Radio2:Droite/117/Spartan/HQ<br/>
-		Radio3:Gauche/117/Support/HQ</t>";
+		_showMsg = true;
+		_title = "--- HQ/SL radio setup ---";
+		_msg = "Radio1:Gauche/343/Team:HQ<br/>Radio2:Droite/152/Spartan/HQ<br/>Radio3:Gauche/152/Support/HQ";
 	};
 	/*
 	case "clout":{
@@ -325,11 +319,9 @@ switch (_type) do {
 		_success = [_handRadio_2, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [_personalRadio, _handRadio_1, _handRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hint parseText "
-		--- Recon radio setup ---
-		Radio1:Gauche/343/Team<br/>
-		Radio2:Droite/152/Support/HQ<br/>
-		Radio3:Gauche/152/Recon</t>";
+		_showMsg = true;
+		_title = "--- Recon radio setup ---";
+		_msg = "Radio1:Gauche/343/Team<br/>Radio2:Droite/152/Support/HQ<br/>Radio3:Gauche/152/Recon";
 	};
 	case "centaure_pieton":	{
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -345,11 +337,9 @@ switch (_type) do {
 		_success = [_handRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _handRadio_1, _handRadio_2, _personalRadio] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hint parseText "
-		--- Centaure radio setup ---
-		Radio1:Gauche/152/Inter-Centaure<br/>
-		Radio2:Droite/152/Centaure-HQ</t>
-		Radio3:Gauche/343/Team</t>";
+		_showMsg = true;
+		_title = "--- Centaure radio setup ---";
+		_msg = "Radio1:Gauche/152/Inter-Centaure<br/>Radio2:Droite/152/Centaure-HQ<br/>Radio3:Gauche/343/Team";
 	};
 	case "griffon_pieton": {
 		_handRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
@@ -365,11 +355,9 @@ switch (_type) do {
 		_success = [_handRadio_2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		// Set radio orders
 		_success = [ [ _handRadio_1, _handRadio_2, _personalRadio] ] call acre_api_fnc_setMultiPushToTalkAssignment;
-		hint parseText "
-		--- Griffon radio setup ---
-		Radio1:Gauche/117/Griffon<br/>
-		Radio2:Droite/117/Support-HQ</t>
-		Radio3:Gauche/343/Team</t>";
+		_showMsg = true;
+		_title = "--- Griffon radio setup ---";
+		_msg = "Radio1:Gauche/117/Griffon<br/>Radio2:Droite/117/Support-HQ<br/>Radio3:Gauche/343/Team";
 	};
 	case "set_griffon":	{
 		_vic = vehicle player;
@@ -464,10 +452,12 @@ switch (_type) do {
 			hint format ["%1 Speaker: %2", _handRadio_2, _speaker_check];
 		};
 	};
-
 	default	{
 		hint "fnc_setRadios fucked up. ";
 	};
+};
+if(_showMsg) then {
+	[_title, _msg, false] call CBA_fnc_notify;
 };
 
 diag_log "[CGQC_FNC] setRadios done";

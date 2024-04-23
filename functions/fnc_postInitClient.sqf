@@ -343,6 +343,7 @@ if (cgqc_config_state_pause) then {
 
 // Show current phase initially
 [] spawn {
+	waitUntil {sleep 1, cgqc_intro_done};
 	_phase = missionNamespace getVariable "CGQC_gamestate_current";
 	_phaseName = "";
 	_phaseTxt = "";
@@ -360,20 +361,24 @@ if (cgqc_config_state_pause) then {
 			_phaseTxt = "Here we go!";
 		};
 	};
-	waitUntil {sleep 1, cgqc_intro_done};
 	sleep 5;
-	[_phaseName, 5, 2, "phase_msg", _phaseTxt] call CGQC_fnc_notifyAll;
+	[
+		[
+			[_phaseName, "align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
+						["", "<br/>"], // line break
+			[_phaseTxt, "align = 'center' shadow = '1' size = '1.0'"]
+		]
+	] spawn BIS_fnc_typeText2;
 };
 
 // All done
 cgqc_start_postInitClient_done = true;
 
-sleep 10;
+sleep 30;
 // Check if a snapshot exists
 _snapshotFound = false;
 _snapTxt = "";
-
-
+_snapIntro = ["Saved loadout exists!", 1.5, [0.161, 0.502, 0.725, 1]];
 if (MissionProfileNamespace getVariable  "cgqc_player_snapshot_done") then {
 	_snapshotFound = true;
 	cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
@@ -381,7 +386,8 @@ if (MissionProfileNamespace getVariable  "cgqc_player_snapshot_done") then {
 	_team = cgqc_snapshot_check select 2;
 	_color = cgqc_snapshot_check select 3;
 	_role = cgqc_snapshot_check select 4;
-	_snapTxt = _snapTxt + format ["<br/>-Manual: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_txt = format ["<br/>-Manual: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_snapTxt = _snapTxt + _txt;
 };
 if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
 	_snapshotFound = true;
@@ -390,7 +396,8 @@ if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
 	_team = cgqc_snapshot_check_auto select 2;
 	_color = cgqc_snapshot_check_auto select 3;
 	_role = cgqc_snapshot_check_auto select 4;
-	_snapTxt = _snapTxt + format ["<br/>-Auto: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_txt = format ["<br/>-Auto: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_snapTxt = _snapTxt + _txt;
 };
 if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then {
 	_snapshotFound = true;
@@ -399,7 +406,8 @@ if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then 
 	_team = cgqc_snapshot_check_start select 2;
 	_color = cgqc_snapshot_check_start select 3;
 	_role = cgqc_snapshot_check_start select 4;
-	_snapTxt = _snapTxt + format ["<br/>-Start: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_txt = format ["<br/>-Start: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_snapTxt = _snapTxt + _txt;
 };
 if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
 	_snapshotFound = true;
@@ -408,17 +416,12 @@ if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
 	_team = cgqc_snapshot_check_zeus select 2;
 	_color = cgqc_snapshot_check_zeus select 3;
 	_role = cgqc_snapshot_check_zeus select 4;
-	_snapTxt = _snapTxt + format ["<br/>-Zeus: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_txt = format ["<br/>-Zeus: %1/%2/%3 @ %4", _role, _team, _color, _time];
+	_snapTxt = _snapTxt + _txt;
 };
 
 if (_snapshotFound) then {
-
-	_msg = format ["A saved loadout exists! %1 <br/> --- Check Arsenal to Load ---", _snapTxt];
-	private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
-	/*
-	if (_result) then {
-		[player, "load"] spawn CGQC_fnc_snapshot;
-	};*/
+	 [_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
 };
 
 

@@ -68,8 +68,11 @@ switch (_type) do {
 			hint "AI Unpaused!";
 		};
 		// Start message for everyone
-		_text = ("<br/><br/><br/><br/><br/><br/><t size='1' >Mission Started!<br/>Player Snapshot saved<br/>Good luck, Viper!</t><br/>");
+		_txt = "Mission Started!";
+		_txt2 = "Player Snapshot saved";
+		_txt3 = "Good luck, Viper!";
 		[_text, 5, 2] call CGQC_fnc_notifyAll;
+		[_txt, 3, 0, "cba_notify_start", _txt2, _txt3] call CGQC_fnc_notifyAll;
 	};
 	case "end": {
 		missionNamespace setVariable ["CGQC_gamestate_3_mission_stop", true, true];

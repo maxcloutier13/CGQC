@@ -54,7 +54,7 @@ if (!isNil "n_targetGroup" || !isNull n_targetGroup) then {
     hint format ["You've joined %1", _groupName];
     diag_log format ["[CGQC_FNC] joinGroup Player %1 joined %2", cgqc_custom_playername,  _groupName];
 } else {
-    hint "joinGroup error"
+    hint "joinGroup error";
     diag_log "[CGQC_FNC] joinGroup failed. Didn't match";
 };
 

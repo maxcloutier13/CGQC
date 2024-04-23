@@ -144,6 +144,30 @@ class CAManBase: Man {
 		// Remove this thing
 		delete aceax_ingame_gear;
 		delete fox_self;
+		class ACE_Equipment {
+			class azm_bft_main {
+				class azm_bft_tx {
+					class cgqc_bft_startTX{
+						displayName = "CGQC Quick Transmit";
+						condition = "!AZMBFT_isTransmitting";
+						exceptions[] =  {"isNotDragging", "isNotSwimming", "notOnMap", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
+						statement = "['transmit'] spawn CGQC_fnc_bluforceTracker";
+						icon = "";
+						showDisabled = 0;
+					};
+				};
+				class azm_bft_rx {
+					class cgqc_bft_startRX {
+						displayName = "CGQC Quick Receive";
+						condition = "!AZMBFT_isReceiving";
+						exceptions[] =  {"isNotDragging", "isNotSwimming", "notOnMap", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
+						statement = "['receive'] spawn CGQC_fnc_bluforceTracker;";
+						icon = "";
+						showDisabled = 0;
+					};
+				};
+			};
+		};
 		class ACE_TeamManagement {
 			delete ACE_JoinTeamRed;
 			delete ACE_JoinTeamGreen;

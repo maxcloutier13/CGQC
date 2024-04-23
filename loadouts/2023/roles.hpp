@@ -48,7 +48,7 @@ case "2023_rifle_shoot":{
 
 case "2023_rifle_life":{
 	[player, "lifesaver", "carbine"] call CGQC_ldt_2023_rifleman;
-	["med"] call cgqc_fnc_switchPerks;
+	["lifesaver"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Combat Lifesaver";
 	cgqc_player_roleType = "Infantry";
@@ -68,7 +68,7 @@ case "2023_medic":{
 	["med"] call cgqc_fnc_switchPerks;
 	["medic"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Medic";
-	cgqc_player_roleType = "Infantry";
+	cgqc_player_roleType = "Medic";
 };
 
 // Engineer ===============================================================
@@ -77,7 +77,7 @@ case "2023_eng":{
 	["eng"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Engineer";
-	cgqc_player_roleType = "Infantry";
+	cgqc_player_roleType = "Engineer";
 };
 
 case "2023_eng_saboteur":{
@@ -85,7 +85,7 @@ case "2023_eng_saboteur":{
 	["eng"] call cgqc_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Demolition Specialist";
-	cgqc_player_roleType = "Infantry";
+	cgqc_player_roleType = "Engineer";
 };
 
 // MG ===============================================================
@@ -178,7 +178,7 @@ case "2023_h_pilot":{
 	["heli"] call cgqc_fnc_switchPerks;
 	["pilot"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Helicopter Pilot";
-	cgqc_player_roleType = "Pilot";
+	cgqc_player_roleType = "Air";
 };
 
 case "2023_h_crew":{
@@ -186,7 +186,7 @@ case "2023_h_crew":{
 	["heli_crew"] call cgqc_fnc_switchPerks;
 	["pilot"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Helicopter Crew";
-	cgqc_player_roleType = "Recon";
+	cgqc_player_roleType = "Air";
 };
 
 // Driver ===============================================================
@@ -195,7 +195,7 @@ case "2023_t_driver":{
 	["driver"] call cgqc_fnc_switchPerks;
 	["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Driver";
-	cgqc_player_roleType = "Tank crew";
+	cgqc_player_roleType = "Armor";
 };
 
 case "2023_t_crew":{
@@ -203,7 +203,7 @@ case "2023_t_crew":{
 	["tank_crew"] call cgqc_fnc_switchPerks;
 	["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Crew";
-	cgqc_player_roleType = "Tank crew";
+	cgqc_player_roleType = "Armor";
 };
 
 // Command ===============================================================
@@ -212,7 +212,7 @@ case "2023_hq":{
 	["hq"] call cgqc_fnc_switchPerks;
 	["hq"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HeadQuarters";
-	cgqc_player_roleType = "Command";
+	cgqc_player_roleType = "HQ";
 };
 
 case "2023_sl":{
@@ -220,14 +220,14 @@ case "2023_sl":{
 	["sl"] call cgqc_fnc_switchPerks;
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Squad Leader";
-	cgqc_player_roleType = "Command";
+	cgqc_player_roleType = "HQ";
 };
 case "2023_xo":{
 	[player, "xo", "carbine"] call CGQC_ldt_2023_command;
 	["sl"] call cgqc_fnc_switchPerks;
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Exective Officer";
-	cgqc_player_roleType = "Command";
+	cgqc_player_roleType = "HQ";
 };
 
 case "2023_tl":{
@@ -235,7 +235,7 @@ case "2023_tl":{
 	["tl"] call cgqc_fnc_switchPerks;
 	["tl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Leader";
-	cgqc_player_roleType = "Command";
+	cgqc_player_roleType = "Infantry";
 };
 
 case "2023_jtac":{
@@ -243,5 +243,5 @@ case "2023_jtac":{
 	["recon"] call cgqc_fnc_switchPerks;
 	["jtac"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "JTAC";
-	cgqc_player_roleType = "Command";
+	cgqc_player_roleType = "Recon";
 };
