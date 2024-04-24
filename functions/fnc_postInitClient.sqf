@@ -374,6 +374,9 @@ if (cgqc_config_state_pause) then {
 	] spawn BIS_fnc_typeText2;
 };
 
+// Display name function
+[{[] call CGQC_fnc_showObjectName}, 1] call CBA_fnc_addPerframeHandler;
+
 // All done
 cgqc_start_postInitClient_done = true;
 
@@ -426,6 +429,7 @@ if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
 if (_snapshotFound) then {
 	 [_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
 };
+
 
 
 diag_log "[CGQC_INIT] === postInitClient done =====================================";

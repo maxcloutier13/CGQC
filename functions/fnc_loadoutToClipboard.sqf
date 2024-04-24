@@ -5,7 +5,7 @@ diag_log format ["[CGQC_FNC] loadoutToClipboard %1 started", _target];
 
 _loadout_string = "";
 
-// Get all the needed info 
+// Get all the needed info
 // Equipment
 _loadout_player_helmet = headgear _target;
 _loadout_player_goggles = goggles _target;
@@ -23,18 +23,18 @@ _loadout_player_launcher_acc = secondaryWeaponItems _target;
 _loadout_player_launcher_mag = secondaryWeaponMagazine _target;
 
 // Items
-_loadout_player_items_uniform = uniformItems _target; 
-_loadout_player_mags_uniform = uniformMagazines _target; 
+_loadout_player_items_uniform = uniformItems _target;
+_loadout_player_mags_uniform = uniformMagazines _target;
 _loadout_player_items_vest = vestItems _target;
-_loadout_player_mags_vest = vestMagazines _target; 
+_loadout_player_mags_vest = vestMagazines _target;
 _loadout_player_items_pack = backpackItems _target;
-_loadout_player_mags_pack = backpackMagazines _target; 
+_loadout_player_mags_pack = backpackMagazines _target;
 _loadout_player_items_assigned = assignedItems _target;
 
 //Export text format
 // === Intro =================================================================================================================
 _txt_intro = "
-// --- role_type ---------------------------------------------------------- 
+// --- role_type ----------------------------------------------------------
 // Description
 ";
 
@@ -63,7 +63,7 @@ if (_loadout_player_primary != "") then {
 	_txt_primary = format["
 
 // === Primary   ====================================================================================================
-[""%1""] call CGQC_fnc_getCustomGun;", _loadout_player_primary]; 
+[""%1""] call CGQC_fnc_getCustomGun;", _loadout_player_primary];
 
 	// Magazines
 	{
@@ -92,7 +92,7 @@ if (_loadout_player_handgun != "") then {
 	_txt_handgun = format["
 
 // === Handgun   ====================================================================================================
-_handgun = [""%1""", _loadout_player_handgun]; 
+_handgun = [""%1""", _loadout_player_handgun];
 	// Magazine
 	{
 		if (_x isNotEqualTo "") then {
@@ -100,7 +100,7 @@ _handgun = [""%1""", _loadout_player_handgun];
 			_txt_handgun = _txt_handgun + _str;
 		};
 	}forEach _loadout_player_handgun_mag;
-	
+
 	// Accessories
 	{
 		if (_x isNotEqualTo "") then {
@@ -108,7 +108,7 @@ _handgun = [""%1""", _loadout_player_handgun];
 			_txt_handgun = _txt_handgun + _str;
 		};
 	}forEach _loadout_player_handgun_acc;
-	// Suffix and function call 
+	// Suffix and function call
 	_txt_handgun = _txt_handgun + "];
 [_handgun] call CGQC_fnc_getCustomHandgun;";
 };
@@ -121,7 +121,7 @@ if (_loadout_player_launcher != "") then {
 	_txt_launcher = format["
 
 // === Launcher   ====================================================================================================
-[""%1""] call CGQC_fnc_getCustomGun;", _loadout_player_launcher]; 
+[""%1""] call CGQC_fnc_getCustomGun;", _loadout_player_launcher];
 
 	// Magazines
 	{

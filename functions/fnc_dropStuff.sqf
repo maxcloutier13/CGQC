@@ -18,12 +18,12 @@ CGQC_int_createHolder = {
 	};
 
 	// Exit if the holder doesn't exist or is alreay named
-	if ((typeOf _holder != "GroundWeaponHolder_Scripted") || (!isNil{_holder getVariable "cgqc_object_name"})) exitWith {};
+	if ((typeOf _holder != "GroundWeaponHolder_Scripted") || (!isNil{_holder getVariable "cgqc_name_object"})) exitWith {};
 
 	// Name the holder object
 	_name = name player;
 	_side = side player;
-	_holder setVariable ["cgqc_object_name",_name, true];
+	_holder setVariable ["cgqc_name_object",_name, true];
 	_holder setVariable ["cgqc_object_side",_side, true];
 	[_holder, true, [0,0.9,1], 0] call ace_dragging_fnc_setCarryable;
 
@@ -76,7 +76,7 @@ switch (_type) do {
                     // Backpack found!
                     _packs = everyBackpack _holder;
                     {
-                        if (_x getVariable "cgqc_object_name" isEqualTo name player) then {
+                        if (_x getVariable "cgqc_name_object" isEqualTo name player) then {
                             _found = true;
                             diag_log "[CGQC_FNC] dropStuff - Backpack found. Grabbing";
                             hint "Pack found. Grabbing it";
@@ -115,13 +115,13 @@ switch (_type) do {
 		//_adding = [ cgqc_backpack_holder, 0, ["ACE_MainActions" ], _actionAce ] call  ace_interact_menu_fnc_addActionToObject;
 
         // Set backpack name
-        _pack setVariable ["cgqc_object_name", name player, true];
-        //cgqc_backpack_holder setVariable ["cgqc_object_name", name player, true];
+        _pack setVariable ["cgqc_name_object", name player, true];
+        //cgqc_backpack_holder setVariable ["cgqc_name_object", name player, true];
         //cgqc_backpack_holder setVariable ["cgqc_object_lock", true, true];
        /* cgqc_backpack_holder addEventHandler ["ContainerOpened", {
             params ["_container", "_unit"];
             if (_container getVariable ["cgqc_object_lock", false]) then {
-                _packName = _container getVariable "cgqc_object_name";
+                _packName = _container getVariable "cgqc_name_object";
                 // Pack is locked. Check if it's being opened by the owner
                 if (name _unit isNotEqualTo _packName) exitWith {
                     [{

@@ -10,12 +10,12 @@ params ["_type"];
 		case 0: { // Sniping off
 			// Turn it all off
 			cgqc_training_sniping = false;
-			// Remove all targets 
+			// Remove all targets
 			{
 				_x removeAllEventHandlers "HitPart";
 				deleteVehicle _x
 			} forEach TrainingCourse_TargetList;
-			// Remove all dead Bodies 
+			// Remove all dead Bodies
 			{
 				deleteVehicle _x
 			} forEach allDead;

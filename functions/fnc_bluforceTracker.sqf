@@ -1,6 +1,6 @@
 // --- bluforceTracker ----------------------------------------------------------
 // Handle bluforce tracker sheeits
-params ["_type", ["_showMsg", false], ["_player", player]];
+params ["_type", ["_showMsg", false], ["_target", player]];
 diag_log format ["[CGQC_FNC] bluforceTracker %1 started", _type];
 
 CGQC_int_bft_findInfo = {
@@ -28,8 +28,34 @@ CGQC_int_bft_findInfo = {
 };
 
 switch (_type) do {
+    case "transmit_vic":{
+        _target getVariable ["show_marker", true];
+        while {alive _target && _target getVariable ["show_marker", false]} do {
+            _text = _target getVariable "CGQC_name_vic";
+            _id = _target getVariable "cgqc_name_vic_id";
+            _markerColor = "ColorWHITE";
+            switch (true) do {
+                case ("1" in _text): {_markerColor = "ColorEAST";};
+                case ("2" in _text): {_markerColor = "ColorWEST";};
+                case ("3" in _text): {_markerColor = "ColorYELLOW";};
+            };
+            _markerType = "b_mech_inf";
+            _code = 440;
+            private _temp = [
+                _target,
+                getPos _target,
+                group _target,
+                _text,
+                _code,
+                [_markerType,_markerColor]
+            ];
+            AZMBFT_storage set [_id, _temp];
+            publicVariable "AZMBFT_storage";
+            sleep AZMBFT_updateInterval;
+        };
+    };
     case "transmit": {
-        if ('azm_bft_tx' in items _player) then {
+        if ('azm_bft_tx' in items _target) then {
             _code = 440;
             AZMBFT_isTransmitting = true;
             if (_showMsg) then {
@@ -55,26 +81,26 @@ switch (_type) do {
         };
     };
     case "receive": {
-        if ('azm_bft_rx' in items _player) then {
+        if ('azm_bft_rx' in items _target) then {
             AZMBFT_isReceiving = true;
             AZMBFT_receivingCode = 440;
             [["Blufor Tracking", 1.5, [0.161, 0.502, 0.725, 1]], ["RX started on 440"]] call CBA_fnc_notify;
             while { AZMBFT_isReceiving } do {
                 {
-                    diag_log "BFT - Starting the run";
+                    LOG ("BFT - Starting the run");
                     private _markerName = format ["AZMBFT_marker_%1", _x];
                     if (!(_y isEqualType [])) then {
-                        diag_log "BFT - Deleting marker";
+                        LOG "BFT - Deleting marker";
                         deleteMarkerLocal _markerName;
                                         // ["DElete marker", _markerName] call CBA_fnc_debug;
                         AZMBFT_localMarkerList deleteAt _x;
                     } else {
-                        diag_log "BFT - Updating marker";
-                        _y params ["_player", "_pos", "_group", "_text", "_code", "_markerData"];
+                        LOG ("BFT - Updating marker");
+                        _y params ["_target", "_pos", "_group", "_text", "_code", "_markerData"];
                         if (AZMBFT_receivingCode isEqualTo _code) then {
-                            diag_log "BFT - Receive check passed";
+                            LOG ("BFT - Receive check passed");
                             if ((getMarkercolor _markerName) isEqualTo "") then {
-                                diag_log "BFT - Something changed: Reloading marker";
+                                LOG ("BFT - Something changed: Reloading marker");
                                 // ["create marker", _markerName] call CBA_fnc_debug;
                                 private _marker = createMarkerLocal [_markerName, _pos];
                                 _marker setMarkerColorLocal _markerData#1;
@@ -82,12 +108,12 @@ switch (_type) do {
                                 _marker setMarkerTextLocal _text;
                                 AZMBFT_localMarkerList set [_x, _marker];
                             };
-                            diag_log "BFT - Moving marker";
+                            LOG ("BFT - Moving marker");
                             _markerName setMarkerPosLocal _pos;
                         };
                     };
                 } forEach AZMBFT_storage;
-                diag_log "BFT - Done. Sleeping";
+                LOG ("BFT - Done. Sleeping");
                 sleep AZMBFT_updateInterval;
                 if (cgqc_bft_forceUpdate) then {
                     {deleteMarkerLocal _y;} forEach AZMBFT_localMarkerList;

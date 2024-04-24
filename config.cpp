@@ -1,5 +1,6 @@
 // Mod info -----------------------------------------------------------------------------------------
 #include "cfg_patches.hpp"
+#include "defines.hpp"
 
 // Faction
 class cfgFactionClasses {
@@ -41,7 +42,7 @@ class CfgEditorSubcategories
 	};
 	class EdSubcat_cgqc_mk1
 	{
-		displayName = "Men (2023)";
+		displayName = "Men (2024)";
 	};
 	class EdSubcat_cgqc_swat
 	{
@@ -92,7 +93,6 @@ class CfgEditorSubcategories
 		displayName = "CGQC";
 	};
 };
-
 // Units, backpacks, flags
 class cfgVehicles {
 	#include "cfg_flags.hpp"
@@ -103,19 +103,16 @@ class cfgVehicles {
 	#include "cfg_acreVehicules.hpp"
 	#include "cfg_vehicles.hpp"
 };
-
 // Custom functions
 class cfgFunctions {
 	//CGQC functions
 	#include "cfg_functions.hpp"
 };
-
 // Face stuff
 class CfgGlasses
 {
 	#include "cfg_goggles.hpp"
 };
-
 // Sounds
 class CfgSounds
 {
@@ -124,21 +121,15 @@ class CfgSounds
 // Custom events
 #include "cfg_eventhandlers.hpp"
 #include "functions\lockbackpack\Extended_InventoryOpened_EventHandlers.hpp"
-
 // ACEAX Compats ---------------------------------------------
 #include "cfg_aceaxCompats.hpp"
-
 // Stamina stuff
 #include "cfg_stamina.hpp"
-
 // Dialog stuff
 #include "cfg_dialogs.hpp"
-
 // Interface / UI modifications
 #include "cfg_interface.hpp"
-
 // Spotlight
 #include "cfg_spotlight.hpp"
-
 // Marker Colors
 #include "cfg_markerColors.hpp"

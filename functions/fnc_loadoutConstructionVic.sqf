@@ -7,7 +7,7 @@ _unit = _unit_array select 0;
 	params ["_const_unit"];
 	waitUntil {cgqc_start_postInitClient_done};
 	diag_log format ["[CGQC_FNC] loadoutConstructionVic %1 started", _const_unit];
-	// Arsenal 
+	// Arsenal
 	//[_const_unit,"cgqc_box_mk2_arsenal",1] call grad_fortifications_fnc_addFort;
 
 	// Bunker stuff

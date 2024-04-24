@@ -3,7 +3,7 @@ _condition = {
 };
 _statement = {
     params ["_target", "_player", "_params"];
-    //diag_log format ["_statement [%1, %2, %3]", _target, _player, _params];
+    diag_log format ["_statement [%1, %2, %3]", _target, _player, _params];
     drop_player = _target;
     // Run on hover:
     hint "Quickjump to selected player";

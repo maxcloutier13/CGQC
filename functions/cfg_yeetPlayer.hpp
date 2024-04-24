@@ -3,7 +3,7 @@ _condition = {
 };
 _statement = {
     params ["_target", "_player", "_params"];
-    //diag_log format ["_statement [%1, %2, %3]", _target, _player, _params];
+    diag_log format ["_statement [%1, %2, %3]", _target, _player, _params];
 
     // Run on hover:
     hint "Yeet player. Gives him parachute with auto-open";
