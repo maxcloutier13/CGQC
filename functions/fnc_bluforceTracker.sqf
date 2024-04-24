@@ -87,20 +87,20 @@ switch (_type) do {
             [["Blufor Tracking", 1.5, [0.161, 0.502, 0.725, 1]], ["RX started on 440"]] call CBA_fnc_notify;
             while { AZMBFT_isReceiving } do {
                 {
-                    LOG ("BFT - Starting the run");
+                    //LOG ("BFT - Starting the run");
                     private _markerName = format ["AZMBFT_marker_%1", _x];
                     if (!(_y isEqualType [])) then {
-                        LOG "BFT - Deleting marker";
+                        //LOG "BFT - Deleting marker";
                         deleteMarkerLocal _markerName;
                                         // ["DElete marker", _markerName] call CBA_fnc_debug;
                         AZMBFT_localMarkerList deleteAt _x;
                     } else {
-                        LOG ("BFT - Updating marker");
+                        //LOG ("BFT - Updating marker");
                         _y params ["_target", "_pos", "_group", "_text", "_code", "_markerData"];
                         if (AZMBFT_receivingCode isEqualTo _code) then {
-                            LOG ("BFT - Receive check passed");
+                            //LOG ("BFT - Receive check passed");
                             if ((getMarkercolor _markerName) isEqualTo "") then {
-                                LOG ("BFT - Something changed: Reloading marker");
+                                //LOG ("BFT - Something changed: Reloading marker");
                                 // ["create marker", _markerName] call CBA_fnc_debug;
                                 private _marker = createMarkerLocal [_markerName, _pos];
                                 _marker setMarkerColorLocal _markerData#1;
@@ -108,12 +108,12 @@ switch (_type) do {
                                 _marker setMarkerTextLocal _text;
                                 AZMBFT_localMarkerList set [_x, _marker];
                             };
-                            LOG ("BFT - Moving marker");
+                            //LOG ("BFT - Moving marker");
                             _markerName setMarkerPosLocal _pos;
                         };
                     };
                 } forEach AZMBFT_storage;
-                LOG ("BFT - Done. Sleeping");
+                //LOG ("BFT - Done. Sleeping");
                 sleep AZMBFT_updateInterval;
                 if (cgqc_bft_forceUpdate) then {
                     {deleteMarkerLocal _y;} forEach AZMBFT_localMarkerList;

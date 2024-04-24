@@ -215,69 +215,69 @@ class CAManBase: Man {
 				class CGQC_joinGroup_spartan {
 					displayName = "Spartan";
 					condition = "true";
-					statement = "['Spartan', 'MAIN'] call CGQC_fnc_joinGroup";
+					statement = "['Spartan', 'MAIN'] spawn CGQC_fnc_joinGroup";
 
 					class CGQC_joinGroup_spartan_11 {
 						displayName = "1-1 Rouge";
 						condition = "true";
-						statement = "['Spartan', 'RED'] call CGQC_fnc_joinGroup";
+						statement = "['Spartan', 'RED'] spawn CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_red_ca.paa";
 					};
 					class CGQC_joinGroup_spartan_12 {
 						displayName = "1-2 Vert";
 						condition = "true";
-						statement = "['Spartan', 'GREEN'] call CGQC_fnc_joinGroup";
+						statement = "['Spartan', 'GREEN'] spawn CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_green_ca.paa";
 					};
 					class CGQC_joinGroup_spartan_21 {
 						displayName = "2-1 Bleu";
 						condition = "true";
-						statement = "['Spartan', 'BLUE'] call CGQC_fnc_joinGroup";
+						statement = "['Spartan', 'BLUE'] spawn CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_blue_ca.paa";
 					};
 					class CGQC_joinGroup_spartan_22 {
 						displayName = "2-2 Jaune";
 						condition = "true";
-						statement = "['Spartan', 'YELLOW'] call CGQC_fnc_joinGroup";
+						statement = "['Spartan', 'YELLOW'] spawn CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa";
 					};
 					class CGQC_joinGroup_spartan_0 {
 						displayName = "0 - Blanc";
 						condition = "true";
-						statement = "['Spartan', 'MAIN'] call CGQC_fnc_joinGroup";
+						statement = "['Spartan', 'MAIN'] spawn CGQC_fnc_joinGroup";
 						icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
 					};
 				};
 				class CGQC_joinGroup_centaure {
 					displayName = "Centaure";
 					condition = "true";;
-					statement = "['Centaure', 'MAIN'] call CGQC_fnc_joinGroup";
+					statement = "['Centaure', 'MAIN'] spawn CGQC_fnc_joinGroup";
 				};
 				class CGQC_joinGroup_griffon {
 					displayName = "Griffon";
 					condition = "true";
-					statement = "['Griffon', 'MAIN'] call CGQC_fnc_joinGroup";
+					statement = "['Griffon', 'MAIN'] spawn CGQC_fnc_joinGroup";
 				};
 				class CGQC_joinGroup_hermes {
 					displayName = "Hermes";
 					condition = "true";
-					statement = "['Hermes', 'MAIN'] call CGQC_fnc_joinGroup";
+					statement = "['Hermes', 'MAIN'] spawn CGQC_fnc_joinGroup";
 				};
 				class CGQC_joinGroup_orion {
 					displayName = "Orion";
 					condition = "true";
-					statement = "['Orion', 'MAIN'] call CGQC_fnc_joinGroup";
+					statement = "['Orion', 'MAIN'] spawn CGQC_fnc_joinGroup";
 				};
 
 				class CGQC_joinGroup_pegase {
 					displayName = "Pegase";
 					condition = "true";
-					statement = "['Pegase', 'MAIN'] call CGQC_fnc_joinGroup";
+					statement = "['Pegase', 'MAIN'] spawn CGQC_fnc_joinGroup";
 				};
 				/*class CGQC_joinGroup_hq {
 					displayName = "HQ";
 					condition = "true";
-					statement = "['HQ', 'MAIN'] call CGQC_fnc_joinGroup";
+					statement = "['HQ', 'MAIN'] spawn CGQC_fnc_joinGroup";
 				};*/
 			};
 		};

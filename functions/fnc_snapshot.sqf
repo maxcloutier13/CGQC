@@ -211,7 +211,7 @@ switch (_scope) do {
 
 
                     // Rejoin to team
-                    [_team, _color] call CGQC_fnc_joinGroup;
+                    [_team, _color] spawn CGQC_fnc_joinGroup;
                     // Grab back the role if possible
                     [_role, 1, false, false]  call CGQC_fnc_switchRole;
 

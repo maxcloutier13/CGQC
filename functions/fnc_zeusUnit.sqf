@@ -2,7 +2,7 @@
 // Unit has been double clicked
 params ["_unit"];
 diag_log format ["[CGQC_FNC] zeusUnit %1 started", _unit];
-if (!("CuratorObjectDoubleClicked" in (eventHandlers _unit))) then {
+if !("CuratorObjectDoubleClicked" in (eventHandlers _unit)) then {
 	_unit addEventHandler ["CuratorObjectDoubleClicked", {
 		params ["_curator", "_entity"];
 		hint "Unit double clicked!";

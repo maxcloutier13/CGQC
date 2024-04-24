@@ -1,6 +1,6 @@
 // --- joinGroup ----------------------------------------------------------
 // Group stuff
-params ["_groupName", ["_color", "MAIN"], ["_side", west]];
+params ["_groupName", ["_color", "MAIN"], ["_side", WEST]];
 diag_log format ["[CGQC_FNC] joinGroup %1", _groupName];
 
 waitUntil {!isNull player};
@@ -14,38 +14,50 @@ _allGroups = ["GetAllGroups"] call BIS_fnc_dynamicGroups;
     }
 } forEach _allGroups;
 
-// Check if group is registered
-if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
-    // Join the group
-    ["SwitchGroup", [n_targetGroup, player]] remoteExecCall ["BIS_fnc_dynamicGroups", 2];
-} else {// Not registered
-    // Check if group already exists itself
-    _exists = false;
-    {
-        if (groupId _x isEqualTo _groupName) then {
-            _exists = true;
-            n_targetGroup = _x;
+if (!isNil "n_targetGroup") then {
+    // Check if group is registered
+    if (["IsGroupRegistered", [n_targetGroup]] call BIS_fnc_dynamicGroups) then {
+        // Join the group
+        ["SwitchGroup", [n_targetGroup, player]] remoteExecCall ["BIS_fnc_dynamicGroups", 2];
+    } else {// Not registered
+        // Check if group already exists itself
+        _exists = false;
+        {
+            if (groupId _x isEqualTo _groupName) then {
+                _exists = true;
+                n_targetGroup = _x;
+            };
+        } forEach allGroups;
+        if !(_exists) then {
+            // Create and join as leader
+            n_targetGroup = createGroup _side;
+            n_targetGroup setGroupId [_groupName]; // Event when a unit joins the group
+            [player] joinSilent n_targetGroup;
         };
-    } forEach allGroups;
-    if !(_exists) then {
-        // Create and join as leader
-        n_targetGroup = createGroup _side;
-        n_targetGroup setGroupId [_groupName]; // Event when a unit joins the group
-        [player] joinSilent n_targetGroup;
+        if (leader group player isEqualTo player) then {
+            // Player is leader
+            n_data = ["cgqc_patch_logo", _groupName, false];
+            ["RegisterGroup", [n_targetGroup, leader n_targetGroup, n_data]] remoteExec ["BIS_fnc_dynamicGroups", 2];
+        };
     };
-    if (leader group player isEqualTo player) then {
-        // Player is leader
-        n_data = ["cgqc_patch_logo", _groupName, false];
-        ["RegisterGroup", [n_targetGroup, leader n_targetGroup, n_data]] remoteExec ["BIS_fnc_dynamicGroups", 2];
-    };
+} else {
+    diag_log "[CGQC_FNC] joinGroup - Group not in dynamic?";
+    // Doesn't exist? Create and join as leader
+    n_targetGroup = createGroup _side;
+    n_targetGroup setGroupId [_groupName]; // Event when a unit joins the group
+    [player] joinSilent n_targetGroup;
+    n_data = ["cgqc_patch_logo", _groupName, false];
+    ["RegisterGroup", [n_targetGroup, leader n_targetGroup, n_data]] remoteExec ["BIS_fnc_dynamicGroups", 2];
 };
 
 cgqc_player_group = n_targetGroup;
 cgqc_player_groupID = groupId player;
 
-[_color] call CGQC_fnc_setTeamColor;
 [_groupName, _color] call CGQC_fnc_setGroupRadios;
 hint format ["You've joined %1", _groupName];
+sleep 0.5;
+[_color] call CGQC_fnc_setTeamColor;
+
 diag_log format ["[CGQC_FNC] joinGroup Player %1 joined %2", cgqc_custom_playername,  _groupName];
 
-diag_log "[CGQC_FNC] getRadioPresets done";
+diag_log "[CGQC_FNC] joinGroup done";

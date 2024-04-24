@@ -304,7 +304,7 @@ profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
 };
 
 // Create/join initial group
-[groupId (group player)] call CGQC_fnc_joinGroup;
+[groupId (group player)] spawn CGQC_fnc_joinGroup;
 sleep 1;
 _checkColor = player getVariable ["cgqc_var_startingColorTeam", "MAIN"];
 if (_checkColor isNotEqualTo "MAIN") then {
