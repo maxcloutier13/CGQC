@@ -4,7 +4,7 @@ diag_log "[CGQC_PREINIT] === preInit started ===================================
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Version handling
-core_version = "4.6.2";
+core_version = "4.6.3";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -64,6 +64,7 @@ cgqc_player_backpack_backup = [];
 cgqc_removeAll_done = false;
 cgqc_bft_forceUpdate = false;
 cgqc_hud_hidden = false;
+cgqc_showObject_running = false;
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [

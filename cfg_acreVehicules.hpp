@@ -3,50 +3,64 @@
 class VTOL_01_base_F;
 class Boat_F;
 
+#define MACRO_CGQC_RENAME \
+    class cgqc_ace_renameVic { \
+        displayName = "Rename Vehicle"; \
+        condition = "true"; \
+        statement = "cgqc_rename_vic = _target;[_target] call CGQC_fnc_renameVic"; \
+        runOnHover = "hint 'Rename Vehicle'"; \
+    }; \
+    class cgqc_ace_designateVic { \
+        displayName = "AutoRename"; \
+        condition = "true"; \
+        statement = "[_target] call CGQC_fnc_renameVicAuto"; \
+        runOnHover = "hint 'Rename Vehicle according to your team'"; \
+    }; \
+    class cgqc_ace_vicStopBFT { \
+        displayName = "Stop transmiting position"; \
+        condition = "_target getVariable ['show_marker', false]"; \
+        statement = "_target setVariable ['show_marker', false]"; \
+        runOnHover = "hint 'Stop the vic from transmitting its position'"; \
+    };
+
+#define MACRO_CGQC_MAINTENANCE \
+    class cgqc_maintenance { \
+        displayName = "Maintenance"; \
+        condition = "cgqc_flag_supply"; \
+        statement = "['normal'] call CGQC_fnc_refuel"; \
+        exceptions[] = {}; \
+        icon = "\CGQC\textures\icon_maintenance"; \
+        runOnHover = "hint 'Repair/Refuel/Rearm'"; \
+    }; \
+    class cgqc_maintenance_quick { \
+        displayName = "Maintenance (Quick)"; \
+        condition = "cgqc_flag_supply_rapide"; \
+        statement = "['short'] call CGQC_fnc_refuel"; \
+        exceptions[] = {}; \
+        icon = "\CGQC\textures\icon_maintenance"; \
+        runOnHover = "hint 'Repair/Refuel/Rearm'"; \
+    };
+
 class LandVehicle;
 class Car: LandVehicle {
     class ACE_Actions {
 		class ACE_MainActions {
-            class cgqc_maintenance {
-				displayName = "Maintenance";
-				condition = "cgqc_flag_supply";
-				statement = "['normal'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
-			class cgqc_maintenance_quick {
-				displayName = "Maintenance (Quick)";
-				condition = "cgqc_flag_supply_rapide";
-				statement = "['short'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
+            MACRO_CGQC_RENAME
+            MACRO_CGQC_MAINTENANCE
 		};
 	};
 };
 class Tank: LandVehicle {
     class ACE_Actions {
 		class ACE_MainActions {
-            class cgqc_maintenance {
-				displayName = "Maintenance";
-				condition = "cgqc_flag_supply";
-				statement = "['normal'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
-			class cgqc_maintenance_quick {
-				displayName = "Maintenance (Quick)";
-				condition = "cgqc_flag_supply_rapide";
-				statement = "['short'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
+            MACRO_CGQC_RENAME
+            MACRO_CGQC_MAINTENANCE
 		};
 	};
+};
+class Motorcycle: LandVehicle {
+    MACRO_CGQC_RENAME
+    MACRO_CGQC_MAINTENANCE
 };
 class Air;
 class Helicopter: Air {
@@ -65,22 +79,8 @@ class Helicopter: Air {
     };
     class ACE_Actions {
 		class ACE_MainActions {
-            class cgqc_maintenance {
-				displayName = "Maintenance";
-				condition = "cgqc_flag_supply";
-				statement = "['normal'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
-			class cgqc_maintenance_quick {
-				displayName = "Maintenance (Quick)";
-				condition = "cgqc_flag_supply_rapide";
-				statement = "['short'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
+            MACRO_CGQC_RENAME
+            MACRO_CGQC_MAINTENANCE
 		};
 	};
 };
@@ -88,24 +88,15 @@ class Helicopter: Air {
 class Plane: Air {
     class ACE_Actions {
 		class ACE_MainActions {
-            class cgqc_maintenance {
-				displayName = "Maintenance";
-				condition = "cgqc_flag_supply";
-				statement = "['normal'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
-			class cgqc_maintenance_quick {
-				displayName = "Maintenance (Quick)";
-				condition = "cgqc_flag_supply_rapide";
-				statement = "['short'] call CGQC_fnc_refuel";
-				exceptions[] = {};
-				icon = "\CGQC\textures\icon_maintenance";
-				runOnHover = "hint 'Repair/Refuel/Rearm'";
-			};
+            MACRO_CGQC_RENAME
+            MACRO_CGQC_MAINTENANCE
 		};
 	};
+};
+
+ class Ship;
+class Ship_F: Ship {
+    MACRO_CGQC_RENAME
 };
 
 

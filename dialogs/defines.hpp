@@ -114,10 +114,7 @@
 #define GRID_W (pixelW * pixelGrid * pixelScale)
 #define GRID_H (pixelH * pixelGrid * pixelScale)
 
-class RscFrame;
-class RscButtonMenuOK;
-class RscButtonMenuCancel;
-class RscText;
+
 class RscText_cgqc : RscText
 {
 	colorBackground[] = {0,0,0,0};
@@ -144,8 +141,6 @@ class RscText_cgqc : RscText
 	linespacing = 1;
 };
 
-class RscCombo;
-class ScrollBar;
 class RscCombo_cgqc : RscCombo
 {
 	colorSelect[] = {0,0,0,1};

@@ -12,6 +12,18 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class renameVic{
+            file = "\cgqc\functions\fnc_renameVic.sqf";
+            description = "Rename vehicle";
+        };
+        class renameVicAuto{
+            file = "\cgqc\functions\fnc_renameVicAuto.sqf";
+            description = "Rename vehicle according to team";
+        };
+        class showObjectName{
+            file = "\cgqc\functions\fnc_showObjectName.sqf";
+            description = "Show object name";
+        };
         class toggleUI{
             file = "\cgqc\functions\fnc_toggleUI.sqf";
             description = "Hide/show the whole UI";

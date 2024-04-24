@@ -449,7 +449,7 @@ switch (_type) do {
 	};
 };
 if(_showMsg) then {
-	[[_title], [_msg], false] call CBA_fnc_notify;
+	[[_title, 1.5, [0.161, 0.502, 0.725, 1]], [_msg], false] call CBA_fnc_notify;
 };
 
 diag_log "[CGQC_FNC] setRadios done";

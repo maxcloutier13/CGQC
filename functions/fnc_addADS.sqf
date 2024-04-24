@@ -10,19 +10,19 @@ if (isServer) then {
 	waitUntil {sleep 1;cgqc_start_postInitClient_done};
 	y_vic setVariable["dapsCanSmoke",1,TRUE];
 	switch (_type) do {
-		case "light": { 
+		case "light": {
 			y_vic spawn DAPS_fnc_APSTrophyLV;
 		};
-		case "medium": { 
+		case "medium": {
 			y_vic spawn DAPS_fnc_APSTrophyMV;
 		};
-		case "heavy": { 
+		case "heavy": {
 			y_vic spawn DAPS_fnc_APSTrophyHV;
 		};
-		case "heavy+": { 
+		case "heavy+": {
 			y_vic spawn DAPS_fnc_APSTrophyHVe;
 		};
-		default { 
+		default {
 			hint "addADS error";
 		};
 	};

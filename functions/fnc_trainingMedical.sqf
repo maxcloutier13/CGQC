@@ -1,5 +1,5 @@
 // --- trainingMedical ----------------------------------------------------------
-// Medical training 
+// Medical training
 params ["_type"];
 
 [_type] spawn {
@@ -12,13 +12,13 @@ params ["_type"];
 	_head = [0];
 	_la = [0];
 	_ra = [0];
-	_create = false; 
+	_create = false;
 
 	switch (_type) do {
 		case 0:	{
-			// Remove all dead Bodies 
+			// Remove all dead Bodies
 			{deleteVehicle _x} forEach allDead;
-			// Remove all patients 
+			// Remove all patients
 			{
 				if ((typeOf _x == 'b_g_survivor_F') && (!isPlayer _x)) then {
 					deleteVehicle _x

@@ -10,7 +10,7 @@ cgqc_int_addItem_ground = {
 	params ["_target", "_item", "_amount", "_overflow", "_toGround"];
 	if (_toGround) then {
 			hint "Inventory full: Dropping on ground";
-			diag_log "[CGQC_FNC] addItemWithOverflow - Dropping on ground!";
+			//diag_log "[CGQC_FNC] addItemWithOverflow - Dropping on ground!";
 		for "_i" from 1 to _amount do {
 			[_item, "items"] spawn CGQC_fnc_dropStuff;
 		};
@@ -24,12 +24,12 @@ CGQC_int_addItem_backpack = {
 	diag_log "[CGQC_FNC] addItemWithOverflow - adding to backpack";
 	for "_i" from 1 to _amount do {
 		if (player canAddItemToBackpack _item) then {
-			diag_log "[CGQC_FNC] addItemWithOverflow - Fits! adding.";
+			//diag_log "[CGQC_FNC] addItemWithOverflow - Fits! adding.";
 			player addItemToBackpack _item;
 			_amount = _amount - 1;
 		} else {
 			if (_overflow) then {
-				diag_log "[CGQC_FNC] addItemWithOverflow - Overflowing to ground";
+				//diag_log "[CGQC_FNC] addItemWithOverflow - Overflowing to ground";
 				[_target, _item, _amount, _overflow, _toGround] call cgqc_int_addItem_ground;
 			};
 			break;
@@ -42,12 +42,12 @@ CGQC_int_addItem_vest = {
 	diag_log "[CGQC_FNC] addItemWithOverflow - adding to vest";
 	for "_i" from 1 to _amount do {
 		if (player canAddItemToVest _item) then {
-			diag_log "[CGQC_FNC] addItemWithOverflow - Fits! adding.";
+			//diag_log "[CGQC_FNC] addItemWithOverflow - Fits! adding.";
 			player addItemToVest _item;
 			_amount = _amount - 1;
 		} else {
 			if (_overflow) then {
-				diag_log "[CGQC_FNC] addItemWithOverflow - Overflowing to backpack";
+				//diag_log "[CGQC_FNC] addItemWithOverflow - Overflowing to backpack";
 				[_target, _item, _amount, _overflow, _toGround] call CGQC_int_addItem_backpack;
 			};
 			break;
@@ -60,12 +60,12 @@ CGQC_int_addItem_uniform = {
 	diag_log "[CGQC_FNC] addItemWithOverflow - adding to uniform";
 	for "_i" from 1 to _amount do {
 		if (player canAddItemToUniform _item) then {
-			diag_log "[CGQC_FNC] addItemWithOverflow - Fits! adding.";
+			//diag_log "[CGQC_FNC] addItemWithOverflow - Fits! adding.";
 			player addItemToUniform _item;
 			_amount = _amount - 1;
 		} else {
 			if (_overflow) then {
-				diag_log "[CGQC_FNC] addItemWithOverflow - Overflowing to vest";
+				//diag_log "[CGQC_FNC] addItemWithOverflow - Overflowing to vest";
 				// Doesn't fit. Overflowing
 				[_target, _item, _amount, _overflow, _toGround] call CGQC_int_addItem_vest;
 			};

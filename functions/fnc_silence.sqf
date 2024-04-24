@@ -1,5 +1,5 @@
 // --- silence ----------------------------------------------------------
-// Creates a cone of silence around the player 
+// Creates a cone of silence around the player
 diag_log format ["[CGQC_FNC] silence started"];
 
 trg_test_units = [];
@@ -11,7 +11,7 @@ while {triggerActivated trg_training} do {
 		trg_units_in = list trg_training;
 		if (!trg_player_lowered) then {
 			acex_volume_reduction = 9;
-			[] call ace_volume_fnc_lowerVolume;	
+			[] call ace_volume_fnc_lowerVolume;
 		};
 		trg_player_lowered = true;
 	}else {

@@ -1,11 +1,11 @@
 // --- trainingHeli ----------------------------------------------------------
-// Helicopter training   
+// Helicopter training
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
 	diag_log format ["[CGQC_FNC] trainingHeli %1 started", _type];
-	
+
 	cgqc_heli_vic = vehicle player;
 	switch (_type) do
 	{
@@ -32,27 +32,27 @@ params ["_type"];
 				hint "Get in an helicopter!";
 				waitUntil {sleep 0.1; vehicle player isKindOf "Helicopter" };
 			};
-			
-			
+
+
 			// Find suitable area
 			y_randomPos = [] call BIS_fnc_randomPos;
 			y_searchArea = [ y_randomPos, 25, 500, 5, 0, 20, 0] call BIS_fnc_findSafePos;
 			cgqc_heli_position = y_searchArea findEmptyPosition [1,500, typeOf cgqc_heli_vic];
 			// Task instead of marker
-			[side player, "task_heli", 
+			[side player, "task_heli",
 			[format["Land at grid: %1", mapGridPosition cgqc_heli_position],
 				format["Land at grid: %1", mapGridPosition cgqc_heli_position], ""],
 				cgqc_heli_position, "ASSIGNED", 1, true, "land", false] call BIS_fnc_taskCreate;
-			//Spawn marker 
+			//Spawn marker
 			//y_markerPlayer = createMarker ["cgqc_heli_target", cgqc_heli_position];
-			//"cgqc_heli_target" setMarkerType "hd_pickup"; 
+			//"cgqc_heli_target" setMarkerType "hd_pickup";
 			//"cgqc_heli_target" setMarkerText "LZ";
 			//"cgqc_heli_target" setMarkerColor "ColorBlue";
-			// Spawn heli H 
+			// Spawn heli H
 			cgqc_heli_h = "cgqc_refuel_h_short" createVehicle (cgqc_heli_position);
-			// Spawn light 
+			// Spawn light
 			cgqc_heli_light = "PortableHelipadLight_01_red_F" createVehicle (cgqc_heli_position);
-			// Spawn smoke 
+			// Spawn smoke
 			[] spawn {
 				sleep 5;
 				while {!cgqc_heli_done && cgqc_heli_smoking} do {
@@ -60,7 +60,7 @@ params ["_type"];
 					waitUntil {isNull cgqc_heli_smoke};
 				};
 			};
-			// Trigger to check that player is on target 
+			// Trigger to check that player is on target
 			_act = "['done'] call CGQC_fnc_trainingHeli;";
 			_deAct = "";
 			_int = 2;
@@ -69,7 +69,7 @@ params ["_type"];
 			cgqc_heli_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 			cgqc_heli_trg setTriggerStatements ["this && isTouchingGround vehicle player", _act, _deAct];
 			cgqc_heli_trg setTriggerInterval _int;
-			// Trigger to check that player is getting close 
+			// Trigger to check that player is getting close
 			_act = "hint 'Getting close'; cgqc_heli_smoking = false; if !(isNil 'cgqc_heli_smoke') then {deleteVehicle cgqc_heli_smoke;}";
 			_deAct = "";
 			_int = 2;
@@ -81,7 +81,7 @@ params ["_type"];
 			hint format ["Fly to LZ @ %1!", mapGridPosition cgqc_heli_h];
 		};
 		case "done": {
-			cgqc_heli_done = true; 
+			cgqc_heli_done = true;
 			hint 'Good job Viper. Standby for next target';
 			["task_heli", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 			sleep 3;
@@ -93,13 +93,13 @@ params ["_type"];
 			if !(isNil "cgqc_heli_trg") then {deleteVehicle cgqc_heli_trg;};
 			if !(isNil "cgqc_heli_trg_close") then {deleteVehicle cgqc_heli_trg_close;};
 			// Delete markers
-			//if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_heli_target";};	 
-			// Delete task 
-			["task_heli", true, true] call BIS_fnc_deleteTask;	
+			//if !(isNil "y_markerPlayer") then {deleteMarker "cgqc_heli_target";};
+			// Delete task
+			["task_heli", true, true] call BIS_fnc_deleteTask;
 			//Delete all things
 			if !(isNil "cgqc_heli_h") then {deleteVehicle cgqc_heli_h;};
 			if !(isNil "cgqc_heli_light") then {deleteVehicle cgqc_heli_light;};
-			if !(isNil "cgqc_heli_smoke") then {deleteVehicle cgqc_heli_smoke;};	 
+			if !(isNil "cgqc_heli_smoke") then {deleteVehicle cgqc_heli_smoke;};
 		};
 		default{diag_log "[CGQC_ERROR] trainingHeli fail";};
 	};

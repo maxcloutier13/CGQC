@@ -10,19 +10,19 @@ _seen = [];
 	if (!(_itemClassName in _seen) && (_itemClassName call BIS_fnc_isThrowable)) then
 	{
 		_seen pushBack _itemClassName;
-		_throwables pushBack [_displayName]; 
+		_throwables pushBack [_displayName];
 	};
 	if (!(_itemClassName in _seen) && !(_itemClassName call BIS_fnc_isThrowable)) then
 	{
 		_seen pushBack _itemClassName;
-		_gunMags pushBack [_displayName]; 
+		_gunMags pushBack [_displayName];
 	};
 } forEach _allMags;
 // Sort in case
 _gunMags sort true;
 _throwables sort true;
 
-// Add to  text 
+// Add to  text
 if (count _gunMags > 0) then {
 	{
 		_item = _x;

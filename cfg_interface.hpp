@@ -1,6 +1,3 @@
-class RscObject;
-class RscControlsGroupNoScrollbars;
-
 class RscMapControl
 {
 	ShowCountourInterval = 1;
