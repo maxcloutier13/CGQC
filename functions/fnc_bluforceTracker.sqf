@@ -17,9 +17,9 @@ CGQC_int_bft_findInfo = {
 		case "YELLOW": { _cgqc_player_bft_name = _cgqc_player_bft_name + "-2";_cgqc_player_bft_color = "ColorWEST";};
 	};
     switch (_role) do {
-        case "HQ": {_cgqc_player_bft_name = _cgqc_player_bft_name + "-HQ";_cgqc_player_bft_markerType = "b_hq";};
+        case "HQ": {_cgqc_player_bft_markerType = "b_hq";};
         case "Recon": {_cgqc_player_bft_markerType = "b_recon";};
-        case "Medic": {_cgqc_player_bft_name = _cgqc_player_bft_name + "-Medic";_cgqc_player_bft_markerType = "b_med";};
+        case "Medic": {_cgqc_player_bft_markerType = "b_med";};
         case "Armor": {_cgqc_player_bft_markerType = "b_armor";};
         case "Air": {_cgqc_player_bft_markerType = "c_air";};
     };
