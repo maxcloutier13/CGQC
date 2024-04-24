@@ -53,9 +53,11 @@ if (!isNil "n_targetGroup") then {
 cgqc_player_group = n_targetGroup;
 cgqc_player_groupID = groupId player;
 
-[_color] call CGQC_fnc_setTeamColor;
 [_groupName, _color] call CGQC_fnc_setGroupRadios;
 hint format ["You've joined %1", _groupName];
+sleep 0.5;
+[_color] call CGQC_fnc_setTeamColor;
+
 diag_log format ["[CGQC_FNC] joinGroup Player %1 joined %2", cgqc_custom_playername,  _groupName];
 
 diag_log "[CGQC_FNC] joinGroup done";

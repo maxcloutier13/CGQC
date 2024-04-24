@@ -557,31 +557,31 @@ _adding = [ ["ACE_SelfActions", "ACE_TeamManagement"], _action ] call  ace_inter
 _action = [ "CGQC_joinGroup", "Join/Create Group", "\z\ace\addons\interaction\UI\team\team_management_ca.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "CGQC_joinGroup_spartan", "Spartan", "", {['Spartan', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_spartan", "Spartan", "", {['Spartan', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "CGQC_joinGroup_spartan_11", "1-1 Rouge", "\z\ace\addons\interaction\UI\team\team_red_ca.paa", {['Spartan', 'RED'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_spartan_11", "1-1 Rouge", "\z\ace\addons\interaction\UI\team\team_red_ca.paa", {['Spartan', 'RED'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup', "CGQC_joinGroup_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_spartan_12", "1-2 Vert", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", {['Spartan', 'GREEN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_spartan_12", "1-2 Vert", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", {['Spartan', 'GREEN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup', "CGQC_joinGroup_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_spartan_21", "2-1 Bleu", "\z\ace\addons\interaction\UI\team\team_blue_ca.paa", {['Spartan', 'BLUE'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_spartan_21", "2-1 Bleu", "\z\ace\addons\interaction\UI\team\team_blue_ca.paa", {['Spartan', 'BLUE'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup', "CGQC_joinGroup_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_spartan_22", "2-2 Jaune", "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa", {['Spartan', 'YELLOW'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_spartan_22", "2-2 Jaune", "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa", {['Spartan', 'YELLOW'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup', "CGQC_joinGroup_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_spartan_0", "0 - Blanc", "\z\ace\addons\interaction\UI\team\team_white_ca.paa", {['Spartan', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_spartan_0", "0 - Blanc", "\z\ace\addons\interaction\UI\team\team_white_ca.paa", {['Spartan', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup', "CGQC_joinGroup_spartan"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "CGQC_joinGroup_hermes", "Hermes", "", {['Hermes', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_hermes", "Hermes", "", {['Hermes', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_orion", "Orion", "", {['Orion', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_orion", "Orion", "", {['Orion', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_centaure", "Centaure", "", {['Centaure', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_centaure", "Centaure", "", {['Centaure', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_griffon", "Griffon", "", {['Griffon', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_griffon", "Griffon", "", {['Griffon', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_pegase", "Pegase", "", {['Pegase', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_pegase", "Pegase", "", {['Pegase', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "CGQC_joinGroup_hq", "HQ", "", {['HQ', 'MAIN'] call CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "CGQC_joinGroup_hq", "HQ", "", {['HQ', 'MAIN'] spawn CGQC_fnc_joinGroup}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action ] call  ace_interact_menu_fnc_addActionToObject;
 */
 
