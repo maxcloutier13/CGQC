@@ -1,8 +1,13 @@
 #include "\CGQC\script_component.hpp"
 // --- setGroupRadios ----------------------------------------------------------
 // Set radio setups depending on role
-params [["_groupName", groupid cgqc_player_group], ["_color", 'MAIN']];
+params [["_groupName", groupid cgqc_player_group], ["_color", 'NONE']];
 LOG_2(" setGroupRadios %1/%2 started", _groupName, _color);
+
+if (_color isEqualTo "NONE") then {
+	LOG("setGroupRadios: No color target: Getting assigned color");
+	_color = assignedTeam player;
+};
 
 // Set default 343 channel for group
 _notFound = false;
@@ -10,21 +15,21 @@ _ch = 0;
 switch (groupid cgqc_player_group) do {
 	case "Spartan": {
 		switch (_color) do {
-			case "MAIN": {_ch = 16;};
 			case "RED": {_ch = 1;};
 			case "GREEN": {_ch = 1;};
 			case "BLUE": {_ch = 2;};
 			case "YELLOW": {_ch = 2;};
+			case "MAIN": {_ch = 16;};
 			default {_ch = 1;};
 		};
 	};
 	case "Typhon": {
 		switch (_color) do {
-			case "MAIN": {_ch = 15;};
 			case "RED": {_ch = 3;};
 			case "GREEN": {_ch = 3;};
 			case "BLUE": {_ch = 4;};
 			case "YELLOW": {_ch = 4;};
+			case "MAIN": {_ch = 15;};
 			default {_ch = 3;};
 		};
 	};

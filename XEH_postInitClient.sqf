@@ -316,9 +316,7 @@
 	};
 	// set back custom patch
 	[] call CGQC_fnc_setPatch;
-	if (!cgqc_flag_isTraining) then {
-		[] call CGQC_fnc_setGroupRadios;
-	};
+
 	// set default voice volume
 	[player, "talk"] call CGQC_fnc_setVoiceVolume;
 	// Save initial volume
@@ -384,6 +382,10 @@
 	[{
 		[] call CGQC_fnc_showObjectName
 	}, 1] call CBA_fnc_addPerframeHandler;
+
+	if (!cgqc_flag_isTraining) then {
+		[] call CGQC_fnc_setGroupRadios;
+	};
 
 	// All done
 	cgqc_start_postInitClient_done = true;
