@@ -50,13 +50,13 @@ if (_notFound) then {
 	hint "Group not found. Set your 343 channel manually";
 } else {
 	// Find 343
-	_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-	if !(isNil "_personalRadio") then {
-		// Set channel
+	if ([player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio) then {
+		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
+		waitUntil {sleep 0.5;!isNil "_personalRadio"};
 		hint format ["343 set to team channel:%1", _ch];
 		[_personalRadio, _ch] call acre_api_fnc_setRadioChannel;
 	} else {
-		hint "no 343 found... skipping";
+		hint "343 not found? Skipping";
 	};
 };
 
