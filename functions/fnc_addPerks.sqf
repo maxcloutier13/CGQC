@@ -342,7 +342,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], 
 _action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {!(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused")} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {missionNamespace getVariable "CGQC_gamestate_mission_AIpaused"} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_pause"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ------ Manual snapshot
 _action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all", "zeus"] spawn CGQC_fnc_snapshot}, {true} ] call ace_interact_menu_fnc_createAction;
