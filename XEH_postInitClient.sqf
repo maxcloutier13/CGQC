@@ -82,15 +82,12 @@
 	cgqc_player_face = face player;
 
 	// Check if dayTime
-	[] call CGQC_fnc_isDaytime;
-
+	[] spawn CGQC_fnc_isDaytime;
 	// ID player and find patch
-	[] call CGQC_fnc_findRank;
-	_patch = [] call CGQC_fnc_findPatch;
-	_beret = [] call CGQC_fnc_getRankedBeret;
-
-	// set and keep patch
-	_set = [] call CGQC_fnc_setPatch;
+	[] spawn CGQC_fnc_findRank;
+	[] spawn CGQC_fnc_findPatch;
+	[] spawn CGQC_fnc_getRankedBeret;
+	[] spawn CGQC_fnc_setPatch;
 
 	// Dynamic group -------------------------------------------------------------------------------------------------
 	// ['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
@@ -270,10 +267,10 @@
 	ACE_maxWeightCarry = 2000;
 
 	// Ace self interaction perks
-	_perks = [] call CGQC_fnc_addPerks;
+	_perks = [] spawn CGQC_fnc_addPerks;
 	if (cgqc_player_max) then {
 		// Cloutier perks
-		["max", false] call CGQC_fnc_switchPerks;
+		["max", false] spawn CGQC_fnc_switchPerks;
 	};
 
 	// Ace auto self interaction perks

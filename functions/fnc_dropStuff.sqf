@@ -5,7 +5,11 @@ params ["_item", "_type"];
 LOG_2(" dropStuff %1/%2 started", _item, _type);
 
 CGQC_int_createHolder = {
-    _unitPos = player getRelPos [1, 0];
+    _playerPosASL = getPosASL player;
+    // Calculate offset in front of the player (adjust as needed)
+    _offset = [1, 0, 0]; // Offset in meters in the direction player is facing
+    // Calculate position in front of the player at the same altitude
+    _unitPos = _playerPosASL vectorAdd (_offset vectorMultiply (diag_tickTime - diag_tickTime + 1));
 	_closestHolder = _unitPos nearestObject "GroundWeaponHolder_Scripted";
 	_holder = objNull;
 
@@ -145,9 +149,10 @@ switch (_type) do {
         player action [_action, cgqc_backpack_holder, _packName];
         // Create personal marker for position
         pack_marker = createMarkerLocal ["cgqc_marker_backpack", player, 1];
-        "cgqc_marker_backpack" setMarkerTypeLocal "hd_end_noShadow";
+        "cgqc_marker_backpack" setMarkerTypeLocal "loc_move";
         "cgqc_marker_backpack" setMarkerColorLocal "ColorRed";
         "cgqc_marker_backpack" setMarkerTextLocal " Pack";
+        "cgqc_marker_backpack" setMarkerSizeLocal [0.5,0.5];
         cgqc_backpack_dropped = true;
         if (cgqc_flag_backpackNotif) then {
             [] spawn {

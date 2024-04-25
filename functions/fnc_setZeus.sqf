@@ -84,20 +84,4 @@ if (_force || ["zeus", format["%1", roleDescription player]] call BIS_fnc_inStri
 	//[QGVAR(zeusCreated), _zeus, player] call CBA_fnc_targetEvent;
 };
 
-LOG(" setZeus done");
-
-	[] spawn {
-		while {true} do {
-			// Make sure radios are on
-			if (cgqc_config_zeusRadios) then {
-				[player] spawn CGQC_fnc_zeusUnit;
-				_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-				if (count _zeusRadios < 2) then {
-					["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;
-				};
-			};
-			sleep 20;
-		};
-	};
-
 */

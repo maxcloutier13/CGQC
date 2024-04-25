@@ -441,9 +441,5 @@ class CGQC {
             file = "\cgqc\functions\fnc_getRankedBeret.sqf";
             description = "Find beret for current rank";
         };
-        class zeusUnit {
-            file = "\cgqc\functions\fnc_zeusUnit.sqf";
-            description = "Unit double-clicked by Zeus";
-        };
     };
 };

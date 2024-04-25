@@ -2,7 +2,7 @@
 // --- inspect ----------------------------------------------------------
 // Inspect target laodout and reports problems
 params ["_type"];
-LOG_1()" inspect %1 started", _type);
+LOG_1(" inspect %1 started", _type);
 
 inspect_target = cursorTarget;
 _inspect_txt = "";

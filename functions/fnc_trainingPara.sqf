@@ -5,7 +5,7 @@ params ["_jumpHeight", ["_tpVersion", 0], ["_playerTarget", ""]];
 
 [_jumpHeight, _tpVersion, _playerTarget] spawn {
 	params ["_jumpHeight", "_tpVersion", "_playerTarget"];
-	LOG_1(" trainingPara %1/%2/%3 started", _jumpHeight, _tpVersion, _playerTarget);
+	LOG_3(" trainingPara %1/%2/%3 started", _jumpHeight, _tpVersion, _playerTarget);
 
 	cgqc_jump_backpack = "";
 	cgqc_jump_backpack_items = [];

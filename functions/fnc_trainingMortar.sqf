@@ -5,7 +5,7 @@ params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	dLOG_1(" trainingMortar %1 started", _type);
+	LOG_1(" trainingMortar %1 started", _type);
 
 	switch (_type) do
 	{
