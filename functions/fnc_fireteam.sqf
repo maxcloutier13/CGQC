@@ -58,7 +58,7 @@ _group = group _target;
 
 _groupName = groupID _group;
 _lead = leader _target;
-_white = [_lead];
+_white = [];
 // Fireteam 1
 _tl_1 = "";
 _2iC_1 = "";

@@ -9,4 +9,4 @@
 #define REQUIRED_VERSION 1.88
 
 //#define DEBUG_MODE_NORMAL
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
