@@ -152,7 +152,6 @@ switch (_type) do {
         "cgqc_marker_backpack" setMarkerTypeLocal "loc_move";
         "cgqc_marker_backpack" setMarkerColorLocal "ColorRed";
         "cgqc_marker_backpack" setMarkerTextLocal " Pack";
-        "cgqc_marker_backpack" setMarkerSizeLocal [0.5,0.5];
         cgqc_backpack_dropped = true;
         if (cgqc_flag_backpackNotif) then {
             [] spawn {
