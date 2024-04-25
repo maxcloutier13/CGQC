@@ -389,6 +389,8 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace
 // Dynamic group
 _action = [ "zeus_fixes_group", "Activate Dynamic Groups for all", "", {[-1, {["group", false] spawn CGQC_fnc_perksBasic;}] call CBA_fnc_globalExecute;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_fixes_self", "Activate Dynamic Groups for Zeus", "", {["group", false] spawn CGQC_fnc_perksBasic;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Options
 _action = [ "zeus_options", "Options", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
