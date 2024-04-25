@@ -19,13 +19,15 @@ if (isNil "_mag") then {
 
 	// Compare the magazine size
 	switch (true) do {
-		case (_magSize < 20): {floor(_addMags = _addMags * 1.6)};
-		case (_magSize == 20): {floor(_addMags = _addMags * 1.5)};
-		case (_magSize > 30): {floor(_addMags = _addMags * 0.6)};
+		case (_magSize < 20): {_addMags = _addMags * 1.6};
+		case (_magSize == 20): {_addMags = _addMags * 1.5};
+		case (_magSize > 30): {_addMags = _addMags * 0.6};
 	};
 
+	_addmags = floor _addmags;
 	// Add amount of mags
 	LOG_1(" addMags - adding %1 mags", _addMags);
+
 	if (_addMags <= 8) then {
 		["vest", _mag, _addMags] call CGQC_fnc_addItemWithOverflow;
 	} else {

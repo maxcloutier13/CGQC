@@ -506,11 +506,11 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_looting_gun", "CHECKBOX", ["Keep primary gun", "Comme ça le dit"],
     ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_gun"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_gun_amnt", "SLIDER",["Max mags", "Combien de mags maximum"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 10, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_handgun", "CHECKBOX", ["Keep handgun", "Comme ça le dit"],
     ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_handgun"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_handgun_amnt", "SLIDER",["Max Handgun mags", "Combien de mags maximum"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_launcher", "CHECKBOX", ["Keep Launcher", "Comme ça le dit"],
     ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_launcher"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_launcher_amnt", "SLIDER",["Max Launcher ammo", "Combien de mags maximum"],
@@ -555,7 +555,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"],
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Option Toggles"], [6, 18, 10, 0]] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], [0, 18, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"],
