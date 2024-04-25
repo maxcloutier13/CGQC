@@ -1,8 +1,8 @@
- // --- ldt_2023_i_rifleman ----------------------------------------------------------
+#include "\CGQC\script_component.hpp"
+// --- ldt_2023_i_rifleman ----------------------------------------------------------
 // Rifleman 2023 loadout
 params [["_target", player], ["_variant", "rifleman"], ["_gunVariant", "carbine"]];
-diag_log format ["[CGQC_FNC] ldt_2023_i_rifleman %1 started", _target];
-
+LOG(" ldt_2023_i_rifleman started");
 // Basic setup
 [] call CGQC_ldt_2023_basic;
 
@@ -55,4 +55,4 @@ switch (_variant) do {
 	};
 };
 
-diag_log "[CGQC_FNC] ldt_2023_i_rifleman done";
+LOG(" ldt_2023_i_rifleman done");

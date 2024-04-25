@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 TrainingCourse_BulletCamera = !TrainingCourse_BulletCamera;
 
 if (TrainingCourse_BulletCamera) then

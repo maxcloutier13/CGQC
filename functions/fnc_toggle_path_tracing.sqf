@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 TrainingCourse_BulletPathTracing = !TrainingCourse_BulletPathTracing;
 
 if (TrainingCourse_BulletPathTracing) then

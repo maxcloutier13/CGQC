@@ -1,11 +1,11 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- trainingDefense ----------------------------------------------------------
 // Wave defense mission
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	diag_log format ["[CGQC_FNC] trainingDefense %1 started", _type];
+	LOG_1(" trainingDefense %1 started", _type);
 	switch (_type) do {
 		case "start":
 		{
@@ -100,7 +100,7 @@ params ["_type"];
 			["clear"] call fnc_trainingDefense;
 
 		};
-		default{diag_log "[CGQC_ERROR] trainingDefense fail";};
+		default{LOG("[CGQC_ERROR] trainingDefense fail");};
 	};
 };
-diag_log "[CGQC_FNC] trainingDefense done";
+LOG(" trainingDefense done");

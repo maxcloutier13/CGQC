@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- trainingTime ----------------------------------------------------------
 // Sets time to current real-life date but sunrise and with nice clear weather
 //Only run once

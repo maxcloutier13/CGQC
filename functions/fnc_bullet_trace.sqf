@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 private ["_unit", "_bullet", "_bulletVelocity", "_mv", "_v", "_color", "_distance"];
 
 TrainingCourse_ShotsFired = TrainingCourse_ShotsFired + 1;

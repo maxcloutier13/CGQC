@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- dropStuff ----------------------------------------------------------
 // Handles the dropping of stuff
 params ["_item", "_type"];
-diag_log format ["[CGQC_FNC] dropStuff %1/%2 started", _item, _type];
+LOG_2(" dropStuff %1/%2 started", _item, _type);
 
 CGQC_int_createHolder = {
     _unitPos = player getRelPos [1, 0];
@@ -79,7 +79,7 @@ switch (_type) do {
                     {
                         if (_x getVariable "cgqc_name_object" isEqualTo name player) then {
                             _found = true;
-                            diag_log "[CGQC_FNC] dropStuff - Backpack found. Grabbing";
+                            LOG(" dropStuff - Backpack found. Grabbing");
                             hint "Pack found. Grabbing it";
                             //Grab the bag
                             player action ["AddBag", _holder, typeOf _x];
@@ -92,7 +92,7 @@ switch (_type) do {
                             };
                             break;
                         } else {
-                            diag_log "[CGQC_FNC] dropStuff - Not player's backpack";
+                            LOG(" dropStuff - Not player's backpack");
                         };
                     } forEach _packs;
                 }
@@ -100,7 +100,7 @@ switch (_type) do {
 
             if !(_found) then {
                 hint "Your backpack is not close enough";
-                diag_log "[CGQC_FNC] dropStuff - No player backpack found";
+                LOG(" dropStuff - No player backpack found");
             };
         };
     };
@@ -173,4 +173,4 @@ switch (_type) do {
     };
 };
 
-diag_log "[CGQC_FNC] dropStuff finished";
+LOG(" dropStuff finished");

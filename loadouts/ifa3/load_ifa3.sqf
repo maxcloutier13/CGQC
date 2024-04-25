@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- loadIfa3 ----------------------------------------------------------
 // Handles the arsenal for ifa3
 

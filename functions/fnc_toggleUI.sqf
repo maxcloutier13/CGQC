@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- toggleUI ----------------------------------------------------------
 // Show/Hide the UI
-diag_log "[CGQC_FNC] toggleUI started";
+LOG(" toggleUI started");
     if (!cgqc_hud_hidden) then {
         // HIDE!
 		showHUD [false,false,false,false,false,false,false,false,false];
@@ -19,4 +19,4 @@ diag_log "[CGQC_FNC] toggleUI started";
         [diwako_dui_main_hudToggled, [diwako_dui_main_toggled_off]] call CBA_fnc_localEvent;
         cgqc_hud_hidden = False;
     };
-diag_log "[CGQC_FNC] toggleUI done";
+LOG(" toggleUI done");

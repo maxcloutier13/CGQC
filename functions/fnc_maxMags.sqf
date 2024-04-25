@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- maxMags ----------------------------------------------------------
 // Limit maximum mags
 	[] spawn {

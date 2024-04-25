@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- lockChannels ----------------------------------------------------------
 // Lock some of the comms channels
 params ["_type"];
-diag_log format ["[CGQC_FNC] lockChannels %1 started", _type];
+LOG_1(" lockChannels %1 started", _type);
 
 if (cgqc_config_hide_channels) then {
 	0 enableChannel false; //Global
@@ -58,4 +58,4 @@ if (cgqc_config_hide_channels) then {
 };
 
 
-diag_log "[CGQC_FNC] lockChannels done";
+LOG(" lockChannels done");

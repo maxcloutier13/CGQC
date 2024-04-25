@@ -1,8 +1,9 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
+// --- briefingCmdOut ----------------------------------------------------------
 //Force lower voice level on everyone outside zone
+LOG("briefingCmdOut started");
 
 [player, "discreet"] call CGQC_fnc_setVoiceVolume;
-
 if (vehicle player == player && trgBriefCmd_player_lowered) then {
 	acex_volume_reduction = trgBriefCmd_oldVolume;
 	[] call ace_volume_fnc_restoreVolume;
@@ -10,3 +11,5 @@ if (vehicle player == player && trgBriefCmd_player_lowered) then {
 };
 _txt = parseText ("Leaders Briefing in progress." + "<br/>" + "Your voice volume is reduced.");
 hintSilent _txt;
+
+LOG("briefingCmdOut done");

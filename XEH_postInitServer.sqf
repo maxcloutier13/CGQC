@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- postInitServer ----------------------------------------------------------
 // Start everything server-side
 

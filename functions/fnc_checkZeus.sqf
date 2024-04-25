@@ -1,7 +1,9 @@
-#include "script_component.hpp"
-// Fonction: Find zeus
-// Check if player is zeus
-_unit = param [0, objNull, [objNull]];
+#include "\CGQC\script_component.hpp"
+// --- checkZeus ----------------------------------------------------------
+// Check if player is zeusparams [["_switch", true]];
+params [["_unit", player];
+LOG_1(" checkZeus %1 started", _unit);
+
 // Check that Zeus has been assigned to unit
 if (isNull (getAssignedCuratorLogic _unit)) then {
 	false;

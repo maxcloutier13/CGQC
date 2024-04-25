@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- mapShare_list ----------------------------------------------------------
 // Shows list of players close enough to share map markers
 _nearbyEntities = [];

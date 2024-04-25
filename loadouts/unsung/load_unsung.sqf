@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- loadUnsung ----------------------------------------------------------
 // Handles the arsenal for Unsung
 

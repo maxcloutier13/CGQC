@@ -3,7 +3,7 @@ _condition = {
 };
 _statement = {
     params ["_target", "_player", "_params"];
-    diag_log format ["_statement [%1, %2, %3]", _target, _player, _params];
+    LOG_3("_statement [%1, %2, %3]", _target, _player, _params);
 
     // Run on hover:
     hint "Turns invisible/invincible and attach 5m behind player";
@@ -30,7 +30,7 @@ _insertChildren = {
 };
 _modifierFunc = {
     params ["_target", "_player", "_params", "_actionData"];
-   // diag_log format ["_modifierFunc [%1, %2, %3]", _target, _player, _params];
+    LOG_3("_modifierFunc [%1, %2, %3]", _target, _player, _params);
 
     // Modify the action - index 1 is the display name, 2 is the icon...
     _actionData set [1, "Attach to Player"];

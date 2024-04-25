@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- setVoiceVolume ----------------------------------------------------------
 // Quick set voice to specified volume
 params [["_unit", player], ["_vol", "talk"]];
-diag_log format ["[CGQC_FNC] setVoiceVolume %1/%2 started", _unit, _vol];
+LOG_2(" setVoiceVolume %1/%2 started", _unit, _vol);
 
 
 _target = 0;
@@ -24,10 +24,10 @@ switch (_vol) do {
 if (_target > 0) then {
 	[_target] call acre_api_fnc_setSelectableVoiceCurve;
 	acre_sys_gui_volumeLevel = _lvl;
-	diag_log "[CGQC_FNC] setVoiceVolume - Volume adjusted";
+	LOG(" setVoiceVolume - Volume adjusted");
 };
 
-diag_log "[CGQC_FNC] setVoiceVolume done";
+LOG(" setVoiceVolume done");
 
 // 0.1 whispering
 // 0.4 talking

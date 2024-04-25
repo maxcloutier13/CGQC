@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 private ["_camera", "_position", "_offsetVector"];
 
 if (Projectile_Impact_Aux Distance [0,0,0] > 500) Then

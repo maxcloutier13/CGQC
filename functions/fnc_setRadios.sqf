@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- setRadios ----------------------------------------------------------
 // Set radio channels depending on group
 params ["_type", ["_section", 1]];
-diag_log format ["[CGQC_FNC] setRadios %1/%2 started", _type, _section];
+LOG_2(" setRadios %1/%2 started", _type, _section);
 
 _showMsg = false;
 _msg = "";
@@ -42,11 +42,11 @@ switch (_type) do {
 		};
 	};
 	case "training": {
-		diag_log "[CGQC_FNC] setRadios - Training mode";
+		LOG(" setRadios - Training mode");
 		_radios = call acre_api_fnc_getCurrentRadioList;
 		_radio1 = _radios select 0;
 		_radio2 = _radios select 1;
-		diag_log format ["[CGQC_FNC] setRadios Settings sides for %1/%2", _radio1, _radio2];
+		LOG_2(" setRadios Settings sides for %1/%2", _radio1, _radio2);
 		_success = [_radio1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
 		_success = [_radio2, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 		_showMsg = true;
@@ -453,4 +453,4 @@ if(_showMsg) then {
 	[[_title, 1.5, [0.161, 0.502, 0.725, 1]], [_msg], false] call CBA_fnc_notify;
 };
 
-diag_log "[CGQC_FNC] setRadios done";
+LOG(" setRadios done");

@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- openMedical ----------------------------------------------------------
 // Open medical items
 params ["_type", ["_target", ACE_player], ["_forceOpen", true]];
-diag_log format ["[CGQC_FNC] openMedical %1/%2/%3 started"];
+LOG(" openMedical %1/%2/%3 started");
 
 _work = "";
 if (player isEqualTo _target) then {
@@ -54,7 +54,7 @@ switch (_type) do {
 		if (_forceOpen || _bandage < 2) then {
 			_work = _work + "IFAK";
 			_target removeItem "cgqc_items_ifak";
-			diag_log format ["[CGQC_FNC] openMedical - unpacking ifak"];
+			LOG(" openMedical - unpacking ifak");
 			for "_i" from _bandage to 9 do {_target addItem "ACE_fieldDressing"};
 			for "_i" from _epi to 1 do {_target addItem "ACE_epinephrine"};
 			for "_i" from _morphine to 1 do {_target addItem "ACE_morphine"};
@@ -71,7 +71,7 @@ switch (_type) do {
 			if (_forceOpen || _liquids < 3) then {
 				_work = _work + "Medkit";
 				_target removeItem "cgqc_items_medkit";
-				diag_log format ["[CGQC_FNC] openMedical - unpacking medkit"];
+				LOG(" openMedical - unpacking medkit");
 				for "_i" from _bandage to 49 do {_target addItemToBackpack "ACE_fieldDressing"};
 				for "_i" from _epi to 9 do {_target addItemToBackpack "ACE_epinephrine"};
 				for "_i" from _morphine to 9 do {_target addItemToBackpack "ACE_morphine"};
@@ -89,7 +89,7 @@ switch (_type) do {
 		};
 
 	};
-	default {diag_log format ["[CGQC_ERROR] openMedical didn't match _type"];};
+	default {ERROR("[CGQC_ERROR] openMedical didn't match _type");};
 };
 
-diag_log format ["[CGQC_FNC] openMedical done"];
+LOG(" openMedical done");

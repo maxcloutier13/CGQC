@@ -1,8 +1,8 @@
- // --- 2023_basic ----------------------------------------------------------
+#include "\CGQC\script_component.hpp"
+// --- 2023_basic ----------------------------------------------------------
 // Basic 2023 loadout
 params [["_target", player]];
-diag_log format ["[CGQC_FNC] ldt_2023_basic %1 started", _target];
-
+LOG(" ldt_2023_basic started");
 
 // === Clothing ==========================================================================================================
 _hats = [ "cgqc_helmet_mk1"];
@@ -34,4 +34,4 @@ _target addItemToVest "rhs_mag_m67";
 _target addItemToBackpack "ACE_EntrenchingTool";
 _target addItemToBackpack "ACE_Canteen";
 
-diag_log "[CGQC_FNC] ldt_2023_basic done";
+LOG(" ldt_2023_basic done");

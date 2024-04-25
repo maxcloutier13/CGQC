@@ -1,11 +1,11 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- trainingMortar ----------------------------------------------------------
 // Manual mortar training
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	diag_log format ["[CGQC_FNC] trainingMortar %1 started", _type];
+	dLOG_1(" trainingMortar %1 started", _type);
 
 	switch (_type) do
 	{
@@ -120,7 +120,7 @@ params ["_type"];
 			if !(isNil "cgqc_training_mortar_mortar") then {deleteVehicle cgqc_training_mortar_mortar;};
 			if !(isNil "cgqc_training_mortar_target") then {deleteVehicle cgqc_training_mortar_target;};
 		};
-		default {diag_log "[CGQC_ERROR] trainingMortar done";};
+		default {LOG("[CGQC_ERROR] trainingMortar done");};
 	};
 };
-diag_log "[CGQC_FNC] trainingMortar done";
+LOG(" trainingMortar done");

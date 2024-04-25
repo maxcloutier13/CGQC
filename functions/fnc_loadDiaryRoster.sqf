@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- loadDiaryRoster ----------------------------------------------------------
 // List all groups and players + roles
-diag_log "[CGQC_FNC] loadDiaryRoster started";
+LOG(" loadDiaryRoster started");
 
 waitUntil {cgqc_start_postInitClient_done};
 
@@ -74,4 +74,4 @@ if !(player diarySubjectExists "CGQC_Roster") then {
     player setDiaryRecordText [["CGQC_Roster", _record select 8], ["Roster", _roster]];
 };
 
-diag_log "[CGQC_FNC] loadDiaryRoster done";
+LOG(" loadDiaryRoster done");

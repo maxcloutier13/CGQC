@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- addSpares ----------------------------------------------------------
 // Add spare stuff in AceCargo of vehicles
 params ["_vic", "_type"];
-diag_log format ["[CGQC_FNC] addSpares %1/%2 called", _vic, _type];
+LOG_2(" addSpares %1/%2 called", _vic, _type);
 
 if !(local _vic) exitWith {};
 
@@ -10,7 +10,7 @@ if !(local _vic) exitWith {};
 	params ["_vic", "_type"];
 	waitUntil {!isNil "cgqc_start_postInitClient_done"};
 	waitUntil {sleep 1; cgqc_start_postInitClient_done};
-	diag_log format ["[CGQC_FNC] addSpares %1/%2 started", _vic, _type];
+	LOG_2(" addSpares %1/%2 started", _vic, _type);
 
 	if (cgqc_config_spares) then
 	{
@@ -46,5 +46,5 @@ if !(local _vic) exitWith {};
 			};
 		};
 	};
-	diag_log format ["[CGQC_FNC] addSpares done"];
+	LOG(" addSpares done");
 };

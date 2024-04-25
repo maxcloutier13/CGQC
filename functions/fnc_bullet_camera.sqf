@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 private ["_unit", "_bullet", "_camera", "_camPos", "_camTgt"];
 
 if !(TrainingCourse_BulletCamera) exitWith {};

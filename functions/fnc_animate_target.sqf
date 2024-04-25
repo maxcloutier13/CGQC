@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 private ["_target", "_direction", "_speed", "_distance", "_refPosition", "_velocity", "_translation", "_lastTime"];
 
 _target = _this select 0;

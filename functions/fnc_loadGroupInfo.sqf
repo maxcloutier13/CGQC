@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- loadGroupInfo ----------------------------------------------------------
 // Load all of the info about groups and members
-diag_log "[CGQC_FNC] loadGroupInfo started";
+LOG(" loadGroupInfo started");
 
 _side = side player;
 _roster = "";
@@ -117,3 +117,5 @@ cgqc_allGroupsInfo = [];
     // Store the group
     cgqc_allGroupsInfo pushBack [_groupName, _sortedGroup];
 } forEach _playerGroups;
+
+LOG(" loadGroupInfo done");

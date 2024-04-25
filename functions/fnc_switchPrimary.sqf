@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- primarySwitch ----------------------------------------------------------
 // Switch primary weapons
 params ["_type", ["_target", player]];
-diag_log format ["[CGQC_FNC] primarySwitch %1 started", _type];
+LOG_1(" primarySwitch %1 started", _type);
 
 _needGL = false;
 // Remove gun and ammo
@@ -324,7 +324,7 @@ switch (_type) do {
 
 
 if (_needGL) then { // Load with grenade launcher stuff
-	diag_log "[CGQC_FNC] primarySwitch - adding GL stuff";
+	LOG(" primarySwitch - adding GL stuff");
 	for "_i" from 1 to 5 do {_target addItemToVest "1Rnd_HE_Grenade_shell"};
 	for "_i" from 1 to 10 do {_target addItemToBackpack "1Rnd_HE_Grenade_shell"};
 	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_SmokeRed_Grenade_shell"};
@@ -341,4 +341,4 @@ if (_needGL) then { // Load with grenade launcher stuff
 
 [_target] call ace_weaponselect_fnc_putWeaponAway;
 
-diag_log "[CGQC_FNC] primarySwitch done";
+LOG(" primarySwitch done");

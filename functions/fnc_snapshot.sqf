@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- snapshot ----------------------------------------------------------
 // Saves/update a snapshot of the target
 params [["_target", player], ["_type", "save"], ["_scope", "single"], ["_snapshotType", "player"]];
-diag_log format ["[CGQC_FNC] snapshot %1/%2/%3/%4 started", _target, _type, _scope, _snapshotType];
+LOG_4(" snapshot %1/%2/%3/%4 started", _target, _type, _scope, _snapshotType);
 
 cgqc_snapshot_version = 1;
 
@@ -146,7 +146,7 @@ switch (_scope) do {
             case "load": {
                 if (_found) then {
                     hint "Player snapshot found";
-                    diag_log "[CGQC_FNC] snapshot found!";
+                    LOG(" snapshot found!");
                     // Check version
                     _checkVersion = MissionProfileNamespace getVariable [_snapshot_slot_version, 0];
                     if (_checkVersion < cgqc_snapshot_version) exitWith {
@@ -324,7 +324,7 @@ switch (_scope) do {
                     _displayText = format["Snapshot Loaded! <br/> %1<br/>%2<br/>%3", _name, _time, _role];
                     ["ace_common_displayTextStructured", [_displayText, 3, player]] call CBA_fnc_localEvent;
 
-                    diag_log format ["[CGQC_FNC] snapshot Loaded %1/%2/%3", _name, _time, _role];
+                    LOG_3(" snapshot Loaded %1/%2/%3", _name, _time, _role);
 
                     // Reset team color au cas
                     [_color] call CGQC_fnc_setTeamColor;
@@ -336,7 +336,7 @@ switch (_scope) do {
 
                 } else {
                     hint "No player snapshot found";
-                    diag_log "[CGQC_FNC] snapshot not found";
+                    LOG(" snapshot not found");
                 };
             };
         };
@@ -360,4 +360,4 @@ switch (_scope) do {
     };
 };
 
-diag_log "[CGQC_FNC] snapshot done";
+LOG(" snapshot done");

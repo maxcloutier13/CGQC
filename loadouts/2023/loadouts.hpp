@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- 2023 loadouts ----------------------------------------------------------
 // Gets all 2023 loadout functions ready
-diag_log "[CGQC_FNC] 2023Loadouts started";
+LOG(" 2023Loadouts started");
 if (cgqc_player_has2023) then {
 	// 2023 Ranked arsenal
 	["\CGQC\loadouts\2023\load_2023.sqf", "CGQC_ldt_2023_arsenal"] call CBA_fnc_compileFunction;
@@ -15,7 +16,7 @@ if (cgqc_player_has2023) then {
 	["\CGQC\loadouts\2023\ldt_2023_recon.sqf", "CGQC_ldt_2023_recon"] call CBA_fnc_compileFunction;
 	["\CGQC\loadouts\2023\ldt_2023_pilot.sqf", "CGQC_ldt_2023_pilot"] call CBA_fnc_compileFunction;
 	["\CGQC\loadouts\2023\ldt_2023_driver.sqf", "CGQC_ldt_2023_driver"] call CBA_fnc_compileFunction;
-	diag_log "[CGQC_FNC] 2023Loadouts loaded";
+	LOG(" 2023Loadouts loaded");
 } else {
-	diag_log "[CGQC_FNC] 2023Loadouts not loaded";
+	LOG(" 2023Loadouts not loaded");
 };

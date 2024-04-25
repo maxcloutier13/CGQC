@@ -1,11 +1,11 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- trainingPara ----------------------------------------------------------
 // Paradrop shenanigans
 params ["_jumpHeight", ["_tpVersion", 0], ["_playerTarget", ""]];
 
 [_jumpHeight, _tpVersion, _playerTarget] spawn {
 	params ["_jumpHeight", "_tpVersion", "_playerTarget"];
-	diag_log format ["[CGQC_FNC] trainingPara %1/%2/%3 started", _jumpHeight, _tpVersion, _playerTarget];
+	LOG_1(" trainingPara %1/%2/%3 started", _jumpHeight, _tpVersion, _playerTarget);
 
 	cgqc_jump_backpack = "";
 	cgqc_jump_backpack_items = [];
@@ -173,4 +173,4 @@ params ["_jumpHeight", ["_tpVersion", 0], ["_playerTarget", ""]];
 	hint "Sans parachute? T'es malade!";
 	};
 };
-diag_log "[CGQC_FNC] trainingParachute done";
+LOG(" trainingParachute done");

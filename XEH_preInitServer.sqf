@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- preInitServer ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing server side
 LOG("[CGQC_preInitServer] === Started =====================================");

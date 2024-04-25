@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 _type = _this select 0;
 //hintc format["%1", _type];
 

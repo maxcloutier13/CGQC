@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- getCustomHelmet ----------------------------------------------------------
 // Get player custom helmet if exists
 params ["_helmet"];
-diag_log format ["[CGQC_FNC] getCustomHelmet %1 started", _helmet];
+LOG_1(" getCustomHelmet %1 started", _helmet);
 
 removeHeadgear player;
 _customHelmet = _helmet + "_" + cgqc_custom_playername;
@@ -16,4 +16,4 @@ if (_checkHelmet == "") then {
     hint format ["Custom Helmet :%1", _customHelmet];
 };
 
-diag_log "[CGQC_FNC] getCustomHelmet done";
+LOG(" getCustomHelmet done");

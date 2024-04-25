@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- setRelations ----------------------------------------------------------
 // Get radios and set everything
 params ["_type"];
-diag_log format ["[CGQC_FNC] setRelations %1", _type];
+LOG_1(" setRelations %1", _type);
 
 // Everyone is ennemy
 east setFriend [west, 0];
@@ -31,4 +31,4 @@ switch (_type) do {
 	default { };
 };
 
-diag_log "[CGQC_FNC] getRadioPresets done";
+LOG(" getRadioPresets done");

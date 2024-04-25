@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- perksPilot ----------------------------------------------------------
 // Perks for the flyin man
 params ["_type"];

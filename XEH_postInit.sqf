@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- postInit ----------------------------------------------------------
 // Start everything before everything
 LOG("[CGQC_PostInit] === Started =====================================");

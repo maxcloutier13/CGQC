@@ -1,5 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
+// --- Briefing out ----------------------------------------------------------
 //Force lower voice level on everyone outside zone
+LOG("briefingOut started");
+
 [player, "discreet"] call CGQC_fnc_setVoiceVolume;
 
 if (vehicle player == player && trgBrief_player_lowered) then {
@@ -9,3 +12,5 @@ if (vehicle player == player && trgBrief_player_lowered) then {
 };
 _txt = parseText ("Briefing!!!" + "<br/>" + "You are too far.");
 hintSilent _txt;
+
+LOG("briefingOut done");

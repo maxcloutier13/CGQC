@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- setLeadership ----------------------------------------------------------
 // Sets the leadership level of the player
 params ["_type", ["_player", player], ["_target", player]];
-diag_log format ["[CGQC_FNC] setLeadership %1/%2/%3 started", _type, _player, _target];
+LOG_3(" setLeadership %1/%2/%3 started", _type, _player, _target);
 
 if (isPlayer _target && _player isNotEqualTo _target) then {
 	_displayText = format ["%1 has designated you %2", [_player] call ace_common_fnc_getName, _type];
@@ -30,4 +30,4 @@ switch (_type) do {
 	};
 };
 
-diag_log "[CGQC_FNC] setLeadership done";
+LOG(" setLeadership done");

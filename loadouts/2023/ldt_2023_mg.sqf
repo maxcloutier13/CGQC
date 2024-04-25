@@ -1,8 +1,8 @@
- // --- ldt_2023_s_mg ----------------------------------------------------------
+#include "\CGQC\script_component.hpp"
+// --- ldt_2023_s_mg ----------------------------------------------------------
 // MG 2023 loadout
 params [["_target", player], ["_variant", ""], ["_gunVariant", "mk46"]];
-diag_log format ["[CGQC_FNC] ldt_2023_s_mg %1 started", _target];
-
+LOG(" ldt_2023_s_mg started");
 // Basic setup
 [] call CGQC_ldt_2023_basic;
 
@@ -26,4 +26,4 @@ switch (_gunVariant) do {
 	case "lwmmg": {["lwmmg"] spawn CGQC_fnc_switchPrimary;};
 };
 
-diag_log "[CGQC_FNC] ldt_2023_s_mg done";
+LOG(" ldt_2023_s_mg done");

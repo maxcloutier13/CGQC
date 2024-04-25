@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- showObjectName ----------------------------------------------------------
 // Black fadout/in with some information in some cases
-//diag_log "[CGQC_FNC] showObjectName started";
+//LOG(" showObjectName started");
 
 if (isGamePaused || !isGameFocused) exitWith {};
 
@@ -56,4 +56,4 @@ if (isGamePaused || !isGameFocused) exitWith {};
     };
 };
 
-//diag_log "[CGQC_FNC] showObjectName done";
+//LOG(" showObjectName done");

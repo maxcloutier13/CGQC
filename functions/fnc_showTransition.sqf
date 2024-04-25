@@ -1,11 +1,11 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- transition ----------------------------------------------------------
 // Black fadout/in with some information in some cases
 params ["_type", ["_show", true]];
 
 [_type, _show] spawn {
     params ["_type", ["_show", true]];
-    diag_log format ["[CGQC_FNC] transition %1/%2 started", _type, _show];
+    LOG_2(" transition %1/%2 started", _type, _show);
 
     cgqc_mk3_transition = true;
     _text = "";
@@ -144,5 +144,5 @@ params ["_type", ["_show", true]];
         cgqc_mk3_transition = false;
     };
 
-    diag_log "[CGQC_FNC] transition done";
+    LOG(" transition done");
 };

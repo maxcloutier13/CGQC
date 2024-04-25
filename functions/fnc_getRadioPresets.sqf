@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- getRadiosPresets ----------------------------------------------------------
 // Get radios and set everything
 params ["_type", ["_team", 1]];
-diag_log format ["[CGQC_FNC] getRadioPresets %1/%2 started", _type, _team];
+LOG_2(" getRadioPresets %1/%2 started", _type, _team);
 
 _radios = [];
 _preset = "";
@@ -29,7 +29,7 @@ if (cgqc_flag_isTraining) then {
 		case "jtac": {_radios = ["ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC152"];_preset = "jtac"};
 		case "pilot": {_radios = ["ACRE_PRC152", "ACRE_PRC152", "ACRE_PRC343"];_preset = "griffon_pieton"};
 		case "driver": {_radios = ["ACRE_PRC152", "ACRE_PRC152", "ACRE_PRC343"];_preset = "centaure_pieton"};
-		default	{default {diag_log "[CGQC_ERROR] mk3_getRadios issue";}};
+		default	{ERROR("[CGQC_ERROR] mk3_getRadios issue");};
 	};
 };
 
@@ -38,9 +38,9 @@ if (cgqc_flag_isTraining) then {
 [_preset,_team] spawn {
 	params ["_preset", "_team"];
 	sleep 5;
-	diag_log format ["[CGQC_FNC] getRadioPresets setRadios: %1/%2 started", _preset, _team];
+	LOG_2(" getRadioPresets setRadios: %1/%2 started", _preset, _team);
 	[_preset, _team] spawn CGQC_fnc_setRadios;
 	[] call CGQC_fnc_setGroupRadios;
 };
 
-diag_log "[CGQC_FNC] getRadioPresets done";
+LOG(" getRadioPresets done");

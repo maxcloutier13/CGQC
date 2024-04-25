@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- loadDiary ----------------------------------------------------------
 // Post group info in default briefing
-diag_log "[CGQC_FNC] loadDiary started";
+LOG(" loadDiary started");
 
 player createDiarySubject ["CGQC","CGQC"];
 
@@ -144,5 +144,5 @@ _mis = player createDiaryRecord ["Diary", ["Training Map","
 	- training_2023.Tanoa<br/></font>
 "]];*/
 
-diag_log "[CGQC_FNC] loadDiary done";
+LOG(" loadDiary done");
 true

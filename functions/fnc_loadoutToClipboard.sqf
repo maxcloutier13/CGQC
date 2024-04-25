@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- loadoutToClipboard ----------------------------------------------------------
 // Copy target loadout to clipboard for making new roles
 params ["_target"];
-diag_log format ["[CGQC_FNC] loadoutToClipboard %1 started", _target];
+LOG_2(" loadoutToClipboard %1 started", _target);
 
 _loadout_string = "";
 
@@ -197,4 +197,4 @@ _loadout_string = _txt_intro + _txt_loadout + _txt_radios + _txt_primary + _txt_
 //Copy result to clipboard
 copyToClipboard _loadout_string;
 hint format ["Loadout %1 sent to clipboard", _target];
-diag_log "[CGQC_FNC] loadoutToClipboard done";
+LOG(" loadoutToClipboard done");

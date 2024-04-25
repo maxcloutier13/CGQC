@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- addPerks ----------------------------------------------------------
 // Add all perks to player and set defaults
-diag_log "[CGQC_INIT] addPerks started";
+LOG("[CGQC_INIT] addPerks started");
 
 // --- Perks Menu  ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -590,4 +590,4 @@ _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action
 //_action = [ "menu_self_whistle", "Whistle", "\fox_whistle\ui\whistle.paa", {[player] call CGQC_fnc_whistle}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-diag_log "[CGQC_INIT] --- addPerks done";
+LOG("[CGQC_INIT] --- addPerks done");

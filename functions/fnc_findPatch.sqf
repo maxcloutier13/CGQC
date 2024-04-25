@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- findPatch ----------------------------------------------------------
 // Match steamID with known players
-diag_log "[CGQC_FNC] findPatch started";
+LOG(" findPatch started");
 
 //Check if player had a rank prefix
 if (!cgqc_player_known) then {
@@ -50,4 +50,5 @@ cgqc_custom_playername = cgqc_player_patch select[11, 22];
 
 //Set variable
 cgqc_player_patch_found = true;
-diag_log "[CGQC_FNC] findPatch done";
+
+LOG(" findPatch done");

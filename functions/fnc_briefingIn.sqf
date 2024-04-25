@@ -1,4 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
+// --- Briefing in ----------------------------------------------------------
+// Handles the cone of silence for briefings
+LOG("briefingIn started");
+
 if (!trgBrief_player_lowered) then {
 	trgBrief_oldVolume = acex_volume_reduction;
 	acex_volume_reduction = 9.5;
@@ -10,3 +14,5 @@ trgBrief_player_lowered = true;
 		, 1.05, 0.2, 4, 2] spawn BIS_fnc_dynamicText;
 _txt = parseText ("Briefing in progress..." + "<br/>" + "External volume reduced.");
 hintSilent _txt;
+
+LOG("briefingIn done");

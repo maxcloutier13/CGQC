@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- setZeus ----------------------------------------------------------
 // Set zeus and keeps them there
 params [["_force", false]];
-diag_log format ["[CGQC_FNC] setZeus started"];
+LOG(" setZeus started");
 
 // Delay until the server time has sync'd
 waitUntil {	time > 5};
@@ -57,7 +57,7 @@ if (_force || ["zeus", format["%1", roleDescription player]] call BIS_fnc_inStri
 	sleep 25.0;
 	};
 };
-diag_log "[CGQC_FNC] setZeus done";
+LOG(" setZeus done");
 
 /*
 
@@ -84,7 +84,7 @@ if (_force || ["zeus", format["%1", roleDescription player]] call BIS_fnc_inStri
 	//[QGVAR(zeusCreated), _zeus, player] call CBA_fnc_targetEvent;
 };
 
-diag_log "[CGQC_FNC] setZeus done";
+LOG(" setZeus done");
 
 	[] spawn {
 		while {true} do {

@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- removeHandgun ----------------------------------------------------------
 // Remove handgun and mags
 params [["_target", player]];
-diag_log format ["[CGQC_FNC] removeHandgun %1 started",_target];
+LOG_1(" removeHandgun %1 started",_target);
 
 // Remove handgun and old ammo
 _gun = handgunWeapon _target;
@@ -15,4 +15,4 @@ if (_gun isNotEqualTo "") then {
 	_target removeWeapon _gun;
 };
 
-diag_log "[CGQC_FNC] removeHandgun done";
+LOG(" removeHandgun done");

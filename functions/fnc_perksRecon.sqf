@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- perksRecon ----------------------------------------------------------
 // Perks for the camoman
 params ["_type"];

@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- refuelSetup ----------------------------------------------------------
 // Sets up for Refuel/Repair/Ressupply
 params ["_object", "_type"];
-diag_log format ["[CGQC_FNC] refuelSetup %1/%2 started", _object, _type];
+LOG_2(" refuelSetup %1/%2 started", _object, _type);
 
 switch (_type) do {
 	case 0:	{
@@ -37,7 +37,7 @@ switch (_type) do {
         _trg setTriggerStatements [_cond, _act, _deAct];
         _trg setTriggerInterval _int;
 	};
-    default{diag_log "[CGQC_ERROR] refuelSetup fail";};
+    default{LOG("[CGQC_ERROR] refuelSetup fail");};
 };
 
-diag_log "[CGQC_FNC] refuelSetup done";
+LOG(" refuelSetup done");

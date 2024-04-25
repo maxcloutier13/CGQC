@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- removeAll ----------------------------------------------------------
 // Remove and reset everything on player loadout
-diag_log "[CGQC_FNC] removeAll";
+LOG(" removeAll");
 
 cgqc_removeAll_done = false;
 [] spawn {
@@ -32,4 +32,4 @@ cgqc_removeAll_done = false;
     cgqc_removeAll_done = true;
 };
 
-diag_log "[CGQC_FNC] removeAll finished";
+LOG(" removeAll finished");

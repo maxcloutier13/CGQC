@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- playerKilled ----------------------------------------------------------
 // Code in the event a player gets dead
 params ["_unit", "_killer", "_instigator", "_useEffects"];
-diag_log format ["[CGQC_EVENT] playerKilled %1/Killer:%2/Inst:%3/Effect:%4 started", _unit, _killer, _instigator, _useEffects];
+LOG_4("[CGQC_EVENT] playerKilled %1/Killer:%2/Inst:%3/Effect:%4 started", _unit, _killer, _instigator, _useEffects);
 
 if (local _unit) then {
 	_unit setVariable["Saved_Face", face _unit];
@@ -46,5 +46,5 @@ if (local _unit) then {
  	[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;*/
 };
 
-diag_log format ["[CGQC_KILL]%1 killed by %2", name _unit, _killa];
-diag_log "[CGQC_EVENT] playerKilled done";
+LOG_2("[CGQC_KILL]%1 killed by %2", name _unit, _killa);
+LOG("[CGQC_EVENT] playerKilled done");

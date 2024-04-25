@@ -1,7 +1,7 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- dynamicGroups ----------------------------------------------------------
 // Override of the a3 function
-diag_log "[CGQC_FNC] setPach started";
+LOG(" dynamicGroups started");
 
 _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >Custom dynamic group yay!</t><br/>");
 [_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;
@@ -1444,3 +1444,5 @@ switch (_mode) do
 		["Unknown mode: %1", _mode] call BIS_fnc_error;
 	};
 };
+
+LOG(" dynamicGroups done");

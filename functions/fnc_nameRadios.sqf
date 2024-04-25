@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- nameRadios ----------------------------------------------------------
 // Set radio channel names
 params ["_type"];
-diag_log format ["[CGQC_INIT] nameRadios started"];
+LOG_1("[CGQC_INIT] nameRadios started");
 
 CGQC_fnc_getRandomFreq = {
 	_freq = (random 100) + 100;
@@ -27,7 +27,7 @@ switch (_type) do{
 
 			// Channel 13 for training purposes
 			if (cgqc_flag_isTraining) then {
-				diag_log format ["[CGQC_INIT] nameRadios - Ch13 = Ch1"];
+				LOG("[CGQC_INIT] nameRadios - Ch13 = Ch1");
 				[_x, "Default2", 13, _name, "Ch1: Debug"] call acre_api_fnc_setPresetChannelField;
 				[_x, "Default2", 13, "frequencyTX", 30.1] call acre_api_fnc_setPresetChannelField;
 				[_x, "Default2", 13, "frequencyRX", 30.1] call acre_api_fnc_setPresetChannelField;
@@ -77,7 +77,7 @@ switch (_type) do{
 			[_x, "Default3", 99, "frequencyRX", 201.1] call acre_api_fnc_setPresetChannelField;
 
 			// West ===================================================================================
-			diag_log format ["[CGQC_INIT] nameRadios - Naming: %1/Default", _x];
+			LOG_1("[CGQC_INIT] nameRadios - Naming: %1/Default", _x);
 			[_x, "Default", 1, _name, cgqc_config_ch1] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default", 1, "frequencyTX", 30.1] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default", 1, "frequencyRX", 30.1] call acre_api_fnc_setPresetChannelField;
@@ -115,7 +115,7 @@ switch (_type) do{
 			[_x, "Default", 9, "frequencyRX", 299] call acre_api_fnc_setPresetChannelField;
 
 			// 152 IND ===================================================================================
-			diag_log format ["[CGQC_INIT] nameRadios - Naming: %1/Default2", _x];
+			LOG_1("[CGQC_INIT] nameRadios - Naming: %1/Default2", _x);
 			[_x, "Default2", 1, _name, "Bandit"] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 1, "frequencyTX", 40.1] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 1, "frequencyRX", 40.1] call acre_api_fnc_setPresetChannelField;
@@ -136,7 +136,7 @@ switch (_type) do{
 			[_x, "Default2", 5, "frequencyTX", 40.5] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 5, "frequencyRX", 40.5] call acre_api_fnc_setPresetChannelField;
 
-			diag_log format ["[CGQC_INIT] nameRadios - Naming: %1/Default2 - Configs", _x];
+			LOG_1("[CGQC_INIT] nameRadios - Naming: %1/Default2 - Configs", _x);
 			[_x, "Default2", 6, _name, cgqc_config_ch6] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 6, "frequencyTX", 40.6] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 6, "frequencyRX", 40.6] call acre_api_fnc_setPresetChannelField;
@@ -149,13 +149,13 @@ switch (_type) do{
 			[_x, "Default2", 8, "frequencyTX", 40.8] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 8, "frequencyRX", 40.8] call acre_api_fnc_setPresetChannelField;
 
-			diag_log format ["[CGQC_INIT] nameRadios - Naming: %1/Default2 - 9", _x];
+			LOG_1("[CGQC_INIT] nameRadios - Naming: %1/Default2 - 9", _x);
 			[_x, "Default2", 9, _name, cgqc_config_ch9] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 9, "frequencyTX", 299] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default2", 9, "frequencyRX", 299] call acre_api_fnc_setPresetChannelField;
 
 			// 152 OPFOR ===================================================================================
-			diag_log format ["[CGQC_INIT] nameRadios - Naming: %1/Default3", _x];
+			LOG_1("[CGQC_INIT] nameRadios - Naming: %1/Default3", _x);
 			[_x, "Default3", 1, _name, "Viper"] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default3", 1, "frequencyTX", 50.1] call acre_api_fnc_setPresetChannelField;
 			[_x, "Default3", 1, "frequencyRX", 50.1] call acre_api_fnc_setPresetChannelField;
@@ -194,7 +194,7 @@ switch (_type) do{
 
 		} forEach _radios;
 
-		diag_log "[CGQC_INIT] nameRadios - Naming: 148/Default";
+		LOG("[CGQC_INIT] nameRadios - Naming: 148/Default");
 		// 148
 		["ACRE_PRC148", "Default", 1, "description", ("1-Listen:" + cgqc_config_ch1)] call acre_api_fnc_setPresetChannelField;
 		["ACRE_PRC148", "Default", 1, "frequencyRX", 30.1] call acre_api_fnc_setPresetChannelField;
@@ -244,4 +244,4 @@ switch (_type) do{
 };
 
 cgqc_player_radio_names = true;
-diag_log format ["[CGQC_INIT] nameRadios done"];
+LOG("[CGQC_INIT] nameRadios done");

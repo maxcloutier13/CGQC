@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- playerRespawned ----------------------------------------------------------
 // Code in the event a player respawns
 params ["_unit", "_corpse"];
-diag_log "[CGQC_EVENT] playerRespawned started";
+LOG("[CGQC_EVENT] playerRespawned started");
 
 // Restore controls in case player got killed during a bad moment
 
@@ -130,4 +130,4 @@ _newRadioList = [1, 1, 1]; // initialize with default values
 // Lower gun
 [player] call ace_weaponselect_fnc_putWeaponAway;
 
-diag_log "[CGQC_EVENT] playerRespawned done";
+LOG("[CGQC_EVENT] playerRespawned done");

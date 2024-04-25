@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- bluforceTracker ----------------------------------------------------------
 // Handle bluforce tracker sheeits
 params ["_type", ["_showMsg", false], ["_target", player]];

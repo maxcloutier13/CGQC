@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- arma ----------------------------------------------------------
 // Functions to deal with debug/mulligans
 params [["_type", "heal"]];
-diag_log format ["[CGQC_FNC] arma %1:%2 started", _type, _target];
+LOG_2(" arma %1:%2 started", _type, _target);
 
 switch (_type) do {
 	case "heal": {["heal"] call CGQC_fnc_getStuff};
@@ -32,6 +32,6 @@ y_target = _target;
 y_txt = format [" just used magic functions to %1", _type];
 [-1, {y_target globalChat y_txt}] call CBA_fnc_globalExecute;
 
-diag_log format ["!!!![CGQC_FNC]!!!!! arma %1 used:%2",_target , _type];
+WARNING_2("!!!!!!!!! arma %1 used:%2",_target , _type);
 
-diag_log "[CGQC_FNC] arma done";
+LOG(" arma done");

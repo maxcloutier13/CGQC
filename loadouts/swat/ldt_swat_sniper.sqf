@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- swat_sniper ----------------------------------------------------------
 // Swat Sniper. Duh.
 

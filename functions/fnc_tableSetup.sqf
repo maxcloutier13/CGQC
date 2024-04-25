@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- tableSetup ----------------------------------------------------------
 // Table with option to load other maps
 _table = (_this select 0) select 0;

@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- inspectSort ----------------------------------------------------------
 // Sort mags and throwables
 params ["_allMags", "_gunMags", "_throwables", "_txt"];
-diag_log format ["[CGQC_FNC] inspectSort %1/%2/%3/%4 started", _allMags, _gunMags, _throwables, _txt];
+LOG_4(" inspectSort %1/%2/%3/%4 started", _allMags, _gunMags, _throwables, _txt);
 
 _seen = [];
 {
@@ -45,4 +45,4 @@ if (count _throwables > 0) then {
 	_txt = _txt + "- No Throwables - <br/>";
 };
 
-diag_log "[CGQC_FNC] inspectSort done";
+LOG(" inspectSort done");

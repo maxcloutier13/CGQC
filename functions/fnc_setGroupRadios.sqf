@@ -1,8 +1,8 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- setGroupRadios ----------------------------------------------------------
 // Set radio setups depending on role
 params [["_groupName", groupid cgqc_player_group], ["_color", 'MAIN']];
-diag_log format ["[CGQC_FNC] setGroupRadios %1/%2 started", _groupName, _color];
+LOG_2(" setGroupRadios %1/%2 started", _groupName, _color);
 
 // Set default 343 channel for group
 _notFound = false;
@@ -57,4 +57,4 @@ if (_notFound) then {
 
 [] call CGQC_fnc_setPatch;
 
-diag_log "[CGQC_FNC] setRadios done";
+LOG(" setRadios done");

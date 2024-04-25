@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- landNav ----------------------------------------------------------
 // Land Navigation training
 
-CGQC_fnc_landNav_openUI = {	
+CGQC_fnc_landNav_openUI = {
 	disableSerialization;
 	player action ["WeaponOnBack", player];
 	createDialog "RscCGQCLandnav";
@@ -10,10 +11,10 @@ CGQC_fnc_landNav_openUI = {
 cgqc_fnc_landnav_cleanInventory = {
 	// Save player's original linked items
 	cgqc_training_landnav_playerAssigned = assignedItems player;
-	// Binocs 
+	// Binocs
 	cgqc_training_landnav_playerBinos = binocular player;
-	removeAllAssignedItems player; 
-	// Items 
+	removeAllAssignedItems player;
+	// Items
 	_player_items = items player;
 	// Remove shits
 	if ({_x isEqualTo "ACE_microDAGR" } count _player_items > 0 ) then {
@@ -30,7 +31,7 @@ CGQC_fnc_landnav_error = {
 	_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >Could not find location. Try other settings.</t><br/>");
 	[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
 	[] call CGQC_fnc_training_landnav_off; //There was an error. Quitting
-	// Player wakeup 
+	// Player wakeup
 	titleFadeOut 2;
 	// Wake up with blur
 	titleCut ["", "BLACK IN", 2];
@@ -41,8 +42,8 @@ CGQC_fnc_landnav_done = {
 		["task_orient", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 		_current_time = time;
 		_time = floor((_current_time - cgqc_training_landnav_start_time) /60);
-		_text = ("<br/>" + "<br/>" + "<br/>" + 
-			"<t size='2' >Good job Viper!</t><br/>" + 
+		_text = ("<br/>" + "<br/>" + "<br/>" +
+			"<t size='2' >Good job Viper!</t><br/>" +
 			"<t size='1' >%1kms in %2mins</t><br/>"
 		);
 		_text = format [_text, _time, cgqc_training_landnav_distance];
@@ -56,24 +57,24 @@ CGQC_fnc_landnav_off = {
 	[] spawn {
 		// Delete trigger
 		if !(isNil "cgqc_landnav_trg") then {deleteVehicle cgqc_landnav_trg;};
-		//Delete task 
-		["task_orient", true, true] call BIS_fnc_deleteTask;		
-		//Delete all units 
+		//Delete task
+		["task_orient", true, true] call BIS_fnc_deleteTask;
+		//Delete all units
 		{deleteVehicle _x;} forEach cgqc_training_landnav_targetlist;
 		{deleteVehicle _x;} forEach allDead;
 		{deleteVehicle _x;} forEach nearestObjects [getpos player, ["WeaponHolder", "GroundWeaponHolder"], 5000];
 		if (!isNil "cgqc_landnav_target_flag") then {deleteVehicle cgqc_landnav_target_flag};
 		if (!isNil "cgqc_landnav_target_crate") then {deleteVehicle cgqc_landnav_target_crate};
-		// Return items to player 
+		// Return items to player
 		{player linkItem _x;} forEach cgqc_training_landnav_playerAssigned;
 		{player addItem _x;} forEach cgqc_training_landnav_playerItems;
 		player addWeapon cgqc_training_landnav_playerBinos;
-		// Reset all variables 
+		// Reset all variables
 		cgqc_training_landnav = false;
 		cgqc_training_landnav_start_time = 0;
 		cgqc_training_landnav_targetlist = [];
 		cgqc_training_landnav_distance = 0;
-		// Landnav default options 
+		// Landnav default options
 		cgqc_training_landnav_objective = "city";
 		cgqc_training_landnav_difficulty = 1;
 		cgqc_training_landnav_min = 1000;
@@ -91,7 +92,7 @@ CGQC_fnc_landnav_off = {
 
 CGQC_fnc_landnav_start = {
 	[] spawn {
-		   // Fade to black  
+		   // Fade to black
 		cutText ["", "BLACK FADED", 999];
 		titleText ["", "PLAIN"];
 
@@ -100,7 +101,7 @@ CGQC_fnc_landnav_start = {
 		cgqc_training_landnav_objectives = [];
 		cgqc_training_landnav_target_found = false;
 		cgqc_training_landnav_timer = 0;
-	
+
 		// -- Objective -------------------------------------------------------------------------------
 		// Possibilities
 		// Random/All: "NameLocal", "NameVillage", "NameCity", "NameCityCapital", "CulturalProperty", "HistoricalSite", "CivilDefense"
@@ -117,18 +118,18 @@ CGQC_fnc_landnav_start = {
 				_targets = ["ViewPoint"];
 			};
 		};
-		// Shuffle the target types for more random 
+		// Shuffle the target types for more random
 		_targets = _targets call BIS_fnc_arrayShuffle;
 		// Find all possible targets of the selected types
-		{ 
-			{ 
+		{
+			{
 				cgqc_training_landnav_objectives pushBack [_x];
-			} forEach nearestLocations [getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"), [_x], worldSize];  
+			} forEach nearestLocations [getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition"), [_x], worldSize];
 		} forEach _targets;
 
 		// Quit if no objectives found
 		if (count cgqc_training_landnav_objectives < 1) exitWith {[] call CGQC_fnc_landnav_error;};
-			
+
 		// Selecting random location and finding position
 		_text = ("<br/>" + "<br/>" + "<br/>" +"<t size='1' >Finding a suitable destination...</t><br/>");
 		[_text, 0, 0, 2, 1] spawn BIS_fnc_dynamicText;
@@ -141,7 +142,7 @@ CGQC_fnc_landnav_start = {
 		_nearest = nearestObject _pos;
 		cgqc_training_landnav_target = [_target, text _target, _pos];
 
-		// Find a Target position 
+		// Find a Target position
 		_nearestLocation_name = cgqc_training_landnav_target select 1;
 		_nearestLocation_pos = cgqc_training_landnav_target select 2;
 
@@ -152,20 +153,20 @@ CGQC_fnc_landnav_start = {
 		player setPos _playerPos;
 		cgqc_training_landnav_distance = _playerPos distance _nearestLocation_pos;
 
-		// Crate and flag on target location 
+		// Crate and flag on target location
 		_searchArea = [_nearestLocation_pos, 50, 100, 0, 0, 0, 0] call BIS_fnc_findSafePos;
 		cgqc_landnav_pos_free = _searchArea findEmptyPosition [1,100,"B_T_VTOL_01_armed_F"];
 		cgqc_landnav_target_crate="cgqc_box_mk2_arsenal" createVehicle (cgqc_landnav_pos_free);
 		cgqc_landnav_target_flag = "cgqc_flag_coop_white" createVehicle (cgqc_landnav_pos_free vectorAdd ((vectorDir player) vectorCrossProduct [0,0,-1] vectorMultiply 2));
-		
+
 		// -- Items -------------------------------------------------------------------------------
-		// Remove orientation items 
+		// Remove orientation items
 		[] call cgqc_fnc_landnav_cleanInventory;
-		// Items difficulty 
+		// Items difficulty
 		_diffulty_txt = "Items: Map/Watch";
 		// Just the basics
 		player linkItem "ItemMap";
-		player linkItem "ItemWatch"; 
+		player linkItem "ItemWatch";
 		if (cgqc_training_landnav_difficulty < 3) then { // Hard
 			player addWeapon "Binocular";
 			_diffulty_txt = _diffulty_txt + "/Binoculars";
@@ -183,7 +184,7 @@ CGQC_fnc_landnav_start = {
 		};
 
 		hint format ["%1", _diffulty_txt];
-			
+
 		// -- Create trigger -------------------------------------------------------------------------------
 		_act = "call CGQC_fnc_landnav_done;";
 		_deAct = "";
@@ -220,13 +221,13 @@ CGQC_fnc_landnav_start = {
 			};
 		};
 
-		// startup message to player 
-		_text = ("<br/>" + "<br/>" + "<br/>" + 
+		// startup message to player
+		_text = ("<br/>" + "<br/>" + "<br/>" +
 		"<t size='2' >Land Navigation Training</t><br/>" +
 		"<t size='1' >Find your way to the Flag at the Objective</t><br/>");
 		[_text, 0, 0, 5, 1] spawn BIS_fnc_dynamicText;
 
-		// Player wakeup 
+		// Player wakeup
 		titleFadeOut 4;
 		// Wake up with blur
 		"dynamicBlur" ppEffectEnable true;
@@ -239,7 +240,7 @@ CGQC_fnc_landnav_start = {
 		// Wait a bit and create task
 		sleep 8;
 		[side player, "task_orient", [
-			format["Find your position and reach target: %1", cgqc_training_landnav_target select 1], 
+			format["Find your position and reach target: %1", cgqc_training_landnav_target select 1],
 			format["Reach Target: %1",cgqc_training_landnav_target select 1], ""],
 		cgqc_landnav_pos_free, "ASSIGNED", 1, true, "backpack", false] call BIS_fnc_taskCreate;
 		cgqc_training_landnav_start_time = time;

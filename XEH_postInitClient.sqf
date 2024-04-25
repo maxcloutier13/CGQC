@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- postInitClient ----------------------------------------------------------
 // Start everything player related
 
@@ -85,7 +85,7 @@
 	[] call CGQC_fnc_isDaytime;
 
 	// ID player and find patch
-	_rank = [] call CGQC_fnc_findRank;
+	[] call CGQC_fnc_findRank;
 	_patch = [] call CGQC_fnc_findPatch;
 	_beret = [] call CGQC_fnc_getRankedBeret;
 
@@ -159,12 +159,12 @@
 					playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
 					_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
 					[0.2] call acre_api_fnc_setGlobalVolume;
-					LOG("[CGQC_FNC] Unconscious - Lowered volume");
+					LOG(" Unconscious - Lowered volume");
 				} else {
 					// set volume back
 					_vol = _unit getVariable "cgqc_player_wakeup_volume";
 					[_vol] call acre_api_fnc_setGlobalVolume;
-					LOG("[CGQC_FNC] Unconscious - Volume restored");
+					LOG(" Unconscious - Volume restored");
 				};*/
 			};
 		}] call CBA_fnc_addEventHandler;
@@ -228,12 +228,12 @@
 		params ["_unit", "_onRadio", "_radioId", "_speakingType"];
 		// if volume is low and player is not talking on radio
 		_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
-		LOG_4("[CGQC_FNC] startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType);
+		LOG_4(" startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType);
 
 		// Volume is low: notify the player he is whispering
 		if (!_onRadio) then {
 			_txt = "";
-			LOG_1("[CGQC_FNC] startedSpeaking checking vol %1", _vol);
+			LOG_1(" startedSpeaking checking vol %1", _vol);
 			if (_vol < 0.3) then {
 				_txt = parseText("<t color='#006400'>Whispering</t>");
 			} else {

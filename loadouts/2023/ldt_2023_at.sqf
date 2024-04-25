@@ -1,8 +1,8 @@
- // --- ldt_2023_s_at ----------------------------------------------------------
+#include "\CGQC\script_component.hpp"
+// --- ldt_2023_s_at ----------------------------------------------------------
 // Rifleman 2023 loadout
 params [["_target", player], ["_variant", "maaws"], ["_gunVariant", "rco"]];
-diag_log format ["[CGQC_FNC] ldt_2023_s_at %1 started", _target];
-
+LOG(" ldt_2023_s_at started");
 // Basic setup
 [] call CGQC_ldt_2023_basic;
 
@@ -39,4 +39,4 @@ switch (_variant) do {
 	};
 };
 
-diag_log "[CGQC_FNC] ldt_2023_s_at done";
+LOG(" ldt_2023_s_at done");

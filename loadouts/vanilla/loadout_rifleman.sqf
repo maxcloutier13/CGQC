@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- loadout_rifleman ----------------------------------------------------------
 // Rifleman loadout for Vanilla
 

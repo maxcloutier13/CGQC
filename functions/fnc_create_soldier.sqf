@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 private ["_arguments", "_targetClass", "_targetRandomDir", "_targetPatrolling"];
 
 _arguments = _this select 3;

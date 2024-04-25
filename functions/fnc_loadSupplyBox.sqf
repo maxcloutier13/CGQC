@@ -1,9 +1,9 @@
-#include "script_component.hpp"
+#include "\CGQC\script_component.hpp"
 // --- loadSupplyBox ----------------------------------------------------------
 // Dynamic supply box
 params ["_crate_array", "_type"];
 _crate = _crate_array select 0;
-diag_log format ["[CGQC_FNC] loadSupplyBox %1/%2 started", _crate, _type];
+LOG_2(" loadSupplyBox %1/%2 started", _crate, _type);
 
 [_crate, _type] spawn {
 	params ["_crate", "_type"];
@@ -20,53 +20,53 @@ diag_log format ["[CGQC_FNC] loadSupplyBox %1/%2 started", _crate, _type];
 
 		switch (_type) do {
 			case "squad": {
-				diag_log "[CGQC_FNC] loadSupplyBox - Squad box";
+				LOG(" loadSupplyBox - Squad box");
 				if (cgqc_config_supply_ammo > 0) then {
 					_crate addItemCargoGlobal ["cgqc_bandolier_ammo", cgqc_config_supply_ammo];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 bandoliers",cgqc_config_supply_ammo];
+					LOG_1(" loadSupplyBox %1 bandoliers",cgqc_config_supply_ammo);
 				};
 
 				if (cgqc_config_supply_ifak > 0) then {
 					_crate addItemCargoGlobal ["cgqc_items_ifak", cgqc_config_supply_ifak];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 IFAK",cgqc_config_supply_ifak];
+					LOG_1(" loadSupplyBox %1 IFAK",cgqc_config_supply_ifak);
 				};
 
 				if (cgqc_config_supply_medkit > 0) then {
 					_crate addItemCargoGlobal ["cgqc_items_medkit", cgqc_config_supply_medkit];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 MEDKIT",cgqc_config_supply_medkit];
+					LOG_1(" loadSupplyBox %1 MEDKIT",cgqc_config_supply_medkit);
 				};
 
 				if (cgqc_config_supply_radios > 0) then {
 					_crate addItemCargoGlobal ["ACRE_PRC343", cgqc_config_supply_radios];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 radios",cgqc_config_supply_radios];
+					LOG_1(" loadSupplyBox %1 radios",cgqc_config_supply_radios);
 				};
 				if (cgqc_config_supply_radios_152 > 0) then {
 					_crate addItemCargoGlobal ["ACRE_PRC152", cgqc_config_supply_radios_152];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 152s",cgqc_config_supply_radios_152];
+					LOG_1(" loadSupplyBox %1 152s",cgqc_config_supply_radios_152);
 				};
 				if (cgqc_config_supply_batteries > 0) then {
 					_crate addItemCargoGlobal ["Laserbatteries", cgqc_config_supply_batteries];
 					_crate addItemCargoGlobal ["ACE_UAVBattery", cgqc_config_supply_batteries];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 Batteries",cgqc_config_supply_batteries];
+					LOG_1(" loadSupplyBox %1 Batteries",cgqc_config_supply_batteries);
 				};
 				if (cgqc_config_supply_launcher > 0) then {if (cgqc_player_hasRHS) then {
 					_crate addItemCargoGlobal ["rhs_weap_m72a7", cgqc_config_supply_launcher]};
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 Jetables",cgqc_config_supply_launcher];
+					LOG_1(" loadSupplyBox %1 Jetables",cgqc_config_supply_launcher);
 				};
 				if (cgqc_config_supply_nlaw > 0) then {
 					_crate addItemCargoGlobal ["launch_NLAW_F", cgqc_config_supply_nlaw];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 NLAW",cgqc_config_supply_nlaw];
+					LOG_1(" loadSupplyBox %1 NLAW",cgqc_config_supply_nlaw);
 				};
 
 				// Rockets
 				if (cgqc_player_has2023) then {
 					if (cgqc_config_supply_maaws > 0) then {
 					_crate addItemCargoGlobal ["MRAWS_HEAT_F", cgqc_config_supply_maaws];
-					diag_log format ["[CGQC_FNC] loadSupplyBox %1 MAAWS ammo",cgqc_config_supply_maaws];
+					LOG_1(" loadSupplyBox %1 MAAWS ammo",cgqc_config_supply_maaws);
 					};
 					if (cgqc_config_supply_javelin > 0) then {
 						_crate addItemCargoGlobal ["jav_AT_mas_can", cgqc_config_supply_javelin];
-						diag_log format ["[CGQC_FNC] loadSupplyBox %1 Javelin ammo",cgqc_config_supply_javelin];
+						LOG_1(" loadSupplyBox %1 Javelin ammo",cgqc_config_supply_javelin);
 					};
 				};
 
@@ -101,4 +101,4 @@ diag_log format ["[CGQC_FNC] loadSupplyBox %1/%2 started", _crate, _type];
 		};
 	};
 };
-diag_log "[CGQC_FNC] loadSupplyBox done";
+LOG(" loadSupplyBox done");
