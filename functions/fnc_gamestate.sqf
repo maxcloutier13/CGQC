@@ -72,7 +72,6 @@ switch (_type) do {
 		_txt = "Mission Started!";
 		_txt2 = "Player Snapshot saved";
 		_txt3 = "Good luck, Viper!";
-		[_text, 5, 2] call CGQC_fnc_notifyAll;
 		[_txt, 3, 0, "cba_notify_start", _txt2, _txt3] call CGQC_fnc_notifyAll;
 	};
 	case "end": {
