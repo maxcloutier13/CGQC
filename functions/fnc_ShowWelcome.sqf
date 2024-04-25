@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- welcome ----------------------------------------------------------
 // Prep un message de bienvenue semi-random
 diag_log "[CGQC_FNC] welcome - started";

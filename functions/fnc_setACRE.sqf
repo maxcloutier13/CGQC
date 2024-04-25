@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setACRE ----------------------------------------------------------
 // Set ACRE setup
 params ["_type"];

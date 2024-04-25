@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- silence ----------------------------------------------------------
 // Creates a cone of silence around the player
 diag_log format ["[CGQC_FNC] silence started"];

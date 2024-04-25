@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- maxMags ----------------------------------------------------------
 // Limit maximum mags
 	[] spawn {

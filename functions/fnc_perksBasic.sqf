@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- perksBasic ----------------------------------------------------------
 // Perks for the everyman
 params ["_type", ["_fromLoadout", false]];

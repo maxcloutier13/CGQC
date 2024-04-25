@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- playerKilled ----------------------------------------------------------
 // Code in the event a player gets dead
 params ["_unit", "_killer", "_instigator", "_useEffects"];

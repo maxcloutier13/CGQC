@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 private ["_target", "_unit", "_bullet", "_ammo", "_position", "_vectorToTarget", "_velocity", "_distance", "_targetDir", "_impactDeviation", "_accuracy", "_score", "_targetScore"];
 
 if (TrainingCourse_ShotsFired == 0) exitWith {};

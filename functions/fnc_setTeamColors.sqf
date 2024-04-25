@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setTeamColors ----------------------------------------------------------
 // set player default team colors
 params [["_color", "NONE"], ["_target", player], ["_type", "SINGLE"], ["_delay", 0]];

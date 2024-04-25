@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadSupplyBox ----------------------------------------------------------
 // Dynamic supply box
 params ["_crate_array", "_type"];

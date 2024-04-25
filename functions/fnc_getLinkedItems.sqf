@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- getLinkedItems ----------------------------------------------------------
 // Get basic linked items, nvgs and such
 params ["_type", ["_binocs", ""], ["_nvg", ""], ["_loadEssentials", true]];

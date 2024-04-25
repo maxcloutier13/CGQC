@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- whistle ----------------------------------------------------------
 // Whistling shenanigans
 params ["_unit", ["_type", 1]];

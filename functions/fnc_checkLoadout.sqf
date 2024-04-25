@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- checkLoadout ----------------------------------------------------------
 // Check if a unit has a fixed loadout and sets it if it's the case
 params [["_switch", true]];

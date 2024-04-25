@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- removeRadios ----------------------------------------------------------
 // Remove all radios from target
 params ["_target", "_type"];

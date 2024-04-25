@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- trainingSniping ----------------------------------------------------------
 // Sniping shenanigans
 params ["_type"];

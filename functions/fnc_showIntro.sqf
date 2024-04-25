@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- showIntro ----------------------------------------------------------
 // Show intro on load
 diag_log format ["[CGQC_FNC] showIntro started"];

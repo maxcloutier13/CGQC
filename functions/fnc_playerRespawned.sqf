@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- playerRespawned ----------------------------------------------------------
 // Code in the event a player respawns
 params ["_unit", "_corpse"];

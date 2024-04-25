@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- promotePlayer ----------------------------------------------------------
 // Boost level of player so he has access to items/roles
 params [["_targetType", "player"]];

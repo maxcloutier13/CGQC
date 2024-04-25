@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- copyClackerCheck ----------------------------------------------------------
 // Check if player can copy clacker codes
 params ["_player", "_target"];

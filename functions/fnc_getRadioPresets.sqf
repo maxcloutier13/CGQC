@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- getRadiosPresets ----------------------------------------------------------
 // Get radios and set everything
 params ["_type", ["_team", 1]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- switchRole ----------------------------------------------------------
 // Switch roles. Haha yeah.
 params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", true]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- openBandolier ----------------------------------------------------------
 // Open ammo bandoliers and deal with them
 params [["_type", "ammo"]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- refuel ----------------------------------------------------------
 // Refuel/Repair/Ressupply
 params ["_type"];

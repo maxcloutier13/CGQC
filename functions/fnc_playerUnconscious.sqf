@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- playerUnconscious ----------------------------------------------------------
 // Handles when the player is down
 params ["_unit", "_isUnconscious"];

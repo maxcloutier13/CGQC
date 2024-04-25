@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 TrainingCourse_ShotsFired = 0;
 TrainingCourse_TargetsHit = 0;
 TrainingCourse_AverageDistance = 0;

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- findPatch ----------------------------------------------------------
 // Match steamID with known players
 diag_log "[CGQC_FNC] findPatch started";

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- notifyAll ----------------------------------------------------------
 // Handles the gamestate flow
 params ["_txt", ["_length", 3], ["_fadeIn", 1], ["_mode", "dynamic"], ["_txt2", ""], ["_txt3", ""]];

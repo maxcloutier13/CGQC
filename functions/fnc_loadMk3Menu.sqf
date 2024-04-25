@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadMk3Menu ----------------------------------------------------------
 // Ace menu for mk3 sheeits
  params ["_crate_array", ["_type", "default"]];

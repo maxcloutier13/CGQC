@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setPatch ----------------------------------------------------------
 // Set player patch and keeps it set
 diag_log "[CGQC_FNC] setPach started";

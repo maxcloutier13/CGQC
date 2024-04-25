@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- camera ----------------------------------------------------------
 // Surveillance camera setup
 params ["_type", "_vic_array"];

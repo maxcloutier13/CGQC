@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setRelations ----------------------------------------------------------
 // Get radios and set everything
 params ["_type"];

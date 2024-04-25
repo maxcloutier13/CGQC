@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadDiary ----------------------------------------------------------
 // Post group info in default briefing
 diag_log "[CGQC_FNC] loadDiary started";

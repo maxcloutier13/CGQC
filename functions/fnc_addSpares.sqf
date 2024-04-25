@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- addSpares ----------------------------------------------------------
 // Add spare stuff in AceCargo of vehicles
 params ["_vic", "_type"];

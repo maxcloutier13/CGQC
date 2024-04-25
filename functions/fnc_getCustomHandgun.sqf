@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- getCustomHandgun ----------------------------------------------------------
 // Get player custom handgun from config
 params [ "_gunArray"];

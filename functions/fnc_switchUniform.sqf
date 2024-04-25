@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- switchUniform ----------------------------------------------------------
 // Switch player uniform
 params ["_camo", ["_fromLoadout", false]];

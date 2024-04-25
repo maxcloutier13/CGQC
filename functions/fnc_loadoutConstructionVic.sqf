@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- Loadout Construction () ----------------------------------------------------------
 // Adds items to the construction truck's inventory
 params ["_unit_array"];

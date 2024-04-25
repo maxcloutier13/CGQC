@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- perksGoggles ----------------------------------------------------------
 // Change face stuff
 params ["_type"];

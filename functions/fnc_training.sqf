@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- training ----------------------------------------------------------
 // Training shenanigans
 params ["_type", "_option"];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- trainingMortar ----------------------------------------------------------
 // Manual mortar training
 params ["_type"];

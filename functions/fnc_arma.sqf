@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- arma ----------------------------------------------------------
 // Functions to deal with debug/mulligans
 params [["_type", "heal"]];

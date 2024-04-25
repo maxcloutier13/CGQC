@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- addPerksSwitch ----------------------------------------------------------
 // Event that adds perks when player uses unit the first time
 ["ace_interact_menu_newControllableObject", {

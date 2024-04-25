@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- trainingKOTH ----------------------------------------------------------
 // King of the hill stuff
 params ["_type"];

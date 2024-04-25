@@ -1,13 +1,15 @@
+#include "script_component.hpp"
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
 // --- preInit ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing
-diag_log "[CGQC_PREINIT] === preInit started =====================================";
-#include "\a3\ui_f\hpp\defineDIKCodes.inc"
+LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
 core_version = "4.6.3.9";
 
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
+	LOG("[CGQC_preInit] Setting server-side version check");
 };
 
 // CGQC Variables ===================================================================================================
@@ -855,7 +857,7 @@ cgqc_unconscious_sounds = [
 ];
 
 // PAX Units definitions
-#include "\cgqc\cfg_paxUnits.hpp"
+#include "\cgqc\cfg\cfg_paxUnits.hpp"
 
 // Loading UI functions
 _landnav = [] spawn compile PreprocessFileLineNumbers "\cgqc\dialogs\landnav_fnc.sqf";
@@ -915,4 +917,4 @@ if (cgqc_config_sideLanguage) then {
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
-diag_log "[CGQC_PREINIT] === preInit done =====================================";
+LOG("[CGQC_preInit] === Done =====================================");

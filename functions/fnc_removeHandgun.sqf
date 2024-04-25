@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- removeHandgun ----------------------------------------------------------
 // Remove handgun and mags
 params [["_target", player]];

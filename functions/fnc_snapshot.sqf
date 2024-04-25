@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- snapshot ----------------------------------------------------------
 // Saves/update a snapshot of the target
 params [["_target", player], ["_type", "save"], ["_scope", "single"], ["_snapshotType", "player"]];

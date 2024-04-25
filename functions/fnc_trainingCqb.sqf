@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- trainingCqb ----------------------------------------------------------
 // Cqb shenanigans
 params ["_type"];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- inspectSort ----------------------------------------------------------
 // Sort mags and throwables
 params ["_allMags", "_gunMags", "_throwables", "_txt"];

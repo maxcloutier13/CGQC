@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setVoiceVolume ----------------------------------------------------------
 // Quick set voice to specified volume
 params [["_unit", player], ["_vol", "talk"]];

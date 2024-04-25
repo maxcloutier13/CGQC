@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 //   Reset voice
 [player, "default"] call CGQC_fnc_setVoiceVolume;
 

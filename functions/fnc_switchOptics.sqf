@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- switchOptics ----------------------------------------------------------
 // Switch optics
 params ["_type", ["_target", player]];

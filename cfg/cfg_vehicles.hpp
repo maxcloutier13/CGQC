@@ -32,7 +32,7 @@ class cgqc_vic_stomper_tan : B_UGV_01_F {
     wheelDamageRadiusCoef = 0.95;
     wheelDestroyRadiusCoef = 0.75;
     //hiddenSelectionsTextures[] = {"\A3\Drones_F\soft_f_gamma\UGV_01\data\UGV_01_ext_co.paa","\A3\Drones_F\soft_f_gamma\UGV_01\data\UGV_01_int_co.paa","\A3\Data_F\Vehicles\Turret_co.paa"};
-    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+    #include "\CGQC\vehicles\cgqc_vic_loadout_medium.cpp"
 };
 class cgqc_vic_stomper_tan_a : B_UGV_01_rcws_F {
     scope = 2;
@@ -45,7 +45,7 @@ class cgqc_vic_stomper_tan_a : B_UGV_01_rcws_F {
     armor = 50;
     enginePower = 80;
     maxSpeed = 50;
-    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+    #include "\CGQC\vehicles\cgqc_vic_loadout_medium.cpp"
 };
 
 class cgqc_vic_stomper_green : B_T_UGV_01_olive_F {
@@ -59,7 +59,7 @@ class cgqc_vic_stomper_green : B_T_UGV_01_olive_F {
     armor = 50;
     enginePower = 80;
     maxSpeed = 50;
-    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+    #include "\CGQC\vehicles\cgqc_vic_loadout_medium.cpp"
 };
 class cgqc_vic_stomper_green_a : B_T_UGV_01_rcws_olive_F {
     scope = 2;
@@ -72,7 +72,7 @@ class cgqc_vic_stomper_green_a : B_T_UGV_01_rcws_olive_F {
     armor = 50;
     enginePower = 80;
     maxSpeed = 50;
-    #include "vehicles\cgqc_vic_loadout_medium.cpp"
+    #include "\CGQC\vehicles\cgqc_vic_loadout_medium.cpp"
 };
 
 class B_W_MBT_01_TUSK_F;
@@ -138,7 +138,7 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
         "\a3\soft_f_Exp\truck_01\data\truck_01_ext_01_olive_co.paa",
         "\a3\soft_f_Exp\truck_01\data\truck_01_ext_02_olive_co.paa",
         "\A3\Soft_F_Exp\Truck_01\Data\truck_01_ammo_olive_CO.paa",
-        "\CGQC\vehicles\cgqc_vic_construction_container.paa"
+        "\CGQC\\CGQC\vehicles\cgqc_vic_construction_container.paa"
     };
 	class EventHandlers
     {

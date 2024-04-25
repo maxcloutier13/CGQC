@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- resetTraits ----------------------------------------------------------
 // Remove all traits from target
 params ["_target"];

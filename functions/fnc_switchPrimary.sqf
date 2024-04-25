@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- primarySwitch ----------------------------------------------------------
 // Switch primary weapons
 params ["_type", ["_target", player]];

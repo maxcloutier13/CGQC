@@ -168,22 +168,27 @@ class CGQC {
             file = "\cgqc\functions\fnc_loadoutRemoveAll.sqf";
             description = "Remove everything from unit";
         };
-        class postInitServer{
-            file = "\cgqc\functions\fnc_postInitServer.sqf";
-            description = "Start everything server related";
-        };
         class preInit{
-            file = "\cgqc\functions\fnc_preInit.sqf";
+            file = "\cgqc\XEH_preInit.sqf";
             description = "Set everything that needs to be there before editor/menu/briefing";
         };
-        class postInitClient{
-            file = "\cgqc\functions\fnc_postInitClient.sqf";
-            description = "Start everything player related";
+        class preInitServer{
+            file = "\cgqc\XEH_preInitServer.sqf";
+            description = "Set everything that needs to be there before editor/menu/briefing";
         };
         class postInit{
-            file = "\cgqc\functions\fnc_postInit.sqf";
+            file = "\cgqc\XEH_postInit.sqf";
             description = "Start everything before everything";
         };
+        class postInitClient{
+            file = "\cgqc\XEH_postInitClient.sqf";
+            description = "Start everything player related";
+        };
+        class postInitServer{
+            file = "\cgqc\XEH_postInitServer.sqf";
+            description = "Start everything server related";
+        };
+
         class trainingCqb{
             file = "\cgqc\functions\fnc_trainingCqb.sqf";
             description = "Cqb shenanigans";

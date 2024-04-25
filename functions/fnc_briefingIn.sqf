@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 if (!trgBrief_player_lowered) then {
 	trgBrief_oldVolume = acex_volume_reduction;
 	acex_volume_reduction = 9.5;

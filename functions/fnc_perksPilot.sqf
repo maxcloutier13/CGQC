@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- perksPilot ----------------------------------------------------------
 // Perks for the flyin man
 params ["_type"];
@@ -33,7 +34,7 @@ if (hasInterface) then {
 			cgqc_crew_heli = [];
 			_turrets = count (allTurrets _vic);
 			if(_turrets > 0) then {
-				// spawn copilot  
+				// spawn copilot
 				_copilot = _player_group createUnit [_pilot_class, [0, 0, 100], [], 0, "CAN_COLLIDE"];
 				_copilot moveInTurret [_vic, [0]];
 				_copilot setUnloadInCombat [false, false];
@@ -69,7 +70,7 @@ if (hasInterface) then {
 			hint "Heli crew deleted";
 		};
 		case "getDriver":{
-			// spawn driver  
+			// spawn driver
 			cgqc_crew_driver = _player_group createUnit [_driver_class, [0, 0, 100], [], 0, "CAN_COLLIDE"];
 			cgqc_crew_driver moveInDriver _vic;
 			cgqc_crew_driver setUnloadInCombat [false, false];

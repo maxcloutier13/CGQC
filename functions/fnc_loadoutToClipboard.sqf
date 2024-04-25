@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadoutToClipboard ----------------------------------------------------------
 // Copy target loadout to clipboard for making new roles
 params ["_target"];

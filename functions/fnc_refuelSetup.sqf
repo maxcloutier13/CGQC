@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- refuelSetup ----------------------------------------------------------
 // Sets up for Refuel/Repair/Ressupply
 params ["_object", "_type"];

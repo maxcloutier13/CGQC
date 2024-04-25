@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- gamestate ----------------------------------------------------------
 // Handles the gamestate flow
 params ["_type"];

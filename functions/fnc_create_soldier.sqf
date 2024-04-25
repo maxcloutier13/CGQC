@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 private ["_arguments", "_targetClass", "_targetRandomDir", "_targetPatrolling"];
 
 _arguments = _this select 3;
@@ -28,12 +29,12 @@ _unit = _group createUnit [_targetClass, [_position select 0, _position select 1
 _unit setDir _direction;
 removeAllWeapons _unit;
 _unit disableAI "PATH";
-_unit disableAI "AUTOCOMBAT";  
+_unit disableAI "AUTOCOMBAT";
 _group setBehaviour "SAFE";
 TrainingCourse_TargetList pushBack _unit;
 if (_targetPatrolling) then
 {
-	_unit enableAI "PATH"; 
+	_unit enableAI "PATH";
 	_group addWaypoint [[(_position select 0) + sin(_direction) * 20, (_position select 1) + cos(_direction) * 20, 0.0], 0];
 	[_group, 1] setWaypointType "MOVE";
 	_group addWaypoint [[(_position select 0) - sin(_direction) * 20, (_position select 1) - cos(_direction) * 20, 0.0], 0];

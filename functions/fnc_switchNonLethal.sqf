@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- switchNonLethal ----------------------------------------------------------
 // switch to nonLethal setup
 diag_log "[CGQC_FNC] switchNonLethal started";

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- zeusUnit ----------------------------------------------------------
 // Unit has been double clicked
 params ["_unit"];

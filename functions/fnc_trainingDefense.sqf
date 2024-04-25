@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- trainingDefense ----------------------------------------------------------
 // Wave defense mission
 params ["_type"];

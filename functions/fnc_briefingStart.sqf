@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- Briefing Cone ----------------------------------------------------------
 // Handles the cone of silence for briefings
 trgBrief_units = [];

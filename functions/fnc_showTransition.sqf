@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- transition ----------------------------------------------------------
 // Black fadout/in with some information in some cases
 params ["_type", ["_show", true]];

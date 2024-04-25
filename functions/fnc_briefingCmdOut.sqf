@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 //Force lower voice level on everyone outside zone
 
 [player, "discreet"] call CGQC_fnc_setVoiceVolume;

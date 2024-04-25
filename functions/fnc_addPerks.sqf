@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- addPerks ----------------------------------------------------------
 // Add all perks to player and set defaults
 diag_log "[CGQC_INIT] addPerks started";

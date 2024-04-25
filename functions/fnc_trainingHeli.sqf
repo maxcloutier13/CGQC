@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- trainingHeli ----------------------------------------------------------
 // Helicopter training
 params ["_type"];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- getCustomGun ----------------------------------------------------------
 // Get player custom gun if exists
 params ["_gun"];

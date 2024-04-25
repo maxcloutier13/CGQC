@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- removePrimary ----------------------------------------------------------
 //Remove main weapon and mags
 params [["_target", player]];

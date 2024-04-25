@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- joinGroup ----------------------------------------------------------
 // Group stuff
 params ["_groupName", ["_color", "MAIN"], ["_side", WEST]];

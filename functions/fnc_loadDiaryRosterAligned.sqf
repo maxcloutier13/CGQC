@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadDiaryRoster ----------------------------------------------------------
 // List all groups and players + roles
 diag_log "[CGQC_FNC] loadDiaryRoster started";

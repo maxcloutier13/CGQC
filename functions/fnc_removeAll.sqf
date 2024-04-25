@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- removeAll ----------------------------------------------------------
 // Remove and reset everything on player loadout
 diag_log "[CGQC_FNC] removeAll";

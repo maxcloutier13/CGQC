@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadoutRemoveAll ----------------------------------------------------------
 // Remove everything from unit
 params ["_target"];

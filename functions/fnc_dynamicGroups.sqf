@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- dynamicGroups ----------------------------------------------------------
 // Override of the a3 function
 diag_log "[CGQC_FNC] setPach started";

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- nameRadios ----------------------------------------------------------
 // Set radio channel names
 params ["_type"];

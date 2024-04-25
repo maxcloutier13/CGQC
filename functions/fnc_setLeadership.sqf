@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setLeadership ----------------------------------------------------------
 // Sets the leadership level of the player
 params ["_type", ["_player", player], ["_target", player]];

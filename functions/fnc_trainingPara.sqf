@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- trainingPara ----------------------------------------------------------
 // Paradrop shenanigans
 params ["_jumpHeight", ["_tpVersion", 0], ["_playerTarget", ""]];

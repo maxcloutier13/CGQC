@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- addItemWithOverflow ----------------------------------------------------------
 // Add item to player, handling overflow all the way to the ground if needed
 // Overflow = drop the excess in the next bigger

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- getStuff ----------------------------------------------------------
 // Mk3 spawn some shits
 params ["_type"];

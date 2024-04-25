@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- openMedical ----------------------------------------------------------
 // Open medical items
 params ["_type", ["_target", ACE_player], ["_forceOpen", true]];

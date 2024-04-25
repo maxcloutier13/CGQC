@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setTeamColor ----------------------------------------------------------
 // set player color
 params [["_color", "MAIN"]];

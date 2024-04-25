@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setRadios ----------------------------------------------------------
 // Set radio channels depending on group
 params ["_type", ["_section", 1]];

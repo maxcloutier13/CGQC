@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadLoadout ----------------------------------------------------------
 // Load selected uniform items
 params ["_loadout"];

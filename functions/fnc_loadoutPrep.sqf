@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadoutPrep ----------------------------------------------------------
 // Prep the player for loadout switch
 params ["_target"];

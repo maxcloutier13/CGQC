@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- dropStuff ----------------------------------------------------------
 // Handles the dropping of stuff
 params ["_item", "_type"];

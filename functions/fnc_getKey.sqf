@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- getKey ----------------------------------------------------------
 // Get key to specified vehicle
 params ["_target", ["_user", player]];

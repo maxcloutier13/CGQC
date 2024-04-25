@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- isDaytime ----------------------------------------------------------
 // Check if daytime
 diag_log "[CGQC_FNC] isDaytime started";

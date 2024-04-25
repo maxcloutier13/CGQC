@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- switchPerks ----------------------------------------------------------
 // Switch perks
 params ["_type", ["_clearFirst", true]];

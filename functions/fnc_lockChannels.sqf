@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- lockChannels ----------------------------------------------------------
 // Lock some of the comms channels
 params ["_type"];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- addMags ----------------------------------------------------------
 // Add the maximum allowed mag with overflow in backpack.
 diag_log "[CGQC_FNC] addMags started";

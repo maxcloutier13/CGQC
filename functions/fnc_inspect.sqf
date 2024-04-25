@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- inspect ----------------------------------------------------------
 // Inspect target laodout and reports problems
 params ["_type"];

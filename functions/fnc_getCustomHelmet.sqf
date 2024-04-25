@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- getCustomHelmet ----------------------------------------------------------
 // Get player custom helmet if exists
 params ["_helmet"];

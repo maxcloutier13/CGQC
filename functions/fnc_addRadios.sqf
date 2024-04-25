@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- addRadios ----------------------------------------------------------
 // Add specific radios to player and sets things up
 params ["_radios"];

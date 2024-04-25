@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- loadGroupInfo ----------------------------------------------------------
 // Load all of the info about groups and members
 diag_log "[CGQC_FNC] loadGroupInfo started";

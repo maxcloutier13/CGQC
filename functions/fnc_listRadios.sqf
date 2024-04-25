@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- handleRadios ----------------------------------------------------------
 // Returns a list of the unit radio and their settings
 // ONLY WORKS ON PLAYER FOR NOW. remote some other way

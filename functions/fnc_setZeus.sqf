@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setZeus ----------------------------------------------------------
 // Set zeus and keeps them there
 params [["_force", false]];

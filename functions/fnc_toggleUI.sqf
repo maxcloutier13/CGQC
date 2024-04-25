@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- toggleUI ----------------------------------------------------------
 // Show/Hide the UI
 diag_log "[CGQC_FNC] toggleUI started";

@@ -1,3 +1,5 @@
+#define _ARMA_
+
 class CfgPatches
 {
 	class CGQC

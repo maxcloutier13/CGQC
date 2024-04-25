@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- copyClacker ----------------------------------------------------------
 // Copy clacker codes
 params ["_player", "_target"];

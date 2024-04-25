@@ -1,8 +1,9 @@
+#include "script_component.hpp"
 // --- addADS ----------------------------------------------------------
 // Add active defenses to vehicle
 params ["_type", "_vic_array"];
 _vic = _vic_array select 0;
-diag_log format ["[CGQC_FNC] addADS %1/%2 started", _type, _vic];
+LOG_2("[CGQC_FNC] addADS %1/%2 started", _type, _vic);
 
 /* MAX Fix needed
 
@@ -29,4 +30,4 @@ if (isServer) then {
 };
 
 */
-diag_log "[CGQC_FNC] addADS done";
+LOG_2("[CGQC_FNC] addADS %1/%2 done", _type, _vic);

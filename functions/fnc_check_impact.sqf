@@ -1,16 +1,17 @@
+#include "script_component.hpp"
 private ["_camera", "_position", "_offsetVector"];
 
 if (Projectile_Impact_Aux Distance [0,0,0] > 500) Then
 {
 	_position = getPosATL Projectile_Impact_Aux;
-	
+
 	_offsetVector = _position vectorFromTo getPosATL player;
 	_offsetVector set [2, 0.0];
 	_offsetVector = _offsetVector vectorMultiply 4;
 	_offsetVector set [2, 1.0];
-	
+
 	_position = _position vectorAdd _offsetVector;
-	
+
 	_camera = "Camera" CamCreate _position;
 	_camera CameraEffect ["INTERNAL", "BACK"];
 	_camera CamSetFOV 0.7;

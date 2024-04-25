@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- dropChem ----------------------------------------------------------
 // Drop chemlight
 params ["_type", "_item"];

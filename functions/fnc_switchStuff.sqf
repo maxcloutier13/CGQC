@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- switchStuff ----------------------------------------------------------
 // Change one thing for another
 // Example ["backpack", "cgqc_pack_mk1_magic"] call CGQC_fnc_switchStuff

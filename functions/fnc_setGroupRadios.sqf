@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setGroupRadios ----------------------------------------------------------
 // Set radio setups depending on role
 params [["_groupName", groupid cgqc_player_group], ["_color", 'MAIN']];

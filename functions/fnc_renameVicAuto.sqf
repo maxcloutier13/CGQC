@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- renameVicAuto ----------------------------------------------------------
 // Rename the vehicle
 params ["_target"];

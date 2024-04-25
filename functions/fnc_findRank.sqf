@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- findRank ----------------------------------------------------------
 // Match name with ranks
 diag_log "[CGQC_FNC] findRank started";

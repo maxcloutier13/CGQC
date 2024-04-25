@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- setTeamColorReload ----------------------------------------------------------
 // set player color
 diag_log "[CGQC_FNC] setTeamColorReload started";

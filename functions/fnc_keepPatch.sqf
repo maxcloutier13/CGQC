@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // --- keepPatch ----------------------------------------------------------
 // Keep patch updated. Find better way...  but hey.
 diag_log "[CGQC_FNC] keepPatch started";
