@@ -515,9 +515,6 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 	true
 ] call CBA_fnc_addSetting;
 
-["cgqc_bft_initials", "CHECKBOX", ["Use only initials/Shortnames", "Shorter names on radar"],
-    [_menu_name, "BFT - Blue Force Tracking"], true, 1, {publicVariable "cgqc_bft_initials"}, false] call CBA_fnc_addSetting;
-
 // Looting settings
 ["cgqc_lootingRestriction_on", "CHECKBOX", ["Restrict corpse looting?", "Empêche/limite le looting des corps"],
     ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_lootingRestriction_on"}, false] call CBA_fnc_addSetting;
@@ -583,10 +580,6 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
 ["cgqc_flag_backpackNotif", "CHECKBOX", ["Backpack Notification", "Notify the player if he moves too far from his pack"],
     [_menu_name, "Option Toggles"], true, 1, {publicVariable "cgqc_flag_backpackNotif"}, false] call CBA_fnc_addSetting;
-
-["cgqc_flag_mapCenterSetting", "LIST", ["Default Map Centering Mode", "Mode that is set on gamestart"],
-  [_menu_name, "Map Settings"], [[0, 1, 2], ["Normal","Last position", "Player"], 1], {["initial"] call CGQC_fnc_centerMap}] call CBA_fnc_addSetting;
-
 
 // Fortify tool
 ["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"],
@@ -757,24 +750,32 @@ if (cgqc_player_hasNorthern) then {
 	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideRadios"}] call CBA_fnc_addSetting;
 
 // Player custom Options ===================================================================================================
+_menu_name_player = "[CGQC] Player settings";
+
+["cgqc_flag_mapCenterSetting", "LIST", ["Default Map Centering Mode", "Mode that is set on gamestart"],
+  [_menu_name_player, "Map Centering Mode"], [[0, 1, 2], ["Normal","Last position", "Player"], 0], {["initial"] call CGQC_fnc_centerMap}] call CBA_fnc_addSetting;
+
+["cgqc_bft_initials", "CHECKBOX", ["Use only initials/Shortnames", "Shorter names on radar"],
+    [_menu_name_player, "BFT - Blue Force Tracking"], true] call CBA_fnc_addSetting;
+
 // Check that 2023 is not present
 if (!cgqc_player_has2023) then {
 	// Custom pistol 2023 version
-	_menu_name = "[CGQC] Player settings";
+
 	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 };
 // === Custom arsenal categories ===============================================================================
 private _medical = [
