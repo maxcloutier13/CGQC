@@ -11,7 +11,11 @@ class diwako_lockbackpack {
 class CGQC {
     tag = "CGQC";
     class functions {
-        // Fonctions ----------------------------------------------------------------------------
+        // Fonctions ---------------------------------------------------------------------------
+        class markClear{
+            file = "\cgqc\functions\fnc_markClear.sqf";
+            description = "Mark building clear";
+        };
         class centerMap{
             file = "\cgqc\functions\fnc_centerMap.sqf";
             description = "Set map position when opening";

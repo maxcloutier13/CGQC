@@ -18,6 +18,14 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 _action = [ "menu_self_ready", " Prêt au Combat", "CGQC\textures\cgqc_ace_combat", {["ready", true] spawn CGQC_fnc_perksBasic}, {cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Mark clear =========================================================================================================
+_action = [ "cgqc_perk_mark", "Mark building cleared", "a3\ui_f\data\map\GroupIcons\badge_gs.paa", {[] spawn CGQC_fnc_markClear}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_mark_clear", "Del last marker", "", {["last"] spawn CGQC_fnc_markClear}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_mark"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_mark_clear", "Clear all markers", "a3\ui_f\data\map\markers\Military\objective_CA.paa", {["clear"] spawn CGQC_fnc_markClear}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_mark"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Quick State =========================================================================================================
 _action = [ "cgqc_perk_state", "Quick State", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -32,7 +40,7 @@ _action = [ "cgqc_perk_state_battle", "Battle", "", {["battle", false] spawn CGQ
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_state"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Reset colors
-_action = [ "menu_self_resetColors", "Reset TeamColors", "", {[] call CGQC_setTeamColorReloadAll;}, {leader player == player || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_resetColors", "Restore all TeamColors", "", {[] call CGQC_setTeamColorReloadAll;}, {leader player == player || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Radios =========================================================================================================

@@ -67,6 +67,7 @@ cgqc_removeAll_done = false;
 cgqc_bft_forceUpdate = false;
 cgqc_hud_hidden = false;
 cgqc_showObject_running = false;
+cgqc_player_clearMarkers = [];
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -359,6 +360,10 @@ if (cgqc_player_hasUnsung) then {
 //-- Drop Backpack --
 ["[CGQC]", "cgqc_kb_dropPack_toggle", "Quickdrop/Pickup Backpack",
 	{[backpack player, 'toggle'] call CGQC_fnc_dropStuff}, {""}, []
+] call cba_fnc_addKeybind;
+
+["[CGQC]", "cgqc_kb_markClear", "Mark building as Clear",
+	{[] spawn CGQC_fnc_markClear}, {""}, [DIK_O, [false, true, false]]
 ] call cba_fnc_addKeybind;
 
 //-- Hide the HUD
