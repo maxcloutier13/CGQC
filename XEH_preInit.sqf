@@ -149,6 +149,10 @@ cgqc_reset_speaker = false;
 cgqc_backpack_stashed = false;
 cgqc_backpack_dropped = false;
 cgqc_backpack_dropped_notif = false;
+// Map stuff
+cgqc_map_centerOnplayer = false;
+cgqc_map_centerOnLast = false;
+cgqc_map_centerOldPosition = [];
 // Advanced perks
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -372,6 +376,10 @@ if (cgqc_player_hasUnsung) then {
 // Initial roster
 [] spawn CGQC_fnc_loadDiaryRoster;
 
+// Original map position
+_map = (findDisplay 12 displayCtrl 51);
+cgqc_map_centerOldPosition = [_map ctrlMapScreenToWorld [0.5, 0.5], ctrlMapScale _map];
+
 // Map open/close
 cgqc_mapOpen = addMissionEventHandler ["Map", {
 	params ["_mapIsOpened", "_mapIsForced"];
@@ -380,13 +388,19 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 	[_mapIsOpened, _mapIsForced] spawn {
 		params ["_mapIsOpened", "_mapIsForced"];
 		if (_mapIsOpened) then {
+			[] call CGQC_fnc_centerMap;
 			while {cgqc_mapOpened} do {
 				[] call CGQC_fnc_loadDiaryRoster;
 				sleep 5;
 			};
+		} else {
+			_map = (findDisplay 12 displayCtrl 51);
+			cgqc_map_centerOldPosition = [_map ctrlMapScreenToWorld [0.5, 0.5], ctrlMapScale _map];
 		};
 	};
 }];
+
+
 
 // Medical menu / IFAK eventhandler
 ["ace_medicalMenuOpened", {
@@ -569,6 +583,10 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
 ["cgqc_flag_backpackNotif", "CHECKBOX", ["Backpack Notification", "Notify the player if he moves too far from his pack"],
     [_menu_name, "Option Toggles"], true, 1, {publicVariable "cgqc_flag_backpackNotif"}, false] call CBA_fnc_addSetting;
+
+["cgqc_flag_mapCenterSetting", "LIST", ["Default Map Centering Mode", "Mode that is set on gamestart"],
+  [_menu_name, "Map Settings"], [[0, 1, 2], ["Normal","Last position", "Player"], 1], {["initial"] call CGQC_fnc_centerMap}] call CBA_fnc_addSetting;
+
 
 // Fortify tool
 ["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"],
@@ -920,6 +938,7 @@ if (cgqc_config_sideLanguage) then {
 	};
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
+
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;

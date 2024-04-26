@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ----------------------------------------------------------------------------
+        class centerMap{
+            file = "\cgqc\functions\fnc_centerMap.sqf";
+            description = "Set map position when opening";
+        };
         class renameVic{
             file = "\cgqc\functions\fnc_renameVic.sqf";
             description = "Rename vehicle";

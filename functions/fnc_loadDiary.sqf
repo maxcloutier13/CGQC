@@ -122,7 +122,15 @@ _text = (
 
 _cleantext = format [_text, _343_1,_343_2,_343_3,_343_4,_343_5,_343_6,_343_7,_343_8,_343_9,_343_10,_343_11,_343_16,_152_1,_152_2,_152_3,_152_4, _152_5,_152_6,_152_7,_152_8,_152_9,_152_69, _152_98, _152_99];
 
-player createDiaryRecord ["CGQC", ["Référence Radios", _cleantext]];
+//player createDiaryRecord ["CGQC", ["Référence Radios", _cleantext]];
+
+_text = (
+	"Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = false;[['Map center: Normal', 1.5], true] call CBA_fnc_notify;'>NORMAL</execute> to keep default map behavior"
+	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = true;[['Map center: Last position', 1.5], true] call CBA_fnc_notify;'>LAST</execute> to keep map centered on last position"
+	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = true; cgqc_map_centerOnLast = false;[['Map center: Player', 1.5], true] call CBA_fnc_notify;'>CENTER</execute> to keep map centered on player."
+);
+
+player createDiaryRecord ["CGQC", ["Map Options", _text]];
 
 // Training map
 /*
