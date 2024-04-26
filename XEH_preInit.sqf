@@ -328,42 +328,42 @@ if (cgqc_player_hasUnsung) then {
 
 // Key-fucking-binds ===================================================================================
 // -- Repos --
-["CGQC", "cgqc_kb_repos", "Au Repos",
+["[CGQC]", "cgqc_kb_repos", "Au Repos",
 	{ ["flip_chill", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- Crickets --
-["CGQC", "cgqc_kb_criquet", "Criquet",
+["[CGQC]", "cgqc_kb_criquet", "Criquet",
 	{ ["click", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- QuickStates --
-["CGQC", "cgqc_kb_stealth", "Quick States: Stealth",
+["[CGQC]", "cgqc_kb_stealth", "Quick States: Stealth",
 	{ ["stealth", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_normal", "Quick States: Normal",
+["[CGQC]", "cgqc_kb_normal", "Quick States: Normal",
 	{ ["normal", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_battle", "Quick States: Battle",
+["[CGQC]", "cgqc_kb_battle", "Quick States: Battle",
 	{ ["battle", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- 152 speakers --
-["CGQC", "cgqc_kb_speaker1", "Toggle speaker 1",
+["[CGQC]", "cgqc_kb_speaker1", "Toggle speaker 1",
 	{ ["toggle_speaker"] spawn CGQC_fnc_setRadios}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_speaker2", "Toggle speaker radio 2",
+["[CGQC]", "cgqc_kb_speaker2", "Toggle speaker radio 2",
 	{ ["toggle_speaker_2"] spawn CGQC_fnc_setRadios}, {""}, []
 ] call cba_fnc_addKeybind;
 
 //-- Drop Backpack --
-["CGQC", "cgqc_kb_dropPack_toggle", "Quickdrop/Pickup Backpack",
+["[CGQC]", "cgqc_kb_dropPack_toggle", "Quickdrop/Pickup Backpack",
 	{[backpack player, 'toggle'] call CGQC_fnc_dropStuff}, {""}, []
 ] call cba_fnc_addKeybind;
 
 //-- Hide the HUD
-["CGQC", "toggle", "Toggle HUD", {
-	_this call CGQC_fnc_toggleUI}, {""}, []
+["[CGQC]", "toggle", "Toggle HUD", {
+	_this call CGQC_fnc_toggleUI}, {""}, [DIK_O, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
 //Wind changer event
