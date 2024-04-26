@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- dropChem ----------------------------------------------------------
 // Drop chemlight
 params ["_type", "_item"];
-diag_log format ["[CGQC_FNC] dropChem %1/%2 started", _type, _item];
+LOG_2(" dropChem %1/%2 started", _type, _item);
 
 switch (_type) do {
 	case "panel": {
@@ -27,4 +28,4 @@ switch (_type) do {
 	};
 	default { };
 };
-diag_log "[CGQC_FNC] dropChem done";
+LOG(" dropChem done");

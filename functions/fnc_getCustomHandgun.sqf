@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- getCustomHandgun ----------------------------------------------------------
 // Get player custom handgun from config
 params [ "_gunArray"];
-diag_log format ["[CGQC_FNC] getCustomHandgun %1 started", _gunArray select 0];
+LOG_1(" getCustomHandgun %1 started", _gunArray select 0);
 
 [player] call CGQC_fnc_removeHandgun;
 
@@ -32,7 +33,7 @@ if (cgqc_config_sidearm) then {
 _magHandgun = (handgunMagazine player) select 0;
 _nbr = 2;
 if (isNil "_magHandgun") then {
-		diag_log "[CGQC_ERROR] getCustomHandgun - can't ID mags";
+		ERROR("[CGQC_ERROR] getCustomHandgun - can't ID mags");
 } else {
 	// Make sure there is at least one mag...
 	if (count _magHandgun > 0) then {
@@ -42,4 +43,4 @@ if (isNil "_magHandgun") then {
 	};
 };
 
-diag_log "[CGQC_FNC] getCustomHandgun done";
+LOG(" getCustomHandgun done");

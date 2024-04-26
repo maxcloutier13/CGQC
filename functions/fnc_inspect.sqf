@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- inspect ----------------------------------------------------------
 // Inspect target laodout and reports problems
 params ["_type"];
-diag_log format ["[CGQC_FNC] inspect %1 started", _type];
+LOG_1(" inspect %1 started", _type);
 
 inspect_target = cursorTarget;
 _inspect_txt = "";
@@ -404,4 +405,4 @@ if (inspect_target_name isEqualTo "Error: No unit") then {
 	hintSilent "";
 };
 
-diag_log "[CGQC_FNC] inspect done";
+LOG(" inspect done");

@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- loadout_basic ----------------------------------------------------------
 // Basic loadout for Unsung
 
@@ -59,15 +60,15 @@ player addHandgunItem "uns_m1911mag";
 player addWeapon "uns_binocular_army";
 
 // === Uniform ================================================================================================================
-player addItemToUniform "ACRE_SEM52SL"; // === Essentials 
-player addItemToUniform "ACE_EarPlugs"; 
+player addItemToUniform "ACRE_SEM52SL"; // === Essentials
+player addItemToUniform "ACE_EarPlugs";
 player addItemToUniform "ACE_MapTools";
 player addItemToUniform "ACE_CableTie";
 player addItemToUniform "ACE_CableTie";
 player addItemToUniform "murshun_cigs_cigpack";
 player addItemToUniform "murshun_cigs_lighter";
 player addItemToUniform "acex_intelitems_notepad";
-player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads"; 
+player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";
 player addItemToUniform "cgqc_items_ifak";
 
 // === Vest ================================================================================================================
@@ -75,7 +76,7 @@ for "_i" from 1 to 4 do {player addItemToVest "uns_m1911mag";};
 
 // === Backpack ================================================================================================================
 player addItemToBackpack "ACE_EntrenchingTool";
-// Grenades 
+// Grenades
 for "_i" from 1 to 4 do {player addItemToVest "uns_v40gren";};
 for "_i" from 1 to 4 do {player addItemToVest "uns_m67gren";};
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell";};

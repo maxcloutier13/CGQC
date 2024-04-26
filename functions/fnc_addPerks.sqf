@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- addPerks ----------------------------------------------------------
 // Add all perks to player and set defaults
-diag_log "[CGQC_INIT] addPerks started";
+LOG("[CGQC_INIT] addPerks started");
 
 // --- Perks Menu  ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_cgqc", "CGQC Perks", "CGQC\textures\cgqc_ace_icon", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -240,8 +241,8 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 
 
 // Dynamic group
-_action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+//_action = [ "menu_self_group", "Activate Dynamic Groups", "", {["group", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+//_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Drop backpack
 _action = [ "menu_self_drop", "Drop Backpack", "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa", {[backpack player, 'backpack'] spawn CGQC_fnc_dropStuff}, {backpack player != '' && isNull objectParent player} ] call ace_interact_menu_fnc_createAction;
@@ -290,7 +291,7 @@ _action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Gamestate handling
-_action = [ "zeus_gamestate", "Game State", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_gamestate", "Game Phase", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Training
@@ -341,13 +342,13 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], 
 _action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {!(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused")} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {missionNamespace getVariable "CGQC_gamestate_mission_AIpaused"} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_pause"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ------ Manual snapshot
 _action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all", "zeus"] spawn CGQC_fnc_snapshot}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "load", "all", "zeus"] spawn CGQC_fnc_snapshot}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_zeus_done", false];} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_snapshot_save"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Other stuff
 
@@ -380,6 +381,16 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_
 // Detach from player
 //_action = [ "zeus_detach", "Detach from player", "", {["detach", 0] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_attached} ] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Fixes
+_action = [ "zeus_fixes", "Fixes", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Dynamic group
+_action = [ "zeus_fixes_group", "Activate Dynamic Groups for all", "", {[-1, {["group", false] spawn CGQC_fnc_perksBasic;}] call CBA_fnc_globalExecute;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_fixes_self", "Activate Dynamic Groups for Zeus", "", {["group", false] spawn CGQC_fnc_perksBasic;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Options
 _action = [ "zeus_options", "Options", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -589,4 +600,4 @@ _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action
 //_action = [ "menu_self_whistle", "Whistle", "\fox_whistle\ui\whistle.paa", {[player] call CGQC_fnc_whistle}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-diag_log "[CGQC_INIT] --- addPerks done";
+LOG("[CGQC_INIT] --- addPerks done");

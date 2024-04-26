@@ -1,10 +1,15 @@
+#include "\CGQC\script_component.hpp"
 // --- dropStuff ----------------------------------------------------------
 // Handles the dropping of stuff
 params ["_item", "_type"];
-diag_log format ["[CGQC_FNC] dropStuff %1/%2 started", _item, _type];
+LOG_2(" dropStuff %1/%2 started", _item, _type);
 
 CGQC_int_createHolder = {
-    _unitPos = player getRelPos [1, 0];
+    _playerPosASL = getPosASL player;
+    // Calculate offset in front of the player (adjust as needed)
+    _offset = [1, 0, 0]; // Offset in meters in the direction player is facing
+    // Calculate position in front of the player at the same altitude
+    _unitPos = _playerPosASL vectorAdd (_offset vectorMultiply (diag_tickTime - diag_tickTime + 1));
 	_closestHolder = _unitPos nearestObject "GroundWeaponHolder_Scripted";
 	_holder = objNull;
 
@@ -78,7 +83,7 @@ switch (_type) do {
                     {
                         if (_x getVariable "cgqc_name_object" isEqualTo name player) then {
                             _found = true;
-                            diag_log "[CGQC_FNC] dropStuff - Backpack found. Grabbing";
+                            LOG(" dropStuff - Backpack found. Grabbing");
                             hint "Pack found. Grabbing it";
                             //Grab the bag
                             player action ["AddBag", _holder, typeOf _x];
@@ -91,7 +96,7 @@ switch (_type) do {
                             };
                             break;
                         } else {
-                            diag_log "[CGQC_FNC] dropStuff - Not player's backpack";
+                            LOG(" dropStuff - Not player's backpack");
                         };
                     } forEach _packs;
                 }
@@ -99,7 +104,7 @@ switch (_type) do {
 
             if !(_found) then {
                 hint "Your backpack is not close enough";
-                diag_log "[CGQC_FNC] dropStuff - No player backpack found";
+                LOG(" dropStuff - No player backpack found");
             };
         };
     };
@@ -144,7 +149,7 @@ switch (_type) do {
         player action [_action, cgqc_backpack_holder, _packName];
         // Create personal marker for position
         pack_marker = createMarkerLocal ["cgqc_marker_backpack", player, 1];
-        "cgqc_marker_backpack" setMarkerTypeLocal "hd_end_noShadow";
+        "cgqc_marker_backpack" setMarkerTypeLocal "loc_move";
         "cgqc_marker_backpack" setMarkerColorLocal "ColorRed";
         "cgqc_marker_backpack" setMarkerTextLocal " Pack";
         cgqc_backpack_dropped = true;
@@ -172,4 +177,4 @@ switch (_type) do {
     };
 };
 
-diag_log "[CGQC_FNC] dropStuff finished";
+LOG(" dropStuff finished");

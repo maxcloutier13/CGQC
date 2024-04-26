@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- bluforceTracker ----------------------------------------------------------
 // Handle bluforce tracker sheeits
 params ["_type", ["_showMsg", false], ["_target", player]];
-diag_log format ["[CGQC_FNC] bluforceTracker %1 started", _type];
+LOG_1("bluforceTracker %1 started", _type);
 
 CGQC_int_bft_findInfo = {
 	_color = player getVariable "CGQC_player_teamColor";
@@ -17,9 +18,9 @@ CGQC_int_bft_findInfo = {
 		case "YELLOW": { _cgqc_player_bft_name = _cgqc_player_bft_name + "-2";_cgqc_player_bft_color = "ColorWEST";};
 	};
     switch (_role) do {
-        case "HQ": {_cgqc_player_bft_name = _cgqc_player_bft_name + "-HQ";_cgqc_player_bft_markerType = "b_hq";};
+        case "HQ": {_cgqc_player_bft_markerType = "b_hq";};
         case "Recon": {_cgqc_player_bft_markerType = "b_recon";};
-        case "Medic": {_cgqc_player_bft_name = _cgqc_player_bft_name + "-Medic";_cgqc_player_bft_markerType = "b_med";};
+        case "Medic": {_cgqc_player_bft_markerType = "b_med";};
         case "Armor": {_cgqc_player_bft_markerType = "b_armor";};
         case "Air": {_cgqc_player_bft_markerType = "c_air";};
     };
@@ -125,4 +126,4 @@ switch (_type) do {
     };
 };
 
-diag_log "[CGQC_FNC] bluforceTracker done";
+LOG_1("bluforceTracker %1 done", _type);

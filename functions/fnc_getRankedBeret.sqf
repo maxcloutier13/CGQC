@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- getRankedBeret ----------------------------------------------------------
 // Match steamID with known players
-diag_log "[CGQC_FNC] getRankedBeret started";
+LOG(" getRankedBeret started");
 
 cgqc_player_beret = "";
 //waitUntil {cgqc_player_rank_found};
@@ -58,4 +59,4 @@ switch (_rank) do {
 };
 
 
-diag_log "[CGQC_FNC] getRankedBeret done";
+LOG(" getRankedBeret done");

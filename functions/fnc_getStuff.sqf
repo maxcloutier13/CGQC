@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- getStuff ----------------------------------------------------------
 // Mk3 spawn some shits
 params ["_type"];
-diag_log format ["[CGQC_FNC] getStuff %1 started", _type];
+LOG_2(" getStuff %1 started", _type);
 
 
 _addItem = false;
@@ -59,7 +60,7 @@ switch (_type) do {
 
 	};
 	default	{
-		diag_log "[CGQC_ERROR] getStuff fail";
+		ERROR("[CGQC_ERROR] getStuff fail");
 	};
 };
 
@@ -74,4 +75,4 @@ if (_addItem) then {
 	};
 };
 
-diag_log "[CGQC_FNC] getStuff done";
+LOG(" getStuff done");

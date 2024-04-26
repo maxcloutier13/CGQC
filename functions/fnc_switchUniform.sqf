@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- switchUniform ----------------------------------------------------------
 // Switch player uniform
 params ["_camo", ["_fromLoadout", false]];
-diag_log "[CGQC_FNC] switchUniform started";
+LOG(" switchUniform started");
 
 // Transition/text
 if !(_fromLoadout) then {
@@ -219,5 +220,5 @@ if !(_fromLoadout) then {
 	if (userInputDisabled) then {};
 	// Done
 	cgqc_camoSwitch_done = true;
-	diag_log "[CGQC_FNC] switchUniform done";
+	LOG(" switchUniform done");
 };

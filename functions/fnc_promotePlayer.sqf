@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- promotePlayer ----------------------------------------------------------
 // Boost level of player so he has access to items/roles
 params [["_targetType", "player"]];
-diag_log format ["[CGQC_FNC] promotePlayer %1 mode started", _targetType];
+LOG_1(" promotePlayer %1 mode started", _targetType);
 
 _target = player;
 
@@ -30,4 +31,4 @@ switch (_rank) do {
 _txt = format ["%1 Promoted to %2", _name, _rankTxt];
 [_txt] remoteExec ["hint", _targetId];
 
-diag_log "[CGQC_FNC] promotePlayer finished";
+LOG(" promotePlayer finished");

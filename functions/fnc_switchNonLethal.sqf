@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- switchNonLethal ----------------------------------------------------------
 // switch to nonLethal setup
-diag_log "[CGQC_FNC] switchNonLethal started";
+LOG(" switchNonLethal started");
 
 _grenadeTypes = ["HandGrenade", "MiniGrenade", "rhs_mag_m67"];
 _rubberNade = "training_grenade_mag_m67";
@@ -66,4 +67,4 @@ if (_mag isNotEqualTo []) then {
 	["<br/><br/><br/><br/>Gun not compatible with non-lethal. Try another one...", 0, 0, 3, 2] spawn BIS_fnc_dynamicText;
 };
 
-diag_log "[CGQC_FNC] switchNonLethal done";
+LOG(" switchNonLethal done");

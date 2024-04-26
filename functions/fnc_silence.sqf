@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- silence ----------------------------------------------------------
 // Creates a cone of silence around the player
-diag_log format ["[CGQC_FNC] silence started"];
+LOG(" silence started");
 
 trg_test_units = [];
 trg_player_lowered = false;
@@ -34,4 +35,4 @@ if (vehicle player == player && trg_player_lowered) then {
 	sleep 5;
 };
 
-diag_log "[CGQC_FNC] silence done";
+LOG(" silence done");

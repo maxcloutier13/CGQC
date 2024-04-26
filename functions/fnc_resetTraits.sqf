@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- resetTraits ----------------------------------------------------------
 // Remove all traits from target
 params ["_target"];
-diag_log format ["[CGQC_FNC] resetTraits %1 started", _target];
+LOG_1(" resetTraits %1 started", _target);
 
 // Reset a3 perks
 player setUnitTrait ["Medic", false];
@@ -35,4 +36,4 @@ cgqc_perks_pilot = false;
 cgqc_perks_driver = false;
 
 
-diag_log "[CGQC_FNC] resetTraits done";
+LOG(" resetTraits done");

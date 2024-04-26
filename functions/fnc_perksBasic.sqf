@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- perksBasic ----------------------------------------------------------
 // Perks for the everyman
 params ["_type", ["_fromLoadout", false]];
-diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
+LOG_2(" perksBasic %1/%2  started", _type, _fromLoadout);
 
 [_type, _fromLoadout] spawn {
     params ["_type", "_fromLoadout"];
@@ -720,4 +721,4 @@ diag_log format ["[CGQC_FNC] perksBasic %1/%2  started", _type, _fromLoadout];
     if (userInputDisabled) then {};
 };
 
-diag_log "[CGQC_FNC] perksBasic done";
+LOG(" perksBasic done");

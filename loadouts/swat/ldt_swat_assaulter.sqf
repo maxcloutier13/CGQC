@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- swat_mp5sd6 ----------------------------------------------------------
 // MP5sd6 Assaulter
 

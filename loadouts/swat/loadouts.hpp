@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- Swat loadouts ----------------------------------------------------------
 // Gets all 2023 loadout functions ready
-diag_log "[CGQC_FNC] SWATLoadouts started";
+LOG(" SWATLoadouts started");
 if (cgqc_player_has2023) then {
 
 	// Swat stuff
@@ -9,7 +10,7 @@ if (cgqc_player_has2023) then {
 	["\CGQC\loadouts\swat\ldt_swat_tl.sqf", "CGQC_ldt_swat_tl"] call CBA_fnc_compileFunction;
 	["\CGQC\loadouts\swat\ldt_swat_breacher.sqf", "CGQC_ldt_swat_breacher"] call CBA_fnc_compileFunction;
 	["\CGQC\loadouts\swat\ldt_swat_sniper.sqf", "CGQC_ldt_swat_sniper"] call CBA_fnc_compileFunction;
-	diag_log "[CGQC_FNC] SWATLoadouts loaded";
+	LOG(" SWATLoadouts loaded");
 } else {
-	diag_log "[CGQC_FNC] SWATLoadouts not loaded";
+	LOG(" SWATLoadouts not loaded");
 };

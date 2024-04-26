@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- notifyAll ----------------------------------------------------------
 // Handles the gamestate flow
 params ["_txt", ["_length", 3], ["_fadeIn", 1], ["_mode", "dynamic"], ["_txt2", ""], ["_txt3", ""]];
-diag_log format ["[CGQC_FNC] notifyAll %1/%2/%3 started", _txt, _length, _fadeIn];
+LOG_3(" notifyAll %1/%2/%3 started", _txt, _length, _fadeIn);
 // Make variables accessible...
 cgqc_notifAll_txt = _txt;
 cgqc_notifAll_txt_2 = _txt2;
@@ -36,4 +37,4 @@ switch (_mode) do {
 	};
 };
 
-diag_log "[CGQC_FNC] notifyAll finished";
+LOG(" notifyAll finished");

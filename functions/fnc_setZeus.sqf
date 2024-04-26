@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- setZeus ----------------------------------------------------------
 // Set zeus and keeps them there
 params [["_force", false]];
-diag_log format ["[CGQC_FNC] setZeus started"];
+LOG(" setZeus started");
 
 // Delay until the server time has sync'd
 waitUntil {	time > 5};
@@ -56,7 +57,7 @@ if (_force || ["zeus", format["%1", roleDescription player]] call BIS_fnc_inStri
 	sleep 25.0;
 	};
 };
-diag_log "[CGQC_FNC] setZeus done";
+LOG(" setZeus done");
 
 /*
 
@@ -82,21 +83,5 @@ if (_force || ["zeus", format["%1", roleDescription player]] call BIS_fnc_inStri
 	};
 	//[QGVAR(zeusCreated), _zeus, player] call CBA_fnc_targetEvent;
 };
-
-diag_log "[CGQC_FNC] setZeus done";
-
-	[] spawn {
-		while {true} do {
-			// Make sure radios are on
-			if (cgqc_config_zeusRadios) then {
-				[player] spawn CGQC_fnc_zeusUnit;
-				_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
-				if (count _zeusRadios < 2) then {
-					["zeus_radios", 0, player] spawn CGQC_fnc_perksZeus;
-				};
-			};
-			sleep 20;
-		};
-	};
 
 */

@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- loadout_tl ----------------------------------------------------------
 // TL loadout for Vanilla
 

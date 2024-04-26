@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- switchPerks ----------------------------------------------------------
 // Switch perks
 params ["_type", ["_clearFirst", true]];
-diag_log format ["[CGQC_FNC] switchPerks %1 started", _type];
+LOG_1(" switchPerks %1 started", _type);
 
 
 if (_clearFirst) then {
@@ -204,8 +205,8 @@ switch (_type) do {
 		*/
 	};
 	default	{
-		diag_log "[CGQC_ERROR] switchPerks fail";
+		LOG("[CGQC_ERROR] switchPerks fail");
 	};
 };
 
-diag_log "[CGQC_FNC] switchPerks done";
+LOG(" switchPerks done");

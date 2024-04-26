@@ -1,3 +1,8 @@
+#include "\CGQC\script_component.hpp"
+// --- Briefing Cone ----------------------------------------------------------
+// Handles the cone of silence for briefings
+LOG("briefingCmdStop started");
+
 //   Reset voice
 [player, "default"] call CGQC_fnc_setVoiceVolume;
 
@@ -13,3 +18,5 @@ _txt = parseText ("Leaders Briefing finished." + "<br/>" + "Volume/Voice restore
 hintSilent _txt;
 sleep 5;
 hintSilent "";
+
+LOG("briefingCmdStop done");

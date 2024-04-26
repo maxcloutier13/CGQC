@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 if (isServer) then {
 	call{
 		this addAction ["--------STEP ONE--------", "hint 'Select the Drop Zone';

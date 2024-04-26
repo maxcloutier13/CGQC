@@ -1,8 +1,9 @@
+#include "\CGQC\script_component.hpp"
 // --- load_2023 ----------------------------------------------------------
 // Open up the arsenal according to rank
 
 params ["_type"];
-diag_log format ["[CGQC_FNC] load_2023 %1 started", _type];
+LOG(" load_2023 started");
 
 [_type] spawn {
 	params ["_type"];
@@ -52,4 +53,4 @@ diag_log format ["[CGQC_FNC] load_2023 %1 started", _type];
 	};
 };
 
-diag_log "[CGQC_FNC] load_2023 started";
+LOG(" load_2023 started");

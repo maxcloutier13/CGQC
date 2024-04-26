@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- loadDiaryRoster ----------------------------------------------------------
 // List all groups and players + roles
-diag_log "[CGQC_FNC] loadDiaryRoster started";
+LOG(" loadDiaryRoster started");
 
 waitUntil {cgqc_start_postInitClient_done};
 
@@ -11,7 +12,7 @@ _roster = "";
 
 { // For each valid group
 	_groupName = _x select 0;
-	_group = _x select 1;
+	_soldiers = _x select 1;
 	_roster = _roster + "<font color='#969696' size='20'>------- " + _groupName + " ----------------------------------------</font><br/>";
 	_setGroup1 = true;
 	_setGroup2 = true;
@@ -25,16 +26,14 @@ _roster = "";
 		_name = _x select 4;
 		_weight = _x select 5;
 		_radio = _x select 6;
-		_versionCheck = "</font>";
-		if (cgqc_player_max) then {
-			_versionCore = _unit getVariable ["cgqc_version_core", "ERROR"];
-			_ref_version_core = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
-			if (_versionCore isNotEqualTo _ref_version_core) then {
-				_versionCheck = "</font><font color='CC3333' size='15'>!!!</font>";
-			};
+		_versionCheck = "";
+		_versionCore = _unit getVariable ["cgqc_version_core", "ERROR"];
+		_ref_version_core = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
+		if (_versionCore isNotEqualTo _ref_version_core) then {
+			_versionCheck = "</font><font color='CC3333' size='15'>!!!</font>";
 		};
-
 		if (_firstRun) then {
+			// This is the group leader. Entry before any kind of titles
 			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6 - %7",_color, _pos, _role, _name, _weight, _radio, _versionCheck ] + "<br/>";
 		};
 		if (_setGroup1 && (_color isEqualTo "#CC3333" || _color isEqualTo "#5C7829")) then {
@@ -45,15 +44,16 @@ _roster = "";
 			_roster = _roster + format ["<font color='#087099' size='18'>	 --- %1-2 ---</font><br/>", _groupName];
 			_setGroup2 = false;
 		};
-		if (!_firstRun && !_setGroup1 && _setHQ && _color isEqualTo "#F0F0F0" ) then {
+		if (!_firstRun && _setHQ && _color isEqualTo "#F0F0F0" ) then {
 			_roster = _roster + format ["<font color='#ffffff' size='18'>	 --- %1-HQ ---</font><br/>", _groupName];
             _setHQ = false;
         };
 		if !(_firstRun) then {
+			// Not leader. Entry after titles if there is one.
 			_roster = _roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6 - %7",_color, _pos, _role, _name, _weight, _radio, _versionCheck] + "<br/>";
 		};
 		_firstRun = false;
-	} forEach _group;
+	} forEach _soldiers;
 	_roster = _roster + "<br/>";
 } forEach cgqc_allGroupsInfo;
 
@@ -73,4 +73,4 @@ if !(player diarySubjectExists "CGQC_Roster") then {
     player setDiaryRecordText [["CGQC_Roster", _record select 8], ["Roster", _roster]];
 };
 
-diag_log "[CGQC_FNC] loadDiaryRoster done";
+LOG(" loadDiaryRoster done");

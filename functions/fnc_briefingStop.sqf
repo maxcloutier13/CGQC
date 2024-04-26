@@ -1,3 +1,5 @@
+#include "\CGQC\script_component.hpp"
+LOG("briefingStop started");
 //   Reset voice
 [player, "default"] call CGQC_fnc_setVoiceVolume;
 //   Reset volume for players outside vics who are lowered.
@@ -12,3 +14,5 @@ _txt = parseText ("Briefing finished." + "<br/>" + "Volume/Voice restored.");
 hintSilent _txt;
 sleep 5;
 hintSilent "";
+
+LOG("briefingStop done");

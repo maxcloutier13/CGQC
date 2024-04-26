@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- gamestate ----------------------------------------------------------
 // Handles the gamestate flow
 params ["_type"];
-diag_log format ["[CGQC_FNC] gamestate %1 mode started", _type];
+LOG_1(" gamestate %1 mode started", _type);
 
 cgqc_var_gamestates = [
 	"CGQC_gamestate_0_init",
@@ -71,7 +72,6 @@ switch (_type) do {
 		_txt = "Mission Started!";
 		_txt2 = "Player Snapshot saved";
 		_txt3 = "Good luck, Viper!";
-		[_text, 5, 2] call CGQC_fnc_notifyAll;
 		[_txt, 3, 0, "cba_notify_start", _txt2, _txt3] call CGQC_fnc_notifyAll;
 	};
 	case "end": {
@@ -91,4 +91,4 @@ switch (_type) do {
 	default {};
 };
 
-diag_log "[CGQC_FNC] gamestate finished";
+LOG(" gamestate finished");

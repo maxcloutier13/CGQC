@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- paxInit ----------------------------------------------------------
 // Start of the PAX systemChat
 _type = _this select 0;

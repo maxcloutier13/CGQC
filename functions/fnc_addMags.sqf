@@ -1,10 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- addMags ----------------------------------------------------------
 // Add the maximum allowed mag with overflow in backpack.
-diag_log "[CGQC_FNC] addMags started";
+LOG(" addMags started");
 // Primary ======================================================================
 _mag = (primaryWeaponMagazine player) select 0;
 if (isNil "_mag") then {
-	diag_log "[CGQC_ERROR] addMags - can't ID mags";
+	ERROR("[CGQC_ERROR] addMags - can't ID mags");
 } else {
 	_vest = vest player;
 	_addMags = cgqc_setting_limitMags_max;
@@ -23,8 +24,10 @@ if (isNil "_mag") then {
 		case (_magSize > 30): {_addMags = _addMags * 0.6};
 	};
 
+	_addmags = floor _addmags;
 	// Add amount of mags
-	diag_log format ["[CGQC_FNC] addMags - adding %1 mags", _addMags];
+	LOG_1(" addMags - adding %1 mags", _addMags);
+
 	if (_addMags <= 8) then {
 		["vest", _mag, _addMags] call CGQC_fnc_addItemWithOverflow;
 	} else {
@@ -34,3 +37,4 @@ if (isNil "_mag") then {
 	};
 };
 
+LOG(" addMags done");

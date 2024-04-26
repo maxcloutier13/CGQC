@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- playerUnconscious ----------------------------------------------------------
 // Handles when the player is down
 params ["_unit", "_isUnconscious"];
-diag_log "[CGQC_FNC] === playerUnconscious started =====================================";
+LOG(" === playerUnconscious started =====================================");
 
 if (cgqc_player_wakeup_active) then {
     if (_isUnconscious) then {
@@ -25,9 +26,9 @@ if (cgqc_player_wakeup_active) then {
             _time = _time + _waitTime;
             _unit setVariable ["cgqc_player_wakeup_time", _time];
             // Notify
-            diag_log format ["--> Player is down! TimeTotal:%1/Min:%2Max:%3/Wait:%4/Chance:%5/Attempt:%6", _time, _min, _max, _waitTime, _random, _attempt];
+            LOG_6("--> Player is down! TimeTotal:%1/Min:%2Max:%3/Wait:%4/Chance:%5/Attempt:%6", _time, _min, _max, _waitTime, _random, _attempt);
             sleep _waitTime;
-            diag_log format ["--> Player rolls! Roll:%1/Chance:%2/Attempt:%3", _roll, _chance, _attempt];
+            LOG_3("--> Player rolls! Roll:%1/Chance:%2/Attempt:%3", _roll, _chance, _attempt);
 
             if (_roll <= _chance || _time > 300) then {
                 _cardiacOutput = [_unit] call ace_medical_status_fnc_getCardiacOutput;
@@ -35,14 +36,14 @@ if (cgqc_player_wakeup_active) then {
                 if (_cardiacOutput > 0) then {
                     // Beating. You wake up!
                     hint format ["You are awake! Time:%1/Attempt:%2", _time, _attempt];
-                    diag_log format ["%1 is awake! Time:%2/Attempt:%3", _unit, _time, _attempt];
+                    LOG_3("%1 is awake! Time:%2/Attempt:%3", _unit, _time, _attempt);
                     [_unit, false] call ace_medical_fnc_setUnconscious;
                 } else {
-                    diag_log format ["%1 rolled to wake up, but is in cardiac arrest", _unit];
+                    LOG_1("%1 rolled to wake up, but is in cardiac arrest", _unit);
                 };
             } else {
                 // Fail! Stay down
-                diag_log format ["You fail to wake up... %1 more percent chance next time", cgqc_player_wakeup_randomBoost];
+                LOG_1("You fail to wake up... %1 more percent chance next time", cgqc_player_wakeup_randomBoost);
                 _random = _random + cgqc_player_wakeup_randomBoost;
             };
             _attempt = _attempt + 1;
@@ -62,4 +63,4 @@ if (cgqc_player_wakeup_active) then {
     };
 };
 
-diag_log "[CGQC_FNC] === playerUnconscious done =====================================";
+LOG(" === playerUnconscious done =====================================");

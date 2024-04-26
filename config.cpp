@@ -1,135 +1,135 @@
 // Mod info -----------------------------------------------------------------------------------------
-#include "cfg_patches.hpp"
-#include "defines.hpp"
+#include "\CGQC\cfg\cfg_patches.hpp"
+
 
 // Faction
 class cfgFactionClasses {
-	#include "cfg_factions.hpp"
+	#include "\CGQC\cfg\cfg_factions.hpp"
 };
 
 // Mods Modifications ----------------------------------------------------------------------
-#include "cfg_mods_mods.hpp"
+#include "\CGQC\cfg\cfg_mods_mods.hpp"
 
 // Heads/Faces --------------------------------------------------------------------------------------
 class CfgFaces {
-	#include "cfg_heads.hpp"
+	#include "\CGQC\cfg\cfg_heads.hpp"
 };
 
 // Guns and equipment
 class cfgWeapons {
-	#include "cfg_helmets.hpp"
-	#include "cfg_guns.hpp"
-	#include "cfg_misc.hpp"
-	#include "cfg_uniforms.hpp"
+	#include "\CGQC\cfg\cfg_helmets.hpp"
+	#include "\CGQC\cfg\cfg_guns.hpp"
+	#include "\CGQC\cfg\cfg_misc.hpp"
+	#include "\CGQC\cfg\cfg_uniforms.hpp"
 };
 
 // Mags and stuff
 class CfgMagazines
 {
-	#include "cfg_mags.hpp"
+	#include "\CGQC\cfg\cfg_mags.hpp"
 };
 
 // Patches
 class cfgUnitInsignia {
-	#include "cfg_insignas.hpp"
+	#include "\CGQC\cfg\cfg_insignas.hpp"
 };
 
 // Custom Editor category for units ------------------------------------------------
 class CfgEditorSubcategories
 {
-	class EdSubcat_cgqc_Training {
+	class EdSubcat_CGQC_Training {
 		displayName = "Men (Training)";
 	};
-	class EdSubcat_cgqc_mk1
+	class EdSubcat_CGQC_mk1
 	{
 		displayName = "Men (2024)";
 	};
-	class EdSubcat_cgqc_swat
+	class EdSubcat_CGQC_swat
 	{
 		displayName = "Men (SWAT)";
 	};
-	class EdSubcat_cgqc_vanilla
+	class EdSubcat_CGQC_vanilla
 	{
 		displayName = "Men (Vanilla)";
 	};
-	class EdSubcat_cgqc_mk1_divers
+	class EdSubcat_CGQC_mk1_divers
 	{
 		displayName = "Men (Mk2 Divers)";
 	};
-	class EdSubcat_cgqc_funstuff
+	class EdSubcat_CGQC_funstuff
 	{
 		displayName = "Funstuff";
 	};
-	class EdSubcat_cgqc_drones
+	class EdSubcat_CGQC_drones
 	{
 		displayName = "Drones";
 	};
-	class EdSubcat_cgqc_boats
+	class EdSubcat_CGQC_boats
 	{
 		displayName = "Boats";
 	};
-	class EdSubcat_cgqc_vic_ifv
+	class EdSubcat_CGQC_vic_ifv
 	{
 		displayName = "Vehicles (IFV)";
 	};
-	class EdSubcat_cgqc_vic_mbt
+	class EdSubcat_CGQC_vic_mbt
 	{
 		displayName = "Vehicles (MBT)";
 	};
-	class EdSubcat_cgqc_cmd
+	class EdSubcat_CGQC_cmd
 	{
 		displayName = "Vehicles (Command)";
 	};
-	class EdSubcat_cgqc_vic_unarmed
+	class EdSubcat_CGQC_vic_unarmed
 	{
 		displayName = "Vehicles (Unarmed)";
 	};
-	class EdSubcat_cgqc_vic_armed
+	class EdSubcat_CGQC_vic_armed
 	{
 		displayName = "Vehicles (Armed)";
 	};
-	class EdSubcat_cgqc_logistics
+	class EdSubcat_CGQC_logistics
 	{
-		displayName = "CGQC";
+		displayName = "\CGQC";
 	};
 };
 // Units, backpacks, flags
 class cfgVehicles {
-	#include "cfg_flags.hpp"
-	#include "cfg_units.hpp"
-	#include "cfg_containers.hpp"
-	#include "cfg_items.hpp"
-	#include "cfg_man.hpp"
-	#include "cfg_acreVehicules.hpp"
-	#include "cfg_vehicles.hpp"
+	#include "\CGQC\cfg\cfg_flags.hpp"
+	#include "\CGQC\cfg\cfg_units.hpp"
+	#include "\CGQC\cfg\cfg_containers.hpp"
+	#include "\CGQC\cfg\cfg_items.hpp"
+	#include "\CGQC\cfg\cfg_man.hpp"
+	#include "\CGQC\cfg\cfg_acreVehicules.hpp"
+	#include "\CGQC\cfg\cfg_vehicles.hpp"
 };
 // Custom functions
 class cfgFunctions {
-	//CGQC functions
-	#include "cfg_functions.hpp"
+	//\CGQC functions
+	#include "\CGQC\cfg\cfg_functions.hpp"
 };
 // Face stuff
 class CfgGlasses
 {
-	#include "cfg_goggles.hpp"
+	#include "\CGQC\cfg\cfg_goggles.hpp"
 };
 // Sounds
 class CfgSounds
 {
-	#include "cfg_sounds.hpp"
+	#include "\CGQC\cfg\cfg_sounds.hpp"
 };
 // Custom events
-#include "cfg_eventhandlers.hpp"
+#include "\CGQC\cfg\cfg_eventhandlers.hpp"
 #include "functions\lockbackpack\Extended_InventoryOpened_EventHandlers.hpp"
 // ACEAX Compats ---------------------------------------------
-#include "cfg_aceaxCompats.hpp"
+#include "\CGQC\cfg\cfg_aceaxCompats.hpp"
 // Stamina stuff
-#include "cfg_stamina.hpp"
+#include "\CGQC\cfg\cfg_stamina.hpp"
 // Dialog stuff
-#include "cfg_dialogs.hpp"
+#include "\CGQC\cfg\cfg_dialogs.hpp"
 // Interface / UI modifications
-#include "cfg_interface.hpp"
+#include "\CGQC\cfg\cfg_interface.hpp"
 // Spotlight
-#include "cfg_spotlight.hpp"
+#include "\CGQC\cfg\cfg_spotlight.hpp"
 // Marker Colors
-#include "cfg_markerColors.hpp"
+#include "\CGQC\cfg\cfg_markerColors.hpp"

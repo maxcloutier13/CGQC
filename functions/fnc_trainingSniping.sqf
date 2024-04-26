@@ -1,10 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- trainingSniping ----------------------------------------------------------
 // Sniping shenanigans
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	diag_log format ["[CGQC_FNC] trainingSniping %1 started", _type];
+	LOG_1(" trainingSniping %1 started", _type);
 
 	switch (_type) do {
 		case 0: { // Sniping off
@@ -118,8 +119,8 @@ params ["_type"];
 			cgqc_training_sniping_comp_on = false;
 		};
 		default {
-			diag_log "[CGQC_ERROR] trainingSniping done";
+			LOG("[CGQC_ERROR] trainingSniping done");
 		};
 	};
-	diag_log "[CGQC_FNC] trainingSniping done";
+	LOG(" trainingSniping done");
 };

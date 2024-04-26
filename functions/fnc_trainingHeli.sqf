@@ -1,10 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- trainingHeli ----------------------------------------------------------
 // Helicopter training
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	diag_log format ["[CGQC_FNC] trainingHeli %1 started", _type];
+	LOG_1(" trainingHeli %1 started", _type);
 
 	cgqc_heli_vic = vehicle player;
 	switch (_type) do
@@ -101,10 +102,10 @@ params ["_type"];
 			if !(isNil "cgqc_heli_light") then {deleteVehicle cgqc_heli_light;};
 			if !(isNil "cgqc_heli_smoke") then {deleteVehicle cgqc_heli_smoke;};
 		};
-		default{diag_log "[CGQC_ERROR] trainingHeli fail";};
+		default{LOG("[CGQC_ERROR] trainingHeli fail");};
 	};
 
 	sleep 5;
 	hintSilent "";
-	diag_log "[CGQC_FNC] trainingHeli done";
+	LOG(" trainingHeli done");
 };

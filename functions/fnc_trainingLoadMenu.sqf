@@ -1,8 +1,9 @@
+#include "\CGQC\script_component.hpp"
 // --- trainingLoadMenu ----------------------------------------------------------
 // Add the training shit to the player
 
 [] spawn {
-	diag_log "[CGQC_FNC] trainingLoadMenu started";
+	LOG(" trainingLoadMenu started");
 	cgqc_training_mode = true;
 	// Training actions ---------------------------------------------------------------------------------
 	_action = [ "menu_self_training", "Training", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\whiteboard_ca.paa", {}, {cgqc_training_mode} ] call ace_interact_menu_fnc_createAction;
@@ -49,5 +50,5 @@
 	_action = [ "menu_sniping_wind_random", "Random", "", {["cgqc_change_fucking_wind", ["wind_random"]] call CBA_fnc_globalEvent;}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_time", "menu_sniping_wind"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 	*/
-	diag_log "[CGQC_FNC] trainingLoadMenu done";
+	LOG(" trainingLoadMenu done");
 };

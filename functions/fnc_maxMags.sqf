@@ -1,9 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- maxMags ----------------------------------------------------------
 // Limit maximum mags
 	[] spawn {
 	if (cgqc_setting_limitMags && !cgqc_flag_isTraining) then {
+		_primary = primaryWeapon player;
 		_primary_mag = (primaryWeaponMagazine player) select 0;
-		_compatibleMags = compatibleMagazines primaryWeapon player;
+		_compatibleMags = compatibleMagazines [_primary, _primary];
 		_addMags = cgqc_setting_limitMags_max;
 		_allMags = magazines player;
 
@@ -27,13 +29,14 @@
 			// Compare compatible mags to current mags
 		_delta = cgqc_setting_limitMags_max - count y_foundMags;
 		if (_delta < 0) then { //Too many mags mofo!
-			hint format["Too many mags mofo!! Max: %1!", cgqc_setting_limitMags_max];
 			_remove = (_delta * -1) - 1;
 			for "_i" from 0 to _remove do {
 				player removeMagazine (y_foundMags select _i); //Remove excess
 			};
 			sleep 3;
-			hint format ["Removed: %1 mags",_remove];
+			_title = "MaxMags gotcha!";
+			_txt = format ["Max: %1! Removed: %1", cgqc_setting_limitMags_max, _remove];
+			[[_title, 1.5], [_txt], false] call CBA_fnc_notify;
 		} else {
 			hint "Mags: good";
 		};

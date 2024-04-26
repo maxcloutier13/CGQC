@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- training ----------------------------------------------------------
 // Training shenanigans
 params ["_type", "_option"];
-diag_log format ["[CGQC_FNC] training %1/%2 started", _type, _option];
+LOG_2(" training %1/%2 started", _type, _option);
 
 y_timeText = "";
 _skip = _option;
@@ -119,4 +120,4 @@ if(_change_wind) then {
 	setWind [w_east * _e_side, w_north * _n_side, true];
 	hint "Wind applied";
 };
-diag_log format ["[CGQC_FNC] training done"];
+LOG(" training done");

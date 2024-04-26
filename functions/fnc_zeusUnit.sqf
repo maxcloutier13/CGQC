@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- zeusUnit ----------------------------------------------------------
 // Unit has been double clicked
 params ["_unit"];
-diag_log format ["[CGQC_FNC] zeusUnit %1 started", _unit];
+LOG_1(" zeusUnit %1 started", _unit);
 if !("CuratorObjectDoubleClicked" in (eventHandlers _unit)) then {
 	_unit addEventHandler ["CuratorObjectDoubleClicked", {
 		params ["_curator", "_entity"];
@@ -16,4 +17,4 @@ if !("CuratorObjectDoubleClicked" in (eventHandlers _unit)) then {
 	}];
 };
 
-diag_log "[CGQC_FNC] zeusUnit done";
+LOG(" zeusUnit done");

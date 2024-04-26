@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- fireteam ----------------------------------------------------------
 // Handles the CGQC "subgroups" fireteam
 
@@ -26,7 +27,7 @@
 //          _yellow[] = red team
 
 params [["_target", player]];
-diag_log format ["[CGQC_FNC] fireteam %1 started", _target];
+LOG_1(" fireteam %1 started", _target);
 
 CGQC_int_getTeamNbr = {
     params [["_target", player]];
@@ -57,7 +58,7 @@ _group = group _target;
 
 _groupName = groupID _group;
 _lead = leader _target;
-_white = [_lead];
+_white = [];
 // Fireteam 1
 _tl_1 = "";
 _2iC_1 = "";
@@ -137,4 +138,4 @@ _team2 = [_binome_2_1, _binome_2_2];
 // Return that group shit
 [_group, _groupName, _hq, _team1, _team2];
 
-diag_log "[CGQC_FNC] fireteam done";
+LOG(" fireteam done");

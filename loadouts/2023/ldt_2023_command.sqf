@@ -1,7 +1,8 @@
- // --- ldt_2023_c_command ----------------------------------------------------------
+#include "\CGQC\script_component.hpp"
+// --- ldt_2023_c_command ----------------------------------------------------------
 // TL 2023 loadout
 params [["_target", player], ["_variant", "tl"], ["_gunVariant", "carbine"]];
-diag_log format ["[CGQC_FNC] ldt_2023_c_teamleader %1 started", _target];
+LOG(" ldt_2023_c_teamleader started");
 
 // Basic setup
 [] call CGQC_ldt_2023_basic;
@@ -76,7 +77,7 @@ switch (_variant) do {
 	};
 };
 
-diag_log "[CGQC_FNC] ldt_2023_c_hq done";
+LOG(" ldt_2023_c_hq done");
 
 
 
@@ -94,4 +95,4 @@ diag_log "[CGQC_FNC] ldt_2023_c_hq done";
 for "_i" from 1 to 2 do {player addItemToBackpack "tsp_stickCharge_auto_mag"};
 for "_i" from 1 to 2 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
 
-diag_log "[CGQC_FNC] ldt_2023_c_teamleader done";
+LOG(" ldt_2023_c_teamleader done");

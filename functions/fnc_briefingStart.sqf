@@ -1,5 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- Briefing Cone ----------------------------------------------------------
 // Handles the cone of silence for briefings
+LOG("briefingStart started");
+
 trgBrief_units = [];
 trgBrief_player_lowered = false;
 publicVariable "trgBrief_player_lowered";
@@ -18,5 +21,5 @@ while {missionNamespace getVariable "CGQC_gamestate_1_briefing_full"} do {
 	sleep 1;
 };
 //Briefing is done
-
+LOG("briefingStart done");
 //['\cgqc\functions\fnc_briefingStop.sqf'] remoteExec ['execVM', vehicle _x];

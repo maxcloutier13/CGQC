@@ -1,10 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- refuel ----------------------------------------------------------
 // Refuel/Repair/Ressupply
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	diag_log format ["[CGQC_FNC] refuel %1 started", _type];
+	LOG_1(" refuel %1 started", _type);
 	_timeleft = 0;
 	_skip = 0;
 

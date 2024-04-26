@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- findRank ----------------------------------------------------------
 // Match name with ranks
-diag_log "[CGQC_FNC] findRank started";
+LOG(" findRank started");
 
 // Find rank prefix
 _prefix = toLower (cgqc_player_name select[0, 4]);
@@ -95,4 +96,4 @@ cgqc_player_rank_found = true;
 player setVariable ["cgqc_player_rank", _player_rank, true];
 cgqc_player_rank_name = _player_rank_name;
 
-diag_log "[CGQC_FNC] findRank done";
+LOG(" findRank done");

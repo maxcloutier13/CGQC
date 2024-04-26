@@ -1,36 +1,37 @@
+#include "\CGQC\script_component.hpp"
 // --- loadMk3Menu ----------------------------------------------------------
 // Ace menu for mk3 sheeits
  params ["_crate_array", ["_type", "default"]];
 //_crate = (_this select 0) select 0;
 //_type = _this select 1;
 _crate = _crate_array select 0;
-diag_log format ["[CGQC_FNC] loadMk3Menu %1/%2 started", _crate, _type];
+LOG_2(" loadMk3Menu %1/%2 started", _crate, _type);
 
-diag_log "[CGQC_FNC] loadMk3Menu - waiting for postInit to finish";
+LOG(" loadMk3Menu - waiting for postInit to finish");
 waitUntil {!isNil "cgqc_start_postInitClient_done"};
 waitUntil {cgqc_start_postInitClient_done};
-diag_log "[CGQC_FNC] loadMk3Menu - postInit finished!";
+LOG(" loadMk3Menu - postInit finished!");
 waitUntil{ !isNull (findDisplay 46) };
-diag_log "[CGQC_FNC] loadMk3Menu - Checking for Interface";
+LOG(" loadMk3Menu - Checking for Interface");
 if (hasInterface) then {
-	diag_log "[CGQC_FNC] loadMk3Menu - hasInterface - loading menu";
+	LOG(" loadMk3Menu - hasInterface - loading menu");
 	switch (_type) do {
 		// Command ========================================================================
 		case "para":{
 			// Jumping uniform
-			diag_log "[CGQC_FNC] loadMk3Menu - para menu";
+			LOG(" loadMk3Menu - para menu");
 			_action = [ "menu_mk2_camo_para_std", "Kit: Parachutiste", "\CGQC\textures\cgqc_ace_para", {["para", false] call CGQC_fnc_switchUniform}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 		};
 		case "dive":{
 			// Diving uniform
-			diag_log "[CGQC_FNC] loadMk3Menu - diving menu";
+			LOG(" loadMk3Menu - diving menu");
 			_action = [ "menu_mk2_camo_diver_std", "Kit: Plongeur", "\CGQC\textures\cgqc_ace_dive", {["diver", false] call CGQC_fnc_switchUniform}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 		};
 		default	{ // Normal mk3 Arsenal
 			if (cgqc_flag_isTraining) then {
-				diag_log "[CGQC_FNC] loadMk3Menu - training mode: adding respawn point";
+				LOG(" loadMk3Menu - training mode: adding respawn point");
 				// Respawn point in front of Arsenal
 				cgqc_mk2_arsenal_ctr = cgqc_mk2_arsenal_ctr + 1;
 				[west, getPosATL _crate, format["Arsenal West %1", cgqc_mk2_arsenal_ctr]] call BIS_fnc_addRespawnPosition;
@@ -79,7 +80,7 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 			if (!cgqc_player_has2023 && !cgqc_player_hasUnsung && !cgqc_player_hasIfa3) then {
-				diag_log "[CGQC_FNC] loadMk3Menu - loading vanilla stuff";
+				LOG(" loadMk3Menu - loading vanilla stuff");
 				//waitUntil {sleep 1; cgqc_mk2_arsenal_init_done};
 				// Vanilla ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_vanilla", "Vanilla", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_side isEqualTo WEST} ] call ace_interact_menu_fnc_createAction;
@@ -107,7 +108,7 @@ if (hasInterface) then {
 			};
 			// Vietnam arsenal if Unsung is pressent ===============================================================================================
 			if (cgqc_player_hasUnsung) then {
-				diag_log "[CGQC_FNC] loadMk3Menu - loading unsung stuff";
+				LOG(" loadMk3Menu - loading unsung stuff");
 				// Spawnmodule faction
 				//cgqc_spawn_module setVariable ["VehicleFactions", "UNSUNG_W"];
 				// Unsung ---------------------------------------------------------------------------------------------------------
@@ -132,7 +133,7 @@ if (hasInterface) then {
 			};
 			// Mk2 Arsenal if 2023 mod is present  ===============================================================================================
 			if (cgqc_player_has2023) then {
-				diag_log "[CGQC_FNC] loadMk3Menu - loading 2023 stuff";
+				LOG(" loadMk3Menu - loading 2023 stuff");
 				// SWAT ***********************************************************************************
 				_action = [ "menu_swat", "SWAT", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -575,7 +576,7 @@ if (hasInterface) then {
 			};
 			// WW2 shit ===============================================================================================
 			if (cgqc_player_hasIfa3) then {
-				diag_log "[CGQC_FNC] loadMk3Menu - loading IFA3 stuff";
+				LOG(" loadMk3Menu - loading IFA3 stuff");
 				// Main Menu ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_ifa3", "WW2", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasIfa3} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -586,7 +587,7 @@ if (hasInterface) then {
 			};
 			// Scandinavia shit ===============================================================================================
 			if (cgqc_player_hasNorthern) then {
-				diag_log "[CGQC_FNC] loadMk3Menu - loading Scandinavia stuff";
+				LOG(" loadMk3Menu - loading Scandinavia stuff");
 				// Main Menu ---------------------------------------------------------------------------------------------------------
 				_action = [ "menu_scandinavia", "Northern Front", "CGQC\textures\icon_loadouts", {""}, {cgqc_player_hasNorthern} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -596,7 +597,7 @@ if (hasInterface) then {
 
 			};
 
-			diag_log "[CGQC_FNC] loadMk3Menu - loading general stuff";
+			LOG(" loadMk3Menu - loading general stuff");
 			// Items Rapides ========================================================================================================
 			_action = [ "menu_items", "Items Rapides", "CGQC\textures\icon_items", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -710,7 +711,7 @@ if (hasInterface) then {
 		};
 	};
 
-	diag_log "[CGQC_FNC] loadMk3Menu - loading cargo stuff";
+	LOG(" loadMk3Menu - loading cargo stuff");
 	// Supplies spawner --------------------------------------------------------------------------------------------------------------
 	_action = [ "menu_supplies", "Logistics", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -757,7 +758,7 @@ if (hasInterface) then {
 	_action = [ "menu_snapshot_load_zeus", "Zeus Snapshot", "", {[player, "load", "single", "zeus"] spawn CGQC_fnc_snapshot;}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_zeus_done", false];} ] call ace_interact_menu_fnc_createAction;
 	_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots", "menu_snapshot_load"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 } else {
-	diag_log "[CGQC_FNC] loadMk3Menu - NO INTERFACE - skipping";
+	LOG(" loadMk3Menu - NO INTERFACE - skipping");
 };
 
-diag_log "[CGQC_FNC] loadMk3Menu done";
+LOG(" loadMk3Menu done");

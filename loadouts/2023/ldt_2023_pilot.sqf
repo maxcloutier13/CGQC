@@ -1,7 +1,8 @@
- // --- ldt_2023_pilot ----------------------------------------------------------
+#include "\CGQC\script_component.hpp"
+// --- ldt_2023_pilot ----------------------------------------------------------
 // Pilot 2023 loadout
 params [["_target", player], ["_variant", "h_pilot"], ["_gunVariant", "p90"]];
-diag_log format ["[CGQC_FNC] ldt_2023_pilot %1 started", _target];
+LOG(" ldt_2023_pilot started");
 
 // Basic setup
 [] call CGQC_ldt_2023_basic;
@@ -30,4 +31,4 @@ switch (_gunVariant) do {
 
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShellPurple"};
 
-diag_log "[CGQC_FNC] ldt_2023_pilot done";
+LOG(" ldt_2023_pilot done");

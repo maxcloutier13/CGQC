@@ -1,10 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- trainingMedical ----------------------------------------------------------
 // Medical training
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	diag_log format ["[CGQC_FNC] trainingMedical %1 started", _type];
+	LOG_1(" trainingMedical %1 started", _type);
 
 	_ll = [0];
 	_rl = [0];
@@ -84,4 +85,4 @@ params ["_type"];
 		};
 	};
 };
-diag_log "[CGQC_FNC] trainingMedical done";
+LOG(" trainingMedical done");

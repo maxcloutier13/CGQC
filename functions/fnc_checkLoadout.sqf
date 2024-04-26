@@ -1,8 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- checkLoadout ----------------------------------------------------------
 // Check if a unit has a fixed loadout and sets it if it's the case
 params [["_switch", true]];
+LOG_1(" checkLoadout %1 started", _switch);
+
 _type = typeOf player;
-diag_log format ["[CGQC_FNC] checkLoadout %1 started", _type];
+LOG_1(" checkLoadout %1 started", _type);
 _switchRole = "";
 _section = 1;
 _dive = false;
@@ -10,15 +13,15 @@ _dive = false;
 _load = false;
 _switch = player getVariable "cgqc_var_skipLoadoutSwitch";
 if (isNil "_switch") then {
-	diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
+	LOG("[CGQC_INIT] postInitClient - Loading custom loadouts");
 	_load = true;
 } else {
 	if !(_switch) then {
-		diag_log "[CGQC_INIT] postInitClient - Loading custom loadouts";
+		LOG("[CGQC_INIT] postInitClient - Loading custom loadouts");
 		_load = true;
     } else {
         hint "Skipping loadout";
-        diag_log "[CGQC_INIT] postInitClient - NOT loading custom loadout";
+        LOG("[CGQC_INIT] postInitClient - NOT loading custom loadout");
     };
 };
 
@@ -76,10 +79,10 @@ if (_load) then {
         case "CGQC_units_mk1_5_Diver_Engineer":{_switchRole = "2023_eng";_dive = true;};
     };
     if (_switchRole isNotEqualTo "") then {
-        diag_log format ["[CGQC_FNC] Loadout %1 found. Switching.", _switchRole];
+        LOG_1(" Loadout %1 found. Switching.", _switchRole);
         [_switchRole, _section, false, false] call CGQC_fnc_switchRole;
     } else {
-        diag_log "[CGQC_FNC] checkLoadout - Loadout not found. Skipping.";
+        LOG(" checkLoadout - Loadout not found. Skipping.");
          sleep 10;
         ["defaultLR"] call CGQC_fnc_setRadios;
     };
@@ -87,10 +90,10 @@ if (_load) then {
     if (_dive) then {
         sleep 1;
         ["diver", true] spawn CGQC_fnc_switchUniform;
-        diag_log "[CGQC_FNC] checkLoadout - Diver suit";
+        LOG(" checkLoadout - Diver suit");
     };
 } else {
-    diag_log "[CGQC_FNC] checkLoadout - Unit switch is OFF Skipping";
+    LOG(" checkLoadout - Unit switch is OFF Skipping");
     [] spawn {
         sleep 10;
         ["defaultLR"] call CGQC_fnc_setRadios;
@@ -99,4 +102,4 @@ if (_load) then {
     };
 };
 
-diag_log "[CGQC_FNC] checkLoadout done";
+LOG(" checkLoadout done");

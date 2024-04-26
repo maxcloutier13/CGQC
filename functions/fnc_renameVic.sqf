@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- renameVic ----------------------------------------------------------
 // Rename the vehicle
 params ["_target"];
@@ -14,12 +15,12 @@ CGQC_UI_saveName = {
     _txt = format ["Renamed: %1", _name];
     [[_txt, 1.5, [0.161,0.502,0.725,1]]] call CBA_fnc_notify;
     ["transmit_vic", false, cgqc_rename_vic] spawn CGQC_fnc_bluforceTracker;
-    diag_log format ["[CGQC_FNC] renameVic %1/%2", _vic, _name];
+    LOG_2(" renameVic %1/%2", _vic, _name);
 };
 
-diag_log format ["[CGQC_FNC] renameVic started"];
+LOG(" renameVic started");
 
 disableSerialization;
 createDialog "CGQC_ui_renameVic";
 
-diag_log  "[CGQC_FNC] renameVic done";
+LOG(" renameVic done");

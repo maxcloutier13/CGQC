@@ -1,9 +1,10 @@
+#include "\CGQC\script_component.hpp"
 // --- switchStuff ----------------------------------------------------------
 // Change one thing for another
 // Example ["backpack", "cgqc_pack_mk1_magic"] call CGQC_fnc_switchStuff
 
 params ["_type", ["_arg", ""]];
-diag_log format ["[CGQC_FNC] switchStuff %1/%2 started", _type, _arg];
+LOG_2(" switchStuff %1/%2 started", _type, _arg);
 
 switch (_type) do {
 	case "uniform": {
@@ -47,6 +48,6 @@ switch (_type) do {
 		removeBackpack player;
 		removeGoggles player;
 	};
-	default	{diag_log "[CGQC_ERROR] switchStuff not matched";};
+	default	{LOG("[CGQC_ERROR] switchStuff not matched");};
 };
-diag_log "[CGQC_FNC] switchStuff done";
+LOG(" switchStuff done");

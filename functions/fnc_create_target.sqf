@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 private ["_arguments", "_targetClass", "_targetRandomDir", "_targetAnimated"];
 
 _arguments = _this select 3;

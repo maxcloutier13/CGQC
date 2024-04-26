@@ -1,9 +1,10 @@
+#include "\CGQC\script_component.hpp"
 // --- renameVicAuto ----------------------------------------------------------
 // Rename the vehicle
 params ["_target"];
-diag_log format ["[CGQC_FNC] renameVicAuto started"];
+LOG(" renameVicAuto started");
     _suffix = "";
-    _color = player getVariable "CGQC_player_teamColor";
+    _color = player getVariable ["CGQC_player_teamColor", "MAIN"];
     switch (_color) do {
         case "RED": {_suffix = "1"};
         case "GREEN": {_suffix = "1"};
@@ -20,4 +21,4 @@ diag_log format ["[CGQC_FNC] renameVicAuto started"];
     [[_txt, 1.5, [0.161,0.502,0.725,1]]] call CBA_fnc_notify;
     ["transmit_vic", false, _target] spawn CGQC_fnc_bluforceTracker;
 
-diag_log  "[CGQC_FNC] renameVicAuto done";
+LOG(" renameVicAuto done");

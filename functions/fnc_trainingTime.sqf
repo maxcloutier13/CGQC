@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- trainingTime ----------------------------------------------------------
 // Sets time to current real-life date but sunrise and with nice clear weather
-//Only run once 
+//Only run once
 if (isNil "cgqc_setInitialTime") then {
 	// Set current day/month/year
 	_year = systemTime select 0;

@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- loadout_basic ----------------------------------------------------------
 // Basic loadout for Vanilla
 

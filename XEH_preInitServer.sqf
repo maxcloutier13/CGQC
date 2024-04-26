@@ -1,6 +1,7 @@
+#include "\CGQC\script_component.hpp"
 // --- preInitServer ----------------------------------------------------------
 // Set everything that needs to be there before editor/menu/briefing server side
-diag_log "[CGQC_PREINIT] === preInitServer started =====================================";
+LOG("[CGQC_preInitServer] === Started =====================================");
 
 // Check if dynamic group is initialized
 if !(["IsInitialized"] call BIS_fnc_dynamicGroups) then {
@@ -10,4 +11,4 @@ if !(["IsInitialized"] call BIS_fnc_dynamicGroups) then {
 // Initialize gamestate variables
 ["init"] call CGQC_fnc_gamestate;
 
-diag_log "[CGQC_PREINIT] === preInitServer done =====================================";
+LOG("[CGQC_preInitServer] === Done =====================================");

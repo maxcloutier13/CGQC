@@ -1,7 +1,7 @@
 // Emptying backpack
 _found = true;
 hint "Backpack found. Grabbing it";
-diag_log "[CGQC_FNC] dropStuff - Backpack found! Grabbing it";
+LOG(" dropStuff - Backpack found! Grabbing it");
 _backpackClassname = typeOf _x;
 
 // Get the content of the backpack

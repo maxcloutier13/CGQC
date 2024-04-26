@@ -1,6 +1,7 @@
-diag_log "[CGQC_FNC] ifa3Loadouts started";
+#include "\CGQC\script_component.hpp"
+LOG(" ifa3Loadouts started");
 if (cgqc_player_hasIfa3) then {
-	diag_log "[CGQC_FNC] ifa3Loadouts loaded";
+	LOG(" ifa3Loadouts loaded");
 } else {
-	diag_log "[CGQC_FNC] ifa3Loadouts not loaded";
+	LOG(" ifa3Loadouts not loaded");
 };

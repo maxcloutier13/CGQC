@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- addRadios ----------------------------------------------------------
 // Add specific radios to player and sets things up
 params ["_radios"];
-diag_log format ["[CGQC_FNC] addRadios %1 started", _radios];
+LOG_1(" addRadios %1 started", _radios);
 {
 	if (_x isEqualTo "ACRE_PRC117F") then {
 		(backpackContainer ACE_player) addItemCargoGlobal [_x, 1];
@@ -29,4 +30,4 @@ diag_log format ["[CGQC_FNC] addRadios %1 started", _radios];
 	};
 }forEach _radios;
 
-diag_log "[CGQC_FNC] addRadios done";
+LOG(" addRadios done");

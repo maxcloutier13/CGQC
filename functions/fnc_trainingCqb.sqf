@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- trainingCqb ----------------------------------------------------------
 // Cqb shenanigans
 params ["_type"];
-diag_log format ["[CGQC_FNC] trainingCQB %1 started", _type];
+LOG_1(" trainingCQB %1 started", _type);
 
 switch (_type) do {
 	case 0: {cgqc_cqb_on = false};
@@ -240,4 +241,4 @@ if (_type < 40) then {
 	};
 };
 
-diag_log "[CGQC_FNC] trainingCqb done";
+LOG(" trainingCqb done");

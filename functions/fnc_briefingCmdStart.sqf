@@ -1,5 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- Briefing Cone ----------------------------------------------------------
 // Handles the cone of silence for briefings
+LOG("briefingCmdStart started");
+
 trgBriefCmd_units = [];
 trgBriefCmd_player_lowered = false;
 publicVariable "trgBriefCmd_player_lowered";
@@ -17,3 +20,5 @@ while {missionNamespace getVariable "CGQC_gamestate_1_briefing_leaders"} do {
 	} forEach [] call CGQC_int_allHumanPlayers;
 	sleep 1;
 };
+
+LOG("briefingCmdStart done");

@@ -1,7 +1,8 @@
+#include "\CGQC\script_component.hpp"
 // --- loadLoadout ----------------------------------------------------------
 // Load selected uniform items
 params ["_loadout"];
-diag_log "[CGQC_FNC] loadLoadout started";
+LOG(" loadLoadout started");
 
 _hats = _loadout select 0;
 _goggles = _loadout select 1;
@@ -26,4 +27,4 @@ if (_vest isNotEqualTo "") then {["vest", _vest] call CGQC_fnc_switchStuff;};
 if (_uniform isNotEqualTo "") then {["uniform", _uniform] call CGQC_fnc_switchStuff;};
 if (_ruck isNotEqualTo "") then {["backpack", _ruck] call CGQC_fnc_switchStuff;};
 
-diag_log "[CGQC_FNC] loadLoadout done";
+LOG(" loadLoadout done");

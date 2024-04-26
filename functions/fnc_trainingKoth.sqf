@@ -1,10 +1,11 @@
+#include "\CGQC\script_component.hpp"
 // --- trainingKOTH ----------------------------------------------------------
 // King of the hill stuff
 params ["_type"];
 
 [_type] spawn {
 	params ["_type"];
-	diag_log format ["[CGQC_FNC] trainingKOTH %1 started", _type];
+	LOG_1(" trainingKOTH %1 started", _type);
 
 	_static_target_todo = 0;
 	_sniper_target_todo = 0;

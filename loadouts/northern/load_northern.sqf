@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- loadNorthern ----------------------------------------------------------
 // Handles the arsenal for Northern Front
 

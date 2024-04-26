@@ -1,3 +1,4 @@
+#include "\CGQC\script_component.hpp"
 // --- perksZeus ----------------------------------------------------------
 // Perks for the gods
 params ["_type", "_briefing_time", "_targetPlayer"];
