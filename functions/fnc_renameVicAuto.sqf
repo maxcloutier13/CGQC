@@ -14,7 +14,7 @@ LOG(" renameVicAuto started");
         case "MAIN": {_suffix = "0"}
     };
     if (cgqc_bft_initials) then {
-        _name = format [".%1", _suffix];
+        _name = format ["V.%1", _suffix];
     } else {
         _name = format ["Vic.%1", _suffix];
     };
