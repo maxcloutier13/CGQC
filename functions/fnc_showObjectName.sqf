@@ -7,7 +7,7 @@ if (isGamePaused || !isGameFocused) exitWith {};
 
 [] spawn {
 	_target = cursorTarget;
-    if (_target distance player < 15) then {
+    if (_target distance player < 15 && _target distance player > 4) then {
         if ((typeOf _target) isEqualTo "GroundWeaponHolder_Scripted") exitWith {
             // player backpack?
             _name = _target getVariable ["cgqc_name_object", "NONE"];
