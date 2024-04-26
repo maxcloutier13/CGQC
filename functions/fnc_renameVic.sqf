@@ -5,7 +5,7 @@ params ["_target"];
 
 CGQC_UI_saveName = {
     _display = findDisplay 1353153;
-    _name =  ctrlText (_display displayCtrl 1400);
+    _name =  ctrlText (_display displayCtrl 131400);
     closeDialog 0;
     _vic = cgqc_rename_vic;
     _vic setVariable ["cgqc_name_vic", _name, true];

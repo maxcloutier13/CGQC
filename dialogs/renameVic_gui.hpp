@@ -28,7 +28,7 @@ class CGQC_ui_renameVic {
 			w = 77 * GRID_W;
 			h = 7 * GRID_H;
 
-			idc = 1400;
+			idc = 131400;
 			colorBackground[] = {0,0,0,0.6};
             maxChars = 5;
 
