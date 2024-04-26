@@ -828,7 +828,9 @@ private _electronics = [
 	"MRH_FoldedSatcomAntenna",
 	"NER_item_bulatv3",
 	"Item_JammerSania",
-	"Item_JammerVolnorez"
+	"Item_JammerVolnorez",
+	"azm_bft_rx",
+    "azm_bft_tx"
 ];
 private _logistics = [
 	"cgqc_items_medkit",
