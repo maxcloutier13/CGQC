@@ -10,7 +10,7 @@ LOG(" renameVicAuto started");
         case "GREEN": {_suffix = "1"};
         case "BLUE": {_suffix = "2"};
         case "YELLOW": {_suffix = "2"};
-        case "MAIN": {_suffix = "HQ"}
+        case "MAIN": {_suffix = "0"}
     };
     _name = format ["Vic.%1", _suffix];
     _target setVariable ["CGQC_name_vic", _name, true];

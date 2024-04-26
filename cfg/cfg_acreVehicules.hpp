@@ -4,17 +4,17 @@ class VTOL_01_base_F;
 class Boat_F;
 
 #define MACRO_CGQC_RENAME \
-    class cgqc_ace_renameVic { \
-        displayName = "Rename Vehicle"; \
-        condition = "true"; \
-        statement = "cgqc_rename_vic = _target;[_target] call CGQC_fnc_renameVic"; \
-        runOnHover = "hint 'Rename Vehicle'"; \
-    }; \
     class cgqc_ace_designateVic { \
         displayName = "AutoRename"; \
         condition = "true"; \
         statement = "[_target] call CGQC_fnc_renameVicAuto"; \
         runOnHover = "hint 'Rename Vehicle according to your team'"; \
+        class cgqc_ace_renameVic { \
+            displayName = "Rename Vehicle"; \
+            condition = "true"; \
+            statement = "cgqc_rename_vic = _target;[_target] call CGQC_fnc_renameVic"; \
+            runOnHover = "hint 'Rename Vehicle'"; \
+        }; \
     }; \
     class cgqc_ace_vicStopBFT { \
         displayName = "Stop transmiting position"; \
