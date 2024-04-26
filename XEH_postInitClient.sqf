@@ -384,6 +384,28 @@
 		[] call CGQC_fnc_setGroupRadios;
 	};
 
+	// Player need a watch for the time to show on the map screen
+	player addEventHandler ["Put", {
+    if (_this select 2 == "ItemWatch") then {
+        findDisplay 12 displayCtrl 101 ctrlShow (
+            if (_this select 2 in assignedItems player) then [
+                {true},
+                {false}
+            ]
+        )
+    }
+	}];
+	player addEventHandler ["Take", {
+		if (_this select 2 == "ItemWatch") then {
+			findDisplay 12 displayCtrl 101 ctrlShow (
+				if (_this select 2 in assignedItems player) then [
+					{true},
+					{false}
+				]
+			)
+		}
+	}];
+
 	// All done
 	cgqc_start_postInitClient_done = true;
 
