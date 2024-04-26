@@ -67,12 +67,19 @@ if (hasInterface) then {
 			_action = [ "menu_zeus_maxMags_20", "SetMax: 20", "", {cgqc_setting_limitMags_max = 20; publicVariable "cgqc_setting_limitMags_max";hint "MaxMags: 20"}, {cgqc_setting_limitMags} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions", "menu_zeus_options", "menu_zeus_maxMags" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-
+			/*
 			// Flag that arsenal is unlocked or in training mode
 			_normalTxt = format["--- Arsenal Normal: %1 ---", cgqc_player_rank_name];
-			_action = [ "mode_training", _normalTxt, "", {""}, {!cgqc_flag_isTraining && cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
+			_modifierFunc = {
+				params ["_target", "_player", "_params", "_actionData"];
+				LOG_3("loadMk3: _modifierFunc [%1, %2, %3, %4]", _target, _player, _params, _actionData);
+				// Modify the action - index 1 is the display name, 2 is the icon...
+				_actionData set [1, format["--- Arsenal Normal: %1 ---", cgqc_player_rank_name]];
+			};
+			// "Name", "ShownName", "icon", {statement}, {condition}, {childrenCode}, [actionParameter], "Position", Distance, [OtherParams], {ModifierCode}
+			_action = [ "mode_training", _normalTxt, "", {""}, {!cgqc_flag_isTraining && cgqc_mk2_arsenal_locked}, {},[],"",4,[false, false, false, false, false], _modifierFunc] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
+			*/
 			_action = [ "mode_unlocked", "--- Arsenal is UNLOCKED ---", "", {""}, {!cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
@@ -357,19 +364,28 @@ if (hasInterface) then {
 				_action = [ "menu_mk2_alt", "Switch: Primary", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Categories
+
+
+
+
+
 				_action = [ "menu_mk2_alt_cqb", "CQB 5.56", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_carbine", "Carbine 5.56", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				_action = [ "menu_mk2_alt_rifle", "Rifle 5.56", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_dmr", "DMR 7.62", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+
+				_action = [ "menu_mk2_alt_dmr", "DMR 7.62", "", {""}, {player getVariable 'cgqc_player_rank' > 1 || cgqc_flag_isTraining || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_sniper", "Sniper", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+
+				_action = [ "menu_mk2_alt_sniper", "Sniper", "", {""}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_mg", "MG", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+
+				_action = [ "menu_mk2_alt_mg", "MG", "", {""}, {player getVariable 'cgqc_player_rank' > 1 || cgqc_flag_isTraining || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				_action = [ "menu_mk2_alt_others", "Others", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+
+				_action = [ "menu_mk2_alt_others", "Others", "", {""}, {player getVariable 'cgqc_player_rank' > 1 || cgqc_flag_isTraining || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 				// Non-Lethal
 				_action = [ "menu_mk2_alt_nonLethal", "Non-Lethal", "", {[] spawn CGQC_fnc_switchNonLethal}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -613,11 +629,11 @@ if (hasInterface) then {
 			// Individual radios
 			_action = [ "menu_items1", "Get: 343", "", {["343"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items2", "Get: 152", "", {["152"] call CGQC_fnc_getStuff}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items2", "Get: 152", "", {["152"] call CGQC_fnc_getStuff}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 148", "", {["148"] call CGQC_fnc_getStuff}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 148", "", {["148"] call CGQC_fnc_getStuff}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_items3", "Get: 117f", "", {["117"] call CGQC_fnc_getStuff}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_items3", "Get: 117f", "", {["117"] call CGQC_fnc_getStuff}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_items","menu_items_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			//Radios Vietnam
 			_action = [ "menu_items52", "Radio: Short-Range", "", {["52"] call CGQC_fnc_getStuff}, {cgqc_player_hasUnsung} ] call ace_interact_menu_fnc_createAction;
@@ -762,3 +778,44 @@ if (hasInterface) then {
 };
 
 LOG(" loadMk3Menu done");
+
+
+/*
+
+_condition = {
+    true
+};
+_statement = {
+    params ["_target", "_player", "_params"];
+    diag_log format ["_statement [%1, %2, %3]", _target, _player, _params];
+
+    // Run on hover:
+    ["ace_common_displayTextStructured", ["someone is thinking of giving you items", 1.5, _target], [_target]] call CBA_fnc_targetEvent;
+};
+_insertChildren = {
+    params ["_target", "_player", "_params"];
+    diag_log format ["_insertChildren [%1, %2, %3]", _target, _player, _params];
+
+    // Add children to this action
+    private _actions = [];
+    {
+        private _childStatement = {diag_log format ["givingItem %1", _this]; _target addItem (_this select 2);};
+        private _action = [format ["item:%1",_x], _x, "", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
+    } forEach (items _player);
+
+    _actions
+};
+_modifierFunc = {
+    params ["_target", "_player", "_params", "_actionData"];
+    diag_log format ["_modifierFunc [%1, %2, %3]", _target, _player, _params];
+
+    // Modify the action - index 1 is the display name, 2 is the icon...
+    _actionData set [1, format ["Give Items: %1", count (items player)]];
+};
+
+_action = ["GiveItems", "?","",_statement,_condition,_insertChildren,[123],"",4,[false, false, false, true, false], _modifierFunc] call ace_interact_menu_fnc_createAction;
+[q3, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+
+*/
