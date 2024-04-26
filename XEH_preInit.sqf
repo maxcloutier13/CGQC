@@ -500,7 +500,7 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 	true
 ] call CBA_fnc_addSetting;
 
-["cgqc_bft_initials", "CHECKBOX", ["Use only initials", "Shorter names on radar"],
+["cgqc_bft_initials", "CHECKBOX", ["Use only initials/Shortnames", "Shorter names on radar"],
     [_menu_name, "BFT - Blue Force Tracking"], true, 1, {publicVariable "cgqc_bft_initials"}, false] call CBA_fnc_addSetting;
 
 // Looting settings
