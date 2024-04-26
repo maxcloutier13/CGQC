@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- dropStuff ----------------------------------------------------------
 // Handles the dropping of stuff
-params ["_item", "_type"];
+params ["_item", "_type", "_target"];
 LOG_2(" dropStuff %1/%2 started", _item, _type);
 
 CGQC_int_createHolder = {
@@ -39,6 +39,37 @@ CGQC_int_createHolder = {
 _drop = true;
 _action = "";
 switch (_type) do {
+    case "stash":{
+        _packName = typeOf unitBackpack player;
+        _allMags = magazinesAmmoCargo backpackContainer player;
+        _allItems = ItemCargo backpackContainer player;
+        _pack = [_packName, _allMags, _allItems];
+        _target setVariable ["cgqc_vic_stashedPack", _pack];
+        cgqc_player_backpack_backup = _pack;
+        removeBackpack player;
+        cgqc_backpack_stashed = true;
+        [["Pack is stashed", 1.5], true] call CBA_fnc_notify;
+    };
+    case "unstash":{
+        _var = _target getVariable "cgqc_vic_stashedPack";
+        _pack = _var select 0;
+        _allMags = _var select 1;
+        _allItems = _var select 2;
+        player addBackpack _pack;
+        clearAllItemsFromBackpack player;
+        {
+            _mag = _x select 0;
+            _amnt = _x select 1;
+            backpackContainer player addMagazineAmmoCargo [_mag, 1, _amnt];
+        } forEach _allMags;
+        {
+            backpackContainer player addItem _x;
+        } forEach _allItems;
+        _target setVariable ["cgqc_vic_stashedPack", nil];
+        cgqc_player_backpack_backup = nil;
+        cgqc_backpack_stashed = false;
+        [["Grabbed your bag", 1.5], true] call CBA_fnc_notify;
+    };
     case "toggle": {
         if (cgqc_backpack_dropped) then {
             // Dropped: pick it up
@@ -53,11 +84,18 @@ switch (_type) do {
             hint "Restoring backpack";
             cgqc_backpack_dropped = false;
             _pack = cgqc_player_backpack_backup select 0;
-            _items = cgqc_player_backpack_backup select 1;
+            _allMags = cgqc_player_backpack_backup select 1;
+            _allItems = cgqc_player_backpack_backup select 2;
             player addBackpack _pack;
+            clearAllItemsFromBackpack player;
             {
-                player addItemToBackpack _x;
-            } forEach _items;
+                _mag = _x select 0;
+                _amnt = _x select 1;
+                backpackContainer player addMagazineAmmoCargo [_mag, 1, _amnt];
+            } forEach _allMags;
+            {
+                backpackContainer player addItem _x;
+            } forEach _allItems;
             // Delete marker and holder
             if !(isNil "pack_marker") then {deleteMarkerLocal "cgqc_marker_backpack";};
             if !(isNil "cgqc_backpack_holder") then {deleteVehicle cgqc_backpack_holder;};
@@ -87,6 +125,7 @@ switch (_type) do {
                             hint "Pack found. Grabbing it";
                             //Grab the bag
                             player action ["AddBag", _holder, typeOf _x];
+                            cgqc_player_backpack_backup = nil;
                             waitUntil {backpack player != ''};
                             if !(isNil "pack_marker") then {deleteMarkerLocal "cgqc_marker_backpack";};
                             cgqc_backpack_dropped = false;
@@ -145,7 +184,10 @@ switch (_type) do {
             };
         }];*/
         // Take a backup of the backpack, just in case
-        cgqc_player_backpack_backup = [_packName, backpackItems player];
+        _allMags = magazinesAmmoCargo backpackContainer player;
+        _allItems = ItemCargo backpackContainer player;
+        _pack = [_packName, _allMags, _allItems];
+        cgqc_player_backpack_backup = _pack;
         player action [_action, cgqc_backpack_holder, _packName];
         // Create personal marker for position
         pack_marker = createMarkerLocal ["cgqc_marker_backpack", player, 1];

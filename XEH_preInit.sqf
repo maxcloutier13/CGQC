@@ -146,6 +146,7 @@ cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
 cgqc_reset_speaker = false;
+cgqc_backpack_stashed = false;
 cgqc_backpack_dropped = false;
 cgqc_backpack_dropped_notif = false;
 // Advanced perks

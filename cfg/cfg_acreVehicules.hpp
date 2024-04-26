@@ -10,7 +10,7 @@ class Boat_F;
         statement = "[_target] call CGQC_fnc_renameVicAuto"; \
         runOnHover = "hint 'Rename Vehicle according to your team'"; \
         class cgqc_ace_renameVic { \
-            displayName = "Rename Vehicle"; \
+            displayName = "Manual Rename"; \
             condition = "true"; \
             statement = "cgqc_rename_vic = _target;[_target] call CGQC_fnc_renameVic"; \
             runOnHover = "hint 'Rename Vehicle'"; \
@@ -21,6 +21,20 @@ class Boat_F;
         condition = "_target getVariable ['show_marker', false]"; \
         statement = "_target setVariable ['show_marker', false]"; \
         runOnHover = "hint 'Stop the vic from transmitting its position'"; \
+    }; \
+    class cgqc_ace_stashPack { \
+        displayName = "Stash backpack in vic"; \
+        condition = "!cgqc_backpack_stashed"; \
+        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
+        statement = "[backpack player, 'stash', _target] spawn CGQC_fnc_dropStuff"; \
+        runOnHover = "hint 'Stash your pack in this vic'"; \
+    }; \
+    class cgqc_ace_grabPack { \
+        displayName = "Grab your pack"; \
+        condition = "cgqc_backpack_stashed"; \
+        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
+        statement = "[backpack player, 'unstash', _target] spawn CGQC_fnc_dropStuff"; \
+        runOnHover = "hint 'Grab your pack from this vic'"; \
     };
 
 #define MACRO_CGQC_MAINTENANCE \
