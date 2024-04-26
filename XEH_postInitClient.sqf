@@ -409,7 +409,11 @@
 	// All done
 	cgqc_start_postInitClient_done = true;
 
-	sleep 30;
+	sleep 5;
+	// Init the map centering function
+	["initial"] call CGQC_fnc_centerMap;
+
+	sleep 25;
 	// Check if a snapshot exists
 	_snapshotFound = false;
 	_snapTxt = "";
@@ -458,6 +462,7 @@
 	if (_snapshotFound) then {
 		[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
 	};
+
 
 	LOG("[CGQC_PostInitClient] === Done =====================================");
 };

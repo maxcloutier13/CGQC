@@ -20,7 +20,8 @@ CGQC_int_bft_findInfo = {
 		case "GREEN": {_cgqc_player_bft_name = _cgqc_player_bft_name + ".1";_cgqc_player_bft_color = "ColorGUER";};
 		case "BLUE": {_cgqc_player_bft_name = _cgqc_player_bft_name + ".2";_cgqc_player_bft_color = "ColorWEST";};
 		case "YELLOW": { _cgqc_player_bft_name = _cgqc_player_bft_name + ".2";_cgqc_player_bft_color = "ColorUNKNOWN";};
-        case "MAIN": { _cgqc_player_bft_name = _cgqc_player_bft_name + ".0";_cgqc_player_bft_color = "ColorGrey";};
+        case "MAIN": { _cgqc_player_bft_name = _cgqc_player_bft_name + ".0";};
+        //_cgqc_player_bft_color = "ColorGrey";
 	};
     switch (_role) do {
         case "HQ": {_cgqc_player_bft_markerType = "b_hq";};
@@ -41,7 +42,7 @@ switch (_type) do {
             _id = _target getVariable "cgqc_name_vic_id";
             _markerColor = "ColorWHITE";
             switch (true) do {
-                case ("0" in _text): {_markerColor = "ColorGrey";};
+               // case ("0" in _text): {_markerColor = "ColorGrey";};
                 case ("1" in _text): {_markerColor = "ColorEAST";};
                 case ("2" in _text): {_markerColor = "ColorWEST";};
                 case ("3" in _text): {_markerColor = "ColorYELLOW";};
