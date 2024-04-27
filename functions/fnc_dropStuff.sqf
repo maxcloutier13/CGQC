@@ -40,6 +40,7 @@ _drop = true;
 _action = "";
 switch (_type) do {
     case "stash":{
+        LOG("DropStuff - Stash");
         _packName = typeOf unitBackpack player;
         _allMags = magazinesAmmoCargo backpackContainer player;
         _allItems = ItemCargo backpackContainer player;
@@ -51,26 +52,32 @@ switch (_type) do {
         [["Pack is stashed", 1.5], true] call CBA_fnc_notify;
     };
     case "unstash":{
+        LOG("DropStuff - Unstash");
         _var = _target getVariable "cgqc_vic_stashedPack";
         _pack = _var select 0;
         _allMags = _var select 1;
         _allItems = _var select 2;
         player addBackpack _pack;
         clearAllItemsFromBackpack player;
+        sleep 0.5;
+        {
+            LOG_1("DropStuff - adding item %1", _x);
+            player addItemToBackpack _x
+        } forEach _allItems;
         {
             _mag = _x select 0;
             _amnt = _x select 1;
+            LOG_2("DropStuff - adding mag %1:%2", _mag, _amnt);
             backpackContainer player addMagazineAmmoCargo [_mag, 1, _amnt];
         } forEach _allMags;
-        {
-            backpackContainer player addItem _x;
-        } forEach _allItems;
+        sleep 0.5;
         _target setVariable ["cgqc_vic_stashedPack", nil];
         cgqc_player_backpack_backup = nil;
         cgqc_backpack_stashed = false;
         [["Grabbed your bag", 1.5], true] call CBA_fnc_notify;
     };
     case "toggle": {
+        LOG("DropStuff - Toggle");
         if (cgqc_backpack_dropped) then {
             // Dropped: pick it up
             [player, 'backpack_pickup'] spawn CGQC_fnc_dropStuff;
@@ -80,6 +87,7 @@ switch (_type) do {
         };
     };
     case "restore": {
+        LOG("DropStuff - Restore backpack");
         if (!isNil "cgqc_player_backpack_backup") then {
             hint "Restoring backpack";
             cgqc_backpack_dropped = false;
@@ -94,7 +102,7 @@ switch (_type) do {
                 backpackContainer player addMagazineAmmoCargo [_mag, 1, _amnt];
             } forEach _allMags;
             {
-                backpackContainer player addItem _x;
+                player addItemToBackpack _x
             } forEach _allItems;
             // Delete marker and holder
             if !(isNil "pack_marker") then {deleteMarkerLocal "cgqc_marker_backpack";};
@@ -104,6 +112,7 @@ switch (_type) do {
         };
     };
     case "backpack_pickup": {
+        LOG("DropStuff - Picking up pack");
         [] spawn {
             _drop = false;
             _found = false;
@@ -148,6 +157,7 @@ switch (_type) do {
         };
     };
     case "backpack": {
+        LOG("DropStuff - Dropping pack");
         _pack = unitBackpack player;
         _packName = typeOf _pack;
         _action = "DropBag";
@@ -219,4 +229,4 @@ switch (_type) do {
     };
 };
 
-LOG(" dropStuff finished");
+LOG("DropStuff finished");

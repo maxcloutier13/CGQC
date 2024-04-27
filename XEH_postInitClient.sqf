@@ -82,12 +82,12 @@
 	cgqc_player_face = face player;
 
 	// Check if dayTime
-	[] spawn CGQC_fnc_isDaytime;
+	[] call CGQC_fnc_isDaytime;
 	// ID player and find patch
-	[] spawn CGQC_fnc_findRank;
-	[] spawn CGQC_fnc_findPatch;
-	[] spawn CGQC_fnc_getRankedBeret;
-	[] spawn CGQC_fnc_setPatch;
+	[] call CGQC_fnc_findRank;
+	[] call CGQC_fnc_findPatch;
+	[] call CGQC_fnc_getRankedBeret;
+	[] call CGQC_fnc_setPatch;
 
 	// Dynamic group -------------------------------------------------------------------------------------------------
 	// ['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
@@ -334,6 +334,7 @@
 	};
 
 	// Fix for dropped teamcolors
+	LOG("[CGQC_PostInitClient] - Starting color fix");
 	[] spawn {
 		while { true } do {
 			sleep cgqc_config_fix_colorFix_timer;
@@ -344,6 +345,7 @@
 	};
 
 	// Show current phase initially
+	LOG("[CGQC_PostInitClient] - Show initial phase");
 	[] spawn {
 		waitUntil {
 			sleep 1, cgqc_intro_done
@@ -375,15 +377,18 @@
 		] spawn BIS_fnc_typeText2;
 	};
 
+	LOG("[CGQC_PostInitClient] - loading showObjectName");
 	// Display name function
 	[{
-		[] call CGQC_fnc_showObjectName
+		[] call CGQC_fnc_showObjectName;
 	}, 1] call CBA_fnc_addPerframeHandler;
 
 	if (!cgqc_flag_isTraining) then {
+		LOG("[CGQC_PostInitClient] - Not training. Setting up radios");
 		[] call CGQC_fnc_setGroupRadios;
 	};
 
+	LOG("[CGQC_PostInitClient] - Stop time showing without watch");
 	// Player need a watch for the time to show on the map screen
 	player addEventHandler ["Put", {
     if (_this select 2 == "ItemWatch") then {
@@ -411,14 +416,17 @@
 
 	sleep 5;
 	// Init the map centering function
+	LOG("[CGQC_PostInitClient] - Load center map setting");
 	["initial"] call CGQC_fnc_centerMap;
 
 	sleep 25;
+	LOG("[CGQC_PostInitClient] - Checking for snapshots");
 	// Check if a snapshot exists
 	_snapshotFound = false;
 	_snapTxt = "";
 	_snapIntro = ["Saved loadout exists!", 1.5, [0.161, 0.502, 0.725, 1]];
 	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_done") then {
+		LOG("[CGQC_PostInitClient] - Manual snapshot exists");
 		_snapshotFound = true;
 		cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
 		_time = cgqc_snapshot_check select 1;
@@ -429,6 +437,7 @@
 		_snapTxt = _snapTxt + _txt;
 	};
 	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
+		LOG("[CGQC_PostInitClient] - Auto snapshot exists");
 		_snapshotFound = true;
 		cgqc_snapshot_check_auto = MissionProfileNamespace getVariable "cgqc_player_snapshot_auto";
 		_time = cgqc_snapshot_check_auto select 1;
@@ -439,6 +448,7 @@
 		_snapTxt = _snapTxt + _txt;
 	};
 	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then {
+		LOG("[CGQC_PostInitClient] - Start snapshot exists");
 		_snapshotFound = true;
 		cgqc_snapshot_check_start = MissionProfileNamespace getVariable "cgqc_player_snapshot_start";
 		_time = cgqc_snapshot_check_start select 1;
@@ -449,6 +459,7 @@
 		_snapTxt = _snapTxt + _txt;
 	};
 	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
+		LOG("[CGQC_PostInitClient] - Zeus snapshot exists");
 		_snapshotFound = true;
 		cgqc_snapshot_check_zeus = MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus";
 		_time = cgqc_snapshot_check_zeus select 1;
@@ -462,7 +473,6 @@
 	if (_snapshotFound) then {
 		[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
 	};
-
 
 	LOG("[CGQC_PostInitClient] === Done =====================================");
 };

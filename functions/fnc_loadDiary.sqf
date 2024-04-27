@@ -6,9 +6,9 @@ LOG(" loadDiary started");
 player createDiarySubject ["CGQC","CGQC"];
 
 _text = (
-	"Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = false'>NORMAL</execute> to keep default map behavior"
-	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = true;'>LAST</execute> to keep map centered on last position"
-	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = true; cgqc_map_centerOnLast = false;'>PLAYER</execute> to keep map centered on player."
+	"Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = false;hint 'CenterMap: Normal';'>NORMAL</execute> to keep default map behavior"
+	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = false;cgqc_map_centerOnLast = true;hint 'CenterMap: Last';'>LAST</execute> to keep map centered on last position"
+	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = true;cgqc_map_centerOnLast = false;hint 'CenterMap: Player';'>PLAYER</execute> to keep map centered on player."
 );
 
 player createDiaryRecord ["CGQC", ["Map Options", _text]];

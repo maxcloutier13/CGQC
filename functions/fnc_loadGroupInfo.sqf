@@ -36,7 +36,7 @@ cgqc_allGroupsInfo = [];
 			if ([_soldier, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio) then {
 				_343s = ["ACRE_PRC343", _soldier] call acre_api_fnc_getAllRadiosByType;
 				{
-					_radioType = "343";
+					_radioType = "SR";
 					_radioChan = [_x] call acre_api_fnc_getRadioChannel;
                     _txt = format ["%1:%2", _radioType, _radioChan];
 					_radios pushBack _txt;
@@ -45,7 +45,7 @@ cgqc_allGroupsInfo = [];
 			if ([_soldier, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio) then {
 				_148s = ["ACRE_PRC148", _soldier] call acre_api_fnc_getAllRadiosByType;
 				{
-					_radioType = "148";
+					_radioType = "LR";
 					_radioChan = [_x] call acre_api_fnc_getRadioChannel;
                      _txt = format ["%1:%2", _radioType, _radioChan];
 					_radios pushBack _txt;
@@ -54,7 +54,7 @@ cgqc_allGroupsInfo = [];
 			if ([_soldier, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio) then {
 				_152s = ["ACRE_PRC152", _soldier] call acre_api_fnc_getAllRadiosByType;
 				{
-					_radioType = "152";
+					_radioType = "LR";
 					_radioChan = [_x] call acre_api_fnc_getRadioChannel;
                      _txt = format ["%1:%2", _radioType, _radioChan];
 					_radios pushBack _txt;
@@ -63,7 +63,7 @@ cgqc_allGroupsInfo = [];
 			if ([_soldier, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio) then {
 				_117s = ["ACRE_PRC117F", _soldier] call acre_api_fnc_getAllRadiosByType;
 				{
-					_radioType = "117";
+					_radioType = "LR";
 					_radioChan = [_x] call acre_api_fnc_getRadioChannel;
                      _txt = format ["%1:%2", _radioType, _radioChan];
 					_radios pushBack _txt;
@@ -112,10 +112,8 @@ cgqc_allGroupsInfo = [];
 			default {_white pushBack _x};
 		};
 	} forEach _group;
-    // Sort the sub-groups by rank maybe?
-   _sortedGroup = [_leader] + _red + _green + _blue + _yellow + _white;
     // Store the group
-    cgqc_allGroupsInfo pushBack [_groupName, _sortedGroup];
+    cgqc_allGroupsInfo pushBack [_groupName, [_leader], _red, _green, _blue, _yellow, _white];
 } forEach _playerGroups;
 
 LOG(" loadGroupInfo done");

@@ -14,7 +14,7 @@ switch (_type) do {
         [["Deleted last marker", 1.5], true] call CBA_fnc_notify;
     };
     case "mark": {
-        _playerTeam = player getVariable "CGQC_player_teamColor";
+        _playerTeam = assignedTeam player;
         _color = "ColorBlack";
         switch (_playerTeam) do {
             case "RED": { _color = "ColorEAST";};

@@ -3,6 +3,8 @@
 // Match steamID with known players
 LOG(" getRankedBeret started");
 
+waitUntil {cgqc_player_rank_found};
+
 cgqc_player_beret = "";
 //waitUntil {cgqc_player_rank_found};
 _rank = player getVariable "cgqc_player_rank";

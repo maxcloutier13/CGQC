@@ -1,8 +1,8 @@
 #include "\CGQC\script_component.hpp"
 // --- centerMap ----------------------------------------------------------
 // Center the map if needed when opening
-params [["_type", "center"]]
-LOG("centerMap started");
+params [["_type", "initial"]];
+LOG_1("centerMap started - Type:%1", _type);
 
 switch (_type) do {
     case "initial": {
@@ -17,12 +17,14 @@ switch (_type) do {
             };
             case 1: {
                 LOG("centerMap - Initial: set to LAST");
-                gqc_map_centerOnplayer = false;
+                [["Map centered on LastPosition", 1.5], false] call CBA_fnc_notify;
+                cgqc_map_centerOnplayer = false;
                 cgqc_map_centerOnLast = true;
                 };
             case 2: {
                 LOG("centerMap - Initial: set to PLAYER");
-                gqc_map_centerOnplayer = true;
+                [["Map centered on player", 1.5], false] call CBA_fnc_notify;
+                cgqc_map_centerOnplayer = true;
                 cgqc_map_centerOnLast = false;
             };
         };
@@ -40,7 +42,6 @@ switch (_type) do {
             } forEach _itemsToCheck;
             if (_hasGPS) then {
                 LOG("centerMap - Player has some kind of GPS");
-                [["Map centered on player", 1.5], true] call CBA_fnc_notify;
                 _zoom = ctrlMapScale _map;
                 ctrlMapAnimClear _map;
                 _map ctrlMapAnimAdd [0.001, _zoom, getPosVisual (vehicle player)];

@@ -1,10 +1,3 @@
-// Jump target comp
-cgqc_position_jump =
-[
-	["PortableHelipadLight_01_blue_F",[0.461914,8.99194,-0.00117397],0,1,0,[0,0],"","",true,false],
-	["Land_JumpTarget_F",[0.282715,9.00098,0],0,1,0,[0,0],"","",true,false]
-];
-
 // Parachute ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_self_training_para", "Parachute", "\CGQC\textures\cgqc_ace_para", {}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;

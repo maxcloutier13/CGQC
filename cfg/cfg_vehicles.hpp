@@ -138,7 +138,7 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
         "\a3\soft_f_Exp\truck_01\data\truck_01_ext_01_olive_co.paa",
         "\a3\soft_f_Exp\truck_01\data\truck_01_ext_02_olive_co.paa",
         "\A3\Soft_F_Exp\Truck_01\Data\truck_01_ammo_olive_CO.paa",
-        "\CGQC\\CGQC\vehicles\cgqc_vic_construction_container.paa"
+        "\CGQC\CGQC\vehicles\cgqc_vic_construction_container.paa"
     };
 	class EventHandlers
     {

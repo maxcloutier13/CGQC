@@ -3,6 +3,13 @@
 // Paradrop shenanigans
 params ["_jumpHeight", ["_tpVersion", 0], ["_playerTarget", ""]];
 
+// Jump target composition
+cgqc_position_jump =
+[
+	["PortableHelipadLight_01_blue_F",[0.461914,8.99194,-0.00117397],0,1,0,[0,0],"","",true,false],
+	["Land_JumpTarget_F",[0.282715,9.00098,0],0,1,0,[0,0],"","",true,false]
+];
+
 [_jumpHeight, _tpVersion, _playerTarget] spawn {
 	params ["_jumpHeight", "_tpVersion", "_playerTarget"];
 	LOG_3(" trainingPara %1/%2/%3 started", _jumpHeight, _tpVersion, _playerTarget);
