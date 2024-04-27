@@ -58,4 +58,5 @@ if (isGamePaused || !isGameFocused) exitWith {};
     };
 };
 
-LOG(" showObjectName done");
+// Hidden to avoid repetition in log
+//LOG(" showObjectName done");
