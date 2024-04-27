@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class speedLimiter{
+            file = "\cgqc\functions\fnc_speedLimiter.sqf";
+            description = "Custom speed limiter menu";
+        };
         class markClear{
             file = "\cgqc\functions\fnc_markClear.sqf";
             description = "Mark building clear";
