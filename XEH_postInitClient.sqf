@@ -82,12 +82,12 @@
 	cgqc_player_face = face player;
 
 	// Check if dayTime
-	[] spawn CGQC_fnc_isDaytime;
+	[] call CGQC_fnc_isDaytime;
 	// ID player and find patch
-	[] spawn CGQC_fnc_findRank;
-	[] spawn CGQC_fnc_findPatch;
-	[] spawn CGQC_fnc_getRankedBeret;
-	[] spawn CGQC_fnc_setPatch;
+	[] call CGQC_fnc_findRank;
+	[] call CGQC_fnc_findPatch;
+	[] call CGQC_fnc_getRankedBeret;
+	[] call CGQC_fnc_setPatch;
 
 	// Dynamic group -------------------------------------------------------------------------------------------------
 	// ['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;
