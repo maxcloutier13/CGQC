@@ -5,7 +5,7 @@ params ["_target"];
 LOG(" renameVicAuto started");
     _suffix = "";
     _name = "";
-    _color = player getVariable ["CGQC_player_teamColor", "MAIN"];
+    _color = assignedteam player;
     switch (_color) do {
         case "RED": {_suffix = "1"};
         case "GREEN": {_suffix = "1"};
