@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.4.1";
+core_version = "4.6.6";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -67,6 +67,8 @@ cgqc_removeAll_done = false;
 cgqc_bft_forceUpdate = false;
 cgqc_hud_hidden = false;
 cgqc_showObject_running = false;
+cgqc_player_clearMarkers = [];
+cgqc_vic_limiter = false;
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -146,8 +148,13 @@ cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
 cgqc_reset_speaker = false;
+cgqc_backpack_stashed = false;
 cgqc_backpack_dropped = false;
 cgqc_backpack_dropped_notif = false;
+// Map stuff
+cgqc_map_centerOnplayer = false;
+cgqc_map_centerOnLast = false;
+cgqc_map_centerOldPosition = [];
 // Advanced perks
 cgqc_perks_ghillie_isOn = false;
 cgqc_perks_ghillie_uniform = "";
@@ -323,42 +330,46 @@ if (cgqc_player_hasUnsung) then {
 
 // Key-fucking-binds ===================================================================================
 // -- Repos --
-["CGQC", "cgqc_kb_repos", "Au Repos",
+["[CGQC]", "cgqc_kb_repos", "Au Repos",
 	{ ["flip_chill", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- Crickets --
-["CGQC", "cgqc_kb_criquet", "Criquet",
+["[CGQC]", "cgqc_kb_criquet", "Criquet",
 	{ ["click", false] spawn CGQC_fnc_perksBasic;}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- QuickStates --
-["CGQC", "cgqc_kb_stealth", "Quick States: Stealth",
+["[CGQC]", "cgqc_kb_stealth", "Quick States: Stealth",
 	{ ["stealth", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_normal", "Quick States: Normal",
+["[CGQC]", "cgqc_kb_normal", "Quick States: Normal",
 	{ ["normal", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_battle", "Quick States: Battle",
+["[CGQC]", "cgqc_kb_battle", "Quick States: Battle",
 	{ ["battle", false] spawn CGQC_fnc_perksBasic}, {""}, []
 ] call cba_fnc_addKeybind;
 
 // -- 152 speakers --
-["CGQC", "cgqc_kb_speaker1", "Toggle speaker 1",
+["[CGQC]", "cgqc_kb_speaker1", "Toggle speaker 1",
 	{ ["toggle_speaker"] spawn CGQC_fnc_setRadios}, {""}, []
 ] call cba_fnc_addKeybind;
-["CGQC", "cgqc_kb_speaker2", "Toggle speaker radio 2",
+["[CGQC]", "cgqc_kb_speaker2", "Toggle speaker radio 2",
 	{ ["toggle_speaker_2"] spawn CGQC_fnc_setRadios}, {""}, []
 ] call cba_fnc_addKeybind;
 
 //-- Drop Backpack --
-["CGQC", "cgqc_kb_dropPack_toggle", "Quickdrop/Pickup Backpack",
+["[CGQC]", "cgqc_kb_dropPack_toggle", "Quickdrop/Pickup Backpack",
 	{[backpack player, 'toggle'] call CGQC_fnc_dropStuff}, {""}, []
 ] call cba_fnc_addKeybind;
 
+["[CGQC]", "cgqc_kb_markClear", "Mark building as Clear",
+	{[] spawn CGQC_fnc_markClear}, {""}, [DIK_O, [false, true, false]]
+] call cba_fnc_addKeybind;
+
 //-- Hide the HUD
-["CGQC", "toggle", "Toggle HUD", {
-	_this call CGQC_fnc_toggleUI}, {""}, []
+["[CGQC]", "toggle", "Toggle HUD", {
+	_this call CGQC_fnc_toggleUI}, {""}, [DIK_O, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
 //Wind changer event
@@ -371,6 +382,10 @@ if (cgqc_player_hasUnsung) then {
 // Initial roster
 [] spawn CGQC_fnc_loadDiaryRoster;
 
+// Original map position
+_map = (findDisplay 12 displayCtrl 51);
+cgqc_map_centerOldPosition = [_map ctrlMapScreenToWorld [0.5, 0.5], ctrlMapScale _map];
+
 // Map open/close
 cgqc_mapOpen = addMissionEventHandler ["Map", {
 	params ["_mapIsOpened", "_mapIsForced"];
@@ -379,13 +394,19 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 	[_mapIsOpened, _mapIsForced] spawn {
 		params ["_mapIsOpened", "_mapIsForced"];
 		if (_mapIsOpened) then {
+			[] call CGQC_fnc_centerMap;
 			while {cgqc_mapOpened} do {
 				[] call CGQC_fnc_loadDiaryRoster;
 				sleep 5;
 			};
+		} else {
+			_map = (findDisplay 12 displayCtrl 51);
+			cgqc_map_centerOldPosition = [_map ctrlMapScreenToWorld [0.5, 0.5], ctrlMapScale _map];
 		};
 	};
 }];
+
+
 
 // Medical menu / IFAK eventhandler
 ["ace_medicalMenuOpened", {
@@ -735,24 +756,32 @@ if (cgqc_player_hasNorthern) then {
 	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideRadios"}] call CBA_fnc_addSetting;
 
 // Player custom Options ===================================================================================================
+_menu_name_player = "[CGQC] Player settings";
+
+["cgqc_flag_mapCenterSetting", "LIST", ["Default Map Centering Mode", "Mode that is set on gamestart"],
+  [_menu_name_player, "Map Centering Mode"], [[0, 1, 2], ["Normal","Last position", "Player"], 0], {["initial"] call CGQC_fnc_centerMap}] call CBA_fnc_addSetting;
+
+["cgqc_bft_initials", "CHECKBOX", ["Use only initials/Shortnames", "Shorter names on radar"],
+    [_menu_name_player, "BFT - Blue Force Tracking"], true] call CBA_fnc_addSetting;
+
 // Check that 2023 is not present
 if (!cgqc_player_has2023) then {
 	// Custom pistol 2023 version
-	_menu_name = "[CGQC] Player settings";
+
 	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"],
-		[_menu_name, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
 };
 // === Custom arsenal categories ===============================================================================
 private _medical = [
@@ -825,7 +854,9 @@ private _electronics = [
 	"MRH_FoldedSatcomAntenna",
 	"NER_item_bulatv3",
 	"Item_JammerSania",
-	"Item_JammerVolnorez"
+	"Item_JammerVolnorez",
+	"azm_bft_rx",
+    "azm_bft_tx"
 ];
 private _logistics = [
 	"cgqc_items_medkit",
@@ -914,6 +945,7 @@ if (cgqc_config_sideLanguage) then {
 	};
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
+
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;

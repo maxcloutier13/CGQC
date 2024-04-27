@@ -3,24 +3,131 @@
 class VTOL_01_base_F;
 class Boat_F;
 
-#define MACRO_CGQC_RENAME \
-    class cgqc_ace_renameVic { \
-        displayName = "Rename Vehicle"; \
-        condition = "true"; \
-        statement = "cgqc_rename_vic = _target;[_target] call CGQC_fnc_renameVic"; \
-        runOnHover = "hint 'Rename Vehicle'"; \
+#define MACRO_CGQC_SPEEDLIMITER \
+    class cgqc_ace_vic_limiter { \
+        displayName = "Speed limiter"; \
+        condition = "_player == driver _target"; \
+        statement = ""; \
+        class cgqc_ace_vic_limiter_1 { \
+            displayName = "Walking (6)"; \
+            condition = "true"; \
+            statement = "[6, false] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_limiter_2 { \
+            displayName = "Gun Up (11)"; \
+            condition = "true"; \
+            statement = "[11, false] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_limiter_3 { \
+            displayName = "Jog (14)"; \
+            condition = "true"; \
+            statement = "[14, false] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_limiter_4 { \
+            displayName = "Sprint (20)"; \
+            condition = "true"; \
+            statement = "[20, false] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_limiter_5 { \
+            displayName = "Convoy Slow (40)"; \
+            condition = "true"; \
+            statement = "[40, false] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_limiter_6 { \
+            displayName = "Convoy (Normal) (60)"; \
+            condition = "true"; \
+            statement = "[60, false] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_limiter_7 { \
+            displayName = "Convoy (Fast) (80)"; \
+            condition = "true"; \
+            statement = "[80, false] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_limiter_8 { \
+            displayName = "Convoy (Full) (100)"; \
+            condition = "true"; \
+            statement = "[100, false] call CGQC_fnc_speedLimiter"; \
+        }; \
     }; \
+    class cgqc_ace_vic_cruise { \
+        displayName = "Cruise Control"; \
+        condition = "_player == driver _target"; \
+        statement = ""; \
+        class cgqc_ace_vic_cruise_1 { \
+            displayName = "Walking (6)"; \
+            condition = "true"; \
+            statement = "[6, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_cruise_2 { \
+            displayName = "Gun Up (11)"; \
+            condition = "true"; \
+            statement = "[11, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_cruise_3 { \
+            displayName = "Jog (14)"; \
+            condition = "true"; \
+            statement = "[14, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_cruise_4 { \
+            displayName = "Sprint (20)"; \
+            condition = "true"; \
+            statement = "[20, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_cruise_5 { \
+            displayName = "Convoy Slow (40)"; \
+            condition = "true"; \
+            statement = "[40, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_cruise_6 { \
+            displayName = "Convoy (Normal) (60)"; \
+            condition = "true"; \
+            statement = "[60, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_cruise_7 { \
+            displayName = "Convoy (Fast) (80)"; \
+            condition = "true"; \
+            statement = "[80, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+        class cgqc_ace_vic_cruise_8 { \
+            displayName = "Convoy (Full) (100)"; \
+            condition = "true"; \
+            statement = "[100, true] call CGQC_fnc_speedLimiter"; \
+        }; \
+    };
+
+
+#define MACRO_CGQC_RENAME \
     class cgqc_ace_designateVic { \
         displayName = "AutoRename"; \
         condition = "true"; \
         statement = "[_target] call CGQC_fnc_renameVicAuto"; \
         runOnHover = "hint 'Rename Vehicle according to your team'"; \
+        class cgqc_ace_renameVic { \
+            displayName = "Manual Rename"; \
+            condition = "true"; \
+            statement = "cgqc_rename_vic = _target;[_target] call CGQC_fnc_renameVic"; \
+            runOnHover = "hint 'Rename Vehicle'"; \
+        }; \
     }; \
     class cgqc_ace_vicStopBFT { \
         displayName = "Stop transmiting position"; \
         condition = "_target getVariable ['show_marker', false]"; \
         statement = "_target setVariable ['show_marker', false]"; \
         runOnHover = "hint 'Stop the vic from transmitting its position'"; \
+    }; \
+    class cgqc_ace_stashPack { \
+        displayName = "Stash backpack in vic"; \
+        condition = "!cgqc_backpack_stashed"; \
+        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
+        statement = "[backpack player, 'stash', _target] spawn CGQC_fnc_dropStuff"; \
+        runOnHover = "hint 'Stash your pack in this vic'"; \
+    }; \
+    class cgqc_ace_grabPack { \
+        displayName = "Grab your pack"; \
+        condition = "cgqc_backpack_stashed"; \
+        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
+        statement = "[backpack player, 'unstash', _target] spawn CGQC_fnc_dropStuff"; \
+        runOnHover = "hint 'Grab your pack from this vic'"; \
     };
 
 #define MACRO_CGQC_MAINTENANCE \
@@ -43,6 +150,9 @@ class Boat_F;
 
 class LandVehicle;
 class Car: LandVehicle {
+    class ACE_SelfActions {
+        MACRO_CGQC_SPEEDLIMITER
+    };
     class ACE_Actions {
 		class ACE_MainActions {
             MACRO_CGQC_RENAME
@@ -51,6 +161,9 @@ class Car: LandVehicle {
 	};
 };
 class Tank: LandVehicle {
+    class ACE_SelfActions {
+        MACRO_CGQC_SPEEDLIMITER
+    };
     class ACE_Actions {
 		class ACE_MainActions {
             MACRO_CGQC_RENAME
@@ -59,8 +172,13 @@ class Tank: LandVehicle {
 	};
 };
 class Motorcycle: LandVehicle {
-    MACRO_CGQC_RENAME
-    MACRO_CGQC_MAINTENANCE
+    class ACE_SelfActions {
+        MACRO_CGQC_SPEEDLIMITER
+    };
+    class ACE_MainActions {
+        MACRO_CGQC_RENAME
+        MACRO_CGQC_MAINTENANCE
+    };
 };
 class Air;
 class Helicopter: Air {

@@ -39,7 +39,7 @@ cgqc_mk2_arsenal_rank4 = [
     "JAS_GPNVG18_Full_blk_TI",
     "JAS_GPNVG18_Full_tan_TI",
     // Helmets -----------------------------------
-    "cgqc_beret_green",
+    "cgqc_beret_gray",
     // Scopes -----------------------------------
     "optic_Nightstalker",
     "sn_ns",

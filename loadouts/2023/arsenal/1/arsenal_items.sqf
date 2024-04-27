@@ -37,6 +37,8 @@ cgqc_mk2_arsenal_1_items = [
     "WBK_HeadLampItem",
     "ACE_Flashlight_MX991",
     "ACE_Flashlight_XL50",
+    "azm_bft_rx",
+    "azm_bft_tx",
     // Binoculars ------------------------------
     "Binocular",
     "cgqc_item_rangefinder",

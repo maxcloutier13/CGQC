@@ -11,7 +11,19 @@ class diwako_lockbackpack {
 class CGQC {
     tag = "CGQC";
     class functions {
-        // Fonctions ----------------------------------------------------------------------------
+        // Fonctions ---------------------------------------------------------------------------
+        class speedLimiter{
+            file = "\cgqc\functions\fnc_speedLimiter.sqf";
+            description = "Custom speed limiter menu";
+        };
+        class markClear{
+            file = "\cgqc\functions\fnc_markClear.sqf";
+            description = "Mark building clear";
+        };
+        class centerMap{
+            file = "\cgqc\functions\fnc_centerMap.sqf";
+            description = "Set map position when opening";
+        };
         class renameVic{
             file = "\cgqc\functions\fnc_renameVic.sqf";
             description = "Rename vehicle";

@@ -384,10 +384,36 @@
 		[] call CGQC_fnc_setGroupRadios;
 	};
 
+	// Player need a watch for the time to show on the map screen
+	player addEventHandler ["Put", {
+    if (_this select 2 == "ItemWatch") then {
+        findDisplay 12 displayCtrl 101 ctrlShow (
+            if (_this select 2 in assignedItems player) then [
+                {true},
+                {false}
+            ]
+        )
+    }
+	}];
+	player addEventHandler ["Take", {
+		if (_this select 2 == "ItemWatch") then {
+			findDisplay 12 displayCtrl 101 ctrlShow (
+				if (_this select 2 in assignedItems player) then [
+					{true},
+					{false}
+				]
+			)
+		}
+	}];
+
 	// All done
 	cgqc_start_postInitClient_done = true;
 
-	sleep 30;
+	sleep 5;
+	// Init the map centering function
+	["initial"] call CGQC_fnc_centerMap;
+
+	sleep 25;
 	// Check if a snapshot exists
 	_snapshotFound = false;
 	_snapTxt = "";
@@ -436,6 +462,7 @@
 	if (_snapshotFound) then {
 		[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
 	};
+
 
 	LOG("[CGQC_PostInitClient] === Done =====================================");
 };
