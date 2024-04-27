@@ -69,6 +69,7 @@ cgqc_hud_hidden = false;
 cgqc_showObject_running = false;
 cgqc_player_clearMarkers = [];
 cgqc_vic_limiter = false;
+cgqc_player_rosterInit = false;
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
