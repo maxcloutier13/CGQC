@@ -1,17 +1,18 @@
 #include "\CGQC\script_component.hpp"
 // --- showObjectName ----------------------------------------------------------
 // Black fadout/in with some information in some cases
-LOG(" showObjectName started");
 
 if (isGamePaused || !isGameFocused) exitWith {};
 
 [] spawn {
 	_target = cursorTarget;
     if (_target distance player < 15) then {
+        LOG("showObjectName - Object closer than 15m");
         if ((typeOf _target) isEqualTo "GroundWeaponHolder_Scripted") exitWith {
             // player backpack?
             _name = _target getVariable ["cgqc_name_object", "NONE"];
             if (_name isNotEqualTo "NONE") then {
+                LOG("showObjectName - Got a name");
                 // Bingo. Got a name
                 _color = "ffffff";
                 if (_name isEqualTo name player) then {
@@ -30,6 +31,7 @@ if (isGamePaused || !isGameFocused) exitWith {};
         if (_target isKindOf "AllVehicles" && _target distance player > 3) exitWith {
             _name = _target getVariable ["cgqc_name_vic", "NONE"];
             if (_name isNotEqualTo "NONE") then {
+                LOG("showObjectName - Found named car");
                 _color = "777676"; // gray
                                 // Bingo. Got a name
                 switch (true) do {
