@@ -12,13 +12,19 @@ cgqc_notifAll_fade = _fadeIn;
 
 switch (_mode) do {
 	case "cba_notify_phase": {
+		cgqc_notifPhase = cgqc_notifAll_txt;
+		publicVariable "cgqc_notifPhase";
 		[-1, {
-			[[cgqc_notifAll_txt, 1.5], true] call CBA_fnc_notify;
+			[[cgqc_notifPhase, 1.5], true] call CBA_fnc_notify;
 		}] call CBA_fnc_globalExecute;
 	};
 	case "cba_notify_start": {
+		cgqc_notifStart = cgqc_notifAll_txt;
+		cgqc_notifStart2 = cgqc_notifAll_txt_2;
+		publicVariable "cgqc_notifStart";
+		publicVariable "cgqc_notifStart2";
 		[-1, {
-			[[cgqc_notifAll_txt, 1.5], [cgqc_notifAll_txt_2], false] call CBA_fnc_notify;
+			[[cgqc_notifStart, 1.5], [cgqc_notifStart2], false] call CBA_fnc_notify;
 		}] call CBA_fnc_globalExecute;
 	};
 	case "dynamic": {
