@@ -9,10 +9,6 @@ CGQC_int_bft_findInfo = {
     _cgqc_player_bft_color = "ColorWhite";
     _role = cgqc_player_roleType;
 	_cgqc_player_bft_name = groupId group player;
-    if (cgqc_bft_initials) then {
-        //Shortened names
-        _cgqc_player_bft_name = _cgqc_player_bft_name select [0,1];
-    };
     _cgqc_player_bft_markerType = "b_inf";
 	_info = [];
 	switch (_color) do {
@@ -123,12 +119,22 @@ switch (_type) do {
                             if (AZMBFT_receivingCode isEqualTo _code) then {
                                 //LOG ("BFT - Receive check passed");
                                 if ((getMarkercolor _markerName) isEqualTo "") then {
+
+                                    // Adjust name to  setttings
+                                    if (cgqc_bft_initials) then {
+                                        //Shortened names
+                                        _cgqc_player_bft_name = _cgqc_player_bft_name select [0,1];
+                                    };
+
+
                                     //LOG ("BFT - Something changed: Reloading marker");
                                     // ["create marker", _markerName] call CBA_fnc_debug;
                                     private _marker = createMarkerLocal [_markerName, _pos];
                                     _marker setMarkerColorLocal _markerData#1;
                                     _marker setMarkerTypeLocal _markerData#0;
                                     _marker setMarkerTextLocal _text;
+                                    _size = 1 * cgqc_bft_scale;
+                                    _marker setMarkerSize [_size, _size];
                                     AZMBFT_localMarkerList set [_x, _marker];
                                 };
                                 //LOG ("BFT - Moving marker");
@@ -146,7 +152,6 @@ switch (_type) do {
                     {deleteMarkerLocal _y;} forEach AZMBFT_localMarkerList;
                     cgqc_bft_forceUpdate = false;
                 };
-
             };
         };
     };
