@@ -25,7 +25,7 @@ switch (_type) do {
         };
         _count = count cgqc_player_clearMarkers;
         _no = _count + 1;
-        _name = format ["clearMrk_%1_%2", getPlayerID player, _no];
+        _name = format ["_USER_DEFINED_clearMrk_%1_%2", getPlayerID player, _no];
         _marker = createMarker [_name, player, 1, player];
         _name setMarkerType "hd_dot";
         _name setMarkerColor _color;

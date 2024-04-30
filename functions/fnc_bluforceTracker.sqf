@@ -64,7 +64,7 @@ switch (_type) do {
             _code = 440;
             AZMBFT_isTransmitting = true;
             if (_showMsg) then {
-                [["Blufor Tracking", 1.5, [0.161,0.502,0.725,1]], ["TX started"],[format["Code: %1",_code]]] call CBA_fnc_notify;
+                [["Blufor Tracking", 1.5, [0.161,0.502,0.725,1]], ["TX started", 1.5, [0.161, 0.502, 0.725, 1]],[format["Code: %1",_code]]] call CBA_fnc_notify;
             };
             while {AZMBFT_isTransmitting} do {
                 _vicShowingAlready = vehicle player getVariable ["show_marker", false];
@@ -121,15 +121,13 @@ switch (_type) do {
                                 if ((getMarkercolor _markerName) isEqualTo "") then {
 
                                     // Adjust name to  setttings
-                                    if (cgqc_bft_initials) then {
-                                        //Shortened names
-                                        _cgqc_player_bft_name = _cgqc_player_bft_name select [0,1];
+                                    switch (cgqc_bft_initials) do {
+                                        case 1: {_text = _text select [0,1];}; // Short
+                                        case 2: {_text = ""; }; // No name
                                     };
-
-
                                     //LOG ("BFT - Something changed: Reloading marker");
                                     // ["create marker", _markerName] call CBA_fnc_debug;
-                                    private _marker = createMarkerLocal [_markerName, _pos];
+                                    private _marker = createMarkerLocal [_markerName, _pos, 1, player];
                                     _marker setMarkerColorLocal _markerData#1;
                                     _marker setMarkerTypeLocal _markerData#0;
                                     _marker setMarkerTextLocal _text;
