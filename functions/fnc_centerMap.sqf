@@ -36,7 +36,7 @@ switch (_type) do {
             _itemsToCheck = ['ItemGPS', 'ItemAndroid', 'ACE_microDAGR', 'B_UavTerminal', 'O_UavTerminal', 'I_UavTerminal', 'C_UavTerminal', 'I_E_UavTerminal'];
             _hasGPS = false;
             {
-                if (_x in items player) exitWith {
+                if (_x in assignedItems player) exitWith {
                     _hasGPS = true;
                 };
             } forEach _itemsToCheck;
