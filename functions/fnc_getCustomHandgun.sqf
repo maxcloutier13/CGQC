@@ -19,6 +19,10 @@ if (cgqc_config_sidearm) then {
 	if (cgqc_config_sidearm_optic != "") then {
 		player addHandgunItem cgqc_config_sidearm_optic;
 	};
+	[
+    ["Custom Sidearm", 1.5, [0.161, 0.502, 0.725, 1]],
+		[format["%1 Loaded!",cgqc_config_sidearm_pistol]]
+	] call CBA_fnc_notify;
 }else{
 	_gun = _gunArray select 0;
 	// Remove gun from array
