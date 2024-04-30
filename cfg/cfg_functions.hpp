@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class exportPistol{
+            file = "\cgqc\functions\fnc_exportPistol.sqf";
+            description = "Export custom pistol to settings";
+        };
+        class routeplanner{
+            file = "\cgqc\functions\fnc_routeplanner.sqf";
+            description = "Semi automated route planning";
+        };
         class speedLimiter{
             file = "\cgqc\functions\fnc_speedLimiter.sqf";
             description = "Custom speed limiter menu";

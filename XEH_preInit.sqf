@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.6.6";
+core_version = "4.6.6.7";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -71,6 +71,7 @@ cgqc_player_clearMarkers = [];
 cgqc_vic_limiter = false;
 cgqc_player_rosterInit = false;
 cgqc_player_route = [];
+cgqc_player_route_on = false;
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -809,25 +810,44 @@ _section = "BFT - Blue Force Tracking";
 ["cgqc_bft_scale", "SLIDER",["BFT Icon scaling", "Smaller equals... smaller ;o)"],
     [_menu_name_player,_section], [0, 2, 1, 0, true], 0, {cgqc_bft_forceUpdate = true}, false] call CBA_fnc_addSetting;
 
-// Check that 2023 is not present
-if (!cgqc_player_has2023) then {
-	// Custom pistol 2023 version
+_default_sideArm_text = "";
+_default_sideArm = "";
+_default_sideArm_mag = "";
+_default_sideArm_laser = "";
+_default_sideArm_suppress = "";
+_default_sideArm_optic = "";
 
-	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+// Check that 2023 is not present
+if (cgqc_player_has2023) then {
+	_default_sideArm_text = "Sidearm Perso (2023)";
+	_default_sideArm = "cgqc_gun_glock19_wood";
+	_default_sideArm_mag = "Tier1_15Rnd_9x19_JHP";
+	_default_sideArm_laser = "tier1_dbalpl";
+	_default_sideArm_suppress = "";
+	_default_sideArm_optic = "tier1_sig_romeo1";
+} else {
+	_default_sideArm_text = "Sidearm Perso (Vanilla)";
+	_default_sideArm = "cgqc_gun_p99_wood";
+	_default_sideArm_mag = "16Rnd_9x21_Mag";
+	_default_sideArm_laser = "";
+	_default_sideArm_suppress = "";
+	_default_sideArm_optic = "";
 };
+
+["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
+	[_menu_name_player, _default_sideArm_text], false] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_mag] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_laser] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_suppress] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_optic] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
+	[_menu_name_player, _default_sideArm_text], [2, 8, 2, 0]] call CBA_fnc_addSetting;
 // === Custom arsenal categories ===============================================================================
 private _medical = [
 	"ACE_fieldDressing",
@@ -956,6 +976,12 @@ _delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
+addMissionEventHandler ["MapSingleClick", {
+ params["_control", "_pos", "_shift", "_alt", "_ctrl"];
+ if (_alt) then {
+  player setVariable ["ClickedMapPos", _pos];
+ }
+}];
 
 // Fonctions customs
 CGQC_int_allHumanPlayers = {
@@ -970,6 +996,12 @@ CGQC_int_allAIUnits = {
     _units = _units - (entities "HeadlessClient_F");
     _units;
 };
+
+/* Menu option
+if (hasInterface) then {
+    [["CGQC", "Options CGQC"], "cgqc_pause_test"] call CBA_fnc_addPauseMenuOption;
+};
+*/
 
 /*
 // Create default languages
