@@ -69,8 +69,11 @@
 			[_unit, _killer, _instigator, _useEffects] call CGQC_fnc_playerKilled;
 		}];
 	} else {
-		1 fadeSound 1;
-		titleCut ["", "BLACK IN", 1];
+		[] spawn {
+			1 fadeSound 1;
+			sleep 5;
+			titleCut ["", "BLACK IN", 1];
+		};
 	};
 
 	// player identification --------------------------------------------------------------------------------------------
