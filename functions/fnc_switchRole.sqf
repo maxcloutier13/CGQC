@@ -33,6 +33,7 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
             LOG("[CGQC_INIT] initTraining started");
             ['chill', false] spawn CGQC_fnc_perksBasic;
             ["training"] call CGQC_fnc_getRadioPresets;
+            ["transmit"] spawn CGQC_fnc_bluforceTracker;
             cgqc_player_role = "Training";
         } else {
             // Prep player for switch
