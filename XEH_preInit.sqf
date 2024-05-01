@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.6.7";
+core_version = "4.6.6.9";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -806,7 +806,7 @@ _menu_name_player = "[CGQC] Player settings";
 
 _section = "BFT - Blue Force Tracking";
 ["cgqc_bft_initials", "LIST", ["Name type", "Name size on BFT Icons. Normal: full name. Initials: short name. And then no name"],
-	[_menu_name_player, _section], [[0, 1, 2], ["Full names","Short names", "No names"], 1], {cgqc_bft_forceUpdate = true}] call CBA_fnc_addSetting;
+	[_menu_name_player, _section], [[0, 1, 2], ["Full names","Short names", "No names"], 1], 0, {cgqc_bft_forceUpdate = true}] call CBA_fnc_addSetting;
 ["cgqc_bft_scale", "SLIDER",["BFT Icon scaling", "Smaller equals... smaller ;o)"],
     [_menu_name_player,_section], [0, 2, 1, 0, true], 0, {cgqc_bft_forceUpdate = true}, false] call CBA_fnc_addSetting;
 
