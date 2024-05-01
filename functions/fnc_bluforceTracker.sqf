@@ -9,10 +9,6 @@ CGQC_int_bft_findInfo = {
     _cgqc_player_bft_color = "ColorWhite";
     _role = cgqc_player_roleType;
 	_cgqc_player_bft_name = groupId group player;
-    if (cgqc_bft_initials) then {
-        //Shortened names
-        _cgqc_player_bft_name = _cgqc_player_bft_name select [0,1];
-    };
     _cgqc_player_bft_markerType = "b_inf";
 	_info = [];
 	switch (_color) do {
@@ -47,8 +43,9 @@ switch (_type) do {
                 case ("2" in _text): {_markerColor = "ColorWEST";};
                 case ("3" in _text): {_markerColor = "ColorYELLOW";};
             };
-            //_markerType = "b_mech_inf";
-            _markerType = "loc_car";
+            _markerType = "b_mech_inf";
+            //_markerType = "iconCar";
+            //_markerType = "loc_car";
             _code = 440;
             private _temp = [
                 _target,
@@ -68,7 +65,7 @@ switch (_type) do {
             _code = 440;
             AZMBFT_isTransmitting = true;
             if (_showMsg) then {
-                [["Blufor Tracking", 1.5, [0.161,0.502,0.725,1]], ["TX started"],[format["Code: %1",_code]]] call CBA_fnc_notify;
+                [["Blufor Tracking", 1.5, [0.161,0.502,0.725,1]], ["TX started", 1.5, [0.161, 0.502, 0.725, 1]],[format["Code: %1",_code]]] call CBA_fnc_notify;
             };
             while {AZMBFT_isTransmitting} do {
                 _vicShowingAlready = vehicle player getVariable ["show_marker", false];
@@ -106,10 +103,10 @@ switch (_type) do {
                     //LOG ("BFT - Starting the run");
                     private _markerName = format ["AZMBFT_marker_%1", _x];
                     _goAhead = true;
-                    if (getPlayerUID player in _markerName) then { // Player marker
-                        if !(visibleMap) then {
-                            _goAhead = false;
-                        };
+                    if (getPlayerUID player in _markerName) then { // Player marker. Skip it.
+                        //if !(visibleMap) then {
+                        _goAhead = false;
+                        //};
                     };
                     if (_goAhead) then {
                         if (!(_y isEqualType [])) then {
@@ -123,12 +120,24 @@ switch (_type) do {
                             if (AZMBFT_receivingCode isEqualTo _code) then {
                                 //LOG ("BFT - Receive check passed");
                                 if ((getMarkercolor _markerName) isEqualTo "") then {
+                                    // Adjust name to  setttings
+                                    switch (cgqc_bft_initials) do {
+                                        case 1: {
+                                            _textPrefix = _text select [0,1];
+                                            _textSuffix = _text select [count _text - 1];
+                                            _text = format ["%1%2", _textPrefix, _textSuffix];
+                                        }; // Short
+                                        case 2: {_text = ""; }; // No name
+                                    };
+                                    // Adjust name to  setttings
                                     //LOG ("BFT - Something changed: Reloading marker");
                                     // ["create marker", _markerName] call CBA_fnc_debug;
-                                    private _marker = createMarkerLocal [_markerName, _pos];
+                                    private _marker = createMarkerLocal [_markerName, _pos, 1, player];
                                     _marker setMarkerColorLocal _markerData#1;
                                     _marker setMarkerTypeLocal _markerData#0;
                                     _marker setMarkerTextLocal _text;
+                                    _size = 1 * cgqc_bft_scale;
+                                    _marker setMarkerSize [_size, _size];
                                     AZMBFT_localMarkerList set [_x, _marker];
                                 };
                                 //LOG ("BFT - Moving marker");
@@ -140,13 +149,13 @@ switch (_type) do {
                         AZMBFT_localMarkerList deleteAt _x;
                     };
                 } forEach AZMBFT_storage;
-                //LOG ("BFT - Done. Sleeping");
+
                 sleep AZMBFT_updateInterval;
                 if (cgqc_bft_forceUpdate) then {
+                    LOG ("BFT - Forcing Update");
                     {deleteMarkerLocal _y;} forEach AZMBFT_localMarkerList;
                     cgqc_bft_forceUpdate = false;
                 };
-
             };
         };
     };

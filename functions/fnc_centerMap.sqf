@@ -17,13 +17,13 @@ switch (_type) do {
             };
             case 1: {
                 LOG("centerMap - Initial: set to LAST");
-                [["Map centered on LastPosition", 1.5], false] call CBA_fnc_notify;
+                //[["Map centered on LastPosition", 1.5], true] call CBA_fnc_notify;
                 cgqc_map_centerOnplayer = false;
                 cgqc_map_centerOnLast = true;
                 };
             case 2: {
                 LOG("centerMap - Initial: set to PLAYER");
-                [["Map centered on player", 1.5], false] call CBA_fnc_notify;
+                //[["Map centered on player", 1.5], true] call CBA_fnc_notify;
                 cgqc_map_centerOnplayer = true;
                 cgqc_map_centerOnLast = false;
             };
@@ -36,7 +36,7 @@ switch (_type) do {
             _itemsToCheck = ['ItemGPS', 'ItemAndroid', 'ACE_microDAGR', 'B_UavTerminal', 'O_UavTerminal', 'I_UavTerminal', 'C_UavTerminal', 'I_E_UavTerminal'];
             _hasGPS = false;
             {
-                if (_x in items player) exitWith {
+                if (_x in assignedItems player) exitWith {
                     _hasGPS = true;
                 };
             } forEach _itemsToCheck;

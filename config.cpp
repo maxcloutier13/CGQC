@@ -42,6 +42,10 @@ class CfgEditorSubcategories
 	};
 	class EdSubcat_CGQC_mk1
 	{
+		displayName = "Men (2023)";
+	};
+	class EdSubcat_CGQC_mk4
+	{
 		displayName = "Men (2024)";
 	};
 	class EdSubcat_CGQC_swat
@@ -133,3 +137,5 @@ class CfgSounds
 #include "\CGQC\cfg\cfg_spotlight.hpp"
 // Marker Colors
 #include "\CGQC\cfg\cfg_markerColors.hpp"
+// Pause Menu
+#include "\CGQC\gui\pauseMenu.hpp"

@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.6.6";
+core_version = "4.6.7";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -70,6 +70,8 @@ cgqc_showObject_running = false;
 cgqc_player_clearMarkers = [];
 cgqc_vic_limiter = false;
 cgqc_player_rosterInit = false;
+cgqc_player_route = [];
+cgqc_player_route_on = false;
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -373,6 +375,11 @@ if (cgqc_player_hasUnsung) then {
 	_this call CGQC_fnc_toggleUI}, {""}, [DIK_O, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
+//-- Route planner
+["[CGQC]", "cgqc_kb_routePlanner", "Start Route planner", {
+	["init"] spawn CGQC_fnc_routePlanner}, {""}, []
+] call CBA_fnc_addKeybind;
+
 //Wind changer event
 ["cgqc_change_fucking_wind", {
 	params ["_type"];
@@ -426,6 +433,40 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 // Addon Options ===================================================================================================
 _menu_name = "[CGQC] Zeus";
 
+
+/*
+// Options CBA
+Parameters
+_setting	Unique setting name.  Matches resulting variable name STRING
+_settingType	Type of setting.  Can be “CHECKBOX”, “EDITBOX”, “LIST”, “SLIDER” or “COLOR” STRING
+_title	Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
+_category	Category for the settings menu + optional sub-category <STRING, ARRAY>
+_valueInfo	Extra properties of the setting depending of _settingType.  See examples below <ANY>
+_isGlobal	1: all clients share the same setting, 2: setting can’t be overwritten (optional, default: 0) ARRAY
+_script	Script to execute when setting is changed.  (optional) <CODE>
+_needRestart	Setting will be marked as needing mission restart after being changed.  (optional, default false) <BOOL>
+Returns
+_return	Error code <BOOLEAN> true: Success, no error false: Failure, error
+Examples
+// CHECKBOX --- extra argument: default value
+["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call CBA_fnc_addSetting;
+
+// LIST --- extra arguments: [_values, _valueTitles, _defaultIndex]
+["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled","disabled"], 1]] call CBA_fnc_addSetting;
+
+// SLIDER --- extra arguments: [_min, _max, _default, _trailingDecimals, _isPercentage]
+["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call CBA_fnc_addSetting;
+
+// COLOR PICKER --- extra argument: _color
+["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1, 0]] call CBA_fnc_addSetting;
+
+// EDITBOX --- extra argument: default value
+["Test_Setting_5", "EDITBOX",  ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call CBA_fnc_addSetting;
+
+// TIME PICKER (time in seconds) --- extra arguments: [_min, _max, _default]
+["Test_Setting_6", "TIME",     ["-test time-",    "-tooltip-"], "My Category", [0, 3600, 60]] call CBA_fnc_addSetting;
+
+*/
 //Intro Stuff
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
@@ -522,21 +563,22 @@ cgqc_config_mission_name = getMissionConfigValue "onLoadName";
 	true
 ] call CBA_fnc_addSetting;
 
+_section = "Zeus Looting Restrictions";
 // Looting settings
 ["cgqc_lootingRestriction_on", "CHECKBOX", ["Restrict corpse looting?", "Empêche/limite le looting des corps"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_lootingRestriction_on"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_lootingRestriction_on"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_gun", "CHECKBOX", ["Keep primary gun", "Comme ça le dit"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_gun"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_looting_gun"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_gun_amnt", "SLIDER",["Max mags", "Combien de mags maximum"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", _section], [0, 20, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_handgun", "CHECKBOX", ["Keep handgun", "Comme ça le dit"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_handgun"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_looting_handgun"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_handgun_amnt", "SLIDER",["Max Handgun mags", "Combien de mags maximum"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", _section], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_launcher", "CHECKBOX", ["Keep Launcher", "Comme ça le dit"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_launcher"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_looting_launcher"}, false] call CBA_fnc_addSetting;
 ["cgqc_looting_launcher_amnt", "SLIDER",["Max Launcher ammo", "Combien de mags maximum"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_launcher_amnt"}, false] call CBA_fnc_addSetting;
+    ["[CGQC] Looting", _section], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_launcher_amnt"}, false] call CBA_fnc_addSetting;
 
 
 ["cgqc_looting_assigned", "CHECKBOX", ["Keep GPS/Binoculars/NVG's", "Comme ça le dit"],
@@ -762,28 +804,50 @@ _menu_name_player = "[CGQC] Player settings";
 ["cgqc_flag_mapCenterSetting", "LIST", ["Default Map Centering Mode", "Mode that is set on gamestart"],
   [_menu_name_player, "Map Centering Mode"], [[0, 1, 2], ["Normal","Last position", "Player"], 0], {["initial"] call CGQC_fnc_centerMap}] call CBA_fnc_addSetting;
 
-["cgqc_bft_initials", "CHECKBOX", ["Use only initials/Shortnames", "Shorter names on radar"],
-    [_menu_name_player, "BFT - Blue Force Tracking"], true] call CBA_fnc_addSetting;
+_section = "BFT - Blue Force Tracking";
+["cgqc_bft_initials", "LIST", ["Name type", "Name size on BFT Icons. Normal: full name. Initials: short name. And then no name"],
+	[_menu_name_player, _section], [[0, 1, 2], ["Full names","Short names", "No names"], 1], 0, {cgqc_bft_forceUpdate = true}] call CBA_fnc_addSetting;
+["cgqc_bft_scale", "SLIDER",["BFT Icon scaling", "Smaller equals... smaller ;o)"],
+    [_menu_name_player,_section], [0, 2, 1, 0, true], 0, {cgqc_bft_forceUpdate = true}, false] call CBA_fnc_addSetting;
+
+_default_sideArm_text = "";
+_default_sideArm = "";
+_default_sideArm_mag = "";
+_default_sideArm_laser = "";
+_default_sideArm_suppress = "";
+_default_sideArm_optic = "";
 
 // Check that 2023 is not present
-if (!cgqc_player_has2023) then {
-	// Custom pistol 2023 version
-
-	["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], false] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], "cgqc_gun_p99_wood"] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], "16Rnd_9x21_Mag"] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], [2, 8, 2, 0]] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
-	["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"],
-		[_menu_name_player, "Sidearm Perso (Vanilla)"], ""] call CBA_fnc_addSetting;
+if (cgqc_player_has2023) then {
+	_default_sideArm_text = "Sidearm Perso (2023)";
+	_default_sideArm = "cgqc_gun_glock19_wood";
+	_default_sideArm_mag = "Tier1_15Rnd_9x19_JHP";
+	_default_sideArm_laser = "tier1_dbalpl";
+	_default_sideArm_suppress = "";
+	_default_sideArm_optic = "tier1_sig_romeo1";
+} else {
+	_default_sideArm_text = "Sidearm Perso (Vanilla)";
+	_default_sideArm = "cgqc_gun_p99_wood";
+	_default_sideArm_mag = "16Rnd_9x21_Mag";
+	_default_sideArm_laser = "";
+	_default_sideArm_suppress = "";
+	_default_sideArm_optic = "";
 };
+
+["cgqc_config_sidearm", "CHECKBOX", ["Custom Sidearm", "À vos risques et périls. Assurez vous d'avoir une classe valide"],
+	[_menu_name_player, _default_sideArm_text], false] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_pistol", "EDITBOX", ["Pistolet", "Ton pistolet préféré"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_mag", "EDITBOX", ["Magazine", "Chargeur"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_mag] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_acc", "EDITBOX", ["Laser/Flashlight", "Accessoire"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_laser] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_suppress", "EDITBOX", ["Silencieux", "Silencieux"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_suppress] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_optic", "EDITBOX", ["Optique", "Optique"],
+	[_menu_name_player, _default_sideArm_text], _default_sideArm_optic] call CBA_fnc_addSetting;
+["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
+	[_menu_name_player, _default_sideArm_text], [2, 8, 2, 0]] call CBA_fnc_addSetting;
 // === Custom arsenal categories ===============================================================================
 private _medical = [
 	"ACE_fieldDressing",
@@ -912,6 +976,12 @@ _delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
 
+addMissionEventHandler ["MapSingleClick", {
+ params["_control", "_pos", "_shift", "_alt", "_ctrl"];
+ if (_alt) then {
+  player setVariable ["ClickedMapPos", _pos];
+ }
+}];
 
 // Fonctions customs
 CGQC_int_allHumanPlayers = {
@@ -926,6 +996,12 @@ CGQC_int_allAIUnits = {
     _units = _units - (entities "HeadlessClient_F");
     _units;
 };
+
+/* Menu option
+if (hasInterface) then {
+    [["CGQC", "Options CGQC"], "cgqc_pause_test"] call CBA_fnc_addPauseMenuOption;
+};
+*/
 
 /*
 // Create default languages
