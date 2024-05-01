@@ -17,13 +17,13 @@ switch (_type) do {
             };
             case 1: {
                 LOG("centerMap - Initial: set to LAST");
-                [["Map centered on LastPosition", 1.5], false] call CBA_fnc_notify;
+                //[["Map centered on LastPosition", 1.5], true] call CBA_fnc_notify;
                 cgqc_map_centerOnplayer = false;
                 cgqc_map_centerOnLast = true;
                 };
             case 2: {
                 LOG("centerMap - Initial: set to PLAYER");
-                [["Map centered on player", 1.5], false] call CBA_fnc_notify;
+                //[["Map centered on player", 1.5], true] call CBA_fnc_notify;
                 cgqc_map_centerOnplayer = true;
                 cgqc_map_centerOnLast = false;
             };
