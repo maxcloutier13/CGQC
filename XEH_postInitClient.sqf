@@ -414,6 +414,7 @@
 		}
 	}];
 
+
 	// All done
 	cgqc_start_postInitClient_done = true;
 
@@ -421,6 +422,30 @@
 	// Init the map centering function
 	LOG("[CGQC_PostInitClient] - Load center map setting");
 	["initial"] call CGQC_fnc_centerMap;
+
+	// Player marker event
+	_map = (findDisplay 12 displayCtrl 51);
+	cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
+		// Player marker
+		_itemsToCheck = ['ItemGPS', 'ItemAndroid', 'ACE_microDAGR', 'B_UavTerminal', 'O_UavTerminal', 'I_UavTerminal', 'C_UavTerminal', 'I_E_UavTerminal'];
+		_hasGPS = false;
+		{
+			if (_x in assignedItems player) exitWith {
+				_hasGPS = true;
+			};
+		} forEach _itemsToCheck;
+		if (_hasGPS) then {
+			LOG("PlayerPosition: Player has GPS. Showing icon");
+			// Show marker on player position
+			_vicShowingAlready = vehicle player getVariable ["show_marker", false];
+            if !(_vicShowingAlready) then {
+				_this#0 drawIcon
+				[
+					"iconMan", [0,0.3,0.6,1], getPosASLVisual player, 24, 24, getDirVisual player, "", 1, 0.03, "TahomaB", "right"
+				];
+			};
+		};
+	}];
 
 	sleep 25;
 	LOG("[CGQC_PostInitClient] - Checking for snapshots");
