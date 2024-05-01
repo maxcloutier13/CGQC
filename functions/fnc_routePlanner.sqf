@@ -8,7 +8,6 @@ cgqc_player_route = [];
 cgqc_route_clickEvent = addMissionEventHandler ["MapSingleClick", {
 	params ["_units", "_pos", "_alt", "_shift"];
 	if (_shift && !_alt) then {
-		hint "Shift";
 		if (cgqc_player_route_on) then {
 			cgqc_player_route_on = false;
 			[["Route Planner OFF", 1.5], false] call CBA_fnc_notify;
@@ -29,7 +28,6 @@ cgqc_route_clickEvent = addMissionEventHandler ["MapSingleClick", {
 		};
 	};
 	if (_alt && !_shift) then {
-		hint "Alt";
 		if (cgqc_player_route_on) then {
             if (cgqc_player_route isNotEqualTo []) then {
                 _route = cgqc_player_route select ((count cgqc_player_route) - 1);
