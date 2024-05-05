@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.7.2";
+core_version = "4.6.7.3";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -975,13 +975,6 @@ waitUntil {scriptDone _convoy};
 _delay = [0.5] call acre_api_fnc_setPTTDelay;
 // Lock superfluous channels
 ["globside"] call CGQC_fnc_lockChannels;
-
-addMissionEventHandler ["MapSingleClick", {
- params["_control", "_pos", "_shift", "_alt", "_ctrl"];
- if (_alt) then {
-  player setVariable ["ClickedMapPos", _pos];
- }
-}];
 
 // Fonctions customs
 CGQC_int_allHumanPlayers = {

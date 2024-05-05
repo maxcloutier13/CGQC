@@ -19,7 +19,7 @@ CGQC_int_createHolder = {
         hint "There's another backpack really close.."
 	} else {
 		_holder = createVehicle ["GroundWeaponHolder_Scripted", [0,0,100], [], 0, "CAN_COLLIDE"];
-		_holder setPos _unitPos;
+		_holder setPosASL _unitPos;
 	};
 
 	// Exit if the holder doesn't exist or is alreay named
