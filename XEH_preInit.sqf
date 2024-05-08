@@ -667,7 +667,7 @@ _section = "Zeus Looting Restrictions";
 ] call CBA_fnc_addSetting;
 
 // IFAK/Medkit/Bandolier content ===================================================================================================
-
+_menu_name = "[CGQC] Custom Containers";
 // IFAK
 ["cgqc_config_ifak_bandages", "SLIDER",["Bandages", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_ifak_bandages"}, false] call CBA_fnc_addSetting;
