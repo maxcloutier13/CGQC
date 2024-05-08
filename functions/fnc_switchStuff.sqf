@@ -47,6 +47,19 @@ switch (_type) do {
 		removeVest player;
 		removeBackpack player;
 		removeGoggles player;
+		[player] call GRAD_slingHelmet_fnc_removeSlungHelmet;
+		// Remove backpack on chest
+		_chestPack = [player] call bocr_main_fnc_chestpack;
+		waitUntil {!isNil "_chestPack"};
+		if (_chestPack isNotEqualTo "") then {
+			[player] call bocr_main_fnc_removeChestpack;
+		};
+		// Remove secondary weapon
+		if (!(isNil {player getVariable "WBK_SecondWeapon"})) exitWith {
+			player spawn WBK_CreateSwitchBetweenWeapons;
+			sleep 0.1;
+			player removeWeapon primaryWeapon player;
+		};
 	};
 	default	{LOG("[CGQC_ERROR] switchStuff not matched");};
 };
