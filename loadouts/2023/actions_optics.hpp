@@ -2,7 +2,7 @@
 _action = [ "menu_mk2_optics", "Switch: Optics", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Categories
-_action = [ "menu_mk2_optics_night", "100% Night", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_optics_night", "Day/Night", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_optics_day", "Day", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics"], _action ] call ace_interact_menu_fnc_addActionToObject;

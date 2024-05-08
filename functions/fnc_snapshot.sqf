@@ -2,7 +2,7 @@
 // --- snapshot ----------------------------------------------------------
 // Saves/update a snapshot of the target
 params [["_target", player], ["_type", "save"], ["_scope", "single"], ["_snapshotType", "player"]];
-LOG_4(" snapshot %1/%2/%3/%4 started", _target, _type, _scope, _snapshotType);
+LOG_4("[Snapshot] %1/%2/%3/%4 started", _target, _type, _scope, _snapshotType);
 
 cgqc_snapshot_version = 1;
 
@@ -219,7 +219,7 @@ switch (_scope) do {
                     // Remove everything
                     [] call CGQC_fnc_removeAll;
                     waitUntil {cgqc_removeAll_done};
-
+                    sleep 0.1;
                     // Face/identity
                     _target setFace _face;
                     // Slinged helmet
@@ -250,15 +250,23 @@ switch (_scope) do {
                     _target addGoggles _goggles;
                     _target addHeadgear _helmet;
                     _target forceAddUniform _uniform;
-                    {_target addItemToUniform _x} forEach _uniform_items;
                     _target addVest _vest;
+                    clearItemCargo _target;
+                    {_target addItemToUniform _x} forEach _uniform_items;
                     {_target addItemToVest _x} forEach _vest_items;
+                    //Backpack on chest
+                    if (_packChest isNotEqualTo "") then {
+                        [_target, _packChest, _packChestItems, _packChestVars, _packChestLoad] call bocr_main_fnc_addChestpack;
+                    };
                     if (_pack isNotEqualTo "") then {
                         removeBackpack _target;
                         waitUntil {backpack _target isEqualTo ""};
                         _target addBackpack _pack;
                         clearAllItemsFromBackpack _target;
                         {_target addItemToBackpack _x;} forEach _pack_items;
+                    } else {
+                        removeBackpack _target;
+                        waitUntil {backpack _target isEqualTo ""};
                     };
 
                     // Radios
@@ -288,12 +296,6 @@ switch (_scope) do {
                     } forEach _radios;
                     // Set radios PTT
                     [_radios] call acre_api_fnc_setMultiPushToTalkAssignment;
-
-                    /*
-                    //Backpack on chest
-                    if (_packChest isNotEqualTo "") then {
-                        [_target, _packChest, _packChestItems, _packChestVars, _packChestLoad] call bocr_main_fnc_addChestpack;
-                    };*/
 
                     // Assigned items
                     {
@@ -360,4 +362,4 @@ switch (_scope) do {
     };
 };
 
-LOG(" snapshot done");
+LOG("[Snapshot] done");
