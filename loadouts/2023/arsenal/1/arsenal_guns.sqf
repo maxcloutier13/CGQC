@@ -96,5 +96,12 @@ cgqc_mk2_arsenal_1_guns = [
     "200Rnd_65x39_cased_Box_Tracer",
     "200Rnd_65x39_cased_Box_Red",
     "200Rnd_65x39_cased_Box_Tracer_Red",
-    "ACE_200Rnd_65x39_cased_Box_Tracer_Dim"
+    "ACE_200Rnd_65x39_cased_Box_Tracer_Dim",
+    "hlc_30Rnd_762x39_m_ak_PMAG",
+    "150Rnd_93x64_Mag",
+    "121_308_Mk319_Mod_0_10rnd",
+    "121_300WM_Berger_OTM_5rnd",
+    "121_338_300gr_NM_10rnd",
+    "rhs_mag_20Rnd_SCAR_762x51_m118_special_bk",
+    "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk"
 ];
