@@ -363,7 +363,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "Tier1_SOCOM762MG_Black";
 		_target addPrimaryWeaponItem "Tier1_Mk48Mod0_LA5_M600V_Black";
 		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
-		_target addPrimaryWeaponItem "Tier1_100Rnd_762x51_Belt_M993_AP";
+		_target addPrimaryWeaponItem "Tier1_250Rnd_762x51_Belt_M62_Tracer";
 		_target addPrimaryWeaponItem "Tier1_SAW_Bipod_2_KAC";
 	};
 	case "lwmmg":{
