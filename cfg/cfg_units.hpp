@@ -12,7 +12,7 @@ class CGQC_Soldat_Base : B_Soldier_f
 	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_green.paa"};
 	weapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	respawnWeapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
-	items[] = {"acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
+	items[] = {"azm_bft_tx", "azm_bft_rx","acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
 	respawnItems[] = {"acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	respawnMagazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
@@ -143,7 +143,7 @@ class CGQC_Officer_Base : CGQC_Soldat_Base
 	hiddenSelectionsTextures[] = {"cgqc\uniforms\cgqc_uniform_green.paa"};
 	weapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
 	respawnWeapons[] = {"Rangefinder", "cgqc_gun_p99_wood", "Put", "Throw"};
-	items[] = {"acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
+	items[] = {"azm_bft_tx", "azm_bft_rx", "acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
 	respawnItems[] = {"acex_intelitems_notepad", "cgqc_items_ifak", "ACE_CableTie", "ACE_CableTie", "ACE_MapTools", "ACE_microDAGR", "WBK_HeadLampItem"};
 	magazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};
 	respawnMagazines[] = {"16Rnd_9x21_Mag", "16Rnd_9x21_Mag", "16Rnd_9x21_Mag"};

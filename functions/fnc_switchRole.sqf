@@ -33,6 +33,7 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
             LOG("[CGQC_INIT] initTraining started");
             ['chill', false] spawn CGQC_fnc_perksBasic;
             ["training"] call CGQC_fnc_getRadioPresets;
+            ["transmit"] spawn CGQC_fnc_bluforceTracker;
             cgqc_player_role = "Training";
         } else {
             // Prep player for switch
@@ -57,16 +58,6 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
             switch (_type) do {
                 #include "\cgqc\loadouts\unsung\roles.hpp"
             };
-        };
-
-        // Cloutier thangs
-        if (cgqc_player_max) then {
-            if !([player, "taro_tripwire_spool"] call ace_common_fnc_hasItem) then {player addItem "taro_tripwire_spool";};
-            if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_lighter";};
-            if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_cigpack";};
-            if !([player, "immersion_cigs_cigar0_nv"] call ace_common_fnc_hasItem) then {player addItem "immersion_cigs_cigar0_nv";};
-            if !([player, "grad_paceCountBeads_functions_paceCountBeads"] call ace_common_fnc_hasItem) then {player addItem "grad_paceCountBeads_functions_paceCountBeads";};
-            if !([player, "acex_intelitems_notepad"] call ace_common_fnc_hasMagazine) then {player addItem "acex_intelitems_notepad";};
         };
 
         //Save role for further use

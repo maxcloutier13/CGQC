@@ -8,16 +8,16 @@ LOG_1(" getCustomHandgun %1 started", _gunArray select 0);
 
 if (cgqc_config_sidearm) then {
 	// === Custom Sidearm
-	player addWeapon cgqc_config_sidearm_pistol;
-	player addHandgunItem cgqc_config_sidearm_mag;
+	player addWeapon (trim cgqc_config_sidearm_pistol);
+	player addHandgunItem (trim cgqc_config_sidearm_mag);
 	if (cgqc_config_sidearm_acc != "") then {
-		player addHandgunItem cgqc_config_sidearm_acc;
+		player addHandgunItem (trim cgqc_config_sidearm_acc);
 	};
 	if (cgqc_config_sidearm_suppress != "") then {
-		player addHandgunItem cgqc_config_sidearm_suppress;
+		player addHandgunItem (trim cgqc_config_sidearm_suppress);
 	};
 	if (cgqc_config_sidearm_optic != "") then {
-		player addHandgunItem cgqc_config_sidearm_optic;
+		player addHandgunItem (trim cgqc_config_sidearm_optic);
 	};
 	[
     ["Custom Sidearm", 1.5, [0.161, 0.502, 0.725, 1]],
@@ -43,7 +43,7 @@ if (isNil "_magHandgun") then {
 	if (count _magHandgun > 0) then {
 		// Check if custom sidearm is set. If it is use the mag nbr setting
 		if (cgqc_config_sidearm) then {_nbr = cgqc_config_sidearm_mag_nbr};
-		for "_i" from 1 to _nbr do {player addItem _magHandgun};
+		for "_i" from 0 to _nbr do {player addItem _magHandgun};
 	};
 };
 
