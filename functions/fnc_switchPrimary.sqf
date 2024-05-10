@@ -491,8 +491,6 @@ switch (_type) do {
 	};
 };
 
-
-
 if (_needGL) then { // Load with grenade launcher stuff
 	LOG(" primarySwitch - adding GL stuff");
 	for "_i" from 1 to 5 do {_target addItemToVest "1Rnd_HE_Grenade_shell"};
@@ -500,10 +498,12 @@ if (_needGL) then { // Load with grenade launcher stuff
 	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_SmokeRed_Grenade_shell"};
 	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_SmokeBlue_Grenade_shell"};
 	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_Smoke_Grenade_shell"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_white"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "UGL_FlareRed_F"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_ir"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "SmokeShell"};
+	[] call CGQC_fnc_isDaytime;
+	if !(cgqc_mission_daytime) then {
+		for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_white"};
+		for "_i" from 1 to 2 do {_target addItemToBackpack "UGL_FlareRed_F"};
+		for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_ir"};
+	};
 };
 
 // Add mags to vest
