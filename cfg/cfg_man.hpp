@@ -1,7 +1,8 @@
-
-
 class Man;
 class CAManBase: Man {
+	class UserActions {
+		delete sps_black_hornet_deploy;
+	};
 	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
