@@ -6,6 +6,134 @@ class B_UGV_01_rcws_F;
 class B_T_UGV_01_olive_F;
 class B_T_UGV_01_rcws_olive_F;
 
+class sps_black_hornet_01_F {
+    class Viewoptics;
+    class Turrets{
+        class MainTurret;
+    };
+};
+class cgqc_black_hornet_01_F: sps_black_hornet_01_F {
+    scope = 2;
+    hiddenSelections[] = {"camo"};
+    hiddenSelectionsTextures[] = {"x\SPS\Vehicles\sps_blackhornet\Data\Standard\SPS_BH_low_CO.paa"};
+    displayName = "Black Hornet [CGQC]";
+    descriptionShort = "Micro UAV";
+    displaynameshort = "Black Hornet";
+    picture = "\x\SPS\Vehicles\sps_blackhornet\Data\UI\sps_blackhornet_CA.paa";
+    class Viewoptics: ViewOptics {
+        initAngleX = 0;
+        minAngleX = 0;
+        maxAngleX = 0;
+        initAngleY = 0;
+        minAngleY = 0;
+        maxAngleY = 0;
+        minFov = 0.25;
+        maxFov = 1.25;
+        initFov = 0.75;
+        visionMode[] = {"Normal","NVG", "Ti"};
+        thermalMode[] = {0,1};
+    };
+    class Turrets: Turrets {
+        class MainTurret: MainTurret {
+            isCopilot = 0;
+            minElev = -90;
+            maxElev = 3;
+            initElev = -3;
+            minTurn = -360;
+            maxTurn = 360;
+            initTurn = 0;
+            maxHorizontalRotSpeed = 10.0;
+            maxVerticalRotSpeed = 10.0;
+            body = "mainTurret";
+            gun = "mainGun";
+            animationSourceBody = "mainTurret";
+            animationSourceGun = "mainGun";
+            class OpticsIn {
+                class Wide {
+                    opticsDisplayName = "W";
+                    initAngleX = 0;
+                    minAngleX = -30;
+                    maxAngleX = 30;
+                    initAngleY = 0;
+                    minAngleY = -100;
+                    maxAngleY = 100;
+                    initFov = 0.5;
+                    minFov = 0.5;
+                    maxFov = 0.5;
+                    directionStabilized = 1;
+                    visionMode[] = {"Normal","NVG","Ti"};
+                    thermalMode[] = {0,1};
+                    gunnerOpticsModel = "A3\drones_f\Weapons_F_Gamma\Reticle\UAV_Optics_Gunner_wide_F.p3d";
+                };
+                class Medium: Wide {
+                    opticsDisplayName = "M";
+                    initFov = 0.1;
+                    minFov = 0.1;
+                    maxFov = 0.1;
+                    gunnerOpticsModel = "A3\drones_f\Weapons_F_Gamma\Reticle\UAV_Optics_Gunner_medium_F.p3d";
+                };
+                class Narrow: Wide {
+                    opticsDisplayName = "N";
+                    initFov = 0.0286;
+                    minFov = 0.0286;
+                    maxFov = 0.0286;
+                    gunnerOpticsModel = "A3\drones_f\Weapons_F_Gamma\Reticle\UAV_Optics_Gunner_narrow_F.p3d";
+                };
+            };
+            class OpticsOut {
+                class Monocular {
+                    initAngleX = 0;
+                    minAngleX = -30;
+                    maxAngleX = 30;
+                    initAngleY = 0;
+                    minAngleY = -100;
+                    maxAngleY = 100;
+                    initFov = 1.1;
+                    minFov = 0.133;
+                    maxFov = 1.1;
+                    visionMode[] = {"Normal","NVG"};
+                    gunnerOpticsModel = "";
+                    gunnerOpticsEffect[] = {};
+                };
+            };
+            inGunnerMayFire = 1;
+            outGunnerMayFire = 1;
+            commanding = -1;
+            primaryGunner = 1;
+            memoryPointGun = "PiP0_dir";
+            memoryPointGunnerOptics = "PiP0_pos";
+            gunnerOpticsModel = "A3\drones_f\Weapons_F_Gamma\Reticle\UGV_01_Optics_Gunner_F.p3d";
+            gunnerForceOptics = 1;
+            turretInfoType = "RscOptics_UAV_gunner";
+            stabilizedInAxes = 3;
+            weapons[] = {"Laserdesignator_mounted_blank"};
+            magazines[] = {"Laserbatteries"};
+            soundServo[] = {"A3\Sounds_F\vehicles\air\noises\servo_drone_turret_2",0.01,0.065,4};
+            soundServoVertical[] = {"A3\Sounds_F\vehicles\air\noises\servo_drone_turret_2",0.01,0.065,4};
+            GunnerCompartments = "Compartment1";
+            LODTurnedIn = -1;
+            LODTurnedOut = -1;
+        };
+    };
+
+    class UserActions
+    {
+        class sps_black_hornet_Pickup
+        {
+            displayNameDefault = "Pick Up Black Hornet";
+            priority = 6;
+            showWindow = 1;
+            hideOnUse = 1;
+            displayName = "Pick Up Black Hornet";
+            position = "action";
+            radius = 6.5;
+            onlyForPlayer = 1;
+            condition = " this == cursorObject && SPS_BlackHornet_EnableVanillaScrollWheel && alive this && player == vehicle player && player canadd ""cgqc_black_hornet_01_Static_F"" ";
+            statement = "player addItem 'cgqc_black_hornet_01_Static_F'; deleteVehicle this";
+        };
+    };
+};
+
 class cgqc_vic_stomper_tan : B_UGV_01_F {
     scope = 2;
     side = 1;

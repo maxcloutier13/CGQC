@@ -2,6 +2,9 @@
 
 class Man;
 class CAManBase: Man {
+	class UserActions {
+		//delete sps_black_hornet_deploy;
+	};
 	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
@@ -146,6 +149,31 @@ class CAManBase: Man {
 		delete aceax_ingame_gear;
 		delete fox_self;
 		class ACE_Equipment {
+			/*
+			class ACE_BlackHornet
+			{
+				icon = "\x\SPS\Vehicles\sps_blackhornet\Data\UI\sps_blackhornet_CA.paa";
+				displayName = "Black Hornet";
+				condition = "SPS_BlackHornet_EnableACEInteraction";
+				class ACE_BlackHornet_Launch
+				{
+					displayName = "Launch Black Hornet";
+					exceptions[] = {};
+					condition = "alive _player && _player == vehicle _player && 'sps_black_hornet_01_Static_F' in (items _player)";
+					statement = "_pos = this getPos [1.5, getDir this]; _vehicle = (createVehicle [""sps_black_hornet_01_F"", _pos, [], 0, ""FLY""]); _vehicle setDir (getDir this); createVehicleCrew _vehicle; this removeItem 'sps_black_hornet_01_Static_F'; _vehicle setPosATL [_pos select 0, _pos select 1, ((getPosATL this) select 2) + 1.125];_vehicle flyInHeight(((getPosATL this) select 2) + 2);";
+				};
+			};*/
+			class CGQC_BlackHornet {
+				icon = "\x\SPS\Vehicles\sps_blackhornet\Data\UI\sps_blackhornet_CA.paa";
+				displayName = "Black Hornet";
+				condition = "SPS_BlackHornet_EnableACEInteraction";
+				class CGQC_BlackHornet_Launch {
+					displayName = "Launch Black Hornet";
+					exceptions[] = {};
+					condition = "alive _player && _player == vehicle _player && 'cgqc_black_hornet_01_Static_F' in (items _player)";
+					statement = "_pos = this getPos [1.5, getDir this]; _vehicle = (createVehicle [""cgqc_black_hornet_01_F"", _pos, [], 0, ""FLY""]); _vehicle setDir (getDir this); createVehicleCrew _vehicle; this removeItem 'cgqc_black_hornet_01_Static_F'; _vehicle setPosATL [_pos select 0, _pos select 1, ((getPosATL this) select 2) + 1.125];_vehicle flyInHeight(((getPosATL this) select 2) + 2);";
+				};
+			};
 			class azm_bft_main {
 				class azm_bft_tx {
 					class cgqc_bft_startTX{

@@ -914,6 +914,7 @@ private _electronics = [
 	"ItemcTab",
 	"WBK_HeadLampItem",
 	"sps_black_hornet_01_Static_F",
+	"cgqc_black_hornet_01_Static_F",
 	"MRH_BluForTransponder",
 	"MRH_TacticalDisplay",
 	"MRH_FoldedSatcomAntenna",

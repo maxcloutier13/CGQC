@@ -3,7 +3,25 @@ class ACE_ItemCore;
 class CBA_MiscItem;
 class CBA_MiscItem_ItemInfo;
 class InventoryItem_Base_F;
-
+class sps_black_hornet_01_Static_F;
+class cgqc_black_hornet_01_Static_F: CBA_MiscItem
+{
+	scope = 2;
+	author = "silent1";
+	displayName = "CGQC Black Hornet";
+	scopeArsenal = 2;
+	model = "\x\SPS\Vehicles\sps_blackhornet\sps_blackhornet_static.p3d";
+	descriptionShort = "Micro UAV";
+	picture = "\x\SPS\Vehicles\sps_blackhornet\Data\UI\sps_blackhornet_CA.paa";
+	class ItemInfo: CBA_MiscItem_ItemInfo
+	{
+		mass = 0.727525;
+		allowedSlots[] = {801,701,901};
+		type = 302;
+	};
+	hiddenSelections[] = {"camo"};
+	hiddenSelectionsTextures[] = {"x\SPS\Vehicles\sps_blackhornet\Data\Standard\SPS_BH_low_CO.paa"};
+};
 
 //Lockpicks - Breaching stuff
 class tsp_paperclip;
