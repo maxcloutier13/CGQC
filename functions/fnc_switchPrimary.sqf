@@ -2,7 +2,7 @@
 // --- primarySwitch ----------------------------------------------------------
 // Switch primary weapons
 params ["_type", ["_target", player]];
-LOG_1(" primarySwitch %1 started", _type);
+LOG_1("[primarySwitch] %1 started", _type);
 
 _needGL = false;
 // Remove gun and ammo
@@ -500,9 +500,14 @@ if (_needGL) then { // Load with grenade launcher stuff
 	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_Smoke_Grenade_shell"};
 	[] call CGQC_fnc_isDaytime;
 	if !(cgqc_mission_daytime) then {
+		LOG("[primarySwitch] Night-time. Get flares");
+		hint "Night! get some flares";
 		for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_white"};
 		for "_i" from 1 to 2 do {_target addItemToBackpack "UGL_FlareRed_F"};
 		for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_ir"};
+	} else {
+		LOG("[primarySwitch] Daytime. Skip flares");
+		hint "Daytime. Skip flares";
 	};
 };
 
@@ -511,4 +516,4 @@ if (_needGL) then { // Load with grenade launcher stuff
 
 [_target] call ace_weaponselect_fnc_putWeaponAway;
 
-LOG(" primarySwitch done");
+LOG("[primarySwitch] done");
