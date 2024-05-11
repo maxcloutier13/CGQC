@@ -4,6 +4,9 @@
 params [["_type", "initial"]];
 LOG_1("centerMap started - Type:%1", _type);
 
+// Exit if currently in a drone
+if (isRemoteControlling player) exitWith {};
+
 switch (_type) do {
     case "initial": {
         LOG("centerMap - Initial setting changed");
@@ -54,11 +57,13 @@ switch (_type) do {
         };
         if (cgqc_map_centerOnLast) then {
             LOG("centerMap - Center on Last position");
-            _pos = cgqc_map_centerOldPosition select 0;
-            _zoom =  cgqc_map_centerOldPosition select 1;
-            ctrlMapAnimClear _map;
-            _map ctrlMapAnimAdd [0.001, _zoom, _pos];
-            ctrlMapAnimCommit _map;
+            if (cgqc_map_centerOldPosition isNotEqualTo [[0,0],0]) then {
+                _pos = cgqc_map_centerOldPosition select 0;
+                _zoom =  cgqc_map_centerOldPosition select 1;
+                ctrlMapAnimClear _map;
+                _map ctrlMapAnimAdd [0.001, _zoom, _pos];
+                ctrlMapAnimCommit _map;
+            };
         };
     };
 };
