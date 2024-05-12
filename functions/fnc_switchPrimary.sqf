@@ -104,7 +104,7 @@ switch (_type) do {
 		["hlc_wp_SCARL_STD_EGLM_Blk"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black_2D";
+		_target addPrimaryWeaponItem "hlc_optic_HensoldtZO_Hi_Docter";
 		_target addPrimaryWeaponItem "hlc_grip_AFG2";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
 		_target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
@@ -130,7 +130,7 @@ switch (_type) do {
 		["hlc_wp_SCARH_STD_EGLM_Blk"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_SandmanS_Black";
 		_target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-		_target addPrimaryWeaponItem "Tier1_Razor_Gen2_16_Geissele_Docter";
+		_target addPrimaryWeaponItem "hlc_optic_HensoldtZO_Hi_Docter";
 		_target addPrimaryWeaponItem "hlc_grip_AFG2";
 		_target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk";
 		_target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
