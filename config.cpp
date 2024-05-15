@@ -40,6 +40,10 @@ class CfgEditorSubcategories
 	class EdSubcat_CGQC_Training {
 		displayName = "Men (Training)";
 	};
+	class EdSubcat_CGQC_unsung
+	{
+		displayName = "Men (Nam)";
+	};
 	class EdSubcat_CGQC_mk1
 	{
 		displayName = "Men (2023)";

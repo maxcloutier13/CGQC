@@ -7,13 +7,8 @@
 // Backpack
 ["backpack", "UNS_Alice_1"] call CGQC_fnc_switchStuff;
 // primaryWeapon
-player addWeapon "uns_xm177e2_m203";
-player addPrimaryWeaponItem "uns_30Rnd_556x45_Stanag_xm177";
+["nam_car15GL"] spawn CGQC_fnc_switchPrimary;};
 // Primary ammo
-[] call CGQC_fnc_addMags;
-for "_i" from 1 to 2 do {player addItemToVest "uns_m406vest";};
+player addItemToUniform "ACRE_SEM52SL";
 // Items
 player addItemToBackpack "UNS_TrapKit";
-for "_i" from 1 to 5 do {player addItemToBackpack "uns_30Rnd_556x45_Stanag_xm177";};
-for "_i" from 1 to 5 do {player addItemToBackpack "uns_1Rnd_SmokeRed_40mm";};
-for "_i" from 1 to 5 do {player addItemToBackpack "uns_1Rnd_SmokeGreen_40mm";};

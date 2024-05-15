@@ -60,7 +60,7 @@ player addHandgunItem "uns_m1911mag";
 player addWeapon "uns_binocular_army";
 
 // === Uniform ================================================================================================================
-player addItemToUniform "ACRE_SEM52SL"; // === Essentials
+// === Essentials
 player addItemToUniform "ACE_EarPlugs";
 player addItemToUniform "ACE_MapTools";
 player addItemToUniform "ACE_CableTie";
