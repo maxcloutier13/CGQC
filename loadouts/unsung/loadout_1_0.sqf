@@ -7,7 +7,7 @@
 // Backpack
 ["backpack", "UNS_Alice_1"] call CGQC_fnc_switchStuff;
 // primaryWeapon
-["nam_car15GL"] spawn CGQC_fnc_switchPrimary;};
+["nam_car15GL"] spawn CGQC_fnc_switchPrimary;
 // Primary ammo
 player addItemToUniform "ACRE_SEM52SL";
 // Items
