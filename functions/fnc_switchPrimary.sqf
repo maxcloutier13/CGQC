@@ -2,7 +2,7 @@
 // --- primarySwitch ----------------------------------------------------------
 // Switch primary weapons
 params ["_type", ["_target", player]];
-LOG_1(" primarySwitch %1 started", _type);
+LOG_1("[primarySwitch] %1 started", _type);
 
 _needGL = false;
 // Remove gun and ammo
@@ -10,6 +10,86 @@ _needGL = false;
 
 // Add gun
 switch (_type) do {
+
+
+	case "nam_svd": {
+		["uns_SVD_CAMO_base"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_SVD_CAMO_base";
+		_target addPrimaryWeaponItem "uns_o_PSO1_camo";
+		_target addPrimaryWeaponItem "uns_b_svd_camo";
+		_target addPrimaryWeaponItem "uns_m40mag_T";
+	};
+	case "nam_stoner": {
+		["uns_m63asupport"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_m63abox";
+	};
+	case "nam_stoner_short": {
+		["uns_M63a_drum"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_m63amag";
+	};
+	case "nam_rpd": {
+		["uns_RPDsupport"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_rpdmag";
+	};
+	case "nam_rpd_short": {
+		["uns_rpdsog"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_rpdmag";
+	};
+	case "nam_m40": {
+		["uns_M40_base"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_o_RedfieldART";
+		_target addPrimaryWeaponItem "uns_b_m40_camo";
+		_target addPrimaryWeaponItem "uns_s_M14";
+		_target addPrimaryWeaponItem "uns_m40mag_T";
+	};
+	case "nam_sten": {
+		["uns_SterlingSD"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_mk4mag";
+	};
+	case "nam_greese": {
+		["uns_m3a1"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_s_M3a1";
+		_target addPrimaryWeaponItem "uns_m3a1mag";
+	};
+	case "nam_thompson": {
+		["uns_thompson"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_thompsonmag_30_T";
+	};
+	case "nam_m2": {
+		["uns_m2carbine"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_m2carbinemag_T";
+		_target addPrimaryWeaponItem "uns_o_M84";
+	};
+	case "nam_m14": {
+		["uns_m14"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_m14mag_T";
+		_target addPrimaryWeaponItem "uns_o_LeatherwoodART_m14";
+	};
+	case "nam_l2a1": {
+		["uns_l2a1_shorty"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_l1a1mag_T";
+	};
+	case "nam_ak": {
+		["uns_aks47"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_ak47mag_T";
+		_target addPrimaryWeaponItem "uns_b_6H3";
+	};
+
+	case "nam_car15_short": {
+		["uns_xm177e2_short"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_30Rnd_556x45_Stanag_T";
+	};
+	case "nam_car15": {
+		["uns_xm177e2"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_30Rnd_556x45_Stanag_T";
+	};
+	case "nam_car15GL": {
+		["uns_xm177e2_m203"] call CGQC_fnc_getCustomGun;
+		_target addPrimaryWeaponItem "uns_30Rnd_556x45_Stanag_T";
+		_target addPrimaryWeaponItem "uns_1Rnd_HEDP_M433";
+		_needGL = true;
+	};
+
 	case "stoner":{
 		["LMG_Mk200_black_F"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "muzzle_snds_65_TI_blk_F";
@@ -104,7 +184,7 @@ switch (_type) do {
 		["hlc_wp_SCARL_STD_EGLM_Blk"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
 		_target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black_2D";
+		_target addPrimaryWeaponItem "hlc_optic_HensoldtZO_Hi_Docter";
 		_target addPrimaryWeaponItem "hlc_grip_AFG2";
 		_target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
 		_target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
@@ -130,7 +210,7 @@ switch (_type) do {
 		["hlc_wp_SCARH_STD_EGLM_Blk"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_SandmanS_Black";
 		_target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-		_target addPrimaryWeaponItem "Tier1_Razor_Gen2_16_Geissele_Docter";
+		_target addPrimaryWeaponItem "hlc_optic_HensoldtZO_Hi_Docter";
 		_target addPrimaryWeaponItem "hlc_grip_AFG2";
 		_target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk";
 		_target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
@@ -363,7 +443,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "Tier1_SOCOM762MG_Black";
 		_target addPrimaryWeaponItem "Tier1_Mk48Mod0_LA5_M600V_Black";
 		_target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black";
-		_target addPrimaryWeaponItem "Tier1_100Rnd_762x51_Belt_M993_AP";
+		_target addPrimaryWeaponItem "Tier1_250Rnd_762x51_Belt_M62_Tracer";
 		_target addPrimaryWeaponItem "Tier1_SAW_Bipod_2_KAC";
 	};
 	case "lwmmg":{
@@ -491,19 +571,33 @@ switch (_type) do {
 	};
 };
 
-
-
 if (_needGL) then { // Load with grenade launcher stuff
-	LOG(" primarySwitch - adding GL stuff");
-	for "_i" from 1 to 5 do {_target addItemToVest "1Rnd_HE_Grenade_shell"};
-	for "_i" from 1 to 10 do {_target addItemToBackpack "1Rnd_HE_Grenade_shell"};
-	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_SmokeRed_Grenade_shell"};
-	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_SmokeBlue_Grenade_shell"};
-	for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_Smoke_Grenade_shell"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_white"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "UGL_FlareRed_F"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_ir"};
-	for "_i" from 1 to 2 do {_target addItemToBackpack "SmokeShell"};
+	if (cgqc_player_isVietnam) then {
+		LOG(" primarySwitch - Nam Style - adding GL stuff");
+		_target addItemToVest "uns_m406vest";
+		for "_i" from 1 to 10 do {_target addItemToBackpack "Uns_1Rnd_HE_M406"};
+		for "_i" from 1 to 3 do {_target addItemToBackpack "uns_1Rnd_SmokeGreen_40mm"};
+		for "_i" from 1 to 3 do {_target addItemToBackpack "uns_1Rnd_SmokeRed_40mm"};
+		for "_i" from 1 to 3 do {_target addItemToBackpack "uns_40mm_white"};
+	} else {
+		LOG(" primarySwitch - adding GL stuff");
+		for "_i" from 1 to 5 do {_target addItemToVest "1Rnd_HE_Grenade_shell"};
+		for "_i" from 1 to 10 do {_target addItemToBackpack "1Rnd_HE_Grenade_shell"};
+		for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_SmokeRed_Grenade_shell"};
+		for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_SmokeBlue_Grenade_shell"};
+		for "_i" from 1 to 3 do {_target addItemToBackpack "1Rnd_Smoke_Grenade_shell"};
+		[] call CGQC_fnc_isDaytime;
+		if !(cgqc_mission_daytime) then {
+			LOG("[primarySwitch] Night-time. Get flares");
+			hint "Night! get some flares";
+			for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_white"};
+			for "_i" from 1 to 2 do {_target addItemToBackpack "UGL_FlareRed_F"};
+			for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_ir"};
+		} else {
+			LOG("[primarySwitch] Daytime. Skip flares");
+			hint "Daytime. Skip flares";
+		};
+	};
 };
 
 // Add mags to vest
@@ -511,4 +605,4 @@ if (_needGL) then { // Load with grenade launcher stuff
 
 [_target] call ace_weaponselect_fnc_putWeaponAway;
 
-LOG(" primarySwitch done");
+LOG("[primarySwitch] done");

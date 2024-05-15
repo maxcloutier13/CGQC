@@ -83,32 +83,17 @@ switch (_type) do {
 			// Add 343
 			_targetPlayer addItem "ACRE_PRC343";
 			// Add zeus radios
-			if (_targetPlayer canAdd ["ACRE_PRC117F", 2]) then {
-				// There is enough space, add the items
-				//hint "Enough space. Adding radios";
-				_targetPlayer addItem "ACRE_PRC117F";
-				_targetPlayer addItem "ACRE_PRC117F";
-			} else {
-				// There is not enough space
-				//hint "Not enough inventory space! Zeus backpack on";
-				_items_pack = backpackItems _targetPlayer;
-				removeBackpack _targetPlayer;
-				_targetPlayer addBackpack "cgqc_pack_mk1_magic_zeus";
-				clearAllItemsFromBackpack _targetPlayer;
-				{_targetPlayer addItemToBackpack _x} forEach _items_pack;
-				_targetPlayer addItem "ACRE_PRC117F";
-				_targetPlayer addItem "ACRE_PRC117F";
-			};
-			waitUntil {sleep 0.5;count (call acre_api_fnc_getCurrentRadioList) > 0};
-			y_zeusRadios = ["ACRE_PRC117F"] call acre_api_fnc_getAllRadiosByType;
+			_targetPlayer addItemCargo ["ACRE_PRC152", 2];
+			waitUntil {sleep 0.1;count (call acre_api_fnc_getCurrentRadioList) > 0};
+			y_zeusRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
 			_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-			waitUntil {sleep 0.5;!isNil "y_zeusRadios"};
+			waitUntil {sleep 0.1;!isNil "y_zeusRadios"};
 			y_packRadio_1 = y_zeusRadios select 0;
 			y_packRadio_2 = y_zeusRadios select 1;
-			waitUntil {sleep 0.5;!isNil "y_packRadio_1"};
+			waitUntil {sleep 0.1;!isNil "y_packRadio_1"};
 			_success = [y_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
-			waitUntil {sleep 0.5;!isNil "y_packRadio_2"};
-			_success = [y_packRadio_2, 9] call acre_api_fnc_setRadioChannel; //Air-Net
+			waitUntil {sleep 0.1;!isNil "y_packRadio_2"};
+			_success = [y_packRadio_2, 9] call acre_api_fnc_setRadioChannel; //Zeus net
 			// Set order
 			_success = [ [_personalRadio, y_packRadio_1, y_packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
 			// Set sides
@@ -116,7 +101,6 @@ switch (_type) do {
 			_success = [y_packRadio_1, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
 			_success = [y_packRadio_2, "BOTH" ] call acre_api_fnc_setRadioSpatial;
 		};
-
 	};
 	case "maprestrict":
 	{
@@ -126,7 +110,6 @@ switch (_type) do {
 		publicVariable "jib_restrictmarkers_enabled";
 		cgqc_zeus_mapRestricted = true;
 		hint "Map Sharing is OFF";
-
 	};
 	case "mapshare":
 	{
@@ -134,9 +117,8 @@ switch (_type) do {
 		cgqc_zeus_mapRestricted = false;
 		sleep 0.1;
 		publicVariable "jib_restrictmarkers_enabled";
-		cgqc_zeus_mapRestricted = false;
+		publicVariable "cgqc_zeus_mapRestricted";
 		hint "Map Sharing is ON";
-
 	};
 	case "yeet":
 	{

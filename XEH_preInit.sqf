@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.8";
+core_version = "4.6.9";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
