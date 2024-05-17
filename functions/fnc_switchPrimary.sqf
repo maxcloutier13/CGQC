@@ -39,7 +39,6 @@ switch (_type) do {
 		["uns_M40_base"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "uns_o_RedfieldART";
 		_target addPrimaryWeaponItem "uns_b_m40_camo";
-		_target addPrimaryWeaponItem "uns_s_M14";
 		_target addPrimaryWeaponItem "uns_m40mag_T";
 	};
 	case "nam_sten": {
