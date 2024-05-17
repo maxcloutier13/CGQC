@@ -311,7 +311,7 @@
 	// [groupId (group player)] spawn CGQC_fnc_joinGroup;
 	sleep 1;
 	_checkColor = player getVariable ["cgqc_var_startingColorTeam", "MAIN"];
-	if (_checkColor isNotEqualTo "MAIN") then {
+	if (_checkColor isNotEqualTo "MAIN" && _checkColor isNotEqualTo "") then {
 		[_checkColor] call CGQC_fnc_setTeamColor;
 	};
 	// set back custom patch
