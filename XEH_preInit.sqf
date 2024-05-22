@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.9";
+core_version = "4.6.10";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -619,7 +619,7 @@ _section = "Zeus Looting Restrictions";
 ["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"],
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
 ["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Option Toggles"], [0, 18, 10, 0]] call CBA_fnc_addSetting;
+    [_menu_name, "Option Toggles"], [0, 30, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
 ["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"],

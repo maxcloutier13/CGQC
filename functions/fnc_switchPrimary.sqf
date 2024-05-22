@@ -10,8 +10,6 @@ _needGL = false;
 
 // Add gun
 switch (_type) do {
-
-
 	case "nam_svd": {
 		["uns_SVD_CAMO_base"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "uns_SVD_CAMO_base";
@@ -39,7 +37,6 @@ switch (_type) do {
 		["uns_M40_base"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "uns_o_RedfieldART";
 		_target addPrimaryWeaponItem "uns_b_m40_camo";
-		_target addPrimaryWeaponItem "uns_s_M14";
 		_target addPrimaryWeaponItem "uns_m40mag_T";
 	};
 	case "nam_sten": {
@@ -70,7 +67,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "uns_l1a1mag_T";
 	};
 	case "nam_ak": {
-		["uns_aks47"] call CGQC_fnc_getCustomGun;
+		["uns_akms"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "uns_ak47mag_T";
 		_target addPrimaryWeaponItem "uns_b_6H3";
 	};
