@@ -57,16 +57,20 @@ player addHandgunItem "uns_m1911mag";
 // === Items ==================================================================================================================
 ["noGPS"] call CGQC_fnc_getLinkedItems;
 // === Binos
-player addWeapon "uns_binocular_army";
-
+player addWeapon "uns_binocular_navy";
 // === Uniform ================================================================================================================
 // === Essentials
 player addItemToUniform "ACE_EarPlugs";
 player addItemToUniform "ACE_MapTools";
 player addItemToUniform "ACE_CableTie";
 player addItemToUniform "ACE_CableTie";
+player addItemToUniform "ACE_Flashlight_MX991";
+player addItemToUniform "uns_m1911mag";
+player addItemToUniform "uns_m1911mag";
+
 player addItemToUniform "murshun_cigs_cigpack";
-player addItemToUniform "murshun_cigs_lighter";
+player addItemToUniform "murshun_cigs_matches";
+player addItemToUniform "uns_item_zippo";
 player addItemToUniform "acex_intelitems_notepad";
 player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";
 player addItemToUniform "cgqc_items_ifak";
@@ -76,6 +80,8 @@ for "_i" from 1 to 4 do {player addItemToVest "uns_m1911mag";};
 
 // === Backpack ================================================================================================================
 player addItemToBackpack "ACE_EntrenchingTool";
+player addItemToBackpack "taro_tripwire_spool";
+player addItemToBackpack "ZSN_Whistle";
 // Grenades
 for "_i" from 1 to 4 do {player addItemToVest "uns_v40gren";};
 for "_i" from 1 to 4 do {player addItemToVest "uns_m67gren";};

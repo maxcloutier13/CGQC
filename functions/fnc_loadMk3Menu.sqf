@@ -118,25 +118,9 @@ if (hasInterface) then {
 				LOG(" loadMk3Menu - loading unsung stuff");
 				// Spawnmodule faction
 				//cgqc_spawn_module setVariable ["VehicleFactions", "UNSUNG_W"];
-				// Unsung ---------------------------------------------------------------------------------------------------------
-				_action = [ "menu_unsung", "Vietnam", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				// Unsung Arsenal Complet
-				_action = [ "menu_unsung_complete", "Arsenal: Vietnam", "CGQC\textures\icon_arsenal", {[0] execVM "\CGQC\loadouts\unsung\load_unsung.sqf"}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
-				// Unsung Loadout switcher ---------------------------------------------------------------------------------------------------------
-				_action = [ "menu_unsung_loadouts", "Loadouts/Rôles", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung"], _action ] call ace_interact_menu_fnc_addActionToObject;
-				// Basic soldier
-				// 1-0 - TL
-				_action = [ "menu_unsung_10", "1-0 -Team Leader", "", {["unsung_10", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-				// 1-1 - Radio man
-				_action = [ "menu_unsung_11", "1-1 -Radio guy", "", {["unsung_11", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-				// 1-2 - Medic
-				_action = [ "menu_unsung_12", "1-2 -Medic", "", {["unsung_12", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
-				_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+				#include "\CGQC\loadouts\unsung\actions_roles.hpp"
+				#include "\CGQC\loadouts\unsung\actions_primary.hpp"
+				#include "\CGQC\loadouts\unsung\actions_arsenal.hpp"
 			};
 			// Mk2 Arsenal if 2023 mod is present  ===============================================================================================
 			if (cgqc_player_has2023) then {
