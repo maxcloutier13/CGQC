@@ -16,7 +16,7 @@ if (jib_restrictmarkers_enabled) then {
 				//Sharing is limited
 				_nearbyEntities = player nearEntities ["CAManBase", 5]; // Find players
 				_nearbyEntities = _nearbyEntities - [player];
-				_nearbyPlayers = _nearbyEntities  arrayIntersect [] call CGQC_int_allHumanPlayers;
+				_nearbyPlayers = _nearbyEntities  arrayIntersect ([] call CGQC_int_allHumanPlayers);
 				if (count _nearbyPlayers > 0) then {
 					cgqc_zeus_mapRestricted_txt = "-- Shared with --<br/>";
 					{
