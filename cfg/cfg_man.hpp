@@ -29,6 +29,15 @@ class CAManBase: Man {
 					runOnHover = "hint 'Inspect the soldiers gear'";
 					distance = 2;
 				};
+				class cgqc_inspect_para {
+					displayName = "Inspect Para Gear";
+					condition = "true";
+					statement = "[] call CGQC_fnc_inspectPara";
+					exceptions[] = {"isNotInside","isNotSitting"};
+					icon = "";
+					runOnHover = "hint 'Inspect parachute setup'";
+					distance = 2;
+				};
 			};
 
 			class cgqc_CopyClackerCodes
