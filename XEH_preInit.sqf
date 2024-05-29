@@ -154,7 +154,7 @@ cgqc_reset_speaker = false;
 cgqc_backpack_stashed = false;
 cgqc_backpack_dropped = false;
 cgqc_backpack_dropped_notif = false;
-cgqc_perks_tracking = 25;
+cgqc_perks_tracking = 5;
 // Map stuff
 cgqc_map_centerOnplayer = false;
 cgqc_map_centerOnLast = false;
