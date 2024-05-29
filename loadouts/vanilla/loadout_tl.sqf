@@ -19,9 +19,6 @@ player addPrimaryWeaponItem "ACE_30Rnd_556x45_Stanag_Mk262_mag";
 [] call CGQC_fnc_addMags;
 
 // === Role Items ==========================================================================================================
-player addItemToBackpack "tsp_stickCharge_auto_mag";
-player addItemToBackpack "tsp_popperCharge_auto_mag";
-player addItemToBackpack "tsp_popperCharge_auto_mag";
 for "_i" from 1 to 10 do {player addItemToBackpack "1Rnd_HE_Grenade_shell"};
 for "_i" from 1 to 3 do {player addItemToBackpack "1Rnd_SmokeRed_Grenade_shell"};
 for "_i" from 1 to 3 do {player addItemToBackpack "1Rnd_SmokeBlue_Grenade_shell"};
