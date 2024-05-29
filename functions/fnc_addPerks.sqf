@@ -29,6 +29,9 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_mark"], _
 // FieldCraft =========================================================================================================
 _action = [ "cgqc_perk_fieldcraft", "FieldCraft", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// ------ Cut Grass --------------------------------------------------------------------------------------
+_action = [ "cgqc_perk_cutgrass", "Coupe l'herbe", "CGQC\textures\cgqc_ace_grass", {["cut_grass"] spawn CGQC_fnc_perksFieldcraft}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_camo", "Hide yourself", "", {["camo"] spawn CGQC_fnc_perksFieldcraft}, {!cgqc_perks_camo && vehicle player isEqualTo player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "cgqc_perk_track_smell", "Smell", "", {["smell"] spawn CGQC_fnc_perksFieldcraft}, {vehicle player isEqualTo player} ] call ace_interact_menu_fnc_createAction;

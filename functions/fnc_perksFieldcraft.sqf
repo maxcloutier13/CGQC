@@ -68,6 +68,15 @@ cgqc_int_smellNothing = {
 };
 
 switch (_type) do {
+    case "cut_grass":{
+        hintSilent "Cutting grass";
+        _to_ghillie = 0;
+        sleep 2;
+        _pos1 = player modelToWorld [0,3,0];
+        _pos2 = player modelToWorld [0,6,0];
+        _cut1 = createVehicle ["Land_ClutterCutter_medium_F", _pos1, [], 0, "CAN_COLLIDE"];
+        _cut2 = createVehicle ["Land_ClutterCutter_medium_F", _pos2, [], 0, "CAN_COLLIDE"];
+    };
     case "camo": {
         player playMove "AinvPknlMstpSnonWnonDnon_medic4";
         [

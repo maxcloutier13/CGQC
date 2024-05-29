@@ -88,11 +88,8 @@ switch (_type) do {
 		// Uniform
 		_action = [ "cgqc_perk_ghillie_uniform", "Ghillie-> Uniforme", "", {_ct = ["uniform"] spawn CGQC_fnc_perksRecon}, {cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 		cgqc_action_ghillie_uniform = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-		// ------ Cut Grass --------------------------------------------------------------------------------------
-		_action = [ "cgqc_perk_cutgrass", "Coupe l'herbe", "CGQC\textures\cgqc_ace_grass", {_ct = ["cut_grass"] spawn CGQC_fnc_perksRecon}, {true} ] call ace_interact_menu_fnc_createAction;
-		cgqc_action_cutGrass = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		// Compile all actions to list
-		cgqc_perks_action_list = cgqc_perks_action_list + [cgqc_action_ghillie, cgqc_action_ghillie_arid, cgqc_action_ghillie_sarid, cgqc_action_ghillie_lush, cgqc_action_ghillie_jungle, cgqc_action_ghillie_uniform, cgqc_action_cutGrass];
+		cgqc_perks_action_list = cgqc_perks_action_list + [cgqc_action_ghillie, cgqc_action_ghillie_arid, cgqc_action_ghillie_sarid, cgqc_action_ghillie_lush, cgqc_action_ghillie_jungle, cgqc_action_ghillie_uniform];
 		cgqc_perks_recon = true;
 	};
 	case "eng":{
