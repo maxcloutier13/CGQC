@@ -29,6 +29,15 @@ class CAManBase: Man {
 					runOnHover = "hint 'Inspect the soldiers gear'";
 					distance = 2;
 				};
+				class cgqc_inspect_para {
+					displayName = "Inspect Para Gear";
+					condition = "true";
+					statement = "[] call CGQC_fnc_inspectPara";
+					exceptions[] = {"isNotInside","isNotSitting"};
+					icon = "";
+					runOnHover = "hint 'Inspect parachute setup'";
+					distance = 2;
+				};
 			};
 
 			class cgqc_CopyClackerCodes
@@ -215,7 +224,7 @@ class CAManBase: Man {
 				icon = "\z\ace\addons\interaction\UI\team\team_white_ca.paa";
 			};
 			class CGQC_joinGroup {
-				displayName = "Join/Create Group";
+				displayName = "Join Group";
 				condition = "true";
 				statement = "";
 
@@ -276,7 +285,6 @@ class CAManBase: Man {
 					condition = "true";
 					statement = "['Orion', 'MAIN'] spawn CGQC_fnc_joinGroup";
 				};
-
 				class CGQC_joinGroup_pegase {
 					displayName = "Pegase";
 					condition = "true";

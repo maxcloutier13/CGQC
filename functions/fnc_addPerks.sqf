@@ -26,6 +26,24 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_mark"], _
 _action = [ "cgqc_perk_mark_clear", "Clear all markers", "a3\ui_f\data\map\markers\Military\objective_CA.paa", {["clear"] spawn CGQC_fnc_markClear}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_mark"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// FieldCraft =========================================================================================================
+_action = [ "cgqc_perk_fieldcraft", "FieldCraft", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_cutgrass", "Coupe l'herbe", "CGQC\textures\cgqc_ace_grass", {["cut_grass"] spawn CGQC_fnc_perksFieldcraft}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_camo", "Hide yourself", "", {["camo"] spawn CGQC_fnc_perksFieldcraft}, {!cgqc_perks_camo && vehicle player isEqualTo player} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_track_smell", "Smell", "", {["smell"] spawn CGQC_fnc_perksFieldcraft}, {vehicle player isEqualTo player} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_track_fire", "Make Campfire", "", {["fire"] spawn CGQC_fnc_perksFieldcraft}, {vehicle player isEqualTo player} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Personal stash =========================================================================================================
+_action = [ "cgqc_perk_stash", " Personal Stash", "CGQC\textures\cgqc_ace_stash", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// Add Delete stash option
+_action = [ "cgqc_perk_stash_delete", " Delete Stash", "", {["del_stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
 // Quick State =========================================================================================================
 _action = [ "cgqc_perk_state", "Quick State", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -46,6 +64,8 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ac
 _action = [ "self_radio1", "Flip radios Gauche/Droite", "", {["flipSides"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+
+/*
 // Set radio roles
 // Spartan 1
 _action = [ "menu_self_spartan1", "Spartan 1", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -92,6 +112,7 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"]
 // HQ
 _action = [ "self_radio_hq", "HQ", "", {["hq"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
+*/
 
 // Toggle Speaker 1
 _action = [ "self_radio_speaker1", "Toggle Speaker 1", "", {["toggle_speaker"] spawn CGQC_fnc_setRadios}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -105,10 +126,6 @@ _action = [ "menu_self_cone", "Cone de silence", "CGQC\textures\cgqc_ace_cone", 
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_cone_off", "Cone de silence: Off", "CGQC\textures\cgqc_ace_cone", {["cone_off", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_silence} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Camouflage =========================================================================================================
-_action = [ "menu_self_camo", "Hide yourself", "", {["camo", false] spawn CGQC_fnc_perksBasic}, {!cgqc_perks_camo && vehicle player isEqualTo player} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Inspect   =========================================================================================================
 _action = [ "menu_self_inspect", "Inspect/Visual", "CGQC\textures\search.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -209,13 +226,6 @@ _action = [ "menu_self_panel_g", "Panel: Green", "", {["panel", "GREEN"] call CG
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_panel_b", "Panel: Black", "", {["panel", "BLACK"] call CGQC_fnc_dropChem}, {!cgqc_perks_panel} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-// Personal stash =========================================================================================================
-_action = [ "cgqc_perk_stash", " Personal Stash", "CGQC\textures\cgqc_ace_stash", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
-// Add Delete stash option
-_action = [ "cgqc_perk_stash_delete", " Delete Stash", "", {["del_stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Fixes =========================================================================================================
 _action = [ "menu_self_fixes", "Fixes/Debug", "a3\ui_f\data\IGUI\Cfg\simpleTasks\types\use_ca", {""}, {true} ] call ace_interact_menu_fnc_createAction;

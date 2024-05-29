@@ -28,8 +28,6 @@ switch (_gunVariant) do {
 
 switch (_variant) do {
 	case "tl": {
-		for "_i" from 1 to 2 do {_target addItemToBackpack "tsp_stickCharge_auto_mag"};
-		for "_i" from 1 to 2 do {_target addItemToBackpack "tsp_popperCharge_auto_mag"};
 		["2023_basic","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 	};
 	case "sl": {

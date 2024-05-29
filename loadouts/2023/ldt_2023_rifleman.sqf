@@ -32,6 +32,14 @@ switch (_variant) do {
 		for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67"}; // More grenades
 		player addWeapon "rhs_weap_m72a7"; // Launcher
 		player addItemToBackpack "ACE_wirecutter";
+		player addItemToVest "ACE_M84";
+		player addItemToVest "ACE_M84";
+		player addItemToVest "ACE_M84";
+		player addItemToVest "ACE_M84";
+		player addItemToVest "rhs_mag_m67";
+		player addItemToVest "rhs_mag_m67";
+		player addItemToVest "rhs_mag_m67";
+		player addItemToVest "rhs_mag_m67";
 	};
 	case "sharpshooter": {
 		player addItemToBackpack "ACE_Tripod";
@@ -39,19 +47,24 @@ switch (_variant) do {
 		player addItem "ACE_Kestrel4500";
 	};
 	case "lifesaver": {
+		["backpack", "cgqc_pack_mk1_kitbag"] call CGQC_fnc_switchStuff;
 		for "_i" from 1 to 20 do {player addItemToBackpack "ACE_fieldDressing";};
 		for "_i" from 1 to 10 do {player addItemToBackpack "FF_Painkiller";};
 		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_morphine";};
 		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_epinephrine";};
 		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_splint";};
 		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_tourniquet";};
+		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_salineIV";};
+		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_salineIV_500";};
 	};
 	case "engineer": {
+		["backpack", "cgqc_pack_mk1_kitbag"] call CGQC_fnc_switchStuff;
 		player addItemToBackpack "ToolKit";
 		player addItemToBackpack "ACE_Fortify";
 		// Common items
 		player addItemToBackpack "ACE_DefusalKit";
 		player addItemToBackpack "ACE_M26_Clacker";
+		for "_i" from 1 to 2 do { player addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag"};
 	};
 };
 

@@ -5,7 +5,6 @@ params ["_type"];
 
 if (hasInterface) then {
 	try {
-
 		_ghillie = "";
 		_to_ghillie = 0;
 		switch (_type) do	{
@@ -84,12 +83,7 @@ if (hasInterface) then {
 				hintSilent "Ghillie: Back to Uniform";
 				_to_ghillie = 2;
 			};
-			case "cut_grass":{
-				hintSilent "Cutting grass";
-				_to_ghillie = 0;
-				sleep 2;
-				_cutgrass = createVehicle ["Land_ClutterCutter_medium_F", position player, [], 0, "CAN_COLLIDE"];
-			};
+
 			default
 			{
 				hintSilent "woops";

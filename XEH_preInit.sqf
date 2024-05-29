@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.10";
+core_version = "4.6.11.1";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -154,6 +154,7 @@ cgqc_reset_speaker = false;
 cgqc_backpack_stashed = false;
 cgqc_backpack_dropped = false;
 cgqc_backpack_dropped_notif = false;
+cgqc_perks_tracking = 5;
 // Map stuff
 cgqc_map_centerOnplayer = false;
 cgqc_map_centerOnLast = false;
