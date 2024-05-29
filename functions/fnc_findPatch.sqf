@@ -14,6 +14,7 @@ if (!cgqc_player_known) then {
 		case "76561198024730191" : {
 			cgqc_player_patch = "cgqc_patch_cloutier";
 			cgqc_player_max = true;
+			cgqc_perks_tracking = 100;
 			player setVariable ["cgqc_version_core", core_version, true];
 		};
 		case "76561199227907428" : {cgqc_player_patch = "cgqc_patch_comeau"; };

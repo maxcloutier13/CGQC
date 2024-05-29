@@ -16,3 +16,7 @@ class fox_whistle2
 	sound[] = {"\fox_whistle\sounds\whistle2.ogg", 3, 1};
 	titles[] = {};
 };
+class cgqc_sound_sniff {
+	sound[] = {"\cgqc\sounds\Sniff.ogg", 1, 1};	// Volume, Pitch
+	titles[] = {};
+};

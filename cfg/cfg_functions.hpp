@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class perksFieldcraft{
+            file = "\cgqc\functions\fnc_perksFieldcraft.sqf";
+            description = "All the fieldcraft stuff";
+        };
         class exportPistol{
             file = "\cgqc\functions\fnc_exportPistol.sqf";
             description = "Export custom pistol to settings";
