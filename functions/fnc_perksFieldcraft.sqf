@@ -65,6 +65,7 @@ cgqc_int_smellNothing = {
     if (_rNum == 43) then { systemChat "...Cistus; shrub"; };
     if (_rNum == 44) then { systemChat "...non-descript; scrub"; };
     if (_rNum == 45) then { systemChat "...non-descript; pollen, dust"; };
+    systemChat "Nothing out of the ordinary";
 };
 
 switch (_type) do {
@@ -118,12 +119,11 @@ switch (_type) do {
 
         //Campfire
         _campfires = nearestObjects [player, ["Campfire_burning_F", "Land_Campfire_burning"], 800];
-        _campfire = _campfires select 0;
-        _fDir =  0;
-        _dist = player distance _campfire;
         if (count _campfires > 0) then {
             LOG("[fieldcraft] Campfire in the area");
-            _fdir = player getDir _campfire;
+            _campfire = _campfires select 0;
+            _dist = player distance _campfire;
+            _fDir = player getDir _campfire;
             // Finding direction
             if (random 100 < cgqc_perks_tracking) then {
                 if ((_fDir > 338) && (_fDir <  22)) then { systemChat "Campfire... North"; };
