@@ -90,7 +90,7 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_skill"], _action 
 
 // Radio setups
 _action = [ "menu_radios", "Switch: Radios", "CGQC\textures\radio.paa", {""}, {player getVariable 'cgqc_player_rank' > 3 || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
-_adding = [ _crate, 0, ["ACE_MainActions", "menu_skill"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_quick"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_radios_1", "Infantry - 343", "", {["inf"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_radios"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_radios_2", "2iC - 343+148", "", {["2ic"] call CGQC_fnc_getRadioPresets}, {true} ] call ace_interact_menu_fnc_createAction;
