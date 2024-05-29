@@ -10,62 +10,66 @@ LOG_1("[fieldcraft] %1 started", _type);
 // Consider the wind direction. Bonus there, malus the other way.
 
 cgqc_int_checkSkill = {
-    if (cgqc_perks_tracking > 90) then {systemChat "You were born to track";};
-    if (cgqc_perks_tracking > 80 && cgqc_perks_tracking < 90) then {systemChat "You are a good tracker. You got this";};
-    if (cgqc_perks_tracking > 50 && cgqc_perks_tracking < 80) then {systemChat "You are a decent tracker.";};
-    if (cgqc_perks_tracking > 30 && cgqc_perks_tracking < 50) then {systemChat "You are... okay at tracking";};
-    if (cgqc_perks_tracking > 10 && cgqc_perks_tracking < 30) then {systemChat "You are... Meh at tracking. It's gonna be rough";};
-    if (cgqc_perks_tracking < 10) then {systemChat "You suck at tracking. Give up.";};
+    _txt = "";
+    if (cgqc_perks_tracking > 90) then {_txt =  "You were born to track";};
+    if (cgqc_perks_tracking > 80 && cgqc_perks_tracking < 90) then {_txt = "You are a good tracker. You got this";};
+    if (cgqc_perks_tracking > 50 && cgqc_perks_tracking < 80) then {_txt = "You are a decent tracker.";};
+    if (cgqc_perks_tracking > 30 && cgqc_perks_tracking < 50) then {_txt = "You are... okay at tracking";};
+    if (cgqc_perks_tracking > 10 && cgqc_perks_tracking < 30) then {_txt = "You are... Meh at tracking. It's gonna be rough";};
+    if (cgqc_perks_tracking < 10) then {_txt = "You suck at tracking. Give up.";};
+    [[_txt, 1.5], false] call CBA_fnc_notify;
 };
 
 cgqc_int_smellNothing = {
+    _txt = "";
     _rNum = [1,45] call BIS_fnc_randomInt;
-    if (_rNum == 1)  then { systemChat "...non-descript; scrub"; };
-    if (_rNum == 2)  then { systemChat "...Limestone; soil"; };
-    if (_rNum == 3)  then { systemChat "...Vegetation; general"; };
-    if (_rNum == 4)  then { systemChat "...bodyodor; self"; };
-    if (_rNum == 5)  then { systemChat "...Gun Oil; self"; };
-    if (_rNum == 6)  then { systemChat "...Xeric Junipers; tree"; };
-    if (_rNum == 7)  then { systemChat "...Rosemary; shrub"; };
-    if (_rNum == 8)  then { systemChat "...Terra Rossa, soil"; };
-    if (_rNum == 9)  then { systemChat "...Limestone; soil"; };
-    if (_rNum == 10) then { systemChat "...Berber Thuya; conifer"; };
-    if (_rNum == 11) then { systemChat "...Siliceous Rock; soil"; };
-    if (_rNum == 12) then { systemChat "...Cork Oak; tree"; };
-    if (_rNum == 13) then { systemChat "...Bay Laurel; shrub"; };
-    if (_rNum == 14) then { systemChat "...Strawberry Tree; shrub"; };
-    if (_rNum == 15) then { systemChat "...Tree Heath; shrub"; };
-    if (_rNum == 16) then { systemChat "...Holly; shrub"; };
-    if (_rNum == 17) then { systemChat "...Phillyrea; shrub"; };
-    if (_rNum == 18) then { systemChat "...Laurustinus; shrub"; };
-    if (_rNum == 19) then { systemChat "...Harry Broom; shrub"; };
-    if (_rNum == 20) then { systemChat "...Common Myrtle; shrub"; };
-    if (_rNum == 21) then { systemChat "...Holm Oak; tree"; };
-    if (_rNum == 22) then { systemChat "...Kermes Oak; tree"; };
-    if (_rNum == 23) then { systemChat "...Wild Olive; plant"; };
-    if (_rNum == 24) then { systemChat "...Carob; plant"; };
-    if (_rNum == 25) then { systemChat "...Sea Salt; ocean"; };
-    if (_rNum == 26) then { systemChat "...Aleppo Pine; tree"; };
-    if (_rNum == 27) then { systemChat "...Siliceous Rock; soil"; };
-    if (_rNum == 28) then { systemChat "...Holm Oak; tree"; };
-    if (_rNum == 29) then { systemChat "...non-descript; unknown"; };
-    if (_rNum == 30) then { systemChat "...Berber Thuya; conifer"; };
-    if (_rNum == 31) then { systemChat "...Xeric Pine; tree"; };
-    if (_rNum == 32) then { systemChat "...Dust, Sand; mixed, soil"; };
-    if (_rNum == 33) then { systemChat "...Decay, weak; flesh"; };
-    if (_rNum == 34) then { systemChat "...Decay, strong; flesh"; };
-    if (_rNum == 35) then { systemChat "...Decay, mixed; plant"; };
-    if (_rNum == 36) then { systemChat "...Wheat; farmland"; };
-    if (_rNum == 37) then { systemChat "...Barley; farmland"; };
-    if (_rNum == 38) then { systemChat "...Sesame; farmland"; };
-    if (_rNum == 39) then { systemChat "...Animal, varied; farmland"; };
-    if (_rNum == 40) then { systemChat "...non-descript; farmland"; };
-    if (_rNum == 41) then { systemChat "...Cooking; mediterranean"; };
-    if (_rNum == 42) then { systemChat "...Genista; shrub"; };
-    if (_rNum == 43) then { systemChat "...Cistus; shrub"; };
-    if (_rNum == 44) then { systemChat "...non-descript; scrub"; };
-    if (_rNum == 45) then { systemChat "...non-descript; pollen, dust"; };
-    systemChat "Nothing out of the ordinary";
+    if (_rNum == 1)  then { _txt = "...non-descript; scrub"; };
+    if (_rNum == 2)  then { _txt = "...Limestone; soil"; };
+    if (_rNum == 3)  then { _txt = "...Vegetation; general"; };
+    if (_rNum == 4)  then { _txt = "...bodyodor; self"; };
+    if (_rNum == 5)  then { _txt = "...Gun Oil; self"; };
+    if (_rNum == 6)  then { _txt = "...Xeric Junipers; tree"; };
+    if (_rNum == 7)  then { _txt = "...Rosemary; shrub"; };
+    if (_rNum == 8)  then { _txt = "...Terra Rossa, soil"; };
+    if (_rNum == 9)  then { _txt = "...Limestone; soil"; };
+    if (_rNum == 10) then { _txt = "...Berber Thuya; conifer"; };
+    if (_rNum == 11) then { _txt = "...Siliceous Rock; soil"; };
+    if (_rNum == 12) then { _txt = "...Cork Oak; tree"; };
+    if (_rNum == 13) then { _txt = "...Bay Laurel; shrub"; };
+    if (_rNum == 14) then { _txt = "...Strawberry Tree; shrub"; };
+    if (_rNum == 15) then { _txt = "...Tree Heath; shrub"; };
+    if (_rNum == 16) then { _txt = "...Holly; shrub"; };
+    if (_rNum == 17) then { _txt = "...Phillyrea; shrub"; };
+    if (_rNum == 18) then { _txt = "...Laurustinus; shrub"; };
+    if (_rNum == 19) then { _txt = "...Harry Broom; shrub"; };
+    if (_rNum == 20) then { _txt = "...Common Myrtle; shrub"; };
+    if (_rNum == 21) then { _txt = "...Holm Oak; tree"; };
+    if (_rNum == 22) then { _txt = "...Kermes Oak; tree"; };
+    if (_rNum == 23) then { _txt = "...Wild Olive; plant"; };
+    if (_rNum == 24) then { _txt = "...Carob; plant"; };
+    if (_rNum == 25) then { _txt = "...Sea Salt; ocean"; };
+    if (_rNum == 26) then { _txt = "...Aleppo Pine; tree"; };
+    if (_rNum == 27) then { _txt = "...Siliceous Rock; soil"; };
+    if (_rNum == 28) then { _txt = "...Holm Oak; tree"; };
+    if (_rNum == 29) then { _txt = "...non-descript; unknown"; };
+    if (_rNum == 30) then { _txt = "...Berber Thuya; conifer"; };
+    if (_rNum == 31) then { _txt = "...Xeric Pine; tree"; };
+    if (_rNum == 32) then { _txt = "...Dust, Sand; mixed, soil"; };
+    if (_rNum == 33) then { _txt = "...Decay, weak; flesh"; };
+    if (_rNum == 34) then { _txt = "...Decay, strong; flesh"; };
+    if (_rNum == 35) then { _txt = "...Decay, mixed; plant"; };
+    if (_rNum == 36) then { _txt = "...Wheat; farmland"; };
+    if (_rNum == 37) then { _txt = "...Barley; farmland"; };
+    if (_rNum == 38) then { _txt = "...Sesame; farmland"; };
+    if (_rNum == 39) then { _txt = "...Animal, varied; farmland"; };
+    if (_rNum == 40) then { _txt = "...non-descript; farmland"; };
+    if (_rNum == 41) then { _txt = "...Cooking; mediterranean"; };
+    if (_rNum == 42) then { _txt = "...Genista; shrub"; };
+    if (_rNum == 43) then { _txt = "...Cistus; shrub"; };
+    if (_rNum == 44) then { _txt = "...non-descript; scrub"; };
+    if (_rNum == 45) then { _txt = "...non-descript; pollen, dust"; };
+    _txt = _txt + "... Nothing out of the ordinary";
+    [[_txt, 1.5], false] call CBA_fnc_notify;
 };
 
 switch (_type) do {
@@ -114,7 +118,9 @@ switch (_type) do {
         addCamShake [3,2,2]; //p,d,f
         playSound "cgqc_sound_sniff";
         [] call cgqc_int_checkSkill;
-        systemChat "Sniffing the air...";
+        _txt = "";
+        _txt = "Sniffing the air...";
+        [[_txt, 1.5], false] call CBA_fnc_notify;
         sleep 2;
 
         //Campfire
@@ -126,25 +132,28 @@ switch (_type) do {
             _fDir = player getDir _campfire;
             // Finding direction
             if (random 100 < cgqc_perks_tracking) then {
-                if ((_fDir > 338) && (_fDir <  22)) then { systemChat "Campfire... North"; };
-                if ((_fDir >  22) && (_fDir <  67)) then { systemChat "Campfire... North-East"; };
-                if ((_fDir >  67) && (_fDir < 112)) then { systemChat "Campfire... East"; };
-                if ((_fDir > 112) && (_fDir < 157)) then { systemChat "Campfire... South-East"; };
-                if ((_fDir > 157) && (_fDir < 202)) then { systemChat "Campfire... South"; };
-                if ((_fDir > 202) && (_fDir < 247)) then { systemChat "Campfire... South-West"; };
-                if ((_fDir > 247) && (_fDir < 292)) then { systemChat "Campfire... West"; };
-                if ((_fDir > 292) && (_fDir < 337)) then { systemChat "Campfire... North-West"; };
-            } else { systemChat "Campfire... Somewhere"; };
-            if ((_dist < 100)) exitWith {systemChat "The air is thick with the scent of burning wood. The campfire is very close."};
-            if ((_dist > 100) && (_dist < 200)) then {systemChat "The scent of burning wood is quite noticeable. The campfire is close by."};
-            if ((_dist > 200) && (_dist < 600)) then {systemChat "You can smell a faint hint of smoke in the air. The campfire is somewhere nearby."};
-            if ((_dist > 600) && (_dist < 800)) then {systemChat "A distant, almost imperceptible scent of smoke lingers in the air. The campfire is far away."};
+                if ((_fDir > 338) && (_fDir <  22)) then { _txt = "Campfire... North"; };
+                if ((_fDir >  22) && (_fDir <  67)) then { _txt = "Campfire... North-East"; };
+                if ((_fDir >  67) && (_fDir < 112)) then { _txt = "Campfire... East"; };
+                if ((_fDir > 112) && (_fDir < 157)) then { _txt = "Campfire... South-East"; };
+                if ((_fDir > 157) && (_fDir < 202)) then { _txt = "Campfire... South"; };
+                if ((_fDir > 202) && (_fDir < 247)) then { _txt = "Campfire... South-West"; };
+                if ((_fDir > 247) && (_fDir < 292)) then { _txt = "Campfire... West"; };
+                if ((_fDir > 292) && (_fDir < 337)) then { _txt = "Campfire... North-West"; };
+            } else { _txt = "Campfire... Somewhere"; };
+            [[_txt, 1.5], false] call CBA_fnc_notify;
+            if ((_dist < 100)) exitWith {_txt = "The air is thick with the scent of burning wood. The campfire is very close."};
+            if ((_dist > 100) && (_dist < 200)) then {_txt = "The scent of burning wood is quite noticeable. The campfire is close by."};
+            if ((_dist > 200) && (_dist < 600)) then {_txt = "You can smell a faint hint of smoke in the air. The campfire is somewhere nearby."};
+            if ((_dist > 600) && (_dist < 800)) then {_txt = "A distant, almost imperceptible scent of smoke lingers in the air. The campfire is far away."};
+            [[_txt, 1.5], false] call CBA_fnc_notify;
         };
 
         // Launcher oil smells
         if (secondaryWeapon player != "") exitWith {
             LOG("[fieldcraft] Smelling: launcher");
-            systemChat "Weapon Oil... Weapon on your back...";
+            _txt = "Weapon Oil... Weapon on your back...";
+            [[_txt, 1.5], false] call CBA_fnc_notify;
         };
 
         // Advanced detection failed: exit with random normal smells
@@ -174,76 +183,80 @@ switch (_type) do {
         // Enemy Nearby!
         if (count _posE > 0) then {
             LOG("[fieldcraft] Unit check: Found one!");
-            systemChat "Human smell...";
+            _txt = "Human smell...";
+            [[_txt, 1.5], false] call CBA_fnc_notify;
             _rNum = [1,46] call BIS_fnc_randomInt;
 
-            if (_rNum == 1)  then { systemChat "Bodyodor; Human..."; };
-            if (_rNum == 2)  then { systemChat "Bodyodor; Human..."; };
-            if (_rNum == 3)  then { systemChat "Bodyodor; Sweat..."; };
-            if (_rNum == 4)  then { systemChat "Bodyodor; Feet..."; };
-            if (_rNum == 5)  then { systemChat "Chemical; Cleaner..."; };
-            if (_rNum == 6)  then { systemChat "Chemical; Chlorine..."; };
-            if (_rNum == 7)  then { systemChat "Chemical; Clorox..."; };
-            if (_rNum == 8)  then { systemChat "Chemical; Dryer Sheet..."; };
-            if (_rNum == 9)  then { systemChat "Chemical; Shampoo..."; };
-            if (_rNum == 10) then { systemChat "Chemical; Toothpaste..."; };
-            if (_rNum == 11) then { systemChat "Chemical; Antiseptic..."; };
-            if (_rNum == 12) then { systemChat "Chemical; Iodine..."; };
-            if (_rNum == 13) then { systemChat "Chemical; Soap, Washed..."; };
-            if (_rNum == 14) then { systemChat "Chemical; Bug Spray..."; };
-            if (_rNum == 15) then { systemChat "Chemical; Gasoline..."; };
-            if (_rNum == 16) then { systemChat "Chemical; Oil, Synthetic..."; };
-            if (_rNum == 17) then { systemChat "Chemical; Bleach..."; };
-            if (_rNum == 18) then { systemChat "Chemical; Deodorant..."; };
-            if (_rNum == 19) then { systemChat "Chemical; Metal Polish..."; };
-            if (_rNum == 20) then { systemChat "Chemical; Lighter Fluid..."; };
-            if (_rNum == 21) then { systemChat "Gun Oil; foreign..."; };
-            if (_rNum == 22) then { systemChat "Shoe Leather; foreign..."; };
-            if (_rNum == 23) then { systemChat "Cotton, fabric; foreign..."; };
-            if (_rNum == 24) then { systemChat "non-descript; human..."; };
-            if (_rNum == 25) then { systemChat "Tobacco; Cuban..."; };
-            if (_rNum == 26) then { systemChat "Tobacco; foreign..."; };
-            if (_rNum == 27) then { systemChat "Tobacco; unknown..."; };
-            if (_rNum == 28) then { systemChat "Smoke; general..."; };
-            if (_rNum == 29) then { systemChat "Smoke; Cigarette..."; };
-            if (_rNum == 30) then { systemChat "Cotton; wet..."; };
-            if (_rNum == 31) then { systemChat "Spearmint; Chewing Gum..."; };
-            if (_rNum == 32) then { systemChat "Alcohol; Beer..."; };
-            if (_rNum == 33) then { systemChat "Alcohol; Liquor..."; };
-            if (_rNum == 34) then { systemChat "Bodyodor; Human..."; };
-            if (_rNum == 35) then { systemChat "Chemical; Cleaner..."; };
-            if (_rNum == 36) then { systemChat "Chemical; Chlorine..."; };
-            if (_rNum == 37) then { systemChat "Chemical; Clorox..."; };
-            if (_rNum == 38) then { systemChat "Chemical; Dryer Sheet..."; };
-            if (_rNum == 39) then { systemChat "Chemical; Shampoo..."; };
-            if (_rNum == 40) then { systemChat "Chemical; Toothpaste..."; };
-            if (_rNum == 41) then { systemChat "Chemical; Antiseptic..."; };
-            if (_rNum == 42) then { systemChat "Alcohol; Beer..."; };
-            if (_rNum == 43) then { systemChat "Alcohol; Liquor..."; };
-            if (_rNum == 44) then { systemChat "Bodyodor; Human..."; };
-            if (_rNum == 45) then { systemChat "Chemical; Cleaner..."; };
-            if (_rNum == 46) then { systemChat "Chemical; Chlorine..."; };
+            if (_rNum == 1)  then { _txt = "Bodyodor; Human..."; };
+            if (_rNum == 2)  then { _txt = "Bodyodor; Human..."; };
+            if (_rNum == 3)  then { _txt = "Bodyodor; Sweat..."; };
+            if (_rNum == 4)  then { _txt = "Bodyodor; Feet..."; };
+            if (_rNum == 5)  then { _txt = "Chemical; Cleaner..."; };
+            if (_rNum == 6)  then { _txt = "Chemical; Chlorine..."; };
+            if (_rNum == 7)  then { _txt = "Chemical; Clorox..."; };
+            if (_rNum == 8)  then { _txt = "Chemical; Dryer Sheet..."; };
+            if (_rNum == 9)  then { _txt = "Chemical; Shampoo..."; };
+            if (_rNum == 10) then { _txt = "Chemical; Toothpaste..."; };
+            if (_rNum == 11) then { _txt = "Chemical; Antiseptic..."; };
+            if (_rNum == 12) then { _txt = "Chemical; Iodine..."; };
+            if (_rNum == 13) then { _txt = "Chemical; Soap, Washed..."; };
+            if (_rNum == 14) then { _txt = "Chemical; Bug Spray..."; };
+            if (_rNum == 15) then { _txt = "Chemical; Gasoline..."; };
+            if (_rNum == 16) then { _txt = "Chemical; Oil, Synthetic..."; };
+            if (_rNum == 17) then { _txt = "Chemical; Bleach..."; };
+            if (_rNum == 18) then { _txt = "Chemical; Deodorant..."; };
+            if (_rNum == 19) then { _txt = "Chemical; Metal Polish..."; };
+            if (_rNum == 20) then { _txt = "Chemical; Lighter Fluid..."; };
+            if (_rNum == 21) then { _txt = "Gun Oil; foreign..."; };
+            if (_rNum == 22) then { _txt = "Shoe Leather; foreign..."; };
+            if (_rNum == 23) then { _txt = "Cotton, fabric; foreign..."; };
+            if (_rNum == 24) then { _txt = "non-descript; human..."; };
+            if (_rNum == 25) then { _txt = "Tobacco; Cuban..."; };
+            if (_rNum == 26) then { _txt = "Tobacco; foreign..."; };
+            if (_rNum == 27) then { _txt = "Tobacco; unknown..."; };
+            if (_rNum == 28) then { _txt = "Smoke; general..."; };
+            if (_rNum == 29) then { _txt = "Smoke; Cigarette..."; };
+            if (_rNum == 30) then { _txt = "Cotton; wet..."; };
+            if (_rNum == 31) then { _txt = "Spearmint; Chewing Gum..."; };
+            if (_rNum == 32) then { _txt = "Alcohol; Beer..."; };
+            if (_rNum == 33) then { _txt = "Alcohol; Liquor..."; };
+            if (_rNum == 34) then { _txt = "Bodyodor; Human..."; };
+            if (_rNum == 35) then { _txt = "Chemical; Cleaner..."; };
+            if (_rNum == 36) then { _txt = "Chemical; Chlorine..."; };
+            if (_rNum == 37) then { _txt = "Chemical; Clorox..."; };
+            if (_rNum == 38) then { _txt = "Chemical; Dryer Sheet..."; };
+            if (_rNum == 39) then { _txt = "Chemical; Shampoo..."; };
+            if (_rNum == 40) then { _txt = "Chemical; Toothpaste..."; };
+            if (_rNum == 41) then { _txt = "Chemical; Antiseptic..."; };
+            if (_rNum == 42) then { _txt = "Alcohol; Beer..."; };
+            if (_rNum == 43) then { _txt = "Alcohol; Liquor..."; };
+            if (_rNum == 44) then { _txt = "Bodyodor; Human..."; };
+            if (_rNum == 45) then { _txt = "Chemical; Cleaner..."; };
+            if (_rNum == 46) then { _txt = "Chemical; Chlorine..."; };
+            [[_txt, 1.5], false] call CBA_fnc_notify;
             sleep 2;
 
             // direction
             if (random 100 < cgqc_perks_tracking) then {
-                if ((_eDir > 338) && (_eDir <  22)) then { systemChat "North"; };
-                if ((_eDir >  22) && (_eDir <  67)) then { systemChat "North-East"; };
-                if ((_eDir >  67) && (_eDir < 112)) then { systemChat "East"; };
-                if ((_eDir > 112) && (_eDir < 157)) then { systemChat "South-East"; };
-                if ((_eDir > 157) && (_eDir < 202)) then { systemChat "South"; };
-                if ((_eDir > 202) && (_eDir < 247)) then { systemChat "South-West"; };
-                if ((_eDir > 247) && (_eDir < 292)) then { systemChat "West"; };
-                if ((_eDir > 292) && (_eDir < 337)) then { systemChat "North-West"; };
+                if ((_eDir > 338) && (_eDir <  22)) then { _txt = "North"; };
+                if ((_eDir >  22) && (_eDir <  67)) then { _txt = "North-East"; };
+                if ((_eDir >  67) && (_eDir < 112)) then { _txt = "East"; };
+                if ((_eDir > 112) && (_eDir < 157)) then { _txt = "South-East"; };
+                if ((_eDir > 157) && (_eDir < 202)) then { _txt = "South"; };
+                if ((_eDir > 202) && (_eDir < 247)) then { _txt = "South-West"; };
+                if ((_eDir > 247) && (_eDir < 292)) then { _txt = "West"; };
+                if ((_eDir > 292) && (_eDir < 337)) then { _txt = "North-West"; };
+                [[_txt, 1.5], false] call CBA_fnc_notify;
             };
             if (random 100 < cgqc_perks_tracking) then {
-                if ((_dist < 100)) then { systemChat "The air is thick with the scent. Someone is very close"; };
-                if ((_dist > 100) && (_dist < 200)) then { systemChat "The smell is distinct. Someone is close by"; };
-                if ((_dist > 200) && (_dist < 300)) then { systemChat "Smell is faint. Someone is in the vicinity"; };
-                if (_dist > 300) then { systemChat "The smell is barely perceptible. Someone is far away"; };
+                if ((_dist < 100)) then { _txt = "The air is thick with the scent. Someone is very close"; };
+                if ((_dist > 100) && (_dist < 200)) then { _txt = "The smell is distinct. Someone is close by"; };
+                if ((_dist > 200) && (_dist < 300)) then { _txt = "Smell is faint. Someone is in the vicinity"; };
+                if (_dist > 300) then { _txt = "The smell is barely perceptible. Someone is far away"; };
             } else {
-                systemChat "Direction uncertain..";
+                _txt = "Direction uncertain..";
             };
+
         };
         // Nothing...
         if (count _posE == 0) then {
@@ -265,14 +278,19 @@ switch (_type) do {
         "#GdtAsphalt","#SurfRoadDirt_Enoch","#SurfRoadTarmac1_Enoch","#SurfRoadTarmac2_Enoch","#SurfRoadTarmac3_Enoch","#SurfTrailDirt_Enoch","#GdtKlTarmac",
         "#GdtKlWeatheredTarmac","#GdtKLCobblestone","#GdtStratisBeach","#GdtStratisDirt","#GdtBeach","#GdtDirt","#GdtSoil","#GdtStony","#GdtDead","#GdtSeabed"];
 
-        if (isOnRoad position player) 		exitWith { systemChat "Road... unable to track..."; };
-        if (_surfaceType in _tooHardtoDig) 	exitWith { systemChat "Surface too hard... unable to track..."; };
-
-
+        if (isOnRoad position player) 		exitWith {
+            _txt = "Road... unable to track...";
+            [[_txt, 1.5], false] call CBA_fnc_notify;
+        };
+        if (_surfaceType in _tooHardtoDig) 	exitWith {
+            _txt = "Surface too hard... unable to track...";
+            [[_txt, 1.5], false] call CBA_fnc_notify;
+        };
 
         player playAction "PlayerCrouch"; 							// crouch...
         sleep 2;
-        systemChat "Lets take a look . . .";
+        _txt = "Lets take a look . . .";
+        [[_txt, 1.5], false] call CBA_fnc_notify;
         sleep 10;
 
     };
