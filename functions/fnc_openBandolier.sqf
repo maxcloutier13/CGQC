@@ -88,15 +88,9 @@ switch (_type) do {
 				// Compare the magazine size
 				_addMags = cgqc_config_ammo_primary;
 				switch (true) do {
-					case (_magSize > 50): {
-						_addMags = 4;
-					};
-					case (_magSize > 30): {
-						_addMags = 6;
-					};
-					case (_magSize < 15): {
-						_addMags = 10;
-					};
+					case (_magSize < 20): {_addMags = _addMags * 1.6};
+					case (_magSize == 20): {_addMags = _addMags * 1.5};
+					case (_magSize > 30): {_addMags = _addMags * 0.6};
 				};
 				LOG_1(" openBandolier Adding %1 primary mags", _addMags);
 				["vest", _primaryMag, _addMags] call cgqc_fnc_addItemWithOverflow;
