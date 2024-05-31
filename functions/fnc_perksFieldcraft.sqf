@@ -144,7 +144,7 @@ switch (_type) do {
             [[_txt, 1.5], false] call CBA_fnc_notify;
             if ((_dist < 100)) exitWith {_txt = "The air is thick with the scent of burning wood. The campfire is very close."};
             if ((_dist > 100) && (_dist < 200)) then {_txt = "The scent of burning wood is quite noticeable. The campfire is close by."};
-            if ((_dist > 200) && (_dist < 600)) then {_txt = "You can smell a faint hint of smoke in the air. The campfire is somewhere nearby."};
+            if ((_dist > 200) && (_dist < 600)) then {_txt = "You can smell a faint hint of smoke in the air. The campfire is somewhat far."};
             if ((_dist > 600) && (_dist < 800)) then {_txt = "A distant, almost imperceptible scent of smoke lingers in the air. The campfire is far away."};
             [[_txt, 1.5], false] call CBA_fnc_notify;
         };
