@@ -29,6 +29,9 @@ _target addItemToVest "SmokeShell";
 _target addItemToVest "SmokeShell";
 _target addItemToVest "rhs_mag_m67";
 _target addItemToVest "rhs_mag_m67";
+_target addItemToVest "MiniGrenade";
+_target addItemToVest "MiniGrenade";
+
 
 // === Backpack Items ====================================================================================================
 _target addItemToBackpack "ACE_EntrenchingTool";
