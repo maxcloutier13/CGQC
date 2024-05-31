@@ -205,6 +205,7 @@ switch (_type) do {
         "cgqc_marker_backpack" setMarkerColorLocal "ColorRed";
         "cgqc_marker_backpack" setMarkerTextLocal " Pack";
         cgqc_backpack_dropped = true;
+        [["Backpack dropped", 1.5], false] call CBA_fnc_notify;
         if (cgqc_flag_backpackNotif) then {
             [] spawn {
                 while {alive player && cgqc_backpack_dropped && !cgqc_backpack_dropped_notif} do {
