@@ -29,17 +29,11 @@ switch (_gunVariant) do {
 
 switch (_variant) do {
 	case "rifleman": {
-		for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67"}; // More grenades
 		player addWeapon "rhs_weap_m72a7"; // Launcher
 		player addItemToBackpack "ACE_wirecutter";
-		player addItemToVest "ACE_M84";
-		player addItemToVest "ACE_M84";
-		player addItemToVest "ACE_M84";
-		player addItemToVest "ACE_M84";
-		player addItemToVest "rhs_mag_m67";
-		player addItemToVest "rhs_mag_m67";
-		player addItemToVest "rhs_mag_m67";
-		player addItemToVest "rhs_mag_m67";
+		for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m67"}; // More grenades
+		for "_i" from 1 to 4 do {player addItemToVest "ACE_M84"}; // More grenades
+		for "_i" from 1 to 4 do {player addItemToVest "MiniGrenade"}; // More grenades
 	};
 	case "sharpshooter": {
 		player addItemToBackpack "ACE_Tripod";

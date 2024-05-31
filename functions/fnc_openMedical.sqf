@@ -55,16 +55,15 @@ switch (_type) do {
 			_work = _work + "IFAK";
 			_target removeItem "cgqc_items_ifak";
 			LOG(" openMedical - unpacking ifak");
-			for "_i" from _bandage to 9 do {_target addItem "ACE_fieldDressing"};
-			for "_i" from _epi to 1 do {_target addItem "ACE_epinephrine"};
-			for "_i" from _morphine to 1 do {_target addItem "ACE_morphine"};
-			for "_i" from _painkill to 4 do {_target addItem "FF_Painkiller"};
-			for "_i" from _splint to 0 do {_target addItem "ACE_splint"};
-			for "_i" from _tourniquet to 1 do {_target addItem "ACE_tourniquet"};
-			for "_i" from _liquids to 1 do {_target addItemToBackpack "ACE_salineIV_500"};
+			for "_i" from _bandage to cgqc_config_ifak_bandages do {_target addItem "ACE_fieldDressing"};
+			for "_i" from _epi to cgqc_config_ifak_epi do {_target addItem "ACE_epinephrine"};
+			for "_i" from _morphine to cgqc_config_ifak_morphine do {_target addItem "ACE_morphine"};
+			for "_i" from _painkill to cgqc_config_ifak_painkill do {_target addItem "FF_Painkiller"};
+			for "_i" from _splint to cgqc_config_ifak_splint do {_target addItem "ACE_splint"};
+			for "_i" from _tourniquet to cgqc_config_ifak_tourniquet do {_target addItem "ACE_tourniquet"};
+			for "_i" from _liquids to cgqc_config_ifak_liquids do {_target addItemToBackpack "ACE_salineIV_500"};
 			hint _work;
 		};
-
 	};
 	case "medkit": {
 		if (player isEqualTo _target) then {
@@ -72,18 +71,18 @@ switch (_type) do {
 				_work = _work + "Medkit";
 				_target removeItem "cgqc_items_medkit";
 				LOG(" openMedical - unpacking medkit");
-				for "_i" from _bandage to 49 do {_target addItemToBackpack "ACE_fieldDressing"};
-				for "_i" from _epi to 9 do {_target addItemToBackpack "ACE_epinephrine"};
-				for "_i" from _morphine to 9 do {_target addItemToBackpack "ACE_morphine"};
-				for "_i" from _painkill to 14 do {_target addItemToBackpack "FF_Painkiller"};
-				for "_i" from _splint to 5 do {_target addItemToBackpack "ACE_splint"};
-				for "_i" from _tourniquet to 5 do {_target addItemToBackpack "ACE_tourniquet"};
-				for "_i" from _1000ml to 4 do {_target addItemToBackpack "ACE_salineIV"};
-				for "_i" from _500ml to 7 do {_target addItemToBackpack "ACE_salineIV_500"};
-				for "_i" from _pak to 0 do {_target addItemToBackpack "ACE_personalAidKit"};
-				for "_i" from _smoke_purple to 1 do {_target addItemToBackpack "SmokeShellPurple"};
-				for "_i" from _medbag to 0 do {_target addItemToBackpack "FSGm_ItemMedicBag"};
-				for "_i" from _bodybags to 1 do {player addItemToBackpack "ACE_bodyBag"};
+				for "_i" from _bandage to cgqc_config_medkit_bandages do {_target addItemToBackpack "ACE_fieldDressing"};
+				for "_i" from _epi to cgqc_config_medkit_epi do {_target addItemToBackpack "ACE_epinephrine"};
+				for "_i" from _morphine to cgqc_config_medkit_morphine do {_target addItemToBackpack "ACE_morphine"};
+				for "_i" from _painkill to cgqc_config_medkit_painkill do {_target addItemToBackpack "FF_Painkiller"};
+				for "_i" from _splint to cgqc_config_medkit_splint do {_target addItemToBackpack "ACE_splint"};
+				for "_i" from _tourniquet to cgqc_config_medkit_tourniquet do {_target addItemToBackpack "ACE_tourniquet"};
+				for "_i" from _1000ml to cgqc_config_medkit_1000 do {_target addItemToBackpack "ACE_salineIV"};
+				for "_i" from _500ml to cgqc_config_medkit_500 do {_target addItemToBackpack "ACE_salineIV_500"};
+				for "_i" from _pak to cgqc_config_medkit_pak do {_target addItemToBackpack "ACE_personalAidKit"};
+				for "_i" from _smoke_purple to cgqc_config_medkit_smoke do {_target addItemToBackpack "SmokeShellPurple"};
+				for "_i" from _medbag to cgqc_config_medkit_medbag do {_target addItemToBackpack "FSGm_ItemMedicBag"};
+				for "_i" from _bodybags to cgqc_config_medkit_bodybag do {player addItemToBackpack "ACE_bodyBag"};
 				hint _work;
 			};
 		};

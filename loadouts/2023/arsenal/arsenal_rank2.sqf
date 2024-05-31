@@ -19,6 +19,7 @@ cgqc_mk2_arsenal_rank2 = [
     "rhs_weap_m14_socom_rail",
     "srifle_DMR_03_F",
     "srifle_DMR_02_F",
+    /*
     "hlc_WP_SCARL_CQC",
     "hlc_wp_SCARL_CQC_Blk",
     "hlc_wp_SCARL_CQC_camo",
@@ -40,6 +41,7 @@ cgqc_mk2_arsenal_rank2 = [
     "hlc_wp_SCAR_PDW_Blk",
     "hlc_wp_SCAR_PDW_camo",
     "hlc_wp_SCAR_PDW",
+    */
     // MG ------------------------------------------------------------------------------
     "cgqc_gun_mk1_mk46",
     "Tier1_MK46_Mod1_Savit_Desert",

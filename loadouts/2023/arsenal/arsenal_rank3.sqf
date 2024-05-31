@@ -65,6 +65,7 @@ cgqc_mk2_arsenal_rank3 = [
     "srifle_DMR_03_woodland_F",
     "rhs_weap_m14ebrri",
     "Tier1_M110k5",
+    /*
     "hlc_WP_SSR",
     "hlc_wp_SSR_Blk",
     "hlc_wp_SSR_camo",
@@ -106,6 +107,7 @@ cgqc_mk2_arsenal_rank3 = [
     "hlc_wp_SCARH_CQC_camo",
     "hlc_wp_SCARH_CQC_Blk",
     "hlc_WP_SCARH_CQC",
+    */
     // --- Ammo
     "ACE_20Rnd_762x51_M118LR_Mag",
     "ACE_20Rnd_762x51_Mk319_Mod_0_Mag",

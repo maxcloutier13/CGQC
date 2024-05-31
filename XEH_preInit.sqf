@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.11.1";
+core_version = "4.6.11.2";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -689,24 +689,26 @@ _menu_name = "[CGQC] Custom Containers";
 ["cgqc_config_medkit_bandages", "SLIDER",["Bandages", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 100, 50, 0], 1, {publicVariable "cgqc_config_medkit_bandages"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_epi", "SLIDER",["Epinephrine", "Number in medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_epi"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 20, 0], 1, {publicVariable "cgqc_config_medkit_epi"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_morphine", "SLIDER",["Morphine", "Number in medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_morphine"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 20, 0], 1, {publicVariable "cgqc_config_medkit_morphine"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_painkill", "SLIDER",["Painkillers", "Number in medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_medkit_painkill"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 50, 20, 0], 1, {publicVariable "cgqc_config_medkit_painkill"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_splint", "SLIDER",["Splint", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_splint"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_tourniquet", "SLIDER",["Tourniquets", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_tourniquet"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_1000", "SLIDER",["Saline 1000ml", "Number in medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 30, 5, 0], 1, {publicVariable "cgqc_config_medkit_1000"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_1000"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_500", "SLIDER",["Saline 500ml", "Number in medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 30, 8, 0], 1, {publicVariable "cgqc_config_medkit_500"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_medkit_500"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_pak", "SLIDER",["PAK", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 5, 1, 0], 1, {publicVariable "cgqc_config_medkit_pak"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_smoke", "SLIDER",["Smoke (Purple)", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_medkit_smoke"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_medbag", "SLIDER",["Medbag", "Numberin medkit"],
+    [_menu_name, "Content: Medic Supplies"], [0, 1, 1, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_bodybag", "SLIDER",["BodyBags", "Numberin medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 1, 1, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
 
 // Ammo Bandoliers
