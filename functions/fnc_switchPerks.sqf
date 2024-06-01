@@ -35,10 +35,10 @@ switch (_type) do {
 			(vehicle player isKindOf "Helicopter")
 		} ] call ace_interact_menu_fnc_createAction;
 		// Get Crew
-		cgqc_action_getCrew = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		cgqc_action_getCrew = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		_action = [ "cgqc_perk_heli_delCrew", "Delete Crew", "", {["delCrew"] spawn CGQC_fnc_perksPilot}, {cgqc_perks_pilot && cgqc_perks_pilot_hasCrew} ] call ace_interact_menu_fnc_createAction;
 		// Delete crew
-		cgqc_action_delCrew = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+		cgqc_action_delCrew = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		cgqc_perks_action_list = cgqc_perks_action_list + [cgqc_action_getCrew, cgqc_action_delCrew];
 		cgqc_perks_pilot = true;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
