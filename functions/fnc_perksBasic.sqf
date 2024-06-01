@@ -359,6 +359,8 @@ LOG_2(" perksBasic %1/%2  started", _type, _fromLoadout);
             hint "Sound: Volumes reset";
             [] call ace_volume_fnc_restoreVolume;
             [player, "default"] call CGQC_fnc_setVoiceVolume;
+            0 fadeSound 1;
+            0 fadeEnvironment 1;
         };
         case "fix_blackout":
         {

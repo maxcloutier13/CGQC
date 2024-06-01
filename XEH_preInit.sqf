@@ -308,7 +308,6 @@ if (!cgqc_player_isVietnam && !cgqc_player_isWw2) then {
 	cgqc_player_isModern = true;
 };
 
-
 //For specific modes of games, skip some options
 if (cgqc_player_hasAnti) then {
 	cgqc_player_loadAll = false;
@@ -387,6 +386,13 @@ if (cgqc_player_hasUnsung) then {
 	hint format ["Event wind: %1", _type];
 	[_type] call CGQC_fnc_training;
 }] call CBA_fnc_addEventHandler;
+
+// Init loading event
+player setVariable ["CGQC_playerLoaded", false, true];
+addMissionEventHandler ["PreloadFinished",
+{
+  player setVariable ["CGQC_playerLoaded", true, true];
+}];
 
 // Initial roster
 [] spawn CGQC_fnc_loadDiaryRoster;

@@ -285,8 +285,14 @@
 
 	// Training menu if training is on
 	if (cgqc_flag_isTraining) then {
-		LOG("[CGQC_INIT] cgqc_flag_isTraining is true. Loading training menu");
-		[] call CGQC_fnc_trainingLoadMenu;
+		if (cgqc_player_isVietnam) then {
+			LOG("[CGQC_INIT] cgqc_flag_isTraining is true. Nam is true. Loading training menu");
+			["nam"] spawn CGQC_fnc_trainingLoadMenu;
+		} else {
+			LOG("[CGQC_INIT] cgqc_flag_isTraining is true. Loading training menu");
+			[] spawn CGQC_fnc_trainingLoadMenu;
+		};
+
 	};
 
 	// Zeus shenanigans... max - to review
@@ -345,39 +351,6 @@
 				[] call CGQC_fnc_setTeamColorReload;
 			}
 		};
-	};
-
-	// Show current phase initially
-	LOG("[CGQC_PostInitClient] - Show initial phase");
-	[] spawn {
-		waitUntil {
-			sleep 1, cgqc_intro_done
-		};
-		_phase = missionNamespace getVariable "CGQC_gamestate_current";
-		_phaseName = "";
-		_phaseTxt = "";
-		switch (_phase) do {
-			case "training": {
-				_phaseName = "Training";
-				_phaseTxt = "Have fun!";
-			};
-			case "staging": {
-				_phaseName = "Staging";
-				_phaseTxt = "Get ready!";
-			};
-			case "mission": {
-				_phaseName = "Mission";
-				_phaseTxt = "Here we go!";
-			};
-		};
-		sleep 5;
-		[
-			[
-				[_phaseName, "align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
-				["", "<br/>"], // line break
-				[_phaseTxt, "align = 'center' shadow = '1' size = '1.0'"]
-			]
-		] spawn BIS_fnc_typeText2;
 	};
 
 	LOG("[CGQC_PostInitClient] - loading showObjectName");

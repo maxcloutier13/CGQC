@@ -4,3 +4,4 @@
 #include "\cgqc\dialogs\landnav_gui.hpp"
 #include "\cgqc\dialogs\convoy_gui.hpp"
 #include "\cgqc\dialogs\renameVic_gui.hpp"
+#include "\cgqc\dialogs\splash.hpp"
