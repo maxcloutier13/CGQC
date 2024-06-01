@@ -11,7 +11,7 @@ switch (_type) do
 {
 	case "nam": {
 		if (_lz isEqualTo "random") then {
-			_namLz = ["cgqc_lz_fer", "cgqc_lz_boa", "cgqc_lz_habu", "cgqc_lz_adder", "cgqc_lz_viper", "cgqc_lz_cobra", "cgqc_lz_krait"];
+			_namLz = ["cgqc_lz_ember", "cgqc_lz_fer", "cgqc_lz_boa", "cgqc_lz_habu", "cgqc_lz_adder", "cgqc_lz_viper", "cgqc_lz_cobra", "cgqc_lz_krait"];
 			_target = selectRandom _namLz;
 			["start", _target] spawn CGQC_fnc_trainingHeli;
 		} else {
@@ -71,7 +71,7 @@ switch (_type) do
 			};
 		};
 		// Trigger to check that player is on target
-		_act = "['done'] call CGQC_fnc_trainingHeli;";
+		_act = "['done'] spawn CGQC_fnc_trainingHeli;";
 		_deAct = "";
 		_int = 2;
 		cgqc_heli_trg = createTrigger ["EmptyDetector",cgqc_heli_position, false];
