@@ -103,11 +103,12 @@ switch (_type) do {
                     //LOG ("BFT - Starting the run");
                     private _markerName = format ["AZMBFT_marker_%1", _x];
                     _goAhead = true;
+                    /*
                     if (getPlayerUID player in _markerName) then { // Player marker. Skip it.
                         //if !(visibleMap) then {
                         _goAhead = false;
                         //};
-                    };
+                    };*/
                     if (_goAhead) then {
                         if (!(_y isEqualType [])) then {
                             //LOG "BFT - Deleting marker";
