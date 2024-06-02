@@ -12,7 +12,15 @@ if (_clearFirst) then {
 };
 
 switch (_type) do {
-	case "zeus":{
+	case "nam_recon":{
+		player setUnitTrait ["audibleCoef", 0.5];
+		player setUnitTrait ["camouflageCoef", 0.4];
+		player setUnitTrait ["loadCoef", 0.8];
+	};
+	case "nam_basic":{
+		player setUnitTrait ["audibleCoef", 0.8];
+		player setUnitTrait ["camouflageCoef", 0.8];
+		player setUnitTrait ["loadCoef", 0.9];
 	};
 	case "hq":{
 		["HQ"]call CGQC_fnc_setLeadership;
@@ -153,6 +161,7 @@ switch (_type) do {
 		player setUnitTrait ["loadCoef", 0.6];
 	};
 	case "inf":{
+
 	};
 	case "zeus":{
 	};
