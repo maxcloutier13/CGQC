@@ -157,6 +157,8 @@ class CAManBase: Man {
 		delete fox_self;
 		delete ACE_BlackHornet;
 		class ACE_Equipment {
+			delete RetentionLanyard_In;
+			delete RetentionLanyard_Off;
 			class ACE_BlackHornet
 			{
 				icon = "\x\SPS\Vehicles\sps_blackhornet\Data\UI\sps_blackhornet_CA.paa";
