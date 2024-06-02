@@ -11,8 +11,8 @@ player setUnitTrait ["UAVHacker", false];
 player setUnitTrait ["explosiveSpecialist", false];
 
 // Coefficients
-player setUnitTrait ["audibleCoef ", 1];
-player setUnitTrait ["camouflageCoef ", 1];
+player setUnitTrait ["audibleCoef", 1];
+player setUnitTrait ["camouflageCoef", 1];
 player setUnitTrait ["loadCoef", 1];
 
 // Delete all perks actions

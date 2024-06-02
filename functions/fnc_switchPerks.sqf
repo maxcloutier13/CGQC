@@ -72,8 +72,8 @@ switch (_type) do {
 		player setUnitTrait ["engineer", true];
 	};
 	case "recon":{
-		player setUnitTrait ["audibleCoef ", 0.9];
-		player setUnitTrait ["camouflageCoef ", 0.9];
+		player setUnitTrait ["audibleCoef", 0.9];
+		player setUnitTrait ["camouflageCoef", 0.9];
 		player setUnitTrait ["UAVHacker", true];
 		player setUnitTrait ["loadCoef", 0.8];
 		// ------ Ghillie up --------------------------------------------------------------------------------------
