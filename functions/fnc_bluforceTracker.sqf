@@ -2,7 +2,7 @@
 // --- bluforceTracker ----------------------------------------------------------
 // Handle bluforce tracker sheeits
 params ["_type", ["_showMsg", false], ["_target", player]];
-LOG_1("bluforceTracker %1 started", _type);
+LOG_1("[bluforceTracker] %1 started", _type);
 
 CGQC_int_bft_findInfo = {
 	_color = player getVariable ["CGQC_player_teamColor", "MAIN"];
@@ -153,7 +153,7 @@ switch (_type) do {
 
                 sleep AZMBFT_updateInterval;
                 if (cgqc_bft_forceUpdate) then {
-                    LOG ("BFT - Forcing Update");
+                    LOG ("[BFT] - Forcing Update");
                     {deleteMarkerLocal _y;} forEach AZMBFT_localMarkerList;
                     cgqc_bft_forceUpdate = false;
                 };
@@ -162,4 +162,4 @@ switch (_type) do {
     };
 };
 
-LOG_1("bluforceTracker %1 done", _type);
+LOG_1("[bluforceTracker] %1 done", _type);

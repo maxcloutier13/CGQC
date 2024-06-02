@@ -4,9 +4,12 @@
 // Example ["backpack", "cgqc_pack_mk1_magic"] call CGQC_fnc_switchStuff
 
 params ["_type", ["_arg", ""]];
-LOG_2(" switchStuff %1/%2 started", _type, _arg);
+LOG_2(" [switchStuff] %1/%2 started", _type, _arg);
 
 switch (_type) do {
+	case "hat": {
+		player addHeadgear _arg;
+	};
 	case "uniform": {
 		_items_uniform = uniformItems player;
 		removeUniform player;
@@ -63,4 +66,4 @@ switch (_type) do {
 	};
 	default	{LOG("[CGQC_ERROR] switchStuff not matched");};
 };
-LOG(" switchStuff done");
+LOG(" [switchStuff] done");
