@@ -2,7 +2,7 @@
 // --- removeHandgun ----------------------------------------------------------
 // Remove handgun and mags
 params [["_target", player]];
-LOG_1(" removeHandgun %1 started",_target);
+LOG_1("[removeHandgun] %1 started",_target);
 
 // Remove handgun and old ammo
 _gun = handgunWeapon _target;
@@ -15,4 +15,4 @@ if (_gun isNotEqualTo "") then {
 	_target removeWeapon _gun;
 };
 
-LOG(" removeHandgun done");
+LOG("[removeHandgun] done");

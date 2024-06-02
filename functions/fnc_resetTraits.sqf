@@ -2,7 +2,7 @@
 // --- resetTraits ----------------------------------------------------------
 // Remove all traits from target
 params ["_target"];
-LOG_1(" resetTraits %1 started", _target);
+LOG_1("[resetTraits] %1 started", _target);
 
 // Reset a3 perks
 player setUnitTrait ["Medic", false];
@@ -36,4 +36,4 @@ cgqc_perks_pilot = false;
 cgqc_perks_driver = false;
 
 
-LOG(" resetTraits done");
+LOG("[resetTraits] done");
