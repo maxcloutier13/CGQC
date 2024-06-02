@@ -1,9 +1,10 @@
 #include "\CGQC\script_component.hpp"
 // --- showIntro ----------------------------------------------------------
 // Show intro on load
-LOG(" showIntro started");
+LOG(" [showIntro] started");
 
 // Show intro info ------------------------------------------------------------------------------------
+if (!hasInterface || isDedicated) exitWith {};
 waitUntil {!isNull (findDisplay 46)};
 waitUntil { time > 1 };
 if (cgqc_config_showIntro) then {
@@ -30,23 +31,29 @@ if (cgqc_config_showIntro) then {
 		//Show splashscreen
 		//_rscLayer = ["RscLogo"] call BIS_fnc_rscLayer;
 		//_rscLayer cutRsc ["CGQC_splash", "PLAIN", 0, true];
-		playMusic "LeadTrack01_F_Jets";
-
+		0 fadeMusic 0;
+		playMusic ["LeadTrack01_F_Jets", 3];
+		3 fadeMusic 1;
 
 		_cam = "camera" camCreate _camPosA;										// Camera/Visual
 		_cam camSetTarget _mapPos2;												// Points To....
 		_cam cameraEffect ["INTERNAL", "BACK"];									// ?
 
 		_cam camSetPos _camPosB;												// Move Towards
+		// Check if night time
+
+		if (cgqc_mission_isDark) then {
+			camUseNVG true;
+		};
 		_cam camCommit 100;
-		sleep 2;
+		sleep 1;
 		// Fade from black
 		"dynamicBlur" ppEffectEnable true;
 		"dynamicBlur" ppEffectAdjust [6];
 		"dynamicBlur" ppEffectCommit 0;
 		"dynamicBlur" ppEffectAdjust [0.0];
-		"dynamicBlur" ppEffectCommit 5;
-		titleCut ["", "BLACK IN", 15];
+		"dynamicBlur" ppEffectCommit 3;
+		titleCut ["", "BLACK IN", 5];
 		sleep 20;
 		//_rscLayer cutFadeOut 2;														// Speed
 		10 fadeSound 1;
