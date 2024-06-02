@@ -29,8 +29,6 @@ switch (_type) do {
         ["nam_car15_short"] spawn CGQC_fnc_switchPrimary;
         player removeItem "ACE_EntrenchingTool";
         player addItemToBackpack "ACRE_PRC77";
-        _packRadio = ["ACRE_PRC77"] call acre_api_fnc_getRadioByType;
-        _success = [_packRadio, "RIGHT" ] call acre_api_fnc_setRadioSpatial;
     };
     case "1-2": {
         ["vest", "uns_Simc_56_med_side_ass"] call CGQC_fnc_switchStuff;

@@ -73,10 +73,6 @@ player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";
 player addItemToUniform "cgqc_items_ifak";
 player addItemToUniform "ZSN_Whistle";
 player addItemToUniform "ACRE_SEM52SL";
-sleep 0.2;
-_handradio = ["ACRE_SEM52SL"] call acre_api_fnc_getRadioByType;
-_success = [_handradio, "LEFT"] call acre_api_fnc_setRadioSpatial;
-
 // === Vest ================================================================================================================
 
 // === Backpack ================================================================================================================
@@ -84,6 +80,7 @@ player addItemToBackpack "ACE_EntrenchingTool";
 player addItemToBackpack "taro_tripwire_spool";
 // Signals
 player addItemToBackpack "KNB_PanelRed";
+player addItemToBackpack "RS_Equip_Retention"; //Retention clip
 
 // Grenades
 ["vest", "uns_v40gren", 4] call CGQC_fnc_addItemWithOverflow;
