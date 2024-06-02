@@ -2,7 +2,7 @@
 // --- switchPerks ----------------------------------------------------------
 // Switch perks
 params ["_type", ["_clearFirst", true]];
-LOG_1(" switchPerks %1 started", _type);
+LOG_1("[switchPerks] %1 started", _type);
 
 
 if (_clearFirst) then {
@@ -17,14 +17,17 @@ switch (_type) do {
 	case "hq":{
 		["HQ"]call CGQC_fnc_setLeadership;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
+		player setUnitTrait ["loadCoef", 0.75];
 	};
 	case "sl":{
 		["SL"]call CGQC_fnc_setLeadership;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
+		layer setUnitTrait ["loadCoef", 0.75];
 	};
 	case "tl":{
 		["TL"]call CGQC_fnc_setLeadership;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
+		layer setUnitTrait ["loadCoef", 0.75];
 	};
 	case "heli":{
 		player setUnitTrait ["engineer", true];
@@ -72,7 +75,7 @@ switch (_type) do {
 		player setUnitTrait ["audibleCoef ", 0.9];
 		player setUnitTrait ["camouflageCoef ", 0.9];
 		player setUnitTrait ["UAVHacker", true];
-		player setUnitTrait ["loadCoef ", 0.8];
+		player setUnitTrait ["loadCoef", 0.8];
 		// ------ Ghillie up --------------------------------------------------------------------------------------
 		_action = [ "cgqc_perk_ghillie", " Ghillie up", "cgqc\textures\cgqc_ace_ghillie", {}, {!cgqc_perks_ghillie_isOn} ] call ace_interact_menu_fnc_createAction;
 		cgqc_action_ghillie = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -93,10 +96,9 @@ switch (_type) do {
 		cgqc_perks_recon = true;
 	};
 	case "eng":{
-
 		player setUnitTrait ["engineer", true];
 		player setUnitTrait ["explosiveSpecialist", true];
-		player setUnitTrait ["loadCoef ", 0.8];
+		player setUnitTrait ["loadCoef", 0.7];
 		// ------ Fortify --------------------------------------------------------------------------------------
 		if (cgqc_config_fortify) then {
 			fortify_list = format [
@@ -132,23 +134,23 @@ switch (_type) do {
 	};
 	case "med":{
 		player setUnitTrait ["Medic", true];
-		player setUnitTrait ["loadCoef ", 0.6];
+		player setUnitTrait ["loadCoef", 0.6];
 		cgqc_perks_medic = true;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
 	case "lifesaver":{
 		player setUnitTrait ["Medic", true];
-		player setUnitTrait ["loadCoef ", 0.8];
+		player setUnitTrait ["loadCoef", 0.8];
 		cgqc_perks_medic = true;
 	};
 	case "at":{
-		player setUnitTrait ["loadCoef ", 0.7];
+		player setUnitTrait ["loadCoef", 0.7];
 	};
 	case "mg":{
-		player setUnitTrait ["loadCoef ", 0.7];
+		player setUnitTrait ["loadCoef", 0.7];
 	};
 	case "mortar":{
-		player setUnitTrait ["loadCoef ", 0.6];
+		player setUnitTrait ["loadCoef", 0.6];
 	};
 	case "inf":{
 	};
@@ -168,4 +170,4 @@ switch (_type) do {
 	};
 };
 
-LOG(" switchPerks done");
+LOG("[switchPerks] done");
