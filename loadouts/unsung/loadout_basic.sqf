@@ -1,6 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- loadout_basic ----------------------------------------------------------
 // Basic loadout for Unsung
+LOG("[loadout_basic] started");
 
 // Prep for switch
 [player] call CGQC_fnc_loadoutPrep;
@@ -45,14 +46,13 @@ _hats = [
 ];
 _goggles = [""];
 _vests = ["uns_sas_web_3"];
-_uniforms = ["UNS_SOG_BDU_OP"];
+_uniforms = ["UNS_SAS_BDU_T"];
 _rucks = ["cgqc_pack_mk1_magic"];
 _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;
 
 // === Secondary weapon  ====================================================================================================
-player addWeapon "uns_m1911";
-player addHandgunItem "uns_m1911mag";
+[["uns_m79p", "Uns_1Rnd_HE_M406"], 12] call CGQC_fnc_getCustomHandgun;
 
 // === Items ==================================================================================================================
 ["noGPS"] call CGQC_fnc_getLinkedItems;
@@ -60,13 +60,10 @@ player addHandgunItem "uns_m1911mag";
 player addWeapon "uns_binocular_navy";
 // === Uniform ================================================================================================================
 // === Essentials
-player addItemToUniform "ACE_EarPlugs";
 player addItemToUniform "ACE_MapTools";
 player addItemToUniform "ACE_CableTie";
 player addItemToUniform "ACE_CableTie";
 player addItemToUniform "ACE_Flashlight_MX991";
-player addItemToUniform "uns_m1911mag";
-player addItemToUniform "uns_m1911mag";
 
 player addItemToUniform "murshun_cigs_cigpack";
 player addItemToUniform "murshun_cigs_matches";
@@ -74,15 +71,24 @@ player addItemToUniform "uns_item_zippo";
 player addItemToUniform "acex_intelitems_notepad";
 player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";
 player addItemToUniform "cgqc_items_ifak";
+player addItemToUniform "ZSN_Whistle";
+player addItemToUniform "ACRE_SEM52SL";
+sleep 0.2;
+_handradio = ["ACRE_SEM52SL"] call acre_api_fnc_getRadioByType;
+_success = [_handradio, "LEFT"] call acre_api_fnc_setRadioSpatial;
 
 // === Vest ================================================================================================================
-for "_i" from 1 to 4 do {player addItemToVest "uns_m1911mag";};
 
 // === Backpack ================================================================================================================
 player addItemToBackpack "ACE_EntrenchingTool";
 player addItemToBackpack "taro_tripwire_spool";
-player addItemToBackpack "ZSN_Whistle";
+// Signals
+player addItemToBackpack "KNB_PanelRed";
+
 // Grenades
-for "_i" from 1 to 4 do {player addItemToVest "uns_v40gren";};
-for "_i" from 1 to 4 do {player addItemToVest "uns_m67gren";};
-for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell";};
+["vest", "uns_v40gren", 4] call CGQC_fnc_addItemWithOverflow;
+["vest", "uns_m67gren", 4] call CGQC_fnc_addItemWithOverflow;
+["backpack", "uns_m67gren", 8] call CGQC_fnc_addItemWithOverflow;
+["vest", "uns_m18Purple", 2] call CGQC_fnc_addItemWithOverflow;
+
+LOG("[loadout_basic] done");

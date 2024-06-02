@@ -81,6 +81,7 @@ cgqc_subskills = [
 
 // *** Mission stuff *******************
 cgqc_mission_daytime = true;
+cgqc_mission_isDark = false;
 
 // *** Anti/DRO compats ******************
 cgqc_mission_dro = false;

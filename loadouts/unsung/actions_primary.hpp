@@ -6,7 +6,7 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" ], _action ] call ace_i
 _action = [ "menu_nam_alt_carbines", "Carbines", "", {["nam_car15"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "menu_nam_alt_car15", "CAR 15", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_nam_alt_car15", "CAR 15", "", {["nam_car15"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_carbines"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_nam_alt_car15short", "CAR 15 Shorty", "", {["nam_car15_short"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_carbines"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -16,7 +16,7 @@ _action = [ "menu_nam_alt_aks", "AKS 47", "", {["nam_ak"] spawn CGQC_fnc_switchP
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_carbines"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_nam_alt_m2", "M2 Carbine", "", {["nam_m2"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_carbines"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_nam_alt_m14", "M14", "", {["nam_m14"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_nam_alt_m2", "M14", "", {["nam_m14"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_carbines"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // SMG's
@@ -25,9 +25,7 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt"], _act
 
 _action = [ "menu_nam_alt_thompson", "Thompson", "", {["nam_thompson"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_smg"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_nam_alt_greese", "Greese Gun (SD)", "", {["nam_greese"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_smg"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_nam_alt_sten", "Sten (SD)", "", {["nam_sten"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_nam_alt_swede", "Swedish K", "", {["nam_swedishk"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_smg"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // MG"s
@@ -47,10 +45,21 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu
 _action = [ "menu_nam_alt_sniper", "Sniper", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+_action = [ "menu_nam_alt_m14", "M2 Carbine", "", {["nam_m2_scope"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_sniper"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_nam_alt_m14", "M14", "", {["nam_m14_scope"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_sniper"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_nam_alt_m40", "M40", "", {["nam_m40"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_sniper"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_nam_alt_svd", "SVD", "", {["nam_svd"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_sniper"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 
-
+_action = [ "menu_nam_alt_spec", "Special Purpose", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_nam_alt_spec_", "PDW PM63", "", {["nam_pdw"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_spec"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_nam_alt_greese", "Greese Gun (SD)", "", {["nam_greese"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_spec"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_nam_alt_sten", "Sten (SD)", "", {["nam_sten"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung" , "menu_nam_alt", "menu_nam_alt_spec"], _action ] call ace_interact_menu_fnc_addActionToObject;
