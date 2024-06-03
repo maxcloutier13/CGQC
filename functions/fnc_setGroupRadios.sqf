@@ -2,10 +2,10 @@
 // --- setGroupRadios ----------------------------------------------------------
 // Set radio setups depending on role
 params [["_groupName", groupid cgqc_player_group], ["_color", 'NONE']];
-LOG_2(" setGroupRadios %1/%2 started", _groupName, _color);
+LOG_2("[setGroupRadios] %1/%2 started", _groupName, _color);
 
 if (_color isEqualTo "NONE") then {
-	LOG("setGroupRadios: No color target: Getting assigned color");
+	LOG("[setGroupRadios]: No color target: Getting assigned color");
 	_color = assignedTeam player;
 };
 
@@ -62,4 +62,4 @@ if (_notFound) then {
 
 [] call CGQC_fnc_setPatch;
 
-LOG(" setRadios done");
+LOG("[setGroupRadios] done");
