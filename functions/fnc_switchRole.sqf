@@ -6,7 +6,7 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
 [_type, _section, _showTransition, _saveSnapshot] spawn {
     params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", true]];
 
-    LOG_3(" switchRole %1/%2/%3 started", _type, _section,_showTransition);
+    LOG_3("[switchRole] %1/%2/%3 started", _type, _section,_showTransition);
 
     cgqc_roleSwitch_done = false;
     // Delay until the server time has sync'd
@@ -25,12 +25,12 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
 
         // Check if player in chill mode
         if (cgqc_player_chill) then {
-            LOG(" switchRole - player at rest, setting ready before switching");
+            LOG("[switchRole] - player at rest, setting ready before switching");
             ["ready", true] call CGQC_fnc_perksBasic;
         };
 
         if (_type isEqualTo "training") then {
-            LOG("[CGQC_INIT] initTraining started");
+            LOG("[switchRole] training");
             ['chill', false] spawn CGQC_fnc_perksBasic;
             ["training"] call CGQC_fnc_getRadioPresets;
             ["transmit"] spawn CGQC_fnc_bluforceTracker;
@@ -63,10 +63,10 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
         //Save role for further use
         player setVariable["cgqc_player_role", _type, true];
 
-        LOG(" switchRole - checking if run transition");
+        LOG("[switchRole] - checking if run transition");
         // Start transition
         if (!cgqc_intro_running && _showTransition) then {
-            LOG(" switchRole - running transition");
+            LOG("[switchRole] - running transition");
             ["role", true] call CGQC_fnc_showTransition;
         };
 
@@ -74,7 +74,7 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
         ["side", player] call CGQC_fnc_getKey;
 
         //Set patch back
-        LOG(" switchRole - set patch back");
+        LOG("[switchRole] - set patch back");
         [] call CGQC_fnc_setPatch;
 
          // Save a snapshot
@@ -83,7 +83,7 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
         };
 
         // Lower gun
-        LOG(" switchRole - lower gun");
+        LOG("[switchRole] - lower gun");
         [player] call ace_weaponselect_fnc_putWeaponAway;
 
         // Start receiving BFT
@@ -94,8 +94,8 @@ params ["_type", ["_section", 1], ["_showTransition", true], ["_saveSnapshot", t
         };
 
     } else {
-        LOG(" switchRole - Role unknown - Skipping");
+        LOG("[switchRole] - Role unknown - Skipping");
     };
     cgqc_roleSwitch_done = true;
-    LOG(" switchRole done");
+    LOG("[switchRole] done");
 };

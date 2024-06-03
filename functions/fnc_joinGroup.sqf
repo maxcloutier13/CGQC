@@ -2,7 +2,7 @@
 // --- joinGroup ----------------------------------------------------------
 // Group stuff
 params ["_groupName", ["_color", "MAIN"], ["_side", WEST]];
-LOG_1(" joinGroup %1", _groupName);
+LOG_1("[joinGroup] %1", _groupName);
 
 waitUntil {!isNull player};
 waitUntil {time > 0};
@@ -42,7 +42,7 @@ if (!isNil "n_targetGroup") then {
         };
     };
 } else {
-    LOG(" joinGroup - Group not in dynamic?");
+    LOG("[joinGroup] - Group not in dynamic?");
     // Doesn't exist? Create and join as leader
     n_targetGroup = createGroup _side;
     n_targetGroup setGroupId [_groupName]; // Event when a unit joins the group
@@ -59,5 +59,5 @@ hint format ["You've joined %1", _groupName];
 sleep 0.5;
 [_color] call CGQC_fnc_setTeamColor;
 
-LOG_2(" joinGroup Player %1 joined %2", cgqc_custom_playername,  _groupName);
-LOG(" joinGroup done");
+LOG_2("[joinGroup] Player %1 joined %2", cgqc_custom_playername,  _groupName);
+LOG("[joinGroup] done");

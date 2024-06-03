@@ -42,7 +42,7 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"
 _action = [ "menu_unsung_loadouts_spec", "Specialists", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "menu_spec_pointman", "Pointman (Sten)", "", {["spec_pointman", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_spec_pointman", "Pointman (AK)", "", {["spec_pointman", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts", "menu_unsung_loadouts_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_unsung_mrks", "Marksman (M14)", "", {["spec_marksman", 1, true] call CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_unsung", "menu_unsung_loadouts", "menu_unsung_loadouts_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;

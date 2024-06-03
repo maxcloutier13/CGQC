@@ -3,7 +3,7 @@
 // Returns a list of the unit radio and their settings
 // ONLY WORKS ON PLAYER FOR NOW. remote some other way
 params [["_target", player]];
-LOG_1(" listRadios %1 started", _target);
+LOG_1("[listRadios] %1 started", _target);
 
 _radios = [];
 _ptt =  [] call acre_api_fnc_getMultiPushToTalkAssignment;
@@ -44,6 +44,6 @@ _entry = [];
 	_entry_speaker = [_radio] call acre_api_fnc_isRadioSpeaker;
 	_entry = _entry + [[_entry_type, _entry_chan, _entry_side, _entry_vol, _entry_speaker]];
 } forEach _sortedRadios;
-LOG(" listRadios done");
+LOG("[listRadios] done");
 
 _entry;

@@ -2,7 +2,7 @@
 // --- setRelations ----------------------------------------------------------
 // Get radios and set everything
 params ["_type"];
-LOG_1(" setRelations %1", _type);
+LOG_1("[setRelations] %1", _type);
 
 // Everyone is ennemy
 east setFriend [west, 0];
@@ -27,8 +27,6 @@ switch (_type) do {
 		resistance setFriend [west, 1];
 		west setFriend [resistance, 1];
 	};
-
-	default { };
 };
 
-LOG(" getRadioPresets done");
+LOG("[setRelations] done");
