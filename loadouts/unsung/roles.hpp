@@ -1,7 +1,7 @@
 case "unsung_basic":{
 	[] call CGQC_loadout_unsungBasic;
-	["inf"] call cgqc_fnc_switchPerks;
-	["nam_basic", false] call cgqc_fnc_switchPerks;
+	["inf"] spawn CGQC_fnc_switchPerks;
+	["nam_basic", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Basic Soldier";
 	cgqc_player_roleType = "Infantry";
@@ -10,7 +10,7 @@ case "unsung_basic":{
 case "unsung_10":{
 	[] call CGQC_loadout_unsungBasic;
 	["1-0"] call CGQC_loadout_unsungLeader;
-	["tl", false] call cgqc_fnc_switchPerks;
+	["tl", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-0 Team Leader";
 	cgqc_player_roleType = "HQ";
@@ -18,7 +18,7 @@ case "unsung_10":{
 case "unsung_11":{
 	[] call CGQC_loadout_unsungBasic;
 	["1-1"] call CGQC_loadout_unsungLeader;
-	["mg", false] call cgqc_fnc_switchPerks;
+	["mg", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-1 Radio Operator";
 	cgqc_player_roleType = "HQ";
@@ -26,7 +26,7 @@ case "unsung_11":{
 case "unsung_12":{
 	[] call CGQC_loadout_unsungBasic;
 	["1-2"] call CGQC_loadout_unsungLeader;
-	["medic", false] call cgqc_fnc_switchPerks;
+	["medic", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-2 Medic";
 	cgqc_player_roleType = "Medic";
@@ -81,7 +81,7 @@ case "inf_thom":{
 case "spec_pointman":{
 	[] call CGQC_loadout_unsungBasic;
 	["spec_pointman"] call CGQC_loadout_unsungSpecialist;
-	["nam_recon", false] call cgqc_fnc_switchPerks;
+	["nam_recon", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Pointman";
 	cgqc_player_roleType = "Recon";
@@ -89,7 +89,7 @@ case "spec_pointman":{
 case "spec_mg":{
 	[] call CGQC_loadout_unsungBasic;
 	["spec_mg"] call CGQC_loadout_unsungSpecialist;
-	["mg", false] call cgqc_fnc_switchPerks;
+	["mg", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "MG: RPD";
 	cgqc_player_roleType = "Infantry";
@@ -104,7 +104,7 @@ case "spec_marksman":{
 case "spec_sniper":{
 	[] call CGQC_loadout_unsungBasic;
 	["spec_sniper"] call CGQC_loadout_unsungSpecialist;
-	["nam_recon", false] call cgqc_fnc_switchPerks;
+	["nam_recon", false, true] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Sniper";
 	cgqc_player_roleType = "Recon";
@@ -112,7 +112,7 @@ case "spec_sniper":{
 case "spec_saboteur":{
 	[] call CGQC_loadout_unsungBasic;
 	["spec_saboteur"] call CGQC_loadout_unsungSpecialist;
-	["eng", false] call cgqc_fnc_switchPerks;
+	["eng", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Saboteur";
 	cgqc_player_roleType = "Engineer";
@@ -122,7 +122,7 @@ case "spec_saboteur":{
 case "vic_driver":{
 	[] call CGQC_loadout_unsungBasic;
 	["vic_driver"] call CGQC_loadout_unsungVehicles;
-	["driver", false] call cgqc_fnc_switchPerks;
+	["driver", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Tank Driver";
 	cgqc_player_roleType = "Armor";
@@ -130,7 +130,7 @@ case "vic_driver":{
 case "vic_crew":{
 	[] call CGQC_loadout_unsungBasic;
 	["vic_crew"] call CGQC_loadout_unsungVehicles;
-	["tank_crew", false] call cgqc_fnc_switchPerks;
+	["tank_crew", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Tank Driver";
 	cgqc_player_roleType = "Armor";
@@ -138,7 +138,7 @@ case "vic_crew":{
 case "vic_helipilot":{
 	[] call CGQC_loadout_unsungBasic;
 	["vic_helipilot"] call CGQC_loadout_unsungVehicles;
-	["heli", false] call cgqc_fnc_switchPerks;
+	["heli", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	gqc_player_role = "Helicopter Pilot";
 	cgqc_player_roleType = "Air";
@@ -146,7 +146,7 @@ case "vic_helipilot":{
 case "vic_helicrew":{
 	[] call CGQC_loadout_unsungBasic;
 	["vic_helicrew"] call CGQC_loadout_unsungVehicles;
-	["heli_crew", false] call cgqc_fnc_switchPerks;
+	["heli_crew", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Helicopter Crew";
 	cgqc_player_roleType = "Air";
@@ -154,7 +154,7 @@ case "vic_helicrew":{
 case "vic_covey":{
 	[] call CGQC_loadout_unsungBasic;
 	["vic_covey"] call CGQC_loadout_unsungVehicles;
-	["heli", false] call cgqc_fnc_switchPerks;
+	["heli", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Covey Rider";
 	cgqc_player_roleType = "Air";

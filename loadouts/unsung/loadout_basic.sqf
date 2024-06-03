@@ -73,6 +73,7 @@ player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";
 player addItemToUniform "cgqc_items_ifak";
 player addItemToUniform "ZSN_Whistle";
 player addItemToUniform "ACRE_SEM52SL";
+player addItemToUniform "RS_Equip_Retention"; //Retention clip
 // === Vest ================================================================================================================
 
 // === Backpack ================================================================================================================
@@ -80,12 +81,21 @@ player addItemToBackpack "ACE_EntrenchingTool";
 player addItemToBackpack "taro_tripwire_spool";
 // Signals
 player addItemToBackpack "KNB_PanelRed";
-player addItemToBackpack "RS_Equip_Retention"; //Retention clip
+
 
 // Grenades
 ["vest", "uns_v40gren", 4] call CGQC_fnc_addItemWithOverflow;
 ["vest", "uns_m67gren", 4] call CGQC_fnc_addItemWithOverflow;
 ["backpack", "uns_m67gren", 8] call CGQC_fnc_addItemWithOverflow;
-["vest", "uns_m18Purple", 2] call CGQC_fnc_addItemWithOverflow;
+["vest", "SmokeShellPurple", 2] call CGQC_fnc_addItemWithOverflow;
+
+// Remove some stuff
+player removeItem "ACE_RangeCard";
+
+// Setup basic perks
+["inf"] spawn CGQC_fnc_switchPerks;
+["nam_basic", false] spawn CGQC_fnc_switchPerks;
+// Setup radios
+["defaultLR"] call CGQC_fnc_setRadios;
 
 LOG("[loadout_basic] done");

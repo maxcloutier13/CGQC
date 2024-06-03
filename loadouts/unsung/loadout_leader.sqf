@@ -7,7 +7,7 @@ LOG_1("[loadout_leader] %1 started", _type);
 switch (_type) do {
     case "1-0": {
         ["vest", "uns_Simc_56_claymore_45"] call CGQC_fnc_switchStuff;
-        ["backpack", "uns_simc_pack_frem_3_b"] call CGQC_fnc_switchStuff;
+        ["backpack", "uns_simc_pack_trop_flak_3"] call CGQC_fnc_switchStuff;
         [["uns_m1911", "uns_m1911mag"], 2] call CGQC_fnc_getCustomHandgun;
         ["nam_car15GL"] spawn CGQC_fnc_switchPrimary;
         player addWeapon "uns_m127a1_flare";
