@@ -18,7 +18,7 @@ params ["_type", ["_show", true]];
         switch (_type) do {
             case "role":{
                 _text_insert = cgqc_player_role;
-                _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Role<br/> %1</t><br/>");
+                _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>");
 
                 // Find traits
                 _check_trait_medic = ["Medic", player getUnitTrait "Medic"];
