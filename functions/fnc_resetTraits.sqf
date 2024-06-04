@@ -2,7 +2,7 @@
 // --- resetTraits ----------------------------------------------------------
 // Remove all traits from target
 params ["_target"];
-LOG_1(" resetTraits %1 started", _target);
+LOG_1("[resetTraits] %1 started", _target);
 
 // Reset a3 perks
 player setUnitTrait ["Medic", false];
@@ -11,9 +11,9 @@ player setUnitTrait ["UAVHacker", false];
 player setUnitTrait ["explosiveSpecialist", false];
 
 // Coefficients
-player setUnitTrait ["audibleCoef ", 1];
-player setUnitTrait ["camouflageCoef ", 1];
-player setUnitTrait ["loadCoef ", 1];
+player setUnitTrait ["audibleCoef", 1];
+player setUnitTrait ["camouflageCoef", 1];
+player setUnitTrait ["loadCoef", 1];
 
 // Delete all perks actions
 {
@@ -36,4 +36,4 @@ cgqc_perks_pilot = false;
 cgqc_perks_driver = false;
 
 
-LOG(" resetTraits done");
+LOG("[resetTraits] done");

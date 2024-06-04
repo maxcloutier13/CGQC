@@ -2,7 +2,7 @@
 // --- addRadios ----------------------------------------------------------
 // Add specific radios to player and sets things up
 params ["_radios"];
-LOG_1(" addRadios %1 started", _radios);
+LOG_1("[addRadios] %1 started", _radios);
 {
 	if (_x isEqualTo "ACRE_PRC117F") then {
 		(backpackContainer ACE_player) addItemCargoGlobal [_x, 1];
@@ -30,4 +30,4 @@ LOG_1(" addRadios %1 started", _radios);
 	};
 }forEach _radios;
 
-LOG(" addRadios done");
+LOG("[addRadios] done");

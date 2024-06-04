@@ -1,12 +1,12 @@
 #include "\CGQC\script_component.hpp"
 // --- getCustomHandgun ----------------------------------------------------------
 // Get player custom handgun from config
-params [ "_gunArray"];
-LOG_1(" getCustomHandgun %1 started", _gunArray select 0);
+params [ "_gunArray", ["_nbr", 2]];
+LOG_1("[getCustomHandgun] %1/%2 started", _gunArray select 0, _nbr);
 
 [player] call CGQC_fnc_removeHandgun;
 
-if (cgqc_config_sidearm) then {
+if (!cgqc_player_isVietnam && cgqc_config_sidearm) then {
 	// === Custom Sidearm
 	player addWeapon (trim cgqc_config_sidearm_pistol);
 	player addHandgunItem (trim cgqc_config_sidearm_mag);
@@ -35,16 +35,33 @@ if (cgqc_config_sidearm) then {
 
 // Handgun ======================================================================
 _magHandgun = (handgunMagazine player) select 0;
-_nbr = 2;
 if (isNil "_magHandgun") then {
 		ERROR("[CGQC_ERROR] getCustomHandgun - can't ID mags");
 } else {
 	// Make sure there is at least one mag...
 	if (count _magHandgun > 0) then {
 		// Check if custom sidearm is set. If it is use the mag nbr setting
-		if (cgqc_config_sidearm) then {_nbr = cgqc_config_sidearm_mag_nbr};
-		for "_i" from 0 to _nbr do {player addItem _magHandgun};
+		if (!cgqc_player_isVietnam && cgqc_config_sidearm) then {_nbr = cgqc_config_sidearm_mag_nbr};
+		if (_nbr > 2) then {
+			_excess = _nbr - 2;
+			LOG("[getCustomHandgun] 2 mags to uniform");
+			["uniform", _magHandgun, 2] call CGQC_fnc_addItemWithOverflow;
+			if (_excess > 6) then {
+				["vest", _magHandgun, 6] call CGQC_fnc_addItemWithOverflow;
+				LOG("[getCustomHandgun] 6 mags to vest");
+				_excess = _excess - 6;
+				["backpack", _magHandgun, _excess] call CGQC_fnc_addItemWithOverflow;
+				LOG(format["[getCustomHandgun] % mags to backpack", _excess]);
+			} else {
+				LOG(format["[getCustomHandgun] % mags to vest", _excess]);
+				["vest", _magHandgun, _excess] call CGQC_fnc_addItemWithOverflow;
+			};
+		} else {
+			for "_i" from 0 to _nbr do {player addItem _magHandgun};
+		};
+	}else{
+		LOG("[getCustomHandgun] Error: No mags?");
 	};
 };
 
-LOG(" getCustomHandgun done");
+LOG("[getCustomHandgun] done");

@@ -2,7 +2,7 @@
 // --- getRadiosPresets ----------------------------------------------------------
 // Get radios and set everything
 params ["_type", ["_team", 1]];
-LOG_2(" getRadioPresets %1/%2 started", _type, _team);
+LOG_2("[getRadioPresets] %1/%2 started", _type, _team);
 
 _radios = [];
 _preset = "";
@@ -38,9 +38,9 @@ if (cgqc_flag_isTraining) then {
 [_preset,_team] spawn {
 	params ["_preset", "_team"];
 	sleep 5;
-	LOG_2(" getRadioPresets setRadios: %1/%2 started", _preset, _team);
+	LOG_2("[getRadioPresets] setRadios: %1/%2 started", _preset, _team);
 	[_preset, _team] spawn CGQC_fnc_setRadios;
 	[] call CGQC_fnc_setGroupRadios;
 };
 
-LOG(" getRadioPresets done");
+LOG("[getRadioPresets] done");

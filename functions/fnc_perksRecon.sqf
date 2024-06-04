@@ -107,8 +107,10 @@ if (hasInterface) then {
 					player addItemToUniform _x
 				} forEach _uniform_items;
 				//Lower the camouflage level of unit in ghillie
+				cgqc_previous_camo = player getUnitTrait "camouflageCoef";
+				cgqc_previous_audible = player getUnitTrait "audibleCoef";
 				player setUnitTrait ["camouflageCoef", 0.4];
-				player setUnitTrait ["audibleCoef ", 0.8];
+				player setUnitTrait ["audibleCoef", 0.6];
 				cgqc_perks_ghillie_isOn = true;
 			};
 			case 2:// Change back to uniform
@@ -123,8 +125,8 @@ if (hasInterface) then {
 				// Add items back
 				{player addItemToUniform _x} forEach _uniform_items;
 				//Back to default coefs
-				player setUnitTrait ["camouflageCoef", 1];
-				player setUnitTrait ["audibleCoef ", 1];
+				player setUnitTrait ["camouflageCoef", cgqc_previous_camo];
+				player setUnitTrait ["audibleCoef", cgqc_previous_audible];
 				cgqc_perks_ghillie_isOn = false;
 			};
 		};

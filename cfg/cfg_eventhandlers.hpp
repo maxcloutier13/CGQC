@@ -15,6 +15,7 @@ class Extended_PreInit_EventHandlers
         // This will be executed once in 3DEN, main menu and before briefing has started for every mission
         init = "[] spawn CGQC_fnc_preInit";
         serverInit = "[] spawn CGQC_fnc_preInitServer";
+        clientInit = "[] spawn CGQC_fnc_preInitClient";
     };
 };
 class Extended_PostInit_EventHandlers

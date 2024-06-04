@@ -2,10 +2,9 @@
 // --- checkLoadout ----------------------------------------------------------
 // Check if a unit has a fixed loadout and sets it if it's the case
 params [["_switch", true]];
-LOG_1(" checkLoadout %1 started", _switch);
-
 _type = typeOf player;
-LOG_1(" checkLoadout %1 started", _type);
+LOG_1(" checkLoadout %1/%2 started", _switch,_type);
+
 _switchRole = "";
 _section = 1;
 _dive = false;
@@ -13,15 +12,15 @@ _dive = false;
 _load = false;
 _switch = player getVariable "cgqc_var_skipLoadoutSwitch";
 if (isNil "_switch") then {
-	LOG("[CGQC_INIT] postInitClient - Loading custom loadouts");
+	LOG("[checkLoadout] Loading custom loadouts");
 	_load = true;
 } else {
 	if !(_switch) then {
-		LOG("[CGQC_INIT] postInitClient - Loading custom loadouts");
+		LOG("[checkLoadout] Loading custom loadouts");
 		_load = true;
     } else {
         hint "Skipping loadout";
-        LOG("[CGQC_INIT] postInitClient - NOT loading custom loadout");
+        LOG("[checkLoadout] NOT loading custom loadout");
     };
 };
 
@@ -77,12 +76,33 @@ if (_load) then {
         case "CGQC_units_mk1_5_Diver_sniper":{_switchRole = "2023_sniper";_dive = true;};
         case "CGQC_units_mk1_5_Diver_Spotter":{_switchRole = "2023_spotter";_dive = true;};
         case "CGQC_units_mk1_5_Diver_Engineer":{_switchRole = "2023_eng";_dive = true;};
+
+        // == Nam ===================================================================
+        case "CGQC_soldat_vietnam_car15":{_switchRole = "inf_car15";};
+        case "CGQC_soldat_vietnam_car15s":{_switchRole = "inf_car15_short";};
+        // == Leadership
+        case "CGQC_soldat_vietnam_tl":{_switchRole = "unsung_10";};
+        case "CGQC_soldat_vietnam_rto":{_switchRole = "unsung_11";};
+        case "CGQC_soldat_vietnam_medic":{_switchRole = "unsung_12";};
+        // == Specialists
+        case "CGQC_soldat_vietnam_pointman":{_switchRole = "spec_pointman";};
+        case "CGQC_soldat_vietnam_marksman":{_switchRole = "spec_marksman";};
+        case "CGQC_soldat_vietnam_mg":{_switchRole = "spec_mg";};
+        case "CGQC_soldat_vietnam_sniper":{_switchRole = "spec_sniper";};
+        case "CGQC_soldat_vietnam_saboteur":{_switchRole = "spec_saboteur";};
+        // == Vehicle crew
+        case "CGQC_soldat_vietnam_driver":{_switchRole = "vic_driver";};
+        case "CGQC_soldat_vietnam_crew":{_switchRole = "vic_crew";};
+        case "CGQC_soldat_vietnam_helipilot":{_switchRole = "vic_helipilot";};
+        case "CGQC_soldat_vietnam_helicrew":{_switchRole = "vic_helicrew";};
+        case "CGQC_soldat_vietnam_covey":{_switchRole = "vic_covey";};
+
     };
     if (_switchRole isNotEqualTo "") then {
         LOG_1(" Loadout %1 found. Switching.", _switchRole);
-        [_switchRole, _section, false, false] call CGQC_fnc_switchRole;
+        [_switchRole, _section, false, false] spawn CGQC_fnc_switchRole;
     } else {
-        LOG(" checkLoadout - Loadout not found. Skipping.");
+        LOG("[checkLoadout] - Loadout not found. Skipping.");
          sleep 10;
         ["defaultLR"] call CGQC_fnc_setRadios;
     };
@@ -90,10 +110,10 @@ if (_load) then {
     if (_dive) then {
         sleep 1;
         ["diver", true] spawn CGQC_fnc_switchUniform;
-        LOG(" checkLoadout - Diver suit");
+        LOG("[checkLoadout] - Diver suit");
     };
 } else {
-    LOG(" checkLoadout - Unit switch is OFF Skipping");
+    LOG("[checkLoadout] - Unit switch is OFF Skipping");
     [] spawn {
         sleep 10;
         ["defaultLR"] call CGQC_fnc_setRadios;
@@ -102,4 +122,4 @@ if (_load) then {
     };
 };
 
-LOG(" checkLoadout done");
+LOG("[checkLoadout] done");

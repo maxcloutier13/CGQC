@@ -7,13 +7,13 @@ _unit = _unit_array select 0;
 [_unit] spawn {
 	params ["_const_unit"];
 	waitUntil {cgqc_start_postInitClient_done};
-	LOG_2(" loadoutConstructionVic %1 started", _const_unit);
+	LOG_2("[loadoutConstructionVic] %1 started", _const_unit);
 	// Arsenal
 	//[_const_unit,"cgqc_box_mk2_arsenal",1] call grad_fortifications_fnc_addFort;
 
 	// Bunker stuff
 	if (!isNil "grad_fortifications_fnc_addFort") then {
-		LOG(" loadoutConstructionVic grad_fortifications_fnc_addFort is not nil. Inserting");
+		LOG("[loadoutConstructionVic] grad_fortifications_fnc_addFort is not nil. Inserting");
 		[_const_unit,"Land_BagBunker_Large_F",2] call grad_fortifications_fnc_addFort;
 		[_const_unit,"Land_PortableLight_double_F",5] call grad_fortifications_fnc_addFort;
 		[_const_unit,"Land_ToiletBox_F",2] call grad_fortifications_fnc_addFort;
@@ -31,8 +31,8 @@ _unit = _unit_array select 0;
 		[_const_unit,"Land_BarrelTrash_grey_F",5] call grad_fortifications_fnc_addFort;
 		[_const_unit,"Land_Pallets_stack_F",5] call grad_fortifications_fnc_addFort;
 	} else {
-		LOG(" loadoutConstructionVic grad_fortifications_fnc_addFort is nil: Skipping");
+		LOG("[loadoutConstructionVic] grad_fortifications_fnc_addFort is nil: Skipping");
 	};
-	LOG(" loadoutConstructionVic done");
+	LOG("[loadoutConstructionVic] done");
 };
 

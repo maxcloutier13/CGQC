@@ -5,6 +5,25 @@ LOG(" loadDiaryRoster started");
 
 waitUntil {cgqc_start_postInitClient_done};
 
+CGQC_int_hasSilencer = {
+	params ["_target"];
+	_return = false;
+	_currentWeapon = primaryWeapon _target;
+	_compatible = _currentWeapon call bis_fnc_compatibleItems;
+	_compatibleSilencers = [];
+	{
+	_type = (_x call bis_fnc_itemType) select 1;
+	if (_type isEqualTo "AccessoryMuzzle") then {
+	_compatibleSilencers pushBack _x;
+	};
+	} forEach _compatible;
+	_items = primaryWeaponItems _target;
+	{
+	if (_x in _items) exitWith {_return = true};
+	} forEach _compatibleSilencers;
+	_return;
+};
+
 CGQC_int_processTeam = {
 	params ["_soldiers"];
 	{
@@ -18,10 +37,15 @@ CGQC_int_processTeam = {
 		_versionCheck = "";
 		_versionCore = _unit getVariable ["cgqc_version_core", "ERROR"];
 		_ref_version_core = missionNamespace getVariable ["cgqc_version_server_core", "ERROR"];
+		_silencedCheck = "Loud";
+		_silenced = [_unit] call CGQC_int_hasSilencer;
 		if (_versionCore isNotEqualTo _ref_version_core) then {
 			_versionCheck = "</font><font color='CC3333' size='15'>!!!</font>";
 		};
-		cgqc_group_roster = cgqc_group_roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6 - %7",_color, _pos, _role, _name, _weight, _radio, _versionCheck ] + "<br/>";
+		if (_silenced) then {
+			_silencedCheck = "Silent";
+		};
+		cgqc_group_roster = cgqc_group_roster + format ["<font color='%1' size='15'>%2 - %3 - %4 - %5 - %6 - %7 - %8",_color, _pos, _role, _name, _weight, _radio, _silencedCheck, _versionCheck ] + "<br/>";
 	} forEach _soldiers;
 };
 

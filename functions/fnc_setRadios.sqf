@@ -1,8 +1,9 @@
 #include "\CGQC\script_component.hpp"
 // --- setRadios ----------------------------------------------------------
+// ["defaultLR"] call CGQC_fnc_setRadios;
 // Set radio channels depending on group
 params ["_type", ["_section", 1]];
-LOG_2(" setRadios %1/%2 started", _type, _section);
+LOG_2("[setRadios] %1/%2 started", _type, _section);
 
 _showMsg = false;
 _msg = "";
@@ -42,7 +43,7 @@ switch (_type) do {
 		};
 	};
 	case "training": {
-		LOG(" setRadios - Training mode");
+		LOG("[setRadios] - Training mode");
 		_radios = call acre_api_fnc_getCurrentRadioList;
 		_radio1 = _radios select 0;
 		_radio2 = _radios select 1;
@@ -446,11 +447,11 @@ switch (_type) do {
 		_msg = format ["%1 Speaker-2: %2", _handRadio_2, _speaker_check];
 	};
 	default	{
-		hint "fnc_setRadios fucked up. ";
+		hint "[setRadios] fucked up. ";
 	};
 };
 if(_showMsg) then {
 	[[_title, 1.5, [0.161, 0.502, 0.725, 1]], [_msg], false] call CBA_fnc_notify;
 };
 
-LOG(" setRadios done");
+LOG("[setRadios] done");

@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- keepPatch ----------------------------------------------------------
 // Keep patch updated. Find better way...  but hey.
-LOG(" keepPatch started");
+LOG("[keepPatch] started");
 [] spawn {
 	_sleep = 120;
 	while {alive player} do {
@@ -13,4 +13,4 @@ LOG(" keepPatch started");
 		LOG(" keepPatch activated. Resetting patch");
 	};
 };
-LOG(" keepPatch done");
+LOG("[keepPatch] done");

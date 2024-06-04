@@ -2,7 +2,7 @@
 // --- getCustomHelmet ----------------------------------------------------------
 // Get player custom helmet if exists
 params ["_helmet"];
-LOG_1(" getCustomHelmet %1 started", _helmet);
+LOG_1("[getCustomHelmet] %1 started", _helmet);
 
 removeHeadgear player;
 _customHelmet = _helmet + "_" + cgqc_custom_playername;
@@ -16,4 +16,4 @@ if (_checkHelmet == "") then {
     hint format ["Custom Helmet :%1", _customHelmet];
 };
 
-LOG(" getCustomHelmet done");
+LOG("[getCustomHelmet] done");

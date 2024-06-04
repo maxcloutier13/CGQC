@@ -1,14 +1,26 @@
-class ace_medical_treatment_actions 
+class tsp_paperclip;
+class ItemInfo;
+class InventoryItem_Base_F;
+class ace_medical_treatment_actions
 {
     class Morphine;
-    class FF_Painkiller: Morphine 
+    class FF_Painkiller: Morphine
     {
         // Add option on all bodyparts instead of just head
         allowedSelections[] = {"Head","LeftArm", "RightArm", "LeftLeg", "RightLeg", "Body"};
     };
 };
 
-class ace_medical_treatment 
+
+class taro_tripwire_spool
+{
+    class ItemInfo: InventoryItem_Base_F
+    {
+        mass = 5;
+    };
+};
+
+class ace_medical_treatment
 {
     class Medication
     {
@@ -24,8 +36,7 @@ class ace_medical_treatment
         };
     };
 };
-class tsp_paperclip;
-class ItemInfo;
+
 class tsp_lockpick: tsp_paperclip
 {
     class ItemInfo: ItemInfo

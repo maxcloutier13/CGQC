@@ -1,63 +1,161 @@
 case "unsung_basic":{
 	[] call CGQC_loadout_unsungBasic;
-	["inf"] call cgqc_fnc_switchPerks;
+	["inf"] spawn CGQC_fnc_switchPerks;
+	["nam_basic", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Basic Soldier";
 	cgqc_player_roleType = "Infantry";
 };
+// Command
 case "unsung_10":{
 	[] call CGQC_loadout_unsungBasic;
 	["1-0"] call CGQC_loadout_unsungLeader;
-	["tl"] call cgqc_fnc_switchPerks;
+	["tl", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-0 Team Leader";
 	cgqc_player_roleType = "HQ";
 };
 case "unsung_11":{
 	[] call CGQC_loadout_unsungBasic;
 	["1-1"] call CGQC_loadout_unsungLeader;
-	["inf"] call cgqc_fnc_switchPerks;
-	cgqc_player_role = "1-1 Radio 2iC";
-	cgqc_player_roleType = "Infantry";
+	["mg", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "1-1 Radio Operator";
+	cgqc_player_roleType = "HQ";
 };
 case "unsung_12":{
 	[] call CGQC_loadout_unsungBasic;
 	["1-2"] call CGQC_loadout_unsungLeader;
-	["medic"] call cgqc_fnc_switchPerks;
+	["medic", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-2 Medic";
 	cgqc_player_roleType = "Medic";
 };
-case "unsung_car15":{
-
+// Infantry
+case "inf_car15":{
 	[] call CGQC_loadout_unsungBasic;
-	["unsung_car15"] call CGQC_loadout_unsungInfantry;
-	["inf"] call cgqc_fnc_switchPerks;
+	["inf_car15"] call CGQC_loadout_unsungInfantry;
+	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Rifleman: CAR15";
 	cgqc_player_roleType = "Infantry";
 };
-case "unsung_m14":{
+
+case "inf_car15_short":{
 	[] call CGQC_loadout_unsungBasic;
-	["unsung_m14"] call CGQC_loadout_unsungInfantry;
-	["inf"] call cgqc_fnc_switchPerks;
-	cgqc_player_role = "Marksman";
+	["inf_car15_short"] call CGQC_loadout_unsungInfantry;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Rifleman: CAR15 Shorty";
 	cgqc_player_roleType = "Infantry";
 };
-case "unsung_rpd":{
+
+case "inf_ak":{
 	[] call CGQC_loadout_unsungBasic;
-	["unsung_rpd"] call CGQC_loadout_unsungInfantry;
-	["mg"] call cgqc_fnc_switchPerks;
+	["inf_ak"] call CGQC_loadout_unsungInfantry;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Rifleman: AK";
+	cgqc_player_roleType = "Infantry";
+};
+case "inf_m2":{
+	[] call CGQC_loadout_unsungBasic;
+	["inf_m2"] call CGQC_loadout_unsungInfantry;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Rifleman: M2";
+	cgqc_player_roleType = "Infantry";
+};
+case "inf_m14":{
+	[] call CGQC_loadout_unsungBasic;
+	["inf_m14"] call CGQC_loadout_unsungInfantry;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Rifleman: M14";
+	cgqc_player_roleType = "Infantry";
+};
+case "inf_thom":{
+	[] call CGQC_loadout_unsungBasic;
+	["inf_thom"] call CGQC_loadout_unsungInfantry;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Rifleman: Thompson";
+	cgqc_player_roleType = "Infantry";
+};
+
+// Specialists
+case "spec_pointman":{
+	[] call CGQC_loadout_unsungBasic;
+	["spec_pointman"] call CGQC_loadout_unsungSpecialist;
+	["nam_recon", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Pointman";
+	cgqc_player_roleType = "Recon";
+};
+case "spec_mg":{
+	[] call CGQC_loadout_unsungBasic;
+	["spec_mg"] call CGQC_loadout_unsungSpecialist;
+	["mg", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "MG: RPD";
 	cgqc_player_roleType = "Infantry";
 };
-case "unsung_m40":{
+case "spec_marksman":{
 	[] call CGQC_loadout_unsungBasic;
-	["unsung_m40"] call CGQC_loadout_unsungInfantry;
-	["recon"] call cgqc_fnc_switchPerks;
+	["spec_marksman"] call CGQC_loadout_unsungSpecialist;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Marksman";
+	cgqc_player_roleType = "Infantry";
+};
+case "spec_sniper":{
+	[] call CGQC_loadout_unsungBasic;
+	["spec_sniper"] call CGQC_loadout_unsungSpecialist;
+	["nam_recon", false, true] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Sniper";
 	cgqc_player_roleType = "Recon";
 };
-case "unsung_sab":{
+case "spec_saboteur":{
 	[] call CGQC_loadout_unsungBasic;
-	["unsung_sab"] call CGQC_loadout_unsungInfantry;
-	["eng"] call cgqc_fnc_switchPerks;
+	["spec_saboteur"] call CGQC_loadout_unsungSpecialist;
+	["eng", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Saboteur";
 	cgqc_player_roleType = "Engineer";
+};
+
+// Driver/pilots
+case "vic_driver":{
+	[] call CGQC_loadout_unsungBasic;
+	["vic_driver"] call CGQC_loadout_unsungVehicles;
+	["driver", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Tank Driver";
+	cgqc_player_roleType = "Armor";
+};
+case "vic_crew":{
+	[] call CGQC_loadout_unsungBasic;
+	["vic_crew"] call CGQC_loadout_unsungVehicles;
+	["tank_crew", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Tank Driver";
+	cgqc_player_roleType = "Armor";
+};
+case "vic_helipilot":{
+	[] call CGQC_loadout_unsungBasic;
+	["vic_helipilot"] call CGQC_loadout_unsungVehicles;
+	["heli", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	gqc_player_role = "Helicopter Pilot";
+	cgqc_player_roleType = "Air";
+};
+case "vic_helicrew":{
+	[] call CGQC_loadout_unsungBasic;
+	["vic_helicrew"] call CGQC_loadout_unsungVehicles;
+	["heli_crew", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Helicopter Crew";
+	cgqc_player_roleType = "Air";
+};
+case "vic_covey":{
+	[] call CGQC_loadout_unsungBasic;
+	["vic_covey"] call CGQC_loadout_unsungVehicles;
+	["heli", false] spawn CGQC_fnc_switchPerks;
+	["defaultLR"] call CGQC_fnc_setRadios;
+	cgqc_player_role = "Covey Rider";
+	cgqc_player_roleType = "Air";
 };

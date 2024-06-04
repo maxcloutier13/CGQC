@@ -2,7 +2,7 @@
 // --- perksBasic ----------------------------------------------------------
 // Perks for the everyman
 params ["_type", ["_fromLoadout", false]];
-LOG_2(" perksBasic %1/%2  started", _type, _fromLoadout);
+LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
 
 [_type, _fromLoadout] spawn {
     params ["_type", "_fromLoadout"];
@@ -359,6 +359,10 @@ LOG_2(" perksBasic %1/%2  started", _type, _fromLoadout);
             hint "Sound: Volumes reset";
             [] call ace_volume_fnc_restoreVolume;
             [player, "default"] call CGQC_fnc_setVoiceVolume;
+	        ace_hearing_disableVolumeUpdate = false;
+            0 fadeSound 1;
+            0 fadeEnvironment 1;
+            ace_hearing_deafnessDV = 0;
         };
         case "fix_blackout":
         {
@@ -693,4 +697,4 @@ LOG_2(" perksBasic %1/%2  started", _type, _fromLoadout);
     if (userInputDisabled) then {};
 };
 
-LOG(" perksBasic done");
+LOG("[perksBasic] done");

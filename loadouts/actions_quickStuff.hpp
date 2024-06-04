@@ -70,22 +70,22 @@ if (cgqc_player_has2023) then {
 _action = [ "menu_skill", "Switch: Skills", "CGQC\textures\icon_skills", {""}, {player getVariable 'cgqc_player_rank' > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick" ], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Medic
-_action = [ "skill_medic", "Medic", "", {["med", false] call CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "skill_medic", "Medic", "", {["med", false] spawn CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Engineer
-_action = [ "skill_eng", "Engineer", "", {["eng", false] call CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "skill_eng", "Engineer", "", {["eng", false] spawn CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Driver
-_action = [ "skill_driver", "Tank Driver", "", {["driver", false] call CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "skill_driver", "Tank Driver", "", {["driver", false] spawn CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Pilot
-_action = [ "skill_pilot", "Heli Pilot", "", {["heli", false] call CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "skill_pilot", "Heli Pilot", "", {["heli", false] spawn CGQC_fnc_switchPerks}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Sniper
-_action = ["skill_sniper", "Recon", "", {["recon", false] call CGQC_fnc_switchPerks},	{true}] call ace_interact_menu_fnc_createAction;
+_action = ["skill_sniper", "Recon", "", {["recon", false] spawn CGQC_fnc_switchPerks},	{true}] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Heavy
-_action = ["skill_heavy", "Heavy loads", "", {["at", false] call CGQC_fnc_switchPerks},	{true}] call ace_interact_menu_fnc_createAction;
+_action = ["skill_heavy", "Heavy loads", "", {["at", false] spawn CGQC_fnc_switchPerks},	{true}] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_skill"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Radio setups
