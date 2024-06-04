@@ -132,7 +132,6 @@ cgqc_player_isModern = false;
 cgqc_player_isWw2 = false;
 cgqc_player_isVietnam = false;
 // *** Perks **********************
-cgqc_perks_action_list = [];
 cgqc_perks_basic = false;
 cgqc_perks_hq = false;
 cgqc_perks_sl = false;
