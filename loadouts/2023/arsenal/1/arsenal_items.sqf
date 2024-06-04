@@ -31,6 +31,7 @@ cgqc_mk2_arsenal_1_items = [
     "KNB_PanelGreen",
 	"KNB_PanelRed",
     "KNB_PanelYellow",
+    "RS_Equip_Retention",
     // Electronics ------------------------------
     "ItemAndroid",
     "ACE_microDAGR",
