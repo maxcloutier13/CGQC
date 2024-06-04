@@ -204,6 +204,10 @@ class CGQC {
             file = "\cgqc\XEH_preInitServer.sqf";
             description = "Set everything that needs to be there before editor/menu/briefing";
         };
+        class preInitClient{
+            file = "\cgqc\XEH_preInitClient.sqf";
+            description = "Set everything that needs to be there before editor/menu/briefing";
+        };
         class postInit{
             file = "\cgqc\XEH_postInit.sqf";
             description = "Start everything before everything";
