@@ -620,4 +620,80 @@ _adding = [ ["ACE_SelfActions", "ACE_TeamManagement", 'CGQC_joinGroup'], _action
 //_action = [ "menu_self_whistle", "Whistle", "\fox_whistle\ui\whistle.paa", {[player] call CGQC_fnc_whistle}, {!cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Special Perks
+// ------ Heli pilot --------------------------------------------------------------------------------------
+_action = [ "cgqc_perk_heli_getCrew", "Spawn Crew", "CGQC\textures\cgqc_ace_heli.paa", {
+    ["getCrew"] spawn CGQC_fnc_perksPilot
+}, {
+    cgqc_perks_pilot &&
+    !cgqc_perks_pilot_hasCrew &&
+    (vehicle player isKindOf "Helicopter")
+} ] call ace_interact_menu_fnc_createAction;
+// get crew
+cgqc_action_getCrew = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_heli_delCrew", "Delete Crew", "", {
+    ["delCrew"] spawn CGQC_fnc_perksPilot
+}, {
+    cgqc_perks_pilot && cgqc_perks_pilot_hasCrew
+} ] call ace_interact_menu_fnc_createAction;
+// Delete crew
+cgqc_action_delCrew = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// ------ Tank driver --------------------------------------------------------------------------------------
+_action = [ "cgqc_perk_driver_getDriver", "Spawn Driver", "", {
+    ["getDriver"] spawn CGQC_fnc_perksPilot
+}, {
+    cgqc_perks_driver &&
+    !cgqc_perks_driver_hasDriver &&
+    (vehicle player isKindOf "LandVehicle")
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_getDriver = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_driver_delDriver", "Delete Driver", "", {
+    ["delDriver"] spawn CGQC_fnc_perksPilot
+}, {
+    cgqc_perks_driver && cgqc_perks_driver_hasDriver
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_delDriver = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// ------ Ghillie up --------------------------------------------------------------------------------------
+_action = [ "cgqc_perk_ghillie", " Ghillie up", "cgqc\textures\cgqc_ace_ghillie", {}, {
+    cgqc_perks_recon && !cgqc_perks_ghillie_isOn
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_ghillie = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// All types
+_action = [ "cgqc_perk_ghillie_arid", "Arid", "", {
+    _ct = ["arid"] spawn CGQC_fnc_perksRecon
+}, {
+    cgqc_perks_recon && !cgqc_perks_ghillie_isOn
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_ghillie_arid = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_ghillie"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_ghillie_sarid", "Semi-Arid", "", {
+    _ct = ["sarid"] spawn CGQC_fnc_perksRecon
+}, {
+    cgqc_perks_recon && !cgqc_perks_ghillie_isOn
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_ghillie_sarid = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_ghillie"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_ghillie_lush", "Lush", "", {
+    _ct = ["lush"] spawn CGQC_fnc_perksRecon
+}, {
+    cgqc_perks_recon && !cgqc_perks_ghillie_isOn
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_ghillie_lush = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_ghillie"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "cgqc_perk_ghillie_jungle", "Jungle", "", {
+    _ct = ["jungle"] spawn CGQC_fnc_perksRecon
+}, {
+    cgqc_perks_recon && !cgqc_perks_ghillie_isOn
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_ghillie_jungle = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_ghillie"], _action ] call ace_interact_menu_fnc_addActionToObject;
+// uniform
+_action = [ "cgqc_perk_ghillie_uniform", "Ghillie-> Uniforme", "", {
+    _ct = ["uniform"] spawn CGQC_fnc_perksRecon
+}, {
+    cgqc_perks_recon && cgqc_perks_ghillie_isOn
+} ] call ace_interact_menu_fnc_createAction;
+cgqc_action_ghillie_uniform = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
 LOG("[CGQC_INIT] --- addPerks done");

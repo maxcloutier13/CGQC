@@ -58,13 +58,6 @@ if !(_type isEqualTo "Unknown") then {
     //Save role for further use
     player setVariable["cgqc_player_role", _type, true];
 
-    LOG("[switchRole] - checking if run transition");
-    // Start transition
-    if (!cgqc_intro_running && _showTransition) then {
-        LOG("[switchRole] - running transition");
-        ["role", true] spawn CGQC_fnc_showTransition;
-    };
-
     // Add side keys to player
     ["side", player] call CGQC_fnc_getKey;
 
@@ -86,6 +79,15 @@ if !(_type isEqualTo "Unknown") then {
     // Start sending BFT if leader of group or refresh it if it's already running
     if (leader group player isEqualTo player || AZMBFT_isTransmitting) then {
         ["transmit"] spawn CGQC_fnc_bluforceTracker;
+    };
+
+    LOG("[switchRole] - checking if run transition");
+    // Start transition
+    if (!cgqc_intro_running && _showTransition) then {
+        LOG("[switchRole] - running transition");
+        ["role", true] spawn CGQC_fnc_showTransition;
+    } else {
+        titleCut ["", "BLACK IN", 0];
     };
 
 } else {
