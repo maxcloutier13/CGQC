@@ -30,7 +30,7 @@ switch (_type) do {
 	};
 	case "2023_command": {
 		_link = _linkedBaseUAV;
-		_optionals = _light + _lockpicks + _tablet + _dagr;
+		_optionals = _light + _lockpicks + _phone + _dagr;
 		LOG(" getLinkedItems 2023_command loading");
 	};
 	case "vanilla_basic": {

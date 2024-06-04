@@ -56,6 +56,9 @@ switch (_variant) do {
 		// === Comms =================================
 		_target addItemToBackpack "ACRE_VHF30108SPIKE";
 		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
+		// Switch android for tablet
+		_target addItemToUniform "ItemcTab";
+		_target removeItem "ItemAndroid";
 	};
 	case "jtac": {
 		_target addItem "ACE_ATragMX";
