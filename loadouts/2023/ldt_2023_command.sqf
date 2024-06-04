@@ -64,6 +64,7 @@ switch (_variant) do {
 		_target addItem "ACE_ATragMX";
 		_target addItem "ACE_Kestrel4500";
 		_target addItem "ACE_M26_Clacker";
+		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 		// === Stuff ================================
 		_target addItemToBackpack "Rev_darter_item";
 		_target addItemToBackpack "ACE_Tripod";
