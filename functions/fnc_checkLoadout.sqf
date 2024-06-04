@@ -100,7 +100,7 @@ if (_load) then {
     };
     if (_switchRole isNotEqualTo "") then {
         LOG_1(" Loadout %1 found. Switching.", _switchRole);
-        [_switchRole, _section, false, false] call CGQC_fnc_switchRole;
+        [_switchRole, _section, false, false] spawn CGQC_fnc_switchRole;
     } else {
         LOG("[checkLoadout] - Loadout not found. Skipping.");
          sleep 10;

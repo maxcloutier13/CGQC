@@ -2,7 +2,7 @@
 // --- getKey ----------------------------------------------------------
 // Get key to specified vehicle
 params ["_target", ["_user", player]];
-LOG_2(" getKey %1/%2 started", _target, _user);
+LOG_2("[getKey] %1/%2 started", _target, _user);
 _keyType = "";
 _side = side _user;
 switch (_target) do {
@@ -14,7 +14,7 @@ switch (_target) do {
 				case INDEPENDENT: { _keyType = "ACE_key_indp"};
 			};
 			if (_keyType isNotEqualTo "") then {
-				LOG_1(" getKey - sideKey: %1", _keyType);
+				LOG_1("[getKey] - sideKey: %1", _keyType);
 				_user addItem _keyType;
 			};
 		};
@@ -22,9 +22,9 @@ switch (_target) do {
 	case "master": {_user addItem "ACE_key_master";};
 	case "lockpick": {_user addItem "ACE_key_lockpick";};
 	default { //Specific target
-		LOG_1(" getKey - customKey: %1 started", _target);
+		LOG_1("[getKey] - customKey: %1 started", _target);
 		[_user, _target, true] call ACE_VehicleLock_fnc_addKeyForVehicle;
 	};
 };
 
-LOG(" --- getKey done");
+LOG("[getKey] done");

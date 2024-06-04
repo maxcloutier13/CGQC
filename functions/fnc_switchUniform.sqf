@@ -2,12 +2,12 @@
 // --- switchUniform ----------------------------------------------------------
 // Switch player uniform
 params ["_camo", ["_fromLoadout", false]];
-LOG2(FORMAT["[switchUniform] %1/Show:%2 started", _camo, _fromLoadout]);
+LOG_2("[switchUniform] %1/Show:%2 started", _camo, _fromLoadout);
 
 // Transition/text
 if !(_fromLoadout) then {
 	// Fade to black transition with text
-	[_camo, true] call CGQC_fnc_showTransition;
+	[_camo, true] spawn CGQC_fnc_showTransition;
 };
 
 cgqc_camoSwitch_done = false;

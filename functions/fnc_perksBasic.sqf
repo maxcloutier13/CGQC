@@ -2,7 +2,7 @@
 // --- perksBasic ----------------------------------------------------------
 // Perks for the everyman
 params ["_type", ["_fromLoadout", false]];
-LOG_2(" perksBasic %1/%2  started", _type, _fromLoadout);
+LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
 
 [_type, _fromLoadout] spawn {
     params ["_type", "_fromLoadout"];
@@ -697,4 +697,4 @@ LOG_2(" perksBasic %1/%2  started", _type, _fromLoadout);
     if (userInputDisabled) then {};
 };
 
-LOG(" perksBasic done");
+LOG("[perksBasic] done");
