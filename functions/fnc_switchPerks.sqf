@@ -16,19 +16,7 @@ if (_clearFirst) then {
 };
 
 switch (_type) do {
-	case "nam_recon":{
-		LOG("[switchPerks] Nam Recon setup");
-		player setUnitTrait ["audibleCoef", 0.5];
-		player setUnitTrait ["camouflageCoef", 0.4];
-		player setUnitTrait ["loadCoef", 0.8];
-		cgqc_perks_recon = true;
-	};
-	case "nam_basic":{
-		LOG("[switchPerks] Nam Basic setup");
-		player setUnitTrait ["audibleCoef", 0.8];
-		player setUnitTrait ["camouflageCoef", 0.8];
-		player setUnitTrait ["loadCoef", 0.9];
-	};
+
 	case "hq":{
 		LOG("[switchPerks] HQ setup");
 		["HQ"]call CGQC_fnc_setLeadership;
@@ -194,7 +182,7 @@ switch (_type) do {
 	case "med":{
 		LOG("[switchPerks] Medic setup");
 		player setUnitTrait ["Medic", true];
-		player setUnitTrait ["loadCoef", 0.6];
+		player setUnitTrait ["loadCoef", 0.8];
 		cgqc_perks_medic = true;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
@@ -210,7 +198,7 @@ switch (_type) do {
 	};
 	case "mg":{
 		LOG("[switchPerks] MG setup");
-		player setUnitTrait ["loadCoef", 0.7];
+		player setUnitTrait ["loadCoef", 0.8];
 	};
 	case "mortar":{
 		LOG("[switchPerks] Mortar setup");
@@ -233,6 +221,19 @@ switch (_type) do {
 			} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		*/
+	};
+	case "nam_recon":{
+		LOG("[switchPerks] Nam Recon setup");
+		player setUnitTrait ["audibleCoef", 0.5];
+		player setUnitTrait ["camouflageCoef", 0.4];
+		player setUnitTrait ["loadCoef", 0.8];
+		cgqc_perks_recon = true;
+	};
+	case "nam_basic":{
+		LOG("[switchPerks] Nam Basic setup");
+		player setUnitTrait ["audibleCoef", 0.8];
+		player setUnitTrait ["camouflageCoef", 0.8];
+		player setUnitTrait ["loadCoef", 0.9];
 	};
 	default	{
 		LOG("[CGQC_ERROR] switchPerks fail");
