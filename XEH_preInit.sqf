@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.11.3";
+core_version = "4.6.12";
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -167,6 +167,7 @@ cgqc_perk_player_stash_on = false;
 cgqc_player_stash_items = [];
 cgqc_player_stash_mags = [];
 cgqc_perks_camo = false;
+
 // Zeus perks
 cgqc_zeus_event = false;
 cgqc_zeus_crate = false;
@@ -389,10 +390,10 @@ if (cgqc_player_hasUnsung) then {
 }] call CBA_fnc_addEventHandler;
 
 // Init loading event
-player setVariable ["CGQC_playerLoaded", false, true];
+CGQC_playerLoaded = false;
 addMissionEventHandler ["PreloadFinished",
 {
-  player setVariable ["CGQC_playerLoaded", true, true];
+  CGQC_playerLoaded = true;
 }];
 
 // Initial roster
@@ -476,10 +477,14 @@ Examples
 
 */
 //Intro Stuff
-["cgqc_config_showIntro", "CHECKBOX", ["Show Original Intro", "Montre le popup avec logo en début de mission"],
+["cgqc_config_showIntro", "CHECKBOX", ["Show Intro", "Intro en début de mission"],
     [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
-cgqc_config_author = getMissionConfigValue "author";
-cgqc_config_mission_name = getMissionConfigValue "onLoadName";
+
+["cgqc_config_showIntro_type", "LIST", ["Intro Style", "Various Intro styles"],
+  [_menu_name, "Option Toggles"], [[0, 1, 2], ["Original/Logo","Flying", "Establishing"], 0], {publicVariable "cgqc_config_showIntro_type"}] call CBA_fnc_addSetting;
+
+cgqc_config_author = getMissionConfigValue ["author", "Cpl. Quelquechose"];
+cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Something"];
 /*
 ["cgqc_config_author", "EDITBOX", ["Auteur:", "Le nom du créateur de la map, pour display dans l'intro"],
     [_menu_name, "Intro"], "Cpl. Quelque chose"] call CBA_fnc_addSetting;
