@@ -48,6 +48,7 @@ switch (_variant) do {
 		player addItemToBackpack "ACE_Tripod";
 		player addItemToBackpack "ACE_DefusalKit";
 		player addItemToBackpack "rhsusf_mine_m14_mag";
+		player addItemToBackpack "sps_black_hornet_01_Static_F";
 		player removeItems "ACE_EntrenchingTool";
 	};
 	case "spotter": {
@@ -55,11 +56,14 @@ switch (_variant) do {
 		player addItem "ACE_ATragMX";
 		player addItem "ACE_Kestrel4500";
 		player addItemToBackpack "ACE_Tripod";
+		player addItemToBackpack "ACE_DefusalKit";
+		player addItemToBackpack "sps_black_hornet_01_Static_F";
 		player addItemToBackpack "rhsusf_mine_m14_mag";
 	};
 	case "drone": {
 		player addItemToBackpack "ACE_UAVBattery";
 		player addItemToBackpack "rev_darter_item";
+		player addItemToBackpack "sps_black_hornet_01_Static_F";
 	};
 };
 
