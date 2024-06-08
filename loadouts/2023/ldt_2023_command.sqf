@@ -22,7 +22,7 @@ switch (_gunVariant) do {
 	case "carbine": {["m4_gl_m320"] spawn CGQC_fnc_switchPrimary;};
 	case "cqb": {["mk18_gl"] spawn CGQC_fnc_switchPrimary;};
 	case "noGL": {["mk18_tl"] spawn CGQC_fnc_switchPrimary;};
-	case "lpvo": {["m4_lpvo"] spawn CGQC_fnc_switchPrimary;};
+	case "m4": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
 };
 

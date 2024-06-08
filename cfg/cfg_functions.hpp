@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+
+        class getRandomOptic{
+            file = "\cgqc\functions\fnc_getRandomOptic.sqf";
+            description = "Pick a random optic of the right kind and modset";
+        };
         class inspectPara{
             file = "\cgqc\functions\fnc_inspectPara.sqf";
             description = "Inspect parachute setup";

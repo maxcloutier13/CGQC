@@ -143,7 +143,7 @@ case "2023_at_maaws":{
 };
 
 case "2023_at_javelin":{
-	[player, "javelin", "m4_lpvo"] call CGQC_ldt_2023_at;
+	[player, "javelin", "m4_elcan"] call CGQC_ldt_2023_at;
 	["at", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "AT/Javelin";
@@ -181,7 +181,7 @@ case "2023_spotter":{
 };
 
 case "2023_drone":{
-	[player, "drone", "lpvo"] call CGQC_ldt_2023_recon;
+	[player, "drone", "hk416_elcan"] call CGQC_ldt_2023_recon;
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Drone Operator";
@@ -229,7 +229,7 @@ case "2023_t_crew":{
 
 // Command ===============================================================
 case "2023_hq":{
-	[player, "hq", "lpvo"] call CGQC_ldt_2023_command;
+	[player, "hq", "m4"] call CGQC_ldt_2023_command;
 	["hq", true, true] spawn CGQC_fnc_switchPerks;
 	["hq"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HeadQuarters";
