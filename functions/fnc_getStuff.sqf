@@ -13,7 +13,7 @@ switch (_type) do {
 		_target = cursorTarget;
 		_targetID = owner _target;
 		[_target, "ACRE_PRC152"] remoteExec ["removeItems", _targetID];
-		hint "Removed all 152's"
+		hint "Removed all 152's";
 	};
 	case "crate": {
 		_pos_free = getPosATL player findEmptyPosition [1,20,"cgqc_box_mk2_arsenal"];
