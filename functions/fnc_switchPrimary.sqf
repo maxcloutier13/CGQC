@@ -145,7 +145,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "121_308_Mk319_Mod_0_10rnd";
 	};
 	case "csr24":{
-		["121_338_300gr_HPBT_5rnd"] call CGQC_fnc_getCustomGun;
+		["121_USASOC_CSR_24"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "121_USASOC_MRAD";
 		_target addPrimaryWeaponItem "121_USASOC_AML338_TAN";
 		_target addPrimaryWeaponItem "121_USASOC_STORM_SLX_Laser";
@@ -163,7 +163,7 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "121_300WM_Berger_OTM_5rnd";
 	};
 	case "barrett_mk22":{
-		["hlc_wp_SSR"] call CGQC_fnc_getCustomGun;
+		["121_USASOC_MRAD"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "121_USASOC_MRAD";
 		_target addPrimaryWeaponItem "121_USASOC_AML338_TAN";
 		_target addPrimaryWeaponItem "121_USASOC_STORM_SLX_Laser";
@@ -171,7 +171,6 @@ switch (_type) do {
 		_target addPrimaryWeaponItem "121_USASOC_Atlas";
 		_target addPrimaryWeaponItem "121_338_300gr_NM_10rnd";
 	};
-
 	case "scar_dmr":{
 		["hlc_wp_SSR"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "Tier1_SandmanS_Black";
@@ -569,6 +568,7 @@ switch (_type) do {
 	case "m200":{
 		["cgqc_gun_mk1_m200"] call CGQC_fnc_getCustomGun;
 		_target addPrimaryWeaponItem "optic_lrps";
+		_target addPrimaryWeaponItem "muzzle_snds_408";
 		_target addPrimaryWeaponItem "ace_acc_pointer_green";
 		_target addPrimaryWeaponItem "7Rnd_mas_can_408_Mag";
 	};

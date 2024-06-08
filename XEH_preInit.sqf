@@ -45,7 +45,9 @@ player setVariable ["cgqc_player_isSL", false, true];
 player setVariable ["cgqc_player_isTL", false, true];
 player setVariable ["cgqc_player_is2IC", false, true];
 cgqc_player_role = "Unknown";
+cgqc_player_role_optic = 0;
 player setVariable ["cgqc_player_role", cgqc_player_role, true];
+player setVariable ["cgqc_player_role_optic", cgqc_player_role_optic, true];
 player setVariable ["CGQC_player_teamColor", "MAIN", true];
 cgqc_player_roleType = "";
 cgqc_player_beret = "";
@@ -476,49 +478,55 @@ Examples
 
 */
 //Intro Stuff
+_section_name = "Intro/Cinématiques";
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Intro", "Intro en début de mission"],
-    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
-
+    [_menu_name, _section_name], true] call CBA_fnc_addSetting;
 ["cgqc_config_showIntro_type", "LIST", ["Intro Style", "Various Intro styles"],
-  [_menu_name, "Option Toggles"], [[0, 1, 2], ["Original/Logo","Flying", "Establishing"], 0], {publicVariable "cgqc_config_showIntro_type"}] call CBA_fnc_addSetting;
-
-cgqc_config_author = getMissionConfigValue ["author", "Cpl. Quelquechose"];
-cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Something"];
-/*
-["cgqc_config_author", "EDITBOX", ["Auteur:", "Le nom du créateur de la map, pour display dans l'intro"],
-    [_menu_name, "Intro"], "Cpl. Quelque chose"] call CBA_fnc_addSetting;
-["cgqc_config_mission_name", "EDITBOX", ["Nom de la mission:", "Le nom du ta mission, pour display dans l'intro"],
-    [_menu_name, "Intro"], "Le nom de ta mission"] call CBA_fnc_addSetting;
-*/
-// Custom medical stuff ===================================================================================================
-["cgqc_player_wakeup_active", "CHECKBOX", ["Activate custom wakeup", "Randomly lets player wake up if not in cardia arrest"],
-[_menu_name, "Custom Medical"], false, 1, {publicVariable "cgqc_player_wakeup_active"}] call CBA_fnc_addSetting;
-["cgqc_player_wakeup_min","SLIDER", ["Min Wakeup check", "Minimum time before a wakeup check"],
-[_menu_name, "Custom Medical"], [5, 300, 10, 0], 1, {publicVariable "cgqc_player_wakeup_min"}, false] call CBA_fnc_addSetting;
-["cgqc_player_wakeup_max","SLIDER", ["Max Wakeup check", "Maximum time before a wakeup check"],
-[_menu_name, "Custom Medical"], [5, 300, 30, 0], 1, {publicVariable "cgqc_player_wakeup_max"}, false] call CBA_fnc_addSetting;
-["cgqc_player_wakeup_random","SLIDER", ["Chance of wakeup", "Random chance of waking up"],
-[_menu_name, "Custom Medical"], [0, 100, 30, 0], 1, {publicVariable "cgqc_player_wakeup_random"}, false] call CBA_fnc_addSetting;
-["cgqc_player_wakeup_randomBoost","SLIDER", ["Bonus for next check", "More % bonus at each fail to get more chance to wake up"],
-[_menu_name, "Custom Medical"], [0, 100, 10, 0], 1, {publicVariable "cgqc_player_wakeup_randomBoost"}, false] call CBA_fnc_addSetting;
-
+  [_menu_name, _section_name], [[0, 1, 2], ["Original/Logo","Flying", "Establishing"], 0], {publicVariable "cgqc_config_showIntro_type"}] call CBA_fnc_addSetting;
 // Options skippables ===================================================================================================
 ["cgqc_setting_show_transition", "CHECKBOX", ["Show Transition", "Transition lors d'un loadout swtich "],
-    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
+    [_menu_name, _section_name], true] call CBA_fnc_addSetting;
 ["cgqc_setting_show_welcome", "CHECKBOX", ["Show Msg de Bienvenue", "Message de bienvenue avec la patch si dispo"],
-    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
-// Channels =================================================================================================
-["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"],
-   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
+    [_menu_name, _section_name], true] call CBA_fnc_addSetting;
 
-// Map Sharing =================================================================================================
+// Info sur la mission
+cgqc_config_author = getMissionConfigValue ["author", "Cpl. Quelquechose"];
+cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Something"];
+
+// Option toggles ===================================================================================================
+// Training
+["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"],
+    [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
+// Map Sharing
 ["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"],
    [_menu_name, "Option Toggles"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
-
-// Spares =================================================================================================
+// Spares
 ["cgqc_config_spares", "CHECKBOX",["Add spares to Vehicles", "Inclus un can de fuel + ammo + tracks/tires"],
 [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
+["cgqc_config_signals", "CHECKBOX",["Signals perk available", "Lets player spawn smoke/flare/chemlights"],
+[_menu_name, "Option Toggles"], true, 1, {}, false] call CBA_fnc_addSetting;
+// Zeus radios
+["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"],
+[_menu_name, "Option Toggles"], false, 1, {}, false] call CBA_fnc_addSetting;
+["cgqc_flag_backpackNotif", "CHECKBOX", ["Backpack Notification", "Notify the player if he moves too far from his pack"],
+    [_menu_name, "Option Toggles"], true, 1, {publicVariable "cgqc_flag_backpackNotif"}, false] call CBA_fnc_addSetting;
+
+
+// Custom medical stuff ===================================================================================================
+["cgqc_player_wakeup_active", "CHECKBOX", ["Activate custom wakeup", "Randomly lets player wake up if not in cardia arrest"],
+	[_menu_name, "Custom Medical"], false, 1, {publicVariable "cgqc_player_wakeup_active"}] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_min","SLIDER", ["Min Wakeup check", "Minimum time before a wakeup check"],
+	[_menu_name, "Custom Medical"], [5, 300, 10, 0], 1, {publicVariable "cgqc_player_wakeup_min"}, false] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_max","SLIDER", ["Max Wakeup check", "Maximum time before a wakeup check"],
+	[_menu_name, "Custom Medical"], [5, 300, 30, 0], 1, {publicVariable "cgqc_player_wakeup_max"}, false] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_random","SLIDER", ["Chance of wakeup", "Random chance of waking up"],
+	[_menu_name, "Custom Medical"], [0, 100, 30, 0], 1, {publicVariable "cgqc_player_wakeup_random"}, false] call CBA_fnc_addSetting;
+["cgqc_player_wakeup_randomBoost","SLIDER", ["Bonus for next check", "More % bonus at each fail to get more chance to wake up"],
+	[_menu_name, "Custom Medical"], [0, 100, 10, 0], 1, {publicVariable "cgqc_player_wakeup_randomBoost"}, false] call CBA_fnc_addSetting;
+
 // Radio stuff ==============================================================================================
+["cgqc_config_hide_channels", "CHECKBOX",["Lock Channels (pour le map sharing)", "Cache les channels global/side/group pour utiliser plutôt le mod pour partager la map"],
+   [_menu_name, "Radios"], false] call CBA_fnc_addSetting;
 ["cgqc_config_DefaultRadios", "CHECKBOX", ["Radios CGQC", "Utilise les noms de channels CGQC par défaut"],
     [_menu_name, "Radios"], true] call CBA_fnc_addSetting;
 ["cgqc_config_ch1", "EDITBOX", ["Channel 1:", "Nom affiché dans le jeux"],
@@ -544,12 +552,14 @@ cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Someth
 // Gamestate ===============================================================================================
 ["cgqc_config_state_pause", "CHECKBOX",["Auto-Pause AI before/after mission", "Pauses the AI when mission is not running. Unpaused manually or at mission start"],
 [_menu_name, "GameState"], false, 1, {publicVariable "cgqc_config_state_pause"}, false] call CBA_fnc_addSetting;
-// Briefing  ===============================================================================================
+// Briefing
 ["cgqc_setting_briefingCmd_area","SLIDER", ["Leaders's Briefing area size", "Square around the Zeus"],
 [_menu_name, "GameState"], [5, 50, 10, 0]] call CBA_fnc_addSetting;
 ["cgqc_setting_briefing_area","SLIDER", ["Full Briefing area size", "Square around the Zeus"],
 [_menu_name, "GameState"], [5, 100, 20, 0]] call CBA_fnc_addSetting;
 
+
+// Fixes ===============================================================================================
 // Color fix
 ["cgqc_config_fix_colorFix", "CHECKBOX",["Auto-reload colors", "Reloads color on a timed basis"],
 [_menu_name, "Fixes"], false, 1] call CBA_fnc_addSetting;
@@ -557,14 +567,9 @@ cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Someth
 ["cgqc_config_fix_colorFix_timer","SLIDER", ["Auto-reload colors - Timer", "Delay between checks"],
 [_menu_name, "Fixes"], [5, 600, 30, 0]] call CBA_fnc_addSetting;
 
-["cgqc_config_signals", "CHECKBOX",["Signals perk available", "Lets player spawn smoke/flare/chemlights"],
-[_menu_name, "Option Toggles"], true, 1, {}, false] call CBA_fnc_addSetting;
 
-// Zeus radios ===============================================================================================
-["cgqc_config_zeusRadios", "CHECKBOX",["Auto-Add Zeus Radios", "Ajoute automatiquement les radios sur le zeus"],
-[_menu_name, "Option Toggles"], false, 1, {}, false] call CBA_fnc_addSetting;
 
-// Grenade in Hatch
+// Grenade in Hatch ===============================================================================================
 // Distance
 ["cgqc_config_grenade_distance", "SLIDER",["Distance", "Minimal distance for option to be visible"],
 [_menu_name, "Grenade in tank Hatch"], [2, 20, 5, 0], 1, {publicVariable "cgqc_config_grenade_distance"}, false] call CBA_fnc_addSetting;
@@ -575,74 +580,9 @@ cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Someth
 	true
 ] call CBA_fnc_addSetting;
 
-_section = "Zeus Looting Restrictions";
-// Looting settings
-["cgqc_lootingRestriction_on", "CHECKBOX", ["Restrict corpse looting?", "Empêche/limite le looting des corps"],
-    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_lootingRestriction_on"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_gun", "CHECKBOX", ["Keep primary gun", "Comme ça le dit"],
-    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_looting_gun"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_gun_amnt", "SLIDER",["Max mags", "Combien de mags maximum"],
-    ["[CGQC] Looting", _section], [0, 20, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_handgun", "CHECKBOX", ["Keep handgun", "Comme ça le dit"],
-    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_looting_handgun"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_handgun_amnt", "SLIDER",["Max Handgun mags", "Combien de mags maximum"],
-    ["[CGQC] Looting", _section], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_launcher", "CHECKBOX", ["Keep Launcher", "Comme ça le dit"],
-    ["[CGQC] Looting", _section], false, 1, {publicVariable "cgqc_looting_launcher"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_launcher_amnt", "SLIDER",["Max Launcher ammo", "Combien de mags maximum"],
-    ["[CGQC] Looting", _section], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_launcher_amnt"}, false] call CBA_fnc_addSetting;
 
 
-["cgqc_looting_assigned", "CHECKBOX", ["Keep GPS/Binoculars/NVG's", "Comme ça le dit"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_assigned"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_throwable", "CHECKBOX", ["Keep throwables", "Garde les grenades/smokes"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_throwable"}, false] call CBA_fnc_addSetting;
-
-
-["cgqc_looting_common", "CHECKBOX", ["Lootlist: Common", "Items de base"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_common"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_common_items", "EDITBOX", ["Common Items", "Liste des items possibles"],
-    ["[CGQC] Looting", "Looting Restrictions"], "ACE_fieldDressing, FF_Painkiller", 1, {publicVariable "cgqc_looting_common_items"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_common_chance", "SLIDER",["% de chances", "Chances de trouver des items Common."],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 100, 50, 0], 1, {publicVariable "cgqc_looting_common_chance"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_common_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_common_max"}, false] call CBA_fnc_addSetting;
-
-["cgqc_looting_normal", "CHECKBOX", ["Lootlist: Normal", "Items normaux"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_normal"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_normal_items", "EDITBOX", ["Normal Items", "Liste des items possibles"],
-    ["[CGQC] Looting", "Looting Restrictions"], "ACE_tourniquet, ACE_morphine, ACE_epinephrine, ACE_salineIV_500", 1, {publicVariable "cgqc_looting_normal_items"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_normal_chance", "SLIDER",["% de chances", "Chances de trouver des items Normaux."],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 100, 25, 0], 1, {publicVariable "cgqc_looting_normal_chance"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_normal_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_normal_max"}, false] call CBA_fnc_addSetting;
-
-["cgqc_looting_rare", "CHECKBOX", ["Lootlist: Rare", "Items rare"],
-    ["[CGQC] Looting", "Looting Restrictions"], false, 1, {publicVariable "cgqc_looting_rare"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_rare_items", "EDITBOX", ["Normal Items", "Liste des items possibles"],
-    ["[CGQC] Looting", "Looting Restrictions"], "ACE_salineIV, ACE_splint", 1, {publicVariable "cgqc_looting_rare_items"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_rare_chance", "SLIDER",["% de chances", "Chances de trouver des items Normaux."],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 100, 5, 0], 1, {publicVariable "cgqc_looting_rare_chance"}, false] call CBA_fnc_addSetting;
-["cgqc_looting_rare_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
-    ["[CGQC] Looting", "Looting Restrictions"], [0, 20, 1, 0], 1, {publicVariable "cgqc_looting_rare_max"}, false] call CBA_fnc_addSetting;
-
-
-// Maximum mags ===============================================================================================
-["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"],
-    [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
-["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
-    [_menu_name, "Option Toggles"], [0, 30, 10, 0]] call CBA_fnc_addSetting;
-["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"],
-    [_menu_name, "Option Toggles"], true] call CBA_fnc_addSetting;
-["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"],
-    [_menu_name, "Option Toggles"], false, 1, {["animation_setting", 0, ""] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
-// Training ===============================================================================================
-["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"],
-    [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
-["cgqc_flag_backpackNotif", "CHECKBOX", ["Backpack Notification", "Notify the player if he moves too far from his pack"],
-    [_menu_name, "Option Toggles"], true, 1, {publicVariable "cgqc_flag_backpackNotif"}, false] call CBA_fnc_addSetting;
-
-// Fortify tool
+// Fortify tool ===============================================================================================
 ["cgqc_config_fortify", "CHECKBOX", ["Custom ACE Fortify", "Les items que l'outil fortify permet de construire"],
     [_menu_name, "Fortify"], true
 ] call CBA_fnc_addSetting;
@@ -811,6 +751,77 @@ if (cgqc_player_hasNorthern) then {
 
 ["cgqc_config_sideRadios", "CHECKBOX", ["Separate radios per side", "Each side has specific radio frequencies"],
 	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideRadios"}] call CBA_fnc_addSetting;
+
+
+// Loadout restrictions ===================================================================================================
+_menu_name = "[CGQC] Loadout/Looting Control";
+_section = "Looting Options";
+// Looting settings
+["cgqc_lootingRestriction_on", "CHECKBOX", ["Restrict corpse looting?", "Empêche/limite le looting des corps"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_lootingRestriction_on"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_gun", "CHECKBOX", ["Keep primary gun", "Le gun de l'ennemi reste lootable"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_gun"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_gun_amnt", "SLIDER",["Max mags", "Combien de mags maximum"],
+    [_menu_name, _section], [0, 20, 4, 0], 1, {publicVariable "cgqc_looting_gun_amnt"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_handgun", "CHECKBOX", ["Keep handgun", "Comme ça le dit"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_handgun"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_handgun_amnt", "SLIDER",["Max Handgun mags", "Combien de mags maximum"],
+    [_menu_name, _section], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_handgun_amnt"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_launcher", "CHECKBOX", ["Keep Launcher", "Comme ça le dit"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_launcher"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_launcher_amnt", "SLIDER",["Max Launcher ammo", "Combien de mags maximum"],
+    [_menu_name, _section], [0, 10, 2, 0], 1, {publicVariable "cgqc_looting_launcher_amnt"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_assigned", "CHECKBOX", ["Keep GPS/Binoculars/NVG's", "Comme ça le dit"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_assigned"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_throwable", "CHECKBOX", ["Keep throwables", "Garde les grenades/smokes"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_throwable"}, false] call CBA_fnc_addSetting;
+
+_section = "Lootlist Common";
+["cgqc_looting_common", "CHECKBOX", ["Lootlist: Common", "Items de base"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_common"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_common_items", "EDITBOX", ["Common Items", "Liste des items possibles"],
+    [_menu_name, _section], "ACE_fieldDressing, FF_Painkiller", 1, {publicVariable "cgqc_looting_common_items"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_common_chance", "SLIDER",["% de chances", "Chances de trouver des items Common."],
+    [_menu_name, _section], [0, 100, 50, 0], 1, {publicVariable "cgqc_looting_common_chance"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_common_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
+    [_menu_name, _section], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_common_max"}, false] call CBA_fnc_addSetting;
+
+_section = "Lootlist Normal";
+["cgqc_looting_normal", "CHECKBOX", ["Lootlist: Normal", "Items normaux"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_normal"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_normal_items", "EDITBOX", ["Normal Items", "Liste des items possibles"],
+    [_menu_name, _section], "ACE_tourniquet, ACE_morphine, ACE_epinephrine, ACE_salineIV_500", 1, {publicVariable "cgqc_looting_normal_items"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_normal_chance", "SLIDER",["% de chances", "Chances de trouver des items Normaux."],
+    [_menu_name, _section], [0, 100, 25, 0], 1, {publicVariable "cgqc_looting_normal_chance"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_normal_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
+    [_menu_name, _section], [0, 20, 2, 0], 1, {publicVariable "cgqc_looting_normal_max"}, false] call CBA_fnc_addSetting;
+
+_section = "Lootlist Rare";
+["cgqc_looting_rare", "CHECKBOX", ["Lootlist: Rare", "Items rare"],
+    [_menu_name, _section], false, 1, {publicVariable "cgqc_looting_rare"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_rare_items", "EDITBOX", ["Normal Items", "Liste des items possibles"],
+    [_menu_name, _section], "ACE_salineIV, ACE_splint", 1, {publicVariable "cgqc_looting_rare_items"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_rare_chance", "SLIDER",["% de chances", "Chances de trouver des items Normaux."],
+    [_menu_name, _section], [0, 100, 5, 0], 1, {publicVariable "cgqc_looting_rare_chance"}, false] call CBA_fnc_addSetting;
+["cgqc_looting_rare_max", "SLIDER",["Maximum de chaques", "Maximum de chaques items possibles"],
+    [_menu_name, _section], [0, 20, 1, 0], 1, {publicVariable "cgqc_looting_rare_max"}, false] call CBA_fnc_addSetting;
+
+// Restrictions d'optiques
+["cgqc_config_scopeRestriction", "LIST", ["Optiques", "Types d'optiques disponibles dans le quick switcher"],
+	[_menu_name, "Weapon Restrictions"], [[0, 1, 2, 3, 4], ["Iron sight", "Dot Only", "Dot + RCO", "Default", "Unlocked"], 3], {publicVariable "cgqc_config_scopeRestriction"}] call CBA_fnc_addSetting;
+
+_section = "Maximum Mags";
+// Maximum mags ===============================================================================================
+["cgqc_setting_limitMags", "CHECKBOX", ["Limite Mags dans l'arsenal", "Limite le nombre de magazines par soldat"],
+    [_menu_name, _section], false] call CBA_fnc_addSetting;
+["cgqc_setting_limitMags_max","SLIDER", ["Maximum 5.56", "Combien de mags 5.56 maximum?"],
+    [_menu_name, _section], [0, 30, 10, 0]] call CBA_fnc_addSetting;
+["cgqc_mk2_arsenal_locked", "CHECKBOX", ["Lock mk2 arsenal?", "Limite les rôles et l'arsenal selon les rangs"],
+    [_menu_name, _section], true] call CBA_fnc_addSetting;
+["cgqc_mk2_animation_locked", "CHECKBOX", ["Lock Player animations?", "Limite l'accès des joueurs aux animations/emotes"],
+    [_menu_name, _section], false, 1, {["animation_setting", 0, ""] spawn CGQC_fnc_perksZeus}, false] call CBA_fnc_addSetting;
+
+
 
 // Player custom Options ===================================================================================================
 _menu_name_player = "[CGQC] Player settings";

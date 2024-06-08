@@ -15,6 +15,8 @@ waitUntil{ !isNull (findDisplay 46) };
 LOG("[loadMk3Menu] - Checking for Interface");
 if (hasInterface) then {
 	LOG("[loadMk3Menu] - hasInterface - loading menu");
+	// Unlock arsenal when training is on
+	cgqc_mk2_arsenal_locked = !cgqc_flag_isTraining;
 	switch (_type) do {
 		// Command ========================================================================
 		case "para":{
@@ -80,10 +82,10 @@ if (hasInterface) then {
 			_action = [ "mode_training", _normalTxt, "", {""}, {!cgqc_flag_isTraining && cgqc_mk2_arsenal_locked}, {},[],"",4,[false, false, false, false, false], _modifierFunc] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 			*/
-			_action = [ "mode_unlocked", "--- Arsenal is UNLOCKED ---", "", {""}, {!cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "mode_unlocked", "--- UNLOCKED ---", "", {""}, {!cgqc_mk2_arsenal_locked && !cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-			_action = [ "mode_training", "--- Arsenal in TRAINING MODE ---", "", {""}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "mode_training", "--- TRAINING MODE ---", "", {""}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 			if (!cgqc_player_has2023 && !cgqc_player_hasUnsung && !cgqc_player_hasIfa3) then {
@@ -107,7 +109,7 @@ if (hasInterface) then {
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla", "menu_loadouts", "menu_loadout_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 				// Lead ---------------------------------------------------------------------------------------------------------
-				_action = [ "menu_loadout_lead", "Commandement", "", {""}, {player getVariable 'cgqc_player_rank' > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+				_action = [ "menu_loadout_lead", "Commandement", "", {""}, {player getVariable 'cgqc_player_rank' > 3 || !cgqc_mk2_arsenal_locked} ] call ace_interact_menu_fnc_createAction;
 				_adding = [ _crate, 0, ["ACE_MainActions", "menu_vanilla", "menu_loadouts"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 				// Team Leader
 				_action = [ "menu_loadout_inf_TL", "Team Leader", "", {["vanilla_tl", 1, true] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -183,7 +185,7 @@ if (hasInterface) then {
 
 
 			// Zeus Arsenal ========================================================================================================
-			_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[player, player, true] call ace_arsenal_fnc_openBox;}, {cgqc_flag_isTraining || [player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked || player getVariable 'cgqc_player_rank' > 7} ] call ace_interact_menu_fnc_createAction;
+			_action = [ "menu_zeus", "Arsenal: Zeus", "CGQC\textures\icon_arsenal", {[player, player, true] call ace_arsenal_fnc_openBox;}, {[player] call CGQC_fnc_checkZeus || !cgqc_mk2_arsenal_locked || player getVariable 'cgqc_player_rank' > 7} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 		};
 	};

@@ -56,7 +56,8 @@ if !(_type isEqualTo "Unknown") then {
     };
 
     //Save role for further use
-    player setVariable["cgqc_player_role", _type, true];
+    player setVariable["cgqc_player_role", cgqc_player_role, true];
+    player setVariable["cgqc_player_role_optic", cgqc_player_role_optic, true];
 
     // Add side keys to player
     ["side", player] call CGQC_fnc_getKey;

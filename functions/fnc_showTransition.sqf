@@ -17,7 +17,7 @@ if (cgqc_setting_show_transition && _show) then {
             LOG_1("[showTransition] RoleswitchDone:%1?", cgqc_roleSwitch_done);
             LOG("[showTransition] Proceeding");
             sleep 2;
-            _text_insert = cgqc_player_role;
+            _text_insert = player getVariable "cgqc_player_role";
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>");
             // Find traits
             _check_trait_medic = ["Medic", player getUnitTrait "Medic"];
