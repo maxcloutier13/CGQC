@@ -9,18 +9,26 @@ LOG_1("[getRandomOptic] %1 started", _type);
 // !cgqc_mk2_arsenal_locked || cgqc_config_scopeRestriction > 3;
 //
 
-// Get out if locked to Ironsight
-if (cgqc_config_scopeRestriction isEqualTo 0) exitWith {};
-// Downgrade the optic if locked to red-dot
-if (cgqc_mk2_arsenal_locked && cgqc_config_scopeRestriction isEqualTo 1) then {
-    if (_type isEqualTo "magnified" || _type isEqualTo "rco" || _type isEqualTo "lpvo") then {
-        _type = "dot";
+// Skip if unlocked
+if (cgqc_mk2_arsenal_locked) then {
+    LOG("[getRandomOptic] Arsenal locked: checking");
+    // Get out if locked to Ironsight
+    if (cgqc_config_scopeRestriction isEqualTo 0) exitWith {};
+    // Downgrade the optic if locked to red-dot
+    if (cgqc_config_scopeRestriction isEqualTo 1) then {
+        LOG("[getRandomOptic] Locked to dot");
+        if (_type isEqualTo "magnified" || _type isEqualTo "rco" || _type isEqualTo "lpvo") then {
+            LOG("[getRandomOptic] Downgrading to dot");
+            _type = "dot";
+        };
     };
-};
-// Locked to RCO/magnified
-if (cgqc_mk2_arsenal_locked && cgqc_config_scopeRestriction isEqualTo 2) then {
-    if (_type isEqualTo "lpvo") then {
-        _type = "rco";
+    // Locked to RCO/magnified
+    if (cgqc_config_scopeRestriction isEqualTo 2) then {
+        LOG("[getRandomOptic] Locked to RCO");
+        if (_type isEqualTo "lpvo") then {
+            LOG("[getRandomOptic] Downgrading to RCO");
+            _type = "rco";
+        };
     };
 };
 
