@@ -15,11 +15,6 @@ player setUnitTrait ["audibleCoef", 1];
 player setUnitTrait ["camouflageCoef", 1];
 player setUnitTrait ["loadCoef", 1];
 
-// Delete all perks actions
-{
-	[player,0,[_x]] call ace_interact_menu_fnc_removeActionFromObject;
-} forEach cgqc_perks_action_list;
-
 // Remove CGQC perks
 cgqc_perks_basic = true;
 

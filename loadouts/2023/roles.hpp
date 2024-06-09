@@ -1,17 +1,14 @@
 #include "\CGQC\script_component.hpp"
 // 2023 ------------------------------------------
 
-
-
 // Infantry ===============================================================
-
-
 case "2023_rifle_cqb":{
 	[player, "rifleman", "cqb"] call CGQC_ldt_2023_rifleman;
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Rifleman";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 1;
 };
 
 case "2023_rifle_carb":{
@@ -20,6 +17,7 @@ case "2023_rifle_carb":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Rifleman";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 1;
 };
 
 case "2023_rifle_rifle":{
@@ -28,6 +26,7 @@ case "2023_rifle_rifle":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Rifleman";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 3;
 };
 
 case "2023_rifle_grenadier":{
@@ -36,6 +35,7 @@ case "2023_rifle_grenadier":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Grenadier";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 2;
 };
 
 // Junior Specialists ===============================================================
@@ -45,6 +45,7 @@ case "2023_rifle_shoot":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sharpshooter";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 4;
 };
 
 case "2023_rifle_life":{
@@ -53,6 +54,7 @@ case "2023_rifle_life":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Combat Lifesaver";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 2;
 };
 
 case "2023_rifle_eng":{
@@ -61,6 +63,7 @@ case "2023_rifle_eng":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Combat Engineer";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 1;
 };
 
 // Medic ===============================================================
@@ -70,6 +73,7 @@ case "2023_medic":{
 	["medic"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Medic";
 	cgqc_player_roleType = "Medic";
+	cgqc_player_role_optic = 3;
 };
 
 // Engineer ===============================================================
@@ -79,6 +83,7 @@ case "2023_eng":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Engineer";
 	cgqc_player_roleType = "Engineer";
+	cgqc_player_role_optic = 2;
 };
 
 case "2023_eng_saboteur":{
@@ -87,6 +92,7 @@ case "2023_eng_saboteur":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Demolition Specialist";
 	cgqc_player_roleType = "Engineer";
+	cgqc_player_role_optic = 2;
 };
 
 // MG ===============================================================
@@ -96,6 +102,7 @@ case "2023_lmg":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "LMG";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 2;
 };
 
 case "2023_hmg":{
@@ -104,6 +111,7 @@ case "2023_hmg":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HMG";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 2;
 };
 
 case "2023_autorifle":{
@@ -112,6 +120,7 @@ case "2023_autorifle":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Autorifleman";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 2;
 };
 
 case "2023_lwmmg":{
@@ -120,6 +129,7 @@ case "2023_lwmmg":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "LWMMG";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 3;
 };
 
 // AT ===============================================================
@@ -129,14 +139,16 @@ case "2023_at_maaws":{
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "AT/MAAWS";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 1;
 };
 
 case "2023_at_javelin":{
-	[player, "javelin", "m4_lpvo"] call CGQC_ldt_2023_at;
+	[player, "javelin", "m4_elcan"] call CGQC_ldt_2023_at;
 	["at", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "AT/Javelin";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 1;
 };
 
 // Recon ===============================================================
@@ -147,14 +159,16 @@ case "2023_sniper":{
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
 	cgqc_player_roleType = "Recon";
+	cgqc_player_role_optic = 5;
 };
 
 case "2023_sniper_ebr":{
-	[player, "sniper", "m14ebr"] call CGQC_ldt_2023_recon;
+	[player, "sniper", "m1aebr"] call CGQC_ldt_2023_recon;
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
 	cgqc_player_roleType = "Recon";
+	cgqc_player_role_optic = 5;
 };
 
 case "2023_spotter":{
@@ -163,14 +177,16 @@ case "2023_spotter":{
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Spotter";
 	cgqc_player_roleType = "Recon";
+	cgqc_player_role_optic = 5;
 };
 
 case "2023_drone":{
-	[player, "drone", "lpvo"] call CGQC_ldt_2023_recon;
+	[player, "drone", "hk416_elcan"] call CGQC_ldt_2023_recon;
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Drone Operator";
 	cgqc_player_roleType = "Recon";
+	cgqc_player_role_optic = 5;
 };
 
 // Pilot ===============================================================
@@ -180,6 +196,7 @@ case "2023_h_pilot":{
 	["pilot"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Helicopter Pilot";
 	cgqc_player_roleType = "Air";
+	cgqc_player_role_optic = 1;
 };
 
 case "2023_h_crew":{
@@ -188,6 +205,7 @@ case "2023_h_crew":{
 	["pilot"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Helicopter Crew";
 	cgqc_player_roleType = "Air";
+	cgqc_player_role_optic = 1;
 };
 
 // Driver ===============================================================
@@ -197,6 +215,7 @@ case "2023_t_driver":{
 	["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Driver";
 	cgqc_player_roleType = "Armor";
+	cgqc_player_role_optic = 1;
 };
 
 case "2023_t_crew":{
@@ -205,15 +224,17 @@ case "2023_t_crew":{
 	["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Crew";
 	cgqc_player_roleType = "Armor";
+	cgqc_player_role_optic = 1;
 };
 
 // Command ===============================================================
 case "2023_hq":{
-	[player, "hq", "lpvo"] call CGQC_ldt_2023_command;
+	[player, "hq", "m4"] call CGQC_ldt_2023_command;
 	["hq", true, true] spawn CGQC_fnc_switchPerks;
 	["hq"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HeadQuarters";
 	cgqc_player_roleType = "HQ";
+	cgqc_player_role_optic = 6;
 };
 
 case "2023_sl":{
@@ -222,6 +243,7 @@ case "2023_sl":{
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Squad Leader";
 	cgqc_player_roleType = "HQ";
+	cgqc_player_role_optic = 6;
 };
 case "2023_xo":{
 	[player, "xo", "carbine"] call CGQC_ldt_2023_command;
@@ -229,6 +251,7 @@ case "2023_xo":{
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Exective Officer";
 	cgqc_player_roleType = "HQ";
+	cgqc_player_role_optic = 6;
 };
 
 case "2023_tl":{
@@ -237,6 +260,7 @@ case "2023_tl":{
 	["tl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Leader";
 	cgqc_player_roleType = "Infantry";
+	cgqc_player_role_optic = 4;
 };
 
 case "2023_jtac":{
@@ -245,4 +269,5 @@ case "2023_jtac":{
 	["jtac"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "JTAC";
 	cgqc_player_roleType = "Recon";
+	cgqc_player_role_optic = 6;
 };

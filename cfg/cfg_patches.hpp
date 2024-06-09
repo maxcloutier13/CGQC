@@ -31,6 +31,8 @@ class CfgPatches
 					"CGQC_soldat_black_all",
 					"CGQC_soldat_white",
 					"CGQC_Officer_Base",
+					"cgqc_drone_darter",
+					"cgqc_drone_darter_light",
 					"cgqc_pack_mk1_magic",
 					"cgqc_pack_mk1_magic_zeus",
 					"cgqc_backpack_mk1_diver",

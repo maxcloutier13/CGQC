@@ -7,16 +7,18 @@ LOG_2("[showTransition] %1/%2 started", _type, _show);
 cgqc_mk3_transition = true;
 _text = "";
 _text_insert = "";
-_sleep = 2;
+_sleep = 1;
 if (cgqc_setting_show_transition && _show) then {
     // Fade to black
     cutText ["", "BLACK FADED", 999];
     titleText ["", "PLAIN"];
     switch (_type) do {
         case "role":{
-            _text_insert = cgqc_player_role;
+            LOG_1("[showTransition] RoleswitchDone:%1?", cgqc_roleSwitch_done);
+            LOG("[showTransition] Proceeding");
+            sleep 2;
+            _text_insert = player getVariable "cgqc_player_role";
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >%1</t><br/>");
-
             // Find traits
             _check_trait_medic = ["Medic", player getUnitTrait "Medic"];
             _check_trait_eng = ["Engineer", player getUnitTrait "Engineer"];
@@ -56,6 +58,7 @@ if (cgqc_setting_show_transition && _show) then {
                 _check_traits = _check_traits + "Basic";
             };
 
+            sleep 0.5;
             // Weight and load stuff ----------------------------------------------------------------------
             _maxLoad = ((maxLoad player)*0.1)/2.2;
             _check_maxLoad = parseNumber (_maxLoad toFixed 1);

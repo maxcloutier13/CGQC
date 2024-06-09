@@ -1,7 +1,7 @@
 // --- all_Items UNSUNG ----------------------------------------------------------
 // - All arsenal Items
 
-cgqc_unsung_arsenal_all = [ 
+cgqc_unsung_arsenal_all = [
     "ACRE_SEM52SL",
 	"ACE_adenosine",
 	"ACRE_PRC77",
@@ -2206,5 +2206,6 @@ cgqc_unsung_arsenal_all = [
 	"immersion_pops_poppack",
 	"murshun_cigs_lighter",
 	"murshun_cigs_cigpack",
-	"UNS_EAM2Braft"
+	"UNS_EAM2Braft",
+	"RS_Equip_Retention"
 ];

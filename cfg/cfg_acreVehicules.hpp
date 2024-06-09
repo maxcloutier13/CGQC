@@ -217,6 +217,17 @@ class Helicopter: Air {
             MACRO_CGQC_MAINTENANCE
 		};
 	};
+    class TransportItems {
+        // Ammo -----------------------------------
+        class _xx_retention {
+            count = 20;
+            name = "RS_Equip_Retention";
+        };
+        class _xx_ACE_EarPlugs {
+            count = 2;
+            name = "ACE_EarPlugs";
+        };
+    };
 };
 
 class Plane: Air {

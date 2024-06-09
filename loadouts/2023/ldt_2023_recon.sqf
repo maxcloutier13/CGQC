@@ -22,9 +22,8 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
 	case "m200": {["m200"] spawn CGQC_fnc_switchPrimary;};
-	case "m14ebr": {["m14ebr"] spawn CGQC_fnc_switchPrimary;};
+	case "m1aebr": {["m1aebr"] spawn CGQC_fnc_switchPrimary;};
 	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
-	case "lpvo": {["hk416_lpvo"] spawn CGQC_fnc_switchPrimary;};
 };
 
 switch (_variant) do {
@@ -48,6 +47,7 @@ switch (_variant) do {
 		player addItemToBackpack "ACE_Tripod";
 		player addItemToBackpack "ACE_DefusalKit";
 		player addItemToBackpack "rhsusf_mine_m14_mag";
+		player addItemToBackpack "sps_black_hornet_01_Static_F";
 		player removeItems "ACE_EntrenchingTool";
 	};
 	case "spotter": {
@@ -55,11 +55,14 @@ switch (_variant) do {
 		player addItem "ACE_ATragMX";
 		player addItem "ACE_Kestrel4500";
 		player addItemToBackpack "ACE_Tripod";
+		player addItemToBackpack "ACE_DefusalKit";
+		player addItemToBackpack "sps_black_hornet_01_Static_F";
 		player addItemToBackpack "rhsusf_mine_m14_mag";
 	};
 	case "drone": {
 		player addItemToBackpack "ACE_UAVBattery";
 		player addItemToBackpack "rev_darter_item";
+		player addItemToBackpack "sps_black_hornet_01_Static_F";
 	};
 };
 

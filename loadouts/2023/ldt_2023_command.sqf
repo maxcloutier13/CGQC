@@ -22,7 +22,7 @@ switch (_gunVariant) do {
 	case "carbine": {["m4_gl_m320"] spawn CGQC_fnc_switchPrimary;};
 	case "cqb": {["mk18_gl"] spawn CGQC_fnc_switchPrimary;};
 	case "noGL": {["mk18_tl"] spawn CGQC_fnc_switchPrimary;};
-	case "lpvo": {["m4_lpvo"] spawn CGQC_fnc_switchPrimary;};
+	case "m4": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
 };
 
@@ -56,11 +56,15 @@ switch (_variant) do {
 		// === Comms =================================
 		_target addItemToBackpack "ACRE_VHF30108SPIKE";
 		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
+		// Switch android for tablet
+		_target addItemToUniform "ItemcTab";
+		_target removeItem "ItemAndroid";
 	};
 	case "jtac": {
 		_target addItem "ACE_ATragMX";
 		_target addItem "ACE_Kestrel4500";
 		_target addItem "ACE_M26_Clacker";
+		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 		// === Stuff ================================
 		_target addItemToBackpack "Rev_darter_item";
 		_target addItemToBackpack "ACE_Tripod";

@@ -352,7 +352,6 @@ LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
         };
         case "click":{
             [player, "click"] remoteExec ["say3D"];
-
         };
         case "fix":
         {
