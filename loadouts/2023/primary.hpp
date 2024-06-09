@@ -181,6 +181,14 @@ case "m4_elcan":{
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 case "m4_gl_m320":{
+    ["rhs_weap_m4_m320", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black_FL";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
+    _needGL = true;
+};
+case "m4_gl_m320_rco":{
     ["rhs_weap_m4_m320", "rco"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
     _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black_FL";
