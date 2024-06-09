@@ -163,7 +163,7 @@ case "2023_sniper":{
 };
 
 case "2023_sniper_ebr":{
-	[player, "sniper", "m14ebr"] call CGQC_ldt_2023_recon;
+	[player, "sniper", "m1aebr"] call CGQC_ldt_2023_recon;
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
