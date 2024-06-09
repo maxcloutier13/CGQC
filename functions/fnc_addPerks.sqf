@@ -243,7 +243,7 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], 
 _action = [ "menu_self_color", "Reset Team Color", "", {[] call CGQC_fnc_setTeamColorReload}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Reset colors
-_action = [ "menu_self_resetColors", "Restore all TeamColors", "", {[] call CGQC_setTeamColorReloadAll;}, {leader player == player || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_resetColors", "Restore all TeamColors", "", {[] call CGQC_setTeamColorReloadAll;}, {leader player isEqualTo player || player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Restore backpack
 _action = [ "menu_self_restore_pack", "Restore Lost Backpack", "", {["None", "restore"] spawn CGQC_fnc_dropStuff}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -275,12 +275,13 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 _action = [ "zeus_fix_arma", "ARMA?", "", {""}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-// Other fixes
 _action = [ "zeus_fix_arma_heal", "Magic Heal", "a3\ui_f\data\IGUI\Cfg\simpleTasks\types\heal_ca", {["heal"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 //_action = [ "zeus_fix_arma_rejoin", "Rejoin after Disconnect", "", {["rejoin"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 //_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "zeus_fix_arma_daf", "Remove Deafness", "a3\ui_f\data\IGUI\Cfg\simpleTasks\types\heal_ca", {["deaf"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "zeus_fix_arma_corpse", "Teleport to corpse", "", {["tp_corpse"] call CGQC_fnc_arma}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions" ,"menu_self_cgqc", "menu_self_fixes", "zeus_fix_arma"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -343,7 +344,7 @@ _action = [ "zeus_briefing_stop", "Stop Briefing", "", {["briefing_stop", 0] spa
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Start the game
-_action = [ "zeus_gamestate_start", "Start Mission (save snapshots)", "", {["start"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable "CGQC_gamestate_1_staging"} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_gamestate_start", "Start Mission (save snapshots)", "", {["start"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable ["CGQC_gamestate_1_staging", false]} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate", "zeus_gamestate_staging"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Mission
@@ -359,9 +360,9 @@ _action = [ "zeus_gamestate_end", "Now-> Post Mission", "", {""}, {missionNamesp
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ------ Pause AI
-_action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {!(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused")} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_pause", "Pause AI", "", {[0,{["pause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {!(missionNamespace getVariable ["CGQC_gamestate_mission_AIpaused", false])} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {missionNamespace getVariable "CGQC_gamestate_mission_AIpaused"} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_unpause", "Unpause AI", "", {[0,{["unpause", 0, ""] spawn CGQC_fnc_perksZeus}] call CBA_fnc_globalExecute;}, {missionNamespace getVariable ["CGQC_gamestate_mission_AIpaused", false]} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate", "zeus_pause"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // ------ Manual snapshot
