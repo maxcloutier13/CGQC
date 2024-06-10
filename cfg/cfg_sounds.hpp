@@ -20,3 +20,23 @@ class cgqc_sound_sniff {
 	sound[] = {"\cgqc\sounds\Sniff.ogg", 1, 1};	// Volume, Pitch
 	titles[] = {};
 };
+class cgqc_sound_youWin {
+	sound[] = {"\cgqc\sounds\youwin.ogg", 1, 1};	// Volume, Pitch
+	titles[] = {};
+};
+class cgqc_sound_roundNew {
+	sound[] = {"\cgqc\sounds\round_new.ogg", 1, 1};	// Volume, Pitch
+	titles[] = {};
+};
+class cgqc_sound_roundEnd {
+	sound[] = {"\cgqc\sounds\round_end.ogg", 1, 1};	// Volume, Pitch
+	titles[] = {};
+};
+class cgqc_sound_impact1 {
+	sound[] = {"\cgqc\sounds\impact_1.ogg", 1, 1};	// Volume, Pitch
+	titles[] = {};
+};
+class cgqc_sound_impact2 {
+	sound[] = {"\cgqc\sounds\impact_2.ogg", 1, 1};	// Volume, Pitch
+	titles[] = {};
+};
