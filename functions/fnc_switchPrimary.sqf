@@ -43,6 +43,34 @@ if (_needGL) then { // Load with grenade launcher stuff
 	};
 };
 
+// Remove silencer if daytime
+if (cgqc_mission_daytime) then {
+	//Put silencer in backpack
+	 _currentWeapon = currentWeapon player;
+	_compatible = _currentWeapon call bis_fnc_compatibleItems;
+    _compatibleSilencers = [];
+	_actualSilencer = "";
+	{
+		_type = (_x call bis_fnc_itemType) select 1;
+		if (_type isEqualTo "AccessoryMuzzle") then {
+			_compatibleSilencers pushBack _x;
+		};
+	} forEach _compatible;
+	_compatibleSilencers = _compatibleSilencers - cgqc_list_brakes;
+	_items = primaryWeaponItems player;
+	{
+		_silencerClassName = _x;
+		if (_silencerClassName in _items) then {
+			LOG("[switchPrimary] Silencer to backpack");
+			// Remove the silencer from the current weapon
+			player removePrimaryWeaponItem _silencerClassName;
+			// Add the silencer to the player's backpack
+			player addItemToBackpack _silencerClassName;
+			//hint format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
+		}
+	} forEach _compatibleSilencers;
+};
+
 // Add mags to vest
 [_target] call CGQC_fnc_addMags;
 [_target] call ace_weaponselect_fnc_putWeaponAway;

@@ -9,14 +9,16 @@ CGQC_int_hasSilencer = {
 	params ["_target"];
 	_return = false;
 	_currentWeapon = primaryWeapon _target;
-	_compatible = _currentWeapon call bis_fnc_compatibleItems;
+	_allCompatible = _currentWeapon call bis_fnc_compatibleItems;
+	_compatible = _allCompatible - cgqc_list_brakes;
 	_compatibleSilencers = [];
 	{
-	_type = (_x call bis_fnc_itemType) select 1;
-	if (_type isEqualTo "AccessoryMuzzle") then {
-	_compatibleSilencers pushBack _x;
-	};
+		_type = (_x call bis_fnc_itemType) select 1;
+		if (_type isEqualTo "AccessoryMuzzle") then {
+			_compatibleSilencers pushBack _x;
+		};
 	} forEach _compatible;
+
 	_items = primaryWeaponItems _target;
 	{
 	if (_x in _items) exitWith {_return = true};
