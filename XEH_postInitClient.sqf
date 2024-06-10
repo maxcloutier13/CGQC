@@ -174,6 +174,16 @@ if (cgqc_player_loadAll) then {
 			};*/
 		};
 	}] call CBA_fnc_addEventHandler;
+
+	// Player picks up something event
+	take_152 = player addEventHandler [
+		"Take", {
+			params ["_unit", "_container", "_item"];
+			if (_item isEqualTo "ACRE_PRC152") then {
+				txt_152 = " picked up a 152 ;o) ***";
+				[-1, {player globalChat txt_152}] call CBA_fnc_globalExecute;
+			};
+	}];
 };
 
 // ------ Fortify --------------------------------------------------------------------------------------
