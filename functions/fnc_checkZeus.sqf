@@ -1,6 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- checkZeus ----------------------------------------------------------
 // Check if player is zeusparams [["_switch", true]];
+// [player] call CGQC_fnc_checkZeus;
 params [["_unit", player]];
 //LOG_1("checkZeus %1 started", _unit);
 

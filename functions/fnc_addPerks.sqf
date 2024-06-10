@@ -308,7 +308,7 @@ _action = [ "menu_self_medkit", "Unpack: Medic supply kit", "\CGQC\textures\icon
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Zeus perks ===================================================================================================
-_action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus || cgqc_player_max} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {[player] call CGQC_fnc_checkZeus} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Gamestate handling
