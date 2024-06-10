@@ -145,6 +145,30 @@ case "mcx_t2":{
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_FDE";
     _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
 };
+case "badger":{
+    ["hlc_rifle_honeybase", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "rhsusf_acc_grip2";
+    _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
+    _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
+};
+case "dissipator":{
+    ["hlc_rifle_vendimus", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "hlc_muzzle_AAC_762SDN6";
+    _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
+};
+case "bushmaster":{
+    ["hlc_rifle_Bushmaster300", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SRD762_Black";
+    _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
+};
+case "blackjack":{
+    ["hlc_rifle_bcmblackjack", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "hlc_muzzle_AAC_SCARH";
+    _target addPrimaryWeaponItem "hlc_grip_AFG2";
+    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
+    _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
+};
+
 
 case "sr16_dot":{
     ["Tier1_SR16_CQB_Mod2_MFT_Black", "dot"] call CGQC_fnc_getCustomGun;
