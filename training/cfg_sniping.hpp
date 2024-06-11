@@ -103,16 +103,15 @@ _action = [ "menu_sniping_random", "Long Range 600-2000m", "", {["TargetP_Inf2_A
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_random"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Options ====================================================================================
-_action = [ "menu_sniping_off", "Sniping-> Off", "", {[0] spawn CGQC_fnc_trainingSniping}, {cgqc_training_sniping} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_sniping_reset", "Reset Stats", "", {["reset"] spawn CGQC_fnc_sniping}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_sniping_remove", "Remove targets", "", {["remove"] spawn CGQC_fnc_sniping}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_sniping_impact", "See Impact", "", {["impact"] spawn CGQC_fnc_sniping}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
 _action = [ "menu_sniping_impact", "Bullet Tracing", "", {["tracing"] spawn CGQC_fnc_sniping}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_sniping_impact", "Bullet Cam", "", {["bulletCam"] spawn CGQC_fnc_sniping}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_sniping_off", "Sniping-> Off", "", {[0] spawn CGQC_fnc_trainingSniping}, {cgqc_training_sniping} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on"], _action ] call  ace_interact_menu_fnc_addActionToObject;

@@ -192,6 +192,8 @@ cgqc_training_sniping_comp = [];
 cgqc_training_sniping_comp_on = false;
 cgqc_spawn = false;
 cgqc_spawn_vic = "";
+cgqc_sniping_movingTarget = false;
+cgqc_sniping_distanceMode = 0;
 
 // Qualifications
 cgqc_qualification_running = false;
@@ -386,6 +388,11 @@ if (cgqc_player_hasUnsung) then {
 //-- Route planner
 ["[CGQC]", "cgqc_kb_routePlanner", "Start Route planner", {
 	["init"] spawn CGQC_fnc_routePlanner}, {""}, []
+] call CBA_fnc_addKeybind;
+
+//-- Check temperature
+["[CGQC]", "cgqc_kb_checkTemp", "Check Weapon Temperature", {
+	[player, player, currentWeapon player] call ace_overheating_fnc_checkTemperature}, {""}, [DIK_R, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
 //Wind changer event
