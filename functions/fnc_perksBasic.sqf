@@ -111,7 +111,6 @@ LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
                 };
             } forEach _compatible;
             _player = player;
-            _currentWeapon = primaryWeapon _player;
             _items = primaryWeaponItems player;
 
             {

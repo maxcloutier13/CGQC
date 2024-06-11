@@ -12,7 +12,30 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
-
+        class sniping{
+            file = "\cgqc\functions\fnc_sniping.sqf";
+            description = "All the new sniping thingys";
+        };
+        class createTarget{
+            file = "\cgqc\functions\fnc_createTarget.sqf";
+            description = "Create sniping targets";
+        };
+        class createSoldier{
+            file = "\cgqc\functions\fnc_createSoldier.sqf";
+            description = "Create sniping soldiers";
+        };
+        class generateTargets{
+            file = "\cgqc\functions\fnc_generateTargets.sqf";
+            description = "Generate some random targets around the player";
+        };
+        class targetHit{
+            file = "\cgqc\functions\fnc_targetHit.sqf";
+            description = "Reaction to target hit";
+        };
+        class trainingQualification{
+            file = "\cgqc\functions\fnc_trainingQualification.sqf";
+            description = "Qualifications diverses";
+        };
         class getRandomOptic{
             file = "\cgqc\functions\fnc_getRandomOptic.sqf";
             description = "Pick a random optic of the right kind and modset";
