@@ -11,7 +11,7 @@ switch (_type) do {
 		_txtApplied = "Fix Deafness";
 	};
 	case "heal": {
-		["heal"] call CGQC_fnc_getStuff
+		["heal"] call CGQC_fnc_getStuff;
 		_txtApplied = "Heal";
 	};
 	case "rejoin": {
