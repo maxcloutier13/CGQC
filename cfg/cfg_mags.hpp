@@ -16,3 +16,19 @@ class tsp_frameCharge_mag: SLAMDirectionalMine_Wire_Mag
 {
 	mass = 5;
 };
+
+// Custom Claymores
+class CA_Magazine;
+class ClaymoreDirectionalMine_Remote_Mag: CA_Magazine {
+	class ACE_Triggers {
+		SupportedTriggers[] = {"Command", "MK16_Transmitter", "Timer"};
+		class Command {
+			FuseTime = 0.5;
+		};
+		class MK16_Transmitter: Command {};
+		class Timer {
+			FuseTime = 0.5;
+		};
+	};
+};
+
