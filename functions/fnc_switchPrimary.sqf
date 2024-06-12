@@ -32,21 +32,22 @@ if (_needGL) then { // Load with grenade launcher stuff
 		[] call CGQC_fnc_isDaytime;
 		if !(cgqc_mission_daytime) then {
 			LOG("[primarySwitch] Night-time. Get flares");
-			hint "Night! get some flares";
+			[["Night. get some flares", 1], false] call CBA_fnc_notify;
 			for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_white"};
 			for "_i" from 1 to 2 do {_target addItemToBackpack "UGL_FlareRed_F"};
 			for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_ir"};
 		} else {
 			LOG("[primarySwitch] Daytime. Skip flares");
-			hint "Daytime. Skip flares";
+			[["Daytime. Skip flares", 1], false] call CBA_fnc_notify;
 		};
 	};
 };
 
 // Remove silencer if daytime
 if (cgqc_mission_daytime) then {
+	LOG("[switchPrimary] Daytime! Silencer to backpack");
 	//Put silencer in backpack
-	 _currentWeapon = currentWeapon player;
+	 _currentWeapon = primaryWeapon player;
 	_compatible = _currentWeapon call bis_fnc_compatibleItems;
     _compatibleSilencers = [];
 	_actualSilencer = "";
@@ -66,9 +67,12 @@ if (cgqc_mission_daytime) then {
 			player removePrimaryWeaponItem _silencerClassName;
 			// Add the silencer to the player's backpack
 			player addItemToBackpack _silencerClassName;
-			//hint format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
+			_txt = format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
+			[[_txt, 1], false] call CBA_fnc_notify;
 		}
 	} forEach _compatibleSilencers;
+} else {
+	LOG("[switchPrimary] Night. Keep silenced.");
 };
 
 // Add mags to vest
