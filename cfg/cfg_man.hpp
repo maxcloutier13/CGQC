@@ -149,6 +149,46 @@ class CAManBase: Man {
 					};
 				};
 			};
+			class cgqc_qualification {
+				displayName = "Qualifications";
+				condition = "[player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				statement = "";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				//icon = "CGQC\textures\search.paa";
+				runOnHover = "hint 'Qualifications diverses'";
+				distance = 2;
+				class cgqc_qualification_shooting {
+					displayName = "Shooting";
+					condition = "true";
+					statement = "";
+					exceptions[] = {"isNotInside","isNotSitting"};
+					runOnHover = "hint 'Qualifications de tir'";
+					distance = 2;
+					class cgqc_qualification_shooting_rifle {
+						displayName = "Main Rifle 100-500m";
+						condition = "true";
+						statement = "['rifle', 'prep'] spawn CGQC_fnc_trainingQualification;";
+						exceptions[] = {"isNotInside","isNotSitting"};
+						runOnHover = "hint 'Qualifications de tir avec une arme standard'";
+						distance = 2;
+					};
+				};
+			};
+
+			/*
+			_action = [ "menu_qualif_range_s", "Short-Range 10-35m", "", {""}, {} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_qualif", "menu_qualif_range"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			_action = [ "menu_qualif_range_d", "DMR 150-800m", "", {""}, {} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_qualif", "menu_qualif_range"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			_action = [ "menu_qualif_range_p", "Precision 600-1100m", "", {""}, {} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_qualif", "menu_qualif_range"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			_action = [ "menu_qualif_range_lr", "Long-Range 1000-1500m", "", {""}, {} ] call ace_interact_menu_fnc_createAction;
+			_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_qualif", "menu_qualif_range"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			*/
+
+			// Test médical?
+			// Test landnavigation
+			// Test déminage
 		};
 	};
 	class ACE_SelfActions {
@@ -466,5 +506,54 @@ class CAManBase: Man {
 			icon = "\CGQC\textures\rearm.paa";
 		};
 
+	};
+	class Attributes {
+		class SubCategory
+		{
+			data = "AttributeSystemSubcategory";
+			control = "SubCategory";
+			displayName = "CGQC";
+		};
+		class skipLoadout {
+			displayName = "Don't switch loadout";
+			tooltip = "Skip loadout switch on init";
+			property = "cgqc_var_skipLoadoutSwitch";
+			control = "Checkbox";
+			defaultValue = "false";
+			expression = "_this setVariable ['cgqc_var_skipLoadoutSwitch',_value, true];";
+			condition = "objectBrain";
+		};
+		class colorTeam {
+			displayName = "Starting colorTeam";
+			tooltip = "ColorTeam to join on init";
+			property = "cgqc_var_startingColorTeam";
+			control = "combo";
+			defaultValue = "MAIN";
+			expression = "_this setVariable ['cgqc_var_startingColorTeam',_value, true];";
+			condition = "objectBrain";
+			typeName = "STRING";
+			class Values {
+				class White {
+					name = "White";
+					value = "MAIN";
+				};
+				class Red {
+					name = "Red";
+					value = "RED";
+				};
+				class Green {
+					name = "Green";
+					value = "GREEN";
+				};
+				class Blue {
+					name = "Blue";
+					value = "BLUE";
+				};
+				class Yellow {
+					name = "Yellow";
+					value = "YELLOW";
+				};
+			};
+		};
 	};
 };
