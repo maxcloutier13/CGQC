@@ -7,7 +7,7 @@ class optic_Hamr: ItemCore {
     class ItemInfo: InventoryOpticsItem_Base_F {
         class OpticsModes {
             class Hamr2Collimator{
-                discreteDistance[] = {300};
+                discreteDistance[] = {100};
                 discreteDistanceInitIndex = 0;
             };
             class Hamr2Scope {
@@ -24,7 +24,7 @@ class optic_Arco: ItemCore {
     class ItemInfo: InventoryOpticsItem_Base_F {
         class OpticsModes {
             class ARCO2collimator{
-                discreteDistance[] = {300};
+                discreteDistance[] = {100};
                 discreteDistanceInitIndex = 0;
             };
             class ARCO2scope: ARCO2collimator {
@@ -41,11 +41,11 @@ class optic_MRCO: ItemCore {
     class ItemInfo: InventoryOpticsItem_Base_F {
         class OpticsModes {
             class MRCOcq{
-                discreteDistance[] = {300};
+                discreteDistance[] = {100};
                 discreteDistanceInitIndex = 0;
             };
             class MRCOscope{
-                discreteDistance[] = {300};
+                discreteDistance[] = {100};
                 discreteDistanceInitIndex = 0;
             };
         };
