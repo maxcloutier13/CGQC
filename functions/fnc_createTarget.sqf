@@ -9,7 +9,7 @@ LOG_4("[createTarget] %1/%2/%3/%4 started", _targetClass, _targetRandomDir, _tar
 if (_targetSpawnDist isEqualTo 1) exitWith {
 	_toSpawn = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
 	{
-		["TargetP_Inf2_Acc2_F", false, false, _x] spawn CGQC_fnc_createTarget;
+		[_targetClass, false, false, _x] spawn CGQC_fnc_createTarget;
 	} forEach _toSpawn;
 };
 
