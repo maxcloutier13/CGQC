@@ -19,6 +19,7 @@ class CfgFaces {
 class cfgWeapons {
 	#include "\CGQC\cfg\cfg_helmets.hpp"
 	#include "\CGQC\cfg\cfg_guns.hpp"
+	#include "\CGQC\cfg\cfg_guns_mods.hpp"
 	#include "\CGQC\cfg\cfg_misc.hpp"
 	#include "\CGQC\cfg\cfg_uniforms.hpp"
 };

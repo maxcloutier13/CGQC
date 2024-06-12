@@ -31,14 +31,14 @@ switch (_variant) do {
 	case "rifleman": {
 		player addWeapon "rhs_weap_m72a7"; // Launcher
 		player addItemToBackpack "ACE_wirecutter";
-		for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m67"}; // More grenades
-		for "_i" from 1 to 4 do {player addItemToVest "ACE_M84"}; // More grenades
-		for "_i" from 1 to 4 do {player addItemToVest "MiniGrenade"}; // More grenades
+		for "_i" from 1 to 2 do {player addItemToBackpack "rhs_mag_m67"}; // More grenades
+		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_M84"}; // More grenades
+		for "_i" from 1 to 2 do {player addItemToBackpack "MiniGrenade"}; // More grenades
 	};
 	case "sharpshooter": {
 		player addItemToBackpack "ACE_Tripod";
-		player addItem "ACE_ATragMX";
-		player addItem "ACE_Kestrel4500";
+		//player addItem "ACE_ATragMX";
+		//player addItem "ACE_Kestrel4500";
 	};
 	case "lifesaver": {
 		["backpack", "cgqc_pack_mk1_kitbag"] call CGQC_fnc_switchStuff;

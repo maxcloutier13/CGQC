@@ -1,18 +1,29 @@
 #include "\CGQC\script_component.hpp"
-private ["_arguments", "_targetClass", "_targetRandomDir", "_targetPatrolling"];
-
-_arguments = _this select 3;
-_targetClass      = _arguments select 0;
-_targetAnimated   = _arguments select 1;
-_targetRandomDir  = _arguments select 2;
-_targetPatrolling = _arguments select 3;
+// --- createSoldier ----------------------------------------------------------
+// Create sniping targets
+params ["_targetClass", "_targetRandomDir", "_targetPatrolling", ["_targetSpawnDist", 0]];
+LOG_4("[createSoldier] %1/%2/%3/%4 started", _targetClass, _targetRandomDir, _targetPatrolling, _targetSpawnDist);
 
 //Override with mod unit
 _targetClass = selectRandom cgqc_pax_opfor_squad;
 sleep 0.5;
 private ["_group", "_position", "_vecToTarget", "_direction"];
 
+// Default: Position is on cursor
 _position = screenToWorld [0.5, 0.5];
+
+if (_targetSpawnDist > 0) then {
+	// Distance mode. Spawn at specific distance.
+	// Get the player's position and direction
+	_playerPos = getPosATL player;
+	_playerDir = getDir player;
+	// Calculate the position 100 meters in front of the player
+	_position = [
+		(_playerPos select 0) + (_targetSpawnDist * sin(_playerDir)),
+		(_playerPos select 1) + (_targetSpawnDist * cos(_playerDir)),
+		_playerPos select 2
+	];
+};
 
 if (_targetRandomDir) then
 {
@@ -43,3 +54,6 @@ if (_targetPatrolling) then
 	[_group, 3] setWaypointType "CYCLE";
 	{[_group, _x] setWaypointSpeed "LIMITED";} forEach [1, 2, 3];
 };
+
+[["Unit Spawned"], false] call CBA_fnc_notify;
+LOG("[createSoldier] done");

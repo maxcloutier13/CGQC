@@ -1,43 +1,16 @@
 #include "\CGQC\script_component.hpp"
-private ["_i", "_arguments", "_targetClass", "_targetQuantity", "_targetRandomDir", "_targetRangeMin", "_targetRangeMax"];
-
-_arguments = _this select 3;
-_targetClass = _arguments select 0;
-_targetQuantity = _arguments select 1;
-_targetRandomDir = _arguments select 2;
-_targetRangeMin = _arguments select 3;
-_targetRangeMax = _arguments select 4;
-
-// Delete targets
-{
-	_x removeAllEventHandlers "HitPart";
-	deleteVehicle _x
-} forEach TrainingCourse_TargetList;
-/*
-	{
-		deleteVehicle _x
-	} forEach allUnits;
-
-	{
-		deleteGroup _x
-	} forEach allGroups;
-*/
-
-TrainingCourse_TargetList = [];
+// --- generateTargets ----------------------------------------------------------
+// Generate some random targets around the player
+params ["_targetClass", "_targetQuantity", "_targetRandomDir", "_targetRangeMin", "_targetRangeMax"];
+LOG_5("[generateTargets] %1/Qte:%2/Dir:%3/Min:%4/Max:%5 started", _targetClass, _targetQuantity, _targetRandomDir, _targetRangeMin, _targetRangeMax);
 
 Projectile_Impact_Aux setPos [0, 0, 0];
 
-for [{
-	_i = 0
-}, {
-	_i < _targetQuantity
-}, {
-	_i = _i + 1
-}] do
-{
+for [{_i = 0}, {_i < _targetQuantity}, {_i = _i + 1}] do {
 	private ["_target", "_angle", "_range", "_position", "_vecToTarget", "_direction"];
 
-	_range = _targetRangeMin + (_targetRangeMax - _targetRangeMin) * sqrt(random 1);
+	_range = _targetRangeMin + (random (_targetRangeMax - _targetRangeMin));
+	//_range = _targetRangeMin + (_targetRangeMax - _targetRangeMin) * sqrt(random 1);
 	_angle = random 360;
 
 	_position = getPosATL player;
@@ -59,6 +32,8 @@ for [{
 	_target addEventHandler ["HitPart", {
 		(_this select 0) execVM "\cgqc\functions\fnc_on_hit.sqf"
 	}];
-
 	TrainingCourse_TargetList pushBack _target;
+	[["They are all around you!"], false] call CBA_fnc_notify;
 };
+
+LOG("[generateTargets] done");

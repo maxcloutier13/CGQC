@@ -5,7 +5,7 @@
 LOG("[CGQC_preInit] === Started =====================================");
 
 // Version handling
-core_version = "4.6.12.2";
+core_version = QUOTE(VERSION);
 LOG_1("[CGQC_preInit] Loading version: %1", core_version);
 if (isServer) then {
 	missionNamespace setVariable ["cgqc_version_server_core", core_version, true]; // Set the server's mod version
@@ -192,6 +192,11 @@ cgqc_training_sniping_comp = [];
 cgqc_training_sniping_comp_on = false;
 cgqc_spawn = false;
 cgqc_spawn_vic = "";
+cgqc_sniping_movingTarget = false;
+cgqc_sniping_distanceMode = 0;
+
+// Qualifications
+cgqc_qualification_running = false;
 
 // Medical stuff
 cgqc_training_medical = false;
@@ -285,6 +290,8 @@ cgqc_flag_supply_rapide = false;
 cgqc_unconscious_sounds = [];
 // *** MapSharing default value (instead of 7) *****************
 jibrm_restrictmarkers_shareDistance = 10;
+// list of non-silencer muzzle adapters
+cgqc_list_brakes = ["training_attachment_adapter_base","training_attachment_suppressor_base","training_attachment_adapter_alt_blue","training_attachment_adapter_blue","training_attachment_adapter_yellow","training_attachment_adapter_alt_yellow","training_attachment_suppressor_alt_blue","training_attachment_suppressor_blue","training_attachment_suppressor_yellow","training_attachment_suppressor_alt_yellow","training_attachment_suppressor_762_alt_blue","training_attachment_suppressor_762_blue","training_attachment_suppressor_762_alt_yellow","training_attachment_suppressor_762_yellow","121_USASOC_SFMB338","hlc_muzzle_A1_FlashHider","hlc_muzzle_Miter18T","Tier1_Agency_Compensator","rhs_acc_uuk","hlc_muzzle_apology","rhsusf_acc_ARDEC_M240","hlc_muzzle_snds_ArsenalComp","hlc_muzzle_snds_ROTEX3P","hlc_muzzle_Gunfighter_comp","rhs_acc_dtk1l","hlc_muzzle_Brevis","rhs_acc_ak5","rhs_acc_dtkakm","rhs_acc_dtk","rhs_acc_dtk1983","rhs_acc_dtk1","rhs_acc_dtk1p","rhs_acc_dtk2","rhs_acc_dtk3","rhs_acc_dtk4short","rhs_acc_dtk4screws","rhs_acc_dtk4long","hlc_muzzle_E1_FlashHider","ACE_muzzle_mzls_338","ACE_muzzle_mzls_smg_01","ACE_muzzle_mzls_L","ACE_muzzle_mzls_H","ACE_muzzle_mzls_B","ACE_muzzle_mzls_smg_02","ACE_muzzle_mzls_93mmg","hlc_muzzle_MAG58_Brake","hlc_muzzle_17SBrake","hlc_muzzle_OEMDevice_556","hlc_muzzle_OEMDevice","rhsgref_acc_falMuzzle_l1a1","rhsusf_acc_m14_flashsuppresor","rhsusf_acc_m24_muzzlehider_black","rhsusf_acc_m24_muzzlehider_d","rhsusf_acc_m24_muzzlehider_wd","rhs_acc_pgs64_74un","rhs_acc_pgs64","rhs_acc_pgs64_74u","hlc_muzzle_FSC30","hlc_muzzle_Cherrybomb","rhsusf_acc_SF3P556","rhsusf_acc_SFMB556","rhs_acc_dtkrpk","hlc_muzzle_SF3P_556","hlc_muzzle_SF3P_68","hlc_muzzle_SF3P_762","hlc_muzzle_SF3P_762R","rhsgref_acc_zendl"];
 
 // Check what DLC the player owns
 cgqc_player_ownedDLCs = getDLCs 1;
@@ -381,6 +388,11 @@ if (cgqc_player_hasUnsung) then {
 //-- Route planner
 ["[CGQC]", "cgqc_kb_routePlanner", "Start Route planner", {
 	["init"] spawn CGQC_fnc_routePlanner}, {""}, []
+] call CBA_fnc_addKeybind;
+
+//-- Check temperature
+["[CGQC]", "cgqc_kb_checkTemp", "Check Weapon Temperature", {
+	[player, player, currentWeapon player] call ace_overheating_fnc_checkTemperature}, {""}, [DIK_R, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
 //Wind changer event
