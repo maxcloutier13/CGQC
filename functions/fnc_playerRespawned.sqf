@@ -125,6 +125,14 @@ _newRadioList = [1, 1, 1]; // initialize with default values
 	1
 ] call CBA_fnc_waitAndExecute; // wait 1 second to execute
 
+// Reset UI
+["show"] spawn CGQC_fnc_toggleUI;
+// Reset Volumes
+_vol = _unit getVariable "cgqc_player_wakeup_volume";
+[_vol] call acre_api_fnc_setGlobalVolume;
+
+// Add earplugs if missing
+if !([player, "ACE_EarPlugs"] call ace_common_fnc_hasItem) then {player addItem "ACE_EarPlugs";};
 
 
 // Lower gun
