@@ -228,10 +228,10 @@ case "sr16_elcan":{
     _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "hk416_elcan":{
-    ["Tier1_HK416D145_SMR_MFT", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Tan";
-    _target addPrimaryWeaponItem "Tier1_145_NGAL_M600V_alt";
-    _target addPrimaryWeaponItem "rhsusf_acc_grip2_tan";
+    ["Tier1_HK416D145_MW13_MFT", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_AAC_M42000_Black";
+    _target addPrimaryWeaponItem "Tier1_MW_NGAL_M600V_Black";
+    _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
