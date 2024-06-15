@@ -143,9 +143,7 @@ if (cgqc_player_loadAll) then {
 
 	// Event Handers -----------------------------------------------------------------------
 	// On map click (_pos, _units, _shift, _alt)
-	onMapSingleClick "call CGQC_fnc_mapShareList;
-	false;
-	";
+	onMapSingleClick "call CGQC_fnc_mapShareList;false;";
 
 	// Maximum mags event handler
 	["ace_arsenal_displayClosed", {
@@ -155,34 +153,116 @@ if (cgqc_player_loadAll) then {
 		[player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
 	}] call CBA_fnc_addEventHandler;
 
+	// Save default volume
+	player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
+
+/*
+	_curator = getAssignedCuratorLogic player;
+	if (!isNil "_curator") then {
+		// Zeus controlling unit event
+		[_curator, "curatorObjectRemoteControlled", {
+			params ["_curator", "_player", "_unit", "_isRemoteControlled"];
+			if (_isRemoteControlled) then {
+				// Check if unit has radios
+				if (cgqc_config_zeusRadios) then {
+					["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
+					hint "Zeus radios set";
+				};
+			};
+			// _isRemoteControlled is true when entering remote control, false when exiting
+		}] call BIS_fnc_addScriptedEventHandler;
+
+		[_curator, "curatorUnitAssigned", {
+			params ["_curator", "_player"];
+			_text = format ["Zeus! %1/%2", _curator, _player];
+			[_text, 5, 2] call CGQC_fnc_notifyAll;
+			// _isRemoteControlled is true when entering remote control, false when exiting
+		}] call BIS_fnc_addScriptedEventHandler;
+	};
+*/
 	// Unconcious event
 	["ace_unconscious", {
 		params ["_unit", "_isUnconscious"];
 		if (isPlayer _unit) then {
 			[] call setTeamColorReload;
-			/*
 			if (_isUnconscious) then {
+				["hide"] spawn CGQC_fnc_toggleUI;
 				playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
 				_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
+				// Lower direct comms volume
 				[0.2] call acre_api_fnc_setGlobalVolume;
+				// Turning off radios temporaritly
+				_radioIdList = call acre_api_fnc_getCurrentRadioList;
+				{
+					_radioId = _x;
+					[_radioId,0] call acre_sys_radio_fnc_setRadioVolume;
+				} forEach _radioIdList;
 				LOG(" Unconscious - Lowered volume");
 			} else {
 				// set volume back
+				["show"] spawn CGQC_fnc_toggleUI;
 				_vol = _unit getVariable "cgqc_player_wakeup_volume";
 				[_vol] call acre_api_fnc_setGlobalVolume;
+
+				// Turning radios back on
+				_radioIdList = call acre_api_fnc_getCurrentRadioList;
+				{
+					_radioId = _x;
+					[_radioId,0.8] call acre_sys_radio_fnc_setRadioVolume;
+				} forEach _radioIdList;
+
 				LOG(" Unconscious - Volume restored");
-			};*/
+			};
+		};
+	}] call CBA_fnc_addEventHandler;
+
+
+	["ace_treatmentStarted", {
+		params ["_medic", "_patient", "_bodyPart", "_classname", "_itemUser", "_usedItem"];
+		// Notify the victim of treatment
+		["CGQC_event_receivingTreatment", [_medic, _patient, _classname, _bodyPart], _patient] call CBA_fnc_targetEvent;
+	}] call CBA_fnc_addEventHandler;
+
+	["CGQC_event_receivingTreatment", {
+		params ["_medic", "_patient", "_treatment", "_bodyPart"];
+		LOG_4("[medical_receivingTreatment] - Med:%1/Patient:%2/Treat:%3/Part:%4", _medic, _patient, _treatment, _bodyPart);
+		// Skip if patient is player, dead or corpse
+		if (player == _medic || !(alive player) || player != _patient) exitWith {
+			LOG("[medical_receivingTreatment] - Skipping");
+		};
+		// Check counciousness
+		if (player getVariable ["ACE_isUnconscious", false]) then {
+			LOG("[medical_receivingTreatment] - Victim unconcious. Vague message.");
+			// Passed out, so can't tell details
+			_name = "Someone";
+			_text = format ["<br/><br/><br/><br/><br/><br/><br/><t size='2'>%1 is helping you</t>", _name];
+			cutText [_text,"PLAIN", 2.5, false, true];
+		};
+		/* else{ // If councious, give details about what is happening
+			_msg = [_treatment, _bodyPart] call CGQC_int_medical_treatmentMsg;
+        	cutText [format ["%1 %2", _name, _msg],"PLAIN DOWN", 2.5];
+		};*/
+	}] call CBA_fnc_addEventHandler;
+
+	["CGQC_event_152PickedUp", {
+		params ["_unit", "_container", "_item"];
+		LOG_2("[152PickedUp] - Unit:%1/Container:%2", _unit, _container);
+		// Check if player is admin or max
+		if (serverCommandAvailable "#kick" || cgqc_player_max) then {
+			_name = name _unit;
+			_text = format ["<br/><br/><br/><br/><br/><br/><br/><t size='3'>%1 picked up 152!</t>", _name];
+			cutText [_text,"PLAIN", 2.5, false, true];
 		};
 	}] call CBA_fnc_addEventHandler;
 
 	// Player picks up something event
-	take_152 = player addEventHandler [
-		"Take", {
-			params ["_unit", "_container", "_item"];
-			if (_item isEqualTo "ACRE_PRC152") then {
-				txt_152 = " picked up a 152 ;o) ***";
-				[-1, {player globalChat txt_152}] call CBA_fnc_globalExecute;
-			};
+	take_152 = player addEventHandler [	"Take", {
+		params ["_unit", "_container", "_item"];
+		if (_item isEqualTo "ACRE_PRC152") then {
+			_txt = " picked up a 152 ;o)";
+			[_unit, _txt] remoteExec ["globalChat",0];
+			["CGQC_event_152PickedUp", [_unit, _container, _item]] call CBA_fnc_globalEvent;
+		};
 	}];
 };
 
@@ -311,8 +391,35 @@ if (cgqc_flag_isTraining) then {
 
 };
 
+CGQC_int_setZeusRadios = {
+	cgqc_current_unit = [] call CBA_fnc_currentUnit;
+	_done = cgqc_current_unit getVariable ["cgqc_zeus_radios_set", false];
+	if !(_done) then {
+		// Switch backpack if needed
+		if !(cgqc_current_unit canAdd ["ACRE_PRC152", 3]) then {
+			["backpack", "cgqc_pack_mk1_magic_zeus"] call CGQC_fnc_switchStuff;
+		};
+		["zeus"] call CGQC_fnc_getRadioPresets;
+		//[] call CGQC_int_setZeusRadios;
+		cgqc_current_unit setVariable ["cgqc_zeus_radios_set", true, true];
+		[["Zeus radio added", 1.5], false] call CBA_fnc_notify;
+	};
+};
+
+// Event when control is switch to another unit
+_id = ["unit", {
+	[] spawn {
+		if (cgqc_config_zeusRadios) then {
+			sleep 1;
+			[] call CGQC_int_setZeusRadios;
+		};
+	};
+}] call CBA_fnc_addPlayerEventHandler;
+
+
+
 // Zeus shenanigans... max - to review
-_zeus = [] spawn CGQC_fnc_setZeus;
+//_zeus = [] spawn CGQC_fnc_setZeus;
 
 // Check if unit has an auto-switch loadout
 [] call CGQC_fnc_checkLoadout;
@@ -403,6 +510,10 @@ player addEventHandler ["Take", {
 	}
 }];
 
+// If zeus, setup radios
+if ([player] call CGQC_fnc_checkZeus && cgqc_config_zeusRadios) then {
+	[] call CGQC_int_setZeusRadios;
+};
 
 // All done
 cgqc_start_postInitClient_done = true;
@@ -435,6 +546,8 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 		};
 	};
 }];
+
+
 
 sleep 25;
 LOG("[CGQC_PostInitClient] - Checking for snapshots");

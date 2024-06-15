@@ -2,11 +2,11 @@
 // --- playerRespawned ----------------------------------------------------------
 // Code in the event a player respawns
 params ["_unit", "_corpse"];
-LOG("[CGQC_EVENT] playerRespawned started");
+LOG_2("[playerRespawned] %1/%2 started", _unit, _corpse);
 
 // Restore controls in case player got killed during a bad moment
-
 disableUserInput false;
+
 // Save stuff for player respawn
 // Corpse position
 _unit setVariable["corpse_position", getPosASL _corpse];
@@ -125,9 +125,17 @@ _newRadioList = [1, 1, 1]; // initialize with default values
 	1
 ] call CBA_fnc_waitAndExecute; // wait 1 second to execute
 
+// Reset UI
+["show"] spawn CGQC_fnc_toggleUI;
+// Reset Volumes
+_vol = _unit getVariable "cgqc_player_wakeup_volume";
+[_vol] call acre_api_fnc_setGlobalVolume;
+
+// Add earplugs if missing
+if !([player, "ACE_EarPlugs"] call ace_common_fnc_hasItem) then {player addItem "ACE_EarPlugs";};
 
 
 // Lower gun
 [player] call ace_weaponselect_fnc_putWeaponAway;
 
-LOG("[CGQC_EVENT] playerRespawned done");
+LOG("[playerRespawned] done");

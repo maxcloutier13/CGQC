@@ -200,14 +200,14 @@ class Helicopter: Air {
             displayName = "Clip In";
             icon = "\DEVGRU\RS_Equip_Retention\ui\lanyard.paa";
             exceptions[] = {"notOnMap","isNotInside","isNotSitting"};
-            condition = "[_player, 'RS_Equip_Retention'] call BIS_fnc_hasItem  && !(_player getVariable['RS_RetentionLanyard', false])";
+            condition = "!(_player getVariable['RS_RetentionLanyard', false])";
             statement = "[] call RS_Retention_fnc_Clip;";
         };
         class RetentionLanyard_Off {
             displayName = "Unclip";
             icon = "\DEVGRU\RS_Equip_Retention\ui\lanyard.paa";
             exceptions[] = {"notOnMap","isNotInside","isNotSitting"};
-            condition = "[_player, 'RS_Equip_Retention'] call BIS_fnc_hasItem && (_player getVariable['RS_RetentionLanyard', false])";
+            condition = "(_player getVariable['RS_RetentionLanyard', false])";
             statement = "[] call RS_Retention_fnc_Clip;";
         };
     };

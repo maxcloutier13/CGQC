@@ -46,9 +46,7 @@ switch (groupid cgqc_player_group) do {
 		_notFound = true;
 	};
 };
-if (_notFound) then {
-	hint "Group not found. Set your 343 channel manually";
-} else {
+if !(_notFound) then {
 	// Find 343
 	if ([player, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio) then {
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;

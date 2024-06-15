@@ -48,7 +48,7 @@ switch (_type) do {
 	case "track": {supplies_item = "ACE_Track" createVehicle (position player);};
 	case "wheel": {supplies_item = "ACE_Wheel" createVehicle (position player);};
 	case "kidnap":{player addItemToBackpack "G_Blindfold_01_black_F"; player addItemToBackpack "cgqc_helmet_kidnapping"; player addItemToBackpack "cgqc_vest_kidnapping";};
-	case "heal": {player call ACE_medical_treatment_fnc_fullHealLocal;hint "Patched up";};
+	case "heal": {player call ACE_medical_treatment_fnc_fullHealLocal;};
 	case "mags_primary": {[] call CGQC_fnc_addMags;};
 	case "mags_secondary": {
 		_sec_mags = handgunMagazine player;
