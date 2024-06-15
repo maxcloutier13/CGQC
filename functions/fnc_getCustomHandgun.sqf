@@ -1,12 +1,12 @@
 #include "\CGQC\script_component.hpp"
 // --- getCustomHandgun ----------------------------------------------------------
 // Get player custom handgun from config
-params [ "_gunArray", ["_nbr", 2]];
+params [ "_gunArray", ["_nbr", 2], ["_loadPlayerHandgun", true]];
 LOG_1("[getCustomHandgun] %1/%2 started", _gunArray select 0, _nbr);
 
 [player] call CGQC_fnc_removeHandgun;
 
-if (!cgqc_player_isVietnam && cgqc_config_sidearm) then {
+if (!cgqc_player_isVietnam && cgqc_config_sidearm && _loadPlayerHandgun) then {
 	// === Custom Sidearm
 	player addWeapon (trim cgqc_config_sidearm_pistol);
 	player addHandgunItem (trim cgqc_config_sidearm_mag);
@@ -19,9 +19,11 @@ if (!cgqc_player_isVietnam && cgqc_config_sidearm) then {
 	if (cgqc_config_sidearm_optic != "") then {
 		player addHandgunItem (trim cgqc_config_sidearm_optic);
 	};
+	_name = getText(configFile >> "CfgWeapons" >> cgqc_config_sidearm_pistol >> "displayname");
+
 	[
     ["Custom Sidearm", 1.5, [0.161, 0.502, 0.725, 1]],
-		[format["%1 Loaded!",cgqc_config_sidearm_pistol]]
+		[format["%1 Loaded!", _name]]
 	] call CBA_fnc_notify;
 }else{
 	_gun = _gunArray select 0;
@@ -38,6 +40,7 @@ _magHandgun = (handgunMagazine player) select 0;
 if (isNil "_magHandgun") then {
 		ERROR("[CGQC_ERROR] getCustomHandgun - can't ID mags");
 } else {
+	if !(_loadPlayerHandgun) exitWith {};
 	// Make sure there is at least one mag...
 	if (count _magHandgun > 0) then {
 		// Check if custom sidearm is set. If it is use the mag nbr setting

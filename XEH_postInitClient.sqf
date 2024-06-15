@@ -406,10 +406,12 @@ CGQC_int_setZeusRadios = {
 	};
 };
 
+player setVariable ["cgqc_player_original_unit", true];
 // Event when control is switch to another unit
 _id = ["unit", {
 	[] spawn {
-		if (cgqc_config_zeusRadios) then {
+		_original_unit = player getVariable ["cgqc_player_original_unit", false];
+		if (cgqc_config_zeusRadios && !_original_unit) then {
 			sleep 1;
 			[] call CGQC_int_setZeusRadios;
 		};

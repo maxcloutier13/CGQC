@@ -6,6 +6,7 @@ _unit = _unit_array select 0;
 
 [_unit] spawn {
 	params ["_const_unit"];
+	waitUntil {!isNil "cgqc_start_postInitClient_done"};
 	waitUntil {cgqc_start_postInitClient_done};
 	LOG_2("[loadoutConstructionVic] %1 started", _const_unit);
 	// Arsenal

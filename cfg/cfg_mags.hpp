@@ -32,3 +32,7 @@ class ClaymoreDirectionalMine_Remote_Mag: CA_Magazine {
 	};
 };
 
+// Hide 9bangs
+class ACE_CTS9 {
+    scope = 1;
+};

@@ -2206,5 +2206,5 @@ cgqc_unsung_arsenal_all = [
 	"immersion_pops_poppack",
 	"murshun_cigs_lighter",
 	"murshun_cigs_cigpack",
-	"UNS_EAM2Braft",
+	"UNS_EAM2Braft"
 ];

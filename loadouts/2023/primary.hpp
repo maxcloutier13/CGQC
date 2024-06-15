@@ -172,10 +172,10 @@ case "blackjack":{
 
 case "sr16_dot":{
     ["Tier1_SR16_CQB_Mod2_MFT_Black", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_alt_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "CTAR21":{
     ["arifle_TRG20_F", "dot"] call CGQC_fnc_getCustomGun;
@@ -222,16 +222,16 @@ case "m4_gl_m320_rco":{
 };
 case "sr16_elcan":{
     ["Tier1_SR16_Carbine_Mod2_MFT_Black", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "hk416_elcan":{
-    ["Tier1_HK416D145_SMR_MFT", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Tan";
-    _target addPrimaryWeaponItem "Tier1_145_NGAL_M600V_alt";
-    _target addPrimaryWeaponItem "rhsusf_acc_grip2_tan";
+    ["Tier1_HK416D145_MW13_MFT", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_AAC_M42000_Black";
+    _target addPrimaryWeaponItem "Tier1_MW_NGAL_M600V_Black";
+    _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
@@ -297,6 +297,15 @@ case "m14fiberglass":{
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
 };
+case "m14sopmodRifle":{
+    ["hlc_rifle_m14sopmod", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SRD762_Black";
+    _target addPrimaryWeaponItem "hlc_grip_AFG2";
+    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black_FL";
+    _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
+};
+
+
 
 // 7.62 DMR =================================================================
 case "417":{
@@ -327,6 +336,14 @@ case "socom16":{
     _target addPrimaryWeaponItem "rhsusf_acc_m14_bipod";
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk316_Mod_0_Mag";
 };
+case "m14sopmodDmr":{
+    ["hlc_rifle_m14sopmod", "lpvo"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SRD762_Black";
+    _target addPrimaryWeaponItem "hlc_grip_AFG2";
+    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black_FL";
+    _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
+};
+
 case "m110_leupold":{
     ["Tier1_M110k1", "lpvo"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_762_DSR";

@@ -524,6 +524,10 @@ cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Someth
 ["cgqc_flag_backpackNotif", "CHECKBOX", ["Backpack Notification", "Notify the player if he moves too far from his pack"],
     [_menu_name, "Option Toggles"], true, 1, {publicVariable "cgqc_flag_backpackNotif"}, false] call CBA_fnc_addSetting;
 
+["cgqc_config_sideLanguage", "CHECKBOX", ["Separate language per side", "Each side has specific languages"],
+	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
+["cgqc_config_sideRadios", "CHECKBOX", ["Separate radios per side", "Each side has specific radio frequencies"],
+	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideRadios"}] call CBA_fnc_addSetting;
 
 // Custom medical stuff ===================================================================================================
 ["cgqc_player_wakeup_active", "CHECKBOX", ["Activate custom wakeup", "Randomly lets player wake up if not in cardia arrest"],
@@ -673,7 +677,7 @@ _menu_name = "[CGQC] Custom Containers";
 ["cgqc_config_medkit_medbag", "SLIDER",["Medbag", "Numberin medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 1, 1, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_bodybag", "SLIDER",["BodyBags", "Numberin medkit"],
-    [_menu_name, "Content: Medic Supplies"], [0, 1, 1, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: Medic Supplies"], [0, 20, 2, 0], 1, {publicVariable "cgqc_config_medkit_medbag"}, false] call CBA_fnc_addSetting;
 
 // Ammo Bandoliers
 ["cgqc_config_ammo_primary", "SLIDER",["Primary mags", "Number in bandolier"],
@@ -710,7 +714,7 @@ if (cgqc_player_hasNorthern) then {
 	["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
 	["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
-		[_menu_name, "Content: Ammo Bandolier"], "ACE_CTS9"] call CBA_fnc_addSetting;
+		[_menu_name, "Content: Ammo Bandolier"], "ACE_M84"] call CBA_fnc_addSetting;
 
 	["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
@@ -720,50 +724,74 @@ if (cgqc_player_hasNorthern) then {
 
 
 
-// Supply box
-["cgqc_config_supply_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ammo"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_ifak", "SLIDER",["Kit: Individual First-Aid", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_ifak"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_medkit", "SLIDER",["Kit: Medic Supply", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 50, 2, 0], 1, {publicVariable "cgqc_config_supply_medkit"}, false] call CBA_fnc_addSetting;
+// Squad Supply box
+["cgqc_config_supply_squad_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_squad_ammo"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_ifak", "SLIDER",["Kit: Individual First-Aid", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 50, 15, 0], 1, {publicVariable "cgqc_config_supply_squad_ifak"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_medkit", "SLIDER",["Kit: Medic Supply", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 50, 2, 0], 1, {publicVariable "cgqc_config_supply_squad_medkit"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_supply_launcher", "SLIDER",["Launchers", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_supply_launcher"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_nlaw", "SLIDER",["NLAW", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_nlaw"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_launcher", "SLIDER",["Launchers", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 5, 2, 0], 1, {publicVariable "cgqc_config_supply_squad_launcher"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_nlaw", "SLIDER",["NLAW", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_squad_nlaw"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_supply_maaws", "SLIDER",["Maaws ammo", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 5, 3, 0], 1, {publicVariable "cgqc_config_supply_maaws"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_javelin", "SLIDER",["Javelin ammo", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_javelin"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_maaws", "SLIDER",["Maaws ammo", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 5, 4, 0], 1, {publicVariable "cgqc_config_supply_squad_maaws"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_javelin", "SLIDER",["Javelin ammo", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_squad_javelin"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_supply_batteries", "SLIDER",["Batteries", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 10, 2, 0], 1, {publicVariable "cgqc_config_supply_batteries"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_radios", "SLIDER",["Radios 343", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_radios_152", "SLIDER",["Radios 152", "Number in supply box"],
-    [_menu_name, "Content: Squad Box"], [0, 10, 0, 0], 1, {publicVariable "cgqc_config_supply_radios"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_batteries", "SLIDER",["Batteries", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_squad_batteries"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_radios", "SLIDER",["Radios 343", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 10, 1, 0], 1, {publicVariable "cgqc_config_supply_squad_radios"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_squad_radios_152", "SLIDER",["Radios 152", "Number in supply box"],
+    [_menu_name, "Content: Box - Squad"], [0, 10, 0, 0], 1, {publicVariable "cgqc_config_supply_squad_radios"}, false] call CBA_fnc_addSetting;
 
-["cgqc_config_supply_explosives", "SLIDER",["Explosive charges", "Number in supply box"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_mine_large", "SLIDER",["Large mines", "AT mines"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_large"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_mine_medium", "SLIDER",["Medium mines", "Anti vehicles mines"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
-["cgqc_config_supply_mine_small", "SLIDER",["Small mines", "Anti-personel mines"],
-    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_mine_small"}, false] call CBA_fnc_addSetting;
+// Fireteam Supply Box
+["cgqc_config_supply_team_ammo", "SLIDER",["Ammo bandoliers", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 50, 8, 0], 1, {publicVariable "cgqc_config_supply_team_ammo"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_team_ifak", "SLIDER",["Kit: Individual First-Aid", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 50, 4, 0], 1, {publicVariable "cgqc_config_supply_team_ifak"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_team_medkit", "SLIDER",["Kit: Medic Supply", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 50, 1, 0], 1, {publicVariable "cgqc_config_supply_team_medkit"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_supply_team_launcher", "SLIDER",["Launchers", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 5, 1, 0], 1, {publicVariable "cgqc_config_supply_team_launcher"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_team_nlaw", "SLIDER",["NLAW", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_team_nlaw"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_supply_team_maaws", "SLIDER",["Maaws ammo", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_team_maaws"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_team_javelin", "SLIDER",["Javelin ammo", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 5, 0, 0], 1, {publicVariable "cgqc_config_supply_team_javelin"}, false] call CBA_fnc_addSetting;
+
+["cgqc_config_supply_team_batteries", "SLIDER",["Batteries", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 10, 0, 0], 1, {publicVariable "cgqc_config_supply_team_batteries"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_team_radios", "SLIDER",["Radios 343", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 10, 0, 0], 1, {publicVariable "cgqc_config_supply_team_radios"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_team_radios_152", "SLIDER",["Radios 152", "Number in supply box"],
+    [_menu_name, "Content: Box - Fireteam"], [0, 10, 0, 0], 1, {publicVariable "cgqc_config_supply_team_radios"}, false] call CBA_fnc_addSetting;
+
+
+
+// Explosives
+["cgqc_config_supply_explosives_charges", "SLIDER",["Explosive charges", "Number in supply box"],
+    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives_charges"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_explosives_mine_large", "SLIDER",["Large mines", "AT mines"],
+    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives_mine_large"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_explosives_mine_medium", "SLIDER",["Medium mines", "Anti vehicles mines"],
+    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives_mine_small"}, false] call CBA_fnc_addSetting;
+["cgqc_config_supply_explosives_mine_small", "SLIDER",["Small mines", "Anti-personel mines"],
+    [_menu_name, "Content: Explosives Box"], [0, 50, 5, 0], 1, {publicVariable "cgqc_config_supply_explosives_mine_small"}, false] call CBA_fnc_addSetting;
 
 ["cgqc_config_sideKeys", "CHECKBOX", ["Sidekeys for all", "Adds a key for all side vehicles to player"],
 	[_menu_name, "Keys"], true, 1, {publicVariable "cgqc_config_sideKeys"}] call CBA_fnc_addSetting;
 ["cgqc_config_customKey", "CHECKBOX", ["Get CustomKey action", "Action on player to get a custom key to specific vehicle"],
 	[_menu_name, "Keys"], false, 1, {publicVariable "cgqc_config_sideKeys"}] call CBA_fnc_addSetting;
 
-["cgqc_config_sideLanguage", "CHECKBOX", ["Separate language per side", "Each side has specific languages"],
-	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideLanguage"}] call CBA_fnc_addSetting;
 
-["cgqc_config_sideRadios", "CHECKBOX", ["Separate radios per side", "Each side has specific radio frequencies"],
-	[_menu_name, "Adversarial"], false, 1, {publicVariable "cgqc_config_sideRadios"}] call CBA_fnc_addSetting;
 
 
 // Loadout restrictions ===================================================================================================
