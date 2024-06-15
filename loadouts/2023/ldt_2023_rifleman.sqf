@@ -23,11 +23,29 @@ switch (_gunVariant) do {
 	case "cqb": {["mk18_dot"] spawn CGQC_fnc_switchPrimary;};
 	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 	case "rifle": {["m16_shortdot"] spawn CGQC_fnc_switchPrimary;};
-	case "grenade": {["m4_gl_m320"] spawn CGQC_fnc_switchPrimary;};
+	case "grenade": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 	case "417": {["417"] spawn CGQC_fnc_switchPrimary;};
 };
 
 switch (_variant) do {
+	case "grenadier": {
+		_handgun = ["rhs_weap_M320", "1Rnd_HE_Grenade_shell"];
+		[_handgun, 2, false] call CGQC_fnc_getCustomHandgun;
+		for "_i" from 1 to 5 do {_target addItemToVest "1Rnd_HE_Grenade_shell"};
+		for "_i" from 1 to 10 do {_target addItemToBackpack "1Rnd_HE_Grenade_shell"};
+		for "_i" from 1 to 2 do {_target addItemToBackpack "1Rnd_Smoke_Grenade_shell"};
+		[] call CGQC_fnc_isDaytime;
+		if !(cgqc_mission_daytime) then {
+			LOG("[Grenadier] Night-time. Get flares");
+			[["Night. get some flares", 1], false] call CBA_fnc_notify;
+			for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_white"};
+			for "_i" from 1 to 2 do {_target addItemToBackpack "UGL_FlareRed_F"};
+			for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_40mm_Flare_ir"};
+		} else {
+			LOG("[Grenadier] Daytime. Skip flares");
+			[["Daytime. Skip flares", 1], false] call CBA_fnc_notify;
+		};
+	};
 	case "rifleman": {
 		player addWeapon "rhs_weap_m72a7"; // Launcher
 		player addItemToBackpack "ACE_wirecutter";
