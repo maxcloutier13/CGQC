@@ -172,10 +172,10 @@ case "blackjack":{
 
 case "sr16_dot":{
     ["Tier1_SR16_CQB_Mod2_MFT_Black", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_alt_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "CTAR21":{
     ["arifle_TRG20_F", "dot"] call CGQC_fnc_getCustomGun;
@@ -222,10 +222,10 @@ case "m4_gl_m320_rco":{
 };
 case "sr16_elcan":{
     ["Tier1_SR16_Carbine_Mod2_MFT_Black", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "hk416_elcan":{
     ["Tier1_HK416D145_SMR_MFT", "dot"] call CGQC_fnc_getCustomGun;
