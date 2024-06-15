@@ -297,6 +297,15 @@ case "m14fiberglass":{
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
 };
+case "m14sopmodRifle":{
+    ["hlc_rifle_m14sopmod", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SRD762_Black";
+    _target addPrimaryWeaponItem "hlc_grip_AFG2";
+    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black_FL";
+    _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
+};
+
+
 
 // 7.62 DMR =================================================================
 case "417":{
@@ -327,6 +336,14 @@ case "socom16":{
     _target addPrimaryWeaponItem "rhsusf_acc_m14_bipod";
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk316_Mod_0_Mag";
 };
+case "m14sopmodDmr":{
+    ["hlc_rifle_m14sopmod", "lpvo"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SRD762_Black";
+    _target addPrimaryWeaponItem "hlc_grip_AFG2";
+    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black_FL";
+    _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
+};
+
 case "m110_leupold":{
     ["Tier1_M110k1", "lpvo"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_762_DSR";
