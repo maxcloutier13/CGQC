@@ -2207,5 +2207,4 @@ cgqc_unsung_arsenal_all = [
 	"murshun_cigs_lighter",
 	"murshun_cigs_cigpack",
 	"UNS_EAM2Braft",
-	"RS_Equip_Retention"
 ];

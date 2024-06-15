@@ -20,7 +20,6 @@ _handgun = ["cgqc_gun_glock19_wood", "Tier1_20Rnd_9x19_JHP", "Tier1_DBALPL", "Ti
 // === Uniform Items ====================================================================================================
 _target addItemToUniform "azm_bft_tx";
 _target addItemToUniform "azm_bft_rx";
-_target addItemToUniform "RS_Equip_Retention";
 // === Vest Items ====================================================================================================
 _target addItemToVest "ACE_M84";
 _target addItemToVest "ACE_M84";

@@ -73,7 +73,6 @@ player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";
 player addItemToUniform "cgqc_items_ifak";
 player addItemToUniform "ZSN_Whistle";
 player addItemToUniform "ACRE_SEM52SL";
-player addItemToUniform "RS_Equip_Retention"; //Retention clip
 // === Vest ================================================================================================================
 
 // === Backpack ================================================================================================================
