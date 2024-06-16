@@ -8,7 +8,11 @@ _crate = _crate_array select 0;
 LOG_2("[loadMk3Menu] %1/%2 started", _crate, _type);
 
 LOG("[loadMk3Menu] - waiting for postInit to finish");
-waitUntil {CGQC_playerLoaded};
+waitUntil {!isNil "cgqc_start_postInitClient_done"};
+waitUntil {cgqc_start_postInitClient_done};
+LOG("[loadMk3Menu] - postInit finished!");
+waitUntil{ !isNull (findDisplay 46) };
+LOG("[loadMk3Menu] - Checking for Interface");
 if (hasInterface) then {
 	LOG("[loadMk3Menu] - hasInterface - loading menu");
 	// Unlock arsenal when training is on

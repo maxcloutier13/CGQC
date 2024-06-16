@@ -5,7 +5,8 @@ params ["_crate_array", "_type"];
 _crate = _crate_array select 0;
 LOG_2("[loadSupplyBox] %1/%2 started", _crate, _type);
 
-waitUntil {CGQC_playerLoaded};
+waitUntil {!isNil "cgqc_start_postInitClient_done"};
+waitUntil {cgqc_start_postInitClient_done};
 if (local _crate) then {
 
 	clearItemCargoGlobal _crate;
