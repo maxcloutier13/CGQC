@@ -396,13 +396,6 @@ if (cgqc_player_hasUnsung) then {
 	[player, player, currentWeapon player] call ace_overheating_fnc_checkTemperature}, {""}, [DIK_R, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
-//Wind changer event
-["cgqc_change_fucking_wind", {
-	params ["_type"];
-	hint format ["Event wind: %1", _type];
-	[_type] call CGQC_fnc_training;
-}] call CBA_fnc_addEventHandler;
-
 // Init loading event
 CGQC_playerLoaded = false;
 addMissionEventHandler ["PreloadFinished",
