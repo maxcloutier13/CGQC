@@ -45,25 +45,24 @@ switch (_type) do {
 	};
 	case "sunrise":{
 		_sun = date call BIS_fnc_sunriseSunsetTime;
-		_sunrise = _sun select 0;
-		_sunset = _sun select 1;
-		_year = date select 0;
-		_month = date select 1;
-		_day = date select 2;
-		_hour = date select 3;
-		_min= date select 4;
+		time_sunrise = _sun select 0;
+		time_sunset = _sun select 1;
+		time_year = date select 0;
+		time_month = date select 1;
+		time_day = date select 2;
+		time_hour = date select 3;
+		time_min= date select 4;
 		switch (_option) do {
-			case 0: {
-				[0,{setDate [_year, _month, _day, _sunrise, 0]}] call CBA_fnc_globalExecute;
-				_text = "Aaah... sunrise...";
-			};
-			case 1: {
-				[0,{setDate [_year, _month, _day, _sunset, 0]}] call CBA_fnc_globalExecute;
-				_text = "Aaah... sunset...";
-			};
+		case 0: {
+			[0,{setDate [time_year, time_month, time_day, time_sunrise, 0]}] call CBA_fnc_globalExecute;
+			time_text = "Aaah... sunrise...";
 		};
-		titleText [_text, "BLACK IN",7];
-
+		case 1: {
+			[0,{setDate [time_year, time_month, time_day, time_sunset, 0]}] call CBA_fnc_globalExecute;
+			_text = "Aaah... sunset...";
+		};
+		};
+		titleText [time_text, "BLACK IN",7];
 	};
 	case "nice":{
 		[0,{ 0 setOvercast 0}] call CBA_fnc_globalExecute;
