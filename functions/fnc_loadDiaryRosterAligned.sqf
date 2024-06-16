@@ -3,7 +3,7 @@
 // List all groups and players + roles
 LOG(" loadDiaryRoster started");
 
-waitUntil {cgqc_start_postInitClient_done};
+waitUntil {CGQC_playerLoaded};
 
 // Load Everything
 [] call CGQC_fnc_loadGroupInfo;
