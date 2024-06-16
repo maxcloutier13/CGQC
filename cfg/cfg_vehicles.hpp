@@ -351,6 +351,32 @@ class cgqc_vic_fennec : I_MRAP_03_F{
     class EventHandlers {init = "['light', _this] call CGQC_fnc_addADS";};
 };
 
+
+class LOP_IRA_Landrover;
+class cgqc_vic_rover : LOP_IRA_Landrover{
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_vic_unarmed";
+    displayName = "Land Rover (1+6)";
+    crew = "CGQC_Soldat_Base";
+    hiddenSelections[] = {"Camo1","Camo2"};
+};
+
+class LOP_TRK_Landrover_M2;
+class cgqc_vic_rover2 : LOP_TRK_Landrover_M2{
+    scope = 2;
+    side = 1;
+    author = "silent1";
+    faction = "cgqc";
+    editorSubcategory = "EdSubcat_cgqc_vic_armed";
+    displayName = "Land Rover M2(2+1)";
+    crew = "CGQC_Soldat_Base";
+    hiddenSelections[] = {"Camo1","Camo2"};
+};
+
+
 class I_MRAP_03_hmg_F;
 class cgqc_vic_fennec_hmg : I_MRAP_03_hmg_F{
     scope = 2;
@@ -569,5 +595,4 @@ class cgqc_briefing_table : Land_BriefingRoomDesk_01_F
        // init = "[_this] execVM '\CGQC\functions\fnc_tableSetup.sqf'";
     };
 };
-
 
