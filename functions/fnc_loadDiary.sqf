@@ -3,6 +3,8 @@
 // Post group info in default briefing
 LOG("[loadDiary] started");
 
+waitUntil {CGQC_playerLoaded};
+
 player createDiarySubject ["CGQC","CGQC Info"];
 // CGQC Links
 _text = (

@@ -104,7 +104,7 @@ cgqc_player_group = group player;
 cgqc_player_groupID = groupId player;
 
 // Briefing entry -------------------------------------------------------------------------------------------------
-_brief = [] call CGQC_fnc_loadDiary;
+_brief = [] spawn CGQC_fnc_loadDiary;
 
 if (cgqc_player_loadAll) then {
 	// Init arsenal ---------------------------------------------------------------------------------------------------
