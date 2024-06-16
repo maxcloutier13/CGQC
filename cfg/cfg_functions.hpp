@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class envReport{
+            file = "\cgqc\functions\fnc_envReport.sqf";
+            description = "Create environment report";
+        };
         class sniping{
             file = "\cgqc\functions\fnc_sniping.sqf";
             description = "All the new sniping thingys";
