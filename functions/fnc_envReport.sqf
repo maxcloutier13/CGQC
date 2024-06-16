@@ -233,8 +233,8 @@ if (_astro_dawn#0 != "polar") then {
 // Refresh
 //_lighting = _lighting + "<br/><br/><execute expression='call CGQC_fnc_envReport'>Refresh</execute>";
 
-_lighting = _lighting + format["<br/><br/>Temperature <font color='#ffc600'>%1°C</font>", floor _airTemp];
-_lighting = _lighting + format["<br/>Humidity <font color='#ffc600'>%1 percent</font>", _airHumid];
+_lighting = _lighting + format["<br/><br/>Temperature: <font color='#ffc600'>%1°C</font>", floor _airTemp];
+_lighting = _lighting + format["<br/>Humidity: <font color='#ffc600'>%1 percent</font>", _airHumid];
 _lighting = _lighting + format["<br/>Wind is <font color='#ffc600'>%1%m/s</font> coming from the <font color='#ffc600'>%2</font>", _windSpeed, _direction];
 _lighting = _lighting + format["<br/><br/>The moonphase is <font color='#ffc600'>%1</font> and the moonlight is <font color='#ffc600'>%2</font>", _moonPhaseStr, _moonItensityStr];
 
