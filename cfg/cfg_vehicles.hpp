@@ -385,7 +385,7 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     };
 	class EventHandlers
     {
-    	init = "[_this] call CGQC_fnc_loadoutConstructionVic;if (isServer) then {[_this select 0, 'car'] call CGQC_fnc_addSpares}";
+    	init = "if (isServer) then {[_this] call CGQC_fnc_loadoutConstructionVic;[_this select 0, 'car'] call CGQC_fnc_addSpares}";
     };
 };
 
