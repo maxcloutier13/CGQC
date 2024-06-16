@@ -126,7 +126,7 @@ class cgqc_box_mk1_supplies : Box_NATO_Wps_F
     };
     class EventHandlers
     {
-        init = "[_this, 'squad'] call CGQC_fnc_loadSupplyBox";
+        init = "[_this, 'squad'] spawn CGQC_fnc_loadSupplyBox";
     };
     ace_cargo_size = 1;  // Cargo space the object takes
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
@@ -152,7 +152,7 @@ class cgqc_box_mk1_supplies_team : Box_NATO_Wps_F
     };
     class EventHandlers
     {
-        init = "[_this, 'team'] call CGQC_fnc_loadSupplyBox";
+        init = "[_this, 'team'] spawn CGQC_fnc_loadSupplyBox";
     };
     ace_cargo_size = 1;  // Cargo space the object takes
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
@@ -179,7 +179,7 @@ class cgqc_box_mk1_explosives : Box_NATO_AmmoOrd_F
     };*/
     class EventHandlers
     {
-        init = "[_this, 'explosives'] call CGQC_fnc_loadSupplyBox";
+        init = "[_this, 'explosives'] spawn CGQC_fnc_loadSupplyBox";
     };
     ace_cargo_size = 1;  // Cargo space the object takes
     ace_cargo_canLoad = 1;  // Enables the object to be loaded (1-yes, 0-no)
