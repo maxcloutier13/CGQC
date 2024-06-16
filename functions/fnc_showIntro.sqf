@@ -161,12 +161,19 @@ if (cgqc_config_showIntro) then {
 		case 2: { //Establishing shot
 			LOG("[showIntro] 3: Establishing shot");
 			1 fadeSound 1;
-			0 fadeEnvironment 1;
+			1 fadeEnvironment 1;
+			0 fadeMusic 0;
+			playMusic ["LeadTrack01_F_Jets", 2];
+			5 fadeMusic 1;
 			ace_hearing_disableVolumeUpdate = true;
 			titleCut ["", "BLACK IN", 1];
 			if (isNil "cgqc_establishing_text") then {cgqc_establishing_text = "";};
 			cgqc_establishing = [player, cgqc_establishing_text, 50, 100, 110, 1, [], 0, true] spawn BIS_fnc_establishingShot;
 			waitUntil { scriptDone cgqc_establishing };
+			5 fadeMusic 0;
+			sleep 5;
+			playMusic "";
+			0 fadeMusic 1;
 			cgqc_intro_running = false;
 		};
 		default {
@@ -190,6 +197,12 @@ if (cgqc_config_showIntro) then {
 	cgqc_intro_done = true;
 	cgqc_intro_running = false;
 };
+
+// Restore sound stuff in case
+sleep 10;
+1 fadeSound 1;
+1 fadeEnvironment 1;
+ace_hearing_disableVolumeUpdate = false;
 
 enableSaving [false, false];
 LOG("[showIntro] done");
