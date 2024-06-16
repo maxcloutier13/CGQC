@@ -32,7 +32,7 @@ if (hasInterface) then {
 			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 		};
 		default	{ // Normal mk3 Arsenal
-			if (cgqc_flag_isTraining) then {
+			if (cgqc_flag_isTraining && cgqc_training_spawnpoints) then {
 				LOG("[loadMk3Menu] - training mode: adding respawn point");
 				// Respawn point in front of Arsenal
 				cgqc_mk2_arsenal_ctr = cgqc_mk2_arsenal_ctr + 1;
