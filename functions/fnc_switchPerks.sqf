@@ -136,6 +136,9 @@ switch (_type) do {
 		LOG("[switchPerks] Infantry setup");
 	};
 	case "zeus":{
+		if !([player] call CGQC_fnc_checkZeus) then {
+			["zeus"] spawn CGQC_fnc_perksZeus;
+		};
 		LOG("[switchPerks] Zeus setup");
 	};
 	case "max":{

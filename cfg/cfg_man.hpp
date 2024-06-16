@@ -545,7 +545,6 @@ class CAManBase: Man {
 					name = "Heli Crew";
 					value = "heli_crew";
 				};
-
 				class jet {
 					name = "Jet Pilot";
 					value = "jet";
@@ -566,8 +565,6 @@ class CAManBase: Man {
 					name = "Engineer";
 					value = "eng";
 				};
-
-
 				class med {
 					name = "Squad Medic";
 					value = "med";
