@@ -508,8 +508,11 @@ cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Someth
 
 // Option toggles ===================================================================================================
 // Training
-["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"],
+["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Unlock tout les objets et setup radio spécifique"],
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
+// Training respawn points
+["cgqc_training_spawnpoints", "CHECKBOX", ["Spawnpoint on Arsenals", "Auto-create spawnpoints on mk3 arsenals"],
+    [_menu_name, "Option Toggles"], false, 1, {publicVariable "cgqc_flag_backpackNotif"}] call CBA_fnc_addSetting;
 // Map Sharing
 ["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"],
    [_menu_name, "Option Toggles"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
