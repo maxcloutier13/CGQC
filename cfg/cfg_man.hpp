@@ -515,5 +515,86 @@ class CAManBase: Man {
 				};
 			};
 		};
+		class perks {
+			displayName = "Perks";
+			tooltip = "Add perks on init";
+			property = "cgqc_var_startingPerks";
+			control = "combo";
+			defaultValue = "MAIN";
+			expression = "_this setVariable ['cgqc_var_startingPerks',_value, true];";
+			condition = "objectBrain";
+			typeName = "STRING";
+			class Values {
+				class hq {
+					name = "HQ";
+					value = "hq";
+				};
+				class sl {
+					name = "SquadLeader";
+					value = "sl";
+				};
+				class tl {
+					name = "TeamLeader";
+					value = "tl";
+				};
+				class heli {
+					name = "Heli Pilot";
+					value = "heli";
+				};
+				class heli_crew {
+					name = "Heli Crew";
+					value = "heli_crew";
+				};
+
+				class jet {
+					name = "Jet Pilot";
+					value = "jet";
+				};
+				class driver {
+					name = "Tank Driver";
+					value = "driver";
+				};
+				class tank_crew {
+					name = "Tank Crew";
+					value = "tank_crew";
+				};
+				class recon {
+					name = "Recon";
+					value = "recon";
+				};
+				class eng {
+					name = "Engineer";
+					value = "eng";
+				};
+
+
+				class med {
+					name = "Squad Medic";
+					value = "med";
+				};
+				class lifesaver {
+					name = "Combat Lifesaver";
+					value = "livesaver";
+				};
+				class at {
+					name = "Anti-Tank";
+					value = "at";
+				};
+				class mg {
+					name = "Machine-Gunner";
+					value = "mg";
+				};
+				class mortar {
+					name = "Mortar";
+					value = "mortar";
+				};class inf {
+					name = "Infantry";
+					value = "inf";
+				};class zeus {
+					name = "Zeus";
+					value = "zeus";
+				};
+			};
+		};
 	};
 };

@@ -445,6 +445,12 @@ _checkColor = player getVariable ["cgqc_var_startingColorTeam", "MAIN"];
 if (_checkColor isNotEqualTo "MAIN" && _checkColor isNotEqualTo "") then {
 	[_checkColor] call CGQC_fnc_setTeamColor;
 };
+
+_checkPerks = player getVariable ['cgqc_var_startingPerks', ""];
+if (_checkPerks isNotEqualTo "") then {
+	[_checkPerks, true, true] spawn CGQC_fnc_switchPerks;
+};
+
 // set back custom patch
 [] call CGQC_fnc_setPatch;
 
