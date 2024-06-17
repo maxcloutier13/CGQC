@@ -138,6 +138,8 @@ case "416_dot":{
     _target addPrimaryWeaponItem "rhsusf_acc_grip2_tan";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
+
+// Blackout
 case "mcx_t2":{
     ["Tier1_SIG_MCX_115_Virtus_300BLK_FDE", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo_DE";
@@ -389,34 +391,34 @@ case "scar_dmr":{
 
 // MG =================================================================
 case "m27": {
-    ["rhs_weap_m27iar_grip2", "rco"] call CGQC_fnc_getCustomGun;
+    ["rhs_weap_m27iar_grip2", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
     _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "rhs_mag_100Rnd_556x45_Mk262_cmag";
     _target addPrimaryWeaponItem "bipod_01_F_blk";
 };
 case "mk46":{
-    ["cgqc_gun_mk1_mk46", "rco"] call CGQC_fnc_getCustomGun;
+    ["cgqc_gun_mk1_mk46", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
     _target addPrimaryWeaponItem "Tier1_Mk46Mod1_LA5_M600V_Black";
     _target addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote";
     _target addPrimaryWeaponItem "Tier1_SAW_Bipod_DD";
 };
 case "minimi":{
-    ["lmg_03_F", "rco"] call CGQC_fnc_getCustomGun;
+    ["lmg_03_F", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "muzzle_snds_M";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote";
 };
 case "stoner":{
-    ["LMG_Mk200_black_F", "rco"] call CGQC_fnc_getCustomGun;
+    ["LMG_Mk200_black_F", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "muzzle_snds_65_TI_blk_F";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black_FL";
     _target addPrimaryWeaponItem "200Rnd_65x39_cased_Box_Tracer";
     _target addPrimaryWeaponItem "HLC_bipod_UTGShooters";
 };
 case "m249":{
-    ["Tier1_M249_light_S_Desert", "rco"] call CGQC_fnc_getCustomGun;
+    ["Tier1_M249_light_S_Desert", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Tan";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C";
     _target addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote";
