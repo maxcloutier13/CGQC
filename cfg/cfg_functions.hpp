@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class onHit{
+            file = "\cgqc\functions\fnc_onHit.sqf";
+            description = "Target is hit";
+        };
         class envReport{
             file = "\cgqc\functions\fnc_envReport.sqf";
             description = "Create environment report";
