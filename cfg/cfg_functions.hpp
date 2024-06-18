@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class configExtractor{
+            file = "\cgqc\functions\fnc_configExtractor.sqf";
+            description = "Exports specific config to clipboard";
+        };
         class onHit{
             file = "\cgqc\functions\fnc_onHit.sqf";
             description = "Target is hit";
