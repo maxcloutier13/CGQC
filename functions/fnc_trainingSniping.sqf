@@ -26,6 +26,7 @@ switch (_type) do {
 
 		TrainingCourse_ShotsFired = 0;
 		TrainingCourse_TargetsHit = 0;
+		TrainingCourse_TotalTargetScore = 0;
 		TrainingCourse_AverageDistance = 0;
 		TrainingCourse_AverageTargetScore = 0;
 		TrainingCourse_AverageImpactDeviation = 0;
@@ -49,6 +50,7 @@ switch (_type) do {
 		TrainingCourse_BulletCameraAbort = false;
 		TrainingCourse_ShotsFired = 0;
 		TrainingCourse_TargetsHit = 0;
+		TrainingCourse_TotalTargetScore = 0;
 		TrainingCourse_AverageDistance = 0;
 		TrainingCourse_AverageTargetScore = 0;
 		TrainingCourse_AverageImpactDeviation = 0;
