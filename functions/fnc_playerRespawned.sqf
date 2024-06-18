@@ -5,7 +5,7 @@ params ["_unit", "_corpse"];
 LOG_2("[playerRespawned] %1/%2 started", _unit, _corpse);
 
 // Restore controls in case player got killed during a bad moment
-disableUserInput false;
+if (userInputDisabled) then {disableUserInput false;};
 
 // Save stuff for player respawn
 // Corpse position
