@@ -522,7 +522,7 @@ _action = [ "zeus_visible", "Invisible->Off", "", {["visible", 0, ""] spawn CGQC
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Get Zeus radios
-_action = [ "zeus_visible", "Get Zeus Radios", "", {[] call CGQC_int_setZeusRadios;}, {!player getVariable ["cgqc_zeus_radios_set", false]} ] call ace_interact_menu_fnc_createAction;
+_action = [ "zeus_visible", "Get Zeus Radios", "", {[] call CGQC_int_setZeusRadios}, {!(player getVariable ["cgqc_zeus_radios_set", false])} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 
