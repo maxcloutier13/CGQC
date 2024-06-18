@@ -872,6 +872,7 @@ _section = "BFT - Blue Force Tracking";
 ["cgqc_bft_scale", "SLIDER",["BFT Icon scaling", "Smaller equals... smaller ;o)"],
     [_menu_name_player,_section], [0, 2, 1, 0, true], 0, {cgqc_bft_forceUpdate = true}, false] call CBA_fnc_addSetting;
 
+// Default gun
 _default_sideArm_text = "";
 _default_sideArm = "";
 _default_sideArm_mag = "";
@@ -910,6 +911,10 @@ if (cgqc_player_has2023) then {
 	[_menu_name_player, _default_sideArm_text], _default_sideArm_optic] call CBA_fnc_addSetting;
 ["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
 	[_menu_name_player, _default_sideArm_text], [2, 8, 2, 0]] call CBA_fnc_addSetting;
+
+["cgqc_config_cigs", "CHECKBOX", ["Fumeur?", "Rajoute des topes à votre loadout"],
+	[_menu_name_player, "Smoking"], false] call CBA_fnc_addSetting;
+
 // === Custom arsenal categories ===============================================================================
 private _medical = [
 	"ACE_fieldDressing",
