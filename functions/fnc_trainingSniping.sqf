@@ -12,14 +12,14 @@ switch (_type) do {
 		{
 			_x removeAllEventHandlers "HitPart";
 			deleteVehicle _x
-		} forEach TrainingCourse_TargetList;
+		} forEach cgqc_training_targetList;
 		// Remove all dead Bodies
 		{
 			deleteVehicle _x
 		} forEach allDead;
 		deleteVehicle Projectile_Impact_Aux;
 
-		TrainingCourse_TargetList = [];
+		cgqc_training_targetList = [];
 		TrainingCourse_BulletPathTracing = false;
 		TrainingCourse_BulletCamera = false;
 		TrainingCourse_BulletCameraAbort = false;
@@ -44,7 +44,7 @@ switch (_type) do {
 			!isNull player
 		};
 		cgqc_training_sniping = true;
-		TrainingCourse_TargetList = [];
+		cgqc_training_targetList = [];
 		TrainingCourse_BulletPathTracing = false;
 		TrainingCourse_BulletCamera = false;
 		TrainingCourse_BulletCameraAbort = false;

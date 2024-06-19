@@ -19,6 +19,10 @@ cgqc_start_postInitClient_done = false;
 cgqc_start_postInitServer_done = false;
 cgqc_start_2023_preInit_done = false;
 
+// *** Stats  **********************
+cgqc_stats_civilianCasualties = 0;
+
+
 // Intro/Welcome stuff
 cgqc_intro_running = false;
 cgqc_intro_running = false;
@@ -251,6 +255,9 @@ cgqc_training_koth_towers_count = 1;
 cgqc_training_koth_towers = [];
 cgqc_training_koth_difficulty = 1;
 cgqc_training_koth_list = [];
+
+// Shooting range
+cgqc_training_targetList = [];
 
 // CQB house training stuff
 cgqc_cqb_list = [];

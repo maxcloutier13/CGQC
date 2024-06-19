@@ -38,7 +38,7 @@ switch (_type) do {
         {
             _x removeAllEventHandlers "HitPart";
             deleteVehicle _x
-        } forEach TrainingCourse_TargetList;
+        } forEach cgqc_training_targetList;
         //Move impact point to nether
         Projectile_Impact_Aux setPos [0, 0, 0];
         [["Targets removed"], false] call CBA_fnc_notify;
