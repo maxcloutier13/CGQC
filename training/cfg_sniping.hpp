@@ -37,6 +37,7 @@ _action = [ "menu_sniping_targets", "Wind", "", {["Wind_Target", false, cgqc_sni
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_sniping_targets", "Popup", "", {["TargetP_Inf2_Acc2_F", false, cgqc_sniping_movingTarget, cgqc_sniping_distanceMode] spawn CGQC_fnc_createTarget}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Soldiers and vehicles
 _action = [ "menu_sniping_targets", "** Soldat", "", {["O_G_Soldier_F", false, cgqc_sniping_movingTarget, cgqc_sniping_distanceMode] spawn CGQC_fnc_createSoldier}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -55,7 +56,7 @@ _action = [ "menu_sniping_distance", "Distance mode", "", {""}, {true} ] call ac
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_sniping_targets", "On cursor (Default)", "", {cgqc_sniping_distanceMode = 0}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets", "menu_sniping_distance"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_sniping_targets", "Every 100m", "", {cgqc_sniping_distanceMode = 1}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_sniping_targets", "25/50/100m+", "", {cgqc_sniping_distanceMode = 1}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets", "menu_sniping_distance"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "menu_sniping_targets", "100m", "", {cgqc_sniping_distanceMode = 100}, {true} ] call ace_interact_menu_fnc_createAction;

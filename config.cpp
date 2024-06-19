@@ -49,6 +49,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Men (2023)";
 	};
+	class EdSubcat_CGQC_pmc_t
+	{
+		displayName = "Men (PMC-T)";
+	};
 	class EdSubcat_CGQC_mk4
 	{
 		displayName = "Men (2024)";
@@ -79,7 +83,11 @@ class CfgEditorSubcategories
 	};
 	class EdSubcat_CGQC_vic_ifv
 	{
-		displayName = "Vehicles (IFV)";
+		displayName = "Vehicles (IFV Tracked)";
+	};
+	class EdSubcat_CGQC_vic_ifv_w
+	{
+		displayName = "Vehicles (IFV Wheeled)";
 	};
 	class EdSubcat_CGQC_vic_mbt
 	{

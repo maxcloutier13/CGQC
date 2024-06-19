@@ -186,15 +186,15 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_inspect"
 
 
 // Signals =========================================================================================================
-_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {""}, {cgqc_perks_chems > 0 && cgqc_config_signals} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_signals", "Signals", "CGQC\textures\cgqc_ace_chems", {""}, {cgqc_config_signals && cgqc_perks_chems > 0  } ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Criquet
 _action = ["menu_self_criquet", "Criquet", "CGQC\textures\cgqc_ace_cricket", {["click", false] spawn CGQC_fnc_perksBasic;}, {true}] call ace_interact_menu_fnc_createAction;
 _adding = [player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action] call ace_interact_menu_fnc_addActionToObject;
 // Smokes
-_action = [ "menu_self_smoke_blue", "Smoke: Blue", "", {["throw", "SmokeShellBlue"] call CGQC_fnc_dropChem}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_smoke_blue", "Smoke: Blue", "", {["throw", "SmokeShellBlue"] call CGQC_fnc_dropChem}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_self_smoke_red", "Smoke: Red", "", {["throw", "SmokeShellRed"] call CGQC_fnc_dropChem}, {cgqc_player_isModern} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_self_smoke_red", "Smoke: Red", "", {["throw", "SmokeShellRed"] call CGQC_fnc_dropChem}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_smoke_purple", "Smoke: Purple", "", {["throw", "SmokeShellPurple"] call CGQC_fnc_dropChem}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"], _action ] call  ace_interact_menu_fnc_addActionToObject;
@@ -520,6 +520,10 @@ _action = [ "zeus_invisible", "Turn Invisible", "", {["ghost", 0, ""] spawn CGQC
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "zeus_visible", "Invisible->Off", "", {["visible", 0, ""] spawn CGQC_fnc_perksZeus}, {cgqc_zeus_ghost} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Get Zeus radios
+_action = [ "zeus_visible", "Get Zeus Radios", "", {[] call CGQC_int_setZeusRadios}, {!(player getVariable ["cgqc_zeus_radios_set", false])} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 
 // Other actions ================================================================================

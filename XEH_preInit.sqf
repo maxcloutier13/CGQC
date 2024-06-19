@@ -19,6 +19,10 @@ cgqc_start_postInitClient_done = false;
 cgqc_start_postInitServer_done = false;
 cgqc_start_2023_preInit_done = false;
 
+// *** Stats  **********************
+cgqc_stats_civilianCasualties = 0;
+
+
 // Intro/Welcome stuff
 cgqc_intro_running = false;
 cgqc_intro_running = false;
@@ -252,6 +256,9 @@ cgqc_training_koth_towers = [];
 cgqc_training_koth_difficulty = 1;
 cgqc_training_koth_list = [];
 
+// Shooting range
+cgqc_training_targetList = [];
+
 // CQB house training stuff
 cgqc_cqb_list = [];
 cgqc_cqb_list_moving = [];
@@ -396,13 +403,6 @@ if (cgqc_player_hasUnsung) then {
 	[player, player, currentWeapon player] call ace_overheating_fnc_checkTemperature}, {""}, [DIK_R, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
-//Wind changer event
-["cgqc_change_fucking_wind", {
-	params ["_type"];
-	hint format ["Event wind: %1", _type];
-	[_type] call CGQC_fnc_training;
-}] call CBA_fnc_addEventHandler;
-
 // Init loading event
 CGQC_playerLoaded = false;
 addMissionEventHandler ["PreloadFinished",
@@ -508,8 +508,11 @@ cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Someth
 
 // Option toggles ===================================================================================================
 // Training
-["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Utilise un setup simplifié de radios pour la map de training"],
+["cgqc_flag_isTraining", "CHECKBOX", ["Training setup?", "Unlock tout les objets et setup radio spécifique"],
     [_menu_name, "Option Toggles"], false] call CBA_fnc_addSetting;
+// Training respawn points
+["cgqc_training_spawnpoints", "CHECKBOX", ["Spawnpoint on Arsenals", "Auto-create spawnpoints on mk3 arsenals"],
+    [_menu_name, "Option Toggles"], false, 1, {publicVariable "cgqc_flag_backpackNotif"}] call CBA_fnc_addSetting;
 // Map Sharing
 ["cgqc_zeus_mapRestricted", "CHECKBOX",["Restrict map sharing", "Empêche les markeurs magiques"],
    [_menu_name, "Option Toggles"], false, 1, {jib_restrictmarkers_enabled = cgqc_zeus_mapRestricted;publicVariable "jib_restrictmarkers_enabled";}, false] call CBA_fnc_addSetting;
@@ -876,6 +879,7 @@ _section = "BFT - Blue Force Tracking";
 ["cgqc_bft_scale", "SLIDER",["BFT Icon scaling", "Smaller equals... smaller ;o)"],
     [_menu_name_player,_section], [0, 2, 1, 0, true], 0, {cgqc_bft_forceUpdate = true}, false] call CBA_fnc_addSetting;
 
+// Default gun
 _default_sideArm_text = "";
 _default_sideArm = "";
 _default_sideArm_mag = "";
@@ -914,6 +918,10 @@ if (cgqc_player_has2023) then {
 	[_menu_name_player, _default_sideArm_text], _default_sideArm_optic] call CBA_fnc_addSetting;
 ["cgqc_config_sidearm_mag_nbr","SLIDER", ["Nbr de Magazine", "Nombre de chargeurs de pistol"],
 	[_menu_name_player, _default_sideArm_text], [2, 8, 2, 0]] call CBA_fnc_addSetting;
+
+["cgqc_config_cigs", "CHECKBOX", ["Fumeur?", "Rajoute des topes à votre loadout"],
+	[_menu_name_player, "Smoking"], false] call CBA_fnc_addSetting;
+
 // === Custom arsenal categories ===============================================================================
 private _medical = [
 	"ACE_fieldDressing",

@@ -94,5 +94,9 @@ if !(_type isEqualTo "Unknown") then {
 } else {
     LOG("[switchRole] - Role unknown - Skipping");
 };
+if (cgqc_config_cigs) then {
+    if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_lighter";};
+	if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_cigpack";};
+};
 cgqc_roleSwitch_done = true;
 LOG("[switchRole] done");

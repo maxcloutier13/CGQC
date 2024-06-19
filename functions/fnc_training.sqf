@@ -40,30 +40,38 @@ switch (_type) do {
 				hint "skiptime problem";
 			};
 		};
-		titleText [y_timeText, "BLACK IN",7];
+
 
 	};
+
 	case "sunrise":{
 		_sun = date call BIS_fnc_sunriseSunsetTime;
-		_sunrise = _sun select 0;
-		_sunset = _sun select 1;
-		_year = date select 0;
-		_month = date select 1;
-		_day = date select 2;
-		_hour = date select 3;
-		_min= date select 4;
+		time_sunrise = _sun select 0;
+		time_sunset = _sun select 1;
+		time_year = date select 0;
+		time_month = date select 1;
+		time_day = date select 2;
+		time_hour = date select 3;
+		time_min= date select 4;
 		switch (_option) do {
 			case 0: {
-				[0,{setDate [_year, _month, _day, _sunrise, 0]}] call CBA_fnc_globalExecute;
-				_text = "Aaah... sunrise...";
+				[0,{setDate [time_year, time_month, time_day, time_sunrise, 0]}] call CBA_fnc_globalExecute;
+				time_text = "Aaah... sunrise...";
 			};
 			case 1: {
-				[0,{setDate [_year, _month, _day, _sunset, 0]}] call CBA_fnc_globalExecute;
+				[0,{setDate [time_year, time_month, time_day, time_sunset, 0]}] call CBA_fnc_globalExecute;
 				_text = "Aaah... sunset...";
 			};
 		};
-		titleText [_text, "BLACK IN",7];
 
+	};
+	case "midnight":{
+		time_year = date select 0;
+		time_month = date select 1;
+		time_day = date select 2;
+		time_hour = date select 3;
+		[0,{setDate [time_year, time_month, time_day, 0, 0]}] call CBA_fnc_globalExecute;
+		time_text = "Midnight Bliss";
 	};
 	case "nice":{
 		[0,{ 0 setOvercast 0}] call CBA_fnc_globalExecute;
@@ -85,39 +93,46 @@ switch (_type) do {
 		[0,{ forceWeatherChange}] call CBA_fnc_globalExecute;
 		hint "Random weather";
 	};
-	case "wind_low": {
-		w_east = floor random [0,2,4];
-		w_north = floor random [0,2,4];
-		_change_wind = true;
-		hint "Low wind.";
+	/*
+	if (_windSpeed > 0.3) then { _windColor = [0.796, 1, 1, 1]; _beaufortNumber = 1; };
+    if (_windSpeed > 1.5) then { _windColor = [0.596, 0.996, 0.796, 1]; _beaufortNumber = 2; };
+    if (_windSpeed > 3.3) then { _windColor = [0.596, 0.996, 0.596, 1]; _beaufortNumber = 3; };
+    if (_windSpeed > 5.4) then { _windColor = [0.6, 0.996, 0.4, 1]; _beaufortNumber = 4; };
+    if (_windSpeed > 7.9) then { _windColor = [0.6, 0.996, 0.047, 1]; _beaufortNumber = 5; };
+    if (_windSpeed > 10.7) then { _windColor = [0.8, 0.996, 0.059, 1]; _beaufortNumber = 6; };
+    if (_windSpeed > 13.8) then { _windColor = [1, 0.996, 0.067, 1]; _beaufortNumber = 7; };
+    if (_windSpeed > 17.1) then { _windColor = [1, 0.796, 0.051, 1]; _beaufortNumber = 8; };
+    if (_windSpeed > 20.7) then { _windColor = [1, 0.596, 0.039, 1]; _beaufortNumber = 9; };
+    if (_windSpeed > 24.4) then { _windColor = [1, 0.404, 0.031, 1]; _beaufortNumber = 10; };
+    if (_windSpeed > 28.4) then { _windColor = [1, 0.22, 0.027, 1]; _beaufortNumber = 11; };
+    if (_windSpeed > 32.6) then { _windColor = [1, 0.078, 0.027, 1]; _beaufortNumber = 12; };
+	*/
 
+	case "wind_low": {
+		_change_wind = true;
+		y_timeText = "Low wind.";
+		ace_weather_next_wind_speed = floor random 5;
 	};
 	case "wind_med": {
-		w_east = floor random [5,7.5,10];
-		w_north = floor random [5,7.5,10];
 		_change_wind = true;
-		hint "Medium wind.";
-
+		y_timeText = "Medium wind.";
+		ace_weather_next_wind_speed = floor (random 4 + 5);
 	};
 	case "wind_hi": {
-		w_east = floor random [10,15,20];
-		w_north = floor random [10,15,20];
 		_change_wind = true;
-		hint "High wind.";
-
+		y_timeText = "High wind.";
+		ace_weather_next_wind_speed = floor (random 6 + 8);
 	};
 	case "wind_random": {
-		w_east = floor (random [0,20,35]);
-		w_north = floor (random [0,20,35]);
 		_change_wind = true;
-		hint "Random wind.";
-
+		y_timeText = "Random wind.";
+		ace_weather_next_wind_speed = floor random 16;
 	};
 };
 if(_change_wind) then {
-	_e_side = selectRandom [-1,1];
-	_n_side = selectRandom [-1,1];
-	setWind [w_east * _e_side, w_north * _n_side, true];
+	[] call ace_weather_fnc_updateWind;
 	hint "Wind applied";
 };
+
+titleText [y_timeText, "BLACK IN",7];
 LOG(" training done");

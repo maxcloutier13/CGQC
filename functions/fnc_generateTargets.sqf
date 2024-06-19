@@ -32,7 +32,7 @@ for [{_i = 0}, {_i < _targetQuantity}, {_i = _i + 1}] do {
 	_target addEventHandler ["HitPart", {
 		(_this select 0) execVM "\cgqc\functions\fnc_on_hit.sqf"
 	}];
-	TrainingCourse_TargetList pushBack _target;
+	cgqc_training_targetList pushBack _target;
 	[["They are all around you!"], false] call CBA_fnc_notify;
 };
 

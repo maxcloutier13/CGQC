@@ -50,10 +50,18 @@ addMissionEventHandler ["HandleDisconnect", {
 		};
 		if (isServer) then {
 			LOG("[CGQC_Killed] On server ");
-			if (cgqc_lootingRestriction_on) then {
-				LOG("[CGQC_Killed] Loot restriction is ON ");
-				if !(isPlayer _unit) then {
-					LOG("[CGQC_Killed] === AI unit just died ");
+			if !(isPlayer _unit) then {
+				LOG("[CGQC_Killed] === AI unit just died ");
+				// Check if civilian
+				if (side _unit == civilian) then {
+					LOG("[CGQC_Killed]: Civilian Casualty!");
+					cgqc_stats_civilianCasualties = cgqc_stats_civilianCasualties + 1;
+					_txt = " ... killed a civilian!";
+					[player, _txt] remoteExec ["globalChat",0];
+				};
+
+				if (cgqc_lootingRestriction_on) then {
+					LOG("[CGQC_Killed] Loot restriction is ON ");
 					// Keep track of items
 					_handgun = handgunWeapon _unit;
 					_handgun_mag = handgunMagazine _unit select 0;
@@ -122,32 +130,32 @@ addMissionEventHandler ["HandleDisconnect", {
 						LOG("[CGQC_Killed] - Giving rare items");
 						[cgqc_looting_rare_items, cgqc_looting_rare_chance, cgqc_looting_rare_max, [_uniform, _vest, _pack]] call cgqc_int_addRandomItems;
 					};
-				} else {
-					//params ["_unit", "_killer", "_instigator", "_useEffects"];
-					LOG("[CGQC_Killed]: Player got killed!");
-					_killText = "";
-					_distance = _unit distance2D _killer;
-					_victimId = owner _unit;
-					_weapon = getText(configFile >> "CfgWeapons" >> currentWeapon (vehicle _Killer) >> "displayname");
-					LOG_2("[CGQC_Killed]: Killed: %1 - Killer : %2",_unit ,_Killer);
-					if (isPlayer _Killer) then {
-						_killerName = name _killer;
-						LOG("[CGQC_Killed]: Killed by a player!");
-						// Teamkill baybay
-						if (name _unit isEqualTo _killername) then {
-							LOG("[CGQC_Killed]: SelfKill? Damn.");
-							_killText = "You... killed yourself?";
-						} else {
-							 LOG("[CGQC_Killed]: TEAMKILL!!!");
-							_killText = format["You got TeamKilled by %1 from %2m with a %3", _killerName, floor _distance, _weapon];
-						};
-					} else {
-						LOG("[CGQC_Killed]: Killed by an AI!");
-						_killerName = format ["%1(%2)", name _killer, getText(configFile>>"CfgVehicles">>typeOf (vehicle _killer) >>"DisplayName")];
-						_killText = format["You got killed by %1 from %2 m with a %3", _killerName, floor _distance, _weapon];
-					};
-					[_killText] remoteExec ["hint", _victimId];
 				};
+			} else {
+				//params ["_unit", "_killer", "_instigator", "_useEffects"];
+				LOG("[CGQC_Killed]: Player got killed!");
+				_killText = "";
+				_distance = _unit distance2D _killer;
+				_victimId = owner _unit;
+				_weapon = getText(configFile >> "CfgWeapons" >> currentWeapon (vehicle _Killer) >> "displayname");
+				LOG_2("[CGQC_Killed]: Killed: %1 - Killer : %2",_unit ,_Killer);
+				if (isPlayer _Killer) then {
+					_killerName = name _killer;
+					LOG("[CGQC_Killed]: Killed by a player!");
+					// Teamkill baybay
+					if (name _unit isEqualTo _killername) then {
+						LOG("[CGQC_Killed]: SelfKill? Damn.");
+						_killText = "You... killed yourself?";
+					} else {
+							LOG("[CGQC_Killed]: TEAMKILL!!!");
+						_killText = format["You got TeamKilled by %1 from %2m with a %3", _killerName, floor _distance, _weapon];
+					};
+				} else {
+					LOG("[CGQC_Killed]: Killed by an AI!");
+					_killerName = format ["%1(%2)", name _killer, getText(configFile>>"CfgVehicles">>typeOf (vehicle _killer) >>"DisplayName")];
+					_killText = format["You got killed by %1 from %2 m with a %3", _killerName, floor _distance, _weapon];
+				};
+				[_killText] remoteExec ["hint", _victimId];
 			};
 		};
 	}];

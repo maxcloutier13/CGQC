@@ -12,6 +12,18 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class configExtractor{
+            file = "\cgqc\functions\fnc_configExtractor.sqf";
+            description = "Exports specific config to clipboard";
+        };
+        class onHit{
+            file = "\cgqc\functions\fnc_onHit.sqf";
+            description = "Target is hit";
+        };
+        class envReport{
+            file = "\cgqc\functions\fnc_envReport.sqf";
+            description = "Create environment report";
+        };
         class sniping{
             file = "\cgqc\functions\fnc_sniping.sqf";
             description = "All the new sniping thingys";

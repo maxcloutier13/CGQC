@@ -12,20 +12,21 @@ switch (_type) do {
 		{
 			_x removeAllEventHandlers "HitPart";
 			deleteVehicle _x
-		} forEach TrainingCourse_TargetList;
+		} forEach cgqc_training_targetList;
 		// Remove all dead Bodies
 		{
 			deleteVehicle _x
 		} forEach allDead;
 		deleteVehicle Projectile_Impact_Aux;
 
-		TrainingCourse_TargetList = [];
+		cgqc_training_targetList = [];
 		TrainingCourse_BulletPathTracing = false;
 		TrainingCourse_BulletCamera = false;
 		TrainingCourse_BulletCameraAbort = false;
 
 		TrainingCourse_ShotsFired = 0;
 		TrainingCourse_TargetsHit = 0;
+		TrainingCourse_TotalTargetScore = 0;
 		TrainingCourse_AverageDistance = 0;
 		TrainingCourse_AverageTargetScore = 0;
 		TrainingCourse_AverageImpactDeviation = 0;
@@ -43,12 +44,13 @@ switch (_type) do {
 			!isNull player
 		};
 		cgqc_training_sniping = true;
-		TrainingCourse_TargetList = [];
+		cgqc_training_targetList = [];
 		TrainingCourse_BulletPathTracing = false;
 		TrainingCourse_BulletCamera = false;
 		TrainingCourse_BulletCameraAbort = false;
 		TrainingCourse_ShotsFired = 0;
 		TrainingCourse_TargetsHit = 0;
+		TrainingCourse_TotalTargetScore = 0;
 		TrainingCourse_AverageDistance = 0;
 		TrainingCourse_AverageTargetScore = 0;
 		TrainingCourse_AverageImpactDeviation = 0;

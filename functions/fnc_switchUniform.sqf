@@ -215,7 +215,6 @@ player setVariable ["BIS_fnc_setUnitInsignia_class", nil]; //Remove patch
 [player] call ace_weaponselect_fnc_putWeaponAway;
 // Return control
 
-if (userInputDisabled) then {};
 // Done
 cgqc_camoSwitch_done = true;
 LOG("[switchUniform] done");

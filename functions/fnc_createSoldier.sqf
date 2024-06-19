@@ -42,7 +42,7 @@ removeAllWeapons _unit;
 _unit disableAI "PATH";
 _unit disableAI "AUTOCOMBAT";
 _group setBehaviour "SAFE";
-TrainingCourse_TargetList pushBack _unit;
+cgqc_training_targetList pushBack _unit;
 if (_targetPatrolling) then
 {
 	_unit enableAI "PATH";

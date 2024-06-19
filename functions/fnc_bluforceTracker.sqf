@@ -26,6 +26,9 @@ CGQC_int_bft_findInfo = {
         case "Armor": {_cgqc_player_bft_markerType = "b_armor";};
         case "Air": {_cgqc_player_bft_markerType = "c_air";};
     };
+    if (cgqc_flag_isTraining) then {
+        _cgqc_player_bft_name = name player;
+    };
 	_info = [_cgqc_player_bft_color, _cgqc_player_bft_name, _cgqc_player_bft_markerType];
 	_info;
 };
@@ -113,7 +116,7 @@ switch (_type) do {
                         if (!(_y isEqualType [])) then {
                             //LOG "BFT - Deleting marker";
                             deleteMarkerLocal _markerName;
-                                            // ["DElete marker", _markerName] call CBA_fnc_debug;
+                            // ["DElete marker", _markerName] call CBA_fnc_debug;
                             AZMBFT_localMarkerList deleteAt _x;
                         } else {
                             //LOG ("BFT - Updating marker");
@@ -122,13 +125,15 @@ switch (_type) do {
                                 //LOG ("BFT - Receive check passed");
                                 if ((getMarkercolor _markerName) isEqualTo "") then {
                                     // Adjust name to  setttings
-                                    switch (cgqc_bft_initials) do {
-                                        case 1: {
-                                            _textPrefix = _text select [0,1];
-                                            _textSuffix = _text select [count _text - 1];
-                                            _text = format ["%1%2", _textPrefix, _textSuffix];
-                                        }; // Short
-                                        case 2: {_text = ""; }; // No name
+                                    if !(cgqc_flag_isTraining) then {
+                                        switch (cgqc_bft_initials) do {
+                                            case 1: {
+                                                _textPrefix = _text select [0,1];
+                                                _textSuffix = _text select [count _text - 1];
+                                                _text = format ["%1%2", _textPrefix, _textSuffix];
+                                            }; // Short
+                                            case 2: {_text = ""; }; // No name
+                                        };
                                     };
                                     // Adjust name to  setttings
                                     //LOG ("BFT - Something changed: Reloading marker");

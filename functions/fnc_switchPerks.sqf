@@ -1,6 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- switchPerks ----------------------------------------------------------
 // switch perks
+// ["eng", true, true] spawn CGQC_fnc_switchPerks;
 params ["_type", ["_clearFirst", true], ["_pause", false]];
 LOG_2("[switchPerks] %1/Clear:%2 started", _type, _clearFirst);
 
@@ -116,7 +117,7 @@ switch (_type) do {
 	case "lifesaver":{
 		LOG("[switchPerks] CombatLifesaver setup");
 		player setUnitTrait ["Medic", true];
-		player setUnitTrait ["loadCoef", 0.8];
+		player setUnitTrait ["loadCoef", 0.9];
 		cgqc_perks_medic = true;
 	};
 	case "at":{
@@ -135,6 +136,9 @@ switch (_type) do {
 		LOG("[switchPerks] Infantry setup");
 	};
 	case "zeus":{
+		if !([player] call CGQC_fnc_checkZeus) then {
+			["zeus"] spawn CGQC_fnc_perksZeus;
+		};
 		LOG("[switchPerks] Zeus setup");
 	};
 	case "max":{

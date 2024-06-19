@@ -3,16 +3,9 @@
 // Post group info in default briefing
 LOG("[loadDiary] started");
 
-player createDiarySubject ["CGQC","CGQC"];
+waitUntil {CGQC_playerLoaded};
 
-_text = (
-	"Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = false;'>NORMAL</execute> to keep default map behavior"
-	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = false;cgqc_map_centerOnLast = true;'>LAST</execute> to keep map centered on last position"
-	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = true;cgqc_map_centerOnLast = false;'>PLAYER</execute> to keep map centered on player."
-);
-
-player createDiaryRecord ["CGQC", ["Map Options", _text]];
-
+player createDiarySubject ["CGQC","CGQC Info"];
 // CGQC Links
 _text = (
 	"<font size='22' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
@@ -21,18 +14,31 @@ _text = (
 );
 player createDiaryRecord ["CGQC", ["Group Info", _text]];
 
+
+player createDiarySubject ["MapOption","Map Options"];
+
+_text = (
+	"Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = false;'>NORMAL</execute> to keep default map behavior"
+	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = false;cgqc_map_centerOnLast = true;'>LAST</execute> to keep map centered on last position"
+	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = true;cgqc_map_centerOnLast = false;'>PLAYER</execute> to keep map centered on player."
+);
+
+player createDiaryRecord ["MapOption", ["Centering", _text]];
+
+player createDiarySubject ["RadioRef","Radio Frequencies"];
 _343_1 = "Spartan-1";
 _343_2 = "Spartan-2";
-_343_3 = "Spartan-3";
-_343_4 = "Spartan-4";
-_343_5 = "Typhon-1";
-_343_6 = "Typhon-2";
-_343_7 = "Typhon-3";
-_343_8 = "Typhon-4";
+_343_3 = "Typhon-1";
+_343_4 = "Typhon-2";
+_343_5 = "Libre";
+_343_6 = "Libre";
+_343_7 = "Libre";
+_343_8 = "Libre";
 _343_9 = "Recon";
 _343_10 = "Supports";
 _343_11 = "Libres";
-_343_16 = "HQ";
+_343_15 = "Typhon HQ";
+_343_16 = "Spartan HQ";
 _152_1 = "Spartan";
 _152_2 = "Supports";
 _152_3 = "Griffon";
@@ -45,12 +51,8 @@ switch (cgqc_player_side) do {
 	case EAST: {
 		_343_1 = "Viper-1";
 		_343_2 = "Viper-2";
-		_343_3 = "Viper-3";
-		_343_4 = "Viper-4";
-		_343_5 = "Mamba-1";
-		_343_6 = "Mamba-2";
-		_343_7 = "Mamba-3";
-		_343_8 = "Mamba-4";
+		_343_3 = "Mamba-1";
+		_343_4 = "Mamba-2";
 		_343_9 = "Recon";
 		_343_10 = "Supports";
 		_343_11 = "Libres";
@@ -65,12 +67,8 @@ switch (cgqc_player_side) do {
 	case INDEPENDENT: {
 		_343_1 = "Bandit-1";
 		_343_2 = "Bandit-2";
-		_343_3 = "Bandit-3";
-		_343_4 = "Bandit-4";
-		_343_5 = "Tango-1";
-		_343_6 = "Tango-2";
-		_343_7 = "Tango-3";
-		_343_8 = "Tango-4";
+		_343_3 = "Tango-1";
+		_343_4 = "Tango-2";
 		_343_9 = "Recon";
 		_343_10 = "Supports";
 		_343_11 = "Libres";
@@ -130,8 +128,9 @@ _text = (
 
 _cleantext = format [_text, _343_1,_343_2,_343_3,_343_4,_343_5,_343_6,_343_7,_343_8,_343_9,_343_10,_343_11,_343_16,_152_1,_152_2,_152_3,_152_4, _152_5,_152_6,_152_7,_152_8,_152_9,_152_69, _152_98, _152_99];
 
-//player createDiaryRecord ["CGQC", ["Référence Radios", _cleantext]];
+player createDiaryRecord ["RadioRef", ["Référence Radios", _cleantext]];
 
+[] call CGQC_fnc_envReport;
 
 
 // Training map
