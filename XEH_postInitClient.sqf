@@ -106,9 +106,6 @@ cgqc_player_groupID = groupId player;
 // Briefing entry -------------------------------------------------------------------------------------------------
 _brief = [] spawn CGQC_fnc_loadDiary;
 
-
-
-
 if (cgqc_player_loadAll) then {
 	// Init arsenal ---------------------------------------------------------------------------------------------------
 	if (cgqc_player_has2023) then {
