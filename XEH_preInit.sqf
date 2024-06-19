@@ -161,6 +161,7 @@ cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
+cgqc_perks_action_list = [];
 cgqc_reset_speaker = false;
 cgqc_backpack_stashed = false;
 cgqc_backpack_dropped = false;
@@ -1094,7 +1095,6 @@ if (cgqc_config_sideLanguage) then {
 	};
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
-
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
