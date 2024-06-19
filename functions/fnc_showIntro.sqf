@@ -168,10 +168,11 @@ if (cgqc_config_showIntro) then {
 			ace_hearing_disableVolumeUpdate = true;
 			titleCut ["", "BLACK IN", 1];
 			if (isNil "cgqc_establishing_text") then {cgqc_establishing_text = "";};
-			cgqc_establishing = [player, cgqc_establishing_text, 50, 100, 110, 1, [], 0, true] spawn BIS_fnc_establishingShot;
+			_angle = random 360;
+			cgqc_establishing = [player, cgqc_establishing_text, 50, 100, _angle, 1, [], 0, true] spawn BIS_fnc_establishingShot;
 			waitUntil { scriptDone cgqc_establishing };
 			5 fadeMusic 0;
-			sleep 5;
+			sleep 7;
 			playMusic "";
 			0 fadeMusic 1;
 			cgqc_intro_running = false;
