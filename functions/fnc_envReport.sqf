@@ -101,7 +101,7 @@ CGQC_int_getSpecificTime = {
     [_outStr, _t_time]
 };
 
-_name = "Dawn and Dusk";
+_name = "Environmental Conditions";
 _lighting = "";
 
 _astro_dawn = [-18, -1] call CGQC_int_getSpecificTime;
