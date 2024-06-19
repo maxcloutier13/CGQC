@@ -153,22 +153,28 @@ if (cgqc_player_loadAll) then {
 		[player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
 	}] call CBA_fnc_addEventHandler;
 
-	// Zeus radios
-	_curator = getAssignedCuratorLogic player;
-	if (!isNil "_curator") then {
-		// Zeus controlling unit event
-		[_curator, "curatorObjectRemoteControlled", {
-			params ["_curator", "_player", "_unit", "_isRemoteControlled"];
-			if (_isRemoteControlled) then {
-				// Check if unit has radios
-				if (cgqc_config_zeusRadios) then {
-					["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
-					hint "Zeus radios set";
+	// Event if the player activates zeus through ACE interaction
+	["ace_zeus_zeusCreated", {
+		LOG("[ace_zeus_zeusCreated] Player became Zeus trough ACE");
+		_curator = getAssignedCuratorLogic player;
+		if (!isNil "_curator") then {
+			LOG("[ace_zeus_zeusCreated] Adding Perks");
+			["zeus"] spawn CGQC_fnc_addPerksSpecial;
+			// Zeus controlling unit event
+			[_curator, "curatorObjectRemoteControlled", {
+				params ["_curator", "_player", "_unit", "_isRemoteControlled"];
+				if (_isRemoteControlled) then {
+					// Check if unit has radios
+					if (cgqc_config_zeusRadios) then {
+						LOG("[ace_zeus_zeusCreated] Adding Zeus radios");
+						["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
+						hint "Zeus radios set";
+					};
 				};
-			};
-			// _isRemoteControlled is true when entering remote control, false when exiting
-		}] call BIS_fnc_addScriptedEventHandler;
-	};
+				// _isRemoteControlled is true when entering remote control, false when exiting
+			}] call BIS_fnc_addScriptedEventHandler;
+		};
+	}] call CBA_fnc_addEventHandler;
 };
 
 
@@ -527,8 +533,29 @@ player addEventHandler ["Take", {
 }];
 
 // If zeus, setup radios
-if ([player] call CGQC_fnc_checkZeus && cgqc_config_zeusRadios) then {
-	[] call CGQC_int_setZeusRadios;
+if ([player] call CGQC_fnc_checkZeus) then {
+	LOG("[CGQC_postInitClient] Player starts as zeus");
+	LOG("[CGQC_postInitClient] Adding Zeus Perks");
+	["zeus", false] spawn CGQC_fnc_switchPerks;
+	// Zeus controlling unit event
+	[_curator, "curatorObjectRemoteControlled", {
+		params ["_curator", "_player", "_unit", "_isRemoteControlled"];
+		if (_isRemoteControlled) then {
+			LOG("[ZeusRemoteControl] Player controls new unit");
+			// Check if unit has radios
+			if (cgqc_config_zeusRadios) then {
+				LOG("[ZeusRemoteControl] Set Zeusradio to new unit");
+				["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
+				hint "Zeus radios set";
+			};
+		};
+		// _isRemoteControlled is true when entering remote control, false when exiting
+	}] call BIS_fnc_addScriptedEventHandler;
+
+	if (cgqc_config_zeusRadios) then {
+		LOG("[CGQC_PostInitClient] Player is Zeus-> Setting up Zeus Radios");
+		[] call CGQC_int_setZeusRadios;
+	};
 };
 
 // All done

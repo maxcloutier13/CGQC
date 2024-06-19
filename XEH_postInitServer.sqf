@@ -15,8 +15,8 @@ addMissionEventHandler ["HandleDisconnect", {
 ["CAManBase", "init",
 	{
 		(_this # 0) addMPEventHandler ["MPKilled", {
-			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			cgqc_kill_killed = _unit;
+			params ["_killed", "_killer", "_instigator", "_useEffects"];
+			cgqc_kill_killed = _killed;
 			cgqc_kill_killer = _killer;
 			cgqc_kill_instigator = _instigator;
 			cgqc_kill_useEffects = _useEffects;
@@ -50,28 +50,65 @@ addMissionEventHandler ["HandleDisconnect", {
 		};
 		if (isServer) then {
 			LOG("[CGQC_Killed] On server ");
-			if !(isPlayer _unit) then {
+			if !(isPlayer _killed) then {
 				LOG("[CGQC_Killed] === AI unit just died ");
-				// Check if civilian
-				if (side _unit == civilian) then {
-					LOG("[CGQC_Killed]: Civilian Casualty!");
-					cgqc_stats_civilianCasualties = cgqc_stats_civilianCasualties + 1;
-					_txt = " ... killed a civilian!";
-					[player, _txt] remoteExec ["globalChat",0];
+				// Avoid ACE bug where event is called twice
+				if (_killed getVariable ["cgqc_wasKilled",0] == 1) exitWith {};
+				_killed setVariable ["cgqc_wasKilled",1];
+
+				// Some more ACE workarounds
+				if ((isNull _killer) || {_killer == _killed}) then {
+					_killer = _killed getVariable ["ace_medical_lastDamageSource", objNull];
 				};
 
+				// Killed by vehicle?
+				if ((!isNull _killer) && {!(_killer isKindof "CAManBase")}) then {
+					_killer = effectiveCommander _killer;
+				};
+
+				// Check if civilian
+				_side = side (group _killed);
+				LOG_1("[CGQC_Killed] Dead Unit side: %1", _side);
+				if (isPlayer _killer) then {
+					if (_side isEqualTo civilian) then {
+						LOG("[CGQC_Killed]: Civilian Casualty!");
+						cgqc_stats_civilianCasualties = cgqc_stats_civilianCasualties + 1;
+						cgqc_stats_civilianKillers pushBackUnique (name _killer);
+						publicVariable "cgqc_stats_civilianCasualties";
+						publicVariable "cgqc_stats_civilianKillers";
+						_txt = " ... killed a civilian!";
+						[_killer, _txt] remoteExec ["globalChat",0];
+					} else {
+						_sideKiller = side (group _killer);
+						_sideKilled = side (group _killed);
+						LOG_2("[CGQC_Killed]: SideKiller:%1/SideKilled:%2", _sideKiller, _sideKilled);
+						if ((_sideKiller getFriend _sideKilled) > 0.6) then {
+							LOG("[CGQC_Killed]: Friendly Casualty!");
+							cgqc_stats_friendlyCasualties = cgqc_stats_friendlyCasualties + 1;
+							cgqc_stats_friendlyKillers pushBackUnique (name _killer);
+							publicVariable "cgqc_stats_friendlyCasualties";
+							publicVariable "cgqc_stats_friendlyKillers";
+							_txt = " ... killed a friendly!";
+							[_killer, _txt] remoteExec ["globalChat",0];
+						} else {
+							//Enemy down
+							cgqc_stats_enemyCasualties = cgqc_stats_enemyCasualties + 1;
+							publicVariable "cgqc_stats_enemyCasualties";
+						};
+					};
+				};
 				if (cgqc_lootingRestriction_on) then {
 					LOG("[CGQC_Killed] Loot restriction is ON ");
 					// Keep track of items
-					_handgun = handgunWeapon _unit;
-					_handgun_mag = handgunMagazine _unit select 0;
-					_gun = primaryWeapon _unit;
-					_gun_mag = primaryWeaponMagazine _unit select 0;
-					_launcher = secondaryWeapon _unit;
-					_launcher_mag = secondaryWeaponMagazine _unit select 0;
-					_uniform = uniformContainer _unit;
-					_vest = vestContainer _unit;
-					_pack = backpackContainer _unit;
+					_handgun = handgunWeapon _killed;
+					_handgun_mag = handgunMagazine _killed select 0;
+					_gun = primaryWeapon _killed;
+					_gun_mag = primaryWeaponMagazine _killed select 0;
+					_launcher = secondaryWeapon _killed;
+					_launcher_mag = secondaryWeaponMagazine _killed select 0;
+					_uniform = uniformContainer _killed;
+					_vest = vestContainer _killed;
+					_pack = backpackContainer _killed;
 					_uniform_throwables = magazineCargo _uniform select {
 						_x call BIS_fnc_isThrowable
 					};
@@ -83,12 +120,12 @@ addMissionEventHandler ["HandleDisconnect", {
 					};
 					_throwables = _uniform_throwables + _vest_throwables + _pack_throwables;
 					// Remove everything from corpse
-					removeAllItems _unit;
-					removeAllWeapons _unit;
+					removeAllItems _killed;
+					removeAllWeapons _killed;
 
 					if (!cgqc_looting_assigned) then {
 						LOG("[CGQC_Killed] - Removing assigned items");
-						removeAllAssignedItems _unit;
+						removeAllAssignedItems _killed;
 					};
 					if (cgqc_looting_throwable) then {
 						LOG("[CGQC_Killed] - Giving throwables");
@@ -100,22 +137,22 @@ addMissionEventHandler ["HandleDisconnect", {
 					if (cgqc_looting_handgun || _handgun isNotEqualTo "") then {
 						LOG("[CGQC_Killed] - Giving handgun and ammo");
 						_handgun_magCount = floor random cgqc_looting_handgun_amnt;
-						_unit addWeapon _handgun;
-						_unit addHandgunItem _handgun_mag;
+						_killed addWeapon _handgun;
+						_killed addHandgunItem _handgun_mag;
 						[[_vest, _pack, _uniform], _handgun_mag, _handgun_magCount] call cgqc_int_putIncontainer;
 					};
 					if (cgqc_looting_gun || _gun isNotEqualTo "") then {
 						LOG("[CGQC_Killed] - Giving gun and ammo");
 						_gun_magCount = floor random cgqc_looting_gun_amnt;
-						_unit addWeapon _gun;
-						_unit addPrimaryWeaponItem _gun_mag;
+						_killed addWeapon _gun;
+						_killed addPrimaryWeaponItem _gun_mag;
 						[[_vest, _pack, _uniform], _gun_mag, _gun_magCount] call cgqc_int_putIncontainer;
 					};
 					if (cgqc_looting_launcher || _launcher isNotEqualTo "") then {
 						LOG("[CGQC_Killed] - Giving Launcher and ammo");
 						_launcher_magCount = floor random cgqc_looting_launcher_amnt;
-						_unit addWeapon _launcher;
-						_unit addPrimaryWeaponItem _launcher_mag;
+						_killed addWeapon _launcher;
+						_killed addPrimaryWeaponItem _launcher_mag;
 						[[_pack, _vest, _uniform], _launcher_mag, _launcher_magCount] call cgqc_int_putIncontainer;
 					};
 					if (cgqc_looting_common) then {
@@ -132,23 +169,29 @@ addMissionEventHandler ["HandleDisconnect", {
 					};
 				};
 			} else {
-				//params ["_unit", "_killer", "_instigator", "_useEffects"];
+				//params ["_killed", "_killer", "_instigator", "_useEffects"];
 				LOG("[CGQC_Killed]: Player got killed!");
 				_killText = "";
-				_distance = _unit distance2D _killer;
-				_victimId = owner _unit;
-				_weapon = getText(configFile >> "CfgWeapons" >> currentWeapon (vehicle _Killer) >> "displayname");
-				LOG_2("[CGQC_Killed]: Killed: %1 - Killer : %2",_unit ,_Killer);
-				if (isPlayer _Killer) then {
+				_distance = _killed distance2D _killer;
+				_victimId = owner _killed;
+				_weapon = getText(configFile >> "CfgWeapons" >> currentWeapon (vehicle _killer) >> "displayname");
+				LOG_2("[CGQC_Killed]: Killed: %1 - Killer : %2",_killed ,_killer);
+				if (isPlayer _killer) then {
 					_killerName = name _killer;
 					LOG("[CGQC_Killed]: Killed by a player!");
 					// Teamkill baybay
-					if (name _unit isEqualTo _killername) then {
+					if (name _killed isEqualTo _killername) then {
 						LOG("[CGQC_Killed]: SelfKill? Damn.");
 						_killText = "You... killed yourself?";
 					} else {
-							LOG("[CGQC_Killed]: TEAMKILL!!!");
+						LOG("[CGQC_Killed]: TEAMKILL!!!");
 						_killText = format["You got TeamKilled by %1 from %2m with a %3", _killerName, floor _distance, _weapon];
+						cgqc_stats_teamCasualties = cgqc_stats_teamCasualties + 1;
+						cgqc_stats_teamKillers pushBackUnique (name _killer);
+						publicVariable "cgqc_stats_teamCasualties";
+						publicVariable "cgqc_stats_teamKillers";
+						_txt = " ... killed a teammate!";
+						[_killer, _txt] remoteExec ["globalChat",0];
 					};
 				} else {
 					LOG("[CGQC_Killed]: Killed by an AI!");

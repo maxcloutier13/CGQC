@@ -13,6 +13,7 @@ if (_clearFirst) then {
 	// set all traits to default
 	LOG("[switchPerks] Clear traits and perks");
 	[player] call CGQC_fnc_resetTraits;
+	["clear"] call CGQC_fnc_addPerksSpecial;
 	["reset"]call CGQC_fnc_setLeadership;
 };
 
@@ -39,6 +40,7 @@ switch (_type) do {
 	case "heli":{
 		LOG("[switchPerks] Heli setup");
 		player setUnitTrait ["engineer", true];
+		["heli"] call CGQC_fnc_addPerksSpecial;
 		cgqc_perks_pilot = true;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
@@ -54,6 +56,7 @@ switch (_type) do {
 	case "driver":{
 		LOG("[switchPerks] Tank driver setup");
 		player setUnitTrait ["engineer", true];
+		["driver"] call CGQC_fnc_addPerksSpecial;
 		cgqc_perks_driver = true;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};
@@ -67,6 +70,7 @@ switch (_type) do {
 		player setUnitTrait ["camouflageCoef", 0.9];
 		player setUnitTrait ["UAVHacker", true];
 		player setUnitTrait ["loadCoef", 0.8];
+		["recon"] call CGQC_fnc_addPerksSpecial;
 		cgqc_perks_recon = true;
 	};
 	case "eng":{
@@ -136,10 +140,11 @@ switch (_type) do {
 		LOG("[switchPerks] Infantry setup");
 	};
 	case "zeus":{
+		LOG("[switchPerks] Zeus setup");
 		if !([player] call CGQC_fnc_checkZeus) then {
 			["zeus"] spawn CGQC_fnc_perksZeus;
+			["zeus"] spawn CGQC_fnc_addPerksSpecial;
 		};
-		LOG("[switchPerks] Zeus setup");
 	};
 	case "max":{
 		LOG("[switchPerks] Max setup");

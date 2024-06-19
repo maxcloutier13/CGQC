@@ -5,7 +5,8 @@ LOG("[loadDiary] started");
 
 waitUntil {CGQC_playerLoaded};
 
-player createDiarySubject ["CGQC","CGQC Info"];
+// CGQC Info -------------------------------------------------------------------------------
+player createDiarySubject ["CGQC","CGQC"];
 // CGQC Links
 _text = (
 	"<font size='22' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
@@ -14,18 +15,16 @@ _text = (
 );
 player createDiaryRecord ["CGQC", ["Group Info", _text]];
 
-
+// Map Options -------------------------------------------------------------------------------
 player createDiarySubject ["MapOption","Map Options"];
-
 _text = (
 	"Click <execute expression='cgqc_map_centerOnplayer = false; cgqc_map_centerOnLast = false;'>NORMAL</execute> to keep default map behavior"
 	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = false;cgqc_map_centerOnLast = true;'>LAST</execute> to keep map centered on last position"
 	+ "<br/> Click <execute expression='cgqc_map_centerOnplayer = true;cgqc_map_centerOnLast = false;'>PLAYER</execute> to keep map centered on player."
 );
-
 player createDiaryRecord ["MapOption", ["Centering", _text]];
 
-player createDiarySubject ["RadioRef","Radio Frequencies"];
+// Radio References -------------------------------------------------------------------------------
 _343_1 = "Spartan-1";
 _343_2 = "Spartan-2";
 _343_3 = "Typhon-1";
@@ -94,7 +93,7 @@ _152_69 = "Party";
 _text = (
 	"<font size='20' color='#f2f2f2'>Référence Radios</font>" +"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
-	"<font size='18' color='#f2f2f2'>Short-Range</font>" +"<br/>" +
+	"<font size='18' color='#f2f2f2'>Short-Range - 343</font>" +"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 1 - %1</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 2 - %2</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 3 - %3</font>"+"<br/>" +
@@ -108,7 +107,7 @@ _text = (
 	"<font size='16' color='#BDBDBD'>Channel 11+ - %11</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 16 - %12</font>"+"<br/>" +
 	"<font size='20' color='#545454'>---------------------------------</font>"+"<br/>" +
-	"<font size='18' color='#f2f2f2'>Long-Range</font>" +"<br/>" +
+	"<font size='18' color='#f2f2f2'>Long-Range - 152|117f|177|Racks</font>" +"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 1 - %13</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 2 - %14</font>"+"<br/>" +
 	"<font size='16' color='#BDBDBD'>Channel 3 - %15</font>"+"<br/>" +
@@ -128,8 +127,9 @@ _text = (
 
 _cleantext = format [_text, _343_1,_343_2,_343_3,_343_4,_343_5,_343_6,_343_7,_343_8,_343_9,_343_10,_343_11,_343_16,_152_1,_152_2,_152_3,_152_4, _152_5,_152_6,_152_7,_152_8,_152_9,_152_69, _152_98, _152_99];
 
-player createDiaryRecord ["RadioRef", ["Référence Radios", _cleantext]];
+player createDiaryRecord ["CGQC", ["Référence Radios", _cleantext]];
 
+// Environment Report -------------------------------------------------------------------------------
 [] call CGQC_fnc_envReport;
 
 

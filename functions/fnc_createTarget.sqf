@@ -63,41 +63,39 @@ if (_targetRandomDir) then {
 _target setDir _direction;
 
 if (_targetEvent isEqualTo "zero") then {
-	[-2, {
-		_target addEventHandler ["HitPart", {
-			(_this select 0) params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];		// flush previous hits
-			if (count ary > 0) then {
-				{deleteVehicle _x;}	forEach ary;
-			};
-			ary=[];
-			publicVariable "ary";
-			// Create new hit
-			y_spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
-			y_spr setPosASL (_this select 0 select 3);
+	_target addEventHandler ["HitPart", {
+		(_this select 0) params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];		// flush previous hits
+		if (count ary > 0) then {
+			{deleteVehicle _x;}	forEach ary;
+		};
+		ary=[];
+		publicVariable "ary";
+		// Create new hit
+		y_spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+		y_spr setPosASL (_this select 0 select 3);
 
-			// Write hit message
-			_vectorToTarget = (getPosASL _shooter) vectorDiff _position;
-			_distance = vectorMagnitude _vectorToTarget;
-			_title = "Impact!";
-			_textDist = format["Distance: %1m", floor (round(_distance * 10) / 10)];
-			_textVel = format["Velocité: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
-			//_textAcc = format["%1/100", round(_accuracy * 10000) / 100];
-			//_textScore = format["%1/100", round(_score * 100) / 100];
-			[[_title, 1.5, [0.161, 0.502, 0.725, 1]], [_textDist, 1.2], [_textVel, 1.2]] spawn CBA_fnc_notify;
+		// Write hit message
+		_vectorToTarget = (getPosASL _shooter) vectorDiff _position;
+		_distance = vectorMagnitude _vectorToTarget;
+		_title = "Impact!";
+		_textDist = format["Distance: %1m", floor (round(_distance * 10) / 10)];
+		_textVel = format["Velocité: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
+		//_textAcc = format["%1/100", round(_accuracy * 10000) / 100];
+		//_textScore = format["%1/100", round(_score * 100) / 100];
+		[[_title, 1.5, [0.161, 0.502, 0.725, 1]], [_textDist, 1.2], [_textVel, 1.2]] spawn CBA_fnc_notify;
 
-			// Play sound for everyone
-			_sound = ["cgqc_sound_impact1", "cgqc_sound_impact2"];
-			y_rand = selectRandom _sound;
-			publicVariable "y_spr";
-			PublicVariable "y_rand";
-			[-2, {
-				y_spr say3D [y_rand, 800];
-			}] call CBA_fnc_globalExecute;
-			// Keep the hit
-			ary=ary+[y_spr];
-			publicVariable "ary";
-		}];
-	}] call CBA_fnc_globalExecute;
+		// Play sound for everyone
+		_sound = ["cgqc_sound_impact1", "cgqc_sound_impact2"];
+		y_rand = selectRandom _sound;
+		publicVariable "y_spr";
+		PublicVariable "y_rand";
+		[-2, {
+			y_spr say3D [y_rand, 800];
+		}] call CBA_fnc_globalExecute;
+		// Keep the hit
+		ary=ary+[y_spr];
+		publicVariable "ary";
+	}];
 
 
 	/*

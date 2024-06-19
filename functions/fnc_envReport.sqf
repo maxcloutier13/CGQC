@@ -101,7 +101,7 @@ CGQC_int_getSpecificTime = {
     [_outStr, _t_time]
 };
 
-_name = "Dawn and Dusk";
+_name = "Environmental Conditions";
 _lighting = "";
 
 _astro_dawn = [-18, -1] call CGQC_int_getSpecificTime;
@@ -238,6 +238,7 @@ _lighting = _lighting + format["<br/>Humidity: <font color='#ffc600'>%1 percent<
 _lighting = _lighting + format["<br/>Wind is <font color='#ffc600'>%1%m/s</font> coming from the <font color='#ffc600'>%2</font>", _windSpeed, _direction];
 _lighting = _lighting + format["<br/><br/>The moonphase is <font color='#ffc600'>%1</font> and the moonlight is <font color='#ffc600'>%2</font>", _moonPhaseStr, _moonItensityStr];
 
+_lighting = _lighting + "<br/><br/><br/><br/>This info is current only on gamestart";
 
 player createDiarySubject ["CGQC_EnvReport_Report", "Environment"];
 

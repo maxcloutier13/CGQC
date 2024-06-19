@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class addPerksSpecial{
+            file = "\cgqc\functions\fnc_addPerksSpecial.sqf";
+            description = "Add special perks depending on role";
+        };
         class configExtractor{
             file = "\cgqc\functions\fnc_configExtractor.sqf";
             description = "Exports specific config to clipboard";

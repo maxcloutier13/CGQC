@@ -101,4 +101,52 @@ if (!(player diarySubjectExists "CGQC_Roster")) then {
     player setDiaryRecordText [["CGQC_Roster", _record#8], ["Roster", cgqc_group_roster]];
 };
 
+cgqc_diary_stats = "<font size='18'>";
+// Civs
+if (cgqc_stats_civilianCasualties > 0 ) then {
+	cgqc_diary_stats = cgqc_diary_stats + format ["<br/><br/>- Civilians: %1<br/>", cgqc_stats_civilianCasualties];
+	_killers = "";
+	{
+		_killers = _killers + format["%1,", _x];
+	} forEach cgqc_stats_civilianKillers;
+	cgqc_diary_stats = cgqc_diary_stats + format ["---- Murderer: %1<br/>", _killers];
+};
+// Friendlies
+if (cgqc_stats_friendlyCasualties > 0 ) then {
+	cgqc_diary_stats = cgqc_diary_stats + format ["<br/>- Friendly Forces: %1<br/>", cgqc_stats_friendlyCasualties];
+	_killers = "";
+	{
+		_killers = _killers + format["%1,", _x];
+	} forEach cgqc_stats_friendlyKillers;
+	cgqc_diary_stats = cgqc_diary_stats + format ["---- Murderer: %1<br/>", _killers];
+};
+// Teamkills
+if (cgqc_stats_teamCasualties > 0 ) then {
+	cgqc_diary_stats = cgqc_diary_stats + format ["<br/>- TeamKills: %1<br/>", cgqc_stats_teamCasualties];
+	_killers = "";
+	{
+		_killers = _killers + format["%1,", _x];
+	} forEach cgqc_stats_teamKillers;
+	cgqc_diary_stats = cgqc_diary_stats + format ["---- Murderer: %1<br/>", _killers];
+};
+// Enemies
+if (cgqc_stats_enemyCasualties > 0 ) then {
+	cgqc_diary_stats = cgqc_diary_stats + format ["<br/>- Enemies: %1<br/>", cgqc_stats_enemyCasualties];
+};
+
+// Close the font bracket
+cgqc_diary_stats = cgqc_diary_stats + "</font>";
+
+if (!(player diarySubjectExists "CGQC_Stats")) then {
+    //Create subject and record
+    player createDiarySubject ["CGQC_Stats", "Stats"];
+    player createDiaryRecord ["CGQC_Stats", ["Casualties", cgqc_diary_stats]];
+} else {
+    _records = player allDiaryRecords "CGQC_Stats";
+    _record = _records#0;
+    player setDiaryRecordText [["CGQC_Stats", _record#8], ["Casualties", cgqc_diary_stats]];
+};
+
+
+
 LOG(" loadDiaryRoster done");

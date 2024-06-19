@@ -21,7 +21,12 @@ cgqc_start_2023_preInit_done = false;
 
 // *** Stats  **********************
 cgqc_stats_civilianCasualties = 0;
-
+cgqc_stats_civilianKillers = [];
+cgqc_stats_friendlyCasualties = 0;
+cgqc_stats_friendlyKillers = [];
+cgqc_stats_teamCasualties = 0;
+cgqc_stats_teamKillers = [];
+cgqc_stats_enemyCasualties = 0;
 
 // Intro/Welcome stuff
 cgqc_intro_running = false;
@@ -156,6 +161,7 @@ cgqc_perks_silence = false;
 cgqc_config_fortify_list = [];
 cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
+cgqc_perks_action_list = [];
 cgqc_reset_speaker = false;
 cgqc_backpack_stashed = false;
 cgqc_backpack_dropped = false;
@@ -427,8 +433,8 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 		if (_mapIsOpened) then {
 			["center"] call CGQC_fnc_centerMap;
 			while {cgqc_mapOpened} do {
-				[] call CGQC_fnc_loadDiaryRoster;
-				sleep 5;
+				[] spawn CGQC_fnc_loadDiaryRoster;
+				sleep 10;
 			};
 		} else {
 			_map = (findDisplay 12 displayCtrl 51);
@@ -1089,7 +1095,6 @@ if (cgqc_config_sideLanguage) then {
 	};
 }, true] call CBA_fnc_addPlayerEventHandler;
 */
-
 
 // **************************************************************************************************************
 cgqc_start_preInit_done = true;
