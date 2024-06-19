@@ -52,6 +52,14 @@ addMissionEventHandler ["HandleDisconnect", {
 			LOG("[CGQC_Killed] On server ");
 			if !(isPlayer _unit) then {
 				LOG("[CGQC_Killed] === AI unit just died ");
+				// Check if civilian
+				if (side _unit == civilian) then {
+					LOG("[CGQC_Killed]: Civilian Casualty!");
+					cgqc_stats_civilianCasualties = cgqc_stats_civilianCasualties + 1;
+					_txt = " ... killed a civilian!";
+					[player, _txt] remoteExec ["globalChat",0];
+				};
+
 				if (cgqc_lootingRestriction_on) then {
 					LOG("[CGQC_Killed] Loot restriction is ON ");
 					// Keep track of items
