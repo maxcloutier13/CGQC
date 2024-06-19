@@ -110,13 +110,13 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "men
 _action = [ "menu_mk2_optics_mag_espgh", "G33 High", "", {["Tier1_EXPS3_0_G33_Riser_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_mag", "menu_mk2_optics_mag_esp"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
-_action = [ "menu_mk2_optics_mag_t1", "MicroT1/3X", "", {["Tier1_MicroT2_Leap_3xMag_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_optics_mag_t2", "MicroT2/3X", "", {["Tier1_MicroT2_Leap_3xMag_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_mag"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_mk2_optics_mag_t2", "High", "", {["Tier1_MicroT2_Leap_3xMag_Riser_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_optics_mag_t2h", "High", "", {["Tier1_MicroT2_Leap_3xMag_Riser_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_mag", "menu_mk2_optics_mag_t2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_mk2_optics_mag_t2l", "G33", "", {["Tier1_MicroT2_Leap_G33_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_optics_mag_t2gl", "G33", "", {["Tier1_MicroT2_Leap_G33_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_mag", "menu_mk2_optics_mag_t2"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_mk2_optics_mag_t2h", "G33 High", "", {["Tier1_MicroT2_Leap_G33_Riser_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_optics_mag_t2gh", "G33 High", "", {["Tier1_MicroT2_Leap_G33_Riser_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_optics", "menu_mk2_optics_mag", "menu_mk2_optics_mag_t2"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "menu_mk2_optics_mag_romeo", "Romeo4T/G33", "", {["Tier1_Romeo4T_BCD_G33_Black_Up"] spawn CGQC_fnc_switchOptics}, {true} ] call ace_interact_menu_fnc_createAction;
