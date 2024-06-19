@@ -33,10 +33,10 @@ class cgqc_sound_roundEnd {
 	titles[] = {};
 };
 class cgqc_sound_impact1 {
-	sound[] = {"\cgqc\sounds\impact_1.ogg", 3, 1};	// Volume, Pitch
+	sound[] = {"\cgqc\sounds\impact_1.ogg", 4, 1};	// Volume, Pitch
 	titles[] = {};
 };
 class cgqc_sound_impact2 {
-	sound[] = {"\cgqc\sounds\impact_2.ogg", 3, 1};	// Volume, Pitch
+	sound[] = {"\cgqc\sounds\impact_2.ogg", 4, 1};	// Volume, Pitch
 	titles[] = {};
 };
