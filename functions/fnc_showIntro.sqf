@@ -176,6 +176,8 @@ if (cgqc_config_showIntro) then {
 			playMusic "";
 			0 fadeMusic 1;
 			cgqc_intro_running = false;
+			cgqc_intro_done = true;
+			LOG("[showIntro] Establishing intro done");
 		};
 		default {
 			LOG_1("[showIntro] Type %1? problem. Defaulting.", cgqc_config_showIntro_type);
@@ -186,6 +188,7 @@ if (cgqc_config_showIntro) then {
 			cgqc_intro_skipped = true;
 			cgqc_intro_done = true;
 			cgqc_intro_running = false;
+			LOG("[showIntro] Flying intro done");
 		};
 	};
 } else {
