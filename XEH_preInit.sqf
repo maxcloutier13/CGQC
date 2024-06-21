@@ -264,6 +264,7 @@ cgqc_training_koth_list = [];
 
 // Shooting range
 cgqc_training_targetList = [];
+cgqc_training_zero_hits = [];
 
 // CQB house training stuff
 cgqc_cqb_list = [];
