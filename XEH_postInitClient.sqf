@@ -177,45 +177,6 @@ if (cgqc_player_loadAll) then {
 	}] call CBA_fnc_addEventHandler;
 };
 
-
-
-// Unconcious event
-["ace_unconscious", {
-	params ["_unit", "_isUnconscious"];
-	if (isPlayer _unit) then {
-		[] call setTeamColorReload;
-		if (_isUnconscious) then {
-			["hide"] spawn CGQC_fnc_toggleUI;
-			playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
-			_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
-			// Lower direct comms volume
-			[0.2] call acre_api_fnc_setGlobalVolume;
-			// Turning off radios temporaritly
-			_radioIdList = call acre_api_fnc_getCurrentRadioList;
-			{
-				_radioId = _x;
-				[_radioId,0] call acre_sys_radio_fnc_setRadioVolume;
-			} forEach _radioIdList;
-			LOG(" Unconscious - Lowered volume");
-		} else {
-			// set volume back
-			["show"] spawn CGQC_fnc_toggleUI;
-			_vol = _unit getVariable "cgqc_player_wakeup_volume";
-			[_vol] call acre_api_fnc_setGlobalVolume;
-
-			// Turning radios back on
-			_radioIdList = call acre_api_fnc_getCurrentRadioList;
-			{
-				_radioId = _x;
-				[_radioId,0.8] call acre_sys_radio_fnc_setRadioVolume;
-			} forEach _radioIdList;
-
-			LOG(" Unconscious - Volume restored");
-		};
-	};
-}] call CBA_fnc_addEventHandler;
-
-
 ["ace_treatmentStarted", {
 	params ["_medic", "_patient", "_bodyPart", "_classname", "_itemUser", "_usedItem"];
 	// Notify the victim of treatment
@@ -271,6 +232,65 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 ["cgqc_event_playSound", {
     params ["_source", "_sound", "_range"];
     _source say3D [_sound, _range];
+}] call CBA_fnc_addEventHandler;
+
+
+
+cgqc_int_wakeup = {
+	sleep 1;
+	hint "Waking up";
+	// Toggle UI
+	["show"] spawn CGQC_fnc_toggleUI;
+	// set volume back
+	_vol = player getVariable "cgqc_player_wakeup_volume";
+	[_vol] call acre_api_fnc_setGlobalVolume;
+	// Turning radios back on
+	_radioIdList = call acre_api_fnc_getCurrentRadioList;
+	{
+		_radioId = _x;
+		[_radioId,0.8] call acre_sys_radio_fnc_setRadioVolume;
+	} forEach _radioIdList;
+};
+
+// Unconcious event
+["ace_unconscious", {
+	params ["_unit", "_isUnconscious"];
+	LOG_2("[Unconscious] - %1 is down? %2", name _unit, _isUnconscious);
+	// Not Unconscious? Get out
+	if (!_isUnconscious) exitWith {
+		LOG("[Unconscious] - Not Unconscious. Getting out");
+	};
+	// Not a player? Get out
+	_unitIsPlayer = hasInterface && {_unit == ace_player};
+	if !(_unitIsPlayer) exitWith {
+		LOG("[Unconscious] - Not a player. Getting out");
+	};
+	// If not local? Get out
+	if !(local _unit) exitWith {
+		LOG("[Unconscious] - Not Local. Getting out");
+	};
+
+	// All good. Falling asleep
+	LOG("[Unconscious] - All good. Proceeding.");
+	[] call CGQC_fnc_setTeamColorReload;
+	["hide"] spawn CGQC_fnc_toggleUI;
+	playSound3D [selectRandom cgqc_unconscious_sounds, _unit, false, getPosASL _unit, 2, 1, 30];
+	_unit setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
+	// Lower direct comms volume
+	[0.2] call acre_api_fnc_setGlobalVolume;
+	// Turning off radios temporaritly
+	_radioIdList = call acre_api_fnc_getCurrentRadioList;
+	{
+		_radioId = _x;
+		[_radioId,0] call acre_sys_radio_fnc_setRadioVolume;
+	} forEach _radioIdList;
+	LOG("[Unconscious] - Lowered volume");
+	[] spawn {
+		// Wait until dead or waking up
+		waitUntil {!(player getVariable ["ACE_isUnconscious", false])};
+		// Not asleep anymore, waking up
+		[] spawn cgqc_int_wakeup;
+	};
 }] call CBA_fnc_addEventHandler;
 
 
@@ -332,12 +352,12 @@ cgqc_event_talk = ["acre_startedSpeaking", {
 	params ["_unit", "_onRadio", "_radioId", "_speakingType"];
 	// if volume is low and player is not talking on radio
 	_vol = [] call acre_api_fnc_getSelectableVoiceCurve;
-	LOG_4(" startedSpeaking %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType);
+	//LOG_4("[startedSpeaking] %1/%2/%3/%4 started", _unit, _onRadio, _radioId, _speakingType);
 
 	// Volume is low: notify the player he is whispering
 	if (!_onRadio) then {
 		_txt = "";
-		LOG_1(" startedSpeaking checking vol %1", _vol);
+		//LOG_1("[startedSpeaking] checking vol %1", _vol);
 		if (_vol < 0.3) then {
 			_txt = parseText("<t color='#006400'>Whispering</t>");
 		} else {
@@ -578,7 +598,7 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 		};
 	} forEach _itemsToCheck;
 	if (_hasGPS) then {
-		LOG("PlayerPosition: Player has GPS. Showing icon");
+		//LOG("PlayerPosition: Player has GPS. Showing icon");
 		// Show marker on player position
 		_vicShowingAlready = vehicle player getVariable ["show_marker", false];
 		if !(_vicShowingAlready) then {
