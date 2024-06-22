@@ -483,10 +483,14 @@ if (_checkPerks isNotEqualTo "") then {
 [] call CGQC_fnc_setPatch;
 
 // Custom items from settings: Smokes
-if (cgqc_config_cigs) then {
-    if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_lighter";};
-	if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_cigpack";};
+[] spawn {
+	waitUntil {sleep 1;CGQC_playerLoaded};
+	if (cgqc_config_cigs) then {
+		if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_lighter";};
+		if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_cigpack";};
+	};
 };
+
 
 // set default voice volume
 [player, "talk"] call CGQC_fnc_setVoiceVolume;
