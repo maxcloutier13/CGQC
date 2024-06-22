@@ -141,10 +141,8 @@ switch (_type) do {
 	};
 	case "zeus":{
 		LOG("[switchPerks] Zeus setup");
-		if !([player] call CGQC_fnc_checkZeus) then {
-			["zeus"] spawn CGQC_fnc_perksZeus;
-			["zeus"] spawn CGQC_fnc_addPerksSpecial;
-		};
+		["zeus"] spawn CGQC_fnc_perksZeus;
+		["zeus", false] spawn CGQC_fnc_addPerksSpecial;
 	};
 	case "max":{
 		LOG("[switchPerks] Max setup");
