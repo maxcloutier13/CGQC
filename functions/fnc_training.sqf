@@ -4,6 +4,27 @@
 params ["_type", "_option"];
 LOG_2(" training %1/%2 started", _type, _option);
 
+ cgqc_int_findTime = {
+    params ["_decimalTime"];
+    private _hours = floor _decimalTime;
+    private _minutes = round (60 * (_decimalTime - _hours));
+
+    // Format the hours and minutes to HH:MM
+    private _hoursStr = format ["%1", _hours];
+    private _minutesStr = format ["%1", _minutes];
+
+    // Add leading zero if necessary
+    if (_hours < 10) then {
+        _hoursStr = format ["0%1", _hours];
+    };
+    if (_minutes < 10) then {
+        _minutesStr = format ["0%1", _minutes];
+    };
+
+    // Return the formatted time
+    [parseNumber _hoursStr, parseNumber _minutesStr]
+};
+
 y_timeText = "";
 _skip = _option;
 _wind = 0;
@@ -53,25 +74,30 @@ switch (_type) do {
 		time_day = date select 2;
 		time_hour = date select 3;
 		time_min= date select 4;
+
 		switch (_option) do {
 			case 0: {
-				[0,{setDate [time_year, time_month, time_day, time_sunrise, 0]}] call CBA_fnc_globalExecute;
-				time_text = "Aaah... sunrise...";
+				_sunriseFormatted = [_sunriseTime] call cgqc_int_findTime ;
+
+				["cgqc_event_skiptime", [time_year, time_month, time_day, _sunriseFormatted select 0, _sunriseFormatted select 1]] call CBA_fnc_serverEvent;
+				y_timeText = "Aaah... sunrise...";
 			};
 			case 1: {
-				[0,{setDate [time_year, time_month, time_day, time_sunset, 0]}] call CBA_fnc_globalExecute;
-				_text = "Aaah... sunset...";
+				_sunsetFormatted = [_sunsetTime] call cgqc_int_findTime ;
+				["cgqc_event_skiptime", [time_year, time_month, time_day, _sunsetFormatted select 0, _sunsetFormatted select 1]] call CBA_fnc_serverEvent;
+				y_timeText = "Aaah... sunset...";
 			};
 		};
-
 	};
 	case "midnight":{
 		time_year = date select 0;
 		time_month = date select 1;
 		time_day = date select 2;
 		time_hour = date select 3;
-		[0,{setDate [time_year, time_month, time_day, 0, 0]}] call CBA_fnc_globalExecute;
-		time_text = "Midnight Bliss";
+		[-2, {
+			setDate [time_year, time_month, time_day, 0, 0];
+		}] call CBA_fnc_globalExecute;
+		y_timeText = "Midnight Bliss";
 	};
 	case "nice":{
 		[0,{ 0 setOvercast 0}] call CBA_fnc_globalExecute;

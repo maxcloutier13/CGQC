@@ -215,6 +215,12 @@ if (cgqc_player_loadAll) then {
 	};
 }] call CBA_fnc_addEventHandler;
 
+["cgqc_event_skiptime", {
+	params ["_year", "_month", "_day", "_hour", "_min"];
+	LOG("[cgqc_event_skiptime] - Started");
+	setDate [y_year, y_month, y_day, y_hour, y_min]
+}] call CBA_fnc_addEventHandler;
+
 // Player picks up something event
 take_152 = player addEventHandler [	"Take", {
 	params ["_unit", "_container", "_item"];
@@ -556,10 +562,18 @@ player addEventHandler ["Take", {
 	}
 }];
 
+// All done
+cgqc_start_postInitClient_done = true;
+
+sleep 5;
+// Init the map centering function
+LOG("[CGQC_PostInitClient] - Load center map setting");
+["initial"] call CGQC_fnc_centerMap;
+
 // If zeus, setup radios
+LOG("[CGQC_postInitClient] Check if starting as zeus");
 if ([player] call CGQC_fnc_checkZeus) then {
-	LOG("[CGQC_postInitClient] Player starts as zeus");
-	LOG("[CGQC_postInitClient] Adding Zeus Perks");
+	LOG("[CGQC_postInitClient] Yes: Adding Zeus Perks");
 	["zeus", false] spawn CGQC_fnc_switchPerks;
 	// Zeus controlling unit event
 	[_curator, "curatorObjectRemoteControlled", {
@@ -581,14 +595,6 @@ if ([player] call CGQC_fnc_checkZeus) then {
 		[] call CGQC_int_setZeusRadios;
 	};
 };
-
-// All done
-cgqc_start_postInitClient_done = true;
-
-sleep 5;
-// Init the map centering function
-LOG("[CGQC_PostInitClient] - Load center map setting");
-["initial"] call CGQC_fnc_centerMap;
 
 // Player marker event
 _map = (findDisplay 12 displayCtrl 51);
