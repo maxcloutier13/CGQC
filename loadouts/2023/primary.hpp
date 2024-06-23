@@ -163,7 +163,7 @@ case "mcx_t2":{
 case "badger":{
     ["hlc_rifle_honeybase", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
-    _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
+    _target addPrimaryWeaponItem "Tier1_NGAL_Side";
     _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
 };
 case "dissipator":{
