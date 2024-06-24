@@ -21,7 +21,11 @@ class CGQC {
             description = "Exports specific config to clipboard";
         };
 
-        class on_hit_range{
+        class onHitTestTarget{
+            file = "\cgqc\functions\fnc_onHitTestTarget.sqf";
+            description = "Target is hit in the test targets";
+        };
+        class onHitRange{
             file = "\cgqc\functions\fnc_onHitRange.sqf";
             description = "Target is hit in the range";
         };

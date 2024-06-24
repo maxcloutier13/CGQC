@@ -4,7 +4,7 @@ params ["_event"];
 
 private ["_target", "_shooter", "_bullet", "_ammo", "_position", "_vectorToTarget", "_velocity", "_distance", "_targetDir", "_impactDeviation", "_accuracy", "_score", "_targetScore"];
 //params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
-LOG("[on_hit_range] started");
+LOG("[onHitRange]] started");
 
 _target = _event select 0;
 _shooter = _event select 1;
