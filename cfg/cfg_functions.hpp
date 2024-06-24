@@ -20,6 +20,15 @@ class CGQC {
             file = "\cgqc\functions\fnc_configExtractor.sqf";
             description = "Exports specific config to clipboard";
         };
+
+        class onHitTestTarget{
+            file = "\cgqc\functions\fnc_onHitTestTarget.sqf";
+            description = "Target is hit in the test targets";
+        };
+        class onHitRange{
+            file = "\cgqc\functions\fnc_onHitRange.sqf";
+            description = "Target is hit in the range";
+        };
         class onHit{
             file = "\cgqc\functions\fnc_onHit.sqf";
             description = "Target is hit";

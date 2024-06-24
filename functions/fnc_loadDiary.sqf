@@ -10,7 +10,7 @@ player createDiarySubject ["CGQC","CGQC"];
 // CGQC Links
 _text = (
 	"<font size='22' color='#00CA1B'Rejoignez-nous!</font>" +"<br/>" +
-	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca/</font>"+"<br/>" +
+	"<font size='20' color='#BDBDBD'>Discord: cgqc.ca</font>"+"<br/>" +
 	"<font size='20' color='#BDBDBD'>Teamspeak: ts.cgqc.ca</font>"
 );
 player createDiaryRecord ["CGQC", ["Group Info", _text]];

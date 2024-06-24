@@ -107,8 +107,7 @@ if (_targetRandomDir) then {
 _target setDir _direction;
 
 if !(_targetEvent isEqualTo "zero") then {
-
-
+	hint "skipping events";
 	/*
 	_target addEventHandler ["HitPart", {
 		params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
