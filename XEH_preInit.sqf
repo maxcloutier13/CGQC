@@ -1046,6 +1046,7 @@ waitUntil {scriptDone _convoy};
 #include "\CGQC\loadouts\vanilla\loadouts.hpp"
 #include "\CGQC\loadouts\2023\loadouts.hpp"
 #include "\CGQC\loadouts\swat\loadouts.hpp"
+#include "\CGQC\loadouts\pmct\loadouts.hpp"
 #include "\CGQC\loadouts\unsung\loadouts.hpp"
 #include "\CGQC\loadouts\ifa3\loadouts.hpp"
 

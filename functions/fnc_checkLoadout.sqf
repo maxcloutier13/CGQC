@@ -3,7 +3,7 @@
 // Check if a unit has a fixed loadout and sets it if it's the case
 params [["_switch", true]];
 _type = typeOf player;
-LOG_1(" checkLoadout %1/%2 started", _switch,_type);
+LOG_2(" checkLoadout %1/%2 started", _switch,_type);
 
 _switchRole = "";
 _section = 1;
@@ -96,6 +96,24 @@ if (_load) then {
         case "CGQC_soldat_vietnam_helipilot":{_switchRole = "vic_helipilot";};
         case "CGQC_soldat_vietnam_helicrew":{_switchRole = "vic_helicrew";};
         case "CGQC_soldat_vietnam_covey":{_switchRole = "vic_covey";};
+
+        // == PMC-T ===================================================================
+        case "CGQC_units_PMC_rifleman":{_switchRole = "pmct_rifle";};
+        case "CGQC_units_PMC_0_SquadLeader":{_switchRole = "pmct_lead";};
+        case "CGQC_units_PMC_0_TeamLeader":{_switchRole = "pmct_tl";};
+        case "CGQC_units_PMC_0_Grenadier":{_switchRole = "pmct_gren";};
+        case "CGQC_units_PMC_0_AutoRifleman":{_switchRole = "pmct_autorifleman";};
+        case "CGQC_units_PMC_0_HeavyMachinegunner":{_switchRole = "pmct_mg";};
+        case "CGQC_units_PMC_0_AntiTankRifleman":{_switchRole = "pmct_at";};
+        case "CGQC_units_PMC_0_Engineer":{_switchRole = "pmct_eng";};
+        case "CGQC_units_PMC_0_Medic":{_switchRole = "pmct_medic";};
+        case "CGQC_units_PMC_lifesaver":{_switchRole = "pmct_lifesaver";};
+        case "CGQC_units_PMC_0_DroneOperator":{_switchRole = "pmct_drone";};
+        case "CGQC_units_PMC_0_Marksman1":{_switchRole = "pmct_marks";};
+        case "CGQC_units_PMC_0_Marksman2":{_switchRole = "pmct_sniper";};
+        case "CGQC_units_PMC_0_CrewCommander":{_switchRole = "pmct_driver";};
+        case "CGQC_units_PMC_0_CrewMember":{_switchRole = "pmct_crew";};
+        case "CGQC_units_PMC_0_GameMaster":{_switchRole = "pmct_zeus";};
 
     };
     if (_switchRole isNotEqualTo "") then {

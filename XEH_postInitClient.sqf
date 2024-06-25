@@ -158,21 +158,23 @@ if (cgqc_player_loadAll) then {
 		LOG("[ace_zeus_zeusCreated] Player became Zeus trough ACE");
 		_curator = getAssignedCuratorLogic player;
 		if (!isNil "_curator") then {
-			LOG("[ace_zeus_zeusCreated] Adding Perks");
-			["zeus"] spawn CGQC_fnc_addPerksSpecial;
-			// Zeus controlling unit event
-			[_curator, "curatorObjectRemoteControlled", {
-				params ["_curator", "_player", "_unit", "_isRemoteControlled"];
-				if (_isRemoteControlled) then {
-					// Check if unit has radios
-					if (cgqc_config_zeusRadios) then {
-						LOG("[ace_zeus_zeusCreated] Adding Zeus radios");
-						["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
-						hint "Zeus radios set";
+			if (!isNull _curator) then {
+				LOG("[ace_zeus_zeusCreated] Adding Perks");
+				["zeus"] spawn CGQC_fnc_addPerksSpecial;
+				// Zeus controlling unit event
+				[_curator, "curatorObjectRemoteControlled", {
+					params ["_curator", "_player", "_unit", "_isRemoteControlled"];
+					if (_isRemoteControlled) then {
+						// Check if unit has radios
+						if (cgqc_config_zeusRadios) then {
+							LOG("[ace_zeus_zeusCreated] Adding Zeus radios");
+							["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
+							hint "Zeus radios set";
+						};
 					};
-				};
-				// _isRemoteControlled is true when entering remote control, false when exiting
-			}] call BIS_fnc_addScriptedEventHandler;
+					// _isRemoteControlled is true when entering remote control, false when exiting
+				}] call BIS_fnc_addScriptedEventHandler;
+			};
 		};
 	}] call CBA_fnc_addEventHandler;
 };
@@ -492,8 +494,8 @@ if (_checkPerks isNotEqualTo "") then {
 [] spawn {
 	waitUntil {sleep 1;CGQC_playerLoaded};
 	if (cgqc_config_cigs) then {
-		if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_lighter";};
-		if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasItem) then {player addItem "murshun_cigs_cigpack";};
+		if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_lighter";};
+		if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_cigpack";};
 	};
 };
 
