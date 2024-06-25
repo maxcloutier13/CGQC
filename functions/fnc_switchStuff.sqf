@@ -3,17 +3,17 @@
 // Change one thing for another
 // Example ["backpack", "cgqc_pack_mk1_magic"] call CGQC_fnc_switchStuff
 
-params ["_type", ["_arg", ""]];
-LOG_2("[switchStuff] %1/%2 started", _type, _arg);
+params ["_type", ["_newItem", ""]];
+LOG_2("[switchStuff] %1/%2 started", _type, _newItem);
 
 switch (_type) do {
 	case "hat": {
-		player addHeadgear _arg;
+		player addHeadgear _newItem;
 	};
 	case "uniform": {
 		_items_uniform = uniformItems player;
 		removeUniform player;
-		player addUniform _arg;
+		player addUniform _newItem;
 		_items_old = uniformItems player;
 		{player removeItemFromUniform _x} forEach _items_old;
 		{player addItemToUniform _x} forEach _items_uniform;
@@ -21,7 +21,7 @@ switch (_type) do {
 	case "vest": {
 		_items_vest = vestItems player;
 		removeVest player;
-		player addVest _arg;
+		player addVest _newItem;
 		_items_old = vestItems player;
 		{player removeItemFromVest _x} forEach _items_old;
 		{player addItemToVest _x} forEach _items_vest;
@@ -29,9 +29,13 @@ switch (_type) do {
 	case "backpack": {
 		_items_pack = backpackItems player;
 		removeBackpack player;
-		player addBackpack _arg;
+		player addBackpack _newItem;
 		clearAllItemsFromBackpack player;
 		{player addItemToBackpack _x} forEach _items_pack;
+	};
+	case "goggles": {
+		removeGoggles player;
+		player addGoggles _newItem;
 	};
 	case "prep": {
 		// Current soldier equipment

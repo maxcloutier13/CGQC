@@ -21,7 +21,9 @@ if (isNil "_mag") then {
 	switch (true) do {
 		case (_magSize < 20): {_addMags = _addMags * 1.6};
 		case (_magSize == 20): {_addMags = _addMags * 1.5};
-		case (_magSize > 30): {_addMags = _addMags * 0.6};
+		case (_magSize > 30): {_addMags = _addMags * 0.8};
+		case (_magSize > 60): {_addMags = _addMags * 0.7};
+		case (_magSize > 100): {_addMags = _addMags * 0.6};
 	};
 
 	_addmags = floor _addmags;

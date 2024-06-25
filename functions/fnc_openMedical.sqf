@@ -2,7 +2,7 @@
 // --- openMedical ----------------------------------------------------------
 // Open medical items
 params ["_type", ["_target", ACE_player], ["_forceOpen", true]];
-LOG(" openMedical %1/%2/%3 started");
+LOG_3("[openMedical] %1/%2/%3 started", _type, _target, _forceOpen);
 
 _work = "";
 if (player isEqualTo _target) then {
@@ -51,10 +51,10 @@ _bodybags = {_x isEqualTo "ACE_bodyBag" } count _allItems;
 
 switch (_type) do {
 	case "ifak": {
-		if (_forceOpen || _bandage < 2) then {
+		if (_forceOpen || _bandage < 2 || _liquids < 2) then {
 			_work = _work + "IFAK";
 			_target removeItem "cgqc_items_ifak";
-			LOG(" openMedical - unpacking ifak");
+			LOG("[openMedical] - unpacking ifak");
 			for "_i" from _bandage to cgqc_config_ifak_bandages do {_target addItem "ACE_fieldDressing"};
 			for "_i" from _epi to cgqc_config_ifak_epi do {_target addItem "ACE_epinephrine"};
 			for "_i" from _morphine to cgqc_config_ifak_morphine do {_target addItem "ACE_morphine"};
@@ -70,19 +70,19 @@ switch (_type) do {
 			if (_forceOpen || _liquids < 3) then {
 				_work = _work + "Medkit";
 				_target removeItem "cgqc_items_medkit";
-				LOG(" openMedical - unpacking medkit");
-				for "_i" from _bandage to cgqc_config_medkit_bandages do {_target addItemToBackpack "ACE_fieldDressing"};
-				for "_i" from _epi to cgqc_config_medkit_epi do {_target addItemToBackpack "ACE_epinephrine"};
-				for "_i" from _morphine to cgqc_config_medkit_morphine do {_target addItemToBackpack "ACE_morphine"};
-				for "_i" from _painkill to cgqc_config_medkit_painkill do {_target addItemToBackpack "FF_Painkiller"};
-				for "_i" from _splint to cgqc_config_medkit_splint do {_target addItemToBackpack "ACE_splint"};
-				for "_i" from _tourniquet to cgqc_config_medkit_tourniquet do {_target addItemToBackpack "ACE_tourniquet"};
-				for "_i" from _1000ml to cgqc_config_medkit_1000 do {_target addItemToBackpack "ACE_salineIV"};
-				for "_i" from _500ml to cgqc_config_medkit_500 do {_target addItemToBackpack "ACE_salineIV_500"};
-				for "_i" from _pak to cgqc_config_medkit_pak do {_target addItemToBackpack "ACE_personalAidKit"};
-				for "_i" from _smoke_purple to cgqc_config_medkit_smoke do {_target addItemToBackpack "SmokeShellPurple"};
-				for "_i" from _medbag to cgqc_config_medkit_medbag do {_target addItemToBackpack "FSGm_ItemMedicBag"};
-				for "_i" from _bodybags to cgqc_config_medkit_bodybag do {player addItemToBackpack "ACE_bodyBag"};
+				LOG("[openMedical] - unpacking medkit");
+				for "_i" from _bandage to (cgqc_config_medkit_bandages - 1) do {_target addItemToBackpack "ACE_fieldDressing"};
+				for "_i" from _epi to (cgqc_config_medkit_epi - 1) do {_target addItemToBackpack "ACE_epinephrine"};
+				for "_i" from _morphine to (cgqc_config_medkit_morphine - 1) do {_target addItemToBackpack "ACE_morphine"};
+				for "_i" from _painkill to (cgqc_config_medkit_painkill - 1) do {_target addItemToBackpack "FF_Painkiller"};
+				for "_i" from _splint to (cgqc_config_medkit_splint - 1) do {_target addItemToBackpack "ACE_splint"};
+				for "_i" from _tourniquet to (cgqc_config_medkit_tourniquet - 1) do {_target addItemToBackpack "ACE_tourniquet"};
+				for "_i" from _1000ml to (cgqc_config_medkit_1000 - 1) do {_target addItemToBackpack "ACE_salineIV"};
+				for "_i" from _500ml to (cgqc_config_medkit_500 - 1) do {_target addItemToBackpack "ACE_salineIV_500"};
+				for "_i" from _pak to (cgqc_config_medkit_pak - 1) do {_target addItemToBackpack "ACE_personalAidKit"};
+				for "_i" from _smoke_purple to (cgqc_config_medkit_smoke - 1) do {_target addItemToBackpack "SmokeShellPurple"};
+				for "_i" from _medbag to (cgqc_config_medkit_medbag - 1) do {_target addItemToBackpack "FSGm_ItemMedicBag"};
+				for "_i" from _bodybags to (cgqc_config_medkit_bodybag - 1) do {player addItemToBackpack "ACE_bodyBag"};
 				hint _work;
 			};
 		};
@@ -91,4 +91,4 @@ switch (_type) do {
 	default {ERROR("[CGQC_ERROR] openMedical didn't match _type");};
 };
 
-LOG(" openMedical done");
+LOG("[openMedical] done");
