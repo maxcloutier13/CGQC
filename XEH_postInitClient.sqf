@@ -34,6 +34,31 @@ if (core_version isNotEqualTo _checkVersion) then {
 	LOG("Mods up to date");
 };
 
+// Custom ACE Sorting methods
+
+// Sort by BarrelLength
+[[[0, 1], []], "barrelLengthSort", "Sort by barrel length", {
+	params ["_itemCfg"];
+
+	// Retrieve the barrel length from the config
+	private _barrelLength = getNumber (_itemCfg >> "ACE_barrelLength");
+
+	// Return the barrel length for sorting
+	_barrelLength
+}] call ace_arsenal_fnc_addSort;
+
+// By ammotype
+[[[0, 1], []], "ammoSort", "Sort by magwell type", {
+	params ["_itemCfg"];
+
+	// Retrieve the magwell types from the config
+	private _magwells = getArray (_itemCfg >> "magazineWell");
+	private _magwell = _magwells select 0;
+
+	// Return the main magwell for sorting
+	_magwell
+}] call ace_arsenal_fnc_addSort;
+
 /*
 // set language and radio channels
 	["side"] call CGQC_fnc_setACRE;
