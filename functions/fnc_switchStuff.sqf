@@ -33,6 +33,10 @@ switch (_type) do {
 		clearAllItemsFromBackpack player;
 		{player addItemToBackpack _x} forEach _items_pack;
 	};
+	case "goggles": {
+		removeGoggles player;
+		player addGoggles _arg;
+	};
 	case "prep": {
 		// Current soldier equipment
 		player_helmet_old = headgear player;

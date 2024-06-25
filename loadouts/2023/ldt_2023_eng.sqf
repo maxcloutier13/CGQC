@@ -22,10 +22,6 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 player unlinkItem "ItemGPS";
 player linkItem "B_UavTerminal";
 
-// === Primary ==========================================================================================================
-switch (_gunVariant) do {
-	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-};
 
 switch (_variant) do {
 	case "engineer": {
@@ -55,5 +51,11 @@ player addItemToBackpack "tsp_stickCharge_mag";
 player addItemToBackpack "tsp_stickCharge_mag";
 player addItemToBackpack "tsp_popperCharge_mag";
 player addItemToBackpack "tsp_popperCharge_mag";
+
+
+// === Primary ==========================================================================================================
+switch (_gunVariant) do {
+	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
+};
 
 LOG(" ldt_2023_s_eng done");

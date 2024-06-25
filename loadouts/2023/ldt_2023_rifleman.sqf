@@ -18,15 +18,6 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 // === Linked items ==================================================================================================================
 ["2023_basic","cgqc_item_rangefinder","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 
-// === Primary ==========================================================================================================
-switch (_gunVariant) do {
-	case "cqb": {["mk18_dot"] spawn CGQC_fnc_switchPrimary;};
-	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-	case "rifle": {["m16_shortdot"] spawn CGQC_fnc_switchPrimary;};
-	case "grenade": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-	case "417": {["417"] spawn CGQC_fnc_switchPrimary;};
-};
-
 switch (_variant) do {
 	case "grenadier": {
 		_handgun = ["rhs_weap_M320", "1Rnd_HE_Grenade_shell"];
@@ -78,6 +69,15 @@ switch (_variant) do {
 		player addItemToBackpack "ACE_M26_Clacker";
 		for "_i" from 1 to 2 do { player addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag"};
 	};
+};
+
+// === Primary ==========================================================================================================
+switch (_gunVariant) do {
+	case "cqb": {["mk18_dot"] spawn CGQC_fnc_switchPrimary;};
+	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
+	case "rifle": {["m16_shortdot"] spawn CGQC_fnc_switchPrimary;};
+	case "grenade": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
+	case "417": {["417"] spawn CGQC_fnc_switchPrimary;};
 };
 
 LOG(" ldt_2023_i_rifleman done");

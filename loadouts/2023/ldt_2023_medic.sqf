@@ -18,11 +18,7 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 // === Linked items ==================================================================================================================
 ["2023_basic","cgqc_item_rangefinder","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 
-// === Primary ==========================================================================================================
-switch (_gunVariant) do {
-	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-	case "lpvo": {["m4_lpvo"] spawn CGQC_fnc_switchPrimary;};
-};
+
 
 switch (_variant) do {
 	case "medic": {
@@ -54,4 +50,9 @@ switch (_variant) do {
 	};
 };
 
+// === Primary ==========================================================================================================
+switch (_gunVariant) do {
+	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
+	case "lpvo": {["m4_lpvo"] spawn CGQC_fnc_switchPrimary;};
+};
 LOG(" ldt_2023_s_medic done");

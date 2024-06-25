@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- getCustomGun ----------------------------------------------------------
 // Get player custom gun if exists
-params ["_gun", ["_type", "none"], ["_era", "2023"]];
+params ["_gun", ["_opticType", "none"], ["_opticEra", "2023"], ["_removeAccessories", true]];
 LOG_1("[getCustomGun] %1 started", _gun);
 
 //param [0, objNull, [objNull]];
@@ -15,12 +15,15 @@ if !(player hasWeapon _customGun) then {
     hint format ["Custom Gun :%1", _customGun];
 };
 
-// Remove potential default attachments
-removeAllPrimaryWeaponItems player;
+if (_removeAccessories) then {
+    // Remove potential default attachments
+    removeAllPrimaryWeaponItems player;
+};
+
 
 // Get a random scope if called for
-if (_type isNotEqualTo "none") then {
-    [_type, _era] spawn CGQC_fnc_getRandomOptic;
+if (_opticType isNotEqualTo "none") then {
+    [_opticType, _opticEra] spawn CGQC_fnc_getRandomOptic;
 };
 
 LOG("[getCustomGun] done");

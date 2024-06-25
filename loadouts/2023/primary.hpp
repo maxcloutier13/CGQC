@@ -1,5 +1,4 @@
 // 2023
-
 // SCARs ----------------------------------------------------------------------------------------------
 case "scar_l_long":{
     ["hlc_wp_SCARL_DMR", "lpvo"] call CGQC_fnc_getCustomGun;

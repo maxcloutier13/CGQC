@@ -17,15 +17,6 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;
 
 
-// === Primary ==========================================================================================================
-switch (_gunVariant) do {
-	case "carbine": {["m4_gl_m320_rco"] spawn CGQC_fnc_switchPrimary;};
-	case "cqb": {["mk18_gl"] spawn CGQC_fnc_switchPrimary;};
-	case "noGL": {["mk18_tl"] spawn CGQC_fnc_switchPrimary;};
-	case "m4": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
-};
-
 switch (_variant) do {
 	case "tl": {
 		["2023_basic","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
@@ -77,6 +68,15 @@ switch (_variant) do {
 	case "zeus": {
 		if (_ruck isNotEqualTo "") then {["backpack", "cgqc_pack_mk1_magic_zeus"] call CGQC_fnc_switchStuff;};
 	};
+};
+
+// === Primary ==========================================================================================================
+switch (_gunVariant) do {
+	case "carbine": {["m4_gl_m320_rco"] spawn CGQC_fnc_switchPrimary;};
+	case "cqb": {["mk18_gl"] spawn CGQC_fnc_switchPrimary;};
+	case "noGL": {["mk18_tl"] spawn CGQC_fnc_switchPrimary;};
+	case "m4": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
+	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
 };
 
 LOG("[ldt_2023_command] done");

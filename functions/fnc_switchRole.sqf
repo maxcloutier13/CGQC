@@ -32,6 +32,7 @@ if !(_type isEqualTo "Unknown") then {
         cgqc_player_role = "Training";
     } else {
         // Prep player for switch
+        LOG("[switchRole] calling loadoutPrep");
         [player] call CGQC_fnc_loadoutPrep;
     };
 
@@ -46,6 +47,7 @@ if !(_type isEqualTo "Unknown") then {
         switch (_type) do {
             #include "\cgqc\loadouts\2023\roles.hpp"
             #include "\cgqc\loadouts\swat\roles.hpp"
+            #include "\cgqc\loadouts\pmct\roles.hpp"
         };
     };
     // Unsung
