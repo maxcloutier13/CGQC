@@ -212,6 +212,9 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_m
 _action = [ "menu_mk2_alt_ak", "AK style", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
+
+_action = [ "menu_mk2_alt_scarHStd", "8in slr107U", "", {["slr107u"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others", "menu_mk2_alt_ak"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_alt_scarHStd", "13in AK-104", "", {["ak_104"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_others", "menu_mk2_alt_ak"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_alt_scarHStd", "14in SIG SG553R", "", {["sg553AK"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
