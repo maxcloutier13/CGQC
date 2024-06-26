@@ -17,7 +17,6 @@ switch (_variant) do {
         _target addItemToUniform "azm_bft_tx";
         _target addItemToUniform "azm_bft_rx";
         _target addItemToUniform "ACRE_PRC152";
-        _target addItemToUniform "ACRE_PRC152";
         target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_tl": {

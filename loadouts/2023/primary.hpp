@@ -653,6 +653,13 @@ case "ak_104":{
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
     _target addPrimaryWeaponItem "rhssaf_30Rnd_762x39_M82_api";
 };
+case "slr107u":{
+    ["hlc_rifle_slr107u_MTK", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "hlc_muzzle_762SUP_AK";
+    _target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M300C_Black";
+    _target addPrimaryWeaponItem "rhssaf_30Rnd_762x39_M82_api";
+};
+
 case "sg553AK":{
     ["hlc_rifle_sg553RSB_TAC", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_SandmanS_Black";
