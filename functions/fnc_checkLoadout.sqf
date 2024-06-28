@@ -8,8 +8,9 @@ LOG_2(" checkLoadout %1/%2 started", _switch,_type);
 _switchRole = "";
 _section = 1;
 _dive = false;
-
 _load = false;
+_return = false;
+
 _switch = player getVariable "cgqc_var_skipLoadoutSwitch";
 if (isNil "_switch") then {
 	LOG("[checkLoadout] Loading custom loadouts");
@@ -119,6 +120,7 @@ if (_load) then {
     if (_switchRole isNotEqualTo "") then {
         LOG_1(" Loadout %1 found. Switching.", _switchRole);
         [_switchRole, _section, false, false] spawn CGQC_fnc_switchRole;
+        _return = true;
     } else {
         LOG("[checkLoadout] - Loadout not found. Skipping.");
          sleep 10;
@@ -129,6 +131,7 @@ if (_load) then {
         sleep 1;
         ["diver", true] spawn CGQC_fnc_switchUniform;
         LOG("[checkLoadout] - Diver suit");
+        _return = true;
     };
 } else {
     LOG("[checkLoadout] - Unit switch is OFF Skipping");
@@ -141,3 +144,4 @@ if (_load) then {
 };
 
 LOG("[checkLoadout] done");
+_return;

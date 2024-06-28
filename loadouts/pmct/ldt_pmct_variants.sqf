@@ -112,7 +112,7 @@ switch (_variant) do {
         removeGoggles player;
 	};
     case "pmct_zeus": {
-		if (_ruck isNotEqualTo "") then {["backpack", "cgqc_pack_mk1_magic_zeus"] call CGQC_fnc_switchStuff;};
+        ["backpack", "cgqc_pack_mk1_magic_zeus"] call CGQC_fnc_switchStuff;
         ["hat", "H_Watchcap_blk"] call CGQC_fnc_switchStuff;
         ["goggles", "rhs_facewear_6m2_1"] call CGQC_fnc_switchStuff;
     };

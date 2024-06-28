@@ -99,11 +99,10 @@ switch (_type) do {
     };
     case "zeus": {
         LOG("[addPerksSpecial]  Adding Zeus perks");
-        if (isNil "menu_self_zeus") then {
-
+        if (isNil "cgqc_menu_self_zeus") then {
             // Zeus perks ===================================================================================================
             _action = [ "menu_self_zeus", "Zeus", "CGQC\textures\cgqc_ace_zeus.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-            _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+            cgqc_menu_self_zeus = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
             // Gamestate handling
             _action = [ "zeus_gamestate", "Game Phase", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
