@@ -235,6 +235,8 @@ cgqc_training_landnav_playerAssigned = [];
 cgqc_training_landnav_playerItems = [];
 cgqc_training_landnav_playerBinos = "";
 
+
+
 // Convoy
 cgqc_training_convoy = false;
 cgqc_training_convoy_speed = 60;
@@ -283,6 +285,26 @@ cgqc_cqb_tgt_static = 0;
 cgqc_cqb_paused = false;
 cgqc_cqb_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];
 cgqc_cqb_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
+
+// Combat
+cgqc_training_combat = false;
+cgqc_training_list = [];
+cgqc_training_list_moving = [];
+cgqc_training_list_static = [];
+cgqc_training_list_civ = [];
+cgqc_training_on = false;
+cgqc_training_target_nbr = 10;
+cgqc_training_move = 0;
+cgqc_training_timer = 0;
+cgqc_training_timer_random = false;
+cgqc_training_civ = false;
+cgqc_training_nade = false;
+cgqc_training_tgt_move = 0;
+cgqc_training_tgt_static = 0;
+cgqc_training_paused = false;
+cgqc_training_hostile_class = ["O_G_Soldier_F", "O_G_Soldier_lite_F", "O_G_Soldier_SL_F"];
+cgqc_training_civ_class = ["C_journalist_F", "C_Journalist_01_War_F"];
+
 // *** Mk2 **********************
 cgqc_mk2_arsenal_init_done = false;
 cgqc_mk2_arsenal_locked = true;
