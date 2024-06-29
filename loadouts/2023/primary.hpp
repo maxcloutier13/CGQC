@@ -112,14 +112,21 @@ case "scar_l_short":{
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
-
 // 5.56 CQB/SBR ----------------------------------------------------------------------------------------------
 case "mk18_dot":{
-    ["cgqc_gun_mk1_mk18", "dot"] call CGQC_fnc_getCustomGun;
+    ["cgqc_gun_mk1_mk18"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
     _target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+};
+case "magpull":{
+    ["hlc_rifle_RU556", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_MicroT2_Leap_Tan";
+    _target addPrimaryWeaponItem "Tier1_AAC_M42000_Desert";
+    _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C";
+    _target addPrimaryWeaponItem "rhsusf_acc_grip2_tan";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "mk18_tl":{
     ["cgqc_gun_mk1_mk18", "dot"] call CGQC_fnc_getCustomGun;
@@ -138,7 +145,7 @@ case "mk18_gl":{
 };
 case "416_dot":{
     ["Tier1_HK416D10_SMR_MFT", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Tan";
+    _target addPrimaryWeaponItem "Tier1_SRD762_Desert";
     _target addPrimaryWeaponItem "Tier1_10_NGAL_M603V";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2_tan";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
@@ -668,5 +675,30 @@ case "sg553AK":{
     _target addPrimaryWeaponItem "rhssaf_30Rnd_762x39_M82_api";
 };
 
+// Qualification
+case "qual_m16":{
+    ["cgqc_gun_mk1_m16a4"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "hlc_muzzle_A1_FlashHider";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+};
 
+case "qual_mk46":{
+    ["cgqc_gun_mk1_mk46", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SAW_Bipod_DD";
+    _target addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch";
+};
 
+case "qual_417":{
+    ["cgqc_gun_mk1_hk417"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_Razor_Gen3_110_Geissele_Docter";
+    _target addPrimaryWeaponItem "bipod_01_F_blk";
+    _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk316_Mod_0_Mag";
+};
+
+case "qual_m24":{
+    ["rhs_weap_m24sws"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "rhsusf_acc_M8541";
+    _target addPrimaryWeaponItem "rhsusf_acc_m24_muzzlehider_black";
+    _target addPrimaryWeaponItem "rhsusf_acc_harris_swivel";
+    _target addPrimaryWeaponItem "rhsusf_5Rnd_762x51_m118_special_Mag";
+};
