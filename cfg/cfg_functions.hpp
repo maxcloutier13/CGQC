@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class checkVitals {
+            file = "\cgqc\functions\fnc_checkVitals.sqf";
+            description = "Check if the unit is stable";
+        };
         class addPerksSpecial{
             file = "\cgqc\functions\fnc_addPerksSpecial.sqf";
             description = "Add special perks depending on role";
