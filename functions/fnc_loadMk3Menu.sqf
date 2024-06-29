@@ -139,7 +139,7 @@ if (hasInterface) then {
 				// PMC-T
 				#include "\CGQC\loadouts\pmct\actions_role.hpp"
 				#include "\CGQC\loadouts\pmct\actions_primary.hpp"
-				#include "\CGQC\loadouts\2023\actions_optics.hpp"
+				#include "\CGQC\loadouts\pmct\actions_optics.hpp"
 			};
 			// WW2 shit ===============================================================================================
 			if (cgqc_player_hasIfa3) then {
