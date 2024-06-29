@@ -390,22 +390,24 @@ cgqc_event_talk = ["acre_startedSpeaking", {
 	// Volume is low: notify the player he is whispering
 	if (!_onRadio) then {
 		_txt = "";
+		_dist = "";
 		//LOG_1("[startedSpeaking] checking vol %1", _vol);
 		if (_vol < 0.3) then {
-			_txt = parseText("<t color='#006400'>Whispering</t>");
+			_txt = parseText("<t color='#006400'>Whispering</t><br/><t size='0.5'>5m</t>");
 		} else {
 			if (_vol < 0.5) then {
-				_txt = parseText("<t color='#4169e1'>Talking</t>");
+				_txt = parseText("<t color='#4169e1'>Talking</t><br/><t size='0.5'>10m</t>");
 			};
 		};
 		if (_vol isEqualTo 0.7) then {
-			_txt = parseText("<t color='#4169e1'>Speaking Loud</t>");
+			_txt = parseText("<t color='#4169e1'>Speaking Loud</t><br/><t size='0.5'>25m</t>");
+			_dist = "25m";
 		};
 		if (_vol isEqualTo 1.0) then {
-			_txt = parseText("<t color='#ff8c00'>Shouting</t>");
+			_txt = parseText("<t color='#ff8c00'>Shouting </t><br/><t size='0.5'>75m</t>");
 		};
 		if (_vol isEqualTo 1.3) then {
-			_txt = parseText("<t color='#b10000'>Yelling</t>");
+			_txt = parseText("<t color='#b10000'>Yelling</t><br/><t size='0.5'>150m</t>");
 		};
 		if (_txt isNotEqualTo "") then {
 			[ _txt, 0, 1.15, 1, 0.8 ] spawn BIS_fnc_dynamicText;

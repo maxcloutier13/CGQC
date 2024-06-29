@@ -6,6 +6,15 @@ class CAManBase: Man {
 	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
+			class cgqc_check_vitals {
+				displayName = "Check Vitals";
+				condition = "true";
+				statement = "[_target] call CGQC_fnc_checkVitals";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "\cgqc\textures\medical.paa";
+				runOnHover = "hint 'Confirm if patient is stable'";
+				distance = 2;
+			};
 			class ACE_TeamManagement {
 				delete ACE_AssignTeamRed;
 				delete ACE_AssignTeamGreen;

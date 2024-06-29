@@ -13,6 +13,11 @@ _position = _event select 3;
 _velocity = _event select 4;
 _ammo = _event select 6;
 
+_currentGun = currentWeapon player;
+_currentMag =  currentMagazine player;
+_gunName = (getText (configFile >> 'CfgWeapons' >> _currentGun >> 'displayName'));
+_txtInfo = format ["<br/>%1<br/>%2", _gunName, _currentMag];
+
 // Play impact sound
 _sound = ["cgqc_sound_impact1", "cgqc_sound_impact2"];
 _rand = selectRandom _sound;
@@ -56,6 +61,7 @@ if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_
         [_textDist, 1.2],
         [_textVel, 1.2],
         [_textScore, 1.2],
+        [_txtInfo, 1.2],
         true
     ] call CBA_fnc_notify;
 } else {
@@ -64,7 +70,11 @@ if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_
     _textVel = format["Velocité: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
     //_textAcc = format["%1/100", round(_accuracy * 10000) / 100];
     //_textScore = format["%1/100", round(_score * 100) / 100];
-    [[_title, 1.5, [0.161, 0.502, 0.725, 1]], [_textDist, 1.2], [_textVel, 1.2], true] remoteExec ["CBA_fnc_notify", owner _shooter]
+    [[_title, 1.5, [0.161, 0.502, 0.725, 1]],
+    [_textDist, 1.2],
+    [_textVel, 1.2],
+    [_txtInfo, 1],
+    true] remoteExec ["CBA_fnc_notify", owner _shooter]
     //hintSilent format["RemV: %1 m/s\nDistance: %2 m\n\n---- Moyenne ----\nPrécision: %3/100\nScore: %4/100",
     //round(_velocity call BIS_fnc_magnitude),
     //round(_distance * 10) / 10,

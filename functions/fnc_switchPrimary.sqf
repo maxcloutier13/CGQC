@@ -12,6 +12,7 @@ _needGL = false;
 switch (_type) do {
 	#include "\cgqc\loadouts\2023\primary.hpp"
 	#include "\cgqc\loadouts\swat\primary.hpp"
+	#include "\CGQC\loadouts\pmct\primary.hpp"
 	#include "\cgqc\loadouts\unsung\primary.hpp"
 };
 
@@ -67,6 +68,8 @@ if (cgqc_mission_daytime) then {
 			player removePrimaryWeaponItem _silencerClassName;
 			// Add the silencer to the player's backpack
 			player addItemToBackpack _silencerClassName;
+			_gunName = (getText (configFile >> 'CfgWeapons' >> _currentWeapon >> 'displayName'));
+			_silencerName = (getText (configFile >> 'CfgWeapons' >> _silencerClassName >> 'displayName'));
 			_txt = format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
 			[[_txt, 1], false] call CBA_fnc_notify;
 		}

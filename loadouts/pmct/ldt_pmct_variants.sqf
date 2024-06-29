@@ -17,14 +17,14 @@ switch (_variant) do {
         _target addItemToUniform "azm_bft_tx";
         _target addItemToUniform "azm_bft_rx";
         _target addItemToUniform "ACRE_PRC152";
-        target addItemToBackpack "cgqc_bandolier_ammo";
+        _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_tl": {
         ["backpack", "cgqc_pack_mk1_radiobag_black"] call CGQC_fnc_switchStuff;
         _target addItemToUniform "azm_bft_tx";
         _target addItemToUniform "azm_bft_rx";
         _target addItemToUniform "ACRE_PRC152";
-        target addItemToBackpack "cgqc_bandolier_ammo";
+        _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_gren": {
         for "_i" from 1 to 5 do {_target addItemToBackpack "hlc_VOG25_AK"};
@@ -34,7 +34,7 @@ switch (_variant) do {
 	};
     case "pmct_autorifleman": {
         ["backpack", "B_Kitbag_cbr"] call CGQC_fnc_switchStuff;
-        target addItemToBackpack "cgqc_bandolier_ammo";
+        _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_mg": {
         ["backpack", "B_Kitbag_cbr"] call CGQC_fnc_switchStuff;
@@ -56,7 +56,7 @@ switch (_variant) do {
         _target addItemToBackpack "ACE_DefusalKit";
         for "_i" from 1 to 2 do {_target addItemToBackpack "rhssaf_tm200_mag"};
         for "_i" from 1 to 4 do {_target addItemToBackpack "rhssaf_tm100_mag"};
-        target addItemToBackpack "cgqc_bandolier_ammo";
+        _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_medic": {
         ["backpack", "B_Carryall_cbr"] call CGQC_fnc_switchStuff;
@@ -73,7 +73,7 @@ switch (_variant) do {
 		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_tourniquet";};
 		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV";};
 		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV_500";};
-        target addItemToBackpack "cgqc_bandolier_ammo";
+        _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_drone": {
         ["backpack", "B_UAV_01_backpack_F"] call CGQC_fnc_switchStuff;
@@ -86,15 +86,15 @@ switch (_variant) do {
         _target addItemToUniform "ACE_Kestrel4500";
         _target addItemToUniform "ACE_ATragMX";
         _target addItemToUniform "ACE_Flashlight_KSF1";
-        player removeWeapon (binocular player);
-        player addWeapon "ACE_Vector";
+        _target removeWeapon (binocular _target);
+        _target addWeapon "ACE_Vector";
         _target addItemToUniform "ACE_Flashlight_KSF1";
         _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_marks": {
         ["goggles", "rhssaf_veil_Green"] call CGQC_fnc_switchStuff;
         _target addItemToUniform "ACE_RangeCard";
-        _target removeWeapon (binocular player);
+        _target removeWeapon (binocular _target);
         _target addWeapon "ACE_Vector";
         _target addItemToBackpack "cgqc_bandolier_ammo";
         _target addItemToUniform "ACE_Flashlight_KSF1";
@@ -103,13 +103,13 @@ switch (_variant) do {
         ["vest", "cgqc_vest_mk1_driver"] call CGQC_fnc_switchStuff;
         ["backpack", "cgqc_pack_mk1_magic"] call CGQC_fnc_switchStuff;
         ["hat", "rhs_tsh4_ess_bala"] call CGQC_fnc_switchStuff;
-        removeGoggles player;
+        removeGoggles _target;
 	};
     case "pmct_crew": {
         ["vest", "cgqc_vest_mk1_driver"] call CGQC_fnc_switchStuff;
         ["backpack", "cgqc_pack_mk1_magic"] call CGQC_fnc_switchStuff;
         ["hat", "rhs_tsh4_ess_bala"] call CGQC_fnc_switchStuff;
-        removeGoggles player;
+        removeGoggles _target;
 	};
     case "pmct_zeus": {
         ["backpack", "cgqc_pack_mk1_magic_zeus"] call CGQC_fnc_switchStuff;
@@ -123,45 +123,48 @@ LOG_1("[pmct_variants] gunvariant: %1", _gunVariant);
 
 switch (_gunVariant) do {
 	case "ak12": {
-        player addWeapon "cgqc_gun_pmct_ak12";
-        player addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
+        _target addWeapon "cgqc_gun_pmct_ak12";
+        _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
     };
     case "ak12short": {
-        player addWeapon "cgqc_gun_pmct_aku12";
-        player addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
+        _target addWeapon "cgqc_gun_pmct_aku12";
+        _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
     };
 	case "ak12gl": {
-        player addWeapon "cgqc_gun_pmct_ak12gl";
-        player addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
-        player addPrimaryWeaponItem "hlc_VOG25_AK";
+        _target addWeapon "cgqc_gun_pmct_ak12gl";
+        _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
+        _target addPrimaryWeaponItem "hlc_VOG25_AK";
         for "_i" from 1 to 5 do {_target addItemToVest "hlc_VOG25_AK"};
         for "_i" from 1 to 5 do {_target addItemToBackpack "hlc_VOG25_AK"};
         for "_i" from 1 to 3 do {_target addItemToBackpack "hlc_GRD_White"};
     };
     case "rpk12": {
-        player addWeapon "cgqc_gun_pmct_rpk12";
-        player addPrimaryWeaponItem "grcb_60Rnd_545x39_mix";
+        _target addWeapon "cgqc_gun_pmct_rpk12";
+        _target addPrimaryWeaponItem "grcb_60Rnd_545x39_mix";
     };
     case "mg3": {
-        player addWeapon "cgqc_gun_pmct_mg3";
-        player addPrimaryWeaponItem "Tier1_250Rnd_762x51_Belt_M80A1_EPR";
+        _target addWeapon "cgqc_gun_pmct_mg3";
+        _target addPrimaryWeaponItem "Tier1_250Rnd_762x51_Belt_M80A1_EPR";
     };
     case "svd": {
-        player addWeapon "cgqc_gun_pmct_svd";
-        player addPrimaryWeaponItem "rhs_10Rnd_762x54mmR_7N14";
+        _target addWeapon "cgqc_gun_pmct_svd";
+        _target addPrimaryWeaponItem "rhs_10Rnd_762x54mmR_7N14";
     };
     case "awm": {
-        player addWeapon "cgqc_gun_pmct_AWM";
-        player addPrimaryWeaponItem "hlc_5rnd_300WM_FMJ_AWM";
+        _target addWeapon "cgqc_gun_pmct_AWM";
+        _target addPrimaryWeaponItem "hlc_5rnd_300WM_FMJ_AWM";
     };
     case "ak12zeus": {
-        player addWeapon "cgqc_gun_pmct_aku12_zeus";
-        player addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
+        _target addWeapon "cgqc_gun_pmct_aku12_zeus";
+        _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
     };
 };
 
 LOG("[pmct_variants] Adding mags");
 // Add mags
 [_target] call CGQC_fnc_addMags;
+
+// Radio sides default
+["defaultLR"] call CGQC_fnc_setRadios;
 
 LOG("[pmct_variants] done");
