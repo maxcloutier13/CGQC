@@ -18,6 +18,11 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace
 _action = [ "menu_self_ready", " Prêt au Combat", "CGQC\textures\cgqc_ace_combat", {["ready", true] spawn CGQC_fnc_perksBasic}, {cgqc_player_chill} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
+// Outdoor Range =========================================================================================================
+
+_action = [ "cgqc_perk_range", "Goto: Test Range", "", {cgqc_outdoor_range_pos = getPosATL player; player setpos getPosATL cgqc_outdoor_range_start}, {!isnil "cgqc_outdoor_range_hide" && !cgqc_outdoor_range_hide} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Mark clear =========================================================================================================
 _action = [ "cgqc_perk_mark", "Mark building cleared", "a3\ui_f\data\map\GroupIcons\badge_gs.paa", {[] spawn CGQC_fnc_markClear}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
