@@ -400,7 +400,7 @@ cgqc_event_talk = ["acre_startedSpeaking", {
 			};
 		};
 		if (_vol isEqualTo 0.7) then {
-			_txt = parseText("<t color='#4169e1'>Speaking Loud</t><br/><t size='0.5'>25m</t>");
+			_txt = parseText("<t color='#b9e141'>Speaking Loud</t><br/><t size='0.5'>25m</t>");
 			_dist = "25m";
 		};
 		if (_vol isEqualTo 1.0) then {

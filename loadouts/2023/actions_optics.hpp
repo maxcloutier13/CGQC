@@ -1,5 +1,5 @@
 // Alternative Optics =======================================================================================================
-_action = [ "menu_mk2_optics", "Switch: Optics", "\a3\ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_optics", "Switch: Optics", "\CGQC\textures\icon_sniping", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" ], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // cgqc_config_scopeRestriction
