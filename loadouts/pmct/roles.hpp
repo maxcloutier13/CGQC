@@ -100,7 +100,7 @@ case "pmct_at":{
 	[player, "pmct_at", "ak12"] call CGQC_ldt_pmct_variants;
 	["at", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
-	cgqc_player_role = "AT/MAAWS";
+	cgqc_player_role = "AT RPG7";
 	cgqc_player_roleType = "Infantry";
 	cgqc_player_role_optic = 1;
 };

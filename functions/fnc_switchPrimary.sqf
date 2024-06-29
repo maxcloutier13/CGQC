@@ -12,6 +12,7 @@ _needGL = false;
 switch (_type) do {
 	#include "\cgqc\loadouts\2023\primary.hpp"
 	#include "\cgqc\loadouts\swat\primary.hpp"
+	#include "\CGQC\loadouts\pmct\primary.hpp"
 	#include "\cgqc\loadouts\unsung\primary.hpp"
 };
 
