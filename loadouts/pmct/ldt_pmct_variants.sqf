@@ -164,4 +164,7 @@ LOG("[pmct_variants] Adding mags");
 // Add mags
 [_target] call CGQC_fnc_addMags;
 
+// Radio sides default
+["defaultLR"] call CGQC_fnc_setRadios;
+
 LOG("[pmct_variants] done");
