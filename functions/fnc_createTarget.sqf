@@ -1,7 +1,8 @@
 #include "\CGQC\script_component.hpp"
 // --- createTarget ----------------------------------------------------------
 // Create sniping targets
-params ["_targetClass", "_targetRandomDir", "_targetAnimated", ["_targetSpawnDist", 0], ["_targetEvent", "basic"]];
+// ["metalTarget_Stand_AZone", false, cgqc_sniping_movingTarget, cgqc_sniping_distanceMode] spawn CGQC_fnc_createTarget
+params ["_targetClass", "_targetRandomDir", "_targetAnimated", ["_targetSpawnDist", 0]];
 LOG_4("[createTarget] %1/%2/%3/%4 started", _targetClass, _targetRandomDir, _targetAnimated, _targetSpawnDist);
 //private ["_arguments", "_targetClass", "_targetRandomDir", "_targetAnimated"];
 
@@ -14,7 +15,7 @@ if (_targetSpawnDist isEqualTo 1) exitWith {
 };
 
 // Rifle testing mode
-if (_targetSpawnDist isEqualTo 0) exitWith {
+if (_targetSpawnDist isEqualTo 2) exitWith {
 	_toSpawn = [25, 50, 100, 300, 500];
 	{
 		[_targetClass, false, false, _x, "zero"] call CGQC_fnc_createTarget;
@@ -106,27 +107,34 @@ if (_targetRandomDir) then {
 };
 _target setDir _direction;
 
-if !(_targetEvent isEqualTo "zero") then {
-	hint "skipping events";
-	/*
-	_target addEventHandler ["HitPart", {
-		params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
-		LOG_3("[hitPart-Zero] Shooter:%1/T:%2/P:%3",_shooter, _target, _projectile);
-		_shooterId = owner _shooter;
-		["You hit the target!"] remoteExec ["hint", _shooterId];
-		[_this select 0] remoteExec ["CGQC_fnc_onHitTestTarget", _shooterId];
-	}];*/
-} else {
-	_target addEventHandler ["HitPart", {
-		params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
-		LOG_3("[hitPart-Basic] %1/%2/%3", _target, _shooter, _projectile);
-		//if (isNull _projectile) exitWith {};
-		//if !(_isDirect) exitWith {};
-		//if !(_projectile isKindOf "BulletBase") exitWith {};
-		//if (_shooter != player) exitWith {};
-		[_this select 0] spawn CGQC_fnc_onHit;
-	}];
-};
+LOG("[createTarget] Adding hit eventhandler");
+_target addEventHandler ["HitPart", {
+	_mkr = "Land_PencilRed_F" createVehicle [0,0,0];
+	_mkr setDir getDir (_this select 0 select 0) + 180;
+	_mkr enableSimulation false;
+	_mkr setPosASL (_this select 0 select 3);
+	cgqc_sniping_hit = cgqc_sniping_hit+[_mkr];
+	tgt_hi_1 = _this select 0 select 3;
+	[] spawn {
+		_spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+		_spr setPosASL tgt_hi_1;
+		sleep 2;
+		deleteVehicle _spr;
+	};
+	[_this select 0] spawn CGQC_fnc_onHitRange;
+}];
+
+/*
+_target addEventHandler ["HitPart", {
+	params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
+	LOG_3("[hitPart-Basic] %1/%2/%3", _target, _shooter, _projectile);
+	//if (isNull _projectile) exitWith {};
+	//if !(_isDirect) exitWith {};
+	//if !(_projectile isKindOf "BulletBase") exitWith {};
+	//if (_shooter != player) exitWith {};
+
+	[_this select 0] spawn CGQC_fnc_onHit;
+}];*/
 
 cgqc_training_targetList pushBack _target;
 

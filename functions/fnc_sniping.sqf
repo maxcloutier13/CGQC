@@ -31,6 +31,10 @@ switch (_type) do {
         TrainingCourse_AverageDistance = 0;
         TrainingCourse_AverageTargetScore = 0;
         TrainingCourse_AverageImpactDeviation = 0;
+        {
+            deleteVehicle _x;
+        } forEach cgqc_sniping_hit;
+        cgqc_sniping_hit=[];
         [["Stats Reset"], false] call CBA_fnc_notify;
     };
     case "remove": {
