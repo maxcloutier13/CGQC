@@ -59,6 +59,17 @@ if (core_version isNotEqualTo _checkVersion) then {
 	_magwell
 }] call ace_arsenal_fnc_addSort;
 
+// Sort by Range
+[[[0, 1], []], "rangeSort", "Sort by Max Range", {
+	params ["_itemCfg"];
+
+	// Retrieve the barrel length from the config
+	private _range = getNumber (_itemCfg >> "maxZeroing");
+
+	// Return the barrel length for sorting
+	_range
+}] call ace_arsenal_fnc_addSort;
+
 /*
 // set language and radio channels
 	["side"] call CGQC_fnc_setACRE;
