@@ -408,7 +408,7 @@ case "m110k5_65":{
     ["Tier1_M110k5_ACS_65mm", "lpvo"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_762_DSR";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M603V_FL";
-    _target addPrimaryWeaponItem "Tier1_20Rnd_762x51_M118_Special_SR25_Mag";
+    _target addPrimaryWeaponItem "Tier1_20Rnd_65x48_Creedmoor_SR25_Mag";
     _target addPrimaryWeaponItem "Tier1_Harris_Bipod_MLOK_Tan";
 };
 case "sr25":{
