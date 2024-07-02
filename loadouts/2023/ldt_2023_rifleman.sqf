@@ -25,6 +25,7 @@ switch (_gunVariant) do {
 	case "rifle": {["m16_shortdot"] spawn CGQC_fnc_switchPrimary;};
 	case "grenade": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
 	case "417": {["417"] spawn CGQC_fnc_switchPrimary;};
+	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
 };
 
 switch (_variant) do {

@@ -311,7 +311,7 @@ case "m16_shortdot":{
 };
 case "mk12_lpvo":{
     ["cgqc_gun_mk1_mk12", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    _target addPrimaryWeaponItem "gtr_acc_AEM";
     _target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
     _target addPrimaryWeaponItem "Tier1_Harris_Bipod_Black";

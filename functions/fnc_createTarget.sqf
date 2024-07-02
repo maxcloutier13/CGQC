@@ -107,7 +107,7 @@ _target setDir _direction;
 LOG("[createTarget] Adding hit eventhandler");
 _target addEventHandler ["HitPart", {
 	_target = _this select 0 select 0;
-	_direction = getDir _target + 180;
+	_direction = getDir _target;
 	_mkr = "Land_PencilRed_F" createVehicle [0,0,0];
 	if (typeOf _target isEqualTo "Hostage_Target") then {
 		LOG("[createTarget] - Hostage target, turning hit marker");
