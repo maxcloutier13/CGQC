@@ -333,7 +333,7 @@ switch (_type) do {
 		_handRadio_2 = _handRadios select 1;
 		// Channels
 		[_personalRadio, 4] call acre_api_fnc_setRadioChannel;
-		[_handRadio_1, 2] call acre_api_fnc_setRadioChannel;
+		[_handRadio_1, 1] call acre_api_fnc_setRadioChannel;
 		[_handRadio_2, 5] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_personalRadio, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -352,7 +352,7 @@ switch (_type) do {
 		_handRadio_2 = _handRadios select 1;
 		// Channels
 		[_handRadio_1, 6] call acre_api_fnc_setRadioChannel;
-		[_handRadio_2, 3] call acre_api_fnc_setRadioChannel;
+		[_handRadio_2, 1] call acre_api_fnc_setRadioChannel;
 		[_personalRadio, 10] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_handRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
@@ -370,7 +370,7 @@ switch (_type) do {
 		_handRadio_2 = _handRadios select 1;
 		// Channels
 		[_handRadio_1, 3] call acre_api_fnc_setRadioChannel;
-		[_handRadio_2, 2] call acre_api_fnc_setRadioChannel;
+		[_handRadio_2, 1] call acre_api_fnc_setRadioChannel;
 		[_personalRadio, 10] call acre_api_fnc_setRadioChannel;
 		// Set sides
 		_success = [_handRadio_1, "LEFT" ] call acre_api_fnc_setRadioSpatial;
