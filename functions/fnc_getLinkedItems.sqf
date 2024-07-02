@@ -2,7 +2,7 @@
 // --- getLinkedItems ----------------------------------------------------------
 // Get basic linked items, nvgs and such
 params ["_type", ["_binocs", ""], ["_nvg", ""], ["_loadEssentials", true]];
-LOG_4(" getLinkedItems %1/%2/%3/%4 started", _type, _binocs, _nvg, _loadEssentials);
+LOG_4("[getLinkedItems] %1/%2/%3/%4 started", _type, _binocs, _nvg, _loadEssentials);
 
 _link = [];
 _optionals = [];
@@ -61,25 +61,25 @@ switch (_type) do {
 
 // Essentials
 if (_loadEssentials) then {
-	LOG(" getLinkedItems essentials loading");
+	LOG("[getLinkedItems] essentials loading");
 	{player addItem _x;} forEach _essentials;
 };
 
 // Linked items
 if (count _link > 0) then {
-	LOG(" getLinkedItems linkedItem loading");
+	LOG("[getLinkedItems] linkedItem loading");
 	{player linkItem _x;} forEach _link;
 };
 
 // Optional goodies
 if (count _optionals > 0) then {
-	LOG(" getLinkedItems optionals loading");
+	LOG("[getLinkedItems] optionals loading");
 	{player addItem _x;} forEach _optionals;
 };
 
 // Binos
 if (_binocs isNotEqualTo "") then {
-	LOG(" getLinkedItems binocs loading");
+	LOG("[getLinkedItems] binocs loading");
 	player addWeapon _binocs;
 	if ("designator" in _binocs) then {player addMagazine "Laserbatteries";};
 };
@@ -87,19 +87,19 @@ if (_binocs isNotEqualTo "") then {
 
 // NVG'S -------------------------------------------------------------------------------------------------------
 if (_nvg isNotEqualTo "") then {
-	LOG(" getLinkedItems nvgs loading");
+	LOG("[getLinkedItems] nvgs loading");
 	// === NVG's
 	[] call CGQC_fnc_isDaytime;
 	if (cgqc_mission_daytime) then {
 		player addItemToBackpack _nvg;
-		LOG(" getLinkedItems - Daytime. Nvg's in backpack");
+		LOG("[getLinkedItems] - Daytime. Nvg's in backpack");
 		hint "Daytime. Nvg's in backpack";
 	}else{
 		//Night mission
 		player linkItem _nvg;
-		LOG(" getLinkedItems - Night. Nvg's on helmet");
+		LOG("[getLinkedItems] - Night. Nvg's on helmet");
 		hint "Night. Nvg's on helmet";
 	};
 };
 
-LOG(" getLinkedItems done");
+LOG("[getLinkedItems] done");
