@@ -97,7 +97,7 @@ if (_targetRandomDir) then {
 } else {
 	_vecToTarget = (getPosASL player) vectorFromTo (getPosASL _target);
 	_direction = (_vecToTarget select 0) atan2 (_vecToTarget select 1);
-	if (_targetClass == "Hostage_Target") then {
+	if (_targetClass isEqualTo "Hostage_Target") then {
 		LOG("[createTarget] - Hostage target, turning");
 		_direction = _direction + 90;
 	};
@@ -106,8 +106,14 @@ _target setDir _direction;
 
 LOG("[createTarget] Adding hit eventhandler");
 _target addEventHandler ["HitPart", {
+	_target = _this select 0 select 0;
+	_direction = getDir _target + 180;
 	_mkr = "Land_PencilRed_F" createVehicle [0,0,0];
-	_mkr setDir getDir (_this select 0 select 0) + 180;
+	if (typeOf _target isEqualTo "Hostage_Target") then {
+		LOG("[createTarget] - Hostage target, turning hit marker");
+		_direction = _direction - 90;
+	};
+	_mkr setDir _direction;
 	_mkr enableSimulation false;
 	_mkr setPosASL (_this select 0 select 3);
 	cgqc_sniping_hit = cgqc_sniping_hit+[_mkr];
