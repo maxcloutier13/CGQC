@@ -291,7 +291,6 @@ case "hk416_elcan":{
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
-
 case "acre_carb":{
     ["hlc_rifle_ACR_Carb_black", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
@@ -299,7 +298,12 @@ case "acre_carb":{
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
     _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
-
+case "jack":{
+    ["hlc_rifle_bcmjack", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "hlc_muzzle_556NATO_rotexiiic_grey";
+    _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black_FL";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+};
 
 // 5.56 Full Rifle =================================================================
 case "m16_shortdot":{
