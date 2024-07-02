@@ -38,7 +38,7 @@ switch (_type) do {
 		player removeEventHandler ["fired", range_event2];
 	};
 	case 1: { // Sniping on
-		hint "Sniping mode ON - Check your scrollwheel menu";
+		hint "Sniping mode ON - Perk added";
 		// Here we go. This is some sweet stuff.
 		waitUntil {
 			!isNull player

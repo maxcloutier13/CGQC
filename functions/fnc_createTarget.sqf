@@ -95,15 +95,12 @@ _direction = 0;
 if (_targetRandomDir) then {
 	_direction = random 360;
 } else {
-	if (_targetClass == "Hostage_Target") then {
-		// Convert 90 degrees to radians
-		_angleOffset = 90 * (pi / 180);
-		// Adjust the direction by subtracting 90 degrees (in radians)
-		_direction = _direction - _angleOffset;
-
-	};
 	_vecToTarget = (getPosASL player) vectorFromTo (getPosASL _target);
 	_direction = (_vecToTarget select 0) atan2 (_vecToTarget select 1);
+	if (_targetClass == "Hostage_Target") then {
+		LOG("[createTarget] - Hostage target, turning");
+		_direction = _direction + 90;
+	};
 };
 _target setDir _direction;
 
