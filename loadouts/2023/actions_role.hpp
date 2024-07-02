@@ -9,15 +9,14 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023"], _action ] call ace_inte
 _action = [ "menu_mk2_inf", "Infanterie", "\cgqc\textures\cgqc_ace_rifle.paa", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Rifleman mk18
-//_action = [ "menu_mk2_inf_RFCQB", "Rifleman CQB mk18", "", {["2023_rifle_cqb"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
-//_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Rifleman M4
 _action = [ "menu_mk2_inf_RF", "Rifleman", "", {["2023_rifle_carb"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-// Rifleman M16
-//_action = [ "menu_mk2_inf_RF_m16", "Rifleman Rifle M16a4", "", {["2023_rifle_rifle"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
-//_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_inf_RFCQB", "Rifleman SBR/CQB", "", {["2023_rifle_cqb"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_inf_RF_m16", "Rifleman SPR/Long", "", {["2023_rifle_rifle"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 // Grenadier
 _action = [ "menu_mk2_inf_Grenadier", "Grenadier", "", {["2023_rifle_grenadier"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_inf"], _action ] call  ace_interact_menu_fnc_addActionToObject;
