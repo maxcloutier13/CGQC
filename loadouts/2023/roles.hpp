@@ -40,7 +40,7 @@ case "2023_rifle_grenadier":{
 
 // Junior Specialists ===============================================================
 case "2023_rifle_shoot":{
-	[player, "sharpshooter", "417"] call CGQC_ldt_2023_rifleman;
+	[player, "sharpshooter", "mk12"] call CGQC_ldt_2023_rifleman;
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sharpshooter";
