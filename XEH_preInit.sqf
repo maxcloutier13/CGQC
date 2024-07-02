@@ -206,6 +206,7 @@ cgqc_spawn_vic = "";
 cgqc_sniping_movingTarget = false;
 cgqc_sniping_distanceMode = 0;
 cgqc_sniping_hit = [];
+cgqc_damage_text = [];
 
 // Qualifications
 cgqc_qualification_running = false;

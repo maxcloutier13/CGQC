@@ -37,6 +37,64 @@ if (_targetRandomDir) then
 
 _group = createGroup east;
 _unit = _group createUnit [_targetClass, [_position select 0, _position select 1, 0.0], [], 0, "CAN_COLLIDE"];
+_unit setVehicleVarName format ["damage_%1", random 10000];
+
+// Unit killed
+_unit addMPEventHandler ["MPKilled", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	cgqc_damage_text pushBack "Fatal Damage<br/>";
+	if (local _unit) then {
+		[_unit] spawn {
+			params ["_unit"];
+			sleep 2;
+			deleteVehicle _unit;
+		};
+	};
+}];
+
+// Unit hit
+_unit addEventHandler ["HitPart", {
+	(_this select 0) params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
+	tgt_hi_5 = _this select 0 select 3;
+	[_target, _shooter, _position, _velocity, _ammo] spawn {
+		params ["_target", "_shooter", "_position", "_velocity", "_ammo"];
+		_spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+		_spr setPosASL tgt_hi_5;
+		sleep 0.5;
+		_txtDamage = "";
+		{
+			_txtDamage = _txtDamage + _x;
+		} forEach cgqc_damage_text;
+		cgqc_damage_text = [];
+		_currentGun = currentWeapon player;
+		_currentMag =  currentMagazine player;
+		_gunName = (getText (configFile >> 'CfgWeapons' >> _currentGun >> 'displayName'));
+		_txtInfo = format ["<br/>%1<br/>%2", _gunName, _currentMag];
+		_vectorToTarget = (getPosASL _shooter) vectorDiff _position;
+		_distance = vectorMagnitude _vectorToTarget;
+		_textDist = format["Dist: %1m", floor (round(_distance * 10) / 10)];
+		_textVel = format["Vel: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
+		_weight = getNumber(configFile >> "CfgAmmo" >> _ammo select 4 >> "ACE_bulletMass");
+		_weightKg = _weight / 1000;
+		_vel = _velocity call BIS_fnc_magnitude;
+		_velSquare = _vel * _vel;
+		_energy = floor (round(0.5 * _velSquare * _weightKg));
+		_textEnergy = format["Engergy: %1joules<br/>", _energy];
+		if (_vel <= 343) then {
+			_textVel = format["%1 - Subsonic", _textVel];
+		};
+		[["Target hit", 1.5, [0.161, 0.502, 0.725, 1]],
+			[_textDist, 1],
+			[_textVel, 1],
+			[_textEnergy, 1],
+			[_txtDamage, 1],
+			[_txtInfo, 1],
+		true] remoteExec ["CBA_fnc_notify", owner _shooter];
+		sleep 2;
+		deleteVehicle _spr;
+	};
+}];
+
 _unit setDir _direction;
 removeAllWeapons _unit;
 _unit disableAI "PATH";
@@ -54,6 +112,8 @@ if (_targetPatrolling) then
 	[_group, 3] setWaypointType "CYCLE";
 	{[_group, _x] setWaypointSpeed "LIMITED";} forEach [1, 2, 3];
 };
+
+
 
 [["Unit Spawned"], false] call CBA_fnc_notify;
 LOG("[createSoldier] done");

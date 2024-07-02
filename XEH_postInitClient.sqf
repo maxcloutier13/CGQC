@@ -242,6 +242,23 @@ if (cgqc_player_loadAll) then {
 	};*/
 }] call CBA_fnc_addEventHandler;
 
+// Wound received for training purposes
+["ace_medical_woundReceived", {
+    params ["_unit", "_allDamages", "_shooter", "_ammo"];
+    if ("damage" in (vehicleVarName _unit)) then {
+        {
+            _dmg = _x select 0;
+            if (_dmg > 0.06) then {
+                _dmg = _dmg * 10;
+                _dmg = round _dmg;
+                _tgt = _x select 1;
+                _txt = format["Dmg:%1 to %2<br/>", _dmg, _tgt];
+                cgqc_damage_text pushBack _txt;
+            };
+        } forEach _allDamages;
+    };
+}] call CBA_fnc_addEventHandler;
+
 ["CGQC_event_152PickedUp", {
 	params ["_unit", "_container", "_item"];
 	LOG_2("[152PickedUp] - Unit:%1/Container:%2", _unit, _container);

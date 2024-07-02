@@ -558,8 +558,8 @@ cgqc_damage_spawn_unit = {
         (_this select 0) params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
         tgt_hi_5 = _this select 0 select 3;
 
-        [_target, _shooter, _position, _velocity] spawn {
-            params ["_target", "_shooter", "_position", "_velocity"];
+        [_target, _shooter, _position, _velocity, _ammo] spawn {
+            params ["_target", "_shooter", "_position", "_velocity", "_ammo"];
             _spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
             _spr setPosASL tgt_hi_5;
             sleep 0.5;
@@ -625,3 +625,102 @@ _adding = [ laptop_lane_5, 0, ["ACE_MainActions"], _action ] call ace_interact_m
 
 
 /////////////////////
+
+cgqc_damage_units = [];
+cgqc_damage_positions = [damage_pos_1, damage_pos_2, damage_pos_3, damage_pos_4, damage_pos_5];
+
+cgqc_damage_spawn_unit = {
+    params ["_pos", "_dir"];
+
+    _stuff = getUnitLoadout damage_dummy;
+    _class = "rhs_vdv_rifleman";
+
+    _group = createGroup east;
+    _newUnit = _group createUnit [_class, _pos, [], 0, "CAN_COLLIDE"];
+    _newUnit setDir _dir;
+    _newUnit setVehicleVarName format ["damage_%1", random 10000];
+    removeAllItems _newUnit;
+    removeAllAssignedItems _newUnit;
+    removeAllWeapons _newUnit;
+    removeAllContainers _newUnit;
+    removeGoggles _newUnit;
+    removeHeadgear _newUnit;
+    _newUnit setUnitLoadout _stuff;
+    _newUnit disableAI "AIMINGERROR";
+    _newUnit disableAI "AUTOCOMBAT";
+    _newUnit disableAI "AUTOTARGET";
+    _newUnit disableAI "FSM";
+    _newUnit disableAI "MOVE";
+    _newUnit disableAI "PATH";
+    _newUnit disableAI "SUPPRESSION";
+    _newUnit disableAI "TARGET";
+    _newUnit setunitpos "UP";
+    _group setBehaviour "SAFE";
+    cgqc_damage_units pushBack _newUnit;
+    _newUnit addEventHandler ["HitPart", {
+        (_this select 0) params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
+        tgt_hi_5 = _this select 0 select 3;
+
+        [_target, _shooter, _position, _velocity, _ammo] spawn {
+            params ["_target", "_shooter", "_position", "_velocity", "_ammo"];
+            _spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+            _spr setPosASL tgt_hi_5;
+            sleep 0.5;
+            _target call ACE_medical_treatment_fnc_fullHealLocal;
+            _txtDamage = "";
+            {
+                _txtDamage = _txtDamage + _x;
+            } forEach cgqc_damage_text;
+            cgqc_damage_text = [];
+            _currentGun = currentWeapon player;
+            _currentMag =  currentMagazine player;
+            _gunName = (getText (configFile >> 'CfgWeapons' >> _currentGun >> 'displayName'));
+            _txtInfo = format ["<br/>%1/%2", _gunName, _currentMag];
+            _vectorToTarget = (getPosASL _shooter) vectorDiff _position;
+            _distance = vectorMagnitude _vectorToTarget;
+            _textDist = format["Dist: %1m", floor (round(_distance * 10) / 10)];
+            _textVel = format["Vel: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
+            _weight = getNumber(configFile >> "CfgAmmo" >> _ammo select 4 >> "ACE_bulletMass");
+            _weightKg = _weight / 1000;
+            _vel = _velocity call BIS_fnc_magnitude;
+            _velSquare = _vel * _vel;
+            _energy = floor (round(0.5 * _velSquare * _weightKg));
+            _textEnergy = format["Engergy: %1joules", _energy];
+            if (_vel <= 343) then {
+                _textVel = format["%1 - Subsonic", _textVel];
+            };
+            [["Target hit", 1.5, [0.161, 0.502, 0.725, 1]],
+                [_textDist, 1],
+                [_textVel, 1],
+                [_textEnergy, 1],
+                [_txtDamage, 1],
+                [_txtInfo, 1],
+            true] remoteExec ["CBA_fnc_notify", owner _shooter];
+            sleep 2;
+            deleteVehicle _spr;
+        };
+    }];
+
+    _newUnit addMPEventHandler ["MPKilled", {
+        params ["_unit", "_killer", "_instigator", "_useEffects"];
+        cgqc_damage_text pushBack "Fatal Damage<br/>";
+        if (local _unit) then {
+            [getPos _unit, getDir _unit] call cgqc_damage_spawn_unit;
+            deleteVehicle _unit;
+        };
+    }];
+};
+
+_action = [ "menu_create", "Create Targets", "", {
+    {
+        [getPos _x, getDir _x] call cgqc_damage_spawn_unit;
+    } forEach cgqc_damage_positions;
+}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ laptop_lane_5, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_delete", "Delete Targets", "", {
+    {
+        deleteVehicle _x;
+    } forEach cgqc_damage_units;
+    cgqc_damage_units = [];
+}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ laptop_lane_5, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
