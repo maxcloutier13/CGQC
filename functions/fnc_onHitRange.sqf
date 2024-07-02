@@ -1,10 +1,14 @@
 #include "\CGQC\script_component.hpp"
 params ["_event"];
 //params ["_target", "_shooter", "_bullet", "_ammo","_position", "_velocity"];
-
 private ["_target", "_shooter", "_bullet", "_ammo", "_position", "_vectorToTarget", "_velocity", "_distance", "_targetDir", "_impactDeviation", "_accuracy", "_score", "_targetScore"];
 //params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
 LOG("[onHitRange]] started");
+
+cgqc_int_calculateEnergy = {
+    params[_bullet, _velocity];
+
+};
 
 _target = _event select 0;
 _shooter = _event select 1;
@@ -27,6 +31,21 @@ _rand = selectRandom _sound;
 _vectorToTarget = (getPosASL _shooter) vectorDiff _position;
 _distance = vectorMagnitude _vectorToTarget;
 
+_title = "Impact!";
+_vel = floor (round(_velocity call BIS_fnc_magnitude));
+_dist = floor (round(_distance * 10) / 10);
+_textDist = format["Dist: %1m", _dist];
+_textVel = format["Vel: %1m/s", _vel];
+if (_vel <= 343) then {
+    _textVel = format["%1 - Subsonic", _textVel];
+};
+_weight = getNumber(configFile >> "CfgAmmo" >> _ammo select 4 >> "ACE_bulletMass");
+_weightKg = _weight / 1000;
+_velSquare = _vel * _vel;
+_energy = floor (round(0.5 * _velSquare * _weightKg));
+_textEnergy = format["Engergy: %1joules", _energy];
+
+
 if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_Inf_Acc2_NoPop_F", "TargetP_Inf2_Acc2_NoPop_F"]) then {
     _targetDir = getDir _target;
     _impactDeviation = _position vectorDiff (getPosASL _target);
@@ -48,10 +67,6 @@ if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_
     if (_impactDeviation < 0.0575 * 0.5) then {
         _targetScore = 5;
     };
-
-    _title = "Impact!";
-    _textDist = format["Distance: %1m", floor (round(_distance * 10) / 10)];
-    _textVel = format["Velocité: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
     _textScore = format["Score: %1/5", _targetScore];
     //_textTotal = format["Total: %1/%2", TrainingCourse_TotalTargetScore, (TrainingCourse_TargetsHit * 5)];
     //_textAcc = format["%1/100", round(_accuracy * 10000) / 100];
@@ -60,19 +75,21 @@ if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_
         [_title, 1.5, [0.161, 0.502, 0.725, 1]],
         [_textDist, 1.2],
         [_textVel, 1.2],
+        [_textEnergy, 1.2],
         [_textScore, 1.2],
         [_txtInfo, 1.2],
         true
     ] call CBA_fnc_notify;
 } else {
-    _title = "Impact!";
-    _textDist = format["Distance: %1m", floor (round(_distance * 10) / 10)];
-    _textVel = format["Velocité: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
+    //_title = "Impact!";
+    //_textDist = format["Distance: %1m", floor (round(_distance * 10) / 10)];
+    //_textVel = format["Velocité: %1m/s", floor (round(_velocity call BIS_fnc_magnitude))];
     //_textAcc = format["%1/100", round(_accuracy * 10000) / 100];
     //_textScore = format["%1/100", round(_score * 100) / 100];
     [[_title, 1.5, [0.161, 0.502, 0.725, 1]],
     [_textDist, 1.2],
     [_textVel, 1.2],
+    [_textEnergy, 1.2],
     [_txtInfo, 1],
     true] remoteExec ["CBA_fnc_notify", owner _shooter]
     //hintSilent format["RemV: %1 m/s\nDistance: %2 m\n\n---- Moyenne ----\nPrécision: %3/100\nScore: %4/100",
