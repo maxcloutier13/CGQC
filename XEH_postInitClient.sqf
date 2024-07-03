@@ -154,6 +154,12 @@ if (cgqc_player_loadAll) then {
 		// Prep les variables de l'arsenal dynamique
 		#include "\cgqc\loadouts\2023\arsenal\init_arsenal.sqf";
 		cgqc_2023_arsenal_init_done = true;
+		// PMCT
+		cgqc_pmct_arsenal_1 = [];
+		cgqc_pmct_arsenal_8 = [];
+		#include "\cgqc\loadouts\pmct\all_items.hpp";
+		cgqc_pmct_arsenal_8 = cgqc_pmct_arsenal_all;
+		cgqc_pmct_arsenal_init_done = true;
 	};
 	if (cgqc_player_hasUnsung) then {
 		cgqc_unsung_arsenal_1 = [];

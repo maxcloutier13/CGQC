@@ -16,3 +16,7 @@ _action = [ "menu_pmct_alt_6", "SVD", "", {["svd"] spawn CGQC_fnc_switchPrimary}
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_pmct_alt_7", "AWM", "", {["awm"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_pmct_alt_8", "AS Val", "", {["val"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_pmct_alt_9", "VSS Vincentorez", "", {["vss"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;

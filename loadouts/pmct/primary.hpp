@@ -1,4 +1,18 @@
 // PMC-T
+case "val":{
+    ["rhs_weap_asval_grip"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "rhs_acc_okp7_dovetail";
+    _target addPrimaryWeaponItem "rhsusf_acc_grip2";
+    _target addPrimaryWeaponItem "rhs_acc_2dpZenit_ris";
+    _target addPrimaryWeaponItem "rhs_20rnd_9x39mm_SP6";
+};
+case "vss":{
+    ["rhs_weap_vss_grip"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "rhs_acc_pso1m2";
+    _target addPrimaryWeaponItem "rhsusf_acc_grip2";
+    _target addPrimaryWeaponItem "rhs_acc_2dpZenit_ris";
+    _target addPrimaryWeaponItem "rhs_20rnd_9x39mm_SP6";
+};
 case "ak12":{
     ["hlc_rifle_ak12"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhs_acc_dtk3";
