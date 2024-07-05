@@ -98,6 +98,30 @@ if (_load) then {
         case "CGQC_soldat_vietnam_helicrew":{_switchRole = "vic_helicrew";};
         case "CGQC_soldat_vietnam_covey":{_switchRole = "vic_covey";};
 
+        // == SWAT ===================================================================
+        // == Operators
+        case "CGQC_units_swat_assaulter_mp5k":{_switchRole = "swat_assaulter_mp5k";};
+        case "CGQC_units_swat_assaulter_badger":{_switchRole = "swat_assaulter_badger";};
+        case "CGQC_units_swat_assaulter_scar":{_switchRole = "swat_assaulter_scar";};
+        case "CGQC_units_swat_assaulter":{_switchRole = "swat_assaulter";};
+        case "CGQC_units_swat_assaulter_mp5":{_switchRole = "swat_assaulter_mp5";};
+        case "CGQC_units_swat_assaulter_mp510":{_switchRole = "swat_assaulter_mp510";};
+        case "CGQC_units_swat_assaulter_p90":{_switchRole = "swat_assaulter_p90";};
+        case "CGQC_units_swat_assaulter_416":{_switchRole = "swat_assaulter_416";};
+        // == Command
+        case "CGQC_units_swat_tl":{_switchRole = "swat_tl";};
+        case "CGQC_units_swat_hq":{_switchRole = "swat_hq";};
+        // == Specialists
+        case "CGQC_units_swat_breacher":{_switchRole = "swat_breacher";};
+        case "CGQC_units_swat_eod":{_switchRole = "swat_eod";};
+        case "CGQC_units_swat_medic":{_switchRole = "swat_medic";};
+        case "CGQC_units_swat_drone":{_switchRole = "swat_drone";};
+        // == Snipers
+        case "CGQC_units_swat_sniper":{_switchRole = "swat_sniper";};
+        case "CGQC_units_swat_sniper_socom":{_switchRole = "swat_sniper_carbine";};
+        case "CGQC_units_swat_sniper_psg1":{_switchRole = "swat_sniper_psg";};
+        case "CGQC_units_swat_sniper_awm":{_switchRole = "swat_sniper_awm";};
+
         // == PMC-T ===================================================================
         case "CGQC_units_PMC_rifleman":{_switchRole = "pmct_rifle";};
         case "CGQC_units_PMC_0_SquadLeader":{_switchRole = "pmct_lead";};

@@ -11,3 +11,10 @@ class CGQC_PMC_T {
 	side = 1;
 	priority = 1;
 };
+
+class CGQC_SWAT {
+	icon = "\CGQC\factions\cgqc_128px.paa";
+	displayName = "CGQC SWAT";
+	side = 1;
+	priority = 1;
+};

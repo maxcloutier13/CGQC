@@ -61,6 +61,14 @@ class CfgEditorSubcategories
 	{
 		displayName = "Men (SWAT)";
 	};
+	class EdSubcat_CGQC_swat_support
+	{
+		displayName = "Men (Other)";
+	};
+	class EdSubcat_CGQC_swatvic
+	{
+		displayName = "Vehicles";
+	};
 	class EdSubcat_CGQC_vanilla
 	{
 		displayName = "Men (Vanilla)";
