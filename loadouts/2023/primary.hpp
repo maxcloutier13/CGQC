@@ -171,7 +171,7 @@ case "badger":{
     ["hlc_rifle_honeybase", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
     _target addPrimaryWeaponItem "Tier1_NGAL_Side";
-    _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG";
+    _target addPrimaryWeaponItem "hlc_29rnd_300BLK_STANAG_S";
 };
 case "dissipator":{
     ["hlc_rifle_vendimus", "rco"] call CGQC_fnc_getCustomGun;
@@ -321,8 +321,8 @@ case "mk12_lpvo":{
     _target addPrimaryWeaponItem "Tier1_Harris_Bipod_Black";
 };
 case "m27_lpvo":{
-    ["rhs_weap_m27iar_grip2", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    ["hlc_rifle_M27IAR", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_RotexIIIC_Grey";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M300C_Black_FL";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
@@ -482,8 +482,8 @@ case "scar_dmr":{
 
 // MG =================================================================
 case "m27": {
-    ["rhs_weap_m27iar_grip2", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
+    ["hlc_rifle_M27IAR", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_RotexIIIC_Grey";
     _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "rhs_mag_100Rnd_556x45_Mk262_cmag";
     _target addPrimaryWeaponItem "bipod_01_F_blk";
