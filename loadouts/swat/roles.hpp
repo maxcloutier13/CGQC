@@ -74,7 +74,7 @@ case "swat_medic":{
 	cgqc_player_role_optic = 2;
 };
 case "swat_breacher":{
-	[player, "breacher", "swat_shotgun"] call CGQC_ldt_swat_variants;
+	[player, "breacher", "swat_shotgun", 8] call CGQC_ldt_swat_variants;
 	["eng"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Breacher";
@@ -91,7 +91,7 @@ case "swat_eod":{
 };
 
 case "swat_sniper_carbine":{
-	[player, "sniper", "swat_socom"] call CGQC_ldt_swat_variants;
+	[player, "sniper", "swat_socom", 5] call CGQC_ldt_swat_variants;
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
@@ -99,7 +99,7 @@ case "swat_sniper_carbine":{
 	cgqc_player_role_optic = 5;
 };
 case "swat_sniper":{
-	[player, "sniper", "swat_m24"] call CGQC_ldt_swat_variants;
+	[player, "sniper", "swat_m24", 8] call CGQC_ldt_swat_variants;
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
@@ -107,7 +107,7 @@ case "swat_sniper":{
 	cgqc_player_role_optic = 5;
 };
 case "swat_sniper_psg":{
-	[player, "sniper", "swat_psg1"] call CGQC_ldt_swat_variants;
+	[player, "sniper", "swat_psg1", 5] call CGQC_ldt_swat_variants;
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
@@ -115,14 +115,13 @@ case "swat_sniper_psg":{
 	cgqc_player_role_optic = 5;
 };
 case "swat_sniper_awm":{
-	[player, "sniper", "swat_awm"] call CGQC_ldt_swat_variants;
+	[player, "sniper", "swat_awm", 8] call CGQC_ldt_swat_variants;
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
 	cgqc_player_roleType = "Recon";
 	cgqc_player_role_optic = 5;
 };
-
 
 case "swat_drone":{
 	[player, "drone", "swat_mp5k"] call CGQC_ldt_swat_variants;
@@ -143,7 +142,7 @@ case "swat_tl":{
 case "swat_hq":{
 	[player, "hq", "swat_p90"] call CGQC_ldt_swat_variants;
 	["hq"] spawn CGQC_fnc_switchPerks;
-	["hq"] call CGQC_fnc_getRadioPresets;
+	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Officer in Command";
 	cgqc_player_roleType = "HQ";
 	cgqc_player_role_optic = 6;

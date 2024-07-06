@@ -1,10 +1,14 @@
 // --- all_Items SWAT ----------------------------------------------------------
 // - All arsenal Items
 
-cgqc_pmct_arsenal_all = [
+cgqc_swat_arsenal_all = [
     // Helmets ----------------------------------
     "cgqc_helmet_mk1_f_black",
     "cgqc_helmet_mk1_f_gray",
+    "cgqc_helmet_swatCap",
+    "cgqc_helmet_swatBlackCap",
+    "cgqc_helmet_swatOfficerCap",
+    "H_Cap_police",
     // Goggled ----------------------------------
     "G_mas_can_gasmask",
     "G_AirPurifyingRespirator_02_black_F",
@@ -24,11 +28,16 @@ cgqc_pmct_arsenal_all = [
     "cgqc_vest_mk1_cadpat_rf",
     "cgqc_vest_mk1_cadpat_ar",
     "cgqc_vest_mk1_cadpat",
+    "paV_Safety_emsCommand_F",
+    "V_Safety_orange_F",
+    "V_Safety_yellow_F",
+    "V_mas_can_belt_carrier_LR_swat",
     // Uniforms ----------------------------------
     "cgqc_uniform_mk1_black",
     "U_mas_can_B_suite_CQB",
     "U_O_R_Gorka_01_black_F",
     // Rucks ------------------------------------
+    "AM_PoliceBelt",
     "B_LegStrapBag_black_F",
     "cgqc_pack_mk1_assault_black",
     "cgqc_pack_mk1_kitbag_black",
@@ -80,7 +89,7 @@ cgqc_pmct_arsenal_all = [
     "7Rnd_mas_can_12Gauge_Pellets",
     "training_mag_2rnd_12g_rubber",
     // Optics -----------------------------------------------
-    "Tier1_MicroT2_Leap_Black"
+    "Tier1_MicroT2_Leap_Black",
     "rhsusf_acc_T1_low",
     "Tier1_MicroT2_Low_Black",
     "Tier1_Shortdot_Geissele_Docter_Black_PIP",

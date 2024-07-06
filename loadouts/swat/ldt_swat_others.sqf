@@ -8,9 +8,9 @@ switch (_variant) do {
     case "rcmp": {
         _hats = ["H_Cap_police", "AM_PatrolHat"];
         _goggles = ["G_Shades_Black", "G_Shades_Blue", "G_Shades_Red", "G_Aviator"];
-        _vests = ["MrCats_JPCVest_Police_3_normal", "MrCats_JPCVest_Police_2_normal", "MrCats_JPCVest_Police_normal",];
+        _vests = ["MrCats_JPCVest_Police_3_normal", "MrCats_JPCVest_Police_2_normal", "MrCats_JPCVest_Police_normal"];
         _uniforms = ["police_uni1"];
-        _rucks = [""];
+        _rucks = ["AM_PoliceBelt"];
         _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
         [_loadout] call CGQC_fnc_loadLoadout;
         _gun = ["Tier1_P320", "hlc_15Rnd_9x19_JHP_P226", "hlc_acc_TLR1"];

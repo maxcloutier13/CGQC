@@ -130,6 +130,7 @@ if (hasInterface) then {
 				// SWAT Stuff
 				#include "\CGQC\loadouts\swat\actions_role.hpp"
 				#include "\CGQC\loadouts\swat\actions_primary.hpp"
+				#include "\CGQC\loadouts\swat\actions_arsenal.hpp"
 				// 2023 Stuff
 				#include "\CGQC\loadouts\2023\actions_role.hpp"
 				#include "\CGQC\loadouts\2023\actions_camo.hpp"

@@ -23,12 +23,13 @@ switch (_type) do {
 		removeVest player;
 		if (_newItem isEqualTo "cgqc_vest_swat_X") then {
 			_checkColor = player getVariable ["cgqc_var_startingColorTeam", "MAIN"];
-			switch (_color) do {
+			switch (_checkColor) do {
 				case "RED": {_newItem = "cgqc_vest_swat_red"};
 				case "GREEN": {_newItem = "cgqc_vest_swat_red"};
 				case "BLUE": {_newItem = "cgqc_vest_swat_blue"};
 				case "YELLOW": {_newItem = "cgqc_vest_swat_blue"};
 				case "MAIN": { _newItem = "cgqc_vest_swat_2"};
+				case "": { _newItem = "cgqc_vest_swat_2"};
 			};
 		};
 		player addVest _newItem;
