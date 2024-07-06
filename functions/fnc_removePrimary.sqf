@@ -4,8 +4,8 @@
 params [["_target", player]];
 LOG_1("[removePrimary] %1 started",_target);
 
+[_target] call ace_weaponselect_fnc_putWeaponAway;
 _gun = primaryWeapon _target;
-[player] call ace_weaponselect_fnc_putWeaponAway;
 
 if (_gun isNotEqualTo "") then {
 	LOG("[removePrimary] found gun");
