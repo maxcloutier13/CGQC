@@ -58,6 +58,27 @@ switch (_variant) do {
         for "_i" from 1 to 4 do {_target addItemToBackpack "rhssaf_tm100_mag"};
         _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
+    case "pmct_eod": {
+        _hats = [ "rhs_altyn_visordown"];
+        _goggles = ["G_Balaclava_oli"];
+        _vests = ["V_PlateCarrierIAGL_oliDgtl"];
+        _uniforms = ["cgqc_uniform_pmct_cadpat_full"];
+        _rucks = ["B_Kitbag_sgg"];
+        _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
+        [_loadout] call CGQC_fnc_loadLoadout;
+        _target addItemToUniform "ACE_M26_Clacker";
+        _target addItemToBackpack "rhssaf_tm500_mag";
+        _target addItemToBackpack "ToolKit";
+        _target addItemToBackpack "ACE_DefusalKit";
+        for "_i" from 1 to 2 do {_target addItemToBackpack "rhssaf_tm200_mag"};
+        for "_i" from 1 to 4 do {_target addItemToBackpack "rhssaf_tm100_mag"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_red"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_green"};
+        [_target] call CGQC_fnc_removeHandgun;
+        _target addWeapon "ACE_VMH3";
+		_target addItemToBackpack "ACE_SpraypaintGreen";
+		_target addItemToBackpack "ACE_SpraypaintRed";
+	};
     case "pmct_medic": {
         ["backpack", "B_Carryall_cbr"] call CGQC_fnc_switchStuff;
         _target addItemToBackpack "cgqc_items_medkit";

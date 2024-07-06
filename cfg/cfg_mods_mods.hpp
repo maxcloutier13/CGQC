@@ -44,3 +44,7 @@ class tsp_lockpick: tsp_paperclip
         mass = 1;
     };
 };
+
+class TrainingMine_01_F{
+    ace_minedetector_detectable = 1;
+};

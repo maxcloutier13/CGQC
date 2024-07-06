@@ -36,6 +36,8 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct", "menu_pmct_roles"], _act
 
 _action = [ "menu_mk2_inf_RF", "Squad Medic", "", {["pmct_medic"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct", "menu_pmct_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_inf_RF", "Explosives Expert", "", {["pmct_eod"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct", "menu_pmct_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "menu_mk2_inf_RF", "Squad Leader", "", {["pmct_lead"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct", "menu_pmct_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;

@@ -131,6 +131,7 @@ if (_load) then {
         case "CGQC_units_PMC_0_HeavyMachinegunner":{_switchRole = "pmct_mg";};
         case "CGQC_units_PMC_0_AntiTankRifleman":{_switchRole = "pmct_at";};
         case "CGQC_units_PMC_0_Engineer":{_switchRole = "pmct_eng";};
+        case "CGQC_units_PMC_0_eod":{_switchRole = "pmct_eod";};
         case "CGQC_units_PMC_0_Medic":{_switchRole = "pmct_medic";};
         case "CGQC_units_PMC_lifesaver":{_switchRole = "pmct_lifesaver";};
         case "CGQC_units_PMC_0_DroneOperator":{_switchRole = "pmct_drone";};
