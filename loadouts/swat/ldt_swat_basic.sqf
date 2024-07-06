@@ -6,7 +6,7 @@
 _hats = ["cgqc_helmet_mk1_f_black"];
 _goggles = ["rhs_googles_clear"];
 _vests = ["cgqc_vest_mk1_black"];
-_uniforms = ["cgqc_uniform_mk1_black"];
+_uniforms = ["cgqc_uniform_swat_cqb"];
 _rucks = ["B_LegStrapBag_black_F"];
 _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;
@@ -24,7 +24,7 @@ for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m7a3_cs"};
 for "_i" from 1 to 2 do {player addItemToVest "SmokeShell"};
 // === Backpack ================================================================================================================
 _target addItemToUniform "G_mas_can_gasmask";
-[player] call GRAD_slingHelmet_fnc_actionSling;
+
 
 // === Essentials
 //for "_i" from 1 to 4 do {player addItemToBackpack "DIGI_M7A3";};

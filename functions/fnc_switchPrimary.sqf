@@ -2,7 +2,7 @@
 // --- switchPrimary ----------------------------------------------------------
 // Switch primary weapons
 params ["_type", ["_nbr", 0]];
-LOG_1("[switchPrimary] %1 started", _type);
+LOG_2("[switchPrimary] %1/%2mags started", _type, _nbr);
 
 _target = player;
 _needGL = false;

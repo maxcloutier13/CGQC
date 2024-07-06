@@ -1,8 +1,8 @@
 #include "\CGQC\script_component.hpp"
 // --- addMags ----------------------------------------------------------
 // Add the maximum allowed mag with overflow in backpack.
-LOG("[addMags] started");
 params [["_target", player], ["_nbr", 0]];
+LOG_2("[addMags] Target:%1/Nbr:%2 started", _target, _nbr);
 // Primary ======================================================================
 _mag = (primaryWeaponMagazine _target) select 0;
 _addMags = _nbr;

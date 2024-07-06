@@ -29,7 +29,7 @@ player linkItem "ItemGPS";
 player addWeapon "Binocular";
 
 // === Uniform Items ====================================================================================================
-_target addItemToUniform "cgqc_items_ifak";
+//_target addItemToUniform "cgqc_items_ifak";
 _target addItemToUniform "ACRE_PRC343";
 _target addItemToUniform "ItemAndroid";
 _target addItemToUniform "ACE_EarPlugs";

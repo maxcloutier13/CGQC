@@ -27,10 +27,21 @@ switch (_variant) do {
         _gun = ["Tier1_P320", "hlc_15Rnd_9x19_JHP_P226", "hlc_acc_TLR1"];
         [_gun] call CGQC_fnc_getCustomHandgun;
         _target addItemToUniform "ACRE_PRC152";
+
         _target addItemToVest "ACE_M84";
         _target addItemToVest "ACE_M84";
         _target addItemToVest "ACE_M84";
         _target addItemToVest "ACE_M84";
+        _target addItemToUniform "ACE_Flashlight_KSF1";
+        for "_i" from 1 to 6 do {player addItemToUniform "ACE_CableTie"};
+        // === Vest ================================================================================================================
+        for "_i" from 1 to 4 do {player addItemToVest "ACE_M84"};
+        for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m7a3_cs"};
+        for "_i" from 1 to 2 do {player addItemToVest "SmokeShell"};
+        _target addItemToBackpack "cgqc_vest_swat_officer";
+        _target addItemToBackpack "cgqc_uniform_swat_cqb";
+        _target addItemToBackpack "G_mas_can_gasmask";
+        _target addItemToBackpack "cgqc_helmet_mk1_f_black";
 	};
     case "emt": {
         _hats = ["c_paramedic_1"];
