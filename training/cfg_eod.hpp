@@ -1,0 +1,23 @@
+_action = [ "menu_self_training_eod", "EOD", "\cgqc\textures\icon_explosives.paa", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_clear", "Clear all", "", {["clear"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_self_training_start", "- Training mine", "", {["create", "TrainingMine_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_ied", "- IED Urban Small", "", {["create", "IEDUrbanSmall_Remote_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_iedbig", "- IED Urban Big", "", {["create", "IEDUrbanBig_Remote_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_land", "- IED Land Small", "", {["create", "IEDLandSmall_Remote_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_landbig", "- IED Land Big", "", {["create", "IEDLandBig_Remote_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_mineat", "- Mine AT", "", {["create", "ATMine_Range_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_mineapers", "- Mine Antipersonel", "", {["create", "APERSMineDispenser_Mine_Ammo_Scripted"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_minebound", "- Mine Bounding", "", {["create", "APERSBoundingMine_Range_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_self_training_minetrip", "- Mine Trip", "", {["create", "APERSTripMine_Wire_Ammo"] spawn CGQC_fnc_trainingEod}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training", "menu_self_training_eod"], _action ] call  ace_interact_menu_fnc_addActionToObject;

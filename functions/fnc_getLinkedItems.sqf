@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- getLinkedItems ----------------------------------------------------------
 // Get basic linked items, nvgs and such
-params ["_type", ["_binocs", ""], ["_nvg", ""], ["_loadEssentials", true]];
+params ["_type", ["_binocs", ""], ["_nvg", ""], ["_loadEssentials", true], ["_forceDay", false]];
 LOG_4("[getLinkedItems] %1/%2/%3/%4 started", _type, _binocs, _nvg, _loadEssentials);
 
 _link = [];
@@ -90,7 +90,7 @@ if (_nvg isNotEqualTo "") then {
 	LOG("[getLinkedItems] nvgs loading");
 	// === NVG's
 	[] call CGQC_fnc_isDaytime;
-	if (cgqc_mission_daytime) then {
+	if (cgqc_mission_daytime || _forceDay) then {
 		player addItemToBackpack _nvg;
 		LOG("[getLinkedItems] - Daytime. Nvg's in backpack");
 		hint "Daytime. Nvg's in backpack";

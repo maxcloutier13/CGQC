@@ -221,6 +221,9 @@ cgqc_training_jump_comp_on = false;
 cgqc_training_jump_autoOpen = true;
 cgqc_training_jump_comp = [];
 
+// EOD
+cgqc_training_eod_objects = [];
+
 // Landnav
 cgqc_training_landnav = false;
 cgqc_training_landnav_start_time = 0;
@@ -460,6 +463,22 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 		['medkit', _targetPlayer, false] call CGQC_fnc_openMedical;
 	};
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
+}] call CBA_fnc_addEventHandler;
+
+
+// EOD Training eventhandler
+["ACE_explosives_defuse", {
+    params ["_explosive", "_unit"];
+	_check = _explosive getVariable ["CGQC_eod_marker", "none"];
+    if (_check isNotEqualTo "none") then {
+        deleteVehicle _check;
+        [["Good job Viper!", 1.5], false] call CBA_fnc_notify;
+		[_explosive] spawn {
+			params ["_explosive"];
+			sleep 5;
+			deleteVehicle _explosive;
+		};
+    };
 }] call CBA_fnc_addEventHandler;
 
 // Addon Options ===================================================================================================

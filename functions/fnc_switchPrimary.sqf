@@ -1,9 +1,10 @@
 #include "\CGQC\script_component.hpp"
 // --- switchPrimary ----------------------------------------------------------
 // Switch primary weapons
-params ["_type", ["_target", player]];
-LOG_1("[switchPrimary] %1 started", _type);
+params ["_type", ["_nbr", 0]];
+LOG_2("[switchPrimary] %1/%2mags started", _type, _nbr);
 
+_target = player;
 _needGL = false;
 // Remove gun and ammo
 [_target] call CGQC_fnc_removePrimary;
@@ -79,7 +80,7 @@ if (cgqc_mission_daytime) then {
 };
 
 // Add mags to vest
-[_target] call CGQC_fnc_addMags;
+[_target, _nbr] call CGQC_fnc_addMags;
 [_target] call ace_weaponselect_fnc_putWeaponAway;
 
 LOG("[switchPrimary] done");

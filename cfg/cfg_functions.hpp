@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class trainingEod {
+            file = "\cgqc\functions\fnc_trainingEod.sqf";
+            description = "Explosives disposal training";
+        };
         class checkVitals {
             file = "\cgqc\functions\fnc_checkVitals.sqf";
             description = "Check if the unit is stable";

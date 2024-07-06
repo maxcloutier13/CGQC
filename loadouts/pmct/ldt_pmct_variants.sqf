@@ -43,9 +43,9 @@ switch (_variant) do {
 	};
     case "pmct_at": {
         ["backpack", "rhs_rpg_2"] call CGQC_fnc_switchStuff;
-        _target addWeapon "rhs_weap_rpg7";
-        _target addSecondaryWeaponItem "RPG7_F";
-        for "_i" from 1 to 3 do {_target addItemToBackpack "RPG7_F"};
+        _target addWeapon "launch_RPG7_F";
+        _target addSecondaryWeaponItem "rhs_rpg7_PG7V_mag";
+        for "_i" from 1 to 3 do {_target addItemToBackpack "rhs_rpg7_PG7V_mag"};
         _target removeItem "ACE_EntrenchingTool";
 	};
     case "pmct_eng": {
@@ -57,6 +57,27 @@ switch (_variant) do {
         for "_i" from 1 to 2 do {_target addItemToBackpack "rhssaf_tm200_mag"};
         for "_i" from 1 to 4 do {_target addItemToBackpack "rhssaf_tm100_mag"};
         _target addItemToBackpack "cgqc_bandolier_ammo";
+	};
+    case "pmct_eod": {
+        _hats = [ "rhs_altyn_visordown"];
+        _goggles = ["G_Balaclava_oli"];
+        _vests = ["V_PlateCarrierIAGL_oliDgtl"];
+        _uniforms = ["cgqc_uniform_pmct_cadpat_full"];
+        _rucks = ["B_Kitbag_sgg"];
+        _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
+        [_loadout] call CGQC_fnc_loadLoadout;
+        _target addItemToUniform "ACE_M26_Clacker";
+        _target addItemToBackpack "rhssaf_tm500_mag";
+        _target addItemToBackpack "ToolKit";
+        _target addItemToBackpack "ACE_DefusalKit";
+        for "_i" from 1 to 2 do {_target addItemToBackpack "rhssaf_tm200_mag"};
+        for "_i" from 1 to 4 do {_target addItemToBackpack "rhssaf_tm100_mag"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_red"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_green"};
+        [_target] call CGQC_fnc_removeHandgun;
+        _target addWeapon "ACE_VMH3";
+		_target addItemToBackpack "ACE_SpraypaintGreen";
+		_target addItemToBackpack "ACE_SpraypaintRed";
 	};
     case "pmct_medic": {
         ["backpack", "B_Carryall_cbr"] call CGQC_fnc_switchStuff;
@@ -88,7 +109,6 @@ switch (_variant) do {
         _target addItemToUniform "ACE_Flashlight_KSF1";
         _target removeWeapon (binocular _target);
         _target addWeapon "ACE_Vector";
-        _target addItemToUniform "ACE_Flashlight_KSF1";
         _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_marks": {
@@ -140,7 +160,7 @@ switch (_gunVariant) do {
     };
     case "rpk12": {
         _target addWeapon "cgqc_gun_pmct_rpk12";
-        _target addPrimaryWeaponItem "grcb_60Rnd_545x39_mix";
+        _target addPrimaryWeaponItem "grcb_60Rnd_545x39_7N22_mix";
     };
     case "mg3": {
         _target addWeapon "cgqc_gun_pmct_mg3";
@@ -152,7 +172,7 @@ switch (_gunVariant) do {
     };
     case "awm": {
         _target addWeapon "cgqc_gun_pmct_AWM";
-        _target addPrimaryWeaponItem "hlc_5rnd_300WM_FMJ_AWM";
+        _target addPrimaryWeaponItem "hlc_5rnd_300WM_mk248_AWM";
     };
     case "ak12zeus": {
         _target addWeapon "cgqc_gun_pmct_aku12_zeus";

@@ -6,7 +6,7 @@ LOG("[pmct_basic] started");
 
 // === Clothing ==========================================================================================================
 _hats = [ "PO_H_SSh68Helmet_Partizan_2"];
-_goggles = ["G_Bandanna_blk", "CCC_Facewear_BandMask_Br", "CCC_Facewear_BandMask_Gr"];
+_goggles = ["G_Bandanna_blk"];
 _vests = ["cgqc_vest_pmct_tan"];
 _uniforms = ["cgqc_uniform_pmct_cadpat"];
 _rucks = ["B_AssaultPack_cbr"];
@@ -35,6 +35,7 @@ _target addItemToUniform "ItemAndroid";
 _target addItemToUniform "ACE_EarPlugs";
 _target addItemToUniform "ACE_CableTie";
 _target addItemToUniform "ACE_CableTie";
+
 
 // === Vest Items ====================================================================================================
 _target addItemToUniform "SmokeShell";

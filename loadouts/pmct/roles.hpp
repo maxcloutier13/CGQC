@@ -75,6 +75,14 @@ case "pmct_eng":{
 	cgqc_player_roleType = "Engineer";
 	cgqc_player_role_optic = 2;
 };
+case "pmct_eod":{
+	[player, "pmct_eod", "ak12short"] call CGQC_ldt_pmct_variants;
+	["eng", true, true] spawn CGQC_fnc_switchPerks;
+	//["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "EOD";
+	cgqc_player_roleType = "Engineer";
+	cgqc_player_role_optic = 2;
+};
 
 // MG ===============================================================
 case "pmct_mg":{

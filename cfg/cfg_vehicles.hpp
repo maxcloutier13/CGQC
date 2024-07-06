@@ -44,7 +44,7 @@ class cgqc_vic_stomper_tan : B_UGV_01_F {
     side = 1;
     author = "silent1";
     faction = "cgqc";
-    editorSubcategory = "EdSubcat_cgqc_drones";
+    editorSubcategory = "";
     displayName = "Stomper - Tan (1)";
     maximumLoad = 2000;
     armor = 50;
