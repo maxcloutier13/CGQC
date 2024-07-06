@@ -136,6 +136,7 @@ if (hasInterface) then {
 				#include "\CGQC\loadouts\2023\actions_camo.hpp"
 				#include "\CGQC\loadouts\2023\actions_primary.hpp"
 				#include "\CGQC\loadouts\2023\actions_optics.hpp"
+				#include "\CGQC\loadouts\2023\actions_arsenal.hpp"
 
 				// PMC-T
 				#include "\CGQC\loadouts\pmct\actions_role.hpp"
