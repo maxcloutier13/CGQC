@@ -111,6 +111,13 @@ switch (_type) do {
 		};
 		cgqc_perks_eng = true;
 	};
+	case "eod":{
+		LOG("[switchPerks] EOD setup");
+		player setUnitTrait ["engineer", true];
+		player setUnitTrait ["explosiveSpecialist", true];
+		player setUnitTrait ["loadCoef", 0.7];
+		cgqc_perks_eod = true;
+	};
 	case "med":{
 		LOG("[switchPerks] Medic setup");
 		player setUnitTrait ["Medic", true];

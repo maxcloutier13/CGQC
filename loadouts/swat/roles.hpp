@@ -82,8 +82,8 @@ case "swat_breacher":{
 	cgqc_player_role_optic = 2;
 };
 case "swat_eod":{
-	[player, "eod", "swat_mp5a5"] call CGQC_ldt_swat_variants;
-	["eng"] spawn CGQC_fnc_switchPerks;
+	[player, "eod", "swat_mp5a5"] call CGQC_ldt_swat_others;
+	["eod"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Breacher";
 	cgqc_player_roleType = "Engineer";
@@ -132,7 +132,7 @@ case "swat_drone":{
 	cgqc_player_role_optic = 5;
 };
 case "swat_tl":{
-	[player, "tl", "swat_mp5n"] call CGQC_ldt_swat_variants;
+	[player, "tl", "swat_p90", 2] call CGQC_ldt_swat_variants;
 	["tl"] spawn CGQC_fnc_switchPerks;
 	["tl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tactical Team Leader";
@@ -140,7 +140,7 @@ case "swat_tl":{
 	cgqc_player_role_optic = 6;
 };
 case "swat_hq":{
-	[player, "hq", "swat_p90"] call CGQC_ldt_swat_variants;
+	[player, "hq", "swat_p90", 2] call CGQC_ldt_swat_variants;
 	["hq"] spawn CGQC_fnc_switchPerks;
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Officer in Command";

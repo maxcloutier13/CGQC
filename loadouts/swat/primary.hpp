@@ -20,7 +20,7 @@ case "swat_mp7":{
 
 case "swat_p90":{
     ["cgqc_gun_mk1_p90"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "muzzle_snds_570";
+    _target addItemToVest "muzzle_snds_570";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "Tier1_MicroT2_Low_Black";
     _target addPrimaryWeaponItem "50Rnd_570x28_SMG_03";
@@ -35,7 +35,7 @@ case "swat_blk":{
 
 };
 case "swat_mp5sd6":{
-    ["hlc_smg_mp5sd6"] call CGQC_fnc_getCustomGun;
+    ["hlc_smg_mp5sd5"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
     _target addPrimaryWeaponItem "hlc_30Rnd_9x19_SD_MP5";
     _target addItemToVest "30Rnd_9x21_Mag_SMG_02";
@@ -43,7 +43,7 @@ case "swat_mp5sd6":{
 case "swat_mp510":{
     ["hlc_mp510_tac"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_MicroT2_Leap_Black";
-    _target addPrimaryWeaponItem "Tier1_NGAL_Side";
+    _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black_FL";
     _target addPrimaryWeaponItem "hlc_30Rnd_10mm_JHP_MP5";
     _target addItemToVest "hlc_30Rnd_10mm_B_MP5";
 };
