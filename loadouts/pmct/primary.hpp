@@ -21,7 +21,7 @@ case "ak12":{
     _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
 };
 case "ak12_gl":{
-    ["cgqc_gun_pmct_ak12gltrig"] call CGQC_fnc_getCustomGun;
+    ["hlc_rifle_ak12GL"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhs_acc_dtk3";
     _target addPrimaryWeaponItem "rhs_acc_1p87";
     _target addPrimaryWeaponItem "rhs_acc_2dpZenit_ris";
@@ -30,6 +30,28 @@ case "ak12_gl":{
 };
 case "ak12_s":{
     ["hlc_rifle_aku12"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "rhs_acc_dtk3";
+    _target addPrimaryWeaponItem "rhs_acc_1p87";
+    _target addPrimaryWeaponItem "rhs_acc_2dpZenit_ris";
+    _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
+};
+case "ak12t":{
+    ["cgqc_gun_pmct_ak12trig"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "rhs_acc_dtk3";
+    _target addPrimaryWeaponItem "rhs_acc_1p87";
+    _target addPrimaryWeaponItem "rhs_acc_2dpZenit_ris";
+    _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
+};
+case "ak12_glt":{
+    ["cgqc_gun_pmct_ak12gltrig"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "rhs_acc_dtk3";
+    _target addPrimaryWeaponItem "rhs_acc_1p87";
+    _target addPrimaryWeaponItem "rhs_acc_2dpZenit_ris";
+    _target addPrimaryWeaponItem "hlc_30Rnd_545x39_B_AK_Black";
+    _target addPrimaryWeaponItem "hlc_VOG25_AK";
+};
+case "ak12_st":{
+    ["cgqc_gun_pmct_aku12trig"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhs_acc_dtk3";
     _target addPrimaryWeaponItem "rhs_acc_1p87";
     _target addPrimaryWeaponItem "rhs_acc_2dpZenit_ris";

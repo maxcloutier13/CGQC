@@ -8,6 +8,16 @@ _action = [ "menu_pmct_alt_2", "AK-12 GL", "", {["ak12_gl"] spawn CGQC_fnc_switc
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_pmct_alt_3", "AK-12 Short", "", {["ak12_s"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "menu_pmct_alt_1", "Trigmod", "", {["ak12t"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt_1"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_pmct_alt_2", "Trigmod", "", {["ak12_gt"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt_2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_pmct_alt_3", "Trigmod", "", {["ak12_st"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt_3"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+
 _action = [ "menu_pmct_alt_4", "RPK-12", "", {["rpk12"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct" , "menu_pmct_alt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_pmct_alt_5", "MG3", "", {["mg3"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
