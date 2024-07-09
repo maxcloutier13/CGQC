@@ -12,8 +12,10 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;
 
 // === Handgun   ====================================================================================================
-_gun = ["cgqc_gun_glock19_wood", "Tier1_20Rnd_9x19_JHP", "tier1_dbalpl", "tier1_sig_romeo1", "Tier1_Agency_Compensator"];
-[_gun] call CGQC_fnc_getCustomHandgun;
+_gun = ["hlc_pistol_P226R_Combat",
+        "Tier1_DBALPL",
+        "hlc_15Rnd_9x19_SD_P226"];
+[_gun, 4, false] call CGQC_fnc_getCustomHandgun;
 
 // === Uniform ================================================================================================================
 _target addItemToUniform "ACE_Flashlight_KSF1";

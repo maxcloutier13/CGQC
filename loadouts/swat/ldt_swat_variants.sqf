@@ -38,24 +38,10 @@ switch (_variant) do {
         for "_i" from 1 to 10 do {_target addItemToVest "tsp_popperCharge_mag"};
         for "_i" from 1 to 10 do {_target addItemToVest "tsp_stickCharge_mag"};
         for "_i" from 1 to 5 do {_target addItemToVest "tsp_frameCharge_mag"};
+        _mags = 8;
         LOG("[swatBreacher] done");
 	};
-    case "eod": {
-        ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
-        ["backpack", "cgqc_pack_mk1_kitbag_black"] call CGQC_fnc_switchStuff;
-        ["2023_basic", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACE_M26_Clacker";
-        _target addItemToBackpack "ToolKit";
-        _target addItemToBackpack "ACE_DefusalKit";
-        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_red"};
-        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_green"};
-        [_target] call CGQC_fnc_removeHandgun;
-        _target addWeapon "ACE_VMH3";
-		_target addItemToBackpack "ToolKit";
-		_target addItemToBackpack "ACE_SpraypaintGreen";
-		_target addItemToBackpack "ACE_SpraypaintRed";
-        LOG("[swatBreacher] done");
-	};
+
     case "sniper": {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;

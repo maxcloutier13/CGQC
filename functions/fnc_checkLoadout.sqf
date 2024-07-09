@@ -100,20 +100,21 @@ if (_load) then {
 
         // == SWAT ===================================================================
         // == Operators
+        case "CGQC_units_swat_assaulter":{_switchRole = "swat_assaulter_mp510";};
+        /*
         case "CGQC_units_swat_assaulter_mp5k":{_switchRole = "swat_assaulter_mp5k";};
         case "CGQC_units_swat_assaulter_badger":{_switchRole = "swat_assaulter_badger";};
         case "CGQC_units_swat_assaulter_scar":{_switchRole = "swat_assaulter_scar";};
-        case "CGQC_units_swat_assaulter":{_switchRole = "swat_assaulter";};
         case "CGQC_units_swat_assaulter_mp5":{_switchRole = "swat_assaulter_mp5";};
         case "CGQC_units_swat_assaulter_mp510":{_switchRole = "swat_assaulter_mp510";};
         case "CGQC_units_swat_assaulter_p90":{_switchRole = "swat_assaulter_p90";};
         case "CGQC_units_swat_assaulter_416":{_switchRole = "swat_assaulter_416";};
+        */
         // == Command
         case "CGQC_units_swat_tl":{_switchRole = "swat_tl";};
         case "CGQC_units_swat_hq":{_switchRole = "swat_hq";};
         // == Specialists
         case "CGQC_units_swat_breacher":{_switchRole = "swat_breacher";};
-        case "CGQC_units_swat_eod":{_switchRole = "swat_eod";};
         case "CGQC_units_swat_medic":{_switchRole = "swat_medic";};
         case "CGQC_units_swat_drone":{_switchRole = "swat_drone";};
         // == Snipers
@@ -121,6 +122,11 @@ if (_load) then {
         case "CGQC_units_swat_sniper_socom":{_switchRole = "swat_sniper_carbine";};
         case "CGQC_units_swat_sniper_psg1":{_switchRole = "swat_sniper_psg";};
         case "CGQC_units_swat_sniper_awm":{_switchRole = "swat_sniper_awm";};
+        // == Others
+        case "CGQC_units_swat_eod":{_switchRole = "swat_eod";};
+        case "CGQC_units_swat_fto":{_switchRole = "swat_fto";};
+        case "CGQC_units_swat_emt":{_switchRole = "swat_emt";};
+        case "CGQC_units_swat_rcmp":{_switchRole = "swat_rcmp";};
 
         // == PMC-T ===================================================================
         case "CGQC_units_PMC_rifleman":{_switchRole = "pmct_rifle";};
@@ -140,7 +146,6 @@ if (_load) then {
         case "CGQC_units_PMC_0_CrewCommander":{_switchRole = "pmct_driver";};
         case "CGQC_units_PMC_0_CrewMember":{_switchRole = "pmct_crew";};
         case "CGQC_units_PMC_0_GameMaster":{_switchRole = "pmct_zeus";};
-
     };
     if (_switchRole isNotEqualTo "") then {
         LOG_1(" Loadout %1 found. Switching.", _switchRole);

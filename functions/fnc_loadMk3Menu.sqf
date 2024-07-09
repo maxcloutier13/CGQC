@@ -127,21 +127,23 @@ if (hasInterface) then {
 			// Mk2 Arsenal if 2023 mod is present  ===============================================================================================
 			if (cgqc_player_has2023) then {
 				LOG("[loadMk3Menu] - loading 2023 stuff");
-				// SWAT Stuff
-				#include "\CGQC\loadouts\swat\actions_role.hpp"
-				#include "\CGQC\loadouts\swat\actions_primary.hpp"
-				#include "\CGQC\loadouts\swat\actions_arsenal.hpp"
 				// 2023 Stuff
 				#include "\CGQC\loadouts\2023\actions_role.hpp"
 				#include "\CGQC\loadouts\2023\actions_camo.hpp"
 				#include "\CGQC\loadouts\2023\actions_primary.hpp"
 				#include "\CGQC\loadouts\2023\actions_optics.hpp"
-
+				#include "\CGQC\loadouts\2023\actions_arsenal.hpp"
 				// PMC-T
 				#include "\CGQC\loadouts\pmct\actions_role.hpp"
 				#include "\CGQC\loadouts\pmct\actions_primary.hpp"
 				#include "\CGQC\loadouts\pmct\actions_optics.hpp"
 				#include "\CGQC\loadouts\pmct\actions_arsenal.hpp"
+			};
+			if (cgqc_player_hasSWAT) then {
+				// SWAT Stuff
+				#include "\CGQC\loadouts\swat\actions_role.hpp"
+				#include "\CGQC\loadouts\swat\actions_primary.hpp"
+				#include "\CGQC\loadouts\swat\actions_arsenal.hpp"
 			};
 			// WW2 shit ===============================================================================================
 			if (cgqc_player_hasIfa3) then {

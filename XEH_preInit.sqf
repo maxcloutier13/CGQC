@@ -327,6 +327,7 @@ cgqc_player_has23rd = ["23rd_Logo_core"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasRHS = ["rhsusf_weapons"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasDrongoFactions = ["DSF_ABUS"] call ace_common_fnc_isModLoaded;
 cgqc_player_has2023 = ["CGQC_2022"] call ace_common_fnc_isModLoaded;
+cgqc_player_hasSWAT = ["CGQC_SWAT"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasNorthern = ["NORTH_Main"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasIfa3 = ["WW2_Core_c_IF_Data_c"] call ace_common_fnc_isModLoaded;
 cgqc_player_hasUnsung = ["uns_base"] call ace_common_fnc_isModLoaded;

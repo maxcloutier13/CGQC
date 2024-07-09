@@ -16,6 +16,7 @@ switch (_variant) do {
         _gun = ["Tier1_P320", "hlc_15Rnd_9x19_JHP_P226", "hlc_acc_TLR1"];
         [_gun] call CGQC_fnc_getCustomHandgun;
         for "_i" from 1 to 6 do {player addItemToUniform "ACE_CableTie"};
+        LOG("[swatRCMP] done");
 	};
     case "fto": {
         _hats = ["cgqc_beanie_black"];
@@ -25,8 +26,10 @@ switch (_variant) do {
         _rucks = ["MrCat_TacticalBelt"];
         _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
         [_loadout] call CGQC_fnc_loadLoadout;
-        _gun = ["Tier1_P320", "hlc_15Rnd_9x19_JHP_P226", "hlc_acc_TLR1"];
-        [_gun] call CGQC_fnc_getCustomHandgun;
+        _gun = ["hlc_pistol_P226R_Combat",
+                "Tier1_DBALPL",
+                "hlc_15Rnd_9x19_SD_P226"];
+        [_gun, 4, false] call CGQC_fnc_getCustomHandgun;
         _target addItemToUniform "ACRE_PRC152";
         for "_i" from 1 to 6 do {player addItemToUniform "ACE_CableTie"};
         // === Vest ================================================================================================================
@@ -36,6 +39,7 @@ switch (_variant) do {
         _target addItemToBackpack "cgqc_uniform_swat_cqb";
         _target addItemToBackpack "G_mas_can_gasmask";
         _target addItemToBackpack "cgqc_helmet_mk1_f_black";
+        LOG("[swatFTO] done");
 	};
     case "emt": {
         _hats = ["c_paramedic_1"];
@@ -46,7 +50,31 @@ switch (_variant) do {
         _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
         [_loadout] call CGQC_fnc_loadLoadout;
        _target addItemToBackpack "cgqc_items_medkit";
+       LOG("[swatEMD] done");
     };
+    case "eod": {
+        _hats = ["EOD9_HELMET"];
+        _goggles = [""];
+        _vests = ["EOD_SUIT_vest"];
+        _uniforms = ["EOD_Uniform"];
+        _rucks = ["cgqc_pack_mk1_magic"];
+        _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
+        [_loadout] call CGQC_fnc_loadLoadout;
+        _target addItemToUniform "ACE_M26_Clacker";
+        _target addItemToBackpack "ToolKit";
+        _target addItemToBackpack "ACE_DefusalKit";
+        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_red"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "ace_marker_flags_green"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "rhsusf_m112_mag"};
+        _target addWeapon "ACE_VMH3";
+		_target addItemToBackpack "ToolKit";
+		_target addItemToBackpack "ACE_SpraypaintGreen";
+		_target addItemToBackpack "ACE_SpraypaintRed";
+        [player] call GRAD_slingHelmet_fnc_actionSling;
+        // Default SWAT Hat
+        ["hat", "Max_fbi_cap"] call CGQC_fnc_switchStuff;
+        LOG("[swatEOD] done");
+	};
 };
 
 // Common Items
