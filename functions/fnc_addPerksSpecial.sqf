@@ -133,7 +133,7 @@ switch (_type) do {
             _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
             // Start the game
-            _action = [ "zeus_gamestate_start", "Start Mission", "", {cgqc_outdoor_range_hide = true;["start"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable ["CGQC_gamestate_1_staging", false]} ] call ace_interact_menu_fnc_createAction;
+            _action = [ "zeus_gamestate_start", "Start Mission", "", {cgqc_outdoor_range_hide = true; publicVariable "cgqc_outdoor_range_hide";["start"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable ["CGQC_gamestate_1_staging", false]} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate_staging"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
             // Mission
@@ -269,7 +269,7 @@ switch (_type) do {
             _action = [ "zeus_delete", "Delete Dead", "", {["delete", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
             // Outdoor range
-            _action = [ "zeus_range", "Hide Outdoor Range", "", {cgqc_outdoor_range_hide = true;}, {!isNil "cgqc_outdoor_range_hide" && !cgqc_outdoor_range_hide} ] call ace_interact_menu_fnc_createAction;
+            _action = [ "zeus_range", "Hide Outdoor Range", "", {cgqc_outdoor_range_hide = true;publicVariable "cgqc_outdoor_range_hide";}, {!cgqc_outdoor_range_hide} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
             // Check player mod versions
             _action = [ "zeus_checkMods", "Check Player mods", "", {["check_mods", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;

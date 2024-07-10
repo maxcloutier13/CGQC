@@ -20,7 +20,7 @@ _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fn
 
 // Outdoor Range =========================================================================================================
 
-_action = [ "cgqc_perk_range", "Goto: Test Range", "", {cgqc_outdoor_range_pos = getPosATL player; player setpos getPosATL cgqc_outdoor_range_start;cgqc_outdoor_range_tp = true;}, {(!isnil "cgqc_outdoor_range_hide") && !cgqc_outdoor_range_hide} ] call ace_interact_menu_fnc_createAction;
+_action = [ "cgqc_perk_range", "Goto: Test Range", "", {cgqc_outdoor_range_pos = getPosATL player; player setpos getPosATL cgqc_outdoor_range_start;cgqc_outdoor_range_tp = true;}, {!cgqc_outdoor_range_hide} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "cgqc_perk_range_back", "Exit Test Range", "", {player setpos cgqc_outdoor_range_pos; cgqc_outdoor_range_tp = false;}, {cgqc_outdoor_range_tp} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
