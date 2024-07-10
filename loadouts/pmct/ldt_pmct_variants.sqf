@@ -86,14 +86,14 @@ switch (_variant) do {
 	};
     case "pmct_lifesaver": {
         ["backpack", "B_Kitbag_cbr"] call CGQC_fnc_switchStuff;
-		for "_i" from 1 to 20 do {_target addItemToBackpack "ACE_fieldDressing";};
+		for "_i" from 1 to 30 do {_target addItemToBackpack "ACE_fieldDressing";};
 		for "_i" from 1 to 10 do {_target addItemToBackpack "FF_Painkiller";};
-		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_morphine";};
-		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_epinephrine";};
+		for "_i" from 1 to 5 do {_target addItemToBackpack "ACE_morphine";};
+		for "_i" from 1 to 5 do {_target addItemToBackpack "ACE_epinephrine";};
 		for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_splint";};
 		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_tourniquet";};
-		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV";};
-		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV_500";};
+		for "_i" from 1 to 5 do {_target addItemToBackpack "ACE_salineIV";};
+		for "_i" from 1 to 5 do {_target addItemToBackpack "ACE_salineIV_500";};
         _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_drone": {
