@@ -27,7 +27,7 @@ switch (_variant) do {
         _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_gren": {
-        for "_i" from 1 to 5 do {_target addItemToBackpack "hlc_VOG25_AK"};
+        ["backpack", "B_Kitbag_cbr"] call CGQC_fnc_switchStuff;
         for "_i" from 1 to 3 do {_target addItemToBackpack "hlc_GRD_Red"};
         for "_i" from 1 to 3 do {_target addItemToBackpack "hlc_GRD_green"};
         _target addItemToBackpack "cgqc_bandolier_ammo";
