@@ -133,7 +133,7 @@ switch (_type) do {
             _adding = [ player, 1, ["ACE_SelfActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
             // Start the game
-            _action = [ "zeus_gamestate_start", "Start Mission (save snapshots)", "", {["start"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable ["CGQC_gamestate_1_staging", false]} ] call ace_interact_menu_fnc_createAction;
+            _action = [ "zeus_gamestate_start", "Start Mission", "", {cgqc_outdoor_range_hide = true;["start"] spawn CGQC_fnc_gamestate;}, {missionNamespace getVariable ["CGQC_gamestate_1_staging", false]} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus", "zeus_gamestate_staging"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
             // Mission

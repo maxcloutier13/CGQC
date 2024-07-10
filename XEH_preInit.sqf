@@ -126,6 +126,9 @@ cgqc_range_lane_8_check = false;
 cgqc_range_lane_9_on = false;
 cgqc_range_lane_9_check = false;
 
+// Test range
+cgqc_outdoor_range_tp = false;
+
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasAceMedical = false;
