@@ -126,6 +126,10 @@ cgqc_range_lane_8_check = false;
 cgqc_range_lane_9_on = false;
 cgqc_range_lane_9_check = false;
 
+// Test range
+cgqc_outdoor_range_tp = false;
+cgqc_outdoor_range_hide = false;
+
 // *** DLC stuff *******************
 cgqc_player_ownedDLCs = [];
 cgqc_player_hasAceMedical = false;
@@ -631,7 +635,7 @@ _menu_name = "[CGQC] Custom Containers";
 ["cgqc_config_ifak_splint", "SLIDER",["Splint", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_splint"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_ifak_tourniquet", "SLIDER",["Tourniquets", "Number in IFAK"],
-    [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_tourniquet"}, false] call CBA_fnc_addSetting;
+    [_menu_name, "Content: IFAK"], [0, 30, 4, 0], 1, {publicVariable "cgqc_config_ifak_tourniquet"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_ifak_liquids", "SLIDER",["Saline", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_liquids"}, false] call CBA_fnc_addSetting;
 
@@ -642,6 +646,8 @@ _menu_name = "[CGQC] Custom Containers";
     [_menu_name, "Content: Medic Supplies"], [0, 30, 20, 0], 1, {publicVariable "cgqc_config_medkit_epi"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_morphine", "SLIDER",["Morphine", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 30, 20, 0], 1, {publicVariable "cgqc_config_medkit_morphine"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_adenosine", "SLIDER",["Adenosine", "Number in medkit"],
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 5, 0], 1, {publicVariable "cgqc_config_medkit_adenosine"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_painkill", "SLIDER",["Painkillers", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 50, 20, 0], 1, {publicVariable "cgqc_config_medkit_painkill"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_splint", "SLIDER",["Splint", "Number in medkit"],

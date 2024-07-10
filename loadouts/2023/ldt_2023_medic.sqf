@@ -32,6 +32,7 @@ switch (_variant) do {
 		for "_i" from 1 to cgqc_config_medkit_500 do {player addItemToBackpack "ACE_salineIV_500";};
 		for "_i" from 1 to cgqc_config_medkit_painkill do {player addItemToBackpack "FF_Painkiller";};
 		for "_i" from 1 to cgqc_config_medkit_morphine do {player addItemToBackpack "ACE_morphine";};
+		for "_i" from 1 to cgqc_config_medkit_adenosine do {player addItemToBackpack "ACE_adenosine";};
 		for "_i" from 1 to cgqc_config_medkit_epi do {player addItemToBackpack "ACE_epinephrine";};
 		for "_i" from 1 to cgqc_config_medkit_splint do {player addItemToBackpack "ACE_splint";};
 		for "_i" from 1 to cgqc_config_medkit_tourniquet do {player addItemToBackpack "ACE_tourniquet";};
