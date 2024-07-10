@@ -92,6 +92,8 @@ cgqc_pmct_arsenal_all = [
     "cgqc_gun_pmct_ak12trig",
     "cgqc_gun_pmct_ak12gltrig",
     "cgqc_gun_pmct_aku12trig",
+    "cgqc_gun_pmct_ak12gltrig1",
+    "cgqc_gun_pmct_rpk12trig",
     "hlc_30Rnd_545x39_B_AK_Black",
     "hlc_30Rnd_545x39_S_AK_Black",
     "rhs_30Rnd_545x39_7N10_AK",
