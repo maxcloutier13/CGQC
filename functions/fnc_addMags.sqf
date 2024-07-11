@@ -1,10 +1,10 @@
 #include "\CGQC\script_component.hpp"
 // --- addMags ----------------------------------------------------------
 // Add the maximum allowed mag with overflow in backpack.
-params [["_target", player], ["_nbr", 0]];
+params [["_target", player], ["_nbr", 0], ["_muzzle", 0]];
 LOG_2("[addMags] Target:%1/Nbr:%2 started", _target, _nbr);
 // Primary ======================================================================
-_mag = (primaryWeaponMagazine _target) select 0;
+_mag = (primaryWeaponMagazine _target) select _muzzle;
 _addMags = _nbr;
 if (isNil "_mag") then {
 	ERROR("[addMags] - can't ID mags");
@@ -19,7 +19,10 @@ if (isNil "_mag") then {
 
 		// Extract the magazine size from the class name
 		_magSize = getNumber(configFile >> "CfgMagazines" >> _mag >> "count");
-
+		if (_magSize isEqualTo 1) exitWith {
+			//Probably got the GL for some reason. Switch muzzle
+			[player, _nbr, 1] spawn CGQC_fnc_addMags;
+		};
 		// Compare the magazine size
 		switch (true) do {
 			case (_magSize < 20): {_addMags = _addMags * 1.6};
