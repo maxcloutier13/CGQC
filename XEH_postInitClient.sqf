@@ -30,7 +30,7 @@ if (core_version isNotEqualTo _checkVersion) then {
 		[["Sérieux... Reboot Biotch!", 1.5], false] call CBA_fnc_notify;
 	};
 } else {
-	[["Mods up to date", 1.5],["Good job!", 1] false] call CBA_fnc_notify;
+	[["Mods up to date", 1.5],["Good job!", 1], false] call CBA_fnc_notify;
 	LOG("Mods up to date");
 };
 

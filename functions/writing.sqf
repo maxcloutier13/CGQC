@@ -724,3 +724,42 @@ _action = [ "menu_delete", "Delete Targets", "", {
     cgqc_damage_units = [];
 }, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ laptop_lane_5, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+
+//////////////////////////
+
+this addEventHandler ["HitPart", {
+    params ["_event"];
+    _shooter = _event select 1;
+    _mkr = "Land_PencilRed_F" createVehicle [0,0,0];
+    _mkr setDir 0;
+    _mkr enableSimulation false;
+    _mkr setPosASL (_this select 0 select 3);
+    tgt_ary_2 = tgt_ary_2+[_mkr];
+    tgt_hi_2 = _this select 0 select 3;
+    [] spawn {
+        _spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+        _spr setPosASL tgt_hi_2;
+        sleep 2;
+        deleteVehicle _spr;
+    };
+    if (local _shooter) then {
+        [_this select 0] spawn CGQC_fnc_onHitRange;
+    };
+}];
+
+// No pencils version
+this addEventHandler ["HitPart", {
+    params ["_event"];
+    _shooter = _event select 1;
+    tgt_hi_2 = _this select 0 select 3;
+    [] spawn {
+        _spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+        _spr setPosASL tgt_hi_2;
+        sleep 2;
+        deleteVehicle _spr;
+    };
+    if (local _shooter) then {
+        [_this select 0] spawn CGQC_fnc_onHitRange;
+    };
+}];
