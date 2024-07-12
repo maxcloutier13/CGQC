@@ -27,10 +27,10 @@ if (core_version isNotEqualTo _checkVersion) then {
 	_msg = format ["Mod version mismatch! <br/> -- Tes mods:%1<br/> -Serveur:%2 <br/> Ferme le jeux pis sync Swifty <br/>ALWAYS Sync ton swifty avant de partir le jeux!", core_version, _checkVersion];
 	private _result = [_msg, "Confirm", true, true] call BIS_fnc_guiMessage;
 	if (_result) then {
-		hint "Sérieux... reboot!";
+		[["Sérieux... Reboot Biotch!", 1.5], false] call CBA_fnc_notify;
 	};
 } else {
-	hint "Mods up to date. Good job.";
+	[["Mods up to date", 1.5],["Good job!", 1] false] call CBA_fnc_notify;
 	LOG("Mods up to date");
 };
 
@@ -219,7 +219,7 @@ if (cgqc_player_loadAll) then {
 						if (cgqc_config_zeusRadios) then {
 							LOG("[ace_zeus_zeusCreated] Adding Zeus radios");
 							["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
-							hint "Zeus radios set";
+							[["Zeus Radios Set", 1.5], false] call CBA_fnc_notify;
 						};
 					};
 					// _isRemoteControlled is true when entering remote control, false when exiting
@@ -313,7 +313,7 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 
 cgqc_int_wakeup = {
 	sleep 1;
-	hint "Waking up";
+	[["Waking up...", 1.5], false] call CBA_fnc_notify;
 	// Toggle UI
 	["show"] spawn CGQC_fnc_toggleUI;
 	// set volume back
@@ -590,7 +590,7 @@ if (cgqc_config_state_pause) then {
 	[0, {
 		["pause", 0, ""] spawn CGQC_fnc_perksZeus
 	}] call CBA_fnc_globalExecute;
-	hint "AI Paused!";
+	[["AI Paused...", 1.5], false] call CBA_fnc_notify;
 };
 
 // Fix for dropped teamcolors
@@ -665,7 +665,7 @@ if ([player] call CGQC_fnc_checkZeus) then {
 					if (cgqc_config_zeusRadios) then {
 						LOG("[ZeusRemoteControl] Set Zeusradio to new unit");
 						["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
-						hint "Zeus radios set";
+						[["Zeus Radios Set", 1.5], false] call CBA_fnc_notify;
 					};
 				};
 				// _isRemoteControlled is true when entering remote control, false when exiting
