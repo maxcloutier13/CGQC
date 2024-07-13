@@ -11,6 +11,7 @@ _bullet = _event select 2;
 _position = _event select 3;
 _velocity = _event select 4;
 _ammo = _event select 6;
+LOG_6("Target:%1/Shooter:%2/Bullet:%3/Position:%4/Vel:%5/Ammo:%6", _target, _shooter, _bullet, _position, _velocity, _ammo);
 
 _currentGun = currentWeapon player;
 _currentMag =  currentMagazine player;
@@ -89,7 +90,7 @@ if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_
     [_textVel, 1.2],
     [_textEnergy, 1.2],
     [_txtInfo, 1],
-    true] remoteExec ["CBA_fnc_notify", owner _shooter]
+    true] call CBA_fnc_notify;
     //hintSilent format["RemV: %1 m/s\nDistance: %2 m\n\n---- Moyenne ----\nPrécision: %3/100\nScore: %4/100",
     //round(_velocity call BIS_fnc_magnitude),
     //round(_distance * 10) / 10,
