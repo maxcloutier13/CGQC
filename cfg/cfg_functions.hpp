@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class groupMoa {
+            file = "\cgqc\functions\fnc_groupMoa.sqf";
+            description = "Finds the size in moa of the shot group";
+        };
+        class groupSize {
+            file = "\cgqc\functions\fnc_groupSize.sqf";
+            description = "Finds the size of the shot group";
+        };
         class trainingEod {
             file = "\cgqc\functions\fnc_trainingEod.sqf";
             description = "Explosives disposal training";

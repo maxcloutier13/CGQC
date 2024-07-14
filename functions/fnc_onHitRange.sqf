@@ -1,8 +1,8 @@
 #include "\CGQC\script_component.hpp"
-params ["_event"];
+params ["_event", ["_group", []]];
 //params ["_target", "_shooter", "_bullet", "_ammo","_position", "_velocity"];
 private ["_target", "_shooter", "_bullet", "_ammo", "_position", "_vectorToTarget", "_velocity", "_distance", "_targetDir", "_impactDeviation", "_accuracy", "_score", "_targetScore"];
-//params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
+//projectile version - params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
 LOG("[onHitRange]] started");
 
 _target = _event select 0;
@@ -41,7 +41,15 @@ _weightKg = _weight / 1000;
 _velSquare = _vel * _vel;
 _energy = floor (round(0.5 * _velSquare * _weightKg));
 _textEnergy = format["Engergy: %1joules", _energy];
-
+_textGroupSize = "";
+_textShotNbr = "";
+if (count _group > 0) then {
+    _groupSize = [_group] call CGQC_fnc_groupSize;
+    _groupSizeCm = round ((_groupSize * 100) * 10) / 10;
+    _moa = [_distance, _groupSize, _target] call CGQC_fnc_groupMoa;
+    _textShotNbr = format ["<br/>Shot %1", count _group];
+    _textGroupSize = format ["Group: %1cm/%2moa", _groupSizeCm, _moa];
+};
 
 if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_Inf_Acc2_NoPop_F", "TargetP_Inf2_Acc2_NoPop_F"]) then {
     LOG("[on_hit_range] Scored target");
@@ -75,6 +83,8 @@ if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_
         [_textVel, 1.2],
         [_textEnergy, 1.2],
         [_textScore, 1.2],
+        [_textShotNbr, 1.2],
+        [_textGroupSize, 1.2],
         [_txtInfo, 1.2],
         true
     ] call CBA_fnc_notify;
@@ -89,6 +99,8 @@ if ((typeOf _target) in [ "TargetP_Inf_Acc2_F", "TargetP_Inf2_Acc2_F", "TargetP_
     [_textDist, 1.2],
     [_textVel, 1.2],
     [_textEnergy, 1.2],
+    [_textShotNbr, 1.2],
+    [_textGroupSize, 1.2],
     [_txtInfo, 1],
     true] call CBA_fnc_notify;
     //hintSilent format["RemV: %1 m/s\nDistance: %2 m\n\n---- Moyenne ----\nPrécision: %3/100\nScore: %4/100",

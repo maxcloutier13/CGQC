@@ -8,10 +8,14 @@ LOG_4("[createTarget] %1/%2/%3/%4 started", _targetClass, _targetRandomDir, _tar
 
 // If mode 1 then spawn all targets
 if (_targetSpawnDist isEqualTo 1) exitWith {
-	_toSpawn = [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
-	{
-		[_targetClass, false, false, _x] call CGQC_fnc_createTarget;
-	} forEach _toSpawn;
+	[_targetClass] spawn {
+		params["_targetClass"];
+		_toSpawn = [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
+		{
+			[_targetClass, false, false, _x] call CGQC_fnc_createTarget;
+			sleep 0.5;
+		} forEach _toSpawn;
+	};
 };
 
 // Rifle testing mode
@@ -106,38 +110,45 @@ _target setDir _direction;
 
 LOG("[createTarget] Adding hit eventhandler");
 _target addEventHandler ["HitPart", {
-	_target = _this select 0 select 0;
-	_direction = getDir _target;
-	_mkr = "Land_PencilRed_F" createVehicle [0,0,0];
-	if (typeOf _target isEqualTo "Hostage_Target") then {
-		LOG("[createTarget] - Hostage target, turning hit marker");
-		_direction = _direction - 90;
-	};
-	_mkr setDir _direction;
-	_mkr enableSimulation false;
-	_mkr setPosASL (_this select 0 select 3);
-	cgqc_sniping_hit = cgqc_sniping_hit+[_mkr];
-	tgt_hi_1 = _this select 0 select 3;
-	[] spawn {
-		_spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
-		_spr setPosASL tgt_hi_1;
-		sleep 2;
-		deleteVehicle _spr;
-	};
-	[_this select 0] spawn CGQC_fnc_onHitRange;
+    params ["_event"];
+
+    _shooter = _event select 1;
+    _pos = _event select 3;
+    //_mkr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+	_mkr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+    _rgb = [0,0,0,1];
+    _lastDigit = (count cgqc_sniping_hit) % 10;
+    _caseIndex = (_lastDigit % 5) + 1;
+    switch (_caseIndex) do {
+        case 1: {_rgb = [255,0,0,1]};
+        case 2: {_rgb = [255,255,0,1]};
+        case 3: {_rgb = [0,255,0,1]};
+        case 4: {_rgb = [0,0,255,1]};
+        case 5: {_rgb = [255,255,255,1]};
+    };
+    _texture = _rgb call BIS_fnc_colorRGBAtoTexture;
+	//_mkr setObjectTexture  [0, _texture];
+    [_mkr, [0, _texture]] remoteExec ["setObjectTexture", 0];
+	//[_mkr, 0.2] remoteExec ["setObjectScale", 0];
+	_mkr setObjectScale 0.2;
+    _mkr setPosASL _pos;
+
+    cgqc_sniping_hit = cgqc_sniping_hit + [_mkr];
+    tgt_hi_2 = _this select 0 select 3;
+    //_spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+	_spr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+    //[_spr, [0, _texture]] remoteExec ["setObjectTexture", 0];
+	_spr setObjectTexture  [0, _texture];
+    _spr setPosASL tgt_hi_2;
+    [_spr] spawn {
+        params ["_spr"];
+        sleep 2;
+        deleteVehicle _spr;
+    };
+    if (local _shooter) then {
+        [_this select 0, cgqc_sniping_hit] spawn CGQC_fnc_onHitRange;
+    };
 }];
-
-/*
-_target addEventHandler ["HitPart", {
-	params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
-	LOG_3("[hitPart-Basic] %1/%2/%3", _target, _shooter, _projectile);
-	//if (isNull _projectile) exitWith {};
-	//if !(_isDirect) exitWith {};
-	//if !(_projectile isKindOf "BulletBase") exitWith {};
-	//if (_shooter != player) exitWith {};
-
-	[_this select 0] spawn CGQC_fnc_onHit;
-}];*/
 
 cgqc_training_targetList pushBack _target;
 
