@@ -137,8 +137,8 @@ _target addEventHandler ["HitPart", {
     tgt_hi_2 = _this select 0 select 3;
     //_spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
 	_spr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
-    //[_spr, [0, _texture]] remoteExec ["setObjectTexture", 0];
-	_spr setObjectTexture  [0, _texture];
+    [_spr, [0, _texture]] remoteExec ["setObjectTexture", 0];
+	//_spr setObjectTexture  [0, _texture];
     _spr setPosASL tgt_hi_2;
     [_spr] spawn {
         params ["_spr"];
