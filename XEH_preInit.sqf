@@ -933,7 +933,8 @@ private _medical = [
 	"FSGm_ItemMedicBag",
 	"FF_Painkiller",
 	"ACE_adenosine",
-	"ACE_bodyBag"
+	"ACE_bodyBag",
+	"CGQC_Carbonate"
 ];
 
 private _electronics = [
@@ -985,8 +986,10 @@ private _electronics = [
 private _logistics = [
 	"cgqc_items_medkit",
 	"cgqc_items_ifak",
-	"cgqc_bandolier_ammo"
+	"cgqc_bandolier_ammo",
+	"cgqc_bandolier_ammo_half"
 ];
+
 [_logistics, "Logistics", "cgqc\textures\rearm.paa"] call ace_arsenal_fnc_addRightPanelButton;
 [_medical, "Medical", "cgqc\textures\medical.paa"] call ace_arsenal_fnc_addRightPanelButton;
 [_electronics, "Electronics", "cgqc\textures\electronics.paa"] call ace_arsenal_fnc_addRightPanelButton;

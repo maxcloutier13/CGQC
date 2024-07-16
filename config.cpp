@@ -160,3 +160,5 @@ class CfgSounds
 #include "\CGQC\cfg\cfg_markerColors.hpp"
 // Pause Menu
 #include "\CGQC\gui\pauseMenu.hpp"
+// Animations
+#include "\CGQC\cfg\cfg_animations.hpp"

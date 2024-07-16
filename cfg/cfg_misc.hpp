@@ -15,6 +15,19 @@ class tsp_lockpick: tsp_paperclip
 	};
 };
 
+
+class CGQC_Carbonate: CBA_MiscItem {
+	scope = 2;
+	author = "silent1";
+	displayName = "Ammonium Carbonate";
+    descriptionShort = "Smelling salts. Used to restore consciousness.";
+    model = "\A3\Structures_F_EPA\Items\Medical\Painkillers_F.p3d";
+    picture = "\CGQC\textures\icon_Carbonate.paa";
+	class ItemInfo: CBA_MiscItem_ItemInfo {
+		mass = 0;
+	};
+};
+
 // Logistics stuff
 class cgqc_items_ifak: CBA_MiscItem
 {

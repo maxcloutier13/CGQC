@@ -300,6 +300,12 @@ take_152 = player addEventHandler [	"Take", {
 	};
 }];
 
+// Carbonate salt event
+["cgqc_event_treatmentCarbonate", {
+	params["_medic", "_patient", "_medication"];
+	[_medic, _patient, _medication] call CGQC_fnc_treatmentLocal;
+}] call CBA_fnc_addEventHandler;
+
 // Save default volume
 player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalVolume, true];
 
@@ -331,12 +337,16 @@ cgqc_int_wakeup = {
 ["ace_unconscious", {
 	params ["_unit", "_isUnconscious"];
 	LOG_2("[Unconscious] - %1 is down? %2", name _unit, _isUnconscious);
+	// Not local: get out.
+	if !(local _unit) exitWith {
+		LOG("[Unconscious] - Not Local. Getting out");
+	};
 	// Not Unconscious? Get out
-	if (!_isUnconscious) exitWith {
+	if !(_isUnconscious) exitWith {
 		LOG("[Unconscious] - Not Unconscious. Getting out");
 	};
 	// Not a player? Get out
-	_unitIsPlayer = hasInterface && {_unit == ace_player};
+	_unitIsPlayer = hasInterface && {_unit isEqualTo ace_player};
 	if !(_unitIsPlayer) exitWith {
 		LOG("[Unconscious] - Not a player. Getting out");
 	};

@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class treatment {
+            file = "\cgqc\functions\fnc_treatment.sqf";
+            description = "Custom medical treatments";
+        };
+        class treatmentLocal {
+            file = "\cgqc\functions\fnc_treatmentLocal.sqf";
+            description = "Custom medical treatments";
+        };
         class groupMoa {
             file = "\cgqc\functions\fnc_groupMoa.sqf";
             description = "Finds the size in moa of the shot group";
