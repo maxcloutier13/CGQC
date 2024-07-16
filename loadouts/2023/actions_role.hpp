@@ -63,10 +63,10 @@ _action = [ "menu_mk2_inf_LWMMG", "LWMMG (.338)", "", {["2023_lwmmg"] spawn CGQC
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Anti-Tank (MAAWS)
-_action = [ "menu_mk2_inf_maaws", "Anti-Tank (MAAWS)", "", {["2023_at_maaws"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_inf_maaws", "M-AT (MAAWS)", "", {["2023_at_maaws"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Anti-Tank (Javelin)
-_action = [ "menu_mk2_inf_jav", "Anti-Tank (Javelin)", "", {["2023_at_javelin"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_inf_jav", "H-AT (Javelin)", "", {["2023_at_javelin"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 
