@@ -114,7 +114,7 @@ case "scar_l_short":{
 
 // 5.56 CQB/SBR ----------------------------------------------------------------------------------------------
 case "mk18_dot":{
-    ["cgqc_gun_mk1_mk18"] call CGQC_fnc_getCustomGun;
+    ["cgqc_gun_mk1_mk18", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
     _target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
