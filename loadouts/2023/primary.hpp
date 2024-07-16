@@ -561,7 +561,7 @@ case "csr16":{
     _target addPrimaryWeaponItem "121_USASOC_CSR_16";
     _target addPrimaryWeaponItem "121_USASOC_RVPS";
     _target addPrimaryWeaponItem "121_USASOC_Atlas";
-    _target addPrimaryWeaponItem "121_308_Mk319_Mod_0_10rnd";
+    _target addPrimaryWeaponItem "121_338_300gr_HPBT_5rnd";
 };
 case "csr24":{
     ["121_USASOC_CSR_24"] call CGQC_fnc_getCustomGun;
@@ -570,7 +570,7 @@ case "csr24":{
     _target addPrimaryWeaponItem "121_USASOC_STORM_SLX_Laser";
     _target addPrimaryWeaponItem "121_USASOC_PVPS";
     _target addPrimaryWeaponItem "121_USASOC_Atlas";
-    _target addPrimaryWeaponItem "121_308_Mk319_Mod_0_10rnd";
+    _target addPrimaryWeaponItem "121_338_300gr_HPBT_5rnd";
 };
 case "ctsr":{
     ["121_USASOC_CTSR"] call CGQC_fnc_getCustomGun;
@@ -632,7 +632,7 @@ case "qbu":{
     _target addPrimaryWeaponItem "ACE_20Rnd_65_Creedmor_mag";
 };
 case "awc":{
-    ["hlc_rifle_awcovert_BL"] call CGQC_fnc_getCustomGun;
+    ["hlc_rifle_awmagnum_BL"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "optic_LRPS";
     _target addPrimaryWeaponItem "hlc_5rnd_300WM_mk248_AWM";
 };
