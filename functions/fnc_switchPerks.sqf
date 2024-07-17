@@ -191,4 +191,6 @@ cgqc_player_trait_loadCoef = player getUnitTrait "loadCoef";
 cgqc_player_trait_audibleCoef  = player getUnitTrait "audibleCoef";
 cgqc_player_trait_camoCoef  = player getUnitTrait "camouflageCoef";
 
+[] call CGQC_fnc_reloadTraits;
+
 LOG("[switchPerks] done");

@@ -204,6 +204,11 @@ if (cgqc_player_loadAll) then {
 		[player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
 	}] call CBA_fnc_addEventHandler;
 
+	player addEventHandler ["InventoryClosed", {
+		params ["_unit", "_container"];
+		[] call CGQC_fnc_reloadTraits;
+	}];
+
 	// Event if the player activates zeus through ACE interaction
 	["ace_zeus_zeusCreated", {
 		LOG("[ace_zeus_zeusCreated] Player became Zeus trough ACE");
@@ -297,6 +302,8 @@ if (cgqc_player_loadAll) then {
 // Player picks up something event
 take_152 = player addEventHandler [	"Take", {
 	params ["_unit", "_container", "_item"];
+	// RELOAD FUUUUCKING TRAITS WTF!
+	[] call CGQC_fnc_reloadTraits;
 	if (_item isEqualTo "ACRE_PRC152") then {
 		_txt = " picked up a 152 ;o)";
 		[_unit, _txt] remoteExec ["globalChat",0];
