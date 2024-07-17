@@ -172,6 +172,7 @@ cgqc_swat_arsenal_all = [
     "ACE_splint",
     "ACE_tourniquet",
     "FF_Painkiller",
+    "CGQC_Carbonate",
     "ACE_bodyBag",
     "ACE_epinephrine",
     "ACE_morphine",

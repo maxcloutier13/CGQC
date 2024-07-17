@@ -1,7 +1,7 @@
 // --- all_Items ifa3 ----------------------------------------------------------
 // - All arsenal Items
 
-cgqc_ifa3_arsenal_all = [ 
+cgqc_ifa3_arsenal_all = [
 	"ACRE_SEM52SL",
 	"ACE_adenosine",
 	"ACRE_PRC77",
@@ -22,6 +22,7 @@ cgqc_ifa3_arsenal_all = [
 	"ACE_morphine",
 	"grad_paceCountBeads_functions_paceCountBeads",
 	"FF_Painkiller",
+	"CGQC_Carbonate",
 	"ACE_personalAidKit",
 	"ACE_salineIV",
 	"ACE_salineIV_250",
