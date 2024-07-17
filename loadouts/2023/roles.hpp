@@ -41,7 +41,7 @@ case "2023_rifle_grenadier":{
 // Junior Specialists ===============================================================
 case "2023_rifle_shoot":{
 	[player, "sharpshooter", "mk12"] call CGQC_ldt_2023_rifleman;
-	["recon", true, true] spawn CGQC_fnc_switchPerks;
+	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sharpshooter";
 	cgqc_player_roleType = "Infantry";
@@ -182,7 +182,7 @@ case "2023_spotter":{
 
 case "2023_drone":{
 	[player, "drone", "hk416_elcan"] call CGQC_ldt_2023_recon;
-	["recon", true, true] spawn CGQC_fnc_switchPerks;
+	["drone", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Drone Operator";
 	cgqc_player_roleType = "Recon";

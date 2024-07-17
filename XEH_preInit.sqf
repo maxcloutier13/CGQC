@@ -83,6 +83,10 @@ cgqc_vic_limiter = false;
 cgqc_player_rosterInit = false;
 cgqc_player_route = [];
 cgqc_player_route_on = false;
+cgqc_player_trait_loadCoef = 1;
+cgqc_player_trait_audibleCoef = 1;
+cgqc_player_trait_camoCoef = 1;
+
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -636,8 +640,12 @@ _menu_name = "[CGQC] Custom Containers";
     [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_splint"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_ifak_tourniquet", "SLIDER",["Tourniquets", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 4, 0], 1, {publicVariable "cgqc_config_ifak_tourniquet"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_ammonium", "SLIDER",["Ammonium Carbonate", "Number in IFAK"],
+    [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_ammonium"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_ifak_liquids", "SLIDER",["Saline", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_liquids"}, false] call CBA_fnc_addSetting;
+
+
 
 // Medic Supplies
 ["cgqc_config_medkit_bandages", "SLIDER",["Bandages", "Number in medkit"],
@@ -652,6 +660,8 @@ _menu_name = "[CGQC] Custom Containers";
     [_menu_name, "Content: Medic Supplies"], [0, 50, 20, 0], 1, {publicVariable "cgqc_config_medkit_painkill"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_splint", "SLIDER",["Splint", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_splint"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_ammonium", "SLIDER",["Ammonium Carbonate", "Number in medkit"],
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 15, 0], 1, {publicVariable "cgqc_config_medkit_ammonium"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_tourniquet", "SLIDER",["Tourniquets", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_tourniquet"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_1000", "SLIDER",["Saline 1000ml", "Number in medkit"],
@@ -702,7 +712,7 @@ if (cgqc_player_hasNorthern) then {
 	["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
 	["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
-		[_menu_name, "Content: Ammo Bandolier"], "ACE_M84"] call CBA_fnc_addSetting;
+		[_menu_name, "Content: Ammo Bandolier"], "tsp_flashbang_cts"] call CBA_fnc_addSetting;
 
 	["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;

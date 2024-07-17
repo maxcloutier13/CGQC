@@ -6,6 +6,7 @@ cgqc_mk2_arsenal_1_items = [
     "ACE_splint",
     "ACE_tourniquet",
     "FF_Painkiller",
+    "CGQC_Carbonate",
     "ACE_bodyBag",
     // Logistics  -----------------------------------
     "cgqc_items_ifak",

@@ -33,7 +33,7 @@ switch (_variant) do {
         _target addItemToUniform "ACRE_PRC152";
         for "_i" from 1 to 6 do {player addItemToUniform "ACE_CableTie"};
         // === Vest ================================================================================================================
-        for "_i" from 1 to 4 do {player addItemToBackpack "ACE_M84"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "tsp_flashbang_cts"};
         for "_i" from 1 to 2 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
         for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShell"};
         _target addItemToBackpack "cgqc_uniform_swat_cqb";

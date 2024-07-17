@@ -27,7 +27,7 @@ switch (_type) do {
             if (player getVariable ["ACE_isUnconscious", false]) exitWith {};
             LOG("[wakeup] Still Up");
             _perceived = [] call CGQC_fnc_perceivedPain;
-            if (_perceived > 0.2) then {
+            if (_perceived > 0.4) then {
                 LOG_1("[wakeup] - Passing out from %1 pain", _perceived);
                 _txt = "Oh shit... I'm gonna black out...";
                 [ _txt, 0, 1.15, 2, 0.8] spawn BIS_fnc_dynamicText;

@@ -51,7 +51,7 @@ switch (_variant) do {
 		player addWeapon "rhs_weap_m72a7"; // Launcher
 		player addItemToBackpack "ACE_wirecutter";
 		for "_i" from 1 to 2 do {player addItemToBackpack "rhs_mag_m67"}; // More grenades
-		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_M84"}; // More grenades
+		for "_i" from 1 to 2 do {player addItemToBackpack "tsp_flashbang_cts"}; // More grenades
 		for "_i" from 1 to 2 do {player addItemToBackpack "MiniGrenade"}; // More grenades
 	};
 	case "sharpshooter": {

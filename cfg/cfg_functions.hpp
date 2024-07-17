@@ -12,6 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class reloadTraits {
+            file = "\cgqc\functions\fnc_reloadTraits.sqf";
+            description = "Reload fucking traits";
+        };
         class wakeup {
             file = "\cgqc\functions\fnc_wakeup.sqf";
             description = "Wake up the player";

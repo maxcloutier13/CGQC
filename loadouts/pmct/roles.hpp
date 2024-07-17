@@ -134,7 +134,7 @@ case "pmct_marks":{
 
 case "pmct_drone":{
 	[player, "pmct_drone", "ak12"] call CGQC_ldt_pmct_variants;
-	["recon", true, true] spawn CGQC_fnc_switchPerks;
+	["drone", true, true] spawn CGQC_fnc_switchPerks;
 	//["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Drone Operator";
 	cgqc_player_roleType = "Recon";

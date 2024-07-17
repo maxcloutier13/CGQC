@@ -68,6 +68,10 @@ switch (_type) do {
 			}] call CBA_fnc_globalExecute;
 			hint "AI Unpaused!";
 		};
+		// Voice level to normal
+		[0, {
+				[player, "normal"] call CGQC_fnc_setVoiceVolume;
+		}] call CBA_fnc_globalExecute;
 		// Start message for everyone
 		_txt = "Mission Started!";
 		_txt2 = "Player Snapshot saved";

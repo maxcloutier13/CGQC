@@ -4,12 +4,6 @@ class InventoryItem_Base_F;
 class ace_medical_treatment_actions
 {
     class Morphine;
-    /*
-    class FF_Painkiller: Morphine
-    {
-        // Add option on all bodyparts instead of just head
-        allowedSelections[] = {"Head","LeftArm", "RightArm", "LeftLeg", "RightLeg", "Body"};
-    };*/
     class Carbonate: Morphine {
         displayName = "Use Ammonium Carbonate";
         displayNameProgress = "Using";
@@ -39,7 +33,6 @@ class ace_medical_treatment_actions
     };
 };
 
-
 class taro_tripwire_spool
 {
     class ItemInfo: InventoryItem_Base_F
@@ -62,12 +55,17 @@ class ace_medical_treatment
             incompatibleMedication[] = {};
             viscosityChange = 0;
         };
-        class Carbonate {
+        class Epinephrine;
+        class Carbonate : Epinephrine {
             painReduce = 0;
-            timeInSystem = 120;
-            maxDose = 10;
+            timeInSystem = 10;
+            timeTillMaxEffect = 1;
+            maxDose = 100;
             inCompatableMedication[] = {};
-            viscosityChange = 2;
+            viscosityChange = 0;
+            hrIncreaseLow[] = {10, 20};
+            hrIncreaseNormal[] = {10, 50};
+            hrIncreaseHigh[] = {10, 40};
             // item class name
             itemClassName = "CGQC_Carbonate";
         };

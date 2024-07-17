@@ -29,6 +29,7 @@ cgqc_unsung_arsenal_all = [
 	"ACE_splint",
 	"ToolKit",
 	"ACE_tourniquet",
+	"CGQC_Carbonate",
 	"UNS_TrapKit",
 	"ACE_WaterBottle",
 	"ACE_wirecutter",

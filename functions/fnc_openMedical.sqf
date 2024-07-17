@@ -48,6 +48,7 @@ _medbag = {_x isEqualTo "FSGm_ItemMedicBag" } count _allItems;
 _pak = {_x isEqualTo "ACE_personalAidKit" } count _allItems;
 _smoke_purple = {_x isEqualTo "SmokeShellPurple" } count _allMags;
 _bodybags = {_x isEqualTo "ACE_bodyBag" } count _allItems;
+_ammonium = {_x isEqualTo "CGQC_Carbonate" } count _allItems;
 
 switch (_type) do {
 	case "ifak": {
@@ -61,6 +62,7 @@ switch (_type) do {
 			for "_i" from _painkill to (cgqc_config_ifak_painkill - 1) do {_target addItem "FF_Painkiller"};
 			for "_i" from _splint to (cgqc_config_ifak_splint - 1) do {_target addItem "ACE_splint"};
 			for "_i" from _tourniquet to (cgqc_config_ifak_tourniquet - 1) do {_target addItem "ACE_tourniquet"};
+			for "_i" from _ammonium to (cgqc_config_ifak_ammonium - 1) do {_target addItem "CGQC_Carbonate"};
 			for "_i" from _liquids to (cgqc_config_ifak_liquids - 1) do {_target addItemToBackpack "ACE_salineIV_500"};
 			hint _work;
 		};
@@ -77,6 +79,7 @@ switch (_type) do {
 				for "_i" from _painkill to (cgqc_config_medkit_painkill - 1) do {_target addItemToBackpack "FF_Painkiller"};
 				for "_i" from _splint to (cgqc_config_medkit_splint - 1) do {_target addItemToBackpack "ACE_splint"};
 				for "_i" from _tourniquet to (cgqc_config_medkit_tourniquet - 1) do {_target addItemToBackpack "ACE_tourniquet"};
+				for "_i" from _ammonium to (cgqc_config_medkit_ammonium - 1) do {_target addItem "CGQC_Carbonate"};
 				for "_i" from _1000ml to (cgqc_config_medkit_1000 - 1) do {_target addItemToBackpack "ACE_salineIV"};
 				for "_i" from _500ml to (cgqc_config_medkit_500 - 1) do {_target addItemToBackpack "ACE_salineIV_500"};
 				for "_i" from _pak to (cgqc_config_medkit_pak - 1) do {_target addItemToBackpack "ACE_personalAidKit"};

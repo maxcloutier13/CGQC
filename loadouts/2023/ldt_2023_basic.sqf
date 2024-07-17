@@ -21,9 +21,9 @@ _handgun = ["cgqc_gun_glock19_wood", "Tier1_20Rnd_9x19_JHP", "Tier1_DBALPL", "Ti
 _target addItemToUniform "azm_bft_tx";
 _target addItemToUniform "azm_bft_rx";
 // === Vest Items ====================================================================================================
-_target addItemToVest "ACE_M84";
-_target addItemToVest "ACE_M84";
-_target addItemToVest "ACE_M84";
+_target addItemToVest "tsp_flashbang_cts";
+_target addItemToVest "tsp_flashbang_cts";
+_target addItemToVest "tsp_flashbang_cts";
 _target addItemToVest "SmokeShell";
 _target addItemToVest "SmokeShell";
 _target addItemToVest "SmokeShell";
