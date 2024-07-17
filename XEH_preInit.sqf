@@ -636,8 +636,12 @@ _menu_name = "[CGQC] Custom Containers";
     [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_splint"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_ifak_tourniquet", "SLIDER",["Tourniquets", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 4, 0], 1, {publicVariable "cgqc_config_ifak_tourniquet"}, false] call CBA_fnc_addSetting;
+["cgqc_config_ifak_ammonium", "SLIDER",["Ammonium Carbonate", "Number in IFAK"],
+    [_menu_name, "Content: IFAK"], [0, 30, 1, 0], 1, {publicVariable "cgqc_config_ifak_ammonium"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_ifak_liquids", "SLIDER",["Saline", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 2, 0], 1, {publicVariable "cgqc_config_ifak_liquids"}, false] call CBA_fnc_addSetting;
+
+
 
 // Medic Supplies
 ["cgqc_config_medkit_bandages", "SLIDER",["Bandages", "Number in medkit"],
@@ -652,6 +656,8 @@ _menu_name = "[CGQC] Custom Containers";
     [_menu_name, "Content: Medic Supplies"], [0, 50, 20, 0], 1, {publicVariable "cgqc_config_medkit_painkill"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_splint", "SLIDER",["Splint", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_splint"}, false] call CBA_fnc_addSetting;
+["cgqc_config_medkit_ammonium", "SLIDER",["Ammonium Carbonate", "Number in medkit"],
+    [_menu_name, "Content: Medic Supplies"], [0, 30, 15, 0], 1, {publicVariable "cgqc_config_medkit_ammonium"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_tourniquet", "SLIDER",["Tourniquets", "Number in medkit"],
     [_menu_name, "Content: Medic Supplies"], [0, 25, 5, 0], 1, {publicVariable "cgqc_config_medkit_tourniquet"}, false] call CBA_fnc_addSetting;
 ["cgqc_config_medkit_1000", "SLIDER",["Saline 1000ml", "Number in medkit"],
