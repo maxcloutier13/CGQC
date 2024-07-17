@@ -13,14 +13,14 @@ class ace_medical_treatment_actions
     class Carbonate: Morphine {
         displayName = "Use Ammonium Carbonate";
         displayNameProgress = "Using";
-        category = "bandage";
         treatmentLocations = 0;
         allowedSelections[] = {"Head"};
         allowSelfTreatment = 1;
         medicRequired = 0;
         treatmentTime = 5;
-        items[] = {};
-        condition = "[_medic, 'CGQC_Carbonate'] call ace_common_fnc_hasItem || [_patient,'CGQC_Carbonate'] call ace_common_fnc_hasItem";
+        items[] = {"CGQC_Carbonate"};
+        //condition = "[_medic, 'CGQC_Carbonate'] call ace_common_fnc_hasItem || [_patient,'CGQC_Carbonate'] call ace_common_fnc_hasItem";
+        condition = "_patient getVariable ['ACE_isUnconscious', false]";
         patientStateCondition = 0;
         callbackSuccess = "[_player, _patient, 'Carbonate'] call CGQC_fnc_treatment";
         animationMedic = "AinvPknlMstpSnonWrflDnon_medic1";
@@ -28,6 +28,14 @@ class ace_medical_treatment_actions
         animationPatient = "";
         animationPatientUnconscious = "AinjPpneMstpSnonWrflDnon_rolltoback";
         animationPatientUnconsciousExcludeOn[] = {"ainjppnemstpsnonwrfldnon"};
+    };
+    class slap: Carbonate {
+        displayName = "Slap!";
+        displayNameProgress = "Splapping";
+        treatmentTime = 1;
+        items[] = {};
+        condition = "_patient getVariable ['ACE_isUnconscious', false]";
+        callbackSuccess = "[_player, _patient, 'slap'] call CGQC_fnc_treatment";
     };
 };
 

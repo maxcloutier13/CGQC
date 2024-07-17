@@ -12,6 +12,14 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class wakeup {
+            file = "\cgqc\functions\fnc_wakeup.sqf";
+            description = "Wake up the player";
+        };
+        class perceivedPain {
+            file = "\cgqc\functions\fnc_perceivedPain.sqf";
+            description = "Return perceived pain";
+        };
         class treatment {
             file = "\cgqc\functions\fnc_treatment.sqf";
             description = "Custom medical treatments";

@@ -242,14 +242,17 @@ if (cgqc_player_loadAll) then {
 	if (player == _medic || !(alive player) || player != _patient) exitWith {
 		LOG("[medical_receivingTreatment] - Skipping");
 	};
+	_text = "";
+	_name = "Someone";
+	LOG("[medical_receivingTreatment] - Victim unconcious. Vague message.");
 	// Check counciousness
-	if (player getVariable ["ACE_isUnconscious", false]) then {
-		LOG("[medical_receivingTreatment] - Victim unconcious. Vague message.");
-		// Passed out, so can't tell details
-		_name = "Someone";
-		_text = format ["<br/><br/><br/><br/><br/><br/><br/><t size='2'>%1 is helping you</t>", _name];
-		cutText [_text,"PLAIN", 2.5, false, true];
+	if !(player getVariable ["ACE_isUnconscious", false]) then {
+		LOG("[medical_receivingTreatment] - Victim Concious. Complete message.");
+		_name = name _medic;
 	};
+ 	_text = format ["<t size='3'>%1 is helping you</t>", _name];
+	cutText ["","PLAIN DOWN", 1, false, true];
+	cutText [_text,"PLAIN DOWN", 1, false, true];
 	/* else{ // If councious, give details about what is happening
 		_msg = [_treatment, _bodyPart] call CGQC_int_medical_treatmentMsg;
 		cutText [format ["%1 %2", _name, _msg],"PLAIN DOWN", 2.5];
@@ -301,7 +304,7 @@ take_152 = player addEventHandler [	"Take", {
 }];
 
 // Carbonate salt event
-["cgqc_event_treatmentCarbonate", {
+["cgqc_event_treatment", {
 	params["_medic", "_patient", "_medication"];
 	[_medic, _patient, _medication] call CGQC_fnc_treatmentLocal;
 }] call CBA_fnc_addEventHandler;
@@ -315,46 +318,30 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
     _source say3D [_sound, _range];
 }] call CBA_fnc_addEventHandler;
 
-
-
-cgqc_int_wakeup = {
-	sleep 1;
-	[["Waking up...", 1.5], false] call CBA_fnc_notify;
-	// Toggle UI
-	["show"] spawn CGQC_fnc_toggleUI;
-	// set volume back
-	_vol = player getVariable "cgqc_player_wakeup_volume";
-	[_vol] call acre_api_fnc_setGlobalVolume;
-	// Turning radios back on
-	_radioIdList = call acre_api_fnc_getCurrentRadioList;
-	{
-		_radioId = _x;
-		[_radioId,0.8] call acre_sys_radio_fnc_setRadioVolume;
-	} forEach _radioIdList;
-};
+["cgqc_event_notify", {
+    params ["_title", ["_msg1", ""], ["_msg2", ""] ,"_color"];
+	if (_msg1 isEqualTo "") exitWith {
+		[[_title, 1.5, [0.161,0.502,0.725,1]], false] call CBA_fnc_notify;
+	};
+	if (_msg2 isEqualTo "") exitWith {
+		[[_title, 1.5, [0.161,0.502,0.725,1]],[_msg1, 1], false] call CBA_fnc_notify;
+	};
+	[[_title, 1.5, [0.161,0.502,0.725,1]],[_msg1, 1], [_msg2, 1], false] call CBA_fnc_notify;
+}] call CBA_fnc_addEventHandler;
 
 // Unconcious event
 ["ace_unconscious", {
 	params ["_unit", "_isUnconscious"];
-	LOG_2("[Unconscious] - %1 is down? %2", name _unit, _isUnconscious);
-	// Not local: get out.
-	if !(local _unit) exitWith {
-		LOG("[Unconscious] - Not Local. Getting out");
-	};
-	// Not Unconscious? Get out
-	if !(_isUnconscious) exitWith {
-		LOG("[Unconscious] - Not Unconscious. Getting out");
-	};
 	// Not a player? Get out
 	_unitIsPlayer = hasInterface && {_unit isEqualTo ace_player};
-	if !(_unitIsPlayer) exitWith {
-		LOG("[Unconscious] - Not a player. Getting out");
+	if !(_unitIsPlayer) exitWith {LOG("[Unconscious] - Not a player. Getting out");};
+	LOG_2("[Unconscious] - %1 is down? %2", name _unit, _isUnconscious);
+	// Not local: get out.
+	if !(local _unit) exitWith {LOG("[Unconscious] - Not Local. Getting out");};
+	// Not Unconscious? Get out
+	if !(_isUnconscious) exitWith {LOG("[Unconscious] - Not Unconscious. Getting out");
+		[] spawn cgqc_fnc_wakeup;
 	};
-	// If not local? Get out
-	if !(local _unit) exitWith {
-		LOG("[Unconscious] - Not Local. Getting out");
-	};
-
 	// All good. Falling asleep
 	LOG("[Unconscious] - All good. Proceeding.");
 	[] call CGQC_fnc_setTeamColorReload;
@@ -370,12 +357,40 @@ cgqc_int_wakeup = {
 		[_radioId,0] call acre_sys_radio_fnc_setRadioVolume;
 	} forEach _radioIdList;
 	LOG("[Unconscious] - Lowered volume");
-	[] spawn {
+
+	/*
+
+	// Revive function
+	[_unit] spawn {
+		params["_unit"];
+		_downTime = 0;
+		_choices = [15, 20, 30];
+		_choice = selectRandom _choices;
 		// Wait until dead or waking up
-		waitUntil {!(player getVariable ["ACE_isUnconscious", false])};
-		// Not asleep anymore, waking up
-		[] spawn cgqc_int_wakeup;
+		while {(_unit getVariable ["ACE_isUnconscious", false])} do {
+			sleep 1;
+			_downTime = _downTime + 1;
+			if (_downTime % _choice isEqualTo 0) then {
+				LOG_1("[Unconscious] - Been %1s.. checking ", _choice);
+				// It's been X seconds. Check if heart is running
+				_choice = selectRandom _choices;
+				if !(_unit getVariable ["ace_medical_inCardiacArrest", false]) then {
+					LOG("[Unconscious] - Heart is beating");
+					// Check  pain not critical
+					_perceived = [] call CGQC_fnc_perceivedPain;
+					if (_perceived < 0.4) then {
+						// Wakeup, but with a pain watch
+						LOG("[Unconscious] - Waking up with pain check");
+						["pain"] spawn cgqc_fnc_wakeup;
+					} else{
+						LOG_1("[Unconscious] - Too much pain. Waiting %1s", _choice);
+					};
+				};
+			};
+		};
 	};
+	*/
+	LOG("[Unconscious] - done");
 }] call CBA_fnc_addEventHandler;
 
 

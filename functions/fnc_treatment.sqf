@@ -13,15 +13,14 @@ switch (_medication) do {
         } else {
             _medic removeItem 'CGQC_Carbonate';
         };
-        // Apply effect
-        if (local _patient) then {
-            ["cgqc_event_treatmentCarbonate", [_medic, _patient, _medication]] call CBA_fnc_localEvent;
-        } else {
-            ["cgqc_event_treatmentCarbonate", [_medic, _patient, _medication], _patient] call CBA_fnc_targetEvent;
-        };
-
-        true;
     };
+};
+
+// Apply effect
+if (local _patient) then {
+    ["cgqc_event_treatment", [_medic, _patient, _medication]] spawn CBA_fnc_localEvent;
+} else {
+    ["cgqc_event_treatment", [_medic, _patient, _medication], _patient] spawn CBA_fnc_targetEvent;
 };
 
 LOG("[treatment] done");
