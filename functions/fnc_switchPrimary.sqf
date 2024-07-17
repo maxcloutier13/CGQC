@@ -82,5 +82,7 @@ if (cgqc_mission_daytime) then {
 // Add mags to vest
 [_target, _nbr] call CGQC_fnc_addMags;
 [_target] call ace_weaponselect_fnc_putWeaponAway;
+// Reload fucking traits! Wtf. This is fucked up
+[] call CGQC_fnc_reloadTraits;
 
 LOG("[switchPrimary] done");

@@ -23,6 +23,8 @@ cgqc_player_second = _unit getVariable "WBK_SecondWeapon";
 [] call CGQC_fnc_setPatch;
 // Set color
 [] call CGQC_fnc_setTeamColorReload;
+// Reload fucking traits
+[] call CGQC_fnc_reloadTraits;
 /*
 
 // Reload radios
