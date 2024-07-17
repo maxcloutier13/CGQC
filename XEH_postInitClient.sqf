@@ -199,6 +199,7 @@ if (cgqc_player_loadAll) then {
 	["ace_arsenal_displayClosed", {
 		[] call CGQC_fnc_maxMags;
 		[player, true] call ace_arsenal_fnc_removeBox;
+		[] call CGQC_fnc_reloadTraits;
 		// Save player loadout
 		[player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
 	}] call CBA_fnc_addEventHandler;

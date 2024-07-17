@@ -83,6 +83,10 @@ cgqc_vic_limiter = false;
 cgqc_player_rosterInit = false;
 cgqc_player_route = [];
 cgqc_player_route_on = false;
+cgqc_player_trait_loadCoef = 1;
+cgqc_player_trait_audibleCoef = 1;
+cgqc_player_trait_camoCoef = 1;
+
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [

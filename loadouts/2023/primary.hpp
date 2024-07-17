@@ -426,7 +426,7 @@ case "socom16":{
     ["rhs_weap_m14_socom_rail", "lpvo"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_aac_762sdn6_silencer";
     _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M600V_Black";
-    _target addPrimaryWeaponItem "rhsusf_acc_m14_bipod";
+    _target addPrimaryWeaponItem "rhsusf_acc_harris_swivel";
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk316_Mod_0_Mag";
 };
 case "m14sopmodDmr":{
