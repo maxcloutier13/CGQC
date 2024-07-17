@@ -330,7 +330,7 @@ case "m27_lpvo":{
 case "lar15":{
     ["hlc_rifle_samr2", "rco"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
-    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M603V_FL";
+    _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_PMAG";
     _target addPrimaryWeaponItem "121_USASOC_Atlas";
 };
@@ -344,11 +344,11 @@ case "acre_mid":{
 };
 
 case "acre_spr":{
-    ["hlc_rifle_ACR_full_black", "dot"] call CGQC_fnc_getCustomGun;
+    ["hlc_rifle_ACR_full_black", "rco"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-    _target addPrimaryWeaponItem "rhsusf_acc_grip2";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "121_USASOC_Atlas";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk262_L5";
 };
 
 // 7.62 CQB =================================================================
