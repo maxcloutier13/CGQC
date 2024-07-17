@@ -121,7 +121,7 @@ switch (_type) do {
 	case "med":{
 		LOG("[switchPerks] Medic setup");
 		player setUnitTrait ["Medic", true];
-		player setUnitTrait ["loadCoef", 0.8];
+		player setUnitTrait ["loadCoef", 0.6];
 		cgqc_perks_medic = true;
 		["transmit"] spawn CGQC_fnc_bluforceTracker;
 	};

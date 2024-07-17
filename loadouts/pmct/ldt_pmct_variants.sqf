@@ -18,6 +18,8 @@ switch (_variant) do {
         _target addItemToUniform "azm_bft_rx";
         _target addItemToUniform "ACRE_PRC152";
         _target addItemToBackpack "cgqc_bandolier_ammo";
+        _target unlinkItem "ItemGPS";
+        _target linkItem "B_UavTerminal";
 	};
     case "pmct_tl": {
         ["backpack", "cgqc_pack_mk1_radiobag_black"] call CGQC_fnc_switchStuff;
@@ -25,9 +27,11 @@ switch (_variant) do {
         _target addItemToUniform "azm_bft_rx";
         _target addItemToUniform "ACRE_PRC152";
         _target addItemToBackpack "cgqc_bandolier_ammo";
+        _target unlinkItem "ItemGPS";
+        _target linkItem "B_UavTerminal";
 	};
     case "pmct_gren": {
-        for "_i" from 1 to 5 do {_target addItemToBackpack "hlc_VOG25_AK"};
+        ["backpack", "B_Kitbag_cbr"] call CGQC_fnc_switchStuff;
         for "_i" from 1 to 3 do {_target addItemToBackpack "hlc_GRD_Red"};
         for "_i" from 1 to 3 do {_target addItemToBackpack "hlc_GRD_green"};
         _target addItemToBackpack "cgqc_bandolier_ammo";
@@ -99,7 +103,8 @@ switch (_variant) do {
     case "pmct_drone": {
         ["backpack", "B_UAV_01_backpack_F"] call CGQC_fnc_switchStuff;
         for "_i" from 1 to 2 do {_target addItemToVest "ACE_UAVBattery";};
-
+        _target unlinkItem "ItemGPS";
+        _target linkItem "B_UavTerminal";
 	};
     case "pmct_sniper": {
         ["goggles", "rhssaf_veil_Green"] call CGQC_fnc_switchStuff;

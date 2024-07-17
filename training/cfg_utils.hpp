@@ -1,6 +1,3 @@
-// Utils
-_action = [ "menu_self_utils", "Utils", "\CGQC\textures\icon_maintenance", {}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Quick Heal
 _action = [ "menu_self_heal", "Quick heal", "\CGQC\textures\icon_med", {["heal"] call CGQC_fnc_getStuff}, {cgqc_player_hasAceMedical} ] call ace_interact_menu_fnc_createAction;
@@ -12,6 +9,10 @@ _adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call 
 //_adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_self_para_quickMap", "QuickJump", "\CGQC\textures\cgqc_ace_para", {[0, 0] call CGQC_fnc_trainingPara}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+// Utils
+_action = [ "menu_self_utils", "Utils", "\CGQC\textures\icon_maintenance", {}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_training"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Teleport to player
 //#include "\cgqc\training\cfg_dropToPlayer.hpp"

@@ -12,6 +12,30 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+        class wakeup {
+            file = "\cgqc\functions\fnc_wakeup.sqf";
+            description = "Wake up the player";
+        };
+        class perceivedPain {
+            file = "\cgqc\functions\fnc_perceivedPain.sqf";
+            description = "Return perceived pain";
+        };
+        class treatment {
+            file = "\cgqc\functions\fnc_treatment.sqf";
+            description = "Custom medical treatments";
+        };
+        class treatmentLocal {
+            file = "\cgqc\functions\fnc_treatmentLocal.sqf";
+            description = "Custom medical treatments";
+        };
+        class groupMoa {
+            file = "\cgqc\functions\fnc_groupMoa.sqf";
+            description = "Finds the size in moa of the shot group";
+        };
+        class groupSize {
+            file = "\cgqc\functions\fnc_groupSize.sqf";
+            description = "Finds the size of the shot group";
+        };
         class trainingEod {
             file = "\cgqc\functions\fnc_trainingEod.sqf";
             description = "Explosives disposal training";

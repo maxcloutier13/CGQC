@@ -159,7 +159,7 @@ _action = [ "menu_mk2_alt_csr24", "29in M107 12.7", "", {["m107"] spawn CGQC_fnc
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper", "menu_mk2_alt_sniper_semi"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Bolt
-_action = [ "menu_mk2_alt_csr24", "16in CSR16 .308", "", {["csr16"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_alt_csr24", "16in CSR16 .338", "", {["csr16"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper", "menu_mk2_alt_sniper_bolt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_alt_m1a", "18in M1A EBR 7.62", "", {["m1aebr"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper", "menu_mk2_alt_sniper_bolt"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -169,7 +169,7 @@ _action = [ "menu_mk2_alt_ctsr", "24in M2010 ESR .300WM", "", {["m2010"] spawn C
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper", "menu_mk2_alt_sniper_bolt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_alt_ctsr", "24in CTSR .300", "", {["ctsr"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper", "menu_mk2_alt_sniper_bolt"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_mk2_alt_csr24", "24in CSR24 .308", "", {["csr24"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_alt_csr24", "24in CSR24 .338", "", {["csr24"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper", "menu_mk2_alt_sniper_bolt"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_alt_mk22", "26in Mk22 .338", "", {["barrett_mk22"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_sniper", "menu_mk2_alt_sniper_bolt"], _action ] call ace_interact_menu_fnc_addActionToObject;

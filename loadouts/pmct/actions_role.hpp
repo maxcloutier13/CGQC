@@ -19,7 +19,7 @@ _action = [ "menu_mk2_inf_RF", "AutoRifleman", "", {["pmct_autorifleman"] spawn 
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct", "menu_pmct_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_inf_RF", "HMG", "", {["pmct_mg"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct", "menu_pmct_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_mk2_inf_RF", "AT", "", {["pmct_at"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_inf_RF", "M-AT (RPG)", "", {["pmct_at"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_pmct", "menu_pmct_roles"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 _action = [ "menu_mk2_inf_RF", "Sniper", "", {["pmct_sniper"] spawn CGQC_fnc_switchRole;}, {true} ] call ace_interact_menu_fnc_createAction;
