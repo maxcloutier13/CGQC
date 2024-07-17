@@ -319,14 +319,14 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 }] call CBA_fnc_addEventHandler;
 
 ["cgqc_event_notify", {
-    params ["_title", ["_msg1", ""], ["_msg2", ""] ,"_color"];
+    params ["_title", ["_msg1", ""], ["_msg2", ""] ,"_color", ["_skipable", true]];
 	if (_msg1 isEqualTo "") exitWith {
 		[[_title, 1.5, [0.161,0.502,0.725,1]], false] call CBA_fnc_notify;
 	};
 	if (_msg2 isEqualTo "") exitWith {
 		[[_title, 1.5, [0.161,0.502,0.725,1]],[_msg1, 1], false] call CBA_fnc_notify;
 	};
-	[[_title, 1.5, [0.161,0.502,0.725,1]],[_msg1, 1], [_msg2, 1], false] call CBA_fnc_notify;
+	[[_title, 1.5, [0.161,0.502,0.725,1]],[_msg1, 1], [_msg2, 1], true] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;
 
 // Unconcious event
@@ -357,9 +357,6 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 		[_radioId,0] call acre_sys_radio_fnc_setRadioVolume;
 	} forEach _radioIdList;
 	LOG("[Unconscious] - Lowered volume");
-
-	/*
-
 	// Revive function
 	[_unit] spawn {
 		params["_unit"];
@@ -378,7 +375,7 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 					LOG("[Unconscious] - Heart is beating");
 					// Check  pain not critical
 					_perceived = [] call CGQC_fnc_perceivedPain;
-					if (_perceived < 0.4) then {
+					if (_perceived < 0.8) then {
 						// Wakeup, but with a pain watch
 						LOG("[Unconscious] - Waking up with pain check");
 						["pain"] spawn cgqc_fnc_wakeup;
