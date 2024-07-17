@@ -67,11 +67,16 @@ switch (_type) do {
 	case "recon":{
 		LOG("[switchPerks] Recon setup");
 		player setUnitTrait ["audibleCoef", 0.9];
-		player setUnitTrait ["camouflageCoef", 0.9];
+		player setUnitTrait ["camouflageCoef", 0.8];
 		player setUnitTrait ["UAVHacker", true];
-		player setUnitTrait ["loadCoef", 0.8];
+		player setUnitTrait ["loadCoef", 0.6];
 		["recon"] call CGQC_fnc_addPerksSpecial;
 		cgqc_perks_recon = true;
+	};
+	case "drone":{
+		LOG("[switchPerks] Drone Op setup");
+		player setUnitTrait ["UAVHacker", true];
+		player setUnitTrait ["loadCoef", 0.9];
 	};
 	case "eng":{
 		LOG("[switchPerks] Engineer setup");
