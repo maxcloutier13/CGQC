@@ -37,8 +37,8 @@ class ace_medical_treatment_actions
         condition = "_patient getVariable ['ACE_isUnconscious', false]";
         callbackSuccess = "[_player, _patient, 'slap'] call CGQC_fnc_treatment";
     };
-};
 
+};
 
 class taro_tripwire_spool
 {
@@ -50,6 +50,8 @@ class taro_tripwire_spool
 
 class ace_medical_treatment
 {
+    class BasicBandage;
+	class Patch: BasicBandage{};
     class Medication
     {
         class Morphine;
@@ -62,12 +64,17 @@ class ace_medical_treatment
             incompatibleMedication[] = {};
             viscosityChange = 0;
         };
-        class Carbonate {
+        class Epinephrine;
+        class Carbonate : Epinephrine {
             painReduce = 0;
-            timeInSystem = 120;
-            maxDose = 10;
+            timeInSystem = 10;
+            timeTillMaxEffect = 1;
+            maxDose = 100;
             inCompatableMedication[] = {};
-            viscosityChange = 2;
+            viscosityChange = 0;
+            hrIncreaseLow[] = {10, 20};
+            hrIncreaseNormal[] = {10, 50};
+            hrIncreaseHigh[] = {10, 40};
             // item class name
             itemClassName = "CGQC_Carbonate";
         };
