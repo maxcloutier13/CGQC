@@ -4,12 +4,6 @@ class InventoryItem_Base_F;
 class ace_medical_treatment_actions
 {
     class Morphine;
-    /*
-    class FF_Painkiller: Morphine
-    {
-        // Add option on all bodyparts instead of just head
-        allowedSelections[] = {"Head","LeftArm", "RightArm", "LeftLeg", "RightLeg", "Body"};
-    };*/
     class Carbonate: Morphine {
         displayName = "Use Ammonium Carbonate";
         displayNameProgress = "Using";
@@ -37,7 +31,6 @@ class ace_medical_treatment_actions
         condition = "_patient getVariable ['ACE_isUnconscious', false]";
         callbackSuccess = "[_player, _patient, 'slap'] call CGQC_fnc_treatment";
     };
-
 };
 
 class taro_tripwire_spool
@@ -50,8 +43,6 @@ class taro_tripwire_spool
 
 class ace_medical_treatment
 {
-    class BasicBandage;
-	class Patch: BasicBandage{};
     class Medication
     {
         class Morphine;

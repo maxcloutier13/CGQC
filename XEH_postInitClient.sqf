@@ -386,7 +386,6 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 			};
 		};
 	};
-	*/
 	LOG("[Unconscious] - done");
 }] call CBA_fnc_addEventHandler;
 
