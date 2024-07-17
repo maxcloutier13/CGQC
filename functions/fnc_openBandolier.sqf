@@ -49,7 +49,7 @@ switch (_type) do {
 			_grenades = ["HandGrenade"] apply {
 				toLower _x
 			};
-			_flash = ["ACE_M84", "ACE_CTS9"] apply {
+			_flash = ["ACE_M84", "tsp_flashbang_cts"] apply {
 				toLower _x
 			};
 			_moke = ["SmokeShell"] apply {
@@ -60,7 +60,7 @@ switch (_type) do {
 				_grenades = ["rhs_mag_m67", "HandGrenade"] apply {
 					toLower _x
 				};
-				_flash = ["ACE_M84", "ACE_CTS9"] apply {
+				_flash = ["ACE_M84", "tsp_flashbang_cts"] apply {
 					toLower _x
 				};
 				_moke = ["SmokeShell"] apply {

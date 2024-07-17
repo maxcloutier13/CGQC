@@ -81,7 +81,7 @@ LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
         case "normal":{
             cgqc_player_state = 1;
             // Normal voice
-            [player, "default"] call CGQC_fnc_setVoiceVolume;
+            [player, "normal"] call CGQC_fnc_setVoiceVolume;
             _txt = "Normal:<br/> Default voice level<br/>";
 
             //Turn speaker back on

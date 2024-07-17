@@ -12,7 +12,7 @@ switch (_variant) do {
     case "assault": {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_basic", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        for "_i" from 1 to 6 do {_target addItemToBackpack "ACE_M84";};
+        for "_i" from 1 to 6 do {_target addItemToBackpack "tsp_flashbang_cts";};
         for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
         LOG("[swatAssaulter] done");
@@ -28,7 +28,7 @@ switch (_variant) do {
         for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV";};
         for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV_500";};
         for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_tourniquet";};
-        for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_M84";};
+        for "_i" from 1 to 4 do {_target addItemToBackpack "tsp_flashbang_cts";};
         LOG("[swatMedic] done");
 	};
     case "breacher": {

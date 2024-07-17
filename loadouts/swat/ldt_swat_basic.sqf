@@ -21,7 +21,7 @@ _gun = ["hlc_pistol_P226R_Combat",
 _target addItemToUniform "ACE_Flashlight_KSF1";
 for "_i" from 1 to 6 do {player addItemToUniform "ACE_CableTie"};
 // === Vest ================================================================================================================
-for "_i" from 1 to 4 do {player addItemToVest "ACE_M84"};
+for "_i" from 1 to 4 do {player addItemToVest "tsp_flashbang_cts"};
 for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m7a3_cs"};
 for "_i" from 1 to 2 do {player addItemToVest "SmokeShell"};
 // === Backpack ================================================================================================================

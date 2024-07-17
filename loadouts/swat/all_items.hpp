@@ -144,6 +144,7 @@ cgqc_swat_arsenal_all = [
     "SmokeShellRed",
     "SmokeShell",
     "ACE_M84",
+    "tsp_flashbang_cts",
     "rhs_grenade_mki_mag",
     "rhs_grenade_mkiiia1_mag",
     "rhs_mag_m7a3_cs",

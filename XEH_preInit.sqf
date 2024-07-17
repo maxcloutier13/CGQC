@@ -708,7 +708,7 @@ if (cgqc_player_hasNorthern) then {
 	["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
 	["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
-		[_menu_name, "Content: Ammo Bandolier"], "ACE_M84"] call CBA_fnc_addSetting;
+		[_menu_name, "Content: Ammo Bandolier"], "tsp_flashbang_cts"] call CBA_fnc_addSetting;
 
 	["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
