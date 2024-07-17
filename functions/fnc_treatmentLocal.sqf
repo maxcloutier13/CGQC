@@ -44,6 +44,7 @@ switch (_medication) do {
             cutText ["","PLAIN DOWN", 1, false, true];
 	        cutText [_txt,"PLAIN DOWN", 1, false, true];
             [_patient, false] call ace_medical_fnc_setUnconscious;
+            ["cgqc_event_notify", ["Slap!", "Yes! There he is!"], _medic] spawn CBA_fnc_targetEvent;
         } else {
             sleep 0.5;
             ["cgqc_event_notify", ["Slap!", "No effect..."], _medic] spawn CBA_fnc_targetEvent;
