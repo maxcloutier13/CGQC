@@ -250,19 +250,60 @@ if (cgqc_player_loadAll) then {
 	};
 	_text = "";
 	_name = "Someone";
+	_info = "is helping you";
 	LOG("[medical_receivingTreatment] - Victim unconcious. Vague message.");
 	// Check counciousness
 	if !(player getVariable ["ACE_isUnconscious", false]) then {
 		LOG("[medical_receivingTreatment] - Victim Concious. Complete message.");
 		_name = name _medic;
+		_part = switch (_bodyPart) do {
+			case "leftleg": { "left leg" };
+			case "rightleg": { "right leg" };
+			case "leftarm": { "left arm" };
+			case "rightarm": { "right arm" };
+			default { toLower _bodyPart };
+		};
+
+		_info = switch (_treatment) do {
+			case "FF_Painkiller": {"is giving you painkillers"};
+			case "Painkillers": {"is giving you painkillers"};
+			case "CheckResponse": {"is checking if you are awake"};
+			case "CheckPulse": {"is taking your pulse"};
+			case "CheckBloodPressure": {"is checking your blood pressure"};
+			case "Diagnose": {"is taking a look at you"};
+			case "PersonalAidKit": {"is giving you advanced aid"};
+			case "Epinephrine": {"is giving you epinephrine"};
+			case "Morphine": {"is giving you morphine"};
+			case "Adenosine": {"is giving you adenosine"};
+			case "BasicBandage";
+			case "PackingBandage";
+			case "ElasticBandage";
+			case "QuikClot": {format ["is bandaging your %1", _part]};
+			case "SalineIV";
+			case "PlasmaIV";
+			case "BloodIV": {"is giving you 1000ml"};
+			case "SalineIV_250";
+			case "PlasmaIV_250";
+			case "BloodIV_250": {"is giving you 250ml"};
+			case "SalineIV_500";
+			case "PlasmaIV_500";
+			case "BloodIV_500": {"is giving you 500ml"};
+			case "Splint": {format ["is putting at splint on your %1", _part]};
+			case "ApplyTourniquet": {format ["is putting at tourniquet on your %1", _part]};
+			case "RemoveTourniquet": {format ["is removing the tourniquet on your %1", _part]};
+			case "SurgicalKit": {format ["is stitching your %1", _part]};
+			default {
+				LOG_2("[medical_receivingTreatment] - Treatment not found, is %1?.. your %2?", _treatment, _part);
+			};
+		};
+		//_info = format ["%1 your %2", _treatment, _part];
 	};
- 	_text = format ["<t size='3'>%1 is helping you</t>", _name];
-	cutText ["","PLAIN DOWN", 1, false, true];
-	cutText [_text,"PLAIN DOWN", 1, false, true];
-	/* else{ // If councious, give details about what is happening
-		_msg = [_treatment, _bodyPart] call CGQC_int_medical_treatmentMsg;
-		cutText [format ["%1 %2", _name, _msg],"PLAIN DOWN", 2.5];
-	};*/
+	// Don't show when the help is from Zeus
+	if !([_medic] call CGQC_fnc_checkZeus) then {
+		_text = format ["<t size='3'>%1 %2</t>", _name, _info];
+		cutText ["","PLAIN DOWN", 1, false, true];
+		cutText [_text,"PLAIN DOWN", 1, false, true];
+	};
 }] call CBA_fnc_addEventHandler;
 
 // Wound received for training purposes

@@ -15,6 +15,7 @@ class CAManBase: Man {
 				runOnHover = "hint 'Confirm if patient is stable'";
 				distance = 2;
 			};
+			/*
 			class cgqc_becomeSpotter {
 				displayName = "Become spotter";
 				condition = "!(player in (missionNamespace getVariable 'cgqc_sniping_spotters'))";
@@ -23,7 +24,7 @@ class CAManBase: Man {
 				icon = "";
 				runOnHover = "hint 'Become spotter for this player'";
 				distance = 2;
-			};
+			};*/
 			class ACE_TeamManagement {
 				delete ACE_AssignTeamRed;
 				delete ACE_AssignTeamGreen;
