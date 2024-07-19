@@ -155,7 +155,7 @@ case "2023_at_javelin":{
 
 case "2023_sniper":{
 	[player, "sniper", "m200"] call CGQC_ldt_2023_recon;
-	["recon", true, true] spawn CGQC_fnc_switchPerks;
+	["sniper", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
 	cgqc_player_roleType = "Recon";
@@ -164,7 +164,7 @@ case "2023_sniper":{
 
 case "2023_sniper_ebr":{
 	[player, "sniper", "m1aebr"] call CGQC_ldt_2023_recon;
-	["recon", true, true] spawn CGQC_fnc_switchPerks;
+	["sniper", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
 	cgqc_player_roleType = "Recon";
@@ -173,7 +173,7 @@ case "2023_sniper_ebr":{
 
 case "2023_spotter":{
 	[player, "spotter", "mk12"] call CGQC_ldt_2023_recon;
-	["recon", true, true] spawn CGQC_fnc_switchPerks;
+	["sniper", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Spotter";
 	cgqc_player_roleType = "Recon";
