@@ -98,6 +98,7 @@ switch (_variant) do {
 		for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_tourniquet";};
 		for "_i" from 1 to 5 do {_target addItemToBackpack "ACE_salineIV";};
 		for "_i" from 1 to 5 do {_target addItemToBackpack "ACE_salineIV_500";};
+        for "_i" from 1 to 10 do {_target addItemToBackpack "CGQC_Carbonate";};
         _target addItemToBackpack "cgqc_bandolier_ammo";
 	};
     case "pmct_drone": {
