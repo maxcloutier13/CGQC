@@ -36,6 +36,7 @@ switch (_variant) do {
 		for "_i" from 1 to cgqc_config_medkit_epi do {player addItemToBackpack "ACE_epinephrine";};
 		for "_i" from 1 to cgqc_config_medkit_splint do {player addItemToBackpack "ACE_splint";};
 		for "_i" from 1 to cgqc_config_medkit_tourniquet do {player addItemToBackpack "ACE_tourniquet";};
+		for "_i" from 1 to cgqc_config_medkit_ammonium do {_target addItemToBackpack "CGQC_Carbonate"};
 		for "_i" from 1 to cgqc_config_medkit_medbag do {player addItemToBackpack "FSGm_ItemMedicBag";};
 		for "_i" from 1 to cgqc_config_medkit_bodybag do {player addItemToBackpack "ACE_bodyBag"};
 		for "_i" from 1 to cgqc_config_medkit_pak do {player addItemToBackpack "ACE_personalAidKit"};
@@ -52,6 +53,7 @@ switch (_variant) do {
 		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_splint";};
 		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_tourniquet";};
 		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_bodyBag"};
+		for "_i" from 1 to 10 do {player addItemToBackpack "CGQC_Carbonate";};
 	};
 };
 

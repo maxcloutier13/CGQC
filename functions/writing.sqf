@@ -999,3 +999,94 @@ cgqc_player_fired = player addEventHandler ["Fired", {
         //[_this select 0, _groupSize, _moa] spawn CGQC_fnc_onHitRange;
     }];
 }];
+
+
+
+this addEventHandler ["HitPart", {
+    params ["_event"];
+
+    _shooter = _event select 1;
+    _pos = _event select 3;
+
+    _mkr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+    _rgb = [0,0,0,1];
+    _lastDigit = (count tgt_ary_1) % 10;
+    _caseIndex = (_lastDigit % 5) + 1;
+    switch (_caseIndex) do {
+        case 1: {_rgb = [255,0,0,1]};
+        case 2: {_rgb = [255,255,0,1]};
+        case 3: {_rgb = [0,255,0,1]};
+        case 4: {_rgb = [0,0,255,1]};
+        case 5: {_rgb = [255,255,255,1]};
+    };
+
+    _texture = _rgb call BIS_fnc_colorRGBAtoTexture;
+    [_mkr, [0, _texture]] remoteExec ["setObjectTexture", 0];
+    _mkr setObjectScale 0.2;
+    _mkr setPosASL _pos;
+
+    tgt_ary_1 = tgt_ary_1+[_mkr];
+    tgt_hi_1 = _this select 0 select 3;
+    _spr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+    [_spr, [0, _texture]] remoteExec ["setObjectTexture", 0];
+    _spr setPosASL tgt_hi_1;
+    [_spr] spawn {
+        params ["_spr"];
+        sleep 2;
+        deleteVehicle _spr;
+    };
+    if (local _shooter) then {
+        [_this select 0, tgt_ary_1] spawn CGQC_fnc_onHitRange;
+    };
+}];
+
+
+/////////////////////////
+player addMPEventHandler ["MPKilled", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+    _uav = getConnectedUAV _unit;
+    [[format["Unit:%1/UAV:%2", _unit, _uav], 1.5], false] call CBA_fnc_notify;
+    if (_uav isNotEqualTo objNull) then {
+        // Disconnect the UAV
+        [["Diconnecting UAV", 1.5], false] call CBA_fnc_notify;
+        _unit disableUAVConnectability [_uav, true];
+        _check = UAVControl _uav;
+        _checkTxt = format["Controller:%1", _check];
+        [[_checkTxt, 1.5], false] call CBA_fnc_notify;
+    };
+}];
+
+
+player addMPEventHandler ["MPRespawn", {
+    params ["_unit", "_corpse"];
+    _uav = getConnectedUAV _corpse;
+    if (_uav isNotEqualTo objNull) then {
+        deleteVehicleCrew _uav;
+        createVehicleCrew _uav;
+        _unit connectTerminalToUAV _uav;
+    };
+}];
+
+player addItemToBackpack _type;
+
+player addMPEventHandler ["MPRespawn", {
+	params ["_unit", "_corpse"];
+	if !(isNil "cgqc_player_uav") then {
+        player addItemToBackpack cgqc_player_uav;
+    };
+}];
+
+
+//////////////////
+
+
+
+cgqc_player_fired = player addEventHandler ["Fired", {
+	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+    cgqc_player_hit = _projectile addEventHandler ["HitPart", {
+        params ["_projectile", "_hitEntity", "_projectileOwner", "_pos", "_velocity", "_normal", "_components", "_radius" ,"_surfaceType", "_instigator"];
+        {
+            ["cgqc_event_showHitToSpotter", [_pos], _x] call CBA_fnc_targetEvent;
+        } forEach cgqc_sniping_spotters;
+    }];
+}];

@@ -68,6 +68,7 @@ switch (_variant) do {
 		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_splint";};
 		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_tourniquet";};
 		for "_i" from 1 to 2 do {player addItemToBackpack "ACE_salineIV";};
+		for "_i" from 1 to 10 do {player addItemToBackpack "CGQC_Carbonate";};
 		for "_i" from 1 to 4 do {player addItemToBackpack "ACE_salineIV_500";};
 	};
 	case "engineer": {

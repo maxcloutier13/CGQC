@@ -215,6 +215,8 @@ cgqc_sniping_movingTarget = false;
 cgqc_sniping_distanceMode = 0;
 cgqc_sniping_hit = [];
 cgqc_damage_text = [];
+// Set up spotter list
+missionNamespace setVariable ["cgqc_sniping_spotters", [], true];
 
 // Qualifications
 cgqc_qualification_running = false;
@@ -424,6 +426,31 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
     //hint format ["Player %1 opened the ACE medical menu of player %2.", name _acePlayer, name _targetPlayer];
 }] call CBA_fnc_addEventHandler;
 
+// Event to catch the player's controlled UAV
+player addEventHandler ["VisionModeChanged", {
+	params ["_person", "_visionMode", "_TIindex", "_visionModePrev", "_TIindexPrev", "_vehicle", "_turret"];
+	if !(alive player) exitWith {};
+	if (_vehicle isEqualTo (getConnectedUAV player)) then {
+		cgqc_player_uav = _vehicle;
+	};
+}];
+
+// Shot hit to spotter
+["cgqc_event_showHitToSpotter", {
+    params["_pos"];
+    //_txt = format ["Hit Position: %1", _pos];
+    //[[_txt, 1.5], false] call CBA_fnc_notify;
+	if (player distance _pos > 500) then {
+		_spr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+		_spr setPosASL _pos;
+		_spr setObjectScale 5;
+		[_spr] spawn {
+			params ["_spr"];
+			sleep 2;
+			deleteVehicle _spr;
+		};
+	};
+}] call CBA_fnc_addEventHandler;
 
 // EOD Training eventhandler
 ["ACE_explosives_defuse", {

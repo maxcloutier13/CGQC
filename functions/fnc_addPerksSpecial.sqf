@@ -9,6 +9,10 @@ switch (_type) do {
         LOG("[addPerksSpecial]  Clearing perks");
         // Remove all special perks
         {[player,0,[_x]] call ace_interact_menu_fnc_removeActionFromObject;} forEach cgqc_perks_action_list;
+        // Remove the possible events
+        if !(isNil "cgqc_player_fired") then {
+            player removeEventHandler ["Fired", cgqc_player_fired];
+        };
     };
     case "heli": {
         LOG("[addPerksSpecial]  Adding Pilot perks");
@@ -49,6 +53,26 @@ switch (_type) do {
         cgqc_action_delDriver = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
         // Add to perk list
         cgqc_perks_action_list pushBack cgqc_action_delDriver;
+    };
+    case "sniper":{
+        // Event when firing for the spotter to see the hits
+        if !(isNil "cgqc_player_fired") then {
+            player removeEventHandler ["Fired", cgqc_player_fired];
+        };
+        cgqc_player_fired = player addEventHandler ["Fired", {
+            params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+                cgqc_player_hit = _projectile addEventHandler ["HitPart", {
+                    params ["_projectile", "_hitEntity", "_projectileOwner", "_pos", "_velocity", "_normal", "_components", "_radius" ,"_surfaceType", "_instigator"];
+                    {
+                        ["cgqc_event_showHitToSpotter", [_pos], _x] call CBA_fnc_targetEvent;
+                    } forEach cgqc_sniping_spotters;
+                }];
+        }];
+        // Setup player to be a spotter
+        _spot = missionNamespace getVariable 'cgqc_sniping_spotters';
+        _spot pushBack player;
+        missionNamespace setVariable ['cgqc_sniping_spotters', _spot, true];
+        ["recon"] call CGQC_fnc_addPerksSpecial;
     };
     case "recon": {
         LOG("[addPerksSpecial]  Adding Recon perks");

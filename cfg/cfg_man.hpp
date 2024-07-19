@@ -15,6 +15,15 @@ class CAManBase: Man {
 				runOnHover = "hint 'Confirm if patient is stable'";
 				distance = 2;
 			};
+			class cgqc_becomeSpotter {
+				displayName = "Become spotter";
+				condition = "!(player in (missionNamespace getVariable 'cgqc_sniping_spotters'))";
+				statement = "_spot = missionNamespace getVariable 'cgqc_sniping_spotters';_spot pushBack player;missionNamespace setVariable ['cgqc_sniping_spotters', _spot, true];";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "";
+				runOnHover = "hint 'Become spotter for this player'";
+				distance = 2;
+			};
 			class ACE_TeamManagement {
 				delete ACE_AssignTeamRed;
 				delete ACE_AssignTeamGreen;
