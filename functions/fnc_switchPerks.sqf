@@ -64,6 +64,15 @@ switch (_type) do {
 		LOG("[switchPerks] TankCrew setup");
 		player setUnitTrait ["engineer", true];
 	};
+	case "sniper":{
+		LOG("[switchPerks] Sniper setup");
+		player setUnitTrait ["audibleCoef", 0.9];
+		player setUnitTrait ["camouflageCoef", 0.8];
+		player setUnitTrait ["UAVHacker", true];
+		player setUnitTrait ["loadCoef", 0.6];
+		["sniper"] call CGQC_fnc_addPerksSpecial;
+		cgqc_perks_recon = true;
+	};
 	case "recon":{
 		LOG("[switchPerks] Recon setup");
 		player setUnitTrait ["audibleCoef", 0.9];
