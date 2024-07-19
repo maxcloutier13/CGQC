@@ -49,7 +49,7 @@ if (_needGL) then { // Load with grenade launcher stuff
 if (cgqc_mission_daytime) then {
 	LOG("[switchPrimary] Daytime! Silencer to backpack");
 	//Put silencer in backpack
-	 _currentWeapon = primaryWeapon player;
+	_currentWeapon = primaryWeapon player;
 	_compatible = _currentWeapon call bis_fnc_compatibleItems;
     _compatibleSilencers = [];
 	_actualSilencer = "";
@@ -71,7 +71,7 @@ if (cgqc_mission_daytime) then {
 			player addItemToBackpack _silencerClassName;
 			_gunName = (getText (configFile >> 'CfgWeapons' >> _currentWeapon >> 'displayName'));
 			_silencerName = (getText (configFile >> 'CfgWeapons' >> _silencerClassName >> 'displayName'));
-			_txt = format ["Silencer '%1' removed from %2 and added to backpack.", _silencerClassName, _currentWeapon];
+			_txt = format ["Silencer '%1' removed from %2 and added to backpack.", _silencerName, _gunName];
 			[[_txt, 1], false] call CBA_fnc_notify;
 		}
 	} forEach _compatibleSilencers;
