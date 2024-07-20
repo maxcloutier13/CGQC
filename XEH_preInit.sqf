@@ -435,6 +435,7 @@ player addEventHandler ["VisionModeChanged", {
 	};
 }];
 
+
 // Shot hit to spotter
 ["cgqc_event_showHitToSpotter", {
     params["_pos"];
@@ -462,6 +463,12 @@ player addEventHandler ["VisionModeChanged", {
 		};
     };
 }] call CBA_fnc_addEventHandler;
+
+["ace_explosives_place", {
+    params ["_explosive", "_dir", "_pitch", "_unit"];
+	(side _unit) revealMine _explosive;
+}] call CBA_fnc_addEventHandler;
+
 
 // Addon Options ===================================================================================================
 _menu_name = "[CGQC] Zeus";
