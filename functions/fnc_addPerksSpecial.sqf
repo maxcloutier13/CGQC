@@ -56,6 +56,7 @@ switch (_type) do {
     };
     case "sniper":{
         // Event when firing for the spotter to see the hits
+        /*
         if !(isNil "cgqc_player_fired") then {
             player removeEventHandler ["Fired", cgqc_player_fired];
         };
@@ -72,6 +73,7 @@ switch (_type) do {
         _spot = missionNamespace getVariable 'cgqc_sniping_spotters';
         _spot pushBack player;
         missionNamespace setVariable ['cgqc_sniping_spotters', _spot, true];
+        */
         ["recon"] call CGQC_fnc_addPerksSpecial;
     };
     case "recon": {

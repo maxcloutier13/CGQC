@@ -20,6 +20,12 @@ private _target = objectParent _backpack;
 
 if (isNull _target) exitWith {false};
 
+if (_unit isNotEqualTo _target) then {
+  //Message
+  _txt = format ["%1", name _unit];
+  ["cgqc_event_notify", [_txt, "is opening your backpack"], _target] spawn CBA_fnc_targetEvent;
+};
+
 if (alive _target && {!(_target getVariable ["ACE_isUnconscious",false]) && {_target getVariable ["diwako_lockbackpack_locked",false]}}) exitWith {
   [{
     !isNull (findDisplay 602)

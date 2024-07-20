@@ -435,20 +435,17 @@ player addEventHandler ["VisionModeChanged", {
 	};
 }];
 
+
 // Shot hit to spotter
 ["cgqc_event_showHitToSpotter", {
     params["_pos"];
-    //_txt = format ["Hit Position: %1", _pos];
-    //[[_txt, 1.5], false] call CBA_fnc_notify;
-	if (player distance _pos > 500) then {
-		_spr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
-		_spr setPosASL _pos;
-		_spr setObjectScale 5;
-		[_spr] spawn {
-			params ["_spr"];
-			sleep 2;
-			deleteVehicle _spr;
-		};
+	_spr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+	_spr setPosASL _pos;
+	_spr setObjectScale 5;
+	[_spr] spawn {
+		params ["_spr"];
+		sleep 2;
+		deleteVehicle _spr;
 	};
 }] call CBA_fnc_addEventHandler;
 
@@ -466,6 +463,12 @@ player addEventHandler ["VisionModeChanged", {
 		};
     };
 }] call CBA_fnc_addEventHandler;
+
+["ace_explosives_place", {
+    params ["_explosive", "_dir", "_pitch", "_unit"];
+	(side _unit) revealMine _explosive;
+}] call CBA_fnc_addEventHandler;
+
 
 // Addon Options ===================================================================================================
 _menu_name = "[CGQC] Zeus";

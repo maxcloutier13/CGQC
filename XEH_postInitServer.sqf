@@ -84,12 +84,14 @@ addMissionEventHandler ["HandleDisconnect", {
 						LOG_2("[CGQC_Killed]: SideKiller:%1/SideKilled:%2", _sideKiller, _sideKilled);
 						if ((_sideKiller getFriend _sideKilled) > 0.6) then {
 							LOG("[CGQC_Killed]: Friendly Casualty!");
-							cgqc_stats_friendlyCasualties = cgqc_stats_friendlyCasualties + 1;
-							cgqc_stats_friendlyKillers pushBackUnique (name _killer);
-							publicVariable "cgqc_stats_friendlyCasualties";
-							publicVariable "cgqc_stats_friendlyKillers";
-							_txt = " ... killed a friendly!";
-							[_killer, _txt] remoteExec ["globalChat",0];
+							if !([_killer] call CGQC_fnc_checkZeus) then {
+								cgqc_stats_friendlyCasualties = cgqc_stats_friendlyCasualties + 1;
+								cgqc_stats_friendlyKillers pushBackUnique (name _killer);
+								publicVariable "cgqc_stats_friendlyCasualties";
+								publicVariable "cgqc_stats_friendlyKillers";
+								_txt = " ... killed a friendly!";
+								[_killer, _txt] remoteExec ["globalChat",0];
+							};
 						} else {
 							//Enemy down
 							cgqc_stats_enemyCasualties = cgqc_stats_enemyCasualties + 1;
