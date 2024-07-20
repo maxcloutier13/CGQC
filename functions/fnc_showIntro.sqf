@@ -5,10 +5,11 @@ params [["_show", cgqc_config_showIntro], ["_type", cgqc_config_showIntro_type]]
 LOG_2("[showIntro] Show:%1/Type:%2 started", _show, _type);
 
 // Show intro info ------------------------------------------------------------------------------------
-if (!hasInterface || isDedicated) exitWith {};
+if !(hasInterface || isDedicated) exitWith {};
+// Wait until player is loaded
 waitUntil {CGQC_playerLoaded};
 
-if(!isNil "cgqc_establishing") then {
+if !(isNil "cgqc_establishing") then {
 	waitUntil { scriptDone cgqc_establishing };
 };
 
