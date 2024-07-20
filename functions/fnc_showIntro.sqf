@@ -1,7 +1,8 @@
 #include "\CGQC\script_component.hpp"
 // --- showIntro ----------------------------------------------------------
+params [["_show", cgqc_config_showIntro], ["_type", cgqc_config_showIntro_type]];
 // Show intro on load
-LOG_2("[showIntro] Show:%1/Type:%2 started", cgqc_config_showIntro, cgqc_config_showIntro_type);
+LOG_2("[showIntro] Show:%1/Type:%2 started", _show, _type);
 
 // Show intro info ------------------------------------------------------------------------------------
 if (!hasInterface || isDedicated) exitWith {};
@@ -11,10 +12,10 @@ if(!isNil "cgqc_establishing") then {
 	waitUntil { scriptDone cgqc_establishing };
 };
 
-if (cgqc_config_showIntro) then {
+if (_show) then {
 	cgqc_intro_running = true;
 
-	switch (cgqc_config_showIntro_type) do {
+	switch (_type) do {
 		case 0: { //Original Intro
 			LOG("[showIntro] Original Intro");
 			if (!isNil "cgqc_config_author" && !isNil "cgqc_config_mission_name") then {
@@ -180,7 +181,7 @@ if (cgqc_config_showIntro) then {
 			LOG("[showIntro] Establishing intro done");
 		};
 		default {
-			LOG_1("[showIntro] Type %1? problem. Defaulting.", cgqc_config_showIntro_type);
+			LOG_1("[showIntro] Type %1? problem. Defaulting.", _type);
 			1 fadeSound 1;
 			0 fadeEnvironment 1;
 			ace_hearing_disableVolumeUpdate = true;
