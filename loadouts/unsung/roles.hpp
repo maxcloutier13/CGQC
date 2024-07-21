@@ -4,7 +4,7 @@ case "unsung_basic":{
 	["nam_basic", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Basic Soldier";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 // Command
@@ -14,7 +14,7 @@ case "unsung_10":{
 	["tl", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-0 Team Leader";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 6;
 };
 case "unsung_11":{
@@ -23,7 +23,7 @@ case "unsung_11":{
 	["mg", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-1 Radio Operator";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 1;
 };
 case "unsung_12":{
@@ -32,7 +32,7 @@ case "unsung_12":{
 	["medic", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "1-2 Medic";
-	cgqc_player_roleType = "Medic";
+	player setVariable ["cgqc_player_roleType", "Medic", true];
 	cgqc_player_role_optic = 1;
 };
 // Infantry
@@ -41,7 +41,7 @@ case "inf_car15":{
 	["inf_car15"] call CGQC_loadout_unsungInfantry;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Rifleman: CAR15";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -50,7 +50,7 @@ case "inf_car15_short":{
 	["inf_car15_short"] call CGQC_loadout_unsungInfantry;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Rifleman: CAR15 Shorty";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -59,7 +59,7 @@ case "inf_ak":{
 	["inf_ak"] call CGQC_loadout_unsungInfantry;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Rifleman: AK";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 case "inf_m2":{
@@ -67,7 +67,7 @@ case "inf_m2":{
 	["inf_m2"] call CGQC_loadout_unsungInfantry;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Rifleman: M2";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 case "inf_m14":{
@@ -75,7 +75,7 @@ case "inf_m14":{
 	["inf_m14"] call CGQC_loadout_unsungInfantry;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Rifleman: M14";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 case "inf_thom":{
@@ -83,7 +83,7 @@ case "inf_thom":{
 	["inf_thom"] call CGQC_loadout_unsungInfantry;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Rifleman: Thompson";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -94,7 +94,7 @@ case "spec_pointman":{
 	["nam_recon", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Pointman";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 1;
 };
 case "spec_mg":{
@@ -103,7 +103,7 @@ case "spec_mg":{
 	["mg", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "MG: RPD";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "MG", true];
 	cgqc_player_role_optic = 1;
 };
 case "spec_marksman":{
@@ -111,7 +111,7 @@ case "spec_marksman":{
 	["spec_marksman"] call CGQC_loadout_unsungSpecialist;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Marksman";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 5;
 };
 case "spec_sniper":{
@@ -120,7 +120,7 @@ case "spec_sniper":{
 	["nam_recon", false, true] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 case "spec_saboteur":{
@@ -129,7 +129,7 @@ case "spec_saboteur":{
 	["eng", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Saboteur";
-	cgqc_player_roleType = "Engineer";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -140,7 +140,7 @@ case "vic_driver":{
 	["driver", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Tank Driver";
-	cgqc_player_roleType = "Armor";
+	player setVariable ["cgqc_player_roleType", "Armor", true];
 	cgqc_player_role_optic = 1;
 };
 case "vic_crew":{
@@ -149,7 +149,7 @@ case "vic_crew":{
 	["tank_crew", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Tank Driver";
-	cgqc_player_roleType = "Armor";
+	player setVariable ["cgqc_player_roleType", "Armor", true];
 	cgqc_player_role_optic = 1;
 };
 case "vic_helipilot":{
@@ -158,7 +158,7 @@ case "vic_helipilot":{
 	["heli", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	gqc_player_role = "Helicopter Pilot";
-	cgqc_player_roleType = "Air";
+	player setVariable ["cgqc_player_roleType", "Air", true];
 	cgqc_player_role_optic = 1;
 };
 case "vic_helicrew":{
@@ -167,7 +167,7 @@ case "vic_helicrew":{
 	["heli_crew", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Helicopter Crew";
-	cgqc_player_roleType = "Air";
+	player setVariable ["cgqc_player_roleType", "Air", true];
 	cgqc_player_role_optic = 1;
 };
 case "vic_covey":{
@@ -176,6 +176,6 @@ case "vic_covey":{
 	["heli", false] spawn CGQC_fnc_switchPerks;
 	["defaultLR"] call CGQC_fnc_setRadios;
 	cgqc_player_role = "Covey Rider";
-	cgqc_player_roleType = "Air";
+	player setVariable ["cgqc_player_roleType", "Air", true];
 	cgqc_player_role_optic = 6;
 };

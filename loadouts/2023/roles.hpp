@@ -7,7 +7,7 @@ case "2023_rifle_cqb":{
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Rifleman";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -16,7 +16,7 @@ case "2023_rifle_carb":{
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Rifleman";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -25,7 +25,7 @@ case "2023_rifle_rifle":{
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Rifleman";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 3;
 };
 
@@ -34,7 +34,7 @@ case "2023_rifle_grenadier":{
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Grenadier";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -44,7 +44,7 @@ case "2023_rifle_shoot":{
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sharpshooter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 4;
 };
 
@@ -53,7 +53,7 @@ case "2023_rifle_life":{
 	["lifesaver", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Combat Lifesaver";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -62,7 +62,7 @@ case "2023_rifle_eng":{
 	["eng", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Combat Engineer";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -72,7 +72,7 @@ case "2023_medic":{
 	["med", true, true] spawn CGQC_fnc_switchPerks;
 	["medic"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Medic";
-	cgqc_player_roleType = "Medic";
+	player setVariable ["cgqc_player_roleType", "Medic", true];
 	cgqc_player_role_optic = 3;
 };
 
@@ -82,7 +82,7 @@ case "2023_eng":{
 	["eng", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Engineer";
-	cgqc_player_roleType = "Engineer";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -91,7 +91,7 @@ case "2023_eng_saboteur":{
 	["eng", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Demolition Specialist";
-	cgqc_player_roleType = "Engineer";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -101,7 +101,7 @@ case "2023_lmg":{
 	["mg", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "LMG";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "MG", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -110,7 +110,7 @@ case "2023_hmg":{
 	["mg", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HMG";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "MG", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -119,7 +119,7 @@ case "2023_autorifle":{
 	["mg", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Autorifleman";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "MG", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -128,7 +128,7 @@ case "2023_lwmmg":{
 	["mg", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "LWMMG";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "MG", true];
 	cgqc_player_role_optic = 3;
 };
 
@@ -138,7 +138,7 @@ case "2023_at_maaws":{
 	["at", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "AT/MAAWS";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "AT", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -147,7 +147,7 @@ case "2023_at_javelin":{
 	["at", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "AT/Javelin";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "AT", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -158,7 +158,7 @@ case "2023_sniper":{
 	["sniper", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -167,7 +167,7 @@ case "2023_sniper_ebr":{
 	["sniper", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -176,7 +176,7 @@ case "2023_spotter":{
 	["sniper", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Spotter";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -185,7 +185,7 @@ case "2023_drone":{
 	["drone", true, true] spawn CGQC_fnc_switchPerks;
 	["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Drone Operator";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -195,7 +195,7 @@ case "2023_h_pilot":{
 	["heli", true, true] spawn CGQC_fnc_switchPerks;
 	["pilot"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Helicopter Pilot";
-	cgqc_player_roleType = "Air";
+	player setVariable ["cgqc_player_roleType", "Air", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -204,7 +204,7 @@ case "2023_h_crew":{
 	["heli_crew", true, true] spawn CGQC_fnc_switchPerks;
 	["pilot"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Helicopter Crew";
-	cgqc_player_roleType = "Air";
+	player setVariable ["cgqc_player_roleType", "Air", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -214,7 +214,7 @@ case "2023_t_driver":{
 	["driver", true, true] spawn CGQC_fnc_switchPerks;
 	["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Driver";
-	cgqc_player_roleType = "Armor";
+	player setVariable ["cgqc_player_roleType", "Armor", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -223,7 +223,7 @@ case "2023_t_crew":{
 	["tank_crew", true, true] spawn CGQC_fnc_switchPerks;
 	["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Crew";
-	cgqc_player_roleType = "Armor";
+	player setVariable ["cgqc_player_roleType", "Armor", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -233,7 +233,7 @@ case "2023_hq":{
 	["hq", true, true] spawn CGQC_fnc_switchPerks;
 	["hq"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HeadQuarters";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 6;
 };
 
@@ -242,7 +242,7 @@ case "2023_sl":{
 	["sl", true, true] spawn CGQC_fnc_switchPerks;
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Squad Leader";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 6;
 };
 case "2023_xo":{
@@ -250,7 +250,7 @@ case "2023_xo":{
 	["sl", true, true] spawn CGQC_fnc_switchPerks;
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Exective Officer";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 6;
 };
 
@@ -259,7 +259,7 @@ case "2023_tl":{
 	["tl", true, true] spawn CGQC_fnc_switchPerks;
 	["tl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Leader";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 4;
 };
 
@@ -267,7 +267,6 @@ case "2023_jtac":{
 	[player, "jtac", "mk12"] call CGQC_ldt_2023_command;
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	["jtac"] call CGQC_fnc_getRadioPresets;
-	cgqc_player_role = "JTAC";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 6;
 };

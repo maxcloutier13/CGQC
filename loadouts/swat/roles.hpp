@@ -5,7 +5,7 @@ case "swat_assaulter":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_assaulter_badger":{
@@ -13,7 +13,7 @@ case "swat_assaulter_badger":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_assaulter_mp5k":{
@@ -21,7 +21,7 @@ case "swat_assaulter_mp5k":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_assaulter_scar":{
@@ -29,7 +29,7 @@ case "swat_assaulter_scar":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_assaulter_mp5":{
@@ -37,7 +37,7 @@ case "swat_assaulter_mp5":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_assaulter_mp510":{
@@ -45,7 +45,7 @@ case "swat_assaulter_mp510":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_assaulter_p90":{
@@ -53,7 +53,7 @@ case "swat_assaulter_p90":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_assaulter_416":{
@@ -61,7 +61,7 @@ case "swat_assaulter_416":{
 	["inf"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Assaulter";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -70,7 +70,7 @@ case "swat_medic":{
 	["med"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Medic";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Medic", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_breacher":{
@@ -78,7 +78,7 @@ case "swat_breacher":{
 	["eng"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Breacher";
-	cgqc_player_roleType = "Engineer";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 2;
 };
 case "swat_eod":{
@@ -86,7 +86,7 @@ case "swat_eod":{
 	["eod"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Breacher";
-	cgqc_player_roleType = "Engineer";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -95,7 +95,7 @@ case "swat_sniper_carbine":{
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 case "swat_sniper":{
@@ -103,7 +103,7 @@ case "swat_sniper":{
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 case "swat_sniper_psg":{
@@ -111,7 +111,7 @@ case "swat_sniper_psg":{
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 case "swat_sniper_awm":{
@@ -119,7 +119,7 @@ case "swat_sniper_awm":{
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -128,7 +128,7 @@ case "swat_drone":{
 	["recon"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Drone Operator";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 case "swat_tl":{
@@ -136,7 +136,7 @@ case "swat_tl":{
 	["tl"] spawn CGQC_fnc_switchPerks;
 	["tl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tactical Team Leader";
-	cgqc_player_roleType = "TL";
+	player setVariable ["cgqc_player_roleType", "TL", true];
 	cgqc_player_role_optic = 6;
 };
 case "swat_hq":{
@@ -144,13 +144,13 @@ case "swat_hq":{
 	["hq"] spawn CGQC_fnc_switchPerks;
 	["sl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Officer in Command";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 6;
 };
 case "swat_rcmp":{
 	[player, "rcmp", "none"] call CGQC_ldt_swat_others;
 	cgqc_player_role = "RCMP Officer";
-	cgqc_player_roleType = "TL";
+	player setVariable ["cgqc_player_roleType", "TL", true];
 	cgqc_player_role_optic = 6;
 };
 case "swat_emt":{
@@ -158,7 +158,7 @@ case "swat_emt":{
 	["med"] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Paramedic";
-	cgqc_player_roleType = "TL";
+	player setVariable ["cgqc_player_roleType", "TL", true];
 	cgqc_player_role_optic = 6;
 };
 case "swat_fto":{
@@ -166,6 +166,6 @@ case "swat_fto":{
 	["HQ"] spawn CGQC_fnc_switchPerks;
 	["HQ"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Field Training Officer";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 6;
 };

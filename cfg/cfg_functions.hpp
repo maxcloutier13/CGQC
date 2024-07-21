@@ -12,6 +12,11 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
+
+        class becomeAmmoBearer {
+            file = "\cgqc\functions\fnc_becomeAmmoBearer.sqf";
+            description = "Get some ammo from the target's setup";
+        };
         class reloadTraits {
             file = "\cgqc\functions\fnc_reloadTraits.sqf";
             description = "Reload fucking traits";

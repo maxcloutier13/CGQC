@@ -74,6 +74,14 @@ switch (_type) do {
         _spot pushBack player;
         missionNamespace setVariable ['cgqc_sniping_spotters', _spot, true];
         */
+        // Find map latitude
+        _action = [ "cgqc_perk_latitude", "Find map latitude", "", {
+            _latTxt = format ["%1", ace_common_maplatitude];
+            [["Map Latitude", 1.5, [0.161,0.502,0.725,1]], [_latTxt, 1.5], false] call CBA_fnc_notify;
+        }, {true} ] call ace_interact_menu_fnc_createAction;
+        cgqc_action_lat = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call ace_interact_menu_fnc_addActionToObject;
+        cgqc_perks_action_list pushBack cgqc_action_lat;
+
         ["recon"] call CGQC_fnc_addPerksSpecial;
     };
     case "recon": {

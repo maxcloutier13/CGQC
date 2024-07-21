@@ -1,7 +1,7 @@
 #define PREFIX CGQC
 #define MAJOR 4
 #define MINOR 9
-#define PATCH 9
+#define PATCH 10
 #define BUILD 0
 #define VERSION MAJOR.MINOR.PATCH.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCH,BUILD
