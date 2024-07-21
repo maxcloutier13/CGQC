@@ -6,6 +6,15 @@ class CAManBase: Man {
 	maxGunElev = 80;
 	class ACE_Actions {
 		class ACE_MainActions {
+			class cgqc_become_assistant {
+				displayName = "Become Ammo Bearer";
+				condition = "missionNamespace getVariable 'CGQC_gamestate_current' isEqualTo 'staging' || missionNamespace getVariable 'CGQC_gamestate_current' isEqualTo 'training'";
+				statement = "[_target] call CGQC_fnc_becomeAmmoBearer";
+				exceptions[] = {"isNotInside","isNotSitting"};
+				icon = "\cgqc\textures\rearm.paa";
+				runOnHover = "hint 'Become the player ammo bearer'";
+				distance = 2;
+			};
 			class cgqc_check_vitals {
 				displayName = "Check Vitals";
 				condition = "true";
