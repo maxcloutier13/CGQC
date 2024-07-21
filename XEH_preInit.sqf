@@ -58,7 +58,7 @@ cgqc_player_role_optic = 0;
 player setVariable ["cgqc_player_role", cgqc_player_role, true];
 player setVariable ["cgqc_player_role_optic", cgqc_player_role_optic, true];
 player setVariable ["CGQC_player_teamColor", "MAIN", true];
-cgqc_player_roleType = "";
+player setVariable ["cgqc_player_roleType", "None", true];
 cgqc_player_beret = "";
 cgqc_player_beret_name = "";
 cgqc_player_chill = false;
