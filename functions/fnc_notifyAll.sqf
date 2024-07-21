@@ -11,6 +11,16 @@ cgqc_notifAll_length = _length;
 cgqc_notifAll_fade = _fadeIn;
 
 switch (_mode) do {
+	case "mission_start":{
+		[-1, {
+			[
+				[
+					[cgqc_notifAll_txt, "align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"]
+				]
+			] spawn BIS_fnc_typeText2;
+		}] call CBA_fnc_globalExecute;
+		//["ace_common_displayTextStructured", [_displayText, 3, _target], [_target]] call CBA_fnc_targetEvent;
+	};
 	case "cba_notify_phase": {
 		cgqc_notifPhase = cgqc_notifAll_txt;
 		publicVariable "cgqc_notifPhase";

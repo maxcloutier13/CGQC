@@ -54,6 +54,9 @@ switch (_type) do {
 			};
 		};
 	};
+	case "show": {
+		[cgqc_config_mission_name, 5, 2, "mission_start"] spawn CGQC_fnc_notifyAll;
+	};
 	case "start": {
 		// Sets variables
 		missionNamespace setVariable ["CGQC_gamestate_2_mission_start", true, true];
