@@ -99,12 +99,12 @@ if !(cgqc_mission_dro) then {
 	_welcome = [] spawn CGQC_fnc_showWelcome;
 
 	LOG("[CGQC_INIT] loading custom death/respawn");
+
 	// Respawn handler
 	player addMPEventHandler ["MPRespawn", {
 		params ["_unit", "_corpse"];
 		[_unit, _corpse] call CGQC_fnc_playerRespawned;
 	}];
-
 	// Death handler
 	player addMPEventHandler ["MPKilled", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
@@ -112,6 +112,7 @@ if !(cgqc_mission_dro) then {
 	}];
 } else {
 	[] spawn {
+		hint "DRO mode";
 		1 fadeSound 1;
 		sleep 5;
 		titleCut ["", "BLACK IN", 1];
@@ -475,6 +476,14 @@ if (cgqc_config_fortify) then {
 player addEventHandler ["GetInMan", {
 	params ["_unit", "_role", "_vehicle", "_turret"];
 	["ready", false] call CGQC_fnc_perksBasic;
+	// Notification to clip in when in helicopters
+	if (_vehicle isKindOf "Helicopter" && _role isEqualTo "cargo") then {
+		_text = format ["<t size='3'>Clip in!</t>"];
+		cutText ["","PLAIN", 1, false, true];
+		cutText [_text,"PLAIN", 1, false, true];
+		sleep 3;
+		cutText ["","PLAIN", 1, false, true];
+	};
 }];
 
 // Friendly fire fix - Prevent AI from shooting back
