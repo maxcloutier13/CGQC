@@ -10,7 +10,7 @@ switch (_medication) do {
     case "slap": {
         LOG("[treatmentLocal] Slap!");
         //Journal entry
-        [_patient, "activity", "%1 slapped %2", [[_medic] call ace_common_fnc_getName, "Carbonate"]] call ace_medical_treatment_fnc_addToLog;
+        [_patient, "activity", "%1 slapped the patient", [name _medic]] call ace_medical_treatment_fnc_addToLog;
         // Check if in cardiac arrest
         _noHeartBeat = _patient getVariable ["ace_medical_inCardiacArrest", false];
         if (_noHeartBeat) exitWith {
