@@ -3,7 +3,7 @@
 // Add item to player, handling overflow all the way to the ground if needed
 // Overflow = drop the excess in the next bigger
 // toGround will actually drop all the way to the ground if all is full
-// example: ["uniform", "medkit", 1] call CGQC_fnc_addItemWithOverflow;
+// example: ["uniform", "medkit", 1, true, false] call CGQC_fnc_addItemWithOverflow;
 params [["_target", "uniform"], "_item", ["_amount", 1], ["_overflow", true], ["_toGround", false]];
 LOG_5("[addItemWithOverflow] %1/%2/%3/%4/%5 started", _target, _item, _amount, _overflow, _toGround);
 

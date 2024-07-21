@@ -6,7 +6,7 @@ case "pmct_zeus":{
 	["hq", true, true] spawn CGQC_fnc_switchPerks;
 	//["hq"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Zeus";
-	cgqc_player_roleType = "Zeus";
+	player setVariable ["cgqc_player_roleType", "None", true];
 	cgqc_player_role_optic = 6;
 };
 case "pmct_lead":{
@@ -14,7 +14,7 @@ case "pmct_lead":{
 	["hq", true, true] spawn CGQC_fnc_switchPerks;
 	//["hq"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Squad Leader";
-	cgqc_player_roleType = "HQ";
+	player setVariable ["cgqc_player_roleType", "HQ", true];
 	cgqc_player_role_optic = 6;
 };
 case "pmct_tl":{
@@ -22,7 +22,7 @@ case "pmct_tl":{
 	["tl", true, true] spawn CGQC_fnc_switchPerks;
 	//["tl"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Leader";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 4;
 };
 
@@ -32,7 +32,7 @@ case "pmct_rifle":{
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Rifleman";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 3;
 };
 
@@ -41,7 +41,7 @@ case "pmct_gren":{
 	["inf", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Grenadier";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -52,7 +52,7 @@ case "pmct_lifesaver":{
 	["lifesaver", true, true] spawn CGQC_fnc_switchPerks;
     //["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Combat Lifesaver";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "Infantry", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -63,7 +63,7 @@ case "pmct_medic":{
 	["med", true, true] spawn CGQC_fnc_switchPerks;
 	//["medic"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Team Medic";
-	cgqc_player_roleType = "Medic";
+	player setVariable ["cgqc_player_roleType", "Medic", true];
 	cgqc_player_role_optic = 3;
 };
 
@@ -72,7 +72,7 @@ case "pmct_eng":{
 	["eng", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Engineer";
-	cgqc_player_roleType = "Engineer";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 2;
 };
 case "pmct_eod":{
@@ -80,7 +80,7 @@ case "pmct_eod":{
 	["eng", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "EOD";
-	cgqc_player_roleType = "Engineer";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -90,7 +90,7 @@ case "pmct_mg":{
 	["mg", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "HMG";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "MG", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -99,7 +99,7 @@ case "pmct_autorifleman":{
 	["mg", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Autorifleman";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "MG", true];
 	cgqc_player_role_optic = 2;
 };
 
@@ -109,7 +109,7 @@ case "pmct_at":{
 	["at", true, true] spawn CGQC_fnc_switchPerks;
 	//["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "AT RPG7";
-	cgqc_player_roleType = "Infantry";
+	player setVariable ["cgqc_player_roleType", "AT", true];
 	cgqc_player_role_optic = 1;
 };
 
@@ -119,7 +119,7 @@ case "pmct_sniper":{
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	//["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Sniper";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -128,7 +128,7 @@ case "pmct_marks":{
 	["recon", true, true] spawn CGQC_fnc_switchPerks;
 	//["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Marksman";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -137,7 +137,7 @@ case "pmct_drone":{
 	["drone", true, true] spawn CGQC_fnc_switchPerks;
 	//["recon"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Drone Operator";
-	cgqc_player_roleType = "Recon";
+	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
 
@@ -149,7 +149,7 @@ case "pmct_driver":{
 	["driver", true, true] spawn CGQC_fnc_switchPerks;
 	//["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Driver";
-	cgqc_player_roleType = "Armor";
+	player setVariable ["cgqc_player_roleType", "Armor", true];
 	cgqc_player_role_optic = 1;
 };
 case "pmct_crew":{
@@ -157,6 +157,6 @@ case "pmct_crew":{
 	["tank_crew", true, true] spawn CGQC_fnc_switchPerks;
 	//["driver"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Tank Crew";
-	cgqc_player_roleType = "Armor";
+	player setVariable ["cgqc_player_roleType", "Armor", true];
 	cgqc_player_role_optic = 1;
 };

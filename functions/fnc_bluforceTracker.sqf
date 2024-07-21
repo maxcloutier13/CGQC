@@ -7,7 +7,7 @@ LOG_1("[bluforceTracker] %1 started", _type);
 CGQC_int_bft_findInfo = {
 	_color = player getVariable ["CGQC_player_teamColor", "MAIN"];
     _cgqc_player_bft_color = "ColorWhite";
-    _role = cgqc_player_roleType;
+    _role = player getVariable [cgqc_player_roleType, "b_inf"];
 	_cgqc_player_bft_name = groupId group player;
     _cgqc_player_bft_markerType = "b_inf";
 	_info = [];
