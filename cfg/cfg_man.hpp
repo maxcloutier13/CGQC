@@ -12,7 +12,7 @@ class CAManBase: Man {
 				statement = "[_target] call CGQC_fnc_becomeAmmoBearer";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "\cgqc\textures\rearm.paa";
-				runOnHover = "hint 'Become the player ammo bearer'";
+				runOnHover = "hintSilent 'Become the player ammo bearer'";
 				distance = 2;
 			};
 			class cgqc_check_vitals {
@@ -21,7 +21,7 @@ class CAManBase: Man {
 				statement = "[_target] call CGQC_fnc_checkVitals";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "\cgqc\textures\medical.paa";
-				runOnHover = "hint 'Confirm if patient is stable'";
+				runOnHover = "hintSilent 'Confirm if patient is stable'";
 				distance = 2;
 			};
 			/*
@@ -31,7 +31,7 @@ class CAManBase: Man {
 				statement = "_spot = missionNamespace getVariable 'cgqc_sniping_spotters';_spot pushBack player;missionNamespace setVariable ['cgqc_sniping_spotters', _spot, true];";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "";
-				runOnHover = "hint 'Become spotter for this player'";
+				runOnHover = "hintSilent 'Become spotter for this player'";
 				distance = 2;
 			};*/
 			class ACE_TeamManagement {
@@ -46,7 +46,7 @@ class CAManBase: Man {
 				statement = "[0] call CGQC_fnc_inspect";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "CGQC\textures\search.paa";
-				runOnHover = "hint 'Quick check of the essentials'";
+				runOnHover = "hintSilent 'Quick check of the essentials'";
 				distance = 2;
 				class cgqc_inspect {
 					displayName = "Full Gear Inspection";
@@ -54,7 +54,7 @@ class CAManBase: Man {
 					statement = "[1] call CGQC_fnc_inspect";
 					exceptions[] = {"isNotInside","isNotSitting"};
 					icon = "CGQC\textures\search.paa";
-					runOnHover = "hint 'Inspect the soldiers gear'";
+					runOnHover = "hintSilent 'Inspect the soldiers gear'";
 					distance = 2;
 				};
 				class cgqc_inspect_para {
@@ -63,7 +63,7 @@ class CAManBase: Man {
 					statement = "[] call CGQC_fnc_inspectPara";
 					exceptions[] = {"isNotInside","isNotSitting"};
 					icon = "";
-					runOnHover = "hint 'Inspect parachute setup'";
+					runOnHover = "hintSilent 'Inspect parachute setup'";
 					distance = 2;
 				};
 			};
@@ -82,7 +82,7 @@ class CAManBase: Man {
 				condition = "player getVariable 'cgqc_player_rank' > 3 && [_target, 'ACRE_PRC152'] call BIS_fnc_hasItem";
 				statement = "['strip_152'] spawn CGQC_fnc_getStuff";
 				icon = "CGQC\textures\search.paa";
-				runOnHover = "hint 'Remove 152s'";
+				runOnHover = "hintSilent 'Remove 152s'";
 				distance = 2;
 			};
 			class cgqc_leader_options {
@@ -90,7 +90,7 @@ class CAManBase: Man {
 				condition = "leader player == player || _player getVariable 'cgqc_player_isSL' || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
 				statement = "";
 				icon = "";
-				runOnHover = "hint 'Leaders options'";
+				runOnHover = "hintSilent 'Leaders options'";
 				distance = 2;
 				class cgqc_set2IC {
 					displayName = "Designate: 2iC";
@@ -98,7 +98,7 @@ class CAManBase: Man {
 					statement = "['2IC', _player, _target] spawn CGQC_fnc_setLeadership";
 					//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
 					icon = "";
-					runOnHover = "hint 'Designate as 2iC'";
+					runOnHover = "hintSilent 'Designate as 2iC'";
 					distance = 3;
 				};
 				class cgqc_setTL {
@@ -107,7 +107,7 @@ class CAManBase: Man {
 					statement = "['TL', _player, _target] spawn CGQC_fnc_setLeadership";
 					//statement = "[_this, 'ACRE_PRC152'] remoteExec ['addItem', owner _target ]";
 					icon = "";
-					runOnHover = "hint 'Designate as TeamLeader'";
+					runOnHover = "hintSilent 'Designate as TeamLeader'";
 					distance = 3;
 				};
 				class cgqc_promotePlayer {
@@ -115,7 +115,7 @@ class CAManBase: Man {
 					condition = "true";
 					statement = "['target'] spawn CGQC_fnc_promotePlayer;hint 'target promoted'";
 					icon = "";
-					runOnHover = "hint 'Promote the target to give him access to more stuff/roles'";
+					runOnHover = "hintSilent 'Promote the target to give him access to more stuff/roles'";
 					distance = 3;
 				};
 
@@ -124,14 +124,14 @@ class CAManBase: Man {
 					condition = "[player] call CGQC_fnc_checkZeus || cgqc_player_max";
 					statement = "";
 					icon = "";
-					runOnHover = "hint 'Give perk to target'";
+					runOnHover = "hintSilent 'Give perk to target'";
 					distance = 3;
 					class cgqc_setMedic {
 						displayName = "Medic";
 						condition = "true";
 						statement = "['med', false] remoteExec ['CGQC_fnc_switchPerks', owner _target];";
 						icon = "";
-						runOnHover = "hint 'Designate as Medic'";
+						runOnHover = "hintSilent 'Designate as Medic'";
 						distance = 3;
 					};
 					class cgqc_setEng {
@@ -139,7 +139,7 @@ class CAManBase: Man {
 						condition = "true";
 						statement = "['eng', false] remoteExec ['CGQC_fnc_switchPerks', owner _target];";
 						icon = "";
-						runOnHover = "hint 'Designate as Engineer'";
+						runOnHover = "hintSilent 'Designate as Engineer'";
 						distance = 3;
 					};
 					class cgqc_setDriver {
@@ -147,7 +147,7 @@ class CAManBase: Man {
 						condition = "true";
 						statement = "['driver', false] remoteExec ['CGQC_fnc_switchPerks', owner _target];";
 						icon = "";
-						runOnHover = "hint 'Designate as Driver'";
+						runOnHover = "hintSilent 'Designate as Driver'";
 						distance = 3;
 					};
 
@@ -156,7 +156,7 @@ class CAManBase: Man {
 						condition = "true";
 						statement = "['heli', false] remoteExec ['CGQC_fnc_switchPerks', owner _target];";
 						icon = "";
-						runOnHover = "hint 'Designate as Heli Pilot'";
+						runOnHover = "hintSilent 'Designate as Heli Pilot'";
 						distance = 3;
 					};
 					class cgqc_setRecon {
@@ -164,7 +164,7 @@ class CAManBase: Man {
 						condition = "true";
 						statement = "['recon', false] remoteExec ['CGQC_fnc_switchPerks', owner _target];";
 						icon = "";
-						runOnHover = "hint 'Designate as Recon'";
+						runOnHover = "hintSilent 'Designate as Recon'";
 						distance = 3;
 					};
 					class cgqc_setHeavy {
@@ -172,7 +172,7 @@ class CAManBase: Man {
 						condition = "true";
 						statement = "['at', false] remoteExec ['CGQC_fnc_switchPerks', owner _target];";
 						icon = "";
-						runOnHover = "hint 'Designate as Heavy'";
+						runOnHover = "hintSilent 'Designate as Heavy'";
 						distance = 3;
 					};
 				};
