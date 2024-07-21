@@ -47,15 +47,16 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_sp
 _action = [ "menu_mk2_inf_saboteur", "Saboteur", "", {["2023_eng_saboteur"] spawn CGQC_fnc_switchRole}, {player getVariable 'cgqc_player_rank' > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec", "menu_mk2_inf_eng"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Autorifleman
-_action = [ "menu_mk2_inf_auto", "AutoRifleman (m27 - 5.56)", "", {["2023_autorifle"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+// MG (Light)
+_action = [ "menu_mk2_inf_LMG", "LMG (mk46 - 5.56)", "", {["2023_lmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// MG (Light)
-_action = [ "menu_mk2_inf_LMG", "Light machinegun (mk46 - 5.56)", "", {["2023_lmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Autorifleman
+_action = [ "menu_mk2_inf_auto", "AutoRifleman (m27 - 5.56)", "", {["2023_autorifle"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec", "menu_mk2_inf_LMG"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 //  MG (Heavy)
-_action = [ "menu_mk2_inf_HMG", "Heavy machinegun (mk48 - 7.62)", "", {["2023_hmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_inf_HMG", "HMG (mk48 - 7.62)", "", {["2023_hmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec", "menu_mk2_inf_LMG"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // LWMMG
