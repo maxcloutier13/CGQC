@@ -79,7 +79,7 @@ _action = [ "menu_mk2_inf_snipe", "Sniper m200", "", {["2023_sniper"] spawn CGQC
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Sniper m14 ebr
 _action = [ "menu_mk2_inf_snipe_ebr", "Sniper EBR", "", {["2023_sniper_ebr"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon", "menu_mk2_inf_snipe_ebr"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon", "menu_mk2_inf_snipe"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Spotter
 _action = [ "menu_mk2_inf_spotter", "Spotter", "", {["2023_spotter"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon"], _action ] call ace_interact_menu_fnc_addActionToObject;
