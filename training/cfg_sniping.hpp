@@ -46,9 +46,9 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targ
 
 
 // Option: mobiles
-_action = [ "menu_sniping_targets", "Mobile: turn on", "", {""}, {!cgqc_sniping_movingTarget} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_sniping_targets", "Mobile: turn on", "", {"cgqc_sniping_movingTarget = true"}, {!cgqc_sniping_movingTarget} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_sniping_targets", "Mobile: turn off", "", {""}, {cgqc_sniping_movingTarget} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_sniping_targets", "Mobile: turn off", "", {"cgqc_sniping_movingTarget = false"}, {cgqc_sniping_movingTarget} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_sniping_on", "menu_sniping_targets"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // Options: Distance
