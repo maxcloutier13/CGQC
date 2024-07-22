@@ -539,6 +539,15 @@ case "hk121":{
 };
 
 // Sniper =================================================================
+case "m110_creed": {
+    ["Tier1_M110k5_ACS_65mm"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "121_USASOC_RVPS";
+    _target addPrimaryWeaponItem "Tier1_KAC_762_DSR";
+    _target addPrimaryWeaponItem "Tier1_Harris_Bipod_MLOK_Tan";
+    _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M300C_FL";
+    _target addPrimaryWeaponItem "Tier1_20Rnd_65x48_Creedmoor_SR25_Mag";
+
+};
 case "noreen":{
     ["srifle_DMR_02_F"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "optic_lrps";
