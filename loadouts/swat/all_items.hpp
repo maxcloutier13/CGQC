@@ -232,6 +232,9 @@ cgqc_swat_arsenal_all = [
     "ChemicalDetector_01_watch_F",
     "B_UavTerminal",
 
+    // Tasers
+    "crow_x26_yellow",
+    "crow_x26_blk_yellow",
 
     // All the shits
     "sgun_mas_can_benelli_F",
