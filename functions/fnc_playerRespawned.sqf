@@ -19,6 +19,7 @@ if (local _unit) then {
 	// Slinged helmet
 	[player, player getVariable["Saved_Slinged",[]]] call GRAD_slingHelmet_fnc_addSlungHelmet;
 
+	/*
 	[] spawn {
 		_second = player getVariable["Saved_second",[]];
 		if (count _second > 0) then {
@@ -36,7 +37,7 @@ if (local _unit) then {
 				sleep 1;
 			player spawn WBK_CreateSwitchBetweenWeapons;
 		};
-	};
+	};*/
 
 	// Get a copy of the drone the player had at death
 	if !(isNil "cgqc_player_uav") then {
