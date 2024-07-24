@@ -205,6 +205,8 @@ if (cgqc_player_loadAll) then {
 		[player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
 	}] call CBA_fnc_addEventHandler;
 
+
+
 	player addEventHandler ["InventoryClosed", {
 		params ["_unit", "_container"];
 		[] call CGQC_fnc_reloadTraits;
@@ -240,6 +242,43 @@ if (cgqc_player_loadAll) then {
 	params ["_medic", "_patient", "_bodyPart", "_classname", "_itemUser", "_usedItem"];
 	// Notify the victim of treatment
 	["CGQC_event_receivingTreatment", [_medic, _patient, _classname, _bodyPart], _patient] call CBA_fnc_targetEvent;
+}] call CBA_fnc_addEventHandler;
+
+
+["CGQC_event_yeet", {
+	params ["_unit"];
+	LOG_1("Unit %1 has been yeeted", name _unit);
+	_unit setVelocity [0, 0, 200];
+	hint "Bon... kessé t'as faite encore?";
+	sleep 5;
+	hint "Chill. Voici un parachute. Tu vas retrouver ton backpack une fois au sol ;o)";
+	_backpack = backpack _unit;
+	_items = backpackItems _unit;
+	removeBackpack _unit;
+	_unit addBackpack "B_Parachute";
+	[]spawn {
+		waitUntil {getPosATL _unit select 2 < 100};  // Wait until the _unit's altitude is less than 100 meters
+		_unit action ["OpenParachute", _unit];  // Open the parachute for the _unit
+	};
+	//Make temporarily invincible
+	while {isDamageAllowed _unit} do
+	{
+		_unit allowDamage false;
+		sleep 0.5;
+	};
+	waitUntil{sleep 1;isTouchingGround _unit};
+	removeBackpack _unit;
+	_unit addBackpack _backpack;
+	{
+		_unit addItemToBackpack _x;
+	}forEach _items;
+	sleep 1;
+	hint "Ton backpack is back";
+	while {!isDamageAllowed _unit} do
+	{
+		_unit allowDamage true;
+		sleep 0.5;
+	};
 }] call CBA_fnc_addEventHandler;
 
 ["CGQC_event_receivingTreatment", {
