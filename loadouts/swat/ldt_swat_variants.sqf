@@ -101,3 +101,5 @@ _target addItemToBackpack "ACE_salineIV_500";
 ["hat", _hat] call CGQC_fnc_switchStuff;
 // === Primary ==========================================================================================================
 [_gunVariant, _mags] spawn CGQC_fnc_switchPrimary;
+
+LOG("[swat_variants] done");

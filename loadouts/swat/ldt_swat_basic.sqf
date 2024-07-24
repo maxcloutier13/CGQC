@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- swat_basic ----------------------------------------------------------
 // Basic
-
+LOG("[swat_basic] starting");
 // === Clothing ==========================================================================================================
 _hats = ["cgqc_helmet_mk1_f_black"];
 _goggles = ["rhs_googles_clear"];
@@ -32,3 +32,5 @@ player addItemToBackpack "ACE_SpraypaintGreen";
 
 // === Essentials
 //for "_i" from 1 to 4 do {player addItemToBackpack "DIGI_M7A3";};
+
+LOG("[swat_basic] done");

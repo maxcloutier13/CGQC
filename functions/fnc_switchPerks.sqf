@@ -18,7 +18,6 @@ if (_clearFirst) then {
 };
 
 switch (_type) do {
-
 	case "hq":{
 		LOG("[switchPerks] HQ setup");
 		["HQ"]call CGQC_fnc_setLeadership;
