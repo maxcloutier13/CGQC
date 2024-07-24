@@ -162,3 +162,6 @@ class CfgSounds
 #include "\CGQC\gui\pauseMenu.hpp"
 // Animations
 #include "\CGQC\cfg\cfg_animations.hpp"
+
+// AtragMX profiles ------------------------------------------
+#include "\CGQC\cfg\cfg_atrag.hpp"

@@ -28,7 +28,7 @@ for "_i" from 1 to 10 do {player addItemToVest "ACE_Chemlight_HiGreen"};
 
 // === Backpack ================================================================================================================
 player addItemToBackpack "ACE_SpraypaintGreen";
-
+for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
 
 // === Essentials
 //for "_i" from 1 to 4 do {player addItemToBackpack "DIGI_M7A3";};
