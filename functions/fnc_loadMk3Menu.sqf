@@ -28,12 +28,15 @@ if (hasInterface) then {
 			#include "\CGQC\loadouts\swat\actions_role.hpp"
 			#include "\CGQC\loadouts\swat\actions_primary.hpp"
 			#include "\CGQC\loadouts\swat\actions_arsenal.hpp"
-
+			#include "\CGQC\loadouts\swat\actions_optics.hpp"
 			// Snapshots
 			#include "\CGQC\loadouts\actions_snapshots.hpp"
+			// Empty the weird shit
 			clearWeaponCargoGlobal _crate;
 			clearItemCargoGlobal _crate;
 			clearMagazineCargoGlobal _crate;
+			// Set vic as medical station
+			_crate setVariable ["ace_medical_isMedicalVehicle", true, true];
 		};
 		case "para":{
 			// Jumping uniform
