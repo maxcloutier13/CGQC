@@ -234,6 +234,9 @@ _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc","menu_self_signals"]
 // Fixes =========================================================================================================
 _action = [ "menu_self_fixes", "Fixes/Debug", "a3\ui_f\data\IGUI\Cfg\simpleTasks\types\use_ca", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Panic
+_action = [ "menu_self_panic", "PANIC! Fix all!", "", {["panic", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 // Fix Blackout
 _action = [ "menu_self_blackout", "Fix Blackout", "", {["fix_blackout", false] spawn CGQC_fnc_perksBasic}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "menu_self_fixes"], _action ] call  ace_interact_menu_fnc_addActionToObject;
