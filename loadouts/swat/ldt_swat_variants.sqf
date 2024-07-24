@@ -45,7 +45,7 @@ switch (_variant) do {
     case "sniper": {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
         _target addItemToUniform "ACE_RangeCard";
         _target addItemToUniform "ACE_Kestrel4500";
         _target addItemToUniform "ACE_ATragMX";
@@ -57,7 +57,7 @@ switch (_variant) do {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["backpack", "cgqc_pack_mk1_kitbag_black"] call CGQC_fnc_switchStuff;
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
         _target addItemToBackpack "ACE_UAVBattery";
         _target addItemToBackpack "ACE_UAVBattery";
 		_target addItemToBackpack "rev_darter_item";
@@ -68,7 +68,7 @@ switch (_variant) do {
         ["vest", "cgqc_vest_swat_officer"] call CGQC_fnc_switchStuff;
         _hat = "cgqc_helmet_swatCap";
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_flashbang_cts"};
         LOG("[swatTL] done");
@@ -77,8 +77,8 @@ switch (_variant) do {
         ["vest", "cgqc_vest_swat_officer"] call CGQC_fnc_switchStuff;
         _hat = "cgqc_helmet_swatOfficerCap";
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
-        _target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_flashbang_cts"};
 		_target addItemToBackpack "sps_black_hornet_01_Static_F";
