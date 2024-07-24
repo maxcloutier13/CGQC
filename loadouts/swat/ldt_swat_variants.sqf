@@ -12,8 +12,7 @@ switch (_variant) do {
     case "assault": {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_basic", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        for "_i" from 1 to 6 do {_target addItemToBackpack "tsp_flashbang_cts";};
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
+        for "_i" from 1 to 10 do {_target addItemToBackpack "tsp_flashbang_cts";};
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
         LOG("[swatAssaulter] done");
 	};
@@ -35,7 +34,7 @@ switch (_variant) do {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_basic", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
         _target addItemToBackpack "ACE_wirecutter";
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "tsp_flashbang_cts"};
         for "_i" from 1 to 10 do {_target addItemToVest "tsp_popperCharge_mag"};
         for "_i" from 1 to 10 do {_target addItemToVest "tsp_stickCharge_mag"};
         for "_i" from 1 to 5 do {_target addItemToVest "tsp_frameCharge_mag"};
@@ -71,7 +70,7 @@ switch (_variant) do {
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
         _target addItemToUniform "ACRE_PRC152";
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "tsp_flashbang_cts"};
         LOG("[swatTL] done");
 	};
     case "hq": {
@@ -81,7 +80,7 @@ switch (_variant) do {
         _target addItemToUniform "ACRE_PRC152";
         _target addItemToUniform "ACRE_PRC152";
         for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
+        for "_i" from 1 to 4 do {player addItemToBackpack "tsp_flashbang_cts"};
 		_target addItemToBackpack "sps_black_hornet_01_Static_F";
         LOG("[swatHQ] done");
 	};

@@ -22,8 +22,7 @@ _target addItemToUniform "ACE_Flashlight_KSF1";
 _target addItemToUniform "G_mas_can_gasmask";
 for "_i" from 1 to 6 do {player addItemToUniform "ACE_CableTie"};
 // === Vest ================================================================================================================
-for "_i" from 1 to 4 do {player addItemToVest "tsp_flashbang_cts"};
-for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m7a3_cs"};
+for "_i" from 1 to 5 do {player addItemToVest "tsp_flashbang_cts"};
 for "_i" from 1 to 2 do {player addItemToVest "SmokeShell"};
 for "_i" from 1 to 10 do {player addItemToVest "ACE_Chemlight_HiGreen"};
 
