@@ -45,7 +45,7 @@ cgqc_route_clickEvent = addMissionEventHandler ["MapSingleClick", {
                 _name setMarkerType "hd_dot";
                 _name setMarkerColor "ColorBlack";
                 _name setMarkerSize [0.5, 0.5];
-                _name setMarkerText format["%1 - %2° %3m", _count, _distance, _azimuth];
+                _name setMarkerText format["%1 - %2° %3m", _count, _azimuth, _distance];
                 _route pushBack _marker;
                 //_map = (findDisplay 12 displayCtrl 51);
                 //route_pos = _pos;
