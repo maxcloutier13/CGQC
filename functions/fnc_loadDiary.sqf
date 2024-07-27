@@ -46,41 +46,44 @@ _152_5 = "Hermes";
 _152_98 = "Blue/Green";
 _152_99 = "Blue/Red";
 
-switch (cgqc_player_side) do {
-	case EAST: {
-		_343_1 = "Viper-1";
-		_343_2 = "Viper-2";
-		_343_3 = "Mamba-1";
-		_343_4 = "Mamba-2";
-		_343_9 = "Recon";
-		_343_10 = "Supports";
-		_343_11 = "Libres";
-		_343_16 = "HQ";
-		_152_1 = "Viper";
-		_152_2 = "Supports";
-		_152_3 = "Valkyrie";
-		_152_4 = "Scorpion";
-		_152_98 = "Red/Green";
-		_152_99 = "Red/Blue";
+if !(isNil "cgqc_player_side") then {
+	switch (cgqc_player_side) do {
+		case EAST: {
+			_343_1 = "Viper-1";
+			_343_2 = "Viper-2";
+			_343_3 = "Mamba-1";
+			_343_4 = "Mamba-2";
+			_343_9 = "Recon";
+			_343_10 = "Supports";
+			_343_11 = "Libres";
+			_343_16 = "HQ";
+			_152_1 = "Viper";
+			_152_2 = "Supports";
+			_152_3 = "Valkyrie";
+			_152_4 = "Scorpion";
+			_152_98 = "Red/Green";
+			_152_99 = "Red/Blue";
+		};
+		case INDEPENDENT: {
+			_343_1 = "Bandit-1";
+			_343_2 = "Bandit-2";
+			_343_3 = "Tango-1";
+			_343_4 = "Tango-2";
+			_343_9 = "Recon";
+			_343_10 = "Supports";
+			_343_11 = "Libres";
+			_343_16 = "HQ";
+			_152_1 = "Bandit";
+			_152_2 = "Supports";
+			_152_3 = "Flyboyz";
+			_152_4 = "Hardshells";
+			_152_98 = "Green/Red";
+			_152_99 = "Green/Blue";
+		};
+		default { };
 	};
-	case INDEPENDENT: {
-		_343_1 = "Bandit-1";
-		_343_2 = "Bandit-2";
-		_343_3 = "Tango-1";
-		_343_4 = "Tango-2";
-		_343_9 = "Recon";
-		_343_10 = "Supports";
-		_343_11 = "Libres";
-		_343_16 = "HQ";
-		_152_1 = "Bandit";
-		_152_2 = "Supports";
-		_152_3 = "Flyboyz";
-		_152_4 = "Hardshells";
-		_152_98 = "Green/Red";
-		_152_99 = "Green/Blue";
-	};
-	default { };
 };
+
 
 // Common channel names
 _152_6 = "Convoy 1";
