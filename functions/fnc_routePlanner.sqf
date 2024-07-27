@@ -45,7 +45,7 @@ cgqc_route_clickEvent = addMissionEventHandler ["MapSingleClick", {
                 _name setMarkerType "hd_dot";
                 _name setMarkerColor "ColorBlack";
                 _name setMarkerSize [0.5, 0.5];
-                _name setMarkerText format["%1 - %2° %3m", _count, _azimuth, _distance];
+                _name setMarkerText format["%1 - %2m %3°", _count, _distance, _azimuth];
                 _route pushBack _marker;
                 //_map = (findDisplay 12 displayCtrl 51);
                 //route_pos = _pos;
@@ -57,6 +57,7 @@ cgqc_route_clickEvent = addMissionEventHandler ["MapSingleClick", {
 	};
 }];
 
+/*
 _map = (findDisplay 12 displayCtrl 51);
 _map ctrlAddEventHandler ["Draw", {
 	 _previous = "";
@@ -78,7 +79,7 @@ _map ctrlAddEventHandler ["Draw", {
             } forEach _route;
         };
     } forEach cgqc_player_route;
-}];
+}];*/
 
 private _displays = uiNameSpace getVariable ["igui_displays", []];
 {
