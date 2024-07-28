@@ -132,7 +132,7 @@ switch (_type) do {
                 cgqc_player_route_id = cgqc_player_route_id + 1;
                 _name = format ["_USER_DEFINED_routeMrk_%1_%2_%3", getPlayerID player, cgqc_player_route_id, _count];
                 _marker = createMarker [_name, _pos, 1, player];
-                _name setMarkerColor "ColorBlack";
+                _name setMarkerColorLocal "ColorBlack";
                 if (_count isEqualTo 0) then {
                     cgqc_player_route_lastTxt = "IRP";
                     cgqc_player_route_markerType = "mil_start";
@@ -144,10 +144,10 @@ switch (_type) do {
                     if (_azimuth < 0) then {
                         _azimuth = _azimuth + 360;
                     };
-                    cgqc_player_route_lastTxt = format["RP.%1 - %2m %3°", _count, _distance, _azimuth];
-                    cgqc_player_route_markerType = "mil_triangle";
+                    cgqc_player_route_lastTxt = format["WP.%1 - %2m @ %3°", _count, _distance, _azimuth];
+                    cgqc_player_route_markerType = "loc_move";
                 };
-                _name setMarkerType cgqc_player_route_markerType;
+                _name setMarkerTypeLocal cgqc_player_route_markerType;
                 _name setMarkerText cgqc_player_route_lastTxt;
                 cgqc_player_route pushBack _marker;
                 [["Route Planner", 1.5], ["Click on next point"], ["Shift+Click to stop"], true] call CBA_fnc_notify;
@@ -156,7 +156,7 @@ switch (_type) do {
         LOG("[mapTools] - RoutePlanner Done");
     };
     case 10: { //HQ
-        ["cgqc_maptools_hq", "HQ", "HQ.", "mil_flag", "colorBLUFOR", false, false, true] call cgqc_int_createMarker;
+        ["cgqc_maptools_hq", "HQ", "HQ", "mil_flag", "colorBLUFOR", false, false, true] call cgqc_int_createMarker;
     };
     case 11: { //Objective
         ["cgqc_maptools_objective", "Objective", "Obj.", "mil_objective", "colorOPFOR", false, true, false, cgqc_location_currentNames select 0] call cgqc_int_createMarker;
