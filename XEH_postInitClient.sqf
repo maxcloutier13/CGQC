@@ -698,10 +698,15 @@ if !(_findLoadout) then { // Skip if loadout was found and loaded
 cgqc_acre_previousVolume = [] call acre_api_fnc_getSelectableVoiceCurve;
 
 // Setup default groups colors
-["HQ", [1.0, 0.38, 0, 1], [1.0, 0.38, 0, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
-["Spartan-1", [1.0, 0.5, 0.5, 1], [1.0, 0.5, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
-["Spartan-2", [0.5, 0.5, 1.0, 1], [0.5, 0.5, 1.0, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
-["Spartan-3", [0.5, 1.0, 0.5, 1], [0.5, 1.0, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Spartan", [1.0, 0.5, 0.5, 1], [1.0, 0.78, 0.0, 0.8]] call ace_map_gestures_fnc_addGroupColorMapping; // Purple
+/*
+["Hermes", [1.0, 0.5, 0.5, 1], [1.0, 0.5, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Orion", [1.0, 0.5, 0.5, 1], [1.0, 0.5, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Recon", [1.0, 0.5, 0.5, 1], [1.0, 0.5, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Centaure-2", [0.5, 0.5, 1.0, 1], [0.5, 0.5, 1.0, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Griffon", [0.5, 1.0, 0.5, 1], [0.5, 1.0, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+["Pegase", [0.5, 1.0, 0.5, 1], [0.5, 1.0, 0.5, 0.7]] call ace_map_gestures_fnc_addGroupColorMapping;
+*/
 
 // Pause the AI if the config says so
 if (cgqc_config_state_pause) then {
