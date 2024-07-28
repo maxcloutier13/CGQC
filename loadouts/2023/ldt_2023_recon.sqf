@@ -49,7 +49,7 @@ switch (_variant) do {
 		player addItemToBackpack "rhsusf_mine_m14_mag";
 		player addItemToBackpack "rhsusf_mine_m14_mag";
 		player addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		player removeItems "ACE_EntrenchingTool";
 	};
 	case "spotter": {
@@ -70,9 +70,8 @@ switch (_variant) do {
 		player addItemToBackpack "SLAMDirectionalMine_Wire_Mag";
 	};
 	case "drone": {
-		player addItemToBackpack "ACE_UAVBattery";
-		player addItemToBackpack "rev_darter_item";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 	};
 };
 

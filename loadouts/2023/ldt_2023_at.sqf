@@ -41,7 +41,7 @@ switch (_variant) do {
 		["avm224_W_M224_mortar_carry"] call CGQC_fnc_getCustomGun;
 		player addItemToUniform "ACE_artilleryTable";
 		player addItem "ACE_Kestrel4500";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		player removeWeapon (binocular _target);
         player addWeapon "ACE_Vector";
 		player addItemToVest "ACE_UAVBattery";
@@ -54,7 +54,7 @@ switch (_variant) do {
 	case "mortar_operator":{
 		player addItemToUniform "ACE_artilleryTable";
 		player addItem "ACE_Kestrel4500";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		player removeWeapon (binocular _target);
         player addWeapon "ACE_Vector";
 		player addItemToVest "ACE_UAVBattery";
@@ -65,7 +65,7 @@ switch (_variant) do {
 	case "mortar_operator_crate":{
 		player addItemToUniform "ACE_artilleryTable";
 		player addItem "ACE_Kestrel4500";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		player removeWeapon (binocular _target);
         player addWeapon "ACE_Vector";
 		player addItemToVest "ACE_UAVBattery";
@@ -78,7 +78,7 @@ switch (_variant) do {
 		["ace_csw_staticMortarCarry"] call CGQC_fnc_getCustomGun;
 		player addItemToUniform "ACE_artilleryTable";
 		player addItem "ACE_Kestrel4500";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		player removeWeapon (binocular _target);
         player addWeapon "ACE_Vector";
 		player addItemToVest "ACE_UAVBattery";
@@ -90,7 +90,7 @@ switch (_variant) do {
 		["ace_csw_carryMortarBaseplate"] call CGQC_fnc_getCustomGun;
 		player addItemToUniform "ACE_artilleryTable";
 		player addItem "ACE_Kestrel4500";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		player removeWeapon (binocular _target);
         player addWeapon "ACE_Vector";
 		player addItemToVest "ACE_UAVBattery";
