@@ -81,12 +81,91 @@ cgqc_showObject_running = false;
 cgqc_player_clearMarkers = [];
 cgqc_vic_limiter = false;
 cgqc_player_rosterInit = false;
-cgqc_player_route = [];
-cgqc_player_route_on = false;
 cgqc_player_trait_loadCoef = 1;
 cgqc_player_trait_audibleCoef = 1;
 cgqc_player_trait_camoCoef = 1;
 
+
+// Map tools - Advanced
+cgqc_player_route_id = 0;
+cgqc_player_route = [];
+missionNamespace setVariable ["cgqc_maptools_mortar", 0, true];
+// Map tools - Basic
+missionNamespace setVariable ["cgqc_maptools_hq", 0, true];
+missionNamespace setVariable ["cgqc_maptools_objective", 0, true];
+missionNamespace setVariable ["cgqc_maptools_irp", 0, true];
+missionNamespace setVariable ["cgqc_maptools_wp", 0, true];
+missionNamespace setVariable ["cgqc_maptools_rp", 0, true];
+missionNamespace setVariable ["cgqc_maptools_orp", 0, true];
+missionNamespace setVariable ["cgqc_maptools_near", 0, true];
+missionNamespace setVariable ["cgqc_maptools_far", 0, true];
+missionNamespace setVariable ["cgqc_maptools_csp", 0, true];
+missionNamespace setVariable ["cgqc_maptools_crp", 0, true];
+missionNamespace setVariable ["cgqc_maptools_dis", 0, true];
+missionNamespace setVariable ["cgqc_maptools_lz", 0, true];
+missionNamespace setVariable ["cgqc_maptools_route", 0, true];
+missionNamespace setVariable ["cgqc_maptools_supply", 0, true];
+missionNamespace setVariable ["cgqc_maptools_city", 0, true];
+missionNamespace setVariable ["cgqc_maptools_house", 0, true];
+
+// Location names
+cgqc_maptools_running = false;
+cgqc_location_nato = ["Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"];
+cgqc_location_space = ["Asteroid", "Blackhole", "Comet", "Darkmatter", "Eclipse", "Fusion", "Galactic", "Halo", "Ion", "Jupiter", "Kuiper", "Lightyear", "Meteor", "Nebula", "Orbit", "Pulsar", "Quasar", "Redshift", "Star", "Telescope", "Universe", "Voyager", "Wormhole", "X-ray", "Yellowstar", "Zenith"];
+cgqc_location_metal = ["Aluminium", "Barium", "Calcium", "Diamond", "Erbium", "Fluorite", "Gold", "Hafnium", "Iron", "Jade", "Krypton", "Lithium", "Manganese", "Nickel", "Osmium", "Platinum", "Quartz", "Rhodium", "Silver", "Titanium", "Uranium", "Vanadium", "Wolfram", "Xenon", "Yttrium", "Zinc"];
+cgqc_location_dune = ["Arrakis", "Bene Gesserit", "Crusade", "Dune", "Empire", "Fremen", "Guild", "Harkonnen", "Imperial", "Jihad", "Kwisatz Haderach", "Leto", "Mentat", "Naboo", "Ornithopter", "Padishah", "Quin", "Sandworm", "Tleilaxu", "Utterson", "Voyager", "Worm", "Xerxes", "Yen", "Zensunni"];
+cgqc_location_dungeon = ["Amulet", "Beholder", "Cave", "Dragon", "Elemental", "Familiar", "Goblin", "Hydra", "Illusion", "Jinn", "Kobold", "Lich", "Mage", "Necromancer", "Ogre", "Potion", "Quest", "Ranger", "Sorcerer", "Treant", "Undead", "Vampire", "Warlock", "Xenon", "Yeti", "Zebra"];
+
+cgqc_location_names = [cgqc_location_space, cgqc_location_metal, cgqc_location_dune, cgqc_location_dungeon];
+cgqc_location_currentNames = cgqc_location_names call BIS_fnc_arrayShuffle;
+
+cgqc_location_cities = [
+    ["Atlanta", "Buffalo", "Chicago", "Dallas", "El Paso", "Fargo", "Greensboro", "Hartford", "Indianapolis", "Jacksonville", "Kansas", "Lafayette", "Memphis", "Nashville", "Orlando", "Phoenix", "Quincy", "Richmond", "Seattle", "Toronto", "Utica", "Vancouver", "Washington", "Xenia", "Yonkers", "Zanesville"],
+    ["Albany", "Boston", "Columbus", "Denver", "Eugene", "Fresno", "Gainesville", "Houston", "Irving", "Juneau", "Kirkland", "Laredo", "Madison", "Newark", "Oakland", "Philadelphia", "Québec City", "Raleigh", "San Diego", "Tampa", "Upland", "Victoria", "Wichita", "Xavier", "York", "Zephyrhills"],
+    ["Aurora", "Baltimore", "Calgary", "Durham", "Eastman", "Fairfax", "Garland", "Huntsville", "Indio", "Jasper", "Keene", "Lincoln", "Midland", "Nampa", "Ottawa", "Plano", "Quakertown", "Reno", "Savannah", "Tulsa", "Union", "Valdosta", "Wilmington", "Xanadu", "Yuma", "Zion"],
+    ["Amherst", "Banff", "Carlton", "Denver", "Entrelacs", "Ferland", "Geneva", "Helena", "Irvine", "Joliet", "Kenner", "London", "Milford", "Naples", "Omaha", "Pasadena", "Quincy", "Rochester", "Spokane", "Thunder Bay", "Uxbridge", "Valparaiso", "Worcester", "Xochimilco", "Ypsilanti", "Zimmerman"],
+    ["Aylmer", "Brossard", "Chester", "Delson", "Eureka", "Fabre", "Goderich", "Havre-Aubert", "Ingram", "Jamestown", "Kelowna", "Lindsay", "Mobile", "Norman", "Orem", "Provo", "Quincy", "Red Deer", "Sarasota", "Trail", "Upper Musquodoboit", "Ventura", "Waterloo", "Xander", "Yorkville", "Zwolle"],
+    ["Aurora", "Boston", "Cornwall", "Drummond", "El Paso", "Farnham", "Granby", "Howick", "Inverness", "Jonquière", "Kamouraska", "Lévis", "Miramichi", "Nepean", "Outlook", "Peoria", "Quilcene", "Regina", "Springfield", "Thetford Mines", "Uxbridge", "Valleyfield", "Woodstock", "Xenon", "Yankton", "Zabriskie"],
+    ["Austin", "Blainville", "Clifton", "Dunham", "Eugene", "Fermont", "Glendale", "Hope", "Irwin", "Joplin", "Kingston", "Lethbridge", "Monroe", "Nogales", "Oshawa", "Penticton", "Quantico", "Rockford", "Syracuse", "Terrace", "Uplands", "Vicksburg", "Windsor", "Xenia", "Yarmouth", "Zephyr"],
+    ["Amherst", "Buffalo", "Cedar", "Dorval", "Eastman", "Forestville", "Gastonia", "Henryville", "Inukjuak", "Joliette", "Kinston", "Lorraine", "Montague", "Newton", "Oromocto", "Pembroke", "Quincy", "Roseville", "Sudbury", "Trois-Rivières", "Uxbridge", "Ville-Marie", "Westmount", "Xavier", "Yorkton", "Zebulon"],
+    ["Atlanta", "Brossard", "Chester", "Dallas", "Entrelacs", "Fabre", "Gilbert", "Hamilton", "Iroquois", "Joliette", "Kingsley", "Lincoln", "Mansfield", "Nelson", "Oka", "Pueblo", "Quesnel", "Russell", "Saskatoon", "Union", "Uplands", "Val-d'Or", "Winnipeg", "Xanadu", "Yonkers", "Zionville"],
+    ["Austin", "Burlington", "Columbus", "Denver", "El Paso", "Fresno", "Greensboro", "Hudson", "Ithaca", "Jericho", "Kenner", "London", "Milton", "Neuville", "Ontario", "Phoenix", "Qualicum", "Rochester", "San Jose", "Tucson", "Urbana", "Vernon", "Westminster", "Xerxes", "York", "Zephyrhills"]
+];
+
+_random = floor (random 10);
+cgqc_location_currentCities = cgqc_location_cities select _random;
+
+/*
+cgqc_location_us = [
+	["Atlanta", "Albany", "Austin", "Aurora", "Amherst", "Aylmer"],
+	["Baltimore", "Banff", "Burlington", "Blainville", "Brossard", "Bathurst", "Boston", "Buffalo"],
+	["Cleveland", "Chicago", "Columbus", "Calgary", "Carlton", "Cedar", "Cornwall", "Chester", "Clifton", "Coral"],
+	["Dallas", "Durham", "Dunham", "Denver", "Delson", "Dolbeau", "Dorval", "Drummond", "Donnacona"],
+	["Eugene", "El Paso", "Eureka", "Eastman", "Entrelacs"],
+	["Fresno", "Fargo", "Fairfax", "Fremont", "Farnham", "Ferland", "Fermont", "Fabre", "Frampton", "Frontenac", "Frelighsburg", "Forestville"],
+	["Greensboro", "Garland", "Gilbert", "Gresham", "Gastonia", "Georgetown", "Gainesville", "Geneva", "Glendale", "Greenwood", "Guelph", "Grimsby", "Goderich", "Granby", "Gibbons", "Gatineau", "Greenwood", "Granby", "Gaspé", "Gatineau", "Granby", "Gentilly", "Granville", "Grandes-Piles"],
+	["Houston", "Hartford", "Hoboken", "Helena", "Hampton", "Hamilton", "Halifax", "Hinton", "Huntsville", "Hudson", "Hawkesbury", "Hébertville", "Hemmingford", "Howick", "Hampstead", "Harrington", "Hatley", "Hope", "Havelock", "Havre-Aubert", "Hérouxville", "Huntingdon", "Henryville", "Hemmingford", "Ham-Sud"],
+	["Indianapolis", "Indio", "Irving", "Irvine", "Ithaca", "Ingram", "Irwin", "Innisfil", "Inuvik", "Iroquois", "Innisfail", "Inverness", "Inukjuak", "Iberville", "Irlande"],
+	["Jacksonville", "Jackson", "Jasper", "Joliet", "Joplin", "Juneau", "Jersey", "Jamestown", "Jericho", "Jenkins", "Johnson", "Jansen", "Joliette", "Jonquière", "Joffre", "Joly", "Joutel", "Jacmel", "Jumelles", "Joliette", "Jonquière"],
+	["Kansas", "Kinston", "Kingsley", "Keene", "Kenner",  "Kelowna", "Kingston", "Kenora", "Kirkland",  "Kincardine", "Kanata", "Kemptville", "Killam", "Kapuskasing", "Kamouraska", "Kirkland"],
+	["Lincoln", "Laredo", "Lansing", "Lafayette", "Lakeland", "London", "Leduc", "Lindsay", "Lethbridge", "Laval", "Lorraine", "Lévis", "Lorrainville", "LaSalle", "Lachine"],
+	["Memphis", "Madison", "Midland", "Macon", "Marion", "Monroe", "Medford", "Milford", "Mobile", "Mansfield", "Milton", "Moncton", "Morden", "Moose Jaw", "Martensville", "Midland", "Miramichi", "Montague", "Melville", "Montreal", "Magog", "Mascouche", "Matane", "Montmagny", "Mont-Laurier", "Marieville", "Mont-Tremblant"],
+	["New York", "Nashville", "Newark", "Norfolk", "Naples", "Norman", "Newton", "Nampa", "Napa", "Nogales", "Newport", "Nelson", "Nanaimo", "Norwood", "Nepean", "Newmarket", "Neepawa", "Napierville",  "Neuville", "Nicolet", "Norbertville", "Normandin", "Natashquan", "Notre-Dame", "Nantes"],
+	["Omaha", "Orlando", "Oakland", "Odessa", "Olathe", "Orem", "Olympia", "Oxford", "Ontario", "Ottawa", "Oshawa", "Oakville",  "Owen Sound", "Outlook", "Oromocto", "Oliver", "Oxbow", "Orford", "Ormstown", "Otterburn", "Orsainville", "Oka", "Outremont", "Otterburn", "Odanak", "Ostiguy", "Omerville"],
+	["Philadelphia", "Phoenix", "Plano", "Pasadena", "Provo", "Paterson", "Pueblo", "Peoria", "Parker", "Pembroke", "Penticton", "Pickering"],
+	["Quincy", "Québec City", "Quakertown", "Qualicum", "Quesnel", "Quispamsis", "Quincy", "Quilcene", "Quantico", "Queens", "Quarryville", "Quinton"],
+	["Richmond", "Reno", "Raleigh", "Rochester", "Rockford", "Roseville", "Redmond", "Rockville", "Russell", "Regina", "Red Deer", "Richmond Hill"],
+	["Seattle", "San Diego", "San Jose", "Savannah", "Spokane", "Salem", "Sarasota", "Springfield", "Syracuse", "Sudbury", "Saskatoon", "Sherbrooke"],
+	["Toronto", "Tampa", "Tucson", "Topeka", "Tulsa", "Thorold", "Thunder Bay", "Trois-Rivières", "Trenton", "Trail", "Terrace", "Thetford Mines"],
+	["Utica", "Union", "Urbana", "Ukiah", "Upland", "Uxbridge", "Unity", "Ucluelet", "Upper Musquodoboit", "Uxbridge", "Upton", "Ushaw Moor"],
+	["Vancouver", "Victoria", "Valdosta", "Valparaiso", "Vernon", "Vicksburg", "Visalia", "Ventura", "Ville-Marie", "Val-d'Or", "Valleyfield", "Victoriaville"],
+	["Washington", "Wichita", "Wilmington", "Worcester", "Westminster", "Waterloo", "Windsor", "Whitby", "Welland", "Woodstock", "Winnipeg", "Westmount"],
+	["Xenia", "Xavier", "Xanadu", "Xochimilco", "Xanadu", "Xenia", "Xerxes", "Xanadu", "Xochimilco", "Xylophon", "Xander", "Ximenes"],
+	["Yonkers", "York", "Yuma", "Ypsilanti", "Yukon", "Yellowknife", "Yarmouth", "Yorkton", "Yorkville", "Yankton", "Yates", "Yarker"],
+	["Zanesville", "Zephyrhills", "Zion", "Zebulon", "Zimmerman", "Zeballos", "Zion", "Zephyr", "Zenda", "Zionville", "Zabriskie", "Zwolle"]
+];*/
+
+// Wakeup
 player setVariable ["cgqc_player_wakeup_time", 0, true];
 
 cgqc_subskills = [
@@ -508,6 +587,12 @@ Examples
 
 */
 //Intro Stuff
+_section_name = "Mission Options";
+
+["cgqc_config_droneRestriction", "LIST", ["Optiques", "Types d'optiques disponibles dans le quick switcher"],
+	[_menu_name, "Drone Restriction"], [[0, 1, 2, 3], ["No Drones", "BlackHornet only", "+Darter", "Unrestricted"], 2], {publicVariable "cgqc_config_droneRestriction"}] call CBA_fnc_addSetting;
+
+
 _section_name = "Intro/Cinématiques";
 ["cgqc_config_showIntro", "CHECKBOX", ["Show Intro", "Intro en début de mission"],
     [_menu_name, _section_name], true] call CBA_fnc_addSetting;
