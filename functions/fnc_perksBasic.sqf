@@ -364,6 +364,15 @@ LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
             0 fadeSound 1;
             0 fadeEnvironment 1;
         };
+        case "panic":
+        {
+            ["fix_blackout", false] spawn CGQC_fnc_perksBasic;
+            ["fix", false] spawn CGQC_fnc_perksBasic;
+            [player, cgqc_player_patch ] call BIS_fnc_setUnitInsignia;
+            [] call CGQC_fnc_setTeamColorReload;
+            [player, "forceWalk", "BackpackOnChest", false] call ace_common_fnc_statusEffect_set;
+            hint "Should be good";
+        };
         case "fix_blackout":
         {
             titleCut ["", "BLACK IN", 1];

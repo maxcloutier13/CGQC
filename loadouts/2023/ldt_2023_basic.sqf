@@ -20,6 +20,8 @@ _handgun = ["cgqc_gun_glock19_wood", "Tier1_20Rnd_9x19_JHP", "Tier1_DBALPL", "Ti
 // === Uniform Items ====================================================================================================
 _target addItemToUniform "azm_bft_tx";
 _target addItemToUniform "azm_bft_rx";
+_target addItemToUniform "ACE_Canteen";
+_target addItemToUniform "ACE_MapTools";
 // === Vest Items ====================================================================================================
 _target addItemToVest "tsp_flashbang_cts";
 _target addItemToVest "tsp_flashbang_cts";
@@ -35,6 +37,5 @@ _target addItemToVest "MiniGrenade";
 
 // === Backpack Items ====================================================================================================
 _target addItemToBackpack "ACE_EntrenchingTool";
-_target addItemToBackpack "ACE_Canteen";
 
 LOG(" ldt_2023_basic done");

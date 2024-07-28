@@ -13,6 +13,14 @@ class CGQC {
     class functions {
         // Fonctions ---------------------------------------------------------------------------
 
+        class getDrone {
+            file = "\cgqc\functions\fnc_getDrone.sqf";
+            description = "Handles drone restrictions";
+        };
+        class mapTools {
+            file = "\cgqc\functions\fnc_mapTools.sqf";
+            description = "Various custom map tools";
+        };
         class becomeAmmoBearer {
             file = "\cgqc\functions\fnc_becomeAmmoBearer.sqf";
             description = "Get some ammo from the target's setup";

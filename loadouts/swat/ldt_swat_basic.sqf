@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- swat_basic ----------------------------------------------------------
 // Basic
-
+LOG("[swat_basic] starting");
 // === Clothing ==========================================================================================================
 _hats = ["cgqc_helmet_mk1_f_black"];
 _goggles = ["rhs_googles_clear"];
@@ -19,14 +19,18 @@ _gun = ["hlc_pistol_P226R_Combat",
 
 // === Uniform ================================================================================================================
 _target addItemToUniform "ACE_Flashlight_KSF1";
+_target addItemToUniform "G_mas_can_gasmask";
 for "_i" from 1 to 6 do {player addItemToUniform "ACE_CableTie"};
 // === Vest ================================================================================================================
-for "_i" from 1 to 4 do {player addItemToVest "tsp_flashbang_cts"};
-for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m7a3_cs"};
+for "_i" from 1 to 5 do {player addItemToVest "tsp_flashbang_cts"};
 for "_i" from 1 to 2 do {player addItemToVest "SmokeShell"};
-// === Backpack ================================================================================================================
-_target addItemToUniform "G_mas_can_gasmask";
+for "_i" from 1 to 10 do {player addItemToVest "ACE_Chemlight_HiGreen"};
 
+// === Backpack ================================================================================================================
+player addItemToBackpack "ACE_SpraypaintGreen";
+for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
 
 // === Essentials
 //for "_i" from 1 to 4 do {player addItemToBackpack "DIGI_M7A3";};
+
+LOG("[swat_basic] done");

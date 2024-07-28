@@ -2,10 +2,15 @@
 // --- loadMk3Menu ----------------------------------------------------------
 // Ace menu for mk3 sheeits
  params ["_crate_array", ["_type", "default"]];
+ LOG_2("[loadMk3Menu] %1/%2 started", _crate_array, _type);
 //_crate = (_this select 0) select 0;
 //_type = _this select 1;
-_crate = _crate_array select 0;
-LOG_2("[loadMk3Menu] %1/%2 started", _crate, _type);
+_crate = _crate_array;
+if ( typeName _crate_array isEqualTo "ARRAY") then {
+	_crate = _crate_array select 0;
+};
+
+LOG_2("[loadMk3Menu] Crate:%1", _crate);
 
 LOG("[loadMk3Menu] - waiting for postInit to finish");
 waitUntil {!isNil "cgqc_start_postInitClient_done"};
@@ -18,7 +23,21 @@ if (hasInterface) then {
 	// Unlock arsenal when training is on
 	cgqc_mk2_arsenal_locked = !cgqc_flag_isTraining;
 	switch (_type) do {
-		// Command ========================================================================
+		case "swat":{
+			// SWAT Stuff
+			#include "\CGQC\loadouts\swat\actions_role.hpp"
+			#include "\CGQC\loadouts\swat\actions_primary.hpp"
+			#include "\CGQC\loadouts\swat\actions_arsenal.hpp"
+			#include "\CGQC\loadouts\swat\actions_optics.hpp"
+			// Snapshots
+			#include "\CGQC\loadouts\actions_snapshots.hpp"
+			// Empty the weird shit
+			clearWeaponCargoGlobal _crate;
+			clearItemCargoGlobal _crate;
+			clearMagazineCargoGlobal _crate;
+			// Set vic as medical station
+			_crate setVariable ["ace_medical_isMedicalVehicle", true, true];
+		};
 		case "para":{
 			// Jumping uniform
 			LOG("[loadMk3Menu] - para menu");
@@ -173,23 +192,8 @@ if (hasInterface) then {
 			// Quick Items/Skills and such
 			#include "\CGQC\loadouts\actions_quickStuff.hpp"
 
-			// Snapshots --------------------------------------------------------------------------------------------------------------
-			_action = [ "menu_snapshots", "Snapshots", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-			_action = [ "menu_snapshot_save", "Save Player Snapshot", "", {[player, "save"] spawn CGQC_fnc_snapshot;}, {true} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-
-			_action = [ "menu_snapshot_load", "Load Snapshot", "", {}, {true} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_snapshot_load_player", "Player Snapshot", "", {[player, "load"] spawn CGQC_fnc_snapshot;}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_done", false];} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots", "menu_snapshot_load"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_snapshot_load_auto", "Auto Snapshot", "", {[player, "load", "single", "auto"] spawn CGQC_fnc_snapshot;}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_auto_done", false];} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots", "menu_snapshot_load"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_snapshot_load_start", "Start Snapshot", "", {[player, "load", "single", "start"] spawn CGQC_fnc_snapshot;}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_start_done", false];} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots", "menu_snapshot_load"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-			_action = [ "menu_snapshot_load_zeus", "Zeus Snapshot", "", {[player, "load", "single", "zeus"] spawn CGQC_fnc_snapshot;}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_zeus_done", false];} ] call ace_interact_menu_fnc_createAction;
-			_adding = [ _crate, 0, ["ACE_MainActions" , "menu_snapshots", "menu_snapshot_load"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+			// Snapshots
+			#include "\CGQC\loadouts\actions_snapshots.hpp"
 
 
 			// Zeus Arsenal ========================================================================================================

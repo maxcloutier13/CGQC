@@ -1,8 +1,8 @@
 #include "\CGQC\script_component.hpp"
-// --- swatOthers ----------------------------------------------------------
+// --- swat_others ----------------------------------------------------------
 // Other roles that do not use the base swat setup
 params [["_target", player], ["_variant", "paramedic"], ["_gunVariant", "none"]];
-LOG_1("[swatOthers] %1 started", _variant);
+LOG_1("[swat_others] %1 started", _variant);
 
 switch (_variant) do {
     case "rcmp": {
@@ -77,6 +77,7 @@ switch (_variant) do {
 	};
 };
 
+LOG("[swat_others] loading common items");
 // Common Items
 _target linkItem "ItemWatch";
 _target linkItem "ItemMap";
@@ -85,7 +86,7 @@ _target linkItem "ItemGPS";
 _target addItemToUniform "ACE_Flashlight_KSF1";
 _target addItemToUniform "acex_intelitems_notepad";
 _target addItemToUniform "WBK_HeadLampItem";
-_target addItemToUniform "ACRE_PRC152";
+//_target addItemToUniform "ACRE_PRC152";
 _target addItemToUniform "ItemMicroDAGR";
 _target addItemToUniform "ACE_Chemlight_UltraHiOrange";
 _target addItemToUniform "ACE_Chemlight_UltraHiOrange";
@@ -101,3 +102,5 @@ _target addItemToUniform "ACE_splint";
 _target addItemToUniform "ACE_tourniquet";
 _target addItemToBackpack "ACE_tourniquet";
 _target addItemToBackpack "ACE_salineIV_500";
+
+LOG("[swat_others] done");

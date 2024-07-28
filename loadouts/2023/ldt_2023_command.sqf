@@ -35,8 +35,8 @@ switch (_variant) do {
 		_target removeItems "ACE_Canteen";
 		_target addItem "ACE_M26_Clacker";
 		// === Drones ================================
-		_target addItemToBackpack "Rev_darter_item";
-		_target addItemToBackpack "sps_black_hornet_01_Static_F";
+		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 	};
 	case "xo": {
@@ -44,15 +44,15 @@ switch (_variant) do {
 		_target removeItems "ACE_Canteen";
 		_target addItem "ACE_M26_Clacker";
 		// === Drones ================================
-		_target addItemToBackpack "Rev_darter_item";
-		_target addItemToBackpack "sps_black_hornet_01_Static_F";
+		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 	};
 	case "hq": {
 		_target removeItems "ACE_EntrenchingTool";
 		// === Drones ================================
-		_target addItemToBackpack "Rev_darter_item";
-		_target addItemToBackpack "sps_black_hornet_01_Static_F";
+		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		// === Comms =================================
 		_target addItemToBackpack "ACRE_VHF30108SPIKE";
 		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
@@ -66,7 +66,8 @@ switch (_variant) do {
 		_target addItem "ACE_M26_Clacker";
 		["2023_command","cgqc_item_laserdesignator","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
 		// === Stuff ================================
-		_target addItemToBackpack "Rev_darter_item";
+		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		_target addItemToBackpack "ACE_Tripod";
 		_target addItemToBackpack "ACE_Vector";
 		// === Explosives ================================

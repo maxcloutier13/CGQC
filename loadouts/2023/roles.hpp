@@ -151,8 +151,50 @@ case "2023_at_javelin":{
 	cgqc_player_role_optic = 1;
 };
 
-// Recon ===============================================================
+// Mortar ===============================================================
+case "mortar_portable":{
+	[player, "mortar_portable", "m4_elcan"] call CGQC_ldt_2023_at;
+	["at", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Light Mortar";
+	player setVariable ["cgqc_player_roleType", "Mortar", true];
+	cgqc_player_role_optic = 1;
+};
+case "mortar_mk6":{
+	[player, "mortar_mk6", "m4_elcan"] call CGQC_ldt_2023_at;
+	["at", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Mk6 Mortar (Tube)";
+	player setVariable ["cgqc_player_roleType", "Mortar", true];
+	cgqc_player_role_optic = 1;
+};
+case "mortar_mk6_plate":{
+	[player, "mortar_mk6_plate", "m4_elcan"] call CGQC_ldt_2023_at;
+	["at", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Mk6 Mortar (Plate)";
+	player setVariable ["cgqc_player_roleType", "Mortar", true];
+	cgqc_player_role_optic = 1;
+};
+case "mortar_operator":{
+	[player, "mortar_operator", "m4_elcan"] call CGQC_ldt_2023_at;
+	["at", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Mortar Operator";
+	player setVariable ["cgqc_player_roleType", "Mortar", true];
+	cgqc_player_role_optic = 1;
+};
+case "mortar_operator_crate":{
+	[player, "mortar_operator_crate", "m4_elcan"] call CGQC_ldt_2023_at;
+	["at", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Mortar Operator";
+	player setVariable ["cgqc_player_roleType", "Mortar", true];
+	cgqc_player_role_optic = 1;
+};
 
+
+// Recon ===============================================================
 case "2023_sniper":{
 	[player, "sniper", "m200"] call CGQC_ldt_2023_recon;
 	["sniper", true, true] spawn CGQC_fnc_switchPerks;
@@ -188,6 +230,7 @@ case "2023_drone":{
 	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 5;
 };
+
 
 // Pilot ===============================================================
 case "2023_h_pilot":{

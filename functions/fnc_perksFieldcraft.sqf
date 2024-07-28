@@ -91,6 +91,8 @@ switch (_type) do {
                 //hide the player
                 player setUnitTrait ["camouflageCoef", 0.4];
                 player setUnitTrait ["audibleCoef", 0.8];
+                cgqc_player_trait_audibleCoef  = player getUnitTrait "audibleCoef";
+		        cgqc_player_trait_camoCoef  = player getUnitTrait "camouflageCoef";
                 // Setup trigger
                 y_act = ""; // Lower volume on player
                 y_deAct = "

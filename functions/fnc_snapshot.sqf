@@ -106,8 +106,11 @@ switch (_scope) do {
                 // Slinged weapon
                 _slinged = [_target] call GRAD_slingHelmet_fnc_getSlungHelmet;
 
+
                 _secondPrimary = "";
                 _secondPrimaryAcc = [];
+                _secondPrimaryArray = [_secondPrimary, _secondPrimaryAcc];
+                /*
                 // Second Primary
                 if !((isNil {_target getVariable "WBK_SecondWeapon"})) then {
                     _secondPrimaryArray = (player getVariable "WBK_SecondWeapon") select 1;
@@ -120,7 +123,7 @@ switch (_scope) do {
                     _secondPrimaryAcc = [_mag1, _item1, _item2, _item3, _item4];
                 };
                 _secondPrimaryArray = [_secondPrimary, _secondPrimaryAcc];
-
+                */
                 // BackpackOnChest
                 _chestPack = [_target] call bocr_main_fnc_chestpack;
                 _chestPackLoadout = [];

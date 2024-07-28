@@ -77,7 +77,8 @@ addMissionEventHandler ["HandleDisconnect", {
 						publicVariable "cgqc_stats_civilianCasualties";
 						publicVariable "cgqc_stats_civilianKillers";
 						_txt = " ... killed a civilian!";
-						[_killer, _txt] remoteExec ["globalChat",0];
+						//[_killer, _txt] remoteExec ["globalChat",0];
+						LOG_2("[CGQC_Killed]: Casualties - %1 killed a civilian", name _killer);
 					} else {
 						_sideKiller = side (group _killer);
 						_sideKilled = side (group _killed);
@@ -90,7 +91,8 @@ addMissionEventHandler ["HandleDisconnect", {
 								publicVariable "cgqc_stats_friendlyCasualties";
 								publicVariable "cgqc_stats_friendlyKillers";
 								_txt = " ... killed a friendly!";
-								[_killer, _txt] remoteExec ["globalChat",0];
+								//[_killer, _txt] remoteExec ["globalChat",0];
+								LOG_2("[CGQC_Killed]: Casualties - %1 killed a friendly", name _killer);
 							};
 						} else {
 							//Enemy down
@@ -193,7 +195,8 @@ addMissionEventHandler ["HandleDisconnect", {
 						publicVariable "cgqc_stats_teamCasualties";
 						publicVariable "cgqc_stats_teamKillers";
 						_txt = " ... killed a teammate!";
-						[_killer, _txt] remoteExec ["globalChat",0];
+						LOG_2("[CGQC_Killed]: Casualties - %1 killed a teammate", name _killer);
+						//[_killer, _txt] remoteExec ["globalChat",0];
 					};
 				} else {
 					LOG("[CGQC_Killed]: Killed by an AI!");

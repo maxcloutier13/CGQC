@@ -12,9 +12,7 @@ switch (_variant) do {
     case "assault": {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_basic", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        for "_i" from 1 to 6 do {_target addItemToBackpack "tsp_flashbang_cts";};
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
-        for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
+        for "_i" from 1 to 2 do {_target addItemToBackpack "tsp_flashbang_cts";};
         LOG("[swatAssaulter] done");
 	};
     case "medic": {
@@ -28,14 +26,12 @@ switch (_variant) do {
         for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV";};
         for "_i" from 1 to 4 do {_target addItemToBackpack "ACE_salineIV_500";};
         for "_i" from 1 to 2 do {_target addItemToBackpack "ACE_tourniquet";};
-        for "_i" from 1 to 4 do {_target addItemToBackpack "tsp_flashbang_cts";};
         LOG("[swatMedic] done");
 	};
     case "breacher": {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_basic", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
         _target addItemToBackpack "ACE_wirecutter";
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
         for "_i" from 1 to 10 do {_target addItemToVest "tsp_popperCharge_mag"};
         for "_i" from 1 to 10 do {_target addItemToVest "tsp_stickCharge_mag"};
         for "_i" from 1 to 5 do {_target addItemToVest "tsp_frameCharge_mag"};
@@ -46,7 +42,7 @@ switch (_variant) do {
     case "sniper": {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
         _target addItemToUniform "ACE_RangeCard";
         _target addItemToUniform "ACE_Kestrel4500";
         _target addItemToUniform "ACE_ATragMX";
@@ -58,7 +54,7 @@ switch (_variant) do {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["backpack", "cgqc_pack_mk1_kitbag_black"] call CGQC_fnc_switchStuff;
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
         _target addItemToBackpack "ACE_UAVBattery";
         _target addItemToBackpack "ACE_UAVBattery";
 		_target addItemToBackpack "rev_darter_item";
@@ -69,19 +65,15 @@ switch (_variant) do {
         ["vest", "cgqc_vest_swat_officer"] call CGQC_fnc_switchStuff;
         _hat = "cgqc_helmet_swatCap";
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
-        for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
+        //_target addItemToUniform "ACRE_PRC152";
         LOG("[swatTL] done");
 	};
     case "hq": {
         ["vest", "cgqc_vest_swat_officer"] call CGQC_fnc_switchStuff;
         _hat = "cgqc_helmet_swatOfficerCap";
         ["2023_command", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
-        _target addItemToUniform "ACRE_PRC152";
-        _target addItemToUniform "ACRE_PRC152";
-        for "_i" from 1 to 4 do {player addItemToBackpack "tsp_popperCharge_auto_mag"};
-        for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_m7a3_cs"};
+        //_target addItemToUniform "ACRE_PRC152";
+        //_target addItemToUniform "ACRE_PRC152";
 		_target addItemToBackpack "sps_black_hornet_01_Static_F";
         LOG("[swatHQ] done");
 	};
@@ -102,3 +94,5 @@ _target addItemToBackpack "ACE_salineIV_500";
 ["hat", _hat] call CGQC_fnc_switchStuff;
 // === Primary ==========================================================================================================
 [_gunVariant, _mags] spawn CGQC_fnc_switchPrimary;
+
+LOG("[swat_variants] done");

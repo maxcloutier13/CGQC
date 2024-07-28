@@ -23,12 +23,13 @@ cgqc_removeAll_done = false;
     if (_chestPack isNotEqualTo "") then {
         [player] call bocr_main_fnc_removeChestpack;
     };
+    /*
     // Remove secondary weapon
     if (!(isNil {player getVariable "WBK_SecondWeapon"})) exitWith {
         player spawn WBK_CreateSwitchBetweenWeapons;
         sleep 0.1;
         player removeWeapon primaryWeapon player;
-    };
+    };*/
     cgqc_removeAll_done = true;
 };
 

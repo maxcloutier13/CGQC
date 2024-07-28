@@ -91,9 +91,9 @@ if (_nvg isNotEqualTo "") then {
 	// === NVG's
 	[] call CGQC_fnc_isDaytime;
 	if (cgqc_mission_daytime || _forceDay) then {
-		player addItemToBackpack _nvg;
-		LOG("[getLinkedItems] - Daytime. Nvg's in backpack");
-		hint "Daytime. Nvg's in backpack";
+		player addItemToUniform _nvg;
+		LOG("[getLinkedItems] - Daytime. Nvg's in uniform");
+		hint "Daytime. Nvg's in uniform";
 	}else{
 		//Night mission
 		player linkItem _nvg;

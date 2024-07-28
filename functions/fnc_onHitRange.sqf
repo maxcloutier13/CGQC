@@ -3,7 +3,7 @@ params ["_event", ["_group", []]];
 //params ["_target", "_shooter", "_bullet", "_ammo","_position", "_velocity"];
 private ["_target", "_shooter", "_bullet", "_ammo", "_position", "_vectorToTarget", "_velocity", "_distance", "_targetDir", "_impactDeviation", "_accuracy", "_score", "_targetScore"];
 //projectile version - params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect", "_instigator"];
-LOG("[onHitRange]] started");
+LOG("[onHitRange] started");
 
 _target = _event select 0;
 _shooter = _event select 1;
@@ -11,7 +11,7 @@ _bullet = _event select 2;
 _position = _event select 3;
 _velocity = _event select 4;
 _ammo = _event select 6;
-LOG_6("Target:%1/Shooter:%2/Bullet:%3/Position:%4/Vel:%5/Ammo:%6", _target, _shooter, _bullet, _position, _velocity, _ammo);
+LOG_6("[onHitRange] Target:%1/Shooter:%2/Bullet:%3/Position:%4/Vel:%5/Ammo:%6", _target, _shooter, _bullet, _position, _velocity, _ammo);
 
 _currentGun = currentWeapon player;
 _currentMag =  currentMagazine player;

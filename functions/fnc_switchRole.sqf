@@ -31,6 +31,7 @@ if !(_type isEqualTo "Unknown") then {
         ["transmit"] spawn CGQC_fnc_bluforceTracker;
         cgqc_player_role = "Training";
     } else {
+        LOG("[switchRole] Prepping player for switch");
         // Prep player for switch
         [player] call CGQC_fnc_loadoutPrep;
     };
@@ -38,24 +39,34 @@ if !(_type isEqualTo "Unknown") then {
 
     // Switch according to role
     // Vanilla
+    LOG("[switchRole] Vanilla roles");
     switch (_type) do {
         #include "\cgqc\loadouts\vanilla\roles.hpp"
     };
     // 2023
     if (cgqc_player_has2023) then {
+        LOG("[switchRole] 2023/pmct roles");
         switch (_type) do {
             #include "\cgqc\loadouts\2023\roles.hpp"
-            #include "\cgqc\loadouts\swat\roles.hpp"
             #include "\cgqc\loadouts\pmct\roles.hpp"
+        };
+    };
+    if (cgqc_player_hasSWAT) then {
+        LOG("[switchRole] swat roles");
+        switch (_type) do {
+            #include "\cgqc\loadouts\swat\roles.hpp"
         };
     };
     // Unsung
     if (cgqc_player_hasUnsung) then {
         switch (_type) do {
+            LOG("[switchRole] unsung roles");
             #include "\cgqc\loadouts\unsung\roles.hpp"
         };
     };
 
+
+    LOG("[switchRole] Save role for further use");
     //Save role for further use
     player setVariable["cgqc_player_role", cgqc_player_role, true];
     player setVariable["cgqc_player_role_optic", cgqc_player_role_optic, true];
@@ -69,6 +80,8 @@ if !(_type isEqualTo "Unknown") then {
 
         // Save a snapshot
     if (_saveSnapshot) then {
+        LOG("[switchRole] Saving snapshot");
+
         [player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
     };
 

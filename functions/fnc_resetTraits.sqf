@@ -14,7 +14,9 @@ player setUnitTrait ["explosiveSpecialist", false];
 player setUnitTrait ["audibleCoef", 1];
 player setUnitTrait ["camouflageCoef", 1];
 player setUnitTrait ["loadCoef", 1];
-
+cgqc_player_trait_audibleCoef  = player getUnitTrait "audibleCoef";
+cgqc_player_trait_camoCoef  = player getUnitTrait "camouflageCoef";
+cgqc_player_trait_loadCoef  = player getUnitTrait "loadCoef";
 // Remove CGQC perks
 cgqc_perks_basic = true;
 

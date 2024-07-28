@@ -47,15 +47,16 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_sp
 _action = [ "menu_mk2_inf_saboteur", "Saboteur", "", {["2023_eng_saboteur"] spawn CGQC_fnc_switchRole}, {player getVariable 'cgqc_player_rank' > 2 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec", "menu_mk2_inf_eng"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// Autorifleman
-_action = [ "menu_mk2_inf_auto", "AutoRifleman (m27 - 5.56)", "", {["2023_autorifle"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+// MG (Light)
+_action = [ "menu_mk2_inf_LMG", "LMG (mk46 - 5.56)", "", {["2023_lmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
-// MG (Light)
-_action = [ "menu_mk2_inf_LMG", "Light machinegun (mk46 - 5.56)", "", {["2023_lmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Autorifleman
+_action = [ "menu_mk2_inf_auto", "AutoRifleman (m27 - 5.56)", "", {["2023_autorifle"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec", "menu_mk2_inf_LMG"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
 //  MG (Heavy)
-_action = [ "menu_mk2_inf_HMG", "Heavy machinegun (mk48 - 7.62)", "", {["2023_hmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_inf_HMG", "HMG (mk48 - 7.62)", "", {["2023_hmg"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec", "menu_mk2_inf_LMG"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 // LWMMG
@@ -70,6 +71,25 @@ _action = [ "menu_mk2_inf_jav", "H-AT (Javelin)", "", {["2023_at_javelin"] spawn
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_spec", "menu_mk2_inf_maaws"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 
 
+// Mortar ------------------------------------------------------------------------------------------------------------
+_action = [ "menu_mk2_mortar", "Mortar", "", {""}, {player getVariable 'cgqc_player_rank' > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+// Light mortar (60mm)
+_action = [ "menu_mk2_inf_mortar60", "Light Mortar (60mm)", "", {["mortar_portable"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_mortar"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Mk6 mortar (82mm)
+_action = [ "menu_mk2_inf_mortar82", "Mk6 Mortar (Tube)", "", {["mortar_mk6"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_mortar"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_inf_mortar821", "Mk6 Mortar (Plate)", "", {["mortar_mk6_plate"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_mortar"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Operator (needs an external mortar)
+_action = [ "menu_mk2_inf_mortarOp", "Mortar Operator", "", {["mortar_operator"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_mortar"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_inf_mortarOp1", "Mortar Operator + Mk6 Crate", "", {["mortar_operator_crate"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_mortar"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+
 // Recon ------------------------------------------------------------------------------------------------------------
 _action = [ "menu_mk2_recon", "Recon", "\cgqc\textures\cgqc_ace_bino.paa", {""}, {player getVariable 'cgqc_player_rank' > 3 || !cgqc_mk2_arsenal_locked || cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2"], _action ] call ace_interact_menu_fnc_addActionToObject;
@@ -78,7 +98,7 @@ _action = [ "menu_mk2_inf_snipe", "Sniper m200", "", {["2023_sniper"] spawn CGQC
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Sniper m14 ebr
 _action = [ "menu_mk2_inf_snipe_ebr", "Sniper EBR", "", {["2023_sniper_ebr"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
-_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon", "menu_mk2_inf_snipe_ebr"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon", "menu_mk2_inf_snipe"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Spotter
 _action = [ "menu_mk2_inf_spotter", "Spotter", "", {["2023_spotter"] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_recon"], _action ] call ace_interact_menu_fnc_addActionToObject;

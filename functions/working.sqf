@@ -1,122 +1,70 @@
-
-
-
-
-player addMPEventHandler ["MPKilled", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	if (local _unit) then {
-	    _unit setVariable["Saved_second", _unit getVariable "WBK_SecondWeapon" select 1];
-	};
-}];
-
-
-player addMPEventHandler ["MPRespawn", {
- params ["_unit", "_corpse"];
-    if (local _unit) then {
-        [] spawn {
-            _second = player getVariable["Saved_second",[]];
-            if (count _second > 0) then {
-                player spawn WBK_CreateWeaponSecond;
-                sleep 1;
-                player addWeapon (_second select 0);
-                _second deleteAt 0;
-                {
-                    if (typeName _x isEqualTo ARRAY) then {
-                        player addPrimaryWeaponItem _x select 0;
-                    }else{
-                        player addPrimaryWeaponItem _x;
-                    };
-                } forEach _second;
-                 sleep 1;
-                player spawn WBK_CreateSwitchBetweenWeapons;
-            };
-        };
-    };
-}];
-
-
-sleep 2;
-_unit = player;
-
-[_unit] spawn {
-params ["_unit"];
-_second = player getVariable["Saved_second",[]];
-   if (count _second > 0) then {
-   _unit spawn WBK_CreateWeaponSecond;
-	sleep 1;
-	_unit addWeapon (_second select 0);
-   _second deleteAt 0;
-   {
-	if (typeName _x isEqualTo "ARRAY") then {
-	 _unit addPrimaryWeaponItem (_x select 0);
-	}else{
-	 _unit addPrimaryWeaponItem _x;
-	};
-   } forEach _second;
-   sleep 1;
-   _unit spawn WBK_CreateSwitchBetweenWeapons;
-  };
+tsp_fnc_breach_lock = {  //-- Lock random doors in radius
+ params [["_pos", [0,0,0]], ["_radius", 999999], ["_houseChance", tsp_cba_breach_lock_house], ["_doorChance", tsp_cba_breach_lock_door], ["_lock", 1]];
+ {  //-- For all buildings in radius  || (_x in tsp_cba_breach_lock_blacklist)
+  if (random 1 >= _houseChance || _x getVariable ["breach_blacklist", false] || ((typeOf _x) in tsp_cba_breach_lock_blacklist)) then {continue};  //--  Skip
+  for "_i" from 0 to (count (configfile >> "CfgVehicles" >> typeOf _x >> "UserActions")) do {if (random 1 <= _doorChance) then {_x setVariable [format ["bis_disabled_Door_%1", _i], _lock, true]}};
+ } forEach (nearestTerrainObjects [_pos, ["BUILDING", "HOUSE", "CHURCH", "CHAPEL", "BUNKER", "FORTRESS", "VIEW-TOWER", "LIGHTHOUSE", "FUELSTATION", "HOSPITAL", "TOURISM"], _radius]);
 };
 
 
 
+[getPos player, 100, 100, 50, 1] call tsp_fnc_breach_lock;
 
 
 
 
 
 
+this addEventHandler ["HitPart", {
+    params ["_event"];
 
+    _shooter = _event select 1;
+    _pos = _event select 3;
 
-player addMPEventHandler ["MPKilled", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	_uav = getConnectedUAV player;
-	if (_uav isNotEqualTo objNull) then {
-		_type = typeOf _uav;
-		deleteVehicle _uav;
-		cgqc_player_uav = _type;
-	};
-}];
+    _mkr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+    _rgb = [0,0,0,1];
+    _lastDigit = (count tgt_ary_2) % 10;
+    _caseIndex = (_lastDigit % 5) + 1;
+    switch (_caseIndex) do {
+        case 1: {_rgb = [255,0,0,1]};
+        case 2: {_rgb = [255,255,0,1]};
+        case 3: {_rgb = [0,255,0,1]};
+        case 4: {_rgb = [0,0,255,1]};
+        case 5: {_rgb = [255,255,255,1]};
+    };
 
+    _texture = _rgb call BIS_fnc_colorRGBAtoTexture;
+    [_mkr, [0, _texture]] remoteExec ["setObjectTexture", 0];
+    _mkr setObjectScale 0.2;
+    _mkr setPosASL _pos;
 
-player addMPEventHandler ["MPRespawn", {
- params ["_unit", "_corpse"];
-    if !(isNil "cgqc_player_uav") then {
-        _uav = "";
-        switch (cgqc_player_uav) do {
-            case "sps_black_hornet_01_F": {_uav = "sps_black_hornet_01_Static_F";};
-            case "Rev_darter_b": {_uav = "Rev_darter_item";};
-            case "Rev_pelican_b": {_uav = "Rev_pelican_item";};
-            case "Rev_demine_b": {_uav = "Rev_demine_item";};
-        };
-        if (_uav isNotEqualTo "") then {
-            player addItemToBackpack _uav;
-        };
-	};
-}];
-
-
-
-
-
-
-player addEventHandler ["VisionModeChanged", {
-	params ["_person", "_visionMode", "_TIindex", "_visionModePrev", "_TIindexPrev", "_vehicle", "_turret"];
-	if !(alive player) exitWith {};
-	if (_vehicle isEqualTo (getConnectedUAV player)) then {
-		cgqc_player_uav = _vehicle;
-	};
-}];
-
-player addMPEventHandler ["MPRespawn", {
-    params ["_unit", "_corpse"];
-    [] spawn {
+    tgt_ary_2 = tgt_ary_2+[_mkr];
+    tgt_hi_2 = _this select 0 select 3;
+    _spr = createSimpleObject ["Sign_Sphere10cm_F", [0,0,0], false];
+    [_spr, [0, _texture]] remoteExec ["setObjectTexture", 0];
+    _spr setPosASL tgt_hi_2;
+    _spr setObjectScale 0.2;
+    [_spr] spawn {
+        params ["_spr"];
         sleep 2;
-        _uav = cgqc_player_uav;
-        if (_uav isNotEqualTo objNull) then {
-            deleteVehicleCrew _uav;
-            createVehicleCrew _uav;
-            _unit connectTerminalToUAV _uav;
-        };
+        deleteVehicle _spr;
+    };
+    if (local _shooter) then {
+        [_this select 0, tgt_ary_2] spawn CGQC_fnc_onHitRange;
+    };
+}];
+
+this addEventHandler ["HitPart", {
+    tgt_hi_1 = _this select 0 select 3;
+    _shooter = _event select 1;
+    [] spawn {
+        _spr = "Sign_Sphere10cm_F" createVehicle [0,0,0];
+        _spr setPosASL tgt_hi_1;
+        _spr setObjectScale 0.5;
+        sleep 3;
+        deleteVehicle _spr;
+    };
+    if (local _shooter) then {
+        [_this select 0] spawn CGQC_fnc_onHitRange;
     };
 }];
