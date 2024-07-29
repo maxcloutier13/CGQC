@@ -153,9 +153,9 @@ cgqc_mk2_arsenal_rank3 = [
     // Breaching -----------------------------------
     "tsp_lockpick",
     "tsp_frameCharge_mag",
-    "tsp_popperCharge_mag",
+    "tsp_breach_popper_mag",
     "tsp_popperCharge_auto_mag",
-    "tsp_stickCharge_mag",
+    "tsp_breach_stick_mag",
     "tsp_stickCharge_auto_mag",
 
     // More ammo variants =-------------------------
