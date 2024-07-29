@@ -33,9 +33,9 @@ _target addItemToVest "rhs_mag_m67";
 _target addItemToVest "rhs_mag_m67";
 _target addItemToVest "MiniGrenade";
 _target addItemToVest "MiniGrenade";
-
+_target addItemToVest "ACE_EntrenchingTool";
 
 // === Backpack Items ====================================================================================================
-_target addItemToBackpack "ACE_EntrenchingTool";
+
 
 LOG(" ldt_2023_basic done");
