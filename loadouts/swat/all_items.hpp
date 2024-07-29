@@ -150,9 +150,9 @@ cgqc_swat_arsenal_all = [
     "rhs_mag_m7a3_cs",
     "SmokeShellBlue",
     // Explosives ----------------------------------
-    "tsp_popperCharge_mag",
+    "tsp_breach_popper_mag",
     "tsp_popperCharge_auto_mag",
-    "tsp_stickCharge_mag",
+    "tsp_breach_stick_mag",
     "tsp_stickCharge_auto_mag",
     "tsp_frameCharge_mag",
 

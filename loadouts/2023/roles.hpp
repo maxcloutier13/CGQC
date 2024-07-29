@@ -90,6 +90,15 @@ case "2023_eng_saboteur":{
 	[player, "saboteur", "carbine"] call CGQC_ldt_2023_eng;
 	["eng", true, true] spawn CGQC_fnc_switchPerks;
 	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Saboteur";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
+	cgqc_player_role_optic = 2;
+};
+
+case "2023_eng_demo":{
+	[player, "demolition", "carbine"] call CGQC_ldt_2023_eng;
+	["eng", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
 	cgqc_player_role = "Demolition Specialist";
 	player setVariable ["cgqc_player_roleType", "Engineer", true];
 	cgqc_player_role_optic = 2;
