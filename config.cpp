@@ -49,6 +49,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Men (2023)";
 	};
+	class EdSubcat_CGQC_mk1_dive
+	{
+		displayName = "Divers (2023)";
+	};
 	class EdSubcat_CGQC_pmc_t
 	{
 		displayName = "Men (PMC-T)";

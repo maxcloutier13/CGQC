@@ -32,8 +32,8 @@ switch (_variant) do {
         ["vest", "cgqc_vest_swat_X"] call CGQC_fnc_switchStuff;
         ["2023_basic", "cgqc_item_rangefinder", "NVGoggles_mas_can_hv", true, true] call CGQC_fnc_getLinkedItems;
         _target addItemToBackpack "ACE_wirecutter";
-        for "_i" from 1 to 10 do {_target addItemToVest "tsp_popperCharge_mag"};
-        for "_i" from 1 to 10 do {_target addItemToVest "tsp_stickCharge_mag"};
+        for "_i" from 1 to 10 do {_target addItemToVest "tsp_breach_popper_mag"};
+        for "_i" from 1 to 10 do {_target addItemToVest "tsp_breach_stick_mag"};
         for "_i" from 1 to 5 do {_target addItemToVest "tsp_frameCharge_mag"};
         _mags = 8;
         LOG("[swatBreacher] done");
