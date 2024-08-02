@@ -589,7 +589,7 @@ Examples
 //Intro Stuff
 _section_name = "Mission Options";
 
-["cgqc_config_droneRestriction", "LIST", ["Optiques", "Types d'optiques disponibles dans le quick switcher"],
+["cgqc_config_droneRestriction", "LIST", ["Drones permis", "Types d'optiques disponibles dans le quick switcher"],
 	[_menu_name, "Drone Restriction"], [[0, 1, 2, 3], ["No Drones", "BlackHornet only", "+Darter", "Unrestricted"], 2], {publicVariable "cgqc_config_droneRestriction"}] call CBA_fnc_addSetting;
 
 
