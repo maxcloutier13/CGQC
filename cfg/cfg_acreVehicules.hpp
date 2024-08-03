@@ -2,6 +2,26 @@
 // All the vehicle acre bullshit
 class VTOL_01_base_F;
 class Boat_F;
+class StaticWeapon;
+class ACE_SelfActions;
+class StaticMortar;
+class Mortar_01_base_F: StaticMortar {
+    class ACE_SelfActions: ACE_SelfActions	{
+        class CGQC_ACE_CSW_FireMode_Lever		{
+            displayName = "Switch to Lever Fire";
+            statement = "_target setVariable ['CGQC_mortar_dropFireMode', false, true]";
+            condition = "_target getVariable ['CGQC_mortar_dropFireMode', false] && gunner _target == player";
+        };
+        class CGQC_ACE_CSW_FireMode_Drop			{
+            displayName = "Switch to Drop Fire";
+            statement = "_target setVariable ['CGQC_mortar_dropFireMode', true, true]";
+            condition = "!(_target getVariable ['CGQC_mortar_dropFireMode', false]) && gunner _target == player";
+        };
+    };
+    class EventHandlers        {
+        reloaded = "[_this] spawn CGQC_fnc_mortar";
+    };
+};
 
 #define MACRO_CGQC_SPEEDLIMITER \
     class cgqc_ace_vic_limiter { \

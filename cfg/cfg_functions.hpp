@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
-
+        class mortar {
+            file = "\cgqc\functions\fnc_mortar.sqf";
+            description = "Custom mortar stuff";
+        };
         class getDrone {
             file = "\cgqc\functions\fnc_getDrone.sqf";
             description = "Handles drone restrictions";
