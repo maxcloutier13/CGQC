@@ -24,22 +24,6 @@ _text = (
 );
 player createDiaryRecord ["MapOption", ["Centering", _text]];
 
-_text = (
-	"-- Simple Map Markings --"
-	+ "<br/><execute expression='[10] spawn CGQC_fnc_mapTools;'>HQ</execute> and then click on desired positions"
-	+ "<br/><execute expression='[11] spawn CGQC_fnc_mapTools;'>Objective</execute>"
-	+ "<br/><execute expression='[12] spawn CGQC_fnc_mapTools;'>Initial Rally Point</execute> | <execute expression='[121] spawn CGQC_fnc_mapTools;'>Waypoints</execute> | <execute expression='[13] spawn CGQC_fnc_mapTools;'>Rally points</execute> | <execute expression='[14] spawn CGQC_fnc_mapTools;'>Objective Rally Point</execute>"
-	+ "<br/><execute expression='[15] spawn CGQC_fnc_mapTools;'>Near-side Rally Point</execute> | <execute expression='[16] spawn CGQC_fnc_mapTools;'>Far-side Rally Point</execute>"
-	+ "<br/><execute expression='[17] spawn CGQC_fnc_mapTools;'>Convoy Starting Point</execute> | <execute expression='[18] spawn CGQC_fnc_mapTools;'>Convoy Rally Point</execute> | <execute expression='[19] spawn CGQC_fnc_mapTools;'>Dismount Point</execute>"
-	+ "<br/><execute expression='[20] spawn CGQC_fnc_mapTools;'>Landing Zone</execute>"
-	+ "<br/><execute expression='[21] spawn CGQC_fnc_mapTools;'>Route</execute> | <execute expression='[23] spawn CGQC_fnc_mapTools;'>City</execute> | <execute expression='[24] spawn CGQC_fnc_mapTools;'>House</execute>"
-	+ "<br/><execute expression='[22] spawn CGQC_fnc_mapTools;'>Supplies</execute>"
-	+ "<br/><br/>-- Advanced Map Tools --"
-	+ "<br/>Click <execute expression='[0] spawn CGQC_fnc_mapTools;'>Mortar Tool</execute> and then click on target"
-	+ "<br/>Click <execute expression='[1] spawn CGQC_fnc_mapTools;'>Route Planner</execute> and then click on starting point"
-);
-player createDiaryRecord ["MapOption", ["Advanced Functions", _text]];
-
 // Radio References -------------------------------------------------------------------------------
 _343_1 = "Spartan-1";
 _343_2 = "Spartan-2";
@@ -171,6 +155,30 @@ _mis = player createDiaryRecord ["Diary", ["Training Map","
 	- training_2023.takistan<br/>
 	- training_2023.Tanoa<br/></font>
 "]];*/
+
+player createDiarySubject ["MapTools","Map Tools"];
+_text = (
+	"-- Simple Map Markings --"
+	+ "<br/><execute expression='[10] spawn CGQC_fnc_mapTools;'>HQ</execute> and then click on desired positions | <execute expression='[11] spawn CGQC_fnc_mapTools;'>Objective</execute>"
+	+ "<br/><br/>-- Positions --"
+	+ "<br/><execute expression='[20] spawn CGQC_fnc_mapTools;'>Landing Zone</execute> | <execute expression='[201] spawn CGQC_fnc_mapTools;'>Observation Point</execute>"
+	+ "<br/><execute expression='[203] spawn CGQC_fnc_mapTools;'>Support by Fire</execute> | <execute expression='[204] spawn CGQC_fnc_mapTools;'>Assault Position</execute>"
+	+ "<br/><execute expression='[22] spawn CGQC_fnc_mapTools;'>Supplies</execute>"
+	+ "<br/><br/>-- Routes --"
+	+ "<br/><execute expression='[202] spawn CGQC_fnc_mapTools;'>Phase Line</execute> | <execute expression='[2021] spawn CGQC_fnc_mapTools;'>Limit of Advance</execute>"
+	+ "<br/><execute expression='[12] spawn CGQC_fnc_mapTools;'>Initial Rally Point</execute> | <execute expression='[121] spawn CGQC_fnc_mapTools;'>Waypoints</execute> | <execute expression='[13] spawn CGQC_fnc_mapTools;'>Rally points</execute> | <execute expression='[14] spawn CGQC_fnc_mapTools;'>Objective Rally Point</execute>"
+	+ "<br/><execute expression='[15] spawn CGQC_fnc_mapTools;'>Near-side Rally Point</execute> | <execute expression='[16] spawn CGQC_fnc_mapTools;'>Far-side Rally Point</execute>"
+	+ "<br/><execute expression='[17] spawn CGQC_fnc_mapTools;'>Convoy Starting Point</execute> | <execute expression='[18] spawn CGQC_fnc_mapTools;'>Convoy Rally Point</execute> | <execute expression='[19] spawn CGQC_fnc_mapTools;'>Dismount Point</execute>"
+	+ "<br/><execute expression='[21] spawn CGQC_fnc_mapTools;'>Route</execute> | <execute expression='[23] spawn CGQC_fnc_mapTools;'>City</execute> | <execute expression='[24] spawn CGQC_fnc_mapTools;'>House</execute>"
+	+ "<br/><br/>-- Ennemy Positions --"
+	+ "<br/><execute expression='[30] spawn CGQC_fnc_mapTools;'>Infantry</execute> | <execute expression='[301] spawn CGQC_fnc_mapTools;'>Unknown</execute> | <execute expression='[302] spawn CGQC_fnc_mapTools;'>Static Weapon</execute> | <execute expression='[3021] spawn CGQC_fnc_mapTools;'>Unarmed Vehicle</execute>"
+	+ "<br/><execute expression='[303] spawn CGQC_fnc_mapTools;'>IFV/APC</execute> | <execute expression='[304] spawn CGQC_fnc_mapTools;'>Tank</execute> | <execute expression='[305] spawn CGQC_fnc_mapTools;'>Helicopter</execute> | <execute expression='[306] spawn CGQC_fnc_mapTools;'>Plane</execute>"
+	+ "<br/><execute expression='[307] spawn CGQC_fnc_mapTools;'>Bunker</execute> | <execute expression='[3071] spawn CGQC_fnc_mapTools;'>Roadblock</execute> | <execute expression='[308] spawn CGQC_fnc_mapTools;'>HQ</execute>"
+	+ "<br/><br/>-- Advanced Map Tools --"
+	+ "<br/>Click <execute expression='[0] spawn CGQC_fnc_mapTools;'>Mortar Tool</execute> and then click on target"
+	+ "<br/>Click <execute expression='[1] spawn CGQC_fnc_mapTools;'>Precise Route Planner</execute> and then click on starting point"
+);
+player createDiaryRecord ["MapTools", ["Advanced Functions", _text]];
 
 LOG("[loadDiary] done");
 true

@@ -159,27 +159,7 @@ switch (_type) do {
         ["cgqc_maptools_hq", "HQ", "HQ", "mil_flag", "colorBLUFOR", false, false, true] call cgqc_int_createMarker;
     };
     case 11: { //Objective
-        ["cgqc_maptools_objective", "Objective", "Obj.", "mil_objective", "colorOPFOR", false, true, false, cgqc_location_currentNames select 0] call cgqc_int_createMarker;
-
-        /*
-        cgqc_maptools_clickEvent = addMissionEventHandler ["MapSingleClick", {
-            params ["_units", "_pos", "_alt", "_shift"];
-             if (_shift && !_alt) then {
-                // Shift: End the route
-                removeMissionEventHandler ["MapSingleClick", cgqc_maptools_clickEvent];
-                [["Maptool OFF", 1.5], false] call CBA_fnc_notify;
-            else {
-                _objCount = missionNamespace getVariable "cgqc_maptools_objective";
-                _objCount = _objCount + 1;
-                _name = format ["_USER_DEFINED_routeMrk_%1_obj_%2", getPlayerID player, _objCount];
-                _marker = createMarker [_name, _pos, 1, player];
-                _name setMarkerType "hd_flag";
-                _name setMarkerColor "ColorBlufor";
-                _name setMarkerText format["Obj.%1", _objCount];
-                missionNamespace setVariable ["cgqc_maptools_objective", _objCount, true];
-                [["Map Tool", 1.5], ["Objective marked"], true] call CBA_fnc_notify;
-            };
-        }];*/
+        ["cgqc_maptools_obj", "Objective", "Obj.", "mil_objective", "colorOPFOR", false, true, false, cgqc_location_currentNames select 0] call cgqc_int_createMarker;
     };
     case 12: { //IRP
         ["cgqc_maptools_irp", "Initial RallyPoint", "IRP", "mil_start", "colorBLACK", false, false, true] call cgqc_int_createMarker;
@@ -211,17 +191,65 @@ switch (_type) do {
     case 20: { //LZ
         ["cgqc_maptools_lz", "Landing Zone", "LZ.", "mil_pickup", "colorIndependent", false, true, false, cgqc_location_currentNames select 1] call cgqc_int_createMarker;
     };
+    case 201: { //OP
+        ["cgqc_maptools_op", "Observation Point", "OP.", "loc_binoculars", "colorBLACK", true, false, false] call cgqc_int_createMarker;
+    };
+    case 202: { //PL
+        ["cgqc_maptools_pl", "Phase Line", "PL.", "mil_box", "colorBLACK", false, true, false, cgqc_location_currentNames select 2] call cgqc_int_createMarker;
+    };
+    case 2021: { //Limit of advance
+        ["cgqc_maptools_loa", "Limit of Advance", "LOA", "mil_dot", "colorBLACK", false, false, true] call cgqc_int_createMarker;
+    };
+    case 203: { //SbF
+        ["cgqc_maptools_sbf", "Support by Fire", "SBF", "mil_ambush", "colorBLACK", false, false, false] call cgqc_int_createMarker;
+    };
+    case 204: { //AP
+        ["cgqc_maptools_ap", "Assault Position", "AP", "loc_Attack", "colorBLACK", false, false, false] call cgqc_int_createMarker;
+    };
     case 21: { //Route
-        ["cgqc_maptools_route", "Route", "Rte.", "mil_box", "ColorOrange", false, true, false, cgqc_location_currentNames select 2] call cgqc_int_createMarker;
+        ["cgqc_maptools_rte", "Route", "Rte.", "mil_box", "ColorOrange", false, true, false, cgqc_location_currentNames select 3] call cgqc_int_createMarker;
     };
     case 22: { //Supply point
-        ["cgqc_maptools_supply", "Supplies", "Supplies", "loc_rearm", "colorBLUFOR", false, false, true] call cgqc_int_createMarker;
+        ["cgqc_maptools_sply", "Supplies", "Supplies", "loc_rearm", "colorBLUFOR", false, false, true] call cgqc_int_createMarker;
     };
     case 23: { //City
-        ["cgqc_maptools_city", "City", "", "mil_triangle", "colorBLACK", false, true, false, cgqc_location_currentCities] call cgqc_int_createMarker;
+        ["cgqc_maptools_cty", "City", "", "mil_triangle", "colorBLACK", false, true, false, cgqc_location_currentCities] call cgqc_int_createMarker;
     };
     case 24: { //House
         ["cgqc_maptools_house", "House", "", "mil_dot", "colorBLACK", true, false, false] call cgqc_int_createMarker;
+    };
+    case 30: { // PAX
+        ["cgqc_maptools_inf", "Infantry", "PAX", "o_inf", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 301: { // Unknown
+        ["cgqc_maptools_unk", "Unknown", "Unknown", "o_unknown", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 302: { // Static
+        ["cgqc_maptools_stat", "Static", "Static", "o_art", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 3021: { // Unarmed
+        ["cgqc_maptools_vic", "Unarmed Vehicle", "Vic", "o_maint", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 303: { // IFV
+        ["cgqc_maptools_ifv", "IFV", "IFV", "o_mech_inf", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 304: { // Tank
+        ["cgqc_maptools_tank", "Tank", "Tank", "o_armor", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 305: { // Heli
+        ["cgqc_maptools_hel", "Helicopter", "Heli", "o_air", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 306: { // Plane
+        ["cgqc_maptools_pln", "Plane", "Plane", "o_plane", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 307: { // Bunker
+        ["cgqc_maptools_bkr", "Bunker", "Bunker", "o_installation", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 3071: { // Bunker
+        ["cgqc_maptools_roadblk", "Roadblock", "Roadblock", "o_support", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
+    };
+    case 308: { // HQ
+        ["cgqc_maptools_base", "Ennemy HQ", "HQ", "o_hq", "colorOPFOR", false, false, false] call cgqc_int_createMarker;
     };
 };
 

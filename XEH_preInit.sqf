@@ -91,7 +91,7 @@ cgqc_player_route = [];
 missionNamespace setVariable ["cgqc_maptools_mortar", 0, true];
 // Map tools - Basic
 missionNamespace setVariable ["cgqc_maptools_hq", 0, true];
-missionNamespace setVariable ["cgqc_maptools_objective", 0, true];
+missionNamespace setVariable ["cgqc_maptools_obj", 0, true];
 missionNamespace setVariable ["cgqc_maptools_irp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_wp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_rp", 0, true];
@@ -102,10 +102,27 @@ missionNamespace setVariable ["cgqc_maptools_csp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_crp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_dis", 0, true];
 missionNamespace setVariable ["cgqc_maptools_lz", 0, true];
-missionNamespace setVariable ["cgqc_maptools_route", 0, true];
-missionNamespace setVariable ["cgqc_maptools_supply", 0, true];
-missionNamespace setVariable ["cgqc_maptools_city", 0, true];
+missionNamespace setVariable ["cgqc_maptools_rte", 0, true];
+missionNamespace setVariable ["cgqc_maptools_sply", 0, true];
+missionNamespace setVariable ["cgqc_maptools_cty", 0, true];
 missionNamespace setVariable ["cgqc_maptools_house", 0, true];
+missionNamespace setVariable ["cgqc_maptools_op", 0, true];
+missionNamespace setVariable ["cgqc_maptools_pl", 0, true];
+missionNamespace setVariable ["cgqc_maptools_loa", 0, true];
+missionNamespace setVariable ["cgqc_maptools_sbf", 0, true];
+missionNamespace setVariable ["cgqc_maptools_ap", 0, true];
+missionNamespace setVariable ["cgqc_maptools_inf", 0, true];
+missionNamespace setVariable ["cgqc_maptools_unk", 0, true];
+missionNamespace setVariable ["cgqc_maptools_stat", 0, true];
+missionNamespace setVariable ["cgqc_maptools_vic", 0, true];
+missionNamespace setVariable ["cgqc_maptools_ifv", 0, true];
+missionNamespace setVariable ["cgqc_maptools_tank", 0, true];
+missionNamespace setVariable ["cgqc_maptools_hel", 0, true];
+missionNamespace setVariable ["cgqc_maptools_pln", 0, true];
+missionNamespace setVariable ["cgqc_maptools_bkr", 0, true];
+missionNamespace setVariable ["cgqc_maptools_roadblk", 0, true];
+missionNamespace setVariable ["cgqc_maptools_base", 0, true];
+
 
 // Location names
 cgqc_maptools_running = false;
