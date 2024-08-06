@@ -165,6 +165,11 @@ if (_load) then {
         LOG("[checkLoadout] - Diver suit");
         _return = true;
     };
+
+    _checkCamo = player getVariable ["cgqc_var_startingCamo", ""];
+    if (_checkCamo isNotEqualTo "") then {
+        [_checkCamo] call CGQC_fnc_switchUniform;
+    };
 } else {
     LOG("[checkLoadout] - Unit switch is OFF Skipping");
     [] spawn {

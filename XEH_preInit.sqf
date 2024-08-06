@@ -73,7 +73,6 @@ cgqc_player_acre_setup = false;
 cgqc_player_radio_names = false;
 cgqc_roleSwitch_done = true;
 cgqc_camoSwitch_done = true;
-cgqc_player_backpack_backup = [];
 cgqc_removeAll_done = false;
 cgqc_bft_forceUpdate = false;
 cgqc_hud_hidden = false;
@@ -92,7 +91,7 @@ cgqc_player_route = [];
 missionNamespace setVariable ["cgqc_maptools_mortar", 0, true];
 // Map tools - Basic
 missionNamespace setVariable ["cgqc_maptools_hq", 0, true];
-missionNamespace setVariable ["cgqc_maptools_objective", 0, true];
+missionNamespace setVariable ["cgqc_maptools_obj", 0, true];
 missionNamespace setVariable ["cgqc_maptools_irp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_wp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_rp", 0, true];
@@ -103,10 +102,27 @@ missionNamespace setVariable ["cgqc_maptools_csp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_crp", 0, true];
 missionNamespace setVariable ["cgqc_maptools_dis", 0, true];
 missionNamespace setVariable ["cgqc_maptools_lz", 0, true];
-missionNamespace setVariable ["cgqc_maptools_route", 0, true];
-missionNamespace setVariable ["cgqc_maptools_supply", 0, true];
-missionNamespace setVariable ["cgqc_maptools_city", 0, true];
+missionNamespace setVariable ["cgqc_maptools_rte", 0, true];
+missionNamespace setVariable ["cgqc_maptools_sply", 0, true];
+missionNamespace setVariable ["cgqc_maptools_cty", 0, true];
 missionNamespace setVariable ["cgqc_maptools_house", 0, true];
+missionNamespace setVariable ["cgqc_maptools_op", 0, true];
+missionNamespace setVariable ["cgqc_maptools_pl", 0, true];
+missionNamespace setVariable ["cgqc_maptools_loa", 0, true];
+missionNamespace setVariable ["cgqc_maptools_sbf", 0, true];
+missionNamespace setVariable ["cgqc_maptools_ap", 0, true];
+missionNamespace setVariable ["cgqc_maptools_inf", 0, true];
+missionNamespace setVariable ["cgqc_maptools_unk", 0, true];
+missionNamespace setVariable ["cgqc_maptools_stat", 0, true];
+missionNamespace setVariable ["cgqc_maptools_vic", 0, true];
+missionNamespace setVariable ["cgqc_maptools_ifv", 0, true];
+missionNamespace setVariable ["cgqc_maptools_tank", 0, true];
+missionNamespace setVariable ["cgqc_maptools_hel", 0, true];
+missionNamespace setVariable ["cgqc_maptools_pln", 0, true];
+missionNamespace setVariable ["cgqc_maptools_bkr", 0, true];
+missionNamespace setVariable ["cgqc_maptools_roadblk", 0, true];
+missionNamespace setVariable ["cgqc_maptools_base", 0, true];
+
 
 // Location names
 cgqc_maptools_running = false;
@@ -250,7 +266,16 @@ cgqc_perks_chems = 10;
 cgqc_perks_panel = false;
 cgqc_perks_action_list = [];
 cgqc_reset_speaker = false;
-cgqc_backpack_stashed = false;
+cgqc_stash_pack = false;
+cgqc_stash_pack_backup = [];
+cgqc_stash_vest = false;
+cgqc_stash_vest_backup = [];
+cgqc_stash_head = false;
+cgqc_stash_head_backup = [];
+cgqc_stash_guns = false;
+cgqc_stash_guns_backup = [];
+cgqc_stash_launcher = false;
+cgqc_stash_launcher_backup = [];
 cgqc_backpack_dropped = false;
 cgqc_backpack_dropped_notif = false;
 cgqc_perks_tracking = 5;
@@ -589,7 +614,7 @@ Examples
 //Intro Stuff
 _section_name = "Mission Options";
 
-["cgqc_config_droneRestriction", "LIST", ["Optiques", "Types d'optiques disponibles dans le quick switcher"],
+["cgqc_config_droneRestriction", "LIST", ["Drones permis", "Types d'optiques disponibles dans le quick switcher"],
 	[_menu_name, "Drone Restriction"], [[0, 1, 2, 3], ["No Drones", "BlackHornet only", "+Darter", "Unrestricted"], 2], {publicVariable "cgqc_config_droneRestriction"}] call CBA_fnc_addSetting;
 
 

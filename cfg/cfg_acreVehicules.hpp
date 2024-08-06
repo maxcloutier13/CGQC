@@ -115,19 +115,89 @@ class Boat_F;
         statement = "_target setVariable ['show_marker', false]"; \
         runOnHover = "hint 'Stop the vic from transmitting its position'"; \
     }; \
-    class cgqc_ace_stashPack { \
-        displayName = "Stash backpack in vic"; \
-        condition = "!cgqc_backpack_stashed"; \
-        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
-        statement = "[backpack player, 'stash', _target] spawn CGQC_fnc_dropStuff"; \
-        runOnHover = "hint 'Stash your pack in this vic'"; \
+    class cgqc_ace_stash { \
+        displayName = "Stash stuff in Vic"; \
+        condition = "true"; \
+        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"; \
+        statement = ""; \
+        runOnHover = "hint 'Stash your stuff in this vic'"; \
+        class cgqc_ace_stashGuns { \
+            displayName = "Guns"; \
+            condition = "!cgqc_stash_guns"; \
+            icon = "\CGQC\textures\cgqc_ace_rifle.paa"; \
+            statement = "['guns', 'stash_guns', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Stash your primary/handgun in this vic'"; \
+        }; \
+        class cgqc_ace_stashLauncher { \
+            displayName = "Launcher"; \
+            condition = "!cgqc_stash_launcher"; \
+            icon = "\CGQC\textures\cgqc_ace_mortar.paa"; \
+            statement = "['launcher', 'stash_launcher', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Stash your launcher in this vic'"; \
+        }; \
+        class cgqc_ace_stashHead { \
+            displayName = "Helmet/Face"; \
+            condition = "!cgqc_stash_head"; \
+            icon = "\CGQC\textures\cgqc_ace_mask.paa"; \
+            statement = "['head', 'stash_head', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Stash your helmet/goggles in this vic'"; \
+        }; \
+        class cgqc_ace_stashVest { \
+            displayName = "Vest"; \
+            condition = "!cgqc_stash_vest"; \
+            icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa"; \
+            statement = "['vest', 'stash_vest', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Stash your vest in this vic'"; \
+        }; \
+        class cgqc_ace_stashPack { \
+            displayName = "Backpack"; \
+            condition = "!cgqc_stash_pack"; \
+            icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
+            statement = "['pack', 'stash_pack', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Stash your pack in this vic'"; \
+        }; \
     }; \
-    class cgqc_ace_grabPack { \
-        displayName = "Grab your pack"; \
-        condition = "cgqc_backpack_stashed"; \
-        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
-        statement = "[backpack player, 'unstash', _target] spawn CGQC_fnc_dropStuff"; \
-        runOnHover = "hint 'Grab your pack from this vic'"; \
+    class cgqc_ace_grabAll { \
+        displayName = "Grab/Swap All"; \
+        condition = "cgqc_stash_pack || cgqc_stash_vest || cgqc_stash_head || cgqc_stash_guns || cgqc_stash_launcher"; \
+        icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa"; \
+        statement = "['pack', 'grab_all', _target] spawn CGQC_fnc_dropStuff"; \
+        runOnHover = "hint 'Grab/Swap all equipment'"; \
+        class cgqc_ace_grabGuns { \
+            displayName = "Guns"; \
+            condition = "cgqc_stash_guns"; \
+            icon = "\CGQC\textures\cgqc_ace_rifle.paa"; \
+            statement = "['guns', 'unstash_guns', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Grab your guns from this vic'"; \
+        }; \
+        class cgqc_ace_grabLauncher { \
+            displayName = "Launcher"; \
+            condition = "cgqc_stash_launcher"; \
+            icon = "\CGQC\textures\cgqc_ace_mortar.paa"; \
+            statement = "['launcher', 'unstash_launcher', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Grab your launcher from this vic'"; \
+        }; \
+        class cgqc_ace_grabHead { \
+            displayName = "Helmet/face"; \
+            condition = "cgqc_stash_head"; \
+            icon = "\CGQC\textures\cgqc_ace_mask.paa"; \
+            statement = "['head', 'unstash_head', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Grab your helmet/goggles from this vic'"; \
+        }; \
+        class cgqc_ace_grabVest { \
+            displayName = "Vest"; \
+            condition = "cgqc_stash_vest"; \
+            icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa"; \
+            statement = "['vest', 'unstash_vest', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Grab your vest from this vic'"; \
+        }; \
+        class cgqc_ace_grabPack { \
+            displayName = "Pack"; \
+            condition = "cgqc_stash_pack"; \
+            icon = "a3\ui_f\data\igui\cfg\simpleTasks\types\backpack_ca.paa"; \
+            statement = "['pack', 'unstash_pack', _target] spawn CGQC_fnc_dropStuff"; \
+            runOnHover = "hint 'Grab your pack from this vic'"; \
+        }; \
     };
 
 #define MACRO_CGQC_MAINTENANCE \
@@ -152,6 +222,7 @@ class LandVehicle;
 class Car: LandVehicle {
     class ACE_SelfActions {
         MACRO_CGQC_SPEEDLIMITER
+        MACRO_CGQC_RENAME
     };
     class ACE_Actions {
 		class ACE_MainActions {
@@ -163,6 +234,7 @@ class Car: LandVehicle {
 class Tank: LandVehicle {
     class ACE_SelfActions {
         MACRO_CGQC_SPEEDLIMITER
+        MACRO_CGQC_RENAME
     };
     class ACE_Actions {
 		class ACE_MainActions {
@@ -174,6 +246,7 @@ class Tank: LandVehicle {
 class Motorcycle: LandVehicle {
     class ACE_SelfActions {
         MACRO_CGQC_SPEEDLIMITER
+        MACRO_CGQC_RENAME
     };
     class ACE_MainActions {
         MACRO_CGQC_RENAME
@@ -210,6 +283,7 @@ class Helicopter: Air {
             condition = "(_player getVariable['RS_RetentionLanyard', false])";
             statement = "[] call RS_Retention_fnc_Clip;";
         };
+        MACRO_CGQC_RENAME
     };
     class ACE_Actions {
 		class ACE_MainActions {
@@ -231,6 +305,9 @@ class Helicopter: Air {
 };
 
 class Plane: Air {
+    class ACE_SelfActions {
+        MACRO_CGQC_RENAME
+    };
     class ACE_Actions {
 		class ACE_MainActions {
             MACRO_CGQC_RENAME
@@ -239,9 +316,16 @@ class Plane: Air {
 	};
 };
 
- class Ship;
+class Ship;
 class Ship_F: Ship {
-    MACRO_CGQC_RENAME
+    class ACE_SelfActions {
+        MACRO_CGQC_RENAME
+    };
+    class ACE_Actions {
+		class ACE_MainActions {
+            MACRO_CGQC_RENAME
+        };
+    };
 };
 
 
