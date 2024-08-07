@@ -39,6 +39,34 @@ CGQC_int_createHolder = {
 _drop = true;
 _action = "";
 switch (_dropAction) do {
+    case "stash_all":{
+        //Stash all available items
+        LOG("[dropStuff] - Stash all");
+        // guns
+        if (primaryWeapon player isNotEqualTo "" || handgunWeapon player isNotEqualTo "") then {
+            ['guns', 'stash_guns', _target] call CGQC_fnc_dropStuff;
+        };
+        // launcher
+        if (secondaryWeapon player isNotEqualTo "" ) then {
+            ['launcher', 'stash_launcher', _target] call CGQC_fnc_dropStuff;
+        };
+        // head
+        if (goggles player isNotEqualTo "" || headgear player isNotEqualTo "") then {
+            ['head', 'stash_head', _target] call CGQC_fnc_dropStuff;
+        };
+        // uniform
+        if (uniform player isNotEqualTo "" ) then {
+            ['uniform', 'stash_uniform', _target] call CGQC_fnc_dropStuff;
+        };
+        // vest
+        if (vest player isNotEqualTo "" ) then {
+            ['vest', 'stash_vest', _target] call CGQC_fnc_dropStuff;
+        };
+        // pack
+        if (backpack player isNotEqualTo "" ) then {
+            ['pack', 'stash_pack', _target] call CGQC_fnc_dropStuff;
+        };
+    };
     case "grab_all":{
         //Grab and switch all available items
         LOG("[dropStuff] - Grab all");
@@ -67,6 +95,15 @@ switch (_dropAction) do {
                ['head', 'unstash_head', _target] call CGQC_fnc_dropStuff;
             } else {
                 ['head', 'unstash_head', _target, true] call CGQC_fnc_dropStuff;
+            };
+        };
+        // uniform
+        _uniform = _target getVariable format ["cgqc_vic_stashedUniform_%1", name player];
+        if !(isNil "_uniform") then {
+            if (uniform player isEqualTo _uniform) then {
+               ['uniform', 'unstash_uniform', _target] call CGQC_fnc_dropStuff;
+            } else {
+                ['uniform', 'unstash_uniform', _target, true] call CGQC_fnc_dropStuff;
             };
         };
         // vest
@@ -103,7 +140,6 @@ switch (_dropAction) do {
         cgqc_stash_guns_backup = _guns;
         player removeWeapon _primary_gun;
         player removeWeapon _handgun_gun;
-        cgqc_stash_guns = true;
         [["Guns are stashed", 1.5], true] call CBA_fnc_notify;
     };
     case "unstash_guns":{
@@ -117,7 +153,6 @@ switch (_dropAction) do {
         } else {
             [["Grabbed your guns", 1.5], true] call CBA_fnc_notify;
             cgqc_stash_guns_backup = nil;
-            cgqc_stash_guns = false;
             _target setVariable [format ["cgqc_vic_stashedGuns_%1", name player], nil];
         };
 
@@ -155,7 +190,6 @@ switch (_dropAction) do {
         _target setVariable [format ["cgqc_vic_stashedLauncher_%1", name player], _launcher];
         cgqc_stash_launcher_backup = _launcher;
         player removeWeapon _launcher_gun;
-        cgqc_stash_launcher = true;
         [["Launcher stashed", 1.5], true] call CBA_fnc_notify;
     };
     case "unstash_launcher":{
@@ -168,7 +202,6 @@ switch (_dropAction) do {
         } else {
             [["Grabbed your launcher", 1.5], true] call CBA_fnc_notify;
             cgqc_stash_launcher_backup = nil;
-            cgqc_stash_launcher = false;
             _target setVariable [format ["cgqc_vic_stashedLauncher_%1", name player], nil];
         };
         _launcher_gun = _var select 0;
@@ -191,7 +224,6 @@ switch (_dropAction) do {
         cgqc_stash_head_backup = _head;
         removeGoggles player;
         removeHeadgear player;
-        cgqc_stash_head = true;
         [["Head/face is stashed", 1.5], true] call CBA_fnc_notify;
     };
     case "unstash_head":{
@@ -204,7 +236,6 @@ switch (_dropAction) do {
         } else {
             [["Grabbed your head/face", 1.5], true] call CBA_fnc_notify;
             cgqc_stash_head_backup = nil;
-            cgqc_stash_head = false;
             _target setVariable [format ["cgqc_vic_stashedHead_%1", name player], nil];
         };
         _hat = _var select 0;
@@ -216,6 +247,40 @@ switch (_dropAction) do {
             player addGoggles _goggles;
         };
     };
+    case "stash_uniform":{
+        LOG("[dropStuff] - Stash Uniform");
+        _uniformName = uniform player;
+        _target setVariable [format ["cgqc_vic_stashedUniform_%1", name player], _uniformName];
+        cgqc_stash_uniform_backup = _uniformName;
+        [["Uniform is stashed", 1.5], true] call CBA_fnc_notify;
+    };
+    case "unstash_uniform":{
+        LOG("[dropStuff] - Unstash uniform");
+        _var = _target getVariable format ["cgqc_vic_stashedUniform_%1", name player];
+        // Save current uniform before grabbing a the stashed one
+        if (_swap || uniform player isNotEqualTo _var) then {
+            ['uniform', 'stash_uniform', _target] call CGQC_fnc_dropStuff;
+            [["Swapped your uniform", 1.5], true] call CBA_fnc_notify;
+        } else {
+            [["Grabbed your uniform", 1.5], true] call CBA_fnc_notify;
+            cgqc_stash_uniform_backup = nil;
+            _target setVariable [format ["cgqc_vic_stashedUniform_%1", name player], nil];
+        };
+        _uniform = _var;
+        _allMags = magazinesAmmoCargo vestContainer player;
+        _allItems = ItemCargo vestContainer player;
+        player forceAddUniform _uniform;
+        {
+            LOG_1("[dropStuff] - adding item %1", _x);
+            player addItemToUniform _x
+        } forEach _allItems;
+        {
+            _mag = _x select 0;
+            _amnt = _x select 1;
+            LOG_2("[dropStuff] - adding mag %1:%2", _mag, _amnt);
+            uniformContainer player addMagazineAmmoCargo [_mag, 1, _amnt];
+        } forEach _allMags;
+    };
     case "stash_vest":{
         LOG("[dropStuff] - Stash Vest");
         _vestName = vest player;
@@ -225,7 +290,6 @@ switch (_dropAction) do {
         _target setVariable [format ["cgqc_vic_stashedVest_%1", name player], _vest];
         cgqc_stash_vest_backup = _vest;
         removeVest player;
-        cgqc_stash_vest = true;
         [["Vest is stashed", 1.5], true] call CBA_fnc_notify;
     };
     case "unstash_vest":{
@@ -238,7 +302,6 @@ switch (_dropAction) do {
         } else {
             [["Grabbed your vest", 1.5], true] call CBA_fnc_notify;
             cgqc_stash_vest_backup = nil;
-            cgqc_stash_vest = false;
             _target setVariable [format ["cgqc_vic_stashedVest_%1", name player], nil];
         };
         _vest = _var select 0;
@@ -267,7 +330,6 @@ switch (_dropAction) do {
         _target setVariable [format ["cgqc_vic_stashedPack_%1", name player], _pack];
         cgqc_stash_pack_backup = _pack;
         removeBackpack player;
-        cgqc_stash_pack = true;
         [["Pack is stashed", 1.5], true] call CBA_fnc_notify;
     };
     case "unstash_pack":{
@@ -280,7 +342,6 @@ switch (_dropAction) do {
         } else {
             [["Grabbed your pack", 1.5], true] call CBA_fnc_notify;
             cgqc_stash_pack_backup = nil;
-            cgqc_stash_pack = false;
             _target setVariable [format ["cgqc_vic_stashedPack_%1", name player], nil];
         };
         _pack = _var select 0;
