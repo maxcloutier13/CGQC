@@ -27,7 +27,11 @@ switch (_type) do {
     case "pain": {
         [] spawn {
             LOG("[wakeup] Pain mode activated");
-            [["Ouf... This fucking hurts.", 1.5], false] call CBA_fnc_notify;
+            ["ace_medical_WakeUp", player] call CBA_fnc_localEvent;
+            _choices = ["Ouf... This fucking hurts."];
+            _txt = format ["<t size='2'>%1</t>", selectRandom _choices];
+            cutText ["","PLAIN DOWN", 1, false, true];
+            cutText [_txt,"PLAIN DOWN", 1, false, true];
             sleep 10;
             //Check if passed out anyway
             if (player getVariable ["ACE_isUnconscious", false]) exitWith {};

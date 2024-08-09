@@ -24,6 +24,7 @@ switch (_medication) do {
         _randomtarget = 1;
         _check = random _randomtarget;
         if (_check <= 0.1) then {
+            ["ace_medical_WakeUp", _patient] call CBA_fnc_localEvent;
             // Not in cardiac arrest: waking up
             LOG_2("[treatmentLocal] Slap: Success. %1<%2 Waking up", _check, _randomtarget);
             _choices = [
@@ -42,8 +43,7 @@ switch (_medication) do {
             _txt = format ["<t size='2'>%1</t>", selectRandom _choices];
             _txt = format[_txt, name _medic];
             cutText ["","PLAIN DOWN", 1, false, true];
-	        cutText [_txt,"PLAIN DOWN", 1, false, true];
-            [_patient, false] call ace_medical_fnc_setUnconscious;
+            cutText [_txt,"PLAIN DOWN", 1, false, true];
             ["cgqc_event_notify", ["Slap!", "Yes! There he is!"], _medic] spawn CBA_fnc_targetEvent;
         } else {
             sleep 0.5;
@@ -58,14 +58,14 @@ switch (_medication) do {
         [_patient, "activity", "%1 used %2", [[_medic] call ace_common_fnc_getName, "Ammonium"]] call ace_medical_treatment_fnc_addToLog;
         // Check if in cardiac arrest
         _noHeartBeat = _patient getVariable ["ace_medical_inCardiacArrest", false];
-
-
         // Check blood loss
         _bloodVolume = _patient getVariable ["ace_medical_bloodVolume", 6];
-        if (_noHeartBeat || _bloodVolume < 3.6) exitWith {
+        if (_noHeartBeat || _bloodVolume < 3) exitWith {
             ["cgqc_event_notify", ["Ammonimum", "No effect..."], _medic] spawn CBA_fnc_targetEvent;
             LOG("[treatmentLocal] AmmoniumCarbonate - Patient in cardiac arrest/Lowblood. Skipping.");
         };
+        //_wakeup = [_patient, false, 0, true] call ace_medical_fnc_setUnconscious;
+        ["ace_medical_WakeUp", _patient] call CBA_fnc_localEvent;
         LOG("[treatmentLocal] AmmoniumCarbonate - Patient has heartbeat");
         LOG("[treatmentLocal] AmmoniumCarbonate - Patient has blood %1", _bloodVolume);
         // Not in cardiac arrest: waking up
@@ -85,9 +85,8 @@ switch (_medication) do {
             "Woah"
         ];
         _txt = format ["<t size='3'>%1</t>", selectRandom _choices];
-		cutText ["","PLAIN DOWN", 1, false, true];
-	    cutText [_txt,"PLAIN DOWN", 1, false, true];
-        [_patient, false, 0, true] call ace_medical_fnc_setUnconscious;
+        cutText ["","PLAIN DOWN", 1, false, true];
+        cutText [_txt,"PLAIN DOWN", 1, false, true];
     };
 };
 
