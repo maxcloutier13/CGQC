@@ -267,8 +267,8 @@ switch (_dropAction) do {
             _target setVariable [format ["cgqc_vic_stashedUniform_%1", name player], nil];
         };
         _uniform = _var;
-        _allMags = magazinesAmmoCargo vestContainer player;
-        _allItems = ItemCargo vestContainer player;
+        _allMags = magazinesAmmoCargo uniformContainer player;
+        _allItems = ItemCargo uniformContainer player;
         player forceAddUniform _uniform;
         {
             LOG_1("[dropStuff] - adding item %1", _x);
