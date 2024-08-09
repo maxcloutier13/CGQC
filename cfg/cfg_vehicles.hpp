@@ -324,6 +324,7 @@ class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
     side = 1;
     author = "silent1";
     faction = "cgqc";
+    hasDriver=-1;
     editorSubcategory = "EdSubcat_cgqc_vic_mbt";
     displayName = "Merkava (3+6)";
     crew = "CGQC_Soldat_Base";
