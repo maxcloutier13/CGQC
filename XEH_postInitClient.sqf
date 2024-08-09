@@ -517,11 +517,13 @@ player addEventHandler ["GetInMan", {
 	["ready", false] call CGQC_fnc_perksBasic;
 	// Notification to clip in when in helicopters
 	if (_vehicle isKindOf "Helicopter" && _role isEqualTo "cargo") then {
-		_text = format ["<t size='3'>Clip in!</t>"];
-		cutText ["","PLAIN", 1, false, true];
-		cutText [_text,"PLAIN", 1, false, true];
-		sleep 3;
-		cutText ["","PLAIN", 1, false, true];
+		[] spawn {
+			_text = format ["<t size='3'>Clip in!</t>"];
+			cutText ["", "PLAIN", 1, false, true];
+			cutText [_text, "PLAIN", 1, false, true];
+			sleep 5;
+			cutText ["", "PLAIN", 3, false, true];
+		};
 	};
 }];
 
