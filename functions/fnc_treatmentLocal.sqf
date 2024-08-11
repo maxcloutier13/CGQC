@@ -25,28 +25,32 @@ switch (_medication) do {
         _check = random _randomtarget;
         if (_check <= 0.1) then {
             ["ace_medical_WakeUp", _patient] call CBA_fnc_localEvent;
-            // Not in cardiac arrest: waking up
-            LOG_2("[treatmentLocal] Slap: Success. %1<%2 Waking up", _check, _randomtarget);
-            _choices = [
-                "%1 jolted you awake with a slap!",
-                "%1 brought you back with a sharp slap!",
-                "%1's slap snapped you back to reality!",
-                "%1 woke you up with a stinging slap!",
-                "%1's slap pulled you out of it!",
-                "%1 brought you around with a smack!",
-                "%1's slap got your attention fast!",
-                "%1 revived you with a swift slap!",
-                "%1's slap shocked you awake!",
-                "%1 woke you with a quick smack!",
-                "%1 slapped you awake!"
-            ];
-            _txt = format ["<t size='2'>%1</t>", selectRandom _choices];
-            _txt = format[_txt, name _medic];
-            cutText ["","PLAIN DOWN", 1, false, true];
-            cutText [_txt,"PLAIN DOWN", 1, false, true];
-            ["cgqc_event_notify", ["Slap!", "Yes! There he is!"], _medic] spawn CBA_fnc_targetEvent;
+            if !(player getVariable ["ACE_isUnconscious", false]) then {
+                // Not in cardiac arrest: waking up
+                LOG_2("[treatmentLocal] Slap: Success. %1<%2 Waking up", _check, _randomtarget);
+                _choices = [
+                    "%1 jolted you awake with a slap!",
+                    "%1 brought you back with a sharp slap!",
+                    "%1's slap snapped you back to reality!",
+                    "%1 woke you up with a stinging slap!",
+                    "%1's slap pulled you out of it!",
+                    "%1 brought you around with a smack!",
+                    "%1's slap got your attention fast!",
+                    "%1 revived you with a swift slap!",
+                    "%1's slap shocked you awake!",
+                    "%1 woke you with a quick smack!",
+                    "%1 slapped you awake!"
+                ];
+                _txt = format ["<t size='2'>%1</t>", selectRandom _choices];
+                _txt = format[_txt, name _medic];
+                cutText ["","PLAIN DOWN", 1, false, true];
+                cutText [_txt,"PLAIN DOWN", 1, false, true];
+                ["cgqc_event_notify", ["Slap!", "Yes! There he is!"], _medic] spawn CBA_fnc_targetEvent;
+            } else {
+                LOG("[treatmentLocal] Slap: Didn't wake up for some reason");
+                ["cgqc_event_notify", ["Slap!", "No effect..."], _medic] spawn CBA_fnc_targetEvent;
+            };
         } else {
-            sleep 0.5;
             ["cgqc_event_notify", ["Slap!", "No effect..."], _medic] spawn CBA_fnc_targetEvent;
             LOG_2("[treatmentLocal] Slap - Failed random check: %1>%2", _check, _randomtarget);
         };
@@ -65,28 +69,34 @@ switch (_medication) do {
             LOG("[treatmentLocal] AmmoniumCarbonate - Patient in cardiac arrest/Lowblood. Skipping.");
         };
         //_wakeup = [_patient, false, 0, true] call ace_medical_fnc_setUnconscious;
-        ["ace_medical_WakeUp", _patient] call CBA_fnc_localEvent;
         LOG("[treatmentLocal] AmmoniumCarbonate - Patient has heartbeat");
         LOG("[treatmentLocal] AmmoniumCarbonate - Patient has blood %1", _bloodVolume);
         // Not in cardiac arrest: waking up
         LOG("[treatment] AmmoniumCarbonate: Success. Waking up");
-        _choices = [
-            "Wow! That smell feels like a punch in the face!",
-            "Holy crap! My nose is on fire!",
-            "Yikes! That stings like crazy!",
-            "Whoa! It feels like my nostrils just exploded!",
-            "Oh man! That smell is intense!",
-            "Jeez! It's like inhaling pure fire!",
-            "Good grief! That smell is a wake-up call!",
-            "Dang! That smell is no joke!",
-            "Whoa! It's like a shockwave to my senses!",
-            "Holy smokes! That scent is brutal!",
-            "Holy fucking shit!",
-            "Woah"
-        ];
-        _txt = format ["<t size='3'>%1</t>", selectRandom _choices];
-        cutText ["","PLAIN DOWN", 1, false, true];
-        cutText [_txt,"PLAIN DOWN", 1, false, true];
+        ["ace_medical_WakeUp", _patient] call CBA_fnc_localEvent;
+        if !(player getVariable ["ACE_isUnconscious", false]) then {
+            _choices = [
+                "Wow! That smell feels like a punch in the face!",
+                "Holy crap! My nose is on fire!",
+                "Yikes! That stings like crazy!",
+                "Whoa! It feels like my nostrils just exploded!",
+                "Oh man! That smell is intense!",
+                "Jeez! It's like inhaling pure fire!",
+                "Good grief! That smell is a wake-up call!",
+                "Dang! That smell is no joke!",
+                "Whoa! It's like a shockwave to my senses!",
+                "Holy smokes! That scent is brutal!",
+                "Holy fucking shit!",
+                "Woah"
+            ];
+            _txt = format ["<t size='3'>%1</t>", selectRandom _choices];
+            cutText ["","PLAIN DOWN", 1, false, true];
+            cutText [_txt,"PLAIN DOWN", 1, false, true];
+        } else {
+            LOG("[treatment] AmmoniumCarbonate: Didn't wake up for some reason");
+            ["cgqc_event_notify", ["Ammonium", "No effect strangely"], _medic] spawn CBA_fnc_targetEvent;
+        };
+
     };
 };
 

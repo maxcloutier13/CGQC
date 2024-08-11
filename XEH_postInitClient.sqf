@@ -395,7 +395,7 @@ take_152 = player addEventHandler [	"Take", {
 // Carbonate salt event
 ["cgqc_event_treatment", {
 	params["_medic", "_patient", "_medication"];
-	[_medic, _patient, _medication] call CGQC_fnc_treatmentLocal;
+	[_medic, _patient, _medication] spawn CGQC_fnc_treatmentLocal;
 }] call CBA_fnc_addEventHandler;
 
 // Save default volume
@@ -464,7 +464,7 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 					LOG("[Unconscious] - Heart is beating");
 					// Check  pain not critical
 					_perceived = [] call CGQC_fnc_perceivedPain;
-					if (_perceived < 0.8) then {
+					if (_perceived < 0.9) then {
 						// Wakeup, but with a pain watch
 						LOG("[Unconscious] - Waking up with pain check");
 						["pain"] spawn cgqc_fnc_wakeup;
