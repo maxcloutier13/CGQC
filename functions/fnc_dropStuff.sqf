@@ -326,7 +326,8 @@ switch (_dropAction) do {
         _packName = typeOf unitBackpack player;
         _allMags = magazinesAmmoCargo backpackContainer player;
         _allItems = ItemCargo backpackContainer player;
-        _pack = [_packName, _allMags, _allItems];
+        _allGuns = weaponsItemsCargo backpackContainer player;
+        _pack = [_packName, _allMags, _allItems, _allGuns];
         _target setVariable [format ["cgqc_vic_stashedPack_%1", name player], _pack];
         cgqc_stash_pack_backup = _pack;
         removeBackpack player;
@@ -347,6 +348,7 @@ switch (_dropAction) do {
         _pack = _var select 0;
         _allMags = _var select 1;
         _allItems = _var select 2;
+        _allGuns = _var select 3;
         player addBackpack _pack;
         clearAllItemsFromBackpack player;
         sleep 0.5;
@@ -360,6 +362,10 @@ switch (_dropAction) do {
             LOG_2("[dropStuff] - adding mag %1:%2", _mag, _amnt);
             backpackContainer player addMagazineAmmoCargo [_mag, 1, _amnt];
         } forEach _allMags;
+        {
+            backpackContainer player addWeaponWithAttachmentsCargo [_x, 1];
+            LOG_1("[dropStuff] - adding guns %1", _x);
+        } forEach _allGuns;
     };
     case "toggle": {
         LOG("[dropStuff] - Toggle");
