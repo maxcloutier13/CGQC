@@ -225,7 +225,7 @@ class Boat_F;
     class cgqc_maintenance { \
         displayName = "Maintenance"; \
         condition = "cgqc_flag_supply"; \
-        statement = "['normal'] call CGQC_fnc_refuel"; \
+        statement = "['normal', _target] call CGQC_fnc_refuel"; \
         exceptions[] = {}; \
         icon = "\CGQC\textures\icon_maintenance"; \
         runOnHover = "hint 'Repair/Refuel/Rearm'"; \
@@ -233,7 +233,7 @@ class Boat_F;
     class cgqc_maintenance_quick { \
         displayName = "Maintenance (Quick)"; \
         condition = "cgqc_flag_supply_rapide"; \
-        statement = "['short'] call CGQC_fnc_refuel"; \
+        statement = "['short', _target] call CGQC_fnc_refuel"; \
         exceptions[] = {}; \
         icon = "\CGQC\textures\icon_maintenance"; \
         runOnHover = "hint 'Repair/Refuel/Rearm'"; \
