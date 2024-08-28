@@ -9,6 +9,9 @@ if (local _unit) then {
 	// Restore controls in case player got killed during a bad moment
 	disableUserInput false;
 
+	// Run wakeup routine to bring back interface, sound and radio
+	["respawn"] spawn cgqc_fnc_wakeup;
+
 	// Save stuff for player respawn
 	// Corpse position
 	player setVariable["corpse_position", getPosASL _corpse];
@@ -160,9 +163,6 @@ if (local _unit) then {
 		[_newRadioList],
 		1
 	] call CBA_fnc_waitAndExecute; // wait 1 second to execute
-
-	// Run wakeup routine to bring back interface, sound and radio
-	["respawn"] spawn cgqc_fnc_wakeup;
 
 	// Add earplugs if missing
 	if !([player, "ACE_EarPlugs"] call ace_common_fnc_hasItem) then {player addItem "ACE_EarPlugs";};
