@@ -9,7 +9,7 @@ if (local _unit) then {
 	_unit setVariable["Saved_Slinged", [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet];
 	_unit setVariable["Saved_second", _unit getVariable "WBK_SecondWeapon" select 1];
 
-	/*
+
 	// Save radios and ptt priorities
 	_allRadios = [] call acre_api_fnc_getCurrentRadioList;
 	_radios = [];
@@ -22,7 +22,8 @@ if (local _unit) then {
 	_unit setVariable["Radio_Settings_radios", _radios];
 	_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
 	_unit setVariable["Radio_Settings_ptt", _mpttRadioList];
-	*/
+
+	// Loadout
 	_loadout = getUnitLoadout [_unit, true]; //reloads magazines
 	_unit setVariable["Saved_Loadout",_loadout];
 
