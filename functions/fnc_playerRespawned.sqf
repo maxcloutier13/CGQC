@@ -9,6 +9,9 @@ if (local _unit) then {
 	// Restore controls in case player got killed during a bad moment
 	disableUserInput false;
 
+	// Run wakeup routine to bring back interface, sound and radio
+	["respawn"] spawn cgqc_fnc_wakeup;
+
 	// Save stuff for player respawn
 	// Corpse position
 	player setVariable["corpse_position", getPosASL _corpse];
@@ -59,7 +62,7 @@ if (local _unit) then {
 	[] call CGQC_fnc_setTeamColorReload;
 	// Reload fucking traits
 	[] call CGQC_fnc_reloadTraits;
-	/*
+
 
 	// Reload radios
 	_radios = player getVariable "Radio_Settings_radios";
@@ -73,8 +76,8 @@ if (local _unit) then {
 	// Reset ptt's
 	_mpttRadioList = player getVariable "Radio_Settings_ptt";
 	_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
-	*/
 
+	/*
 	// Reload radios
 	_newRadioList = [1, 1, 1]; // initialize with default values
 	{
@@ -160,9 +163,7 @@ if (local _unit) then {
 		[_newRadioList],
 		1
 	] call CBA_fnc_waitAndExecute; // wait 1 second to execute
-
-	// Run wakeup routine to bring back interface, sound and radio
-	["respawn"] spawn cgqc_fnc_wakeup;
+	*/
 
 	// Add earplugs if missing
 	if !([player, "ACE_EarPlugs"] call ace_common_fnc_hasItem) then {player addItem "ACE_EarPlugs";};

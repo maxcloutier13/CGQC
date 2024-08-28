@@ -1,11 +1,11 @@
 #include "\CGQC\script_component.hpp"
 // --- refuel ----------------------------------------------------------
 // Refuel/Repair/Ressupply
-params ["_type"];
+params ["_type", "_playerVic"];
 
-[_type] spawn {
-	params ["_type"];
-	LOG_1(" refuel %1 started", _type);
+[_type, _playerVic] spawn {
+	params ["_type", "_playerVic"];
+	LOG_2(" refuel %1/%2 started", _type, _playerVic);
 	_timeleft = 0;
 	_skip = 0;
 
@@ -24,7 +24,7 @@ params ["_type"];
 	};
 
 	// Rearming
-	private _playerVic = vehicle player;
+	//private _playerVic = vehicle player;
 	waitUntil{isTouchingGround _playerVic};
 	if(_skip ==0) then {_playerVic engineOn false;};
 	_playerVic setFuel 0;
