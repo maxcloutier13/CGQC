@@ -64,6 +64,10 @@ if (local _unit) then {
 	[] call CGQC_fnc_reloadTraits;
 
 
+
+	// Reset ptt's
+	_mpttRadioList = player getVariable "Radio_Settings_ptt";
+	_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
 	// Reload radios
 	_radios = player getVariable "Radio_Settings_radios";
 	{
@@ -73,9 +77,6 @@ if (local _unit) then {
 		[_radio, _side] call acre_api_fnc_setRadioSpatial;
 		[_radio, _vol] call acre_api_fnc_setRadioVolume;
 	} forEach _radios;
-	// Reset ptt's
-	_mpttRadioList = player getVariable "Radio_Settings_ptt";
-	_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
 
 	/*
 	// Reload radios
