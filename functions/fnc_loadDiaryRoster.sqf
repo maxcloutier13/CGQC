@@ -89,7 +89,7 @@ cgqc_group_roster = "";
 _hour = systemTime#3;
 _mins = systemTime#4;
 _secs = systemTime#5;
-cgqc_group_roster = cgqc_group_roster + format ["<br/><font color='#6A6A6A'> -Updated %1:%2:%3 </font>", _hour, _mins, _secs];
+cgqc_group_roster = cgqc_group_roster + format ["<br/><font color='#6A6A6A'> -Updated %1:%2:%3 - Close/Reopen map to update</font>", _hour, _mins, _secs];
 
 if (!(player diarySubjectExists "CGQC_Roster")) then {
     //Create subject and record
