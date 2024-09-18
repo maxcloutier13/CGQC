@@ -226,6 +226,11 @@ class CGQC {
             file = "\cgqc\functions\fnc_loadDiaryRoster.sqf";
             description = "Load current group rosters";
         };
+        class loadDiaryRecord{
+            file = "\cgqc\functions\fnc_loadDiaryRecord.sqf";
+            description = "Load player Service Record";
+        };
+
         class copyClackerCheck{
             file = "\cgqc\functions\fnc_copyClackerCheck.sqf";
             description = "Check if clacker codes can be copied from target";

@@ -137,16 +137,12 @@ if (cgqc_stats_enemyCasualties > 0 ) then {
 // Close the font bracket
 cgqc_diary_stats = cgqc_diary_stats + "</font>";
 
-if (!(player diarySubjectExists "CGQC_Stats")) then {
-    //Create subject and record
-    player createDiarySubject ["CGQC_Stats", "Stats"];
-    player createDiaryRecord ["CGQC_Stats", ["Casualties", cgqc_diary_stats]];
+if ( count (player allDiaryRecords "CGQC_Roster") > 1 ) then {
+    _records = player allDiaryRecords "CGQC_Roster";
+	_record = _records#1;
+	player setDiaryRecordText [["CGQC_Roster", _record#8], ["Casualties", cgqc_diary_stats]];
 } else {
-    _records = player allDiaryRecords "CGQC_Stats";
-    _record = _records#0;
-    player setDiaryRecordText [["CGQC_Stats", _record#8], ["Casualties", cgqc_diary_stats]];
+    player createDiaryRecord ["CGQC_Roster", ["Casualties", cgqc_diary_stats]];
 };
-
-
 
 LOG(" loadDiaryRoster done");
