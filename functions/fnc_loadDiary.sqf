@@ -156,10 +156,12 @@ _mis = player createDiaryRecord ["Diary", ["Training Map","
 	- training_2023.Tanoa<br/></font>
 "]];*/
 
-player createDiarySubject ["MapTools","Map Tools"];
+//player createDiarySubject ["MapTools","Map Tools"];
 _text = (
 	"-- Simple Map Markings --"
-	+ "<br/><execute expression='[10] spawn CGQC_fnc_mapTools;'>HQ</execute> and then click on desired positions | <execute expression='[11] spawn CGQC_fnc_mapTools;'>Objective</execute>"
+	+ "<br/><Click the type you want to use and then click on desired position on map"
+	+ "<br/><Some tools stay on to mark multiple locatoins. Shift+Click to stop"
+	+ "<br/><br/><execute expression='[10] spawn CGQC_fnc_mapTools;'>HQ</execute>  | <execute expression='[11] spawn CGQC_fnc_mapTools;'>Objective</execute>"
 	+ "<br/><br/>-- Positions --"
 	+ "<br/><execute expression='[20] spawn CGQC_fnc_mapTools;'>Landing Zone</execute> | <execute expression='[201] spawn CGQC_fnc_mapTools;'>Observation Point</execute>"
 	+ "<br/><execute expression='[203] spawn CGQC_fnc_mapTools;'>Support by Fire</execute> | <execute expression='[204] spawn CGQC_fnc_mapTools;'>Assault Position</execute>"
@@ -178,7 +180,7 @@ _text = (
 	+ "<br/>Click <execute expression='[0] spawn CGQC_fnc_mapTools;'>Mortar Tool</execute> and then click on target"
 	+ "<br/>Click <execute expression='[1] spawn CGQC_fnc_mapTools;'>Precise Route Planner</execute> and then click on starting point"
 );
-player createDiaryRecord ["MapTools", ["Advanced Functions", _text]];
+player createDiaryRecord ["MapOption", ["Maptools", _text]];
 
 LOG("[loadDiary] done");
 true

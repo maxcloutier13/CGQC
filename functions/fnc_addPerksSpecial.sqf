@@ -300,7 +300,7 @@ switch (_type) do {
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call  ace_interact_menu_fnc_addActionToObject;
              // ------ Delete all dead
             _action = [ "zeus_delete", "Delete Dead", "", {["delete", 0, ""] spawn CGQC_fnc_perksZeus}, {true} ] call ace_interact_menu_fnc_createAction;
-            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
+            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
              // ------ Manual snapshot
             _action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all", "zeus"] spawn CGQC_fnc_snapshot}, {true} ] call ace_interact_menu_fnc_createAction;
