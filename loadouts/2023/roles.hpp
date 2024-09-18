@@ -114,6 +114,7 @@ case "2023_lmg":{
 	cgqc_player_role_optic = 2;
 };
 
+
 case "2023_hmg":{
 	[player, "hmg", "mk48"] call CGQC_ldt_2023_mg;
 	["mg", true, true] spawn CGQC_fnc_switchPerks;
@@ -321,4 +322,34 @@ case "2023_jtac":{
 	["jtac"] call CGQC_fnc_getRadioPresets;
 	player setVariable ["cgqc_player_roleType", "Recon", true];
 	cgqc_player_role_optic = 6;
+};
+
+// Qualifications -----------------------------------------------------------------------------------------------
+case "2024_service":{
+	[player, "service"] call CGQC_ldt_2024_qualification;
+	["inf", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Qualification: Rifle";
+	player setVariable ["cgqc_player_roleType", "Qualification", true];
+};
+case "2024_mg":{
+	[player, "mg"] call CGQC_ldt_2024_qualification;
+	["mg", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Qualification: MG";
+	player setVariable ["cgqc_player_roleType", "Qualification", true];
+};
+case "2024_dmr":{
+	[player, "dmr"] call CGQC_ldt_2024_qualification;
+	["inf", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Qualification: DMR";
+	player setVariable ["cgqc_player_roleType", "Qualification", true];
+};
+case "2023_sniper":{
+	[player, "sniper"] call CGQC_ldt_2024_qualification;
+	["sniper", true, true] spawn CGQC_fnc_switchPerks;
+	["recon"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "Qualification: Sniper";
+	player setVariable ["cgqc_player_roleType", "Qualification", true];
 };

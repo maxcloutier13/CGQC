@@ -1,5 +1,5 @@
-// 2023 ***********************************************************************************
-_action = [ "menu_2023", "2023", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+// 2024 ***********************************************************************************
+_action = [ "menu_2023", "2024", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions"], _action ] call ace_interact_menu_fnc_addActionToObject;
 // Mk1 Loadout switcher ---------------------------------------------------------------------------------------------------------
 _action = [ "menu_mk2", "Loadouts/Rôles MK3", "CGQC\textures\icon_loadouts", {""}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -171,3 +171,14 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_sp
 //_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2", "menu_mk2_pilots"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 */
+
+_action = [ "menu_mk2_qualif", "Qualification", "", {""}, {cgqc_flag_isTraining} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_qualif_service", "Service Rifle", "", {["2024_service", 1, true] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_qualif"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_qualif_service", "Light MachineGun", "", {["2024_mg", 1, true] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_qualif"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_qualif_service", "DMR", "", {["2024_dmr", 1, true] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_qualif"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_qualif_service", "Sniper", "", {["2024_sniper", 1, true] spawn CGQC_fnc_switchRole}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023", "menu_mk2", "menu_mk2_qualif"], _action ] call  ace_interact_menu_fnc_addActionToObject;

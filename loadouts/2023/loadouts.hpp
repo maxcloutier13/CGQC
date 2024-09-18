@@ -16,6 +16,8 @@ if (cgqc_player_has2023) then {
 	["\CGQC\loadouts\2023\ldt_2023_recon.sqf", "CGQC_ldt_2023_recon"] call CBA_fnc_compileFunction;
 	["\CGQC\loadouts\2023\ldt_2023_pilot.sqf", "CGQC_ldt_2023_pilot"] call CBA_fnc_compileFunction;
 	["\CGQC\loadouts\2023\ldt_2023_driver.sqf", "CGQC_ldt_2023_driver"] call CBA_fnc_compileFunction;
+	["\CGQC\loadouts\2023\ldt_2024_qualification.sqf", "CGQC_ldt_2024_qualification"] call CBA_fnc_compileFunction;
+
 	LOG(" 2023Loadouts loaded");
 } else {
 	LOG(" 2023Loadouts not loaded");
