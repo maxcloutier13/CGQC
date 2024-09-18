@@ -325,9 +325,6 @@ cgqc_damage_text = [];
 // Set up spotter list
 missionNamespace setVariable ["cgqc_sniping_spotters", [], true];
 
-// Qualifications
-cgqc_qualification_running = false;
-
 // Medical stuff
 cgqc_training_medical = false;
 
@@ -492,7 +489,7 @@ addMissionEventHandler ["PreloadFinished",
 
 // Initial roster
 [] spawn CGQC_fnc_loadDiaryRoster;
-
+[] spawn CGQC_fnc_loadDiaryRecord;
 // Original map position
 _map = (findDisplay 12 displayCtrl 51);
 cgqc_map_centerOldPosition = [_map ctrlMapScreenToWorld [0.5, 0.5], ctrlMapScale _map];
@@ -506,10 +503,13 @@ cgqc_mapOpen = addMissionEventHandler ["Map", {
 		params ["_mapIsOpened", "_mapIsForced"];
 		if (_mapIsOpened) then {
 			["center"] call CGQC_fnc_centerMap;
+			[] spawn CGQC_fnc_loadDiaryRoster;
+			[] spawn CGQC_fnc_loadDiaryRecord;
+			/*
 			while {cgqc_mapOpened} do {
 				[] spawn CGQC_fnc_loadDiaryRoster;
 				sleep 10;
-			};
+			};*/
 		} else {
 			_map = (findDisplay 12 displayCtrl 51);
 			cgqc_map_centerOldPosition = [_map ctrlMapScreenToWorld [0.5, 0.5], ctrlMapScale _map];
