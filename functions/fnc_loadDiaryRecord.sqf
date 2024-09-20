@@ -57,7 +57,7 @@ if (!(player diarySubjectExists "CGQC_Record")) then {
 // Practice page
 // Check if qualification data exists
 cgqc_qualificationPractice_text = "";
-_serviceQualif = MissionProfileNamespace getVariable ["cgqc_qualification_1_rifle_practice", []];
+_serviceQualif = profileNamespace getVariable ["cgqc_qualification_1_rifle_practice", []];
 if (count _serviceQualif isNotEqualTo 0) then {
 	// Qualification section with a slightly smaller font
 	cgqc_qualificationPractice_text = cgqc_qualificationPractice_text + "<font size='24'><b>Qualification Practice</b></font><br/><br/>";
