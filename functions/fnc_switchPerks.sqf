@@ -146,7 +146,7 @@ switch (_type) do {
 	};
 	case "at":{
 		LOG("[switchPerks] AT setup");
-		player setUnitTrait ["loadCoef", 0.7];
+		player setUnitTrait ["loadCoef", 0.6];
 	};
 	case "mg":{
 		LOG("[switchPerks] MG setup");
