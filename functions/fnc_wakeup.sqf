@@ -41,7 +41,7 @@ switch (_type) do {
                 if (_perceived > 0.4) then {
                     LOG_1("[wakeup] - Passing out from %1 pain", _perceived);
                     _txt = "Oh shit... I'm gonna black out...";
-                    [ _txt, 0, 1.15, 2, 0.8] spawn BIS_fnc_dynamicText;
+                    [ _txt, 0, 1.15, 2, 0.5] spawn BIS_fnc_dynamicText;
                     sleep 3;
                     // Pass out again!
                     [player, true] call ace_medical_fnc_setUnconscious;

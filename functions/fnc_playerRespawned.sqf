@@ -18,7 +18,13 @@ if (local _unit) then {
 	// Loadout
 	player setUnitLoadout(player getVariable["Saved_Loadout",[]]); //Load loadout saved on death
 	// Face/identity
-	player setFace(player getVariable["Saved_Face",[]]);
+	_face = player getVariable["Saved_Face",""];
+	if (Saved_Face isNotEqualTo) then {
+		player setFace _face;
+	} else {
+		ERROR("[CGQC_ERROR] playerRespawned - Could not read saved face");
+	};
+
 	// Slinged helmet
 	[player, player getVariable["Saved_Slinged",[]]] call GRAD_slingHelmet_fnc_addSlungHelmet;
 
@@ -62,8 +68,6 @@ if (local _unit) then {
 	[] call CGQC_fnc_setTeamColorReload;
 	// Reload fucking traits
 	[] call CGQC_fnc_reloadTraits;
-
-
 
 	// Reset ptt's
 	_mpttRadioList = player getVariable "Radio_Settings_ptt";
@@ -171,5 +175,7 @@ if (local _unit) then {
 
 	// Lower gun
 	[player] call ace_weaponselect_fnc_putWeaponAway;
+} else {
+	LOG("[playerRespawned] Unit not local");
 };
 LOG("[playerRespawned] done");
