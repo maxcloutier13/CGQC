@@ -5,6 +5,7 @@ params ["_unit", "_killer", "_instigator", "_useEffects"];
 LOG_4("[CGQC_EVENT] playerKilled %1/Killer:%2/Inst:%3/Effect:%4 started", _unit, _killer, _instigator, _useEffects);
 
 if (local _unit) then {
+	LOG("[CGQC_EVENT] playerKilled Unit local: Saving");
 	_unit setVariable["Saved_Face", face _unit];
 	_unit setVariable["Saved_Slinged", [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet];
 	_unit setVariable["Saved_second", _unit getVariable "WBK_SecondWeapon" select 1];
@@ -59,6 +60,8 @@ if (local _unit) then {
 			cgqc_player_uav = nil;
 		};
 	};
+}else {
+	LOG("[CGQC_EVENT] playerKilled Unit NOT local: not saving");
 };
 
 LOG_2("[CGQC_KILL]%1 killed by %2", name _unit, _killa);
