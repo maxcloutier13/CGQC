@@ -111,6 +111,7 @@ if !(cgqc_mission_dro) then {
 		[_unit, _killer, _instigator, _useEffects] call CGQC_fnc_playerKilled;
 	}];
 } else {
+	LOG("[CGQC_INIT] DRO Mode. Skipping intro");
 	[] spawn {
 		hint "DRO mode";
 		1 fadeSound 1;
