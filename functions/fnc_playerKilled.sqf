@@ -18,7 +18,8 @@ if (local _unit) then {
 		_radio = _x;
 		_side = [_x] call acre_api_fnc_getRadioSpatial;
 		_vol = [_x] call acre_api_fnc_getRadioVolume;
-		_radios pushBack [_radio, _side, _vol];
+		_chan = [_x] call acre_api_fnc_getRadioChannel;
+		_radios pushBack [_radio, _side, _vol, _chan];
 	} forEach _allRadios;
 	_unit setVariable["Radio_Settings_radios", _radios];
 	_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;

@@ -19,7 +19,7 @@ if (local _unit) then {
 	player setUnitLoadout(player getVariable["Saved_Loadout",[]]); //Load loadout saved on death
 	// Face/identity
 	_face = player getVariable["Saved_Face",""];
-	if (Saved_Face isNotEqualTo) then {
+	if (_face isNotEqualTo "") then {
 		player setFace _face;
 	} else {
 		ERROR("[CGQC_ERROR] playerRespawned - Could not read saved face");
@@ -69,20 +69,6 @@ if (local _unit) then {
 	// Reload fucking traits
 	[] call CGQC_fnc_reloadTraits;
 
-	// Reset ptt's
-	_mpttRadioList = player getVariable "Radio_Settings_ptt";
-	_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
-	// Reload radios
-	_radios = player getVariable "Radio_Settings_radios";
-	{
-		_radio = _x select 0;
-		_side = _x select 1;
-		_vol = _x select 2;
-		[_radio, _side] call acre_api_fnc_setRadioSpatial;
-		[_radio, _vol] call acre_api_fnc_setRadioVolume;
-	} forEach _radios;
-
-	/*
 	// Reload radios
 	_newRadioList = [1, 1, 1]; // initialize with default values
 	{
@@ -156,6 +142,25 @@ if (local _unit) then {
 		] call CBA_fnc_waitAndExecute; // delay 1 second for new radio IDs
 	} forEach ["ACRE_PRC77", "ACRE_PRC117F", "ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC343", "ACRE_SEM52SL", "ACRE_SEM70", "ACRE_BF888S"]; // for each available ACRE radio
 
+	/*
+	LOG("[playerRespawned] Reloading radios");
+	_allRadios = [] call acre_api_fnc_getCurrentRadioList;
+	_radios = player getVariable "Radio_Settings_radios";
+	_pos = 0;
+	{
+		_radio = _x;
+		_settings = _radios select _pos;
+		_side = _settings select 1;
+		_vol = _settings select 2;
+		_chan = _settings select 3;
+		LOG_4("[playerRespawned] Reloading %1/%2/%3/%4", _radio, _side, _vol, _chan);
+		[_radio, _side] call acre_api_fnc_setRadioSpatial;
+		[_radio, _vol] call acre_api_fnc_setRadioVolume;
+		[_radio, _chan] call acre_api_fnc_setRadioChannel;
+		_pos = _pos + 1;
+	} forEach _allRadios;
+	LOG("[playerRespawned] Done reloading radios");
+
 	[
 		{
 			params ["_newRadioList"];
@@ -170,11 +175,19 @@ if (local _unit) then {
 	] call CBA_fnc_waitAndExecute; // wait 1 second to execute
 	*/
 
-	// Add earplugs if missing
-	if !([player, "ACE_EarPlugs"] call ace_common_fnc_hasItem) then {player addItem "ACE_EarPlugs";};
-
+	// Reset ptt's
+	//_mpttRadioList = player getVariable "Radio_Settings_ptt";
+	//_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
 	// Lower gun
 	[player] call ace_weaponselect_fnc_putWeaponAway;
+	// Reload radios
+
+
+	// Add earplugs if missing
+	if !([player, "ACE_EarPlugs"] call ace_common_fnc_hasItem) then {
+		player addItem "ACE_EarPlugs";
+		LOG("[playerRespawned] Player had no earplugs? Adding");
+	};
 } else {
 	LOG("[playerRespawned] Unit not local");
 };
