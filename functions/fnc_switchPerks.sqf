@@ -150,7 +150,7 @@ switch (_type) do {
 	};
 	case "mg":{
 		LOG("[switchPerks] MG setup");
-		player setUnitTrait ["loadCoef", 0.8];
+		player setUnitTrait ["loadCoef", 0.7];
 	};
 	case "mortar":{
 		LOG("[switchPerks] Mortar setup");

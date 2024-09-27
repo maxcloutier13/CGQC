@@ -6,6 +6,7 @@ LOG_2("[showIntro] Show:%1/Type:%2 started", _show, _type);
 
 // Show intro info ------------------------------------------------------------------------------------
 if !(hasInterface || isDedicated) exitWith {};
+titleCut ["", "BLACK FADED", 999];
 // Wait until player is loaded
 waitUntil {CGQC_playerLoaded};
 
@@ -19,15 +20,26 @@ if (_show) then {
 	switch (_type) do {
 		case 0: { //Original Intro
 			LOG("[showIntro] Original Intro");
+			titleCut ["", "BLACK FADED", 999];
+			// Black silence
+			0 fadeSound 0;
+			0 fadeEnvironment 0;
+			// Start with a silent black screen.
+
+			LOG("[showIntro] Should be dark");
 			if (!isNil "cgqc_config_author" && !isNil "cgqc_config_mission_name") then {
+				titleCut ["", "BLACK FADED", 999];
 				if (cgqc_config_author find "Cpl. Quelque chose" != 0) then {
+					titleCut ["", "BLACK FADED", 999];
 					_text = (
 						"<img size= '8' style='vertical-align:middle' shadow='false' image='\cgqc\textures\CGQC.paa'/>" +
 						"<br/>" +
 						"<t size='2' >%1</t><br /><t size = '1'>par %2</t>"
 					);
+					titleCut ["", "BLACK FADED", 999];
 					waitUntil {cgqc_roleSwitch_done};
 					//Pop le logo et le texte
+					titleCut ["", "BLACK FADED", 999];
 					_text = format [_text, cgqc_config_mission_name, cgqc_config_author];
 					[_text, 0, 0, 4, 2] spawn BIS_fnc_dynamicText;
 					// Fade from black, to blur, to clear as text types.
@@ -47,36 +59,32 @@ if (_show) then {
 
 					// Show current phase initially
 					LOG("[showIntro] - Show initial phase");
-					[] spawn {
-						waitUntil {
-							sleep 3, cgqc_intro_done
+					waitUntil {sleep 3, cgqc_intro_done};
+					_phase = missionNamespace getVariable "CGQC_gamestate_current";
+					_phaseName = "";
+					_phaseTxt = "";
+					switch (_phase) do {
+						case "training": {
+							_phaseName = "Training";
+							_phaseTxt = "Have fun!";
 						};
-						_phase = missionNamespace getVariable "CGQC_gamestate_current";
-						_phaseName = "";
-						_phaseTxt = "";
-						switch (_phase) do {
-							case "training": {
-								_phaseName = "Training";
-								_phaseTxt = "Have fun!";
-							};
-							case "staging": {
-								_phaseName = "Staging";
-								_phaseTxt = "Get ready!";
-							};
-							case "mission": {
-								_phaseName = "Mission";
-								_phaseTxt = "Here we go!";
-							};
+						case "staging": {
+							_phaseName = "Staging";
+							_phaseTxt = "Get ready!";
 						};
-						sleep 10;
-						[
-							[
-								[_phaseName, "align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
-								["", "<br/>"], // line break
-								[_phaseTxt, "align = 'center' shadow = '1' size = '1.0'"]
-							]
-						] spawn BIS_fnc_typeText2;
+						case "mission": {
+							_phaseName = "Mission";
+							_phaseTxt = "Here we go!";
+						};
 					};
+					sleep 10;
+					[
+						[
+							[_phaseName, "align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
+							["", "<br/>"], // line break
+							[_phaseTxt, "align = 'center' shadow = '1' size = '1.0'"]
+						]
+					] spawn BIS_fnc_typeText2;
 				};
 			} else {
 				LOG("[showIntro] Error: No mission name/Author");
@@ -205,7 +213,7 @@ if (_show) then {
 };
 
 // Restore sound stuff in case
-sleep 10;
+sleep 30;
 1 fadeSound 1;
 1 fadeEnvironment 1;
 ace_hearing_disableVolumeUpdate = false;
