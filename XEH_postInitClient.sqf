@@ -88,7 +88,7 @@ if (core_version isNotEqualTo _checkVersion) then {
 		sleep 0.5; cgqc_player_radio_names;
 	};
 */
-
+titleCut ["", "BLACK FADED", 999];
 // Client-side code
 LOG("Checking if intro/welcome should be shown");
 if !(cgqc_mission_dro) then {

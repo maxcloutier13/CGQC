@@ -105,7 +105,7 @@ if (_show) then {
 			0 fadeSound 0;
 			0 fadeEnvironment 0;
 			titleCut ["", "BLACK FADED", 999];
-
+			sleep 1;
 			_mapSize = worldSize;								// Map size
 			_mapHalf = _mapSize / 2;							 // Map half
 			_mapCent = [_mapHalf, _mapHalf];					 // Map center 2D
@@ -117,7 +117,7 @@ if (_show) then {
 			// Sample terrain between A and B to find max terrain height
 			_numSamples = 20;  // Number of points to sample along the path
 			_highestTerrainHeight = 0;  // Track highest terrain height
-
+			titleCut ["", "BLACK FADED", 999];
 			for "_i" from 0 to 1 step (1 / _numSamples) do {
 				_samplePos = [
 					(_mapPos1 select 0) + (_i * ((_mapPos2 select 0) - (_mapPos1 select 0))),
@@ -129,7 +129,7 @@ if (_show) then {
 					_highestTerrainHeight = _sampleHeight;
 				};
 			};
-
+			titleCut ["", "BLACK FADED", 999];
 			// Set camera height above highest terrain point
 			_camHeight = _highestTerrainHeight + 25;  // Keep camera 200m above the highest terrain
 
@@ -137,19 +137,22 @@ if (_show) then {
 			_camPosB = [_mapPos2 select 0, _mapPos2 select 1, _camHeight];  // Cam End position (same height)
 			y_dist = _camPosA distance _camPosB;
 			_time = y_dist / 50;
-			hint format["dist:%1", y_dist];
+			sleep 1;
+			titleCut ["", "BLACK FADED", 999];
 			// Music and effects
 			0 fadeMusic 0;
-			playMusic ["LeadTrack01_F_Jets", 3];
+			_track = ["LeadTrack01_F_Jets", 3];
+			playMusic [_track select 0, _track select 1];
 			3 fadeMusic 1;
-
+			titleCut ["", "BLACK FADED", 999];
 			_cam = "camera" camCreate _camPosA;				  // Create camera
 			_cam camSetTarget _mapPos2;						  // Point towards end position
 			_cam cameraEffect ["INTERNAL", "BACK"];
-
+			titleCut ["", "BLACK FADED", 999];
 			// Start fade-in from black asynchronously (non-blocking)
 			[] spawn {
-				sleep 2; // Slight delay to allow the camera to start moving
+				titleCut ["", "BLACK FADED", 999];
+				sleep 5; // Slight delay to allow the camera to start moving
 				titleCut ["", "BLACK IN", 5];
 				if (!isNil "cgqc_config_mission_name" && cgqc_config_author find "Cpl. Quelque chose" != 0) then {
 					sleep 6;
@@ -157,7 +160,6 @@ if (_show) then {
 					cutText [_txt, "PLAIN", 4, true, true];
 				};
 			};
-
 			// Move camera from A to B smoothly without changing height
 			_cam camSetPos _camPosB;
 			_cam camCommit _time;  // Adjust this for desired speed (15 seconds travel)
@@ -167,7 +169,7 @@ if (_show) then {
 			};
 
 			// Wait for intro to complete
-				sleep 10;  // Match this to the camCommit time
+			sleep 10;  // Match this to the camCommit time
 
 			10 fadeSound 1;
 			10 fadeEnvironment 1;
