@@ -29,9 +29,26 @@ if (cgqc_mk2_arsenal_locked) then {
 };
 
 _choices = [];
-switch (_modpack) do {
-    case "2023": {
-        switch (_type) do {
+
+switch (cgqc_customLoadout) do {
+	case "afg": {
+		switch (_type) do {
+            case "dot": {
+                _choices = ["Tier1_MicroT2_Leap_Tan", "Tier1_EXPS3_0_Tano"];
+            };
+            case "magnified": {
+                _choices = ["Tier1_EXPS3_0_G33_Tano_Up", "Tier1_MicroT2_Leap_G33_Desert_Up"];
+            };
+            case "rco": {
+                _choices = ["rhsusf_acc_ACOG_d"];
+            };
+            case "lpvo": {
+                _choices = ["Tier1_LeupoldM3A_Geissele_Docter_Tan", "Tier1_Shortdot_Geissele_Docter_Tan"];
+            };
+        };
+	};
+    default {
+          switch (_type) do {
             case "dot": {
                 _choices = ["Tier1_EXPS3_0_Black"];
             };
@@ -47,6 +64,8 @@ switch (_modpack) do {
         };
     };
 };
+
+
 _pick = selectRandom _choices;
 [_pick] call CGQC_fnc_switchOptics;
 

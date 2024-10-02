@@ -13,6 +13,9 @@ titleCut ["", "BLACK FADED", 999];
 // set side
 cgqc_player_side = side player;
 
+// === Check for custom Equipment loadouts  ====================================================================================================
+cgqc_customLoadout = player getVariable ["cgqc_var_startingLoadout", "basic"];
+
 // set version variable
 player setVariable ["cgqc_version_core", core_version, true]; // Set the client's mod version
 // get server versio

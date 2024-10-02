@@ -31,9 +31,9 @@ switch (_type) do {
 [_radios] call CGQC_fnc_addRadios;
 [_preset,_team] spawn {
 	params ["_preset", "_team"];
-	sleep 2;
+	sleep 3;
 	LOG_2("[getRadioPresets] setRadios: %1/%2 started", _preset, _team);
-	[_preset, _team] spawn CGQC_fnc_setRadios;
+	[_preset, _team] call CGQC_fnc_setRadios;
 	[] call CGQC_fnc_setGroupRadios;
 };
 

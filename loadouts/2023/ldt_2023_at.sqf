@@ -100,4 +100,7 @@ switch (_variant) do {
 	};
 };
 
+// Load camo and equipment from var
+[] call CGQC_ldt_camo;
+
 LOG(" ldt_2023_s_at done");

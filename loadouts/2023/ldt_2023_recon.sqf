@@ -21,9 +21,9 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
-	case "m200": {["m200"] spawn CGQC_fnc_switchPrimary;};
-	case "m1aebr": {["m1aebr"] spawn CGQC_fnc_switchPrimary;};
-	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
+	case "m200": {["m200"] call CGQC_fnc_switchPrimary;};
+	case "m1aebr": {["m1aebr"] call CGQC_fnc_switchPrimary;};
+	case "mk12": {["mk12_lpvo"] call CGQC_fnc_switchPrimary;};
 };
 
 switch (_variant) do {
@@ -74,6 +74,9 @@ switch (_variant) do {
 		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 	};
 };
+
+// Load camo and equipment from var
+[] call CGQC_ldt_camo;
 
 LOG(" ldt_2023_recon done");
 

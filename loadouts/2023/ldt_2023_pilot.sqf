@@ -26,7 +26,7 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
-	case "p90": {["p90"] spawn CGQC_fnc_switchPrimary;};
+	case "p90": {["p90"] call CGQC_fnc_switchPrimary;};
 };
 
 for "_i" from 1 to 2 do {player addItemToBackpack "SmokeShellPurple"};
