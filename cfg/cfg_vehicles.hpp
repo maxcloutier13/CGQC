@@ -412,7 +412,7 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
     };
 	class EventHandlers
     {
-    	init = "if (isServer) then {[_this] spawn CGQC_fnc_loadoutConstructionVic;[_this select 0, 'car'] spawn CGQC_fnc_addSpares}";
+    	init = "[_this] spawn CGQC_fnc_loadoutConstructionVic;[_this select 0, 'car'] spawn CGQC_fnc_addSpares";
     };
 };
 

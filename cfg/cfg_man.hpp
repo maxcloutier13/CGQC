@@ -585,6 +585,62 @@ class CAManBase: Man {
 				};
 			};
 		};
+		class equipment {
+			displayName = "Starting Equipment";
+			tooltip = "Inital loadout";
+			property = "cgqc_var_startingLoadout";
+			control = "combo";
+			defaultValue = "basic";
+			expression = "_this setVariable ['cgqc_var_startingLoadout',_value, true];";
+			condition = "objectBrain";
+			typeName = "STRING";
+			class Values {
+				class basic {
+					name = "Basic";
+					value = "basic";
+				};
+				class afghan {
+					name = "Afghanistan 2015";
+					value = "afg";
+				};
+			};
+		};
+		class camo {
+			displayName = "Starting Camo";
+			tooltip = "Inital camo set";
+			property = "cgqc_var_startingCamo";
+			control = "combo";
+			defaultValue = "GREEN";
+			expression = "_this setVariable ['cgqc_var_startingCamo',_value, true];";
+			condition = "objectBrain";
+			typeName = "STRING";
+			class Values {
+				class green {
+					name = "Vert";
+					value = "GREEN";
+				};
+				class desert {
+					name = "Desert";
+					value = "desert";
+				};
+				class multicam {
+					name = "Multicam";
+					value = "mcam";
+				};
+				class cadpat {
+					name = "CadPat";
+					value = "cadpat";
+				};
+				class black {
+					name = "Noir";
+					value = "black";
+				};
+				class white {
+					name = "Arctic";
+					value = "white";
+				};
+			};
+		};
 		class perks {
 			displayName = "Perks";
 			tooltip = "Add perks on init";

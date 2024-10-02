@@ -9,9 +9,6 @@ if (local _unit) then {
 	// Restore controls in case player got killed during a bad moment
 	disableUserInput false;
 
-	// Run wakeup routine to bring back interface, sound and radio
-	["respawn"] spawn cgqc_fnc_wakeup;
-
 	// Save stuff for player respawn
 	// Corpse position
 	player setVariable["corpse_position", getPosASL _corpse];
@@ -133,7 +130,7 @@ if (local _unit) then {
 					if (_pttKey == 3) then {_newRadioList set [2, _radioID]}; // assign new radio to PTT slot 3
 
 					[_radioID, _channel] call acre_api_fnc_setRadioChannel;
-					[_radioID, _volume] call acre_api_fnc_setRadioVolume;
+					//[_radioID, _volume] call acre_api_fnc_setRadioVolume;
 					[_radioID, _spatial] call acre_api_fnc_setRadioSpatial;
 				} forEach _radios;
 			},
@@ -180,8 +177,9 @@ if (local _unit) then {
 	//_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
 	// Lower gun
 	[player] call ace_weaponselect_fnc_putWeaponAway;
-	// Reload radios
 
+	// Run wakeup routine to bring back interface, sound and radio
+	["respawn"] spawn cgqc_fnc_wakeup;
 
 	// Add earplugs if missing
 	if !([player, "ACE_EarPlugs"] call ace_common_fnc_hasItem) then {

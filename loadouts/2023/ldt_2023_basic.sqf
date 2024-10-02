@@ -35,7 +35,6 @@ _target addItemToVest "MiniGrenade";
 _target addItemToVest "MiniGrenade";
 _target addItemToVest "ACE_EntrenchingTool";
 
-// === Backpack Items ====================================================================================================
 
 
 LOG(" ldt_2023_basic done");

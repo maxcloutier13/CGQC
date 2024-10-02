@@ -2,9 +2,16 @@
 // --- ldt_2023_s_medic ----------------------------------------------------------
 // Medic 2023 loadout
 params [["_target", player], ["_variant", "medic"], ["_gunVariant", "carbine"]];
-LOG(" ldt_2023_s_medic started");
+LOG("[ldt_2023_s_medic] started");
 // Basic setup
 [] call CGQC_ldt_2023_basic;
+_nvg = "JAS_GPNVG18_blk";
+switch (cgqc_customLoadout) do {
+	case "afg": {
+		_nvg = "JAS_GPNVG18_tan";
+		_gunVariant = "afg"
+	};
+};
 
 // === Clothing ==========================================================================================================
 _hats = ["cgqc_helmet_mk1_medic"];
@@ -16,12 +23,13 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;
 
 // === Linked items ==================================================================================================================
-["2023_basic","cgqc_item_rangefinder","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
+["2023_basic","cgqc_item_rangefinder", _nvg] call CGQC_fnc_getLinkedItems;
 
 // === Primary ==========================================================================================================
 switch (_gunVariant) do {
-	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-	case "lpvo": {["m4_lpvo"] spawn CGQC_fnc_switchPrimary;};
+	case "carbine": {["m4_elcan"] call CGQC_fnc_switchPrimary;};
+	case "lpvo": {["m4_lpvo"] call CGQC_fnc_switchPrimary;};
+	case "afg": {["scar_l_std"] call CGQC_fnc_switchPrimary;};
 };
 
 switch (_variant) do {
@@ -56,5 +64,8 @@ switch (_variant) do {
 		for "_i" from 1 to 10 do {player addItemToBackpack "CGQC_Carbonate";};
 	};
 };
+
+// Load camo and equipment from var
+[] call CGQC_ldt_camo;
 
 LOG(" ldt_2023_s_medic done");

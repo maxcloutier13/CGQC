@@ -2,10 +2,15 @@
 // --- ldt_2023_i_rifleman ----------------------------------------------------------
 // Rifleman 2023 loadout
 params [["_target", player], ["_variant", "rifleman"], ["_gunVariant", "carbine"]];
-LOG(" ldt_2023_i_rifleman started");
+LOG("[ldt_2023_i_rifleman] started");
 // Basic setup
 [] call CGQC_ldt_2023_basic;
-
+_nvg = "JAS_GPNVG18_blk";
+switch (cgqc_customLoadout) do {
+	case "afg": {
+		_nvg = "JAS_GPNVG18_tan";
+	};
+};
 // === Clothing ==========================================================================================================
 _hats = ["cgqc_helmet_mk1"];
 _goggles = [""];
@@ -16,17 +21,35 @@ _loadout = [_hats, _goggles, _vests, _uniforms, _rucks];
 [_loadout] call CGQC_fnc_loadLoadout;
 
 // === Linked items ==================================================================================================================
-["2023_basic","cgqc_item_rangefinder","JAS_GPNVG18_blk"] call CGQC_fnc_getLinkedItems;
+["2023_basic", "cgqc_item_rangefinder", _nvg] call CGQC_fnc_getLinkedItems;
 
 // === Primary ==========================================================================================================
-switch (_gunVariant) do {
-	case "cqb": {["mk18_dot"] spawn CGQC_fnc_switchPrimary;};
-	case "carbine": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-	case "rifle": {["m16_shortdot"] spawn CGQC_fnc_switchPrimary;};
-	case "grenade": {["m4_elcan"] spawn CGQC_fnc_switchPrimary;};
-	case "417": {["417"] spawn CGQC_fnc_switchPrimary;};
-	case "mk12": {["mk12_lpvo"] spawn CGQC_fnc_switchPrimary;};
+
+switch (cgqc_customLoadout) do {
+	case "afg": {
+		switch (_gunVariant) do {
+			LOG("[ldt_2023_i_rifleman] AFG mode");
+			case "cqb": {["scar_l_cqb"] call CGQC_fnc_switchPrimary;};
+			case "carbine": {["scar_l_std"] call CGQC_fnc_switchPrimary;};
+			case "rifle": {["scar_l_long"] call CGQC_fnc_switchPrimary;};
+			case "grenade": {["scar_l_std_gl"] call CGQC_fnc_switchPrimary;};
+			case "417": {["scar_dmr"] call CGQC_fnc_switchPrimary;};
+			case "mk12": {["scar_l_long"] call CGQC_fnc_switchPrimary;};
+		};
+	};
+	default {
+		switch (_gunVariant) do {
+			LOG("[ldt_2023_i_rifleman] 2023 mode");
+			case "cqb": {["mk18_dot"] call CGQC_fnc_switchPrimary;};
+			case "carbine": {["m4_elcan"] call CGQC_fnc_switchPrimary;};
+			case "rifle": {["m16_shortdot"] call CGQC_fnc_switchPrimary;};
+			case "grenade": {["m4_elcan"] call CGQC_fnc_switchPrimary;};
+			case "417": {["417"] call CGQC_fnc_switchPrimary;};
+			case "mk12": {["mk12_lpvo"] call CGQC_fnc_switchPrimary;};
+		};
+	};
 };
+
 
 switch (_variant) do {
 	case "grenadier": {
@@ -81,5 +104,8 @@ switch (_variant) do {
 		for "_i" from 1 to 2 do { player addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag"};
 	};
 };
+
+// Load camo and equipment from var
+[] call CGQC_ldt_camo;
 
 LOG(" ldt_2023_i_rifleman done");

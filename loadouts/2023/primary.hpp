@@ -2,47 +2,46 @@
 
 // SCARs ----------------------------------------------------------------------------------------------
 case "scar_l_long":{
-    ["hlc_wp_SCARL_DMR", "lpvo"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-    _target addPrimaryWeaponItem "Tier1_Harris_Bipod_Black";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
+    ["hlc_wp_SCARL_DMR", "lpvo", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
+    _target addPrimaryWeaponItem "Tier1_Harris_Bipod_Tan";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk262_PMAG_Tan_mix";
 };
 case "scar_h_long":{
-    ["hlc_wp_SCARH_DMR", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_SandmanS_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-    _target addPrimaryWeaponItem "HLC_bipod_UTGShooters";
-    _target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk";
+    ["hlc_wp_SCARH_DMR", "rco", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
+    _target addPrimaryWeaponItem "Tier1_Harris_Bipod_Tan";
+    _target addPrimaryWeaponItem "grcb_mag_20Rnd_SCAR_762x51_mk316_special_mix";
 };
 case "scar_l_std_gl":{
-    ["hlc_wp_SCARL_STD_EGLM", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
-    _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
+    ["hlc_wp_SCARL_STD_EGLM", "magnified", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk262_PMAG_Tan_mix";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
 case "scar_l_std_gl_blackout":{
-    ["hlc_wp_SCARL_STD_300AAC_EGLM", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    ["hlc_wp_SCARL_STD_300AAC_EGLM", "rco", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk262_PMAG_Tan_mix";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
 case "scar_l_std":{
-    ["hlc_wp_SCARL_STD", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    ["hlc_wp_SCARL_STD", "magnified", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_Black_2D";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk262_Stanag_Pull";
+    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk262_PMAG_Tan_mix";
 };
 case "scar_l_std_blackout":{
-    ["hlc_wp_SCARL_STD_300AAC", "dot"] call CGQC_fnc_getCustomGun;
+    ["hlc_wp_SCARL_STD_300AAC", "dot", "afg"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_SRD762_Desert";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M300C";
     _target addPrimaryWeaponItem "Tier1_Elcan_156_C2_Docter_FDE_2D";
@@ -50,66 +49,66 @@ case "scar_l_std_blackout":{
     _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG_Tan";
 };
 case "scar_h_std":{
-    ["hlc_wp_SCARH_STD", "rco"] call CGQC_fnc_getCustomGun;
+    ["hlc_wp_SCARH_STD", "rco", "afg"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_SandmanS_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk";
+    _target addPrimaryWeaponItem "grcb_mag_20Rnd_SCAR_762x51_mk316_special_mix";
 };
 case "scar_h_std_gl":{
-    ["hlc_wp_SCARH_STD_EGLM", "rco"] call CGQC_fnc_getCustomGun;
+    ["hlc_wp_SCARH_STD_EGLM", "rco", "afg"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_SandmanS_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk";
+    _target addPrimaryWeaponItem "grcb_mag_20Rnd_SCAR_762x51_mk316_special_mix";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
 case "scar_l_cqb_gl":{
-    ["hlc_wp_SCARL_CQC_EGLM", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    ["hlc_wp_SCARL_CQC_EGLM", "rco", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG_Tan";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
 case "scar_l_cqb":{
-    ["hlc_wp_SCARL_CQC", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    ["hlc_wp_SCARL_CQC", "dot", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG_Tan";
 };
 case "scar_l_cqb_blackout":{
-    ["hlc_WP_SCARL_CQC_300AAC", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    ["hlc_WP_SCARL_CQC_300AAC", "dot", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
     _target addPrimaryWeaponItem "Tier1_30Rnd_762x35_300BLK_SMK_PMAG_Tan";
 };
 case "scar_h_cqb":{
-    ["hlc_wp_SCARH_CQC", "dot"] call CGQC_fnc_getCustomGun;
+    ["hlc_wp_SCARH_CQC", "dot", "afg"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_SandmanS_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk";
+    _target addPrimaryWeaponItem "grcb_mag_20Rnd_SCAR_762x51_mk316_special_mix";
 };
 case "scar_h_cqb_gl":{
-    ["hlc_wp_SCARH_CQC_EGLM", "dot"] call CGQC_fnc_getCustomGun;
+    ["hlc_wp_SCARH_CQC_EGLM", "dot", "afg"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_SandmanS_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_mk316_special_bk";
+    _target addPrimaryWeaponItem "grcb_mag_20Rnd_SCAR_762x51_mk316_special_mix";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
 case "scar_l_short":{
-    ["hlc_wp_SCAR_PDW", "dot"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    ["hlc_wp_SCAR_PDW", "dot", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
-    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG_Tan";
 };
 
 // 5.56 CQB/SBR ----------------------------------------------------------------------------------------------
@@ -547,11 +546,11 @@ case "sig556":{
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk316_Mod_0_Mag";
 };
 case "scar_dmr":{
-    ["hlc_wp_SSR", "lpvo"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_SandmanS_Black";
-    _target addPrimaryWeaponItem "rhsusf_acc_anpeq15_bk";
-    _target addPrimaryWeaponItem "HLC_bipod_UTGShooters";
-    _target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_m118_special_bk";
+    ["hlc_wp_SSR", "lpvo", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SRD762_Desert";
+    _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C";
+    _target addPrimaryWeaponItem "121_USASOC_Atlas";
+    _target addPrimaryWeaponItem "rhs_mag_20Rnd_SCAR_762x51_m118_special";
 };
 
 // MG =================================================================
@@ -569,6 +568,14 @@ case "mk46":{
     _target addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote";
     _target addPrimaryWeaponItem "Tier1_SAW_Bipod_DD";
 };
+case "mk46_desert":{
+    ["Tier1_MK46_Mod1_Desert", "dot", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SandmanS_Desert";
+    _target addPrimaryWeaponItem "Tier1_Mk46Mod1_LA5_M600V";
+    _target addPrimaryWeaponItem "rhsusf_200Rnd_556x45_mixed_soft_pouch_coyote";
+    _target addPrimaryWeaponItem "Tier1_SAW_Bipod_Desert";
+};
+
 case "minimi":{
     ["lmg_03_F", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "muzzle_snds_M";
@@ -596,6 +603,14 @@ case "mk48":{
     _target addPrimaryWeaponItem "Tier1_250Rnd_762x51_Belt_M62_Tracer";
     _target addPrimaryWeaponItem "Tier1_SAW_Bipod_2_KAC";
 };
+case "mk48_desert":{
+    ["Tier1_MK48_Mod0_Para_Desert", "rco", "afg"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_SOCOM762MG_DE";
+    _target addPrimaryWeaponItem "Tier1_Mk48Mod0_LA5_M600V";
+    _target addPrimaryWeaponItem "Tier1_250Rnd_762x51_Belt_M62_Tracer";
+    _target addPrimaryWeaponItem "Tier1_SAW_Bipod_2_Desert";
+};
+
 case "lwmmg":{
     ["MMG_02_black_F", "rco"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "muzzle_snds_338_black";
