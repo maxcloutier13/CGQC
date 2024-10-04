@@ -318,8 +318,8 @@ class cgqc_drone_darter_light : cgqc_drone_darter
     liftForceCoef = 1.0;
 };
 
-class B_W_MBT_01_TUSK_F;
-class cgqc_vic_tank_merkava : B_W_MBT_01_TUSK_F {
+class B_T_MBT_01_TUSK_F;
+class cgqc_vic_tank_merkava : B_T_MBT_01_TUSK_F {
     scope = 2;
     side = 1;
     author = "silent1";
