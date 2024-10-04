@@ -1,6 +1,6 @@
 #include "\CGQC\script_component.hpp"
 // --- showIntro ----------------------------------------------------------
-params [["_show", cgqc_config_showIntro], ["_type", cgqc_config_showIntro_type]];
+params [["_show", cgqc_config_showIntro], ["_type", cgqc_config_showIntro_type], ["_variant", "basic"]];
 // Show intro on load
 LOG_2("[showIntro] Show:%1/Type:%2 started", _show, _type);
 
@@ -100,12 +100,32 @@ if (_show) then {
 		};
 		case 1: { //Flying intro
 			LOG("[showIntro] Flying Intro");
-
+			_track = ["LeadTrack01_F_Jets", 3];
+			_initTime = 4;
+			_fadeIn = 3;
+			_totalTime = 10;
+			_textTime = 8;
+			switch (_variant) do {
+				case "actionDark": {
+					_track = ["Track07_ActionDark", 0];
+					_initTime = 1;
+					_fadeIn = 2;
+					_totalTime = 10;
+					_textTime = 7;
+				};
+				case "defcon": {
+					_track = ["Defcon", 0];
+					_fadeIn = 6;
+					_initTime = 3;
+					_totalTime = 10;
+					_textTime = 6;
+				};
+			};
+			["hide"] spawn CGQC_fnc_toggleUI;
 			// Black silence
 			0 fadeSound 0;
 			0 fadeEnvironment 0;
 			titleCut ["", "BLACK FADED", 999];
-			sleep 1;
 			_mapSize = worldSize;								// Map size
 			_mapHalf = _mapSize / 2;							 // Map half
 			_mapCent = [_mapHalf, _mapHalf];					 // Map center 2D
@@ -137,11 +157,10 @@ if (_show) then {
 			_camPosB = [_mapPos2 select 0, _mapPos2 select 1, _camHeight];  // Cam End position (same height)
 			y_dist = _camPosA distance _camPosB;
 			_time = y_dist / 50;
-			sleep 1;
+
 			titleCut ["", "BLACK FADED", 999];
 			// Music and effects
 			0 fadeMusic 0;
-			_track = ["LeadTrack01_F_Jets", 3];
 			playMusic [_track select 0, _track select 1];
 			3 fadeMusic 1;
 			titleCut ["", "BLACK FADED", 999];
@@ -150,14 +169,15 @@ if (_show) then {
 			_cam cameraEffect ["INTERNAL", "BACK"];
 			titleCut ["", "BLACK FADED", 999];
 			// Start fade-in from black asynchronously (non-blocking)
-			[] spawn {
+			[_initTime, _textTime, _fadeIn] spawn {
+				params ["_initTime", "_textTime", "_fadeIn"];
 				titleCut ["", "BLACK FADED", 999];
-				sleep 5; // Slight delay to allow the camera to start moving
-				titleCut ["", "BLACK IN", 5];
+				sleep _initTime; // Slight delay to allow the camera to start moving
+				titleCut ["", "BLACK IN", _fadeIn];
 				if (!isNil "cgqc_config_mission_name" && cgqc_config_author find "Cpl. Quelque chose" != 0) then {
-					sleep 6;
+					sleep _textTime;
 					_txt = format ["<t shadow='0' font='EtelkaNarrowMediumPro' size='6'>%1</t><br/>", cgqc_config_mission_name];
-					cutText [_txt, "PLAIN", 4, true, true];
+					cutText [_txt, "PLAIN", 3, true, true];
 				};
 			};
 			// Move camera from A to B smoothly without changing height
@@ -169,11 +189,11 @@ if (_show) then {
 			};
 
 			// Wait for intro to complete
-			sleep 10;  // Match this to the camCommit time
+			sleep _totalTime;  // Match this to the camCommit time
 
 			10 fadeSound 1;
 			10 fadeEnvironment 1;
-			sleep 10;
+			sleep 13;
 			waitUntil {cgqc_roleSwitch_done};
 			titleCut ["", "BLACK FADED", 999];
 			_cam cameraEffect ["TERMINATE", "BACK"];
@@ -184,7 +204,7 @@ if (_show) then {
 			"dynamicBlur" ppEffectCommit 5;
 			titleCut ["", "BLACK IN", 6];
 			camDestroy _cam;
-
+			sleep 2;
 			// End music
 			5 fadeMusic 0;
 			sleep 5;
@@ -192,6 +212,7 @@ if (_show) then {
 			0 fadeMusic 1;
 			cgqc_intro_running = false;
 			cgqc_intro_done = true;
+			["show"] spawn CGQC_fnc_toggleUI;
 
 			LOG("[showIntro] Flying intro done");
 		};
@@ -204,7 +225,7 @@ if (_show) then {
 			5 fadeMusic 1;
 			ace_hearing_disableVolumeUpdate = true;
 			titleCut ["", "BLACK IN", 1];
-			if (isNil "cgqc_establishing_text") then {cgqc_establishing_text = "";};
+			if (isNil "cgqc_establishing_text") then {cgqc_establishing_text = cgqc_config_mission_name;};
 			_angle = random 360;
 			cgqc_establishing = [player, cgqc_establishing_text, 50, 100, _angle, 1, [], 0, true] spawn BIS_fnc_establishingShot;
 			waitUntil { scriptDone cgqc_establishing };

@@ -147,6 +147,21 @@ switch (_type) do {
             _adding = [ player, 1, ["ACE_SelfActions", "menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
             // Briefing mode
+            _action = [ "zeus_cinematic", "Run Intro", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate_staging"], _action ] call ace_interact_menu_fnc_addActionToObject;
+            _action = [ "zeus_cinematic_fly", "Fly with title", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
+            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate_staging", "zeus_cinematic"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+            _action = [ "zeus_cinematic_fly_drama", "Smooth", "", {[-1,{[true, 1, "basic"] spawn CGQC_fnc_showIntro;}] call CBA_fnc_globalExecute;}, {true} ] call ace_interact_menu_fnc_createAction;
+            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate_staging", "zeus_cinematic", "zeus_cinematic_fly"], _action ] call ace_interact_menu_fnc_addActionToObject;
+            _action = [ "zeus_cinematic_fly_drama", "Intense", "", {[-1,{[true, 1, "actionDark"] spawn CGQC_fnc_showIntro;}] call CBA_fnc_globalExecute;}, {true} ] call ace_interact_menu_fnc_createAction;
+            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate_staging", "zeus_cinematic", "zeus_cinematic_fly"], _action ] call ace_interact_menu_fnc_addActionToObject;
+            _action = [ "zeus_cinematic_fly_drama", "Dramatic", "", {[-1,{[true, 1, "defcon"] spawn CGQC_fnc_showIntro;}] call CBA_fnc_globalExecute;}, {true} ] call ace_interact_menu_fnc_createAction;
+            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate_staging", "zeus_cinematic", "zeus_cinematic_fly"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
+            _action = [ "zeus_cinematic_establish", "Establishing Shot", "", {[-1,{[true, 2] spawn CGQC_fnc_showIntro;}] call CBA_fnc_globalExecute;}, {true} ] call ace_interact_menu_fnc_createAction;
+            _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate_staging", "zeus_cinematic"], _action ] call ace_interact_menu_fnc_addActionToObject;
+
             _action = [ "zeus_briefing", "Briefing", "", {""}, {true} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "zeus_gamestate_staging"], _action ] call ace_interact_menu_fnc_addActionToObject;
             // Commanders briefing
