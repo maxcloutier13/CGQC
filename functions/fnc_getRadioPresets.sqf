@@ -28,13 +28,16 @@ switch (_type) do {
 
 
 // Do the deed
+LOG("[getRadioPresets] Starting AddRadios");
 [_radios] call CGQC_fnc_addRadios;
 [_preset,_team] spawn {
 	params ["_preset", "_team"];
-	sleep 3;
-	LOG_2("[getRadioPresets] setRadios: %1/%2 started", _preset, _team);
-	[_preset, _team] call CGQC_fnc_setRadios;
-	[] call CGQC_fnc_setGroupRadios;
+	LOG_2("[getRadioPresets] setRadios: %1/%2 started. Sleeping 4s", _preset, _team);
+	sleep 4;
+	LOG("[getRadioPresets] Starting setRadios");
+	[_preset, _team] spawn CGQC_fnc_setRadios;
+	LOG("[getRadioPresets] Starting setGroupRadios");
+	[] spawn CGQC_fnc_setGroupRadios;
 };
 
 LOG("[getRadioPresets] done");

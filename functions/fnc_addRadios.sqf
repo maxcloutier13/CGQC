@@ -5,8 +5,10 @@ params ["_radios"];
 LOG_1("[addRadios] %1 started", _radios);
 {
 	if (_x isEqualTo "ACRE_PRC117F") then {
+		LOG("[addRadios] Adding 117 to pack");
 		(backpackContainer ACE_player) addItemCargoGlobal [_x, 1];
 	} else {
+		LOG_1("[addRadios] Adding %1 to uniform", _x);
 		(uniformContainer ACE_player) addItemCargoGlobal [_x, 1];
 	};
 	if (_x isEqualTo "ACRE_PRC148" && isNil "cgqc_event_148") then {
