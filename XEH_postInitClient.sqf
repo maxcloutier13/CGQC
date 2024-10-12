@@ -422,6 +422,22 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 	[[_title, 1.5, [0.161,0.502,0.725,1]],[_msg1, 1], [_msg2, 1], true] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;
 
+// Optics open event
+cgqc_reopen_map = false;
+player addEventHandler ["OpticsSwitch", {
+    params ["_unit", "_isADS"];
+    if (_isADS) then {
+        if (tao_rewrite_main_isOpen) then {
+            cgqc_reopen_map = true;
+        };
+    } else {
+        if(cgqc_reopen_map) then {
+            [] spawn tao_rewrite_main_fnc_openFoldmap;
+            cgqc_reopen_map = false;
+        };
+    };
+}];
+
 // Unconcious event
 ["ace_unconscious", {
 	params ["_unit", "_isUnconscious"];
@@ -461,19 +477,26 @@ player setVariable ["cgqc_player_wakeup_volume", [] call acre_api_fnc_getGlobalV
 			sleep 1;
 			_downTime = _downTime + 1;
 			if (_downTime % _choice isEqualTo 0) then {
-				LOG_1("[Unconscious] - Been %1s.. checking ", _choice);
-				// It's been X seconds. Check if heart is running
-				_choice = selectRandom _choices;
-				if !(_unit getVariable ["ace_medical_inCardiacArrest", false]) then {
-					LOG("[Unconscious] - Heart is beating");
-					// Check  pain not critical
-					_perceived = [] call CGQC_fnc_perceivedPain;
-					if (_perceived < 0.9) then {
-						// Wakeup, but with a pain watch
-						LOG("[Unconscious] - Waking up with pain check");
-						["pain"] spawn cgqc_fnc_wakeup;
-					} else{
-						LOG_1("[Unconscious] - Too much pain. Waiting %1s", _choice);
+				if (_unit getVariable ["ACE_isUnconscious", false]) then {
+					LOG_1("[Unconscious] - Been %1s.. checking ", _choice);
+					// It's been X seconds. Check if heart is running
+					_choice = selectRandom _choices;
+					if !(_unit getVariable ["ace_medical_inCardiacArrest", false]) then {
+						LOG("[Unconscious] - Heart is beating");
+						// Check  pain not critical
+						_perceived = [] call CGQC_fnc_perceivedPain;
+						if (_perceived < 0.9) then {
+							// Wakeup, but with a pain watch
+							LOG("[Unconscious] - Waking up with pain check");
+							["pain"] spawn cgqc_fnc_wakeup;
+						} else{
+							if (_downTime > 300) then {
+								// It's been 5mins. Force wake up
+								LOG("[Unconscious] - 5mins down. Force waking up");
+								["pain"] spawn cgqc_fnc_wakeup;
+							};
+							LOG_1("[Unconscious] - Too much pain. Waiting %1s", _choice);
+						};
 					};
 				};
 			};
