@@ -218,7 +218,7 @@ cgqc_pmct_arsenal_all = [
 	"Item_JammerSania",
 	"Item_JammerVolnorez",
     // Drones ------------------------------
-    "Rev_darter_item",
+    "Rev_darter",
     "Rev_pelican_item",
     // Binoculars ------------------------------
     "Binocular",

@@ -26,7 +26,7 @@ cgqc_mk2_arsenal_rank4 = [
 	"Item_JammerSania",
 	"Item_JammerVolnorez",
     // Drones ------------------------------
-    "Rev_darter_item",
+    "Rev_darter",
     "Rev_pelican_item",
     // Linked items ------------------------------------
     "B_UavTerminal",

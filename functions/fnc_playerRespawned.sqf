@@ -50,7 +50,7 @@ if (local _unit) then {
 		_uav = "";
 		switch (cgqc_player_uav) do {
 			case "sps_black_hornet_01_F": {_uav = "sps_black_hornet_01_Static_F";};
-			case "Rev_darter_b": {_uav = "Rev_darter_item";};
+			case "Rev_darter_b": {_uav = "Rev_darter";};
 			case "Rev_pelican_b": {_uav = "Rev_pelican_item";};
 			case "Rev_demine_b": {_uav = "Rev_demine_item";};
 		};

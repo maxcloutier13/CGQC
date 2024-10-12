@@ -13,7 +13,7 @@ switch (_type) do {
             LOG("[getDrone] Drone not restricted. Adding");
         };
     };
-    case "rev_darter_item": {
+    case "Rev_darter": {
         if (cgqc_config_droneRestriction > 1) then {
             _proceed = true;
             LOG("[getDrone] Drone not restricted. Adding");

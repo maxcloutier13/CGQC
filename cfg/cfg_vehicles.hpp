@@ -226,9 +226,9 @@ class cgqc_drone_darter : B_UAV_01_F
     };
 };
 // Override du deployable darter
-class Rev_darter_b: B_UAV_01_F
+class B_Rev_Darter: B_UAV_01_F
 {
-    author = "silent1";
+	author = "silent1";
     faction = "cgqc";
     editorSubcategory = "EdSubcat_cgqc_drones";
     displayName = "CGQC - HQ Darter Deployed";
@@ -245,7 +245,7 @@ class Rev_darter_b: B_UAV_01_F
     incomingMissileDetectionSystem = 26;
     accuracy = 0.5;
     hiddenSelectionsTextures[] = {"\CGQC\vehicles\cgqc_drone_darter_dark.paa"};
-    class Turrets: Turrets {
+class Turrets: Turrets {
         class MainTurret: MainTurret {
             class OpticsIn {
                 class Wide {
@@ -308,7 +308,34 @@ class Rev_darter_b: B_UAV_01_F
             volume = "((1-camPos)*3*(rotorThrust-0.9))/20";
         };
     };
+	class assembleInfo
+	{
+		primary = 0;
+		base = "";
+		assembleTo = "";
+		displayName = "";
+		dissasembleTo[] = {};
+
+	};
+	class UserActions
+	{
+		class pick_up
+		{
+			userActionID = 52;
+			displayName = "Dissassemble UAV";
+			displayNameDefault = "<t align='center'><img image='a3\missions_f_oldman\data\img\holdactions\holdaction_box_ca.paa' size='1.8' /><br/></t><t align='center'>Dissassemble UAV</t>";
+			condition = "alive this && vehicle player == player && ((UAVControl this) select 1 isEqualto '')";
+			statement = "[this,'cgqc_drone_darter'] call Rev_uav_fnc_pick_up";
+			position = "";
+			priority = 5;
+			radius = 1.8;
+			animPeriod = 2;
+			onlyForplayer = 1;
+			showWindow = 1;
+		};
+	};
 };
+
 
 class cgqc_drone_darter_light : cgqc_drone_darter
 {

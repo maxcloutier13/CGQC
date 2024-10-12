@@ -70,7 +70,7 @@ switch (_variant) do {
 		player addItemToBackpack "SLAMDirectionalMine_Wire_Mag";
 	};
 	case "drone": {
-		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["Rev_darter"] call CGQC_fnc_getDrone;
 		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 	};
 };
