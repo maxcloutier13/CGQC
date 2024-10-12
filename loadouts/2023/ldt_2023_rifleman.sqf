@@ -101,6 +101,8 @@ switch (_variant) do {
 		// Common items
 		player addItemToBackpack "ACE_DefusalKit";
 		player addItemToBackpack "ACE_M26_Clacker";
+		player addItemToBackpack "rhsusf_m112_mag"
+		player addItemToBackpack "rhsusf_m112_mag"
 		for "_i" from 1 to 2 do { player addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag"};
 	};
 };
