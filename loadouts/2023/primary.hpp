@@ -439,16 +439,13 @@ case "sa58":{
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "hlc_20Rnd_762x51_barrier_fal";
 };
-case "g3ka4":{
+case "G3KA4":{
     ["hlc_rifle_g3ka4", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_aac_762sdn6_silencer";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
 };
-
-
-
 
 // 7.62 Rifle =================================================================
 case "socom16rifle":{
