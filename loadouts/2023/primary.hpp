@@ -370,16 +370,23 @@ case "mk18_gl":{
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
+
 case "416_10_gl":{
     ["rhs_weap_hk416d10_m320", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
+    _target addPrimaryWeaponItem "Tier1_RotexIIIC_Grey";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
-
-
+case "416_14_gl":{
+    ["rhs_weap_hk416d145_m320", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_RotexIIIC_Grey";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
+    _needGL = true;
+};
 
 case "m4_gl_m320":{
     ["rhs_weap_m4_m320", "dot"] call CGQC_fnc_getCustomGun;
