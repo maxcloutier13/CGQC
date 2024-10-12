@@ -294,6 +294,8 @@ switch (_type) do {
 			"cgqcBriefing" setMarkerType "mil_objective";
 			"cgqcBriefing" setMarkerText "BRIEFING NOW!!!";
 			"cgqcBriefing" setMarkerColor "ColorRed";
+			// Play sound
+			[player] spawn zsn_uppstallning;
 			sleep 10;
 			[""] remoteExec ["hintSilent"];
 		};
