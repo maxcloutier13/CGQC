@@ -51,6 +51,7 @@ switch (_variant) do {
 		// Breaching stuf
 		player addItemToBackpack "tsp_breach_popper_mag";
 		player addItemToBackpack "tsp_breach_popper_mag";
+		player addItemToBackpack "rhsusf_m112_mag";
 	};
 	case "saboteur": {
 		// === Explosives ================================
