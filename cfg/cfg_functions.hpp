@@ -12,7 +12,10 @@ class CGQC {
     tag = "CGQC";
     class functions {
         // Fonctions ---------------------------------------------------------------------------
-
+        class medicalTreatment {
+            file = "\cgqc\functions\fnc_medicalTreatment.sqf";
+            description = "Custom medical treatments and such";
+        };
         class getDrone {
             file = "\cgqc\functions\fnc_getDrone.sqf";
             description = "Handles drone restrictions";
