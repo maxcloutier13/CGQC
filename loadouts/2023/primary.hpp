@@ -370,16 +370,23 @@ case "mk18_gl":{
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
+
 case "416_10_gl":{
     ["rhs_weap_hk416d10_m320", "rco"] call CGQC_fnc_getCustomGun;
-    _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
-    _target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M600V_Black";
+    _target addPrimaryWeaponItem "Tier1_RotexIIIC_Grey";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };
-
-
+case "416_14_gl":{
+    ["rhs_weap_hk416d145_m320", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "Tier1_RotexIIIC_Grey";
+    _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+    _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
+    _needGL = true;
+};
 
 case "m4_gl_m320":{
     ["rhs_weap_m4_m320", "dot"] call CGQC_fnc_getCustomGun;
@@ -432,16 +439,13 @@ case "sa58":{
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "hlc_20Rnd_762x51_barrier_fal";
 };
-case "g3ka4":{
+case "G3KA4":{
     ["hlc_rifle_g3ka4", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_aac_762sdn6_silencer";
     _target addPrimaryWeaponItem "hlc_grip_AFG2";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "ACE_20Rnd_762x51_Mk319_Mod_0_Mag";
 };
-
-
-
 
 // 7.62 Rifle =================================================================
 case "socom16rifle":{

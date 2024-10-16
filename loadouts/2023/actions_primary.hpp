@@ -65,6 +65,10 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_m
 
 _action = [ "menu_mk2_alt_mk18gl", "10in Mk18", "", {["mk18_gl"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556", "menu_mk2_alt_gl"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_alt_41610", "10in 416", "", {["416_10_gl"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556", "menu_mk2_alt_gl"], _action ] call ace_interact_menu_fnc_addActionToObject;
+_action = [ "menu_mk2_alt_416", "14in 416", "", {["416_14_gl"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556", "menu_mk2_alt_gl"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_alt_m320", "14in M4blkII", "", {["m4_gl_m320"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_556", "menu_mk2_alt_gl"], _action ] call ace_interact_menu_fnc_addActionToObject;
 _action = [ "menu_mk2_alt_fn2000gl", "16in F2000", "", {["fn_2000_gl"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
@@ -83,7 +87,7 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_m
 
 _action = [ "menu_mk2_alt_scarHCqb", "11in SA-58", "", {["sa58"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_762", "menu_mk2_alt_762CQB"], _action ] call ace_interact_menu_fnc_addActionToObject;
-_action = [ "menu_mk2_alt_scarHCqb", "13in H&K G3KA4", "", {["G3KA4"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
+_action = [ "menu_mk2_alt_scarHCqb", "13in HK G3KA4", "", {["G3KA4"] spawn CGQC_fnc_switchPrimary}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_2023" , "menu_mk2_alt", "menu_mk2_alt_762", "menu_mk2_alt_762CQB"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
 // Rifle

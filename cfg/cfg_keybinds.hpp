@@ -50,3 +50,14 @@
 ["[CGQC]", "cgqc_kb_checkTemp", "Check Weapon Temperature", {
 	[player, player, currentWeapon player] call ace_overheating_fnc_checkTemperature}, {""}, [DIK_R, [true, false, false]]
 ] call CBA_fnc_addKeybind;
+
+//-- Medical Stuff
+["[CGQC]", "cgqc_kb_checkPulse", "Medical: Check Pulse", {
+	["pulse"] spawn CGQC_fnc_medicalTreatment}, {""}, [DIK_C, [true, false, false]]
+] call CBA_fnc_addKeybind;
+
+["[CGQC]", "cgqc_kb_checkResp", "Medical: Check Response", {
+	["response"] spawn CGQC_fnc_medicalTreatment}, {""}, [DIK_C, [false, false, true]]
+] call CBA_fnc_addKeybind;
+
+

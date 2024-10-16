@@ -57,7 +57,7 @@ switch (_variant) do {
         //_target addItemToUniform "ACRE_PRC152";
         _target addItemToBackpack "ACE_UAVBattery";
         _target addItemToBackpack "ACE_UAVBattery";
-		_target addItemToBackpack "rev_darter_item";
+		_target addItemToBackpack "Rev_darter";
 		_target addItemToBackpack "sps_black_hornet_01_Static_F";
         LOG("[swatDrone] done");
 	};

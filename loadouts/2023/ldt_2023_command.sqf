@@ -44,7 +44,7 @@ switch (_variant) do {
 		_target removeItems "ACE_Canteen";
 		_target addItem "ACE_M26_Clacker";
 		// === Drones ================================
-		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["Rev_darter"] call CGQC_fnc_getDrone;
 		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		["2023_command","cgqc_item_laserdesignator", _nvg] call CGQC_fnc_getLinkedItems;
 	};
@@ -53,14 +53,14 @@ switch (_variant) do {
 		_target removeItems "ACE_Canteen";
 		_target addItem "ACE_M26_Clacker";
 		// === Drones ================================
-		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["Rev_darter"] call CGQC_fnc_getDrone;
 		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		["2023_command","cgqc_item_laserdesignator", _nvg] call CGQC_fnc_getLinkedItems;
 	};
 	case "hq": {
 		_target removeItems "ACE_EntrenchingTool";
 		// === Drones ================================
-		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["Rev_darter"] call CGQC_fnc_getDrone;
 		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		// === Comms =================================
 		_target addItemToBackpack "ACRE_VHF30108SPIKE";
@@ -75,7 +75,7 @@ switch (_variant) do {
 		_target addItem "ACE_M26_Clacker";
 		["2023_command","cgqc_item_laserdesignator", _nvg] call CGQC_fnc_getLinkedItems;
 		// === Stuff ================================
-		["rev_darter_item"] call CGQC_fnc_getDrone;
+		["Rev_darter"] call CGQC_fnc_getDrone;
 		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		_target addItemToBackpack "ACE_Tripod";
 		_target addItemToBackpack "ACE_Vector";
