@@ -94,7 +94,7 @@ switch (_medication) do {
             cutText [_txt,"PLAIN DOWN", 1, false, true];
         } else {
             LOG("[treatment] AmmoniumCarbonate: Didn't wake up for some reason");
-            ["cgqc_event_notify", ["Ammonium", "No effect strangely"], _medic] spawn CBA_fnc_targetEvent;
+            ["cgqc_event_notify", ["Ammonium", "No effect. He's too hurt."], _medic] spawn CBA_fnc_targetEvent;
         };
 
     };

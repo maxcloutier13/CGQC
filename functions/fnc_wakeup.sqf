@@ -18,10 +18,14 @@ _radioIdList = call acre_api_fnc_getCurrentRadioList;
 } forEach _radioIdList;
 
 cgqc_int_wakeup = {
-    [player, true] call ace_medical_status_fnc_setUnconsciousState;
+    sleep 1;
+    ["ace_medical_WakeUp", player] call CBA_fnc_localEvent;
+    sleep 1;
     if (player getVariable ["ACE_isUnconscious", false]) then {
-        LOG("[wakeup] - Still down. WTF...");
-    } else {
+        LOG("[wakeup] - Still down. WTF... Trying again");
+        [player, false] call ace_medical_status_fnc_setUnconsciousState;
+    };
+    if !(player getVariable ["ACE_isUnconscious", false]) then {
         _choices = ["Ouf... This fucking hurts."];
         _txt = format ["<t size='2'>%1</t>", selectRandom _choices];
         cutText ["","PLAIN DOWN", 1, false, true];
@@ -40,6 +44,8 @@ cgqc_int_wakeup = {
             [player, true] call ace_medical_fnc_setUnconscious;
             LOG("[wakeup] - Passed out");
         };
+    } else {
+         LOG("[wakeup] - All failed. Could not wakeup");
     };
 
 };
