@@ -622,6 +622,15 @@ case "lwmmg":{
     _target addPrimaryWeaponItem "130Rnd_338_Mag";
     _target addPrimaryWeaponItem "Tier1_Harris_Bipod_Black";
 };
+case "lwmmg_afg":{
+    ["MMG_02_sand_F", "rco"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "muzzle_snds_338_sand";
+    _target addPrimaryWeaponItem "Tier1_Mk18_NGAL_M300C_FL";
+    _target addPrimaryWeaponItem "130Rnd_338_Mag";
+    _target addPrimaryWeaponItem "Tier1_Harris_Bipod_Tan";
+};
+
+
 case "hk121":{
     ["MMG_01_tan_F", "rco"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "muzzle_snds_93mmg_tan";
