@@ -68,7 +68,7 @@ cgqc_position_jump =
 			sleep 3;
 		};
 		// Good to jump
-		cutText ["", "BLACK FADED", 999];
+		cutText ["", "BLACK", 1e-6];
 		if (cgqc_quickjump) then {
 			y_jumpPosition = cgqc_jump_clickPos;
 		}else{
@@ -133,7 +133,7 @@ cgqc_position_jump =
 		"dynamicBlur" ppEffectEnable true;
 		"dynamicBlur" ppEffectAdjust [6];
 		"dynamicBlur" ppEffectCommit 0;
-		titleCut ["", "BLACK IN", 3];
+		cutText ["", "BLACK IN", 3];
 		"dynamicBlur" ppEffectAdjust [0.0];
 		"dynamicBlur" ppEffectCommit 2;
 		if (cgqc_quickjump || cgqc_training_jump_autoOpen) then {

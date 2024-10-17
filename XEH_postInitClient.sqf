@@ -1,14 +1,16 @@
 #include "\CGQC\script_component.hpp"
 // --- postInitClient ----------------------------------------------------------
 // Start everything player related
-
 LOG("[CGQC_PostInitClient] === Started =====================================");
 
-// Start with a silent black screen.
-0 fadeSound 0;
-0 fadeEnvironment 0;
-ace_hearing_disableVolumeUpdate = true;
-titleCut ["", "BLACK FADED", 999];
+[] spawn {
+	// Black silence
+	waitUntil {!isNull findDisplay 46};
+	0 fadeSound 0;
+	0 fadeEnvironment 0;
+	cutText ["", "BLACK", 1e-6];
+};
+
 
 // set side
 cgqc_player_side = side player;
@@ -73,25 +75,20 @@ if (core_version isNotEqualTo _checkVersion) then {
 	_range
 }] call ace_arsenal_fnc_addSort;
 
-/*
+
 // set language and radio channels
-	["side"] call CGQC_fnc_setACRE;
+["side"] call CGQC_fnc_setACRE;
 
-// Reset radios in case.
-	_radios = call acre_api_fnc_getCurrentRadioList;
-	{
-		player unassignItem _x;
-		player removeItem _x;
-	} forEach _radios;
+// Force remove radios in case.
+_radios = call acre_api_fnc_getCurrentRadioList;
+{
+	player unassignItem _x;
+	player removeItem _x;
+} forEach _radios;
 
-	waitUntil {
-		sleep 0.5; cgqc_player_acre_setup;
-	};
-	waitUntil {
-		sleep 0.5; cgqc_player_radio_names;
-	};
-*/
-titleCut ["", "BLACK FADED", 999];
+waitUntil {cgqc_player_acre_setup;};
+waitUntil {cgqc_player_radio_names;};
+
 // Client-side code
 LOG("Checking if intro/welcome should be shown");
 if !(cgqc_mission_dro) then {
@@ -119,7 +116,7 @@ if !(cgqc_mission_dro) then {
 		hint "DRO mode";
 		1 fadeSound 1;
 		sleep 5;
-		titleCut ["", "BLACK IN", 1];
+		cutText ["", "BLACK IN", 1];
 	};
 };
 
@@ -692,7 +689,7 @@ profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
 
 // Create/join initial group
 // [groupId (group player)] spawn CGQC_fnc_joinGroup;
-sleep 1;
+//sleep 1;
 _checkColor = player getVariable ["cgqc_var_startingColorTeam", "MAIN"];
 if (_checkColor isNotEqualTo "MAIN" && _checkColor isNotEqualTo "") then {
 	[_checkColor] call CGQC_fnc_setTeamColor;
@@ -793,7 +790,7 @@ player addEventHandler ["Take", {
 // All done
 cgqc_start_postInitClient_done = true;
 
-sleep 5;
+//sleep 5;
 // Init the map centering function
 LOG("[CGQC_PostInitClient] - Load center map setting");
 ["initial"] call CGQC_fnc_centerMap;
@@ -855,60 +852,59 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 }];
 
 
-
-sleep 25;
-LOG("[CGQC_PostInitClient] - Checking for snapshots");
-// Check if a snapshot exists
-_snapshotFound = false;
-_snapTxt = "";
-_snapIntro = ["Saved loadout exists!", 1.5, [0.161, 0.502, 0.725, 1]];
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_done") then {
-	LOG("[CGQC_PostInitClient] - Manual snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
-	_time = cgqc_snapshot_check select 1;
-	_team = cgqc_snapshot_check select 2;
-	_color = cgqc_snapshot_check select 3;
-	_role = cgqc_snapshot_check select 4;
-	_txt = format ["<br/>-Manual: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
+[] spawn {
+	sleep 25;
+	LOG("[CGQC_PostInitClient] - Checking for snapshots");
+	// Check if a snapshot exists
+	_snapshotFound = false;
+	_snapTxt = "";
+	_snapIntro = ["Saved loadout exists!", 1.5, [0.161, 0.502, 0.725, 1]];
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_done") then {
+		LOG("[CGQC_PostInitClient] - Manual snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
+		_time = cgqc_snapshot_check select 1;
+		_team = cgqc_snapshot_check select 2;
+		_color = cgqc_snapshot_check select 3;
+		_role = cgqc_snapshot_check select 4;
+		_txt = format ["<br/>-Manual: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
+		LOG("[CGQC_PostInitClient] - Auto snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check_auto = MissionProfileNamespace getVariable "cgqc_player_snapshot_auto";
+		_time = cgqc_snapshot_check_auto select 1;
+		_team = cgqc_snapshot_check_auto select 2;
+		_color = cgqc_snapshot_check_auto select 3;
+		_role = cgqc_snapshot_check_auto select 4;
+		_txt = format ["<br/>-Auto: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then {
+		LOG("[CGQC_PostInitClient] - Start snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check_start = MissionProfileNamespace getVariable "cgqc_player_snapshot_start";
+		_time = cgqc_snapshot_check_start select 1;
+		_team = cgqc_snapshot_check_start select 2;
+		_color = cgqc_snapshot_check_start select 3;
+		_role = cgqc_snapshot_check_start select 4;
+		_txt = format ["<br/>-Start: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
+		LOG("[CGQC_PostInitClient] - Zeus snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check_zeus = MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus";
+		_time = cgqc_snapshot_check_zeus select 1;
+		_team = cgqc_snapshot_check_zeus select 2;
+		_color = cgqc_snapshot_check_zeus select 3;
+		_role = cgqc_snapshot_check_zeus select 4;
+		_txt = format ["<br/>-Zeus: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (_snapshotFound) then {
+		[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
+	};
 };
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
-	LOG("[CGQC_PostInitClient] - Auto snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check_auto = MissionProfileNamespace getVariable "cgqc_player_snapshot_auto";
-	_time = cgqc_snapshot_check_auto select 1;
-	_team = cgqc_snapshot_check_auto select 2;
-	_color = cgqc_snapshot_check_auto select 3;
-	_role = cgqc_snapshot_check_auto select 4;
-	_txt = format ["<br/>-Auto: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
-};
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then {
-	LOG("[CGQC_PostInitClient] - Start snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check_start = MissionProfileNamespace getVariable "cgqc_player_snapshot_start";
-	_time = cgqc_snapshot_check_start select 1;
-	_team = cgqc_snapshot_check_start select 2;
-	_color = cgqc_snapshot_check_start select 3;
-	_role = cgqc_snapshot_check_start select 4;
-	_txt = format ["<br/>-Start: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
-};
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
-	LOG("[CGQC_PostInitClient] - Zeus snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check_zeus = MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus";
-	_time = cgqc_snapshot_check_zeus select 1;
-	_team = cgqc_snapshot_check_zeus select 2;
-	_color = cgqc_snapshot_check_zeus select 3;
-	_role = cgqc_snapshot_check_zeus select 4;
-	_txt = format ["<br/>-Zeus: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
-};
-
-if (_snapshotFound) then {
-	[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
-};
-
 LOG("[CGQC_PostInitClient] === Done =====================================");

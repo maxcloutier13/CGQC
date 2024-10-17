@@ -199,9 +199,9 @@ CGQC_fnc_convoy_start = {
 		waitUntil {!(isNil "cgqc_convoy_start") };
 
 		// Fade to black
-		cutText ["", "BLACK FADED", 999];
+		 cutText ["", "BLACK", 1e-6];
 		titleText ["", "PLAIN"];
-		titleCut ["", "BLACK IN", 1];
+		    cutText ["", "BLACK IN", 1];
 		// Ask for destination point
 		_text = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><t size='1' >Click on road for Convoy destination point</t><br/>";
 		[_text, 0, 0, 3, 1] spawn BIS_fnc_dynamicText;

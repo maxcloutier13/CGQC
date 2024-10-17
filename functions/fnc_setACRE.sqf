@@ -54,7 +54,8 @@ LOG(" setACRE - Setting frequencies");
 ["ACRE_PRC117f", _radios] spawn acre_api_fnc_setPreset;
 
 
-cgqc_player_acre_setup = true;
+
 */
+cgqc_player_acre_setup = true;
 LOG_3(" setACRE %1: %2/%3 executed", _info, _language, _radios);
 LOG(" setACRE done");

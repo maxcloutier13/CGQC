@@ -1,5 +1,5 @@
 #include "\CGQC\script_component.hpp"
-// --- transition ----------------------------------------------------------
+// --- showTransition ----------------------------------------------------------
 // Black fadout/in with some information in some cases
 params ["_type", ["_show", true]];
 LOG_2("[showTransition] %1/%2 started", _type, _show);
@@ -8,9 +8,9 @@ cgqc_mk3_transition = true;
 _text = "";
 _text_insert = "";
 _sleep = 1;
-if (cgqc_setting_show_transition && _show) then {
+if (!cgqc_intro_running && cgqc_setting_show_transition && _show) then {
     // Fade to black
-    cutText ["", "BLACK FADED", 999];
+    cutText ["", "BLACK", 1e-6];
     titleText ["", "PLAIN"];
     switch (_type) do {
         case "role":{
@@ -136,7 +136,7 @@ if (cgqc_setting_show_transition && _show) then {
     "dynamicBlur" ppEffectEnable true;
     "dynamicBlur" ppEffectAdjust [6];
     "dynamicBlur" ppEffectCommit 0;
-    titleCut ["", "BLACK IN", 2];
+    cutText ["", "BLACK IN", 2];
     "dynamicBlur" ppEffectAdjust [0.0];
     "dynamicBlur" ppEffectCommit 2;
     cgqc_mk3_transition = false;

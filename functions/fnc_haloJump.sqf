@@ -405,7 +405,7 @@ if (isServer) then {
 					_x moveInCargo plane02;
 				};
 			} forEach units group player;
-			cuttext ["", "BLACK IN", 1];
+			cutText ["", "BLACK IN", 1];
 
 			waitUntil {
 				(getPosATL player select 2) < 120

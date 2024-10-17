@@ -9,9 +9,9 @@ cgqc_roleSwitch_done = false;
 waitUntil {CGQC_playerLoaded};
 
 
-if (cgqc_setting_show_transition && _showTransition) then {
+if (!cgqc_intro_running && cgqc_setting_show_transition && _showTransition) then {
 // Fade to black
-    cutText ["", "BLACK FADED", 999];
+    cutText ["", "BLACK", 1e-6];
     titleText ["", "PLAIN"];
 };
 if !(_type isEqualTo "Unknown") then {
@@ -101,8 +101,6 @@ if !(_type isEqualTo "Unknown") then {
     if (!cgqc_intro_running && _showTransition) then {
         LOG("[switchRole] - running transition");
         ["role", true] spawn CGQC_fnc_showTransition;
-    } else {
-        titleCut ["", "BLACK IN", 0];
     };
 
 } else {

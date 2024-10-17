@@ -375,7 +375,7 @@ LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
         };
         case "fix_blackout":
         {
-            titleCut ["", "BLACK IN", 1];
+            cutText ["", "BLACK IN", 1];
             hint "Black screen should be fixed";
 
         };
