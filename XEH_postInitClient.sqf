@@ -712,8 +712,18 @@ if !(_findLoadout) then { // Skip if loadout was found and loaded
 [] spawn {
 	waitUntil {sleep 1;CGQC_playerLoaded};
 	if (cgqc_config_cigs) then {
-		if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_lighter";};
-		if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_cigpack";};
+		_light = selectRandom ["cigs_matches", "cigs_lighter"];
+		if !([player, _light] call ace_common_fnc_hasMagazine) then {player addItem _light;};
+		_cigPack = selectRandom [
+			"cigs_black_devil_cigpack",
+			"cigs_craven_cigpack",
+			"cigs_eckstein_cigpack",
+			"cigs_lucky_strike_cigpack",
+			"cigs_morley_cigpack",
+			"cigs_baja_blast_cigpack",
+			"cigs_crayons_crayonpack",
+			];
+		if !([player, _cigPack] call ace_common_fnc_hasMagazine) then {player addItem _cigPack;};
 	};
 };
 
@@ -795,37 +805,6 @@ cgqc_start_postInitClient_done = true;
 LOG("[CGQC_PostInitClient] - Load center map setting");
 ["initial"] call CGQC_fnc_centerMap;
 
-// If zeus, setup radios
-LOG("[CGQC_postInitClient] Check if starting as zeus");
-if ([player] call CGQC_fnc_checkZeus) then {
-	LOG("[CGQC_postInitClient] Yes: Adding Zeus Perks");
-	if !(_skipZeusPerks) then {
-		["zeus", false] spawn CGQC_fnc_switchPerks;
-	};
-	// Zeus controlling unit event
-	_curator = getAssignedCuratorLogic player;
-	if (!isNil "_curator") then {
-		if (!isNull _curator) then {
-			[_curator, "curatorObjectRemoteControlled", {
-				params ["_curator", "_player", "_unit", "_isRemoteControlled"];
-				if (_isRemoteControlled) then {
-					LOG("[ZeusRemoteControl] Player controls new unit");
-					// Check if unit has radios
-					if (cgqc_config_zeusRadios) then {
-						LOG("[ZeusRemoteControl] Set Zeusradio to new unit");
-						["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
-						[["Zeus Radios Set", 1.5], false] call CBA_fnc_notify;
-					};
-				};
-				// _isRemoteControlled is true when entering remote control, false when exiting
-			}] call BIS_fnc_addScriptedEventHandler;
-		};
-	};
-	if (cgqc_config_zeusRadios) then {
-		LOG("[CGQC_PostInitClient] Player is Zeus-> Setting up Zeus Radios");
-		[] call CGQC_int_setZeusRadios;
-	};
-};
 
 // Player marker event
 _map = (findDisplay 12 displayCtrl 51);
@@ -853,7 +832,39 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 
 
 [] spawn {
-	sleep 25;
+	sleep 10;
+	// If zeus, setup radios
+	LOG("[CGQC_postInitClient] Check if starting as zeus");
+	if ([player] call CGQC_fnc_checkZeus) then {
+		LOG("[CGQC_postInitClient] Yes: Adding Zeus Perks");
+		if !(_skipZeusPerks) then {
+			["zeus", false] spawn CGQC_fnc_switchPerks;
+		};
+		// Zeus controlling unit event
+		_curator = getAssignedCuratorLogic player;
+		if (!isNil "_curator") then {
+			if (!isNull _curator) then {
+				[_curator, "curatorObjectRemoteControlled", {
+					params ["_curator", "_player", "_unit", "_isRemoteControlled"];
+					if (_isRemoteControlled) then {
+						LOG("[ZeusRemoteControl] Player controls new unit");
+						// Check if unit has radios
+						if (cgqc_config_zeusRadios) then {
+							LOG("[ZeusRemoteControl] Set Zeusradio to new unit");
+							["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
+							[["Zeus Radios Set", 1.5], false] call CBA_fnc_notify;
+						};
+					};
+					// _isRemoteControlled is true when entering remote control, false when exiting
+				}] call BIS_fnc_addScriptedEventHandler;
+			};
+		};
+		if (cgqc_config_zeusRadios) then {
+			LOG("[CGQC_PostInitClient] Player is Zeus-> Setting up Zeus Radios");
+			[] call CGQC_int_setZeusRadios;
+		};
+	};
+	sleep 15;
 	LOG("[CGQC_PostInitClient] - Checking for snapshots");
 	// Check if a snapshot exists
 	_snapshotFound = false;
