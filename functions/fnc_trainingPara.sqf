@@ -140,8 +140,13 @@ cgqc_position_jump =
 			//Auto open at 100m
 			[]spawn {
 				waitUntil {getPosATL player select 2 < 75};  // Wait until the player's altitude is less than 100 meters
-				player action ["OpenParachute", player];  // Open the parachute for the player
-				hint "Parachute auto-opened";
+				if !(vehicle player isKindOf "ParachuteBase") then {
+					player action ["OpenParachute", player];  // Open the parachute for the player
+					hint "Parachute auto-opened";
+				} else {
+					hint "Parachute already opened";
+				};
+
 			};
 		};
 		waitUntil{isTouchingGround player};

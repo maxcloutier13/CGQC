@@ -250,7 +250,8 @@ LOG_2("[perksBasic] %1/%2  started", _type, _fromLoadout);
             _text = ("<br/>" + "<br/>" + "<br/>" +"<t size='2' >Tu drop ton kit de parachutiste</t><br/>");
             [_text, 0, 0, 10, 4] spawn BIS_fnc_dynamicText;
             // Remove the action
-            [cgqc_actions_dropPara] call ace_interact_menu_fnc_removeAction;
+            [player, 1 ,cgqc_actions_dropPara] call ace_interact_menu_fnc_removeActionFromObject;
+
             player playMove "AinvPknlMstpSnonWnonDnon_medic4";
             // Watch / Altimeter
             _items = assignedItems player;
