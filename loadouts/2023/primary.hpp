@@ -280,7 +280,7 @@ case "fn_2000":{
 };
 
 case "m4_elcan":{
-    ["cgqc_gun_mk1_m4a1blkII", "dot"] call CGQC_fnc_getCustomGun;
+    ["cgqc_gun_mk1_m4a1blkII", "magnified"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_KAC_556_QDC_CQB_Black";
     _target addPrimaryWeaponItem "Tier1_M4BII_NGAL_M300C_Black";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
@@ -288,28 +288,28 @@ case "m4_elcan":{
 };
 
 case "sr16_elcan":{
-    ["Tier1_SR16_Carbine_Mod2_MFT_Black", "dot"] call CGQC_fnc_getCustomGun;
+    ["Tier1_SR16_Carbine_Mod2_MFT_Black", "magnified"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
     _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "hk416_elcan":{
-    ["Tier1_HK416D145_MW13_MFT", "dot"] call CGQC_fnc_getCustomGun;
+    ["Tier1_HK416D145_MW13_MFT", "magnified"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_AAC_M42000_Black";
     _target addPrimaryWeaponItem "Tier1_MW_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
     _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 case "acre_carb":{
-    ["hlc_rifle_ACR_Carb_black", "dot"] call CGQC_fnc_getCustomGun;
+    ["hlc_rifle_ACR_Carb_black", "magnified"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
     _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
 };
 case "jack":{
-    ["hlc_rifle_bcmjack", "dot"] call CGQC_fnc_getCustomGun;
+    ["hlc_rifle_bcmjack", "magnified"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "hlc_muzzle_556NATO_rotexiiic_grey";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black_FL";
     _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
@@ -346,7 +346,7 @@ case "lar15":{
 };
 
 case "acre_mid":{
-    ["hlc_rifle_ACR_MID_black", "dot"] call CGQC_fnc_getCustomGun;
+    ["hlc_rifle_ACR_MID_black", "magnified"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
