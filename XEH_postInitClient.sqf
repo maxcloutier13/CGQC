@@ -721,7 +721,7 @@ if !(_findLoadout) then { // Skip if loadout was found and loaded
 			"cigs_lucky_strike_cigpack",
 			"cigs_morley_cigpack",
 			"cigs_baja_blast_cigpack",
-			"cigs_crayons_crayonpack",
+			"cigs_crayons_crayonpack"
 			];
 		if !([player, _cigPack] call ace_common_fnc_hasMagazine) then {player addItem _cigPack;};
 	};
