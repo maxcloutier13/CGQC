@@ -34,7 +34,7 @@ CGQC_fnc_landnav_error = {
 	// Player wakeup
 	titleFadeOut 2;
 	// Wake up with blur
-	titleCut ["", "BLACK IN", 2];
+	cutText ["", "BLACK IN", 2];
 };
 
 CGQC_fnc_landnav_done = {
@@ -93,7 +93,7 @@ CGQC_fnc_landnav_off = {
 CGQC_fnc_landnav_start = {
 	[] spawn {
 		   // Fade to black
-		cutText ["", "BLACK FADED", 999];
+		cutText ["", "BLACK", 1e-6];
 		titleText ["", "PLAIN"];
 
 		// -- Prep -------------------------------------------------------------------------------
@@ -233,7 +233,7 @@ CGQC_fnc_landnav_start = {
 		"dynamicBlur" ppEffectEnable true;
 		"dynamicBlur" ppEffectAdjust [6];
 		"dynamicBlur" ppEffectCommit 0;
-		titleCut ["", "BLACK IN", 4];
+		cutText ["", "BLACK IN", 4];
 		"dynamicBlur" ppEffectAdjust [0.0];
 		"dynamicBlur" ppEffectCommit 2;
 

@@ -9,9 +9,9 @@ cgqc_roleSwitch_done = false;
 waitUntil {CGQC_playerLoaded};
 
 
-if (cgqc_setting_show_transition && _showTransition) then {
+if (!cgqc_intro_running && cgqc_setting_show_transition && _showTransition) then {
 // Fade to black
-    cutText ["", "BLACK FADED", 999];
+    cutText ["", "BLACK", 1e-6];
     titleText ["", "PLAIN"];
 };
 if !(_type isEqualTo "Unknown") then {
@@ -101,16 +101,24 @@ if !(_type isEqualTo "Unknown") then {
     if (!cgqc_intro_running && _showTransition) then {
         LOG("[switchRole] - running transition");
         ["role", true] spawn CGQC_fnc_showTransition;
-    } else {
-        titleCut ["", "BLACK IN", 0];
     };
 
 } else {
     LOG("[switchRole] - Role unknown - Skipping");
 };
 if (cgqc_config_cigs) then {
-    if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_lighter";};
-	if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_cigpack";};
+    _light = selectRandom ["cigs_matches", "cigs_lighter"];
+    if !([player, _light] call ace_common_fnc_hasMagazine) then {player addItem _light;};
+    _cigPack = selectRandom [
+        "cigs_black_devil_cigpack",
+        "cigs_craven_cigpack",
+        "cigs_eckstein_cigpack",
+        "cigs_lucky_strike_cigpack",
+        "cigs_morley_cigpack",
+        "cigs_baja_blast_cigpack",
+        "cigs_crayons_crayonpack"
+        ];
+    if !([player, _cigPack] call ace_common_fnc_hasMagazine) then {player addItem _cigPack;};
 };
 cgqc_roleSwitch_done = true;
 LOG("[switchRole] done");

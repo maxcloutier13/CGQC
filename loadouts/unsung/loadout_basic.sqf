@@ -65,8 +65,8 @@ player addItemToUniform "ACE_CableTie";
 player addItemToUniform "ACE_CableTie";
 player addItemToUniform "ACE_Flashlight_MX991";
 
-player addItemToUniform "murshun_cigs_cigpack";
-player addItemToUniform "murshun_cigs_matches";
+player addItemToUniform "cigs_lucky_strike_cigpack";
+player addItemToUniform "cigs_matches";
 player addItemToUniform "uns_item_zippo";
 player addItemToUniform "acex_intelitems_notepad";
 player addItemToUniform "grad_paceCountBeads_functions_paceCountBeads";

@@ -6,57 +6,44 @@ LOG_2("[showIntro] Show:%1/Type:%2 started", _show, _type);
 
 // Show intro info ------------------------------------------------------------------------------------
 if !(hasInterface || isDedicated) exitWith {};
-titleCut ["", "BLACK FADED", 999];
-// Wait until player is loaded
-waitUntil {CGQC_playerLoaded};
 
-if !(isNil "cgqc_establishing") then {
-	waitUntil { scriptDone cgqc_establishing };
-};
+waitUntil {!isNull findDisplay 46};
+
+if !(isNil "cgqc_establishing") then {waitUntil { scriptDone cgqc_establishing };};
 
 if (_show) then {
 	cgqc_intro_running = true;
 
 	switch (_type) do {
-		case 0: { //Original Intro
+		case 0: { //Original Intro backup
+			["hide"] spawn CGQC_fnc_toggleUI;
+			waitUntil {CGQC_playerLoaded};
 			LOG("[showIntro] Original Intro");
-			titleCut ["", "BLACK FADED", 999];
-			// Black silence
-			0 fadeSound 0;
-			0 fadeEnvironment 0;
-			// Start with a silent black screen.
-
-			LOG("[showIntro] Should be dark");
 			if (!isNil "cgqc_config_author" && !isNil "cgqc_config_mission_name") then {
-				titleCut ["", "BLACK FADED", 999];
 				if (cgqc_config_author find "Cpl. Quelque chose" != 0) then {
-					titleCut ["", "BLACK FADED", 999];
 					_text = (
 						"<img size= '8' style='vertical-align:middle' shadow='false' image='\cgqc\textures\CGQC.paa'/>" +
 						"<br/>" +
 						"<t size='2' >%1</t><br /><t size = '1'>par %2</t>"
 					);
-					titleCut ["", "BLACK FADED", 999];
 					waitUntil {cgqc_roleSwitch_done};
-					//Pop le logo et le texte
-					titleCut ["", "BLACK FADED", 999];
+					sleep 2;
 					_text = format [_text, cgqc_config_mission_name, cgqc_config_author];
 					[_text, 0, 0, 4, 2] spawn BIS_fnc_dynamicText;
 					// Fade from black, to blur, to clear as text types.
 					10 fadeSound 1;
-					sleep 6;
+					sleep 5;
 					"dynamicBlur" ppEffectEnable true;
 					"dynamicBlur" ppEffectAdjust [3];
 					"dynamicBlur" ppEffectCommit 0;
 					"dynamicBlur" ppEffectAdjust [0.0];
 					"dynamicBlur" ppEffectCommit 5;
-					titleCut ["", "BLACK IN", 6];
-
-					sleep 1;
+					cutText ["", "BLACK IN", 6];
+					sleep 0.5;
 					cgqc_intro_running = false;
 					cgqc_intro_done = true;
 					ace_hearing_disableVolumeUpdate = false;
-
+					["show"] spawn CGQC_fnc_toggleUI;
 					// Show current phase initially
 					LOG("[showIntro] - Show initial phase");
 					waitUntil {sleep 3, cgqc_intro_done};
@@ -91,7 +78,7 @@ if (_show) then {
 				1 fadeSound 1;
 				1 fadeEnvironment 1;
 				ace_hearing_disableVolumeUpdate = false;
-				titleCut ["", "BLACK IN", 1];
+				cutText ["", "BLACK IN", 1];
 				cgqc_intro_skipped = true;
 				cgqc_intro_done = true;
 				cgqc_intro_running = false;
@@ -100,6 +87,8 @@ if (_show) then {
 		};
 		case 1: { //Flying intro
 			LOG("[showIntro] Flying Intro");
+			0 fadeSound 0;
+			cutText ["", "BLACK", 1e-6];
 			_track = ["LeadTrack01_F_Jets", 3];
 			_initTime = 4;
 			_fadeIn = 3;
@@ -122,10 +111,6 @@ if (_show) then {
 				};
 			};
 			["hide"] spawn CGQC_fnc_toggleUI;
-			// Black silence
-			0 fadeSound 0;
-			0 fadeEnvironment 0;
-			titleCut ["", "BLACK FADED", 999];
 			_mapSize = worldSize;								// Map size
 			_mapHalf = _mapSize / 2;							 // Map half
 			_mapCent = [_mapHalf, _mapHalf];					 // Map center 2D
@@ -137,7 +122,6 @@ if (_show) then {
 			// Sample terrain between A and B to find max terrain height
 			_numSamples = 20;  // Number of points to sample along the path
 			_highestTerrainHeight = 0;  // Track highest terrain height
-			titleCut ["", "BLACK FADED", 999];
 			for "_i" from 0 to 1 step (1 / _numSamples) do {
 				_samplePos = [
 					(_mapPos1 select 0) + (_i * ((_mapPos2 select 0) - (_mapPos1 select 0))),
@@ -149,31 +133,24 @@ if (_show) then {
 					_highestTerrainHeight = _sampleHeight;
 				};
 			};
-			titleCut ["", "BLACK FADED", 999];
 			// Set camera height above highest terrain point
 			_camHeight = _highestTerrainHeight + 25;  // Keep camera 200m above the highest terrain
-
 			_camPosA = [_mapPos1 select 0, _mapPos1 select 1, _camHeight];  // Cam Start position
 			_camPosB = [_mapPos2 select 0, _mapPos2 select 1, _camHeight];  // Cam End position (same height)
 			y_dist = _camPosA distance _camPosB;
 			_time = y_dist / 50;
-
-			titleCut ["", "BLACK FADED", 999];
 			// Music and effects
 			0 fadeMusic 0;
 			playMusic [_track select 0, _track select 1];
 			3 fadeMusic 1;
-			titleCut ["", "BLACK FADED", 999];
 			_cam = "camera" camCreate _camPosA;				  // Create camera
 			_cam camSetTarget _mapPos2;						  // Point towards end position
 			_cam cameraEffect ["INTERNAL", "BACK"];
-			titleCut ["", "BLACK FADED", 999];
 			// Start fade-in from black asynchronously (non-blocking)
 			[_initTime, _textTime, _fadeIn] spawn {
 				params ["_initTime", "_textTime", "_fadeIn"];
-				titleCut ["", "BLACK FADED", 999];
 				sleep _initTime; // Slight delay to allow the camera to start moving
-				titleCut ["", "BLACK IN", _fadeIn];
+				cutText ["", "BLACK IN", _fadeIn];
 				if (!isNil "cgqc_config_mission_name" && cgqc_config_author find "Cpl. Quelque chose" != 0) then {
 					sleep _textTime;
 					_txt = format ["<t shadow='0' font='EtelkaNarrowMediumPro' size='6'>%1</t><br/>", cgqc_config_mission_name];
@@ -195,19 +172,19 @@ if (_show) then {
 			10 fadeEnvironment 1;
 			sleep 13;
 			waitUntil {cgqc_roleSwitch_done};
-			titleCut ["", "BLACK FADED", 999];
+			cutText ["", "BLACK", 1e-6];
 			_cam cameraEffect ["TERMINATE", "BACK"];
 			"dynamicBlur" ppEffectEnable true;
 			"dynamicBlur" ppEffectAdjust [3];
 			"dynamicBlur" ppEffectCommit 0;
 			"dynamicBlur" ppEffectAdjust [0.0];
 			"dynamicBlur" ppEffectCommit 5;
-			titleCut ["", "BLACK IN", 6];
+			cutText ["", "BLACK IN", 6];
 			camDestroy _cam;
 			sleep 2;
 			// End music
 			5 fadeMusic 0;
-			sleep 5;
+			sleep 8;
 			playMusic "";
 			0 fadeMusic 1;
 			cgqc_intro_running = false;
@@ -224,7 +201,7 @@ if (_show) then {
 			playMusic ["LeadTrack01_F_Jets", 2];
 			5 fadeMusic 1;
 			ace_hearing_disableVolumeUpdate = true;
-			titleCut ["", "BLACK IN", 1];
+			cutText ["", "BLACK IN", 1];
 			if (isNil "cgqc_establishing_text") then {cgqc_establishing_text = cgqc_config_mission_name;};
 			_angle = random 360;
 			cgqc_establishing = [player, cgqc_establishing_text, 50, 100, _angle, 1, [], 0, true] spawn BIS_fnc_establishingShot;
@@ -242,7 +219,7 @@ if (_show) then {
 			1 fadeSound 1;
 			0 fadeEnvironment 1;
 			ace_hearing_disableVolumeUpdate = true;
-			titleCut ["", "BLACK IN", 1];
+			cutText ["", "BLACK IN", 1];
 			cgqc_intro_skipped = true;
 			cgqc_intro_done = true;
 			cgqc_intro_running = false;
@@ -254,7 +231,7 @@ if (_show) then {
 	1 fadeSound 1;
 	1 fadeEnvironment 1;
 	ace_hearing_disableVolumeUpdate = false;
-	titleCut ["", "BLACK IN", 1];
+	cutText ["", "BLACK IN", 1];
 	cgqc_intro_skipped = true;
 	cgqc_intro_done = true;
 	cgqc_intro_running = false;
@@ -276,7 +253,7 @@ LOG("[showIntro] done");
 			0 fadeSound 0;
 			0 fadeEnvironment 0;
 			// Start with a silent black screen.
-			titleCut ["", "BLACK FADED", 999];
+			cutText ["", "BLACK", 1e-6];
 
 			_mapSize = worldSize;													// map size
 			_mapHalf = _mapSize / 2;												// map half
@@ -314,21 +291,21 @@ LOG("[showIntro] done");
 			"dynamicBlur" ppEffectCommit 0;
 			"dynamicBlur" ppEffectAdjust [0.0];
 			"dynamicBlur" ppEffectCommit 3;
-			titleCut ["", "BLACK IN", 5];
+			cutText ["", "BLACK IN", 5];
 			sleep 20;
 			//_rscLayer cutFadeOut 2;														// Speed
 			10 fadeSound 1;
 			10 fadeEnvironment 1;
 			sleep 10;																// Time
 			waitUntil {cgqc_roleSwitch_done};
-			titleCut ["", "BLACK FADED", 999];
+			cutText ["", "BLACK", 1e-6];
 			_cam cameraEffect ["TERMINATE", "BACK"];								// Reset Visual
 			"dynamicBlur" ppEffectEnable true;
 			"dynamicBlur" ppEffectAdjust [3];
 			"dynamicBlur" ppEffectCommit 0;
 			"dynamicBlur" ppEffectAdjust [0.0];
 			"dynamicBlur" ppEffectCommit 5;
-			titleCut ["", "BLACK IN", 6];
+			cutText ["", "BLACK IN", 6];
 			camDestroy _cam;
 
 			// All done

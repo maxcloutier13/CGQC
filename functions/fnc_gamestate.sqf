@@ -49,8 +49,10 @@ switch (_type) do {
 			while { missionNamespace getVariable "CGQC_gamestate_1_staging" } do {
 				sleep 15;
 				// notify all
-				_txt = "Staging Phase";
-				[_txt, 3, 0, "cba_notify_phase"] call CGQC_fnc_notifyAll;
+				if !(cgqc_intro_running) then {
+					_txt = "Staging Phase";
+					[_txt, 3, 0, "cba_notify_phase"] call CGQC_fnc_notifyAll;
+				};
 			};
 		};
 	};

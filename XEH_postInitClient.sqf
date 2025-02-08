@@ -1,14 +1,16 @@
 #include "\CGQC\script_component.hpp"
 // --- postInitClient ----------------------------------------------------------
 // Start everything player related
-
 LOG("[CGQC_PostInitClient] === Started =====================================");
 
-// Start with a silent black screen.
-0 fadeSound 0;
-0 fadeEnvironment 0;
-ace_hearing_disableVolumeUpdate = true;
-titleCut ["", "BLACK FADED", 999];
+[] spawn {
+	// Black silence
+	waitUntil {!isNull findDisplay 46};
+	0 fadeSound 0;
+	0 fadeEnvironment 0;
+	cutText ["", "BLACK", 1e-6];
+};
+
 
 // set side
 cgqc_player_side = side player;
@@ -73,25 +75,20 @@ if (core_version isNotEqualTo _checkVersion) then {
 	_range
 }] call ace_arsenal_fnc_addSort;
 
-/*
+
 // set language and radio channels
-	["side"] call CGQC_fnc_setACRE;
+["side"] call CGQC_fnc_setACRE;
 
-// Reset radios in case.
-	_radios = call acre_api_fnc_getCurrentRadioList;
-	{
-		player unassignItem _x;
-		player removeItem _x;
-	} forEach _radios;
+// Force remove radios in case.
+_radios = call acre_api_fnc_getCurrentRadioList;
+{
+	player unassignItem _x;
+	player removeItem _x;
+} forEach _radios;
 
-	waitUntil {
-		sleep 0.5; cgqc_player_acre_setup;
-	};
-	waitUntil {
-		sleep 0.5; cgqc_player_radio_names;
-	};
-*/
-titleCut ["", "BLACK FADED", 999];
+waitUntil {cgqc_player_acre_setup;};
+waitUntil {cgqc_player_radio_names;};
+
 // Client-side code
 LOG("Checking if intro/welcome should be shown");
 if !(cgqc_mission_dro) then {
@@ -119,7 +116,7 @@ if !(cgqc_mission_dro) then {
 		hint "DRO mode";
 		1 fadeSound 1;
 		sleep 5;
-		titleCut ["", "BLACK IN", 1];
+		cutText ["", "BLACK IN", 1];
 	};
 };
 
@@ -692,7 +689,7 @@ profileNamespace setVariable ['rhs_vehicleRadioChatter', 0];
 
 // Create/join initial group
 // [groupId (group player)] spawn CGQC_fnc_joinGroup;
-sleep 1;
+//sleep 1;
 _checkColor = player getVariable ["cgqc_var_startingColorTeam", "MAIN"];
 if (_checkColor isNotEqualTo "MAIN" && _checkColor isNotEqualTo "") then {
 	[_checkColor] call CGQC_fnc_setTeamColor;
@@ -715,8 +712,18 @@ if !(_findLoadout) then { // Skip if loadout was found and loaded
 [] spawn {
 	waitUntil {sleep 1;CGQC_playerLoaded};
 	if (cgqc_config_cigs) then {
-		if !([player, "murshun_cigs_lighter"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_lighter";};
-		if !([player, "murshun_cigs_cigpack"] call ace_common_fnc_hasMagazine) then {player addItem "murshun_cigs_cigpack";};
+		_light = selectRandom ["cigs_matches", "cigs_lighter"];
+		if !([player, _light] call ace_common_fnc_hasMagazine) then {player addItem _light;};
+		_cigPack = selectRandom [
+			"cigs_black_devil_cigpack",
+			"cigs_craven_cigpack",
+			"cigs_eckstein_cigpack",
+			"cigs_lucky_strike_cigpack",
+			"cigs_morley_cigpack",
+			"cigs_baja_blast_cigpack",
+			"cigs_crayons_crayonpack"
+			];
+		if !([player, _cigPack] call ace_common_fnc_hasMagazine) then {player addItem _cigPack;};
 	};
 };
 
@@ -793,42 +800,11 @@ player addEventHandler ["Take", {
 // All done
 cgqc_start_postInitClient_done = true;
 
-sleep 5;
+//sleep 5;
 // Init the map centering function
 LOG("[CGQC_PostInitClient] - Load center map setting");
 ["initial"] call CGQC_fnc_centerMap;
 
-// If zeus, setup radios
-LOG("[CGQC_postInitClient] Check if starting as zeus");
-if ([player] call CGQC_fnc_checkZeus) then {
-	LOG("[CGQC_postInitClient] Yes: Adding Zeus Perks");
-	if !(_skipZeusPerks) then {
-		["zeus", false] spawn CGQC_fnc_switchPerks;
-	};
-	// Zeus controlling unit event
-	_curator = getAssignedCuratorLogic player;
-	if (!isNil "_curator") then {
-		if (!isNull _curator) then {
-			[_curator, "curatorObjectRemoteControlled", {
-				params ["_curator", "_player", "_unit", "_isRemoteControlled"];
-				if (_isRemoteControlled) then {
-					LOG("[ZeusRemoteControl] Player controls new unit");
-					// Check if unit has radios
-					if (cgqc_config_zeusRadios) then {
-						LOG("[ZeusRemoteControl] Set Zeusradio to new unit");
-						["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
-						[["Zeus Radios Set", 1.5], false] call CBA_fnc_notify;
-					};
-				};
-				// _isRemoteControlled is true when entering remote control, false when exiting
-			}] call BIS_fnc_addScriptedEventHandler;
-		};
-	};
-	if (cgqc_config_zeusRadios) then {
-		LOG("[CGQC_PostInitClient] Player is Zeus-> Setting up Zeus Radios");
-		[] call CGQC_int_setZeusRadios;
-	};
-};
 
 // Player marker event
 _map = (findDisplay 12 displayCtrl 51);
@@ -855,60 +831,91 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 }];
 
 
-
-sleep 25;
-LOG("[CGQC_PostInitClient] - Checking for snapshots");
-// Check if a snapshot exists
-_snapshotFound = false;
-_snapTxt = "";
-_snapIntro = ["Saved loadout exists!", 1.5, [0.161, 0.502, 0.725, 1]];
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_done") then {
-	LOG("[CGQC_PostInitClient] - Manual snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
-	_time = cgqc_snapshot_check select 1;
-	_team = cgqc_snapshot_check select 2;
-	_color = cgqc_snapshot_check select 3;
-	_role = cgqc_snapshot_check select 4;
-	_txt = format ["<br/>-Manual: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
+[] spawn {
+	sleep 10;
+	// If zeus, setup radios
+	LOG("[CGQC_postInitClient] Check if starting as zeus");
+	if ([player] call CGQC_fnc_checkZeus) then {
+		LOG("[CGQC_postInitClient] Yes: Adding Zeus Perks");
+		if !(_skipZeusPerks) then {
+			["zeus", false] spawn CGQC_fnc_switchPerks;
+		};
+		// Zeus controlling unit event
+		_curator = getAssignedCuratorLogic player;
+		if (!isNil "_curator") then {
+			if (!isNull _curator) then {
+				[_curator, "curatorObjectRemoteControlled", {
+					params ["_curator", "_player", "_unit", "_isRemoteControlled"];
+					if (_isRemoteControlled) then {
+						LOG("[ZeusRemoteControl] Player controls new unit");
+						// Check if unit has radios
+						if (cgqc_config_zeusRadios) then {
+							LOG("[ZeusRemoteControl] Set Zeusradio to new unit");
+							["zeus_radios", 0, _unit] spawn CGQC_fnc_perksZeus;
+							[["Zeus Radios Set", 1.5], false] call CBA_fnc_notify;
+						};
+					};
+					// _isRemoteControlled is true when entering remote control, false when exiting
+				}] call BIS_fnc_addScriptedEventHandler;
+			};
+		};
+		if (cgqc_config_zeusRadios) then {
+			LOG("[CGQC_PostInitClient] Player is Zeus-> Setting up Zeus Radios");
+			[] call CGQC_int_setZeusRadios;
+		};
+	};
+	sleep 15;
+	LOG("[CGQC_PostInitClient] - Checking for snapshots");
+	// Check if a snapshot exists
+	_snapshotFound = false;
+	_snapTxt = "";
+	_snapIntro = ["Saved loadout exists!", 1.5, [0.161, 0.502, 0.725, 1]];
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_done") then {
+		LOG("[CGQC_PostInitClient] - Manual snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check = MissionProfileNamespace getVariable "cgqc_player_snapshot";
+		_time = cgqc_snapshot_check select 1;
+		_team = cgqc_snapshot_check select 2;
+		_color = cgqc_snapshot_check select 3;
+		_role = cgqc_snapshot_check select 4;
+		_txt = format ["<br/>-Manual: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
+		LOG("[CGQC_PostInitClient] - Auto snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check_auto = MissionProfileNamespace getVariable "cgqc_player_snapshot_auto";
+		_time = cgqc_snapshot_check_auto select 1;
+		_team = cgqc_snapshot_check_auto select 2;
+		_color = cgqc_snapshot_check_auto select 3;
+		_role = cgqc_snapshot_check_auto select 4;
+		_txt = format ["<br/>-Auto: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then {
+		LOG("[CGQC_PostInitClient] - Start snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check_start = MissionProfileNamespace getVariable "cgqc_player_snapshot_start";
+		_time = cgqc_snapshot_check_start select 1;
+		_team = cgqc_snapshot_check_start select 2;
+		_color = cgqc_snapshot_check_start select 3;
+		_role = cgqc_snapshot_check_start select 4;
+		_txt = format ["<br/>-Start: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
+		LOG("[CGQC_PostInitClient] - Zeus snapshot exists");
+		_snapshotFound = true;
+		cgqc_snapshot_check_zeus = MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus";
+		_time = cgqc_snapshot_check_zeus select 1;
+		_team = cgqc_snapshot_check_zeus select 2;
+		_color = cgqc_snapshot_check_zeus select 3;
+		_role = cgqc_snapshot_check_zeus select 4;
+		_txt = format ["<br/>-Zeus: %1/%2/%3 @ %4", _role, _team, _color, _time];
+		_snapTxt = _snapTxt + _txt;
+	};
+	if (_snapshotFound) then {
+		[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
+	};
 };
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_auto_done") then {
-	LOG("[CGQC_PostInitClient] - Auto snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check_auto = MissionProfileNamespace getVariable "cgqc_player_snapshot_auto";
-	_time = cgqc_snapshot_check_auto select 1;
-	_team = cgqc_snapshot_check_auto select 2;
-	_color = cgqc_snapshot_check_auto select 3;
-	_role = cgqc_snapshot_check_auto select 4;
-	_txt = format ["<br/>-Auto: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
-};
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_start_done") then {
-	LOG("[CGQC_PostInitClient] - Start snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check_start = MissionProfileNamespace getVariable "cgqc_player_snapshot_start";
-	_time = cgqc_snapshot_check_start select 1;
-	_team = cgqc_snapshot_check_start select 2;
-	_color = cgqc_snapshot_check_start select 3;
-	_role = cgqc_snapshot_check_start select 4;
-	_txt = format ["<br/>-Start: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
-};
-if (MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus_done") then {
-	LOG("[CGQC_PostInitClient] - Zeus snapshot exists");
-	_snapshotFound = true;
-	cgqc_snapshot_check_zeus = MissionProfileNamespace getVariable "cgqc_player_snapshot_zeus";
-	_time = cgqc_snapshot_check_zeus select 1;
-	_team = cgqc_snapshot_check_zeus select 2;
-	_color = cgqc_snapshot_check_zeus select 3;
-	_role = cgqc_snapshot_check_zeus select 4;
-	_txt = format ["<br/>-Zeus: %1/%2/%3 @ %4", _role, _team, _color, _time];
-	_snapTxt = _snapTxt + _txt;
-};
-
-if (_snapshotFound) then {
-	[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
-};
-
 LOG("[CGQC_PostInitClient] === Done =====================================");

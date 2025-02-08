@@ -1,8 +1,8 @@
 #include "\CGQC\script_component.hpp"
-// --- ldt_2023_s_mg ----------------------------------------------------------
+// --- ldt_2023_mg ----------------------------------------------------------
 // MG 2023 loadout
 params [["_target", player], ["_variant", ""], ["_gunVariant", "mk46"]];
-LOG_3("[ldt_2023_s_mg] %1/%2/%3 started", _target, _variant, _gunVariant);
+LOG_3("[ldt_2023_mg] %1/%2/%3 started", _target, _variant, _gunVariant);
 // Basic setup
 [] call CGQC_ldt_2023_basic;
 _nvg = "JAS_GPNVG18_blk";
@@ -42,10 +42,15 @@ switch (_variant) do {
 			case "afg": {["mk48_desert"] call CGQC_fnc_switchPrimary;};
 		};
 	};
-	default {
+	case "autorifle": {
+		LOG("[ldt_2023_s_mg] Autorifleman");
+		["m27"] call CGQC_fnc_switchPrimary;
+	};
+	case "lwmmg": {
+		LOG("[ldt_2023_s_mg] LWMMG");
 		switch (_gunVariant) do {
-			case "m27": {["m27"] call CGQC_fnc_switchPrimary;};
 			case "lwmmg": {["lwmmg"] call CGQC_fnc_switchPrimary;};
+			case "afg": {["lwmmg_afg"] call CGQC_fnc_switchPrimary;};
 		};
 	};
 };
