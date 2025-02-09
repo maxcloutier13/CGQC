@@ -695,12 +695,12 @@ if (_checkColor isNotEqualTo "MAIN" && _checkColor isNotEqualTo "") then {
 	[_checkColor] call CGQC_fnc_setTeamColor;
 };
 
-_skipZeusPerks = false; // Skip the zeus perks that happens later if set here
+cgqc_skipZeusPerks = false; // Skip the zeus perks that happens later if set here
 if !(_findLoadout) then { // Skip if loadout was found and loaded
 	_checkPerks = player getVariable ['cgqc_var_startingPerks', ""];
 	if (_checkPerks isNotEqualTo "") then {
 		[_checkPerks, true, true] spawn CGQC_fnc_switchPerks;
-		_skipZeusPerks = true;
+		cgqc_skipZeusPerks = true;
 	};
 };
 
@@ -837,7 +837,7 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 	LOG("[CGQC_postInitClient] Check if starting as zeus");
 	if ([player] call CGQC_fnc_checkZeus) then {
 		LOG("[CGQC_postInitClient] Yes: Adding Zeus Perks");
-		if !(_skipZeusPerks) then {
+		if !(cgqc_skipZeusPerks) then {
 			["zeus", false] spawn CGQC_fnc_switchPerks;
 		};
 		// Zeus controlling unit event
