@@ -47,6 +47,10 @@ cgqc_custom_playername = cgqc_player_patch select[11, 22];
 // ben 76561198030215888
 // mouland 76561199156866182
 // deslauriers 76561198209656813
+// aubin - 76561198051143824
+// valiquette - 76561197982780429
+// trépanier - 76561198010960491
+// sparnaay - 76561198862826585
 
 
 //Set variable
