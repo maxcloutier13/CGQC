@@ -797,6 +797,9 @@ player addEventHandler ["Take", {
 	}
 }];
 
+// Set channel to global
+setCurrentChannel 0;
+
 // All done
 cgqc_start_postInitClient_done = true;
 
