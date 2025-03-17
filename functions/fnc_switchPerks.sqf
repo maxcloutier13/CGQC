@@ -166,7 +166,6 @@ switch (_type) do {
 	};
 	case "max":{
 		LOG("[switchPerks] Max setup");
-		/*
 		// Shooting range
 			_action = [ "menu_self_range", "Shooting Range WIP", "", {
 				["spawn_range", true] spawn CGQC_fnc_perksBasic
@@ -174,7 +173,6 @@ switch (_type) do {
 				cgqc_flag_isTraining
 			} ] call ace_interact_menu_fnc_createAction;
 			_adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc"], _action ] call  ace_interact_menu_fnc_addActionToObject;
-		*/
 	};
 	case "nam_recon":{
 		LOG("[switchPerks] Nam Recon setup");

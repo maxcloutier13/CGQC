@@ -106,7 +106,7 @@ switch (_type) do {
 				// Refill handgun
 				if !(isNil "_handgunMag") then {
 					// hint format ["HandgunMag: %1", _handgunMag];
-					_handgunAdd = cgqc_config_sidearm_mag_nbr - _handgunMags;
+					_handgunAdd = cgqc_config_ammo_handgun - _handgunMags;
 					LOG_2(" openBandolier Adding %1/%2 handgun mags", _handgunAdd, _handgunMag);
 					["vest", _handgunMag, _handgunAdd] call cgqc_fnc_addItemWithOverflow;
 					_handMagCount = _handgunAdd;
