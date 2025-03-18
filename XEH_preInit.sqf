@@ -578,7 +578,7 @@ player addEventHandler ["VisionModeChanged", {
 
 
 // Addon Options ===================================================================================================
-_menu_name = "[CGQC] Zeus";
+_menu_name = "[CGQC Zeus] Mission Settings";
 
 
 /*
@@ -769,7 +769,7 @@ cgqc_config_mission_name = getMissionConfigValue ["onLoadName", "Mission: Someth
 ] call CBA_fnc_addSetting;
 
 // IFAK/Medkit/Bandolier content ===================================================================================================
-_menu_name = "[CGQC] Custom Containers";
+_menu_name = "[CGQC Zeus] Custom Containers";
 // IFAK
 ["cgqc_config_ifak_bandages", "SLIDER",["Bandages", "Number in IFAK"],
     [_menu_name, "Content: IFAK"], [0, 30, 10, 0], 1, {publicVariable "cgqc_config_ifak_bandages"}, false] call CBA_fnc_addSetting;
@@ -839,7 +839,7 @@ if (cgqc_player_hasNorthern) then {
 	["cgqc_config_ammo_flash", "SLIDER",["Flashbangs", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 0, 0], 1, {publicVariable "cgqc_config_ammo_flash"}, false] call CBA_fnc_addSetting;
 	["cgqc_config_ammo_flash_type", "EDITBOX", ["Flashbang Type", "Type of bangs"],
-		[_menu_name, "Content: Ammo Bandolier"], "ACE_CTS9"] call CBA_fnc_addSetting;
+		[_menu_name, "Content: Ammo Bandolier"], "tsp_flashbang_cts"] call CBA_fnc_addSetting;
 
 	["cgqc_config_ammo_smoke", "SLIDER",["Smoke grenades", "Number in bandolier"],
 		[_menu_name, "Content: Ammo Bandolier"], [0, 25, 2, 0], 1, {publicVariable "cgqc_config_ammo_smoke"}, false] call CBA_fnc_addSetting;
@@ -936,7 +936,7 @@ if (cgqc_player_hasNorthern) then {
 
 
 // Loadout restrictions ===================================================================================================
-_menu_name = "[CGQC] Loadout/Looting Control";
+_menu_name = "[CGQC Zeus] Loadout/Looting Control";
 _section = "Looting Options";
 // Looting settings
 ["cgqc_lootingRestriction_on", "CHECKBOX", ["Restrict corpse looting?", "Empêche/limite le looting des corps"],

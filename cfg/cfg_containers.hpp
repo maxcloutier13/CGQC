@@ -267,28 +267,6 @@ class cgqc_box_mk2_parachute : Box_NATO_Equip_F
         verticalOffsetWorld = 0;
         init = "''";
     };
-    class TransportMagazines
-    {
-    };
-    class TransportWeapons
-    {
-    };
-    class TransportItems
-    {
-        class _xx_ACE_Altimeter
-        {
-            count = 30;
-            name = "ACE_Altimeter";
-        };
-    };
-    class TransportBackpacks
-    {
-        class _xx_B_Parachute
-        {
-            backpack = "B_Parachute";
-            count = 30;
-        };
-    };
     class EventHandlers
     {
         init = "[_this, 'para'] spawn CGQC_fnc_loadMk3Menu";
@@ -315,30 +293,7 @@ class cgqc_box_mk2_diving : Box_NATO_Equip_F
         verticalOffsetWorld = 0;
         init = "''";
     };
-    class TransportMagazines
-    {
-    };
-    class TransportWeapons
-    {
-    };
-    class TransportItems
-    {
-        class _xx_cgqc_uniform_mk1_diver
-        {
-            count = 30;
-            name = "cgqc_uniform_mk1_diver";
-        };
-        class _xx_cgqc_backpack_mk1_diver
-        {
-            count = 30;
-            name = "cgqc_backpack_mk1_diver";
-        };
-        class _xx_cgqc_goggles_mk1_diver
-        {
-            count = 30;
-            name = "cgqc_goggles_mk1_diver";
-        };
-    };
+
     class EventHandlers
     {
         init = "[_this, 'dive'] spawn CGQC_fnc_loadMk3Menu";
