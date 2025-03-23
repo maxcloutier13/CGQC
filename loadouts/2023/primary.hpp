@@ -125,7 +125,7 @@ case "magpull":{
     _target addPrimaryWeaponItem "Tier1_AAC_M42000_Desert";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2_tan";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 case "mk18_tl":{
     ["cgqc_gun_mk1_mk18", "dot"] call CGQC_fnc_getCustomGun;
@@ -148,14 +148,14 @@ case "acre_sbr":{
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
 case "fn_2000_short":{
     ["arifle_Mk20C_F", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_rotex5_grey";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
 // Blackout ----------------------------------------------------------------------------------------------
@@ -258,7 +258,14 @@ case "sr16_dot":{
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_alt_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
+};
+case "virtus_dot":{
+    ["Tier1_SIG_MCX_115_Virtus_Black", "dot"] call CGQC_fnc_getCustomGun;
+    _target addPrimaryWeaponItem "hlc_muzzle_556NATO_KAC";
+    _target addPrimaryWeaponItem "Tier1_MCX_NGAL_M600V_Black";
+    _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 case "CTAR21":{
     ["arifle_TRG20_F", "dot"] call CGQC_fnc_getCustomGun;
@@ -276,7 +283,7 @@ case "fn_2000":{
     ["arifle_Mk20_F", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_rotex5_grey";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
 case "m4_elcan":{
@@ -292,7 +299,7 @@ case "sr16_elcan":{
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_URX4_NGAL_M600V_Black";
     _target addPrimaryWeaponItem "Tier1_AFG_MLOK_Black";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 case "hk416_elcan":{
     ["Tier1_HK416D145_MW13_MFT", "magnified"] call CGQC_fnc_getCustomGun;
@@ -306,13 +313,13 @@ case "acre_carb":{
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 case "jack":{
     ["hlc_rifle_bcmjack", "magnified"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "hlc_muzzle_556NATO_rotexiiic_grey";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black_FL";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
 // 5.56 Full Rifle =================================================================
@@ -350,7 +357,7 @@ case "acre_mid":{
     _target addPrimaryWeaponItem "Tier1_Gemtech_Halo";
     _target addPrimaryWeaponItem "Tier1_SCAR_NGAL_M600V_Black_FL";
     _target addPrimaryWeaponItem "rhsusf_acc_grip2";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
 };
 
 case "acre_spr":{
@@ -417,7 +424,7 @@ case "fn_2000_gl":{
     ["arifle_Mk20_GL_F", "dot"] call CGQC_fnc_getCustomGun;
     _target addPrimaryWeaponItem "rhsusf_acc_rotex5_grey";
     _target addPrimaryWeaponItem "Tier1_MP7_NGAL_M300C_Black";
-    _target addPrimaryWeaponItem "grcb_mag_30Rnd_556x45_Mk318_L5";
+    _target addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_Mk318_PMAG";
     _target addPrimaryWeaponItem "1Rnd_HE_Grenade_shell";
     _needGL = true;
 };

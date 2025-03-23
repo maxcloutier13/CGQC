@@ -2,7 +2,7 @@
 // --- gamestate ----------------------------------------------------------
 // Handles the gamestate flow
 params ["_type"];
-LOG_1(" gamestate %1 mode started", _type);
+LOG_1("[gamestate] %1 mode started", _type);
 
 cgqc_var_gamestates = [
 	"CGQC_gamestate_0_init",
@@ -84,20 +84,23 @@ switch (_type) do {
 		[_txt, 3, 0, "cba_notify_start", _txt2, _txt3] call CGQC_fnc_notifyAll;
 	};
 	case "end": {
+		LOG("[gamestate] Ending mission");
 		missionNamespace setVariable ["CGQC_gamestate_3_mission_stop", true, true];
 		missionNamespace setVariable ["CGQC_gamestate_current", "end", true];
 		// Pause the AI?
 		if !(missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
+			LOG("[gamestate] Pausing AI");
 			[0, {
 				["pause", 0, ""] spawn CGQC_fnc_perksZeus
 			}] call CBA_fnc_globalExecute;
 			hint "AI paused!";
 		};
 		// End message for everyone
+		LOG("[gamestate] Notifying end of mission");
 		_text = ("<br/><br/><br/><t size='1' >Mission Ended!<br/>Good job, Viper!</t><br/>");
 		[_text, 5, 2] call CGQC_fnc_notifyAll;
 	};
 	default {};
 };
 
-LOG(" gamestate finished");
+LOG("[gamestate] finished");
