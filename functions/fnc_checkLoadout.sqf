@@ -63,6 +63,10 @@ if (_load) then {
         case "CGQC_units_mk1_2_Sniper":{_switchRole = "2023_sniper"};
         case "CGQC_units_mk1_2_Sniper_ebr":{_switchRole = "2023_sniper_ebr"};
         case "CGQC_units_mk1_2_Spotter":{_switchRole = "2023_spotter"};
+        // == Mortars
+        case "CGQC_units_mk1_2_mortar_portable":{_switchRole = "mortar_portable"};
+        case "CGQC_units_mk1_2_mk6_tube":{_switchRole = "mortar_mk6"};
+        case "CGQC_units_mk1_2_mk6_plate":{_switchRole = "mortar_mk6_plate"};
         // == Pilots
         case "CGQC_units_mk1_4_Pilot_heli":{_switchRole = "2023_h_pilot"};
         case "CGQC_units_mk1_4_crew_heli":{_switchRole = "2023_h_crew"};
@@ -148,6 +152,9 @@ if (_load) then {
         case "CGQC_units_PMC_0_CrewCommander":{_switchRole = "pmct_driver";};
         case "CGQC_units_PMC_0_CrewMember":{_switchRole = "pmct_crew";};
         case "CGQC_units_PMC_0_GameMaster":{_switchRole = "pmct_zeus";};
+
+
+
     };
     if (_switchRole isNotEqualTo "") then {
         LOG_1(" Loadout %1 found. Switching.", _switchRole);
