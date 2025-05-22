@@ -123,15 +123,15 @@ switch (_type) do {
 		_targetPlayer addItem "ACRE_PRC343";
 		// Add zeus radios
 		_targetPlayer addItemCargo ["ACRE_PRC152", 2];
-		waitUntil {sleep 0.1;count (call acre_api_fnc_getCurrentRadioList) > 0};
+		waitUntil {count (call acre_api_fnc_getCurrentRadioList) > 0};
 		y_zeusRadios = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType;
 		_personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
-		waitUntil {sleep 0.1;!isNil "y_zeusRadios"};
+		waitUntil {!isNil "y_zeusRadios"};
 		y_packRadio_1 = y_zeusRadios select 0;
 		y_packRadio_2 = y_zeusRadios select 1;
-		waitUntil {sleep 0.1;!isNil "y_packRadio_1"};
+		waitUntil {!isNil "y_packRadio_1"};
 		_success = [y_packRadio_1, 1] call acre_api_fnc_setRadioChannel; //Spartan
-		waitUntil {sleep 0.1;!isNil "y_packRadio_2"};
+		waitUntil {!isNil "y_packRadio_2"};
 		_success = [y_packRadio_2, 9] call acre_api_fnc_setRadioChannel; //Zeus net
 		// Set order
 		_success = [ [_personalRadio, y_packRadio_1, y_packRadio_2] ] call acre_api_fnc_setMultiPushToTalkAssignment;
