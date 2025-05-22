@@ -64,8 +64,8 @@ switch (_type) do {
 		missionNamespace setVariable ["CGQC_gamestate_2_mission_start", true, true];
 		missionNamespace setVariable ["CGQC_gamestate_current", "mission", true];
 		// Save "start" snapshot
-		[player, "save", "all", "start"] spawn CGQC_fnc_snapshot;
-		missionNamespace setVariable ["CGQC_gamestate_2_mission_start_snapshot", true, true];
+		//[player, "save", "all", "start"] spawn CGQC_fnc_snapshot;
+		//missionNamespace setVariable ["CGQC_gamestate_2_mission_start_snapshot", true, true];
 		// Unpause the AI if they are paused
 		if (missionNamespace getVariable "CGQC_gamestate_mission_AIpaused") then {
 			[0, {

@@ -79,11 +79,12 @@ if !(_type isEqualTo "Unknown") then {
     [] call CGQC_fnc_setPatch;
 
         // Save a snapshot
+    /*
     if (_saveSnapshot) then {
         LOG("[switchRole] Saving snapshot");
 
         [player, "save", "single", "auto"] spawn CGQC_fnc_snapshot;
-    };
+    };*/
 
     // Lower gun
     LOG("[switchRole] - lower gun");

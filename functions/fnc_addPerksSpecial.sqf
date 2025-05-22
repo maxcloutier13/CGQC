@@ -318,11 +318,12 @@ switch (_type) do {
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus"], _action ] call ace_interact_menu_fnc_addActionToObject;
 
              // ------ Manual snapshot
+             /*
             _action = [ "zeus_snapshot_save", "Save All Player snapshots", "", {[player, "save", "all", "zeus"] spawn CGQC_fnc_snapshot}, {true} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;
             _action = [ "zeus_snapshot_load", "Load All player Snapshots", "", {[player, "load", "all", "zeus"] spawn CGQC_fnc_snapshot}, {MissionProfileNamespace getVariable ["cgqc_player_snapshot_zeus_done", false];} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils", "zeus_snapshot_save"], _action ] call ace_interact_menu_fnc_addActionToObject;
-
+            */
             // Outdoor range
             _action = [ "zeus_range", "Hide Outdoor Range", "", {cgqc_outdoor_range_hide = true;publicVariable "cgqc_outdoor_range_hide";}, {!cgqc_outdoor_range_hide} ] call ace_interact_menu_fnc_createAction;
             _adding = [ player, 1, ["ACE_SelfActions","menu_self_zeus", "menu_self_utils"], _action ] call ace_interact_menu_fnc_addActionToObject;

@@ -34,7 +34,7 @@
 				#include "\CGQC\loadouts\swat\actions_arsenal.hpp"
 				#include "\CGQC\loadouts\swat\actions_optics.hpp"
 				// Snapshots
-				#include "\CGQC\loadouts\actions_snapshots.hpp"
+				//#include "\CGQC\loadouts\actions_snapshots.hpp"
 				// Empty the weird shit
 				clearWeaponCargoGlobal _crate;
 				clearItemCargoGlobal _crate;
@@ -197,7 +197,7 @@
 				#include "\CGQC\loadouts\actions_quickStuff.hpp"
 
 				// Snapshots
-				#include "\CGQC\loadouts\actions_snapshots.hpp"
+				//#include "\CGQC\loadouts\actions_snapshots.hpp"
 
 
 				// Zeus Arsenal ========================================================================================================
