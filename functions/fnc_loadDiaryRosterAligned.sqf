@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- loadDiaryRoster ----------------------------------------------------------
 // List all groups and players + roles
-LOG(" loadDiaryRoster started");
+LOG("[loadDiaryRosterAligned] started");
 
 waitUntil {CGQC_playerLoaded};
 
@@ -98,4 +98,4 @@ if !(player diarySubjectExists "CGQC_Roster") then {
     player setDiaryRecordText [["CGQC_Roster", _record select 8], ["Roster", _roster]];
 };*/
 
-LOG(" loadDiaryRoster done");
+LOG("[loadDiaryRosterAligned] done");

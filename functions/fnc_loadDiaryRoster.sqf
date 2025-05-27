@@ -1,7 +1,7 @@
 #include "\CGQC\script_component.hpp"
 // --- loadDiaryRoster ----------------------------------------------------------
 // List all groups and players + roles
-LOG(" loadDiaryRoster started");
+LOG("[loadDiaryRoster] started");
 
 waitUntil {CGQC_playerLoaded};
 
@@ -145,4 +145,4 @@ if ( count (player allDiaryRecords "CGQC_Roster") > 1 ) then {
     player createDiaryRecord ["CGQC_Roster", ["Casualties", cgqc_diary_stats]];
 };
 
-LOG(" loadDiaryRoster done");
+LOG("[loadDiaryRoster] done");
