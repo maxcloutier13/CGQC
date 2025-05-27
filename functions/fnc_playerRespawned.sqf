@@ -66,6 +66,7 @@ if (local _unit) then {
 	// Reload fucking traits
 	[] call CGQC_fnc_reloadTraits;
 
+	/*
 	// Reload radios
 	_newRadioList = [1, 1, 1]; // initialize with default values
 	{
@@ -139,7 +140,21 @@ if (local _unit) then {
 		] call CBA_fnc_waitAndExecute; // delay 1 second for new radio IDs
 	} forEach ["ACRE_PRC77", "ACRE_PRC117F", "ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC343", "ACRE_SEM52SL", "ACRE_SEM70", "ACRE_BF888S"]; // for each available ACRE radio
 
-	/*
+	[
+		{
+			params ["_newRadioList"];
+			// assign the radio IDs of those with assigned PTTs
+			private _ptt1 = _newRadioList select 0;
+			private _ptt2 = _newRadioList select 1;
+			private _ptt3 = _newRadioList select 2;
+			_pttNewRadioList = [ [_ptt1, _ptt2, _ptt3] ] call acre_api_fnc_setMultiPushToTalkAssignment; // assign new radios to old PTT setup
+		},
+		[_newRadioList],
+		1
+	] call CBA_fnc_waitAndExecute; // wait 1 second to execute
+
+	*/
+
 	LOG("[playerRespawned] Reloading radios");
 	_allRadios = [] call acre_api_fnc_getCurrentRadioList;
 	_radios = player getVariable "Radio_Settings_radios";
@@ -158,23 +173,9 @@ if (local _unit) then {
 	} forEach _allRadios;
 	LOG("[playerRespawned] Done reloading radios");
 
-	[
-		{
-			params ["_newRadioList"];
-			// assign the radio IDs of those with assigned PTTs
-			private _ptt1 = _newRadioList select 0;
-			private _ptt2 = _newRadioList select 1;
-			private _ptt3 = _newRadioList select 2;
-			_pttNewRadioList = [ [_ptt1, _ptt2, _ptt3] ] call acre_api_fnc_setMultiPushToTalkAssignment; // assign new radios to old PTT setup
-		},
-		[_newRadioList],
-		1
-	] call CBA_fnc_waitAndExecute; // wait 1 second to execute
-	*/
-
 	// Reset ptt's
-	//_mpttRadioList = player getVariable "Radio_Settings_ptt";
-	//_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
+	_mpttRadioList = player getVariable "Radio_Settings_ptt";
+	_success = [_mpttRadioList] call acre_api_fnc_setMultiPushToTalkAssignment;
 	// Lower gun
 	[player] call ace_weaponselect_fnc_putWeaponAway;
 

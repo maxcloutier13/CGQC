@@ -440,7 +440,8 @@ player addEventHandler ["OpticsSwitch", {
 	params ["_unit", "_isUnconscious"];
 	// Not a player? Get out
 	_unitIsPlayer = hasInterface && {_unit isEqualTo ace_player};
-	if !(_unitIsPlayer) exitWith {LOG("[Unconscious] - Not a player. Getting out");};
+	_name = name _unit;
+	if !(_unitIsPlayer) exitWith {LOG_1("[Unconscious] - %1 Not a player. Getting out", _name);};
 	LOG_2("[Unconscious] - %1 is down? %2", name _unit, _isUnconscious);
 	// Not local: get out.
 	if !(local _unit) exitWith {LOG("[Unconscious] - Not Local. Getting out");};
@@ -864,6 +865,7 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 			[] call CGQC_int_setZeusRadios;
 		};
 	};
+	/*
 	sleep 15;
 	LOG("[CGQC_PostInitClient] - Checking for snapshots");
 	// Check if a snapshot exists
@@ -917,5 +919,6 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 	if (_snapshotFound) then {
 		[_snapIntro, [_snapTxt], ["--- Check Arsenal to Load ---", 1.1], false] call CBA_fnc_notify;
 	};
+	*/
 };
 LOG("[CGQC_PostInitClient] === Done =====================================");

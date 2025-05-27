@@ -12,6 +12,7 @@ if (local _unit) then {
 
 
 	// Save radios and ptt priorities
+	LOG("[CGQC_EVENT] playerKilled - Saving radios");
 	_allRadios = [] call acre_api_fnc_getCurrentRadioList;
 	_radios = [];
 	{
@@ -20,6 +21,7 @@ if (local _unit) then {
 		_vol = [_x] call acre_api_fnc_getRadioVolume;
 		_chan = [_x] call acre_api_fnc_getRadioChannel;
 		_radios pushBack [_radio, _side, _vol, _chan];
+		LOG_1("[CGQC_EVENT] playerKilled - Saving radio: %1/%2/%3/%4", _radio, _side, _vol, _chan);
 	} forEach _allRadios;
 	_unit setVariable["Radio_Settings_radios", _radios];
 	_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
