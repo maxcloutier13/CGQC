@@ -23,7 +23,8 @@ if (local _unit) then {
 	};
 
 	// Slinged helmet
-	[player, player getVariable["Saved_Slinged",[]]] call GRAD_slingHelmet_fnc_addSlungHelmet;
+	_slungHelmet = player getVariable["Saved_Slinged",[]];
+	[player, _slungHelmet] call GRAD_slingHelmet_fnc_addSlungHelmet;
 
 	/*
 	[] spawn {

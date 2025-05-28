@@ -7,7 +7,14 @@ LOG_4("[CGQC_EVENT] playerKilled %1/Killer:%2/Inst:%3/Effect:%4 started", _unit,
 if (local _unit) then {
 	LOG("[CGQC_EVENT] playerKilled Unit local: Saving");
 	_unit setVariable["Saved_Face", face _unit];
-	_unit setVariable["Saved_Slinged", [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet];
+	_slungHelmet = [_unit] call GRAD_slingHelmet_fnc_getSlungHelmet;
+	if (typeName _slungHelmet != "ARRAY") then {
+		_unit setVariable["Saved_Slinged", _slungHelmet];
+	} else {
+		_unit setVariable["Saved_Slinged", ""];
+		LOG("[CGQC_EVENT] playerKilled - No slung helmet found");
+	};
+
 	_unit setVariable["Saved_second", _unit getVariable "WBK_SecondWeapon" select 1];
 
 
@@ -21,7 +28,7 @@ if (local _unit) then {
 		_vol = [_x] call acre_api_fnc_getRadioVolume;
 		_chan = [_x] call acre_api_fnc_getRadioChannel;
 		_radios pushBack [_radio, _side, _vol, _chan];
-		LOG_1("[CGQC_EVENT] playerKilled - Saving radio: %1/%2/%3/%4", _radio, _side, _vol, _chan);
+		LOG_4("[CGQC_EVENT] playerKilled - Saving radio: %1/%2/%3/%4", _radio, _side, _vol, _chan);
 	} forEach _allRadios;
 	_unit setVariable["Radio_Settings_radios", _radios];
 	_mpttRadioList = [] call acre_api_fnc_getMultiPushToTalkAssignment;
