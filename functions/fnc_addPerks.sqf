@@ -43,6 +43,11 @@ _action = [ "cgqc_perk_track_smell", "Smell", "", {["smell"] spawn CGQC_fnc_perk
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
 _action = [ "cgqc_perk_track_fire", "Make Campfire", "", {["fire"] spawn CGQC_fnc_perksFieldcraft}, {vehicle player isEqualTo player} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+_action = [ "cgqc_perk_undercover", "Go Undercover", "", {["undercover"] spawn CGQC_fnc_perksFieldcraft}, {!cgqc_player_undercover} ] call ace_interact_menu_fnc_createAction;
+_adding = [ player, 1, ["ACE_SelfActions","menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+
+
 // Personal stash =========================================================================================================
 _action = [ "cgqc_perk_stash", " Personal Stash", "CGQC\textures\cgqc_ace_stash", {["stash", false] spawn CGQC_fnc_perksBasic}, {cgqc_perks_basic && !cgqc_perk_player_stash_on} ] call ace_interact_menu_fnc_createAction;
 _adding = [ player, 1, ["ACE_SelfActions", "menu_self_cgqc", "cgqc_perk_fieldcraft"], _action ] call ace_interact_menu_fnc_addActionToObject;

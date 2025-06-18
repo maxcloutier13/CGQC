@@ -70,6 +70,8 @@ if (local _unit) then {
 			cgqc_player_uav = nil;
 		};
 	};
+	// Remove undercover status
+	cgqc_player_undercover = false;
 }else {
 	LOG("[CGQC_EVENT] playerKilled Unit NOT local: not saving");
 };

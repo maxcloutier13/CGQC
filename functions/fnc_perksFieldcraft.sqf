@@ -72,7 +72,53 @@ cgqc_int_smellNothing = {
     [[_txt, 1.5], false] call CBA_fnc_notify;
 };
 
+cgqc_int_coverBlown = {
+    cgqc_player_undercover = false;
+    player setCaptive false;
+    [["Cover is blown!", 2, [1, 0, 0, 1]], false] call CBA_fnc_notify;
+};
+
+cgqc_int_goUndercover = {
+    cgqc_player_undercover = true;
+    player setCaptive true;
+    [["You are undercover", 1.5, [0, 0, 1, 1]], false] call CBA_fnc_notify;
+};
+
+cgqc_int_notifyUndercover = {
+    [] spawn {
+        while {cgqc_player_undercover} do {
+            sleep 10;
+            if (cgqc_player_undercover) then {
+                [["You are undercover", 1.5, [0, 0, 1, 1]], false] call CBA_fnc_notify;
+            } else {
+                [["You are no longer undercover", 1.5, [1, 0, 0, 1]], false] call CBA_fnc_notify;
+            };
+        };
+    };
+};
+
 switch (_type) do {
+    case "undercover": {
+        [] spawn {
+            call cgqc_int_goUndercover;
+            call cgqc_int_notifyUndercover;
+            while {cgqc_player_undercover} do {
+                // Check if player has a visible weapon
+                _primary = primaryWeapon player;
+                sleep 0.001;
+                if (_primary isNotEqualTo "") then {
+                    // Player has primary gun! No mo undercover for you!
+                    call cgqc_int_coverBlown;
+                };
+                _weaponClass = currentWeapon player;
+                sleep 0.001;
+                if (_weaponClass isNotEqualTo "") then {
+                    // Player has a weapon! No mo undercover for you!
+                    call cgqc_int_coverBlown;
+                };
+            };
+        };
+    };
     case "cut_grass":{
         hintSilent "Cutting grass";
         _to_ghillie = 0;

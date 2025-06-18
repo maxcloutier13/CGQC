@@ -84,6 +84,8 @@ cgqc_player_trait_loadCoef = 1;
 cgqc_player_trait_audibleCoef = 1;
 cgqc_player_trait_camoCoef = 1;
 
+// Undercover shit
+cgqc_player_undercover = false;
 
 // Map tools - Advanced
 cgqc_player_route_id = 0;
