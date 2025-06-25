@@ -75,7 +75,7 @@ cgqc_int_smellNothing = {
 cgqc_int_coverBlown = {
     cgqc_player_undercover = false;
     player setCaptive false;
-    [["Cover is blown!", 2, [1, 0, 0, 1]], false] call CBA_fnc_notify;
+    [["Cover blown!", 2, [1, 0, 0, 1]],  false] call CBA_fnc_notify;
 };
 
 cgqc_int_goUndercover = {
@@ -105,17 +105,14 @@ switch (_type) do {
             while {cgqc_player_undercover} do {
                 // Check if player has a visible weapon
                 _primary = primaryWeapon player;
+                _handgun = handgunWeapon player;
+                _launcher = secondaryWeapon player;
                 sleep 0.001;
-                if (_primary isNotEqualTo "") then {
+                if (_primary isNotEqualTo "" || _handgun isNotEqualTo "" || _launcher isNotEqualTo "") then {
                     // Player has primary gun! No mo undercover for you!
                     call cgqc_int_coverBlown;
                 };
-                _weaponClass = currentWeapon player;
-                sleep 0.001;
-                if (_weaponClass isNotEqualTo "") then {
-                    // Player has a weapon! No mo undercover for you!
-                    call cgqc_int_coverBlown;
-                };
+                sleep 1;
             };
         };
     };

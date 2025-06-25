@@ -552,6 +552,20 @@ player addEventHandler ["GetInMan", {
 	};
 }];
 
+// Prevent pulling gun out when disembarking
+player addEventHandler ["GetOutMan", {
+	params ["_unit", "_vehicle"];
+	if (cgqc_player_undercover) then {
+		[_unit] spawn {
+			params ["_unit"];
+			_unit setCaptive false;
+			sleep 1;
+			_unit setCaptive true;
+		};
+
+	};
+}];
+
 // Friendly fire fix - Prevent AI from shooting back
 player addEventHandler [ "HandleRating", {
 	params["_player", "_rating"];
