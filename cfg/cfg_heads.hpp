@@ -22,6 +22,12 @@ class Man_A3 : Default
 		disabled = false;
 	};
 
+	class CGQCHead_13_2: CGQCHead_13
+	{
+		displayname="CGQC Cloutier New";
+		texture = "\CGQC\heads\cloutier\cgqc_cloutier_2.paa";
+	};
+
 	class CGQCHead_13_camo_01: CGQCHead_13
 	{
 		displayname = "CGQC Cloutier CAM1";
