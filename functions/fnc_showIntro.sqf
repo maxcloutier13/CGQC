@@ -72,6 +72,9 @@ if (_show) then {
 							[_phaseTxt, "align = 'center' shadow = '1' size = '1.0'"]
 						]
 					] spawn BIS_fnc_typeText2;
+					1 fadeSound 1;
+					1 fadeEnvironment 1;
+					ace_hearing_disableVolumeUpdate = false;
 				};
 			} else {
 				LOG("[showIntro] Error: No mission name/Author");
