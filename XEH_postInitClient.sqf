@@ -728,15 +728,12 @@ if !(_findLoadout) then { // Skip if loadout was found and loaded
 	waitUntil {sleep 1;CGQC_playerLoaded};
 	if (cgqc_config_cigs) then {
 		_light = selectRandom ["cigs_matches", "cigs_lighter"];
-		if !([player, _light] call ace_common_fnc_hasMagazine) then {player addItem _light;};
+		if (!([player, "cigs_matches"] call ace_common_fnc_hasMagazine) && !([player, "cigs_lighter"] call ace_common_fnc_hasMagazine)) then {player addItem _light;};
 		_cigPack = selectRandom [
 			"cigs_black_devil_cigpack",
 			"cigs_craven_cigpack",
-			"cigs_eckstein_cigpack",
 			"cigs_lucky_strike_cigpack",
-			"cigs_morley_cigpack",
-			"cigs_baja_blast_cigpack",
-			"cigs_crayons_crayonpack"
+			"cigs_morley_cigpack"
 			];
 		if !([player, _cigPack] call ace_common_fnc_hasMagazine) then {player addItem _cigPack;};
 	};
