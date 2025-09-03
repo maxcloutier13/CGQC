@@ -164,6 +164,10 @@ switch (_type) do {
 		["zeus"] spawn CGQC_fnc_perksZeus;
 		["zeus"] spawn CGQC_fnc_addPerksSpecial;
 	};
+	case "zeus_target":{
+		LOG("[switchPerks] Zeus_target setup");
+		['zeus'] remoteExec ['CGQC_fnc_addPerksSpecial', owner cursorTarget];
+	};
 	case "max":{
 		LOG("[switchPerks] Max setup");
 		// Shooting range
