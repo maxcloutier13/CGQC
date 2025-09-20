@@ -435,7 +435,7 @@ class cgqc_vic_construction : B_T_Truck_01_box_F
         "\a3\soft_f_Exp\truck_01\data\truck_01_ext_01_olive_co.paa",
         "\a3\soft_f_Exp\truck_01\data\truck_01_ext_02_olive_co.paa",
         "\A3\Soft_F_Exp\Truck_01\Data\truck_01_ammo_olive_CO.paa",
-        "\CGQC\CGQC\vehicles\cgqc_vic_construction_container.paa"
+        "\CGQC\vehicles\cgqc_vic_construction_container.paa"
     };
 	class EventHandlers
     {
@@ -624,3 +624,152 @@ class cgqc_briefing_table : Land_BriefingRoomDesk_01_F
     };
 };
 
+// Posters --------------------------------------------------------------------------------
+class UserTexture10m_F;
+class cgqc_poster_adversary : UserTexture10m_F {
+    scope = 2;
+    scopeCurator = 2;
+    editorSubcategory = "EdSubcat_CGQC_occult";
+    displayName = "I am the Adversary";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\adversary1.paa"};
+};
+
+class cgqc_poster_god : cgqc_poster_adversary {
+    displayName = "Where is your god";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\adversary2.paa"};
+};
+
+class cgqc_poster_ashesA : cgqc_poster_adversary {
+    displayName = "ashesA";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\ashesA.paa"};
+};
+
+class cgqc_poster_asheshand1 : cgqc_poster_adversary {
+    displayName = "asheshand1";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\asheshand1.paa"};
+};
+
+class cgqc_poster_ashesskullA : cgqc_poster_adversary {
+    displayName = "ashesskullA";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\ashesskullA.paa"};
+};
+
+class cgqc_poster_ashesskullB : cgqc_poster_adversary {
+    displayName = "ashesskullB";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\ashesskullB.paa"};
+};
+
+class cgqc_poster_blood1 : cgqc_poster_adversary {
+    displayName = "blood1";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\blood1.paa"};
+};
+
+class cgqc_poster_blood2 : cgqc_poster_adversary {
+    displayName = "blood2";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\blood2.paa"};
+};
+
+class cgqc_poster_blood3 : cgqc_poster_adversary {
+    displayName = "blood3";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\blood3.paa"};
+};
+
+class cgqc_poster_bloodfloor11 : cgqc_poster_adversary {
+    displayName = "bloodfloor11";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\bloodfloor11.paa"};
+};
+
+class cgqc_poster_bloodfloor22 : cgqc_poster_adversary {
+    displayName = "bloodfloor22";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\bloodfloor22.paa"};
+};
+
+class cgqc_poster_bloodfloor33 : cgqc_poster_adversary {
+    displayName = "bloodfloor33";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\bloodfloor33.paa"};
+};
+
+class cgqc_poster_bloodfloor44 : cgqc_poster_adversary {
+    displayName = "bloodfloor44";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\bloodfloor44.paa"};
+};
+
+class cgqc_poster_cross : cgqc_poster_adversary {
+    displayName = "cross";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\cross.paa"};
+};
+
+class cgqc_poster_devilblack11 : cgqc_poster_adversary {
+    displayName = "devilblack11";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\devilblack11.paa"};
+};
+
+class cgqc_poster_devilchurch666 : cgqc_poster_adversary {
+    displayName = "devilchurch666";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\devilchurch666.paa"};
+};
+
+class cgqc_poster_devilwall1 : cgqc_poster_adversary {
+    displayName = "devilwall1";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\devilwall1.paa"};
+};
+
+class cgqc_poster_devilwall2 : cgqc_poster_adversary {
+    displayName = "devilwall2";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\devilwall2.paa"};
+};
+
+class cgqc_poster_devilwhite : cgqc_poster_adversary {
+    displayName = "devilwhite";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\devilwhite.paa"};
+};
+
+class cgqc_poster_evilcross666 : cgqc_poster_adversary {
+    displayName = "evilcross666";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\evilcross666.paa"};
+};
+
+class cgqc_poster_forksign111 : cgqc_poster_adversary {
+    displayName = "forksign111";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\forksign111.paa"};
+};
+
+class cgqc_poster_forksign222 : cgqc_poster_adversary {
+    displayName = "forksign222";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\forksign222.paa"};
+};
+
+class cgqc_poster_forksign333 : cgqc_poster_adversary {
+    displayName = "forksign333";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\forksign333.paa"};
+};
+
+class cgqc_poster_metalsign1 : cgqc_poster_adversary {
+    displayName = "metalsign1";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\metalsign1.paa"};
+};
+
+class cgqc_poster_nosalvation : cgqc_poster_adversary {
+    displayName = "nosalvation";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\nosalvation.paa"};
+};
+
+class cgqc_poster_paintsign1 : cgqc_poster_adversary {
+    displayName = "paintsign1";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\paintsign1.paa"};
+};
+
+class cgqc_poster_spell1 : cgqc_poster_adversary {
+    displayName = "spell1";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\spell1.paa"};
+};
+
+class cgqc_poster_spell2 : cgqc_poster_adversary {
+    displayName = "spell2";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\spell2.paa"};
+};
+
+class cgqc_poster_whitedevil1 : cgqc_poster_adversary {
+    displayName = "whitedevil1";
+    hiddenSelectionsTextures[] = {"\cgqc\textures\occult\whitedevil1.paa"};
+};

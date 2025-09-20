@@ -119,7 +119,11 @@ class CfgEditorSubcategories
 	};
 	class EdSubcat_CGQC_logistics
 	{
-		displayName = "\CGQC";
+		displayName = "Logistics";
+	};
+	class EdSubcat_CGQC_occult
+	{
+		displayName = "Occult shits";
 	};
 };
 // Units, backpacks, flags

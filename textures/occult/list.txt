@@ -1,0 +1,5 @@
+ Volume in drive E is Data 2
+ Volume Serial Number is B4A8-3F65
+
+ Directory of E:\Pdrive\CGQC\textures\occult
+
