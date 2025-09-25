@@ -47,7 +47,7 @@ cgqc_allGroupsInfo = [];
 				{
 					_radioType = "LR";
 					_radioChan = [_x] call acre_api_fnc_getRadioChannel;
-                     _txt = format ["%1:%2", _radioType, _radioChan];
+					_txt = format ["<font color='#CC3333'>%1:%2</font><br/>",  _radioType, _radioChan];
 					_radios pushBack _txt;
 				} forEach _148s;
 			};
@@ -56,7 +56,7 @@ cgqc_allGroupsInfo = [];
 				{
 					_radioType = "LR";
 					_radioChan = [_x] call acre_api_fnc_getRadioChannel;
-                     _txt = format ["%1:%2", _radioType, _radioChan];
+					_txt = format ["<font color='#CC3333'>%1:%2</font><br/>",  _radioType, _radioChan];
 					_radios pushBack _txt;
 				} forEach _152s;
 			};
@@ -65,7 +65,7 @@ cgqc_allGroupsInfo = [];
 				{
 					_radioType = "LR";
 					_radioChan = [_x] call acre_api_fnc_getRadioChannel;
-                     _txt = format ["%1:%2", _radioType, _radioChan];
+					_txt = format ["<font color='#CC3333'>%1:%2</font><br/>",  _radioType, _radioChan];
 					_radios pushBack _txt;
 				} forEach _117s;
 			};
