@@ -58,7 +58,7 @@ switch (_variant) do {
 		player addItem "ACE_Kestrel4500";
 		player addItemToBackpack "ACE_Tripod";
 		player addItemToBackpack "ACE_DefusalKit";
-		player addItemToBackpack "sps_black_hornet_01_Static_F";
+		["sps_black_hornet_01_Static_F"] call CGQC_fnc_getDrone;
 		player addItemToBackpack "rhsusf_mine_m14_mag";
 		player addItemToBackpack "rhsusf_mine_m14_mag";
 		player addItemToBackpack "rhsusf_mine_m14_mag";

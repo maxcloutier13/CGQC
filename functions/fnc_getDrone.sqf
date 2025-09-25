@@ -27,6 +27,8 @@ switch (_type) do {
 if (_proceed) then {
     player addItemToBackpack _type;
     player addItemToBackpack "ACE_UAVBattery";
+    // Check if player has goggles already
+    if !([player, "DJI_F"] call ace_common_fnc_hasItem) then {player addItem "DJI_F";};
     LOG("[getDrone] Drone added");
 } else {
     [["Drone is restricted", 1.5], false] call CBA_fnc_notify;
