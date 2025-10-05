@@ -605,6 +605,16 @@ class CAManBase: Man {
 				};
 			};
 		};
+		class spawnInVic {
+			displayName = "Spawn unit in vehicle";
+			tooltip = "Enter the vehicle variable name";
+			property = "cgqc_var_spawnInVic";
+			control = "Edit";
+			defaultValue = "None";
+			expression = "_this setVariable ['cgqc_var_spawnInVic',_value, true];";
+			condition = "objectBrain";
+			typeName = "STRING";
+		};
 		class camo {
 			displayName = "Starting Camo";
 			tooltip = "Inital camo set";

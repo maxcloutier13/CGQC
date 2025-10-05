@@ -719,6 +719,13 @@ if !(_findLoadout) then { // Skip if loadout was found and loaded
 	};
 };
 
+// Deploy to vehicle if the unit is tagged for it
+_spawnVic = player getVariable ['cgqc_var_spawnInVic', "None"];
+if (_spawnVic isNotEqualTo "None") then {
+	// Attempt to move the player to the specified vehicle
+	_vic = call compile _spawnVic;
+	player moveInCargo _vic;
+};
 
 // set back custom patch
 [] call CGQC_fnc_setPatch;
@@ -841,6 +848,8 @@ cgqc_map_playerPosition = _map ctrlAddEventHandler ["Draw", {
 		};
 	};
 }];
+
+
 
 
 [] spawn {
