@@ -8,7 +8,7 @@ class CAManBase: Man {
 		class ACE_MainActions {
 			class cgqc_become_assistant {
 				displayName = "Become Ammo Bearer";
-				condition = "missionNamespace getVariable 'CGQC_gamestate_current' isEqualTo 'staging' || missionNamespace getVariable 'CGQC_gamestate_current' isEqualTo 'training'";
+				condition = "(isPlayer _target) && (missionNamespace getVariable 'CGQC_gamestate_current' isEqualTo 'staging' || missionNamespace getVariable 'CGQC_gamestate_current' isEqualTo 'training')";
 				statement = "[_target] call CGQC_fnc_becomeAmmoBearer";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "\cgqc\textures\rearm.paa";
@@ -17,7 +17,7 @@ class CAManBase: Man {
 			};
 			class cgqc_check_vitals {
 				displayName = "Check Vitals";
-				condition = "true";
+				condition = "(isPlayer _target)";
 				statement = "[_target] call CGQC_fnc_checkVitals";
 				exceptions[] = {"isNotInside","isNotSitting"};
 				icon = "\cgqc\textures\medical.paa";
@@ -86,7 +86,7 @@ class CAManBase: Man {
 			};
 			class cgqc_leader_options {
 				displayName = "Leader Options";
-				condition = "leader player == player || _player getVariable 'cgqc_player_isSL' || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max";
+				condition = "(isPlayer _target) && (leader player == player || _player getVariable 'cgqc_player_isSL' || _player getVariable 'cgqc_player_isTL' || [player] call CGQC_fnc_checkZeus || cgqc_player_max)";
 				statement = "";
 				icon = "";
 				runOnHover = "hintSilent 'Leaders options'";
