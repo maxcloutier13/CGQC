@@ -137,3 +137,6 @@ _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_supplies"], _acti
 //  Spare tracks
 _action = [ "menu_supplies_track", "Spare track", "", {["track"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
 _adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;
+// Dog
+_action = [ "menu_supplies_dog", "K-9 Dog", "", {["k9"] call CGQC_fnc_getStuff}, {true} ] call ace_interact_menu_fnc_createAction;
+_adding = [ _crate, 0, ["ACE_MainActions", "menu_quick", "menu_supplies"], _action ] call  ace_interact_menu_fnc_addActionToObject;

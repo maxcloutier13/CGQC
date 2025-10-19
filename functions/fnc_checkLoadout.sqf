@@ -56,6 +56,7 @@ if (_load) then {
         case "CGQC_units_mk1_1_Engineer":{_switchRole = "2023_eng"};
         case "CGQC_units_mk1_1_Saboteur":{_switchRole = "2023_eng_saboteur"};
         case "CGQC_units_mk1_1_Demolition":{_switchRole = "2023_eng_demo"};
+        case "CGQC_units_mk1_1_K9":{_switchRole = "2023_eng_k9"};
         case "CGQC_units_mk1_1_Medic":{_switchRole = "2023_medic"};
         // == Recon
         case "CGQC_units_mk1_0_Drone_operator":{_switchRole = "2023_drone"};

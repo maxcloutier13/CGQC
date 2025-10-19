@@ -41,6 +41,32 @@ player addItemToVest "ACE_DefusalKit";
 player addItemToVest "ACE_M26_Clacker";
 
 switch (_variant) do {
+	case "k9":{
+		["backpack", "cgqc_pack_mk1_kitbag"] call CGQC_fnc_switchStuff;
+		// Spawn dog
+		_dogClass = selectRandom ["MFR_B_GermanShepherd", "MFR_B_GermanShepherd_Black", "MFR_B_Shepinois"];
+		// Find empty position close to handler
+		_pos_free = getPosATL player findEmptyPosition [1, 20, _dogClass];
+		// If no empty position found, use player position
+		if (count _pos_free == 0) then {
+			_pos_free = getPosATL player;
+		};
+		// Create group for the dog
+		_dogGroup = createGroup [west, true];
+		// Spawn the dog
+		_dog = _dogGroup createUnit [_dogClass, _pos_free, [], 0, "NONE"];
+		// Get dog close and then release
+		_dog attachTo [player, [0, -2, 0]];
+		detach _dog;
+
+		player addItemToBackpack "ACE_Fortify";
+		player addItemToBackpack "ACE_SpraypaintGreen";
+		player addItemToBackpack "ACE_SpraypaintRed";
+		// Breaching stuf
+		player addItemToBackpack "tsp_breach_popper_mag";
+		player addItemToBackpack "tsp_breach_popper_mag";
+		player addItemToBackpack "rhsusf_m112_mag";
+	};
 	case "engineer": {
 		player addWeapon "ACE_VMH3";
 		// === Repair/building items ====================================================================================================

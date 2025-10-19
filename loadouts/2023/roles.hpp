@@ -104,6 +104,15 @@ case "2023_eng_demo":{
 	cgqc_player_role_optic = 2;
 };
 
+case "2023_eng_k9":{
+	[player, "k9", "carbine"] call CGQC_ldt_2023_eng;
+	["eng", true, true] spawn CGQC_fnc_switchPerks;
+	["inf"] call CGQC_fnc_getRadioPresets;
+	cgqc_player_role = "K-9 Operator";
+	player setVariable ["cgqc_player_roleType", "Engineer", true];
+	cgqc_player_role_optic = 2;
+};
+
 // MG ===============================================================
 case "2023_lmg":{
 	[player, "lmg", "mk46"] call CGQC_ldt_2023_mg;
